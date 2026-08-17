@@ -1071,6 +1071,164 @@ All panels use linear percentages and stop at \(Y/K\leq5\). The ratio
 \label{fig:axm-high-sigma-research}
 \end{figure}
 
+\subsection{Distributional accounting across regimes}
+\label{sec:axm-distributional-accounting}
+
+The preceding results can now be compared on a common accounting basis. Three
+levels must remain separate. First, zero profit in the competitive final-good
+sector implies
+\begin{equation}
+ 1=\frac{(r+\delta)K}{Y}+\frac{wL}{Y}+\frac{p_XX}{Y}
+ =\alpha+(1-\alpha)(1-s_X)+(1-\alpha)s_X.
+ \label{eq:axm-final-sector-distribution}
+\end{equation}
+Thus \(\alpha\) is the gross capital-payment share, including depreciation.
+The final-production elasticity affects the division of the remaining
+\((1-\alpha)Y\) between production labor and gross purchases of AI services
+through the endogenous share \(s_X\).
+
+Second, gross AI-service revenue is not developer profit. The developer uses
+that revenue according to
+\begin{equation}
+ \frac{p_XX}{Y}=\frac{U}{Y}+\frac{wH}{Y}+\frac{M}{Y}+\frac{\Pi}{Y}.
+ \label{eq:axm-developer-revenue-distribution}
+\end{equation}
+Inference compute, human research, and research compute are paid before the
+residual \(\Pi\) is distributed to the household. Finally, consolidating the two
+producers gives Equation \eqref{eq:axm-consolidated-distribution}. Its
+income terms are \(rK/Y\), \(wN/Y\), and \(\Pi/Y\); depreciation and compute
+account for the difference between their sum and final output. This
+consolidation avoids counting the intermediate payment \(p_XX\) twice. It also
+shows why \(wL/Y\) is not aggregate labor's income share and why \(\alpha\) is
+not the household's net capital-income share.
+
+The final-production elasticity does not determine these shares by itself at a
+finite date because \(s_X\) also depends on the equilibrium ratio \(X/L\). The
+propositions above determine the following conditional limiting shares. Under
+complementarity, for any \(0<\sigma_{XL}<1\) satisfying the hypotheses of Propositions
+\ref{prop:axm-complements} and \ref{prop:axm-complements-research},
+\begin{equation}
+ \frac{wN}{Y}\longrightarrow
+ \frac{\sigma_{XL}(1-\alpha)^2}{1-\alpha\sigma_{XL}},
+ \qquad
+ \frac{p_XX}{Y},\frac{\Pi}{Y}\longrightarrow
+ \frac{(1-\alpha)(1-\sigma_{XL})}{1-\alpha\sigma_{XL}}.
+ \label{eq:axm-complement-distribution}
+\end{equation}
+At unit elasticity, \(s_X=\omega_X\), so the final-good firm's gross payment
+shares are constant. On the conditional AI-dominated gross-substitutes branch,
+\(s_X\to1\), aggregate labor income vanishes relative to output, and gross
+AI-service revenue approaches \(1-\alpha\).
+
+Table \ref{tab:axm-distributional-synthesis} evaluates the accounting identities
+at the conditional limits of the three numerical benchmarks. All rows hold
+\(\sigma_{HM}=2\) and the remaining benchmark parameters fixed; the rows are
+indexed by \(\sigma_{XL}\). The
+complementarity and unit-elasticity rows use the balanced-growth limits
+characterized above. The gross-substitutes row uses the conditional pre-singular
+ratios in Conditional Result \ref{prop:axm-singular-limit}; it is not the
+long-run distribution of an established infinite-horizon equilibrium.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Conditional distributional limits in the three benchmark regimes}
+\label{tab:axm-distributional-synthesis}
+
+\textit{Panel A: payments by the final-good firm}\par\smallskip
+\begin{tabular}{lrrr}
+\toprule
+Final-production regime & \((r+\delta)K/Y\) & \(wL/Y\) & \(p_XX/Y\)\\
+\midrule
+Complements, \(\sigma_{XL}=0.75\) & 33.000 & 44.741 & 22.259\\
+Unit elasticity, \(\sigma_{XL}=1\) & 33.000 & 53.600 & 13.400\\
+Gross substitutes, \(\sigma_{XL}=1.5\) & 33.000 & 0.000 & 67.000\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\textit{Panel B: uses of gross AI-service revenue}\par\smallskip
+\begin{tabular}{lrrrrr}
+\toprule
+Final-production regime & \(p_XX/Y\) & \(U/Y\) & \(wH/Y\) & \(M/Y\) & \(\Pi/Y\)\\
+\midrule
+Complements, \(\sigma_{XL}=0.75\) & 22.259 & 0.000 & 0.000 & 0.000 & 22.259\\
+Unit elasticity, \(\sigma_{XL}=1\) & 13.400 & 1.796 & 0.000 & 0.038 & 11.567\\
+Gross substitutes, \(\sigma_{XL}=1.5\) & 67.000 & 44.890 & 0.000 & 3.172 & 18.938\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\textit{Panel C: consolidated decomposition of final output}\par\smallskip
+\begin{tabular}{lrrrrr}
+\toprule
+Final-production regime & \(rK/Y\) & \(wN/Y\) & \(\Pi/Y\) & \(\delta K/Y\) & \((U+M)/Y\)\\
+\midrule
+Complements, \(\sigma_{XL}=0.75\) & 14.667 & 44.741 & 22.259 & 18.333 & 0.000\\
+Unit elasticity, \(\sigma_{XL}=1\) & 14.828 & 53.600 & 11.567 & 18.172 & 1.833\\
+Gross substitutes, \(\sigma_{XL}=1.5\) & 33.000 & 0.000 & 18.938 & 0.000 & 48.062\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\parbox{0.95\textwidth}{\footnotesize \emph{Notes:} Entries are percentages of
+\(Y\). Zeros denote limiting shares, not zero quantities at every finite date.
+Panel A sums to final output. Panel B decomposes gross AI-service revenue. Panel
+C also sums to final output. Here \(\Pi\) is distributed developer profit after
+inference and research expenditure. Operating profit before research
+expenditure is \(\pi=p_XX-U\) and is not reported separately. The first row is
+a conditional regular balanced-growth limit; the second is the unit-elasticity
+balanced-growth candidate. The last row is the conditional pre-singular limit for
+\((\sigma_{XL},\sigma_{HM})=(1.5,2)\), not a proved infinite-horizon
+equilibrium. Differences in displayed sums can arise from rounding.}
+\end{table}
+
+The table yields three distributional conclusions. Under production
+complementarity, labor retains a positive share of final output. Because
+research labor and both compute uses vanish relative to output in the
+characterized limit, aggregate labor income approaches production-labor income
+and gross AI-service revenue approaches distributed developer profit. At unit
+elasticity, the final-good firm's payment shares are constant, but the developer
+still divides gross revenue between compute expenditures and profit. On the
+conditional gross-substitutes branch, production and aggregate labor income
+vanish relative to output, whereas gross AI-service revenue approaches
+\(1-\alpha\). Of the 67 percent of output paid for AI services, inference and
+research compute absorb 48.06 percent of output, leaving 18.94 percent as
+distributed profit.
+
+The net interest rate and the capital-income share are also different objects.
+The gross capital-payment share remains \(\alpha\) in every regime, but
+\begin{equation}
+ \frac{rK}{Y}=\alpha-\delta\frac{K}{Y}.
+ \label{eq:axm-net-capital-share}
+\end{equation}
+Under complementarity, \(r\to\rho\) and the net capital-income share converges
+to \(\alpha\rho/(\rho+\delta)\). At unit elasticity, the Euler equation gives
+\(r=\rho+g_{C/N}\). On the conditional gross-substitutes branch,
+\(r=\alpha(Y/K)-\delta\to\infty\) while \(K/Y\to0\), so net capital income
+approaches the same share \(\alpha\) as the gross payment. The return on each
+unit of capital becomes unbounded without raising capital's gross payment above
+\(\alpha Y\).
+
+These regime limits should not be read as a continuous comparative-static curve
+at \(\sigma_{XL}=1\). At every fixed finite date, the CES aggregate converges
+continuously to Cobb--Douglas as \(\sigma_{XL}\to1\). What does not commute is
+taking each branch's asymptotic limit first:
+\begin{equation}
+ \lim_{\sigma_{XL}\uparrow1}\bar s_X=0,
+ \qquad s_X\big|_{\sigma_{XL}=1}=\omega_X,
+ \qquad s_X\to1\ \text{on the AI-dominated branch for every }\sigma_{XL}>1.
+ \label{eq:axm-noncommuting-distribution-limits}
+\end{equation}
+The table therefore compares distinct conditional regimes rather than tracing a
+smooth experiment in \(\sigma_{XL}\). Finally, these are functional distribution
+results, not predictions about interpersonal inequality. The representative
+household supplies all labor and owns both physical capital and the developer. A
+vanishing labor-income share also need not imply a falling real wage: along the
+conditional gross-substitutes branch, the wage can rise while \(wN/Y\) falls
+because output grows faster than labor income.
+
 \subsection{Cross-regime synthesis and limits of the evidence}
 
 The Davidson-style feedback accounting takes a different form in each of the
