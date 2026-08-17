@@ -1,131 +1,131 @@
 category,scenario,sigma_xl,sigma_hm,horizon,metric,value,relation,threshold,status,details
-solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_rms_residual,9.427712119894154e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_static_equation_error,1.3944401189291966e-13,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_saved_rate_equation_error,6.245004513516506e-17,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_independent_dynamic_error,5.680201725730832e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_monopoly_foc_log_error,1.240874070163045e-11,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,minimum_monopoly_soc_margin,0.07461573285662988,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_imposed_terminal_error,1.3322676295501878e-15,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,household_tvc_log_proxy,-54.44299677058204,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,developer_tvc_log_proxy,-62.4767252966921,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-14.6759, 7.49105]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_rms_residual,8.365794807057862e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_static_equation_error,2.916245023243391e-11,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_saved_rate_equation_error,2.824129818890242e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_independent_dynamic_error,2.7610269895221584e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_monopoly_foc_log_error,2.5018209726113128e-11,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,minimum_monopoly_soc_margin,0.07433620951907076,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_imposed_terminal_error,8.377798454972663e-11,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,household_tvc_log_proxy,-54.442882827750694,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,developer_tvc_log_proxy,-63.59821929659914,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-14.4952, 5.28426]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_rms_residual,9.684757525827297e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_static_equation_error,9.237055564881302e-14,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_saved_rate_equation_error,4.163336342344337e-17,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_independent_dynamic_error,8.146048080907853e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_monopoly_foc_log_error,1.7497114868092467e-12,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,minimum_monopoly_soc_margin,0.07639737977797509,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_imposed_terminal_error,6.8833827526759706e-15,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,household_tvc_log_proxy,-43.243792667813985,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,developer_tvc_log_proxy,-49.610609021676815,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_1_T_1600,0.75,1.0,1600.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-13.0003, 6.02968]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_rms_residual,8.66500609138454e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_static_equation_error,8.970602038971265e-14,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_saved_rate_equation_error,4.163336342344337e-17,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_independent_dynamic_error,6.963106746072506e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_monopoly_foc_log_error,4.4222403516869235e-12,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,minimum_monopoly_soc_margin,0.07515910418314958,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_imposed_terminal_error,1.3322676295501878e-15,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,household_tvc_log_proxy,-48.843239738800904,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,developer_tvc_log_proxy,-56.04262090530891,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_1_T_1800,0.75,1.0,1800.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-13.8387, 6.76122]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_rms_residual,9.427712119894154e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_static_equation_error,1.3944401189291966e-13,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_saved_rate_equation_error,6.245004513516506e-17,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_independent_dynamic_error,5.680201725730832e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_monopoly_foc_log_error,1.240874070163045e-11,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,minimum_monopoly_soc_margin,0.07461573285662988,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_imposed_terminal_error,1.3322676295501878e-15,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,household_tvc_log_proxy,-54.44299677058204,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,developer_tvc_log_proxy,-62.4767252966921,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_1_T_2000,0.75,1.0,2000.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-14.6759, 7.49105]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_rms_residual,9.695690420520056e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_static_equation_error,2.915445662665661e-11,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_saved_rate_equation_error,2.824129818890242e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_independent_dynamic_error,8.162024792597589e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_monopoly_foc_log_error,2.9176661087149114e-12,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,minimum_monopoly_soc_margin,0.07538688554998958,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_imposed_terminal_error,1.3322676295501878e-15,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,household_tvc_log_proxy,-43.24343302712319,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,developer_tvc_log_proxy,-50.24785350752746,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_2_T_1600,0.75,2.0,1600.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-13.1204, 4.78871]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_rms_residual,8.677082178741909e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_static_equation_error,2.916067387559451e-11,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_saved_rate_equation_error,2.8171909249863347e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_independent_dynamic_error,6.976048965937759e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_monopoly_foc_log_error,9.628742247969058e-12,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,minimum_monopoly_soc_margin,0.07460530553187839,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_imposed_terminal_error,2.3314683517128287e-14,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,household_tvc_log_proxy,-48.84302441939248,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,developer_tvc_log_proxy,-56.92059634498618,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_2_T_1800,0.75,2.0,1800.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-13.4212, 5.04046]; rejected solver trials unobservable"
-solver,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,solver_success_flag,1.0,=,1.0,pass,
-solver,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
-solver,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
-solver,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_rms_residual,8.365794807057862e-07,<,1e-05,pass,cold-start solve
-equations,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_static_equation_error,2.916245023243391e-11,<,1e-08,pass,independent reconstruction
-equations,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_saved_rate_equation_error,2.824129818890242e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
-equations,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_independent_dynamic_error,2.7610269895221584e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
-monopoly,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_monopoly_foc_log_error,2.5018209726113128e-11,<,1e-09,pass,dimensionless log FOC
-monopoly,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,minimum_monopoly_soc_margin,0.07433620951907076,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_imposed_terminal_error,8.377798454972663e-11,<,1e-07,pass,C/Y and X/(q A^2) only
-transversality,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,household_tvc_log_proxy,-54.442882827750694,<,-20.0,pass,finite-horizon diagnostic
-transversality,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,developer_tvc_log_proxy,-63.59821929659914,<,-20.0,pass,finite-horizon diagnostic
-implementation,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
-implementation,axm_complements_sigma_xl_075_hm_2_T_2000,0.75,2.0,2000.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-14.4952, 5.28426]; rejected solver trials unobservable"
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,maximum_nonimposed_growth_or_interest_error,1.6858440387894358e-05,<,2e-05,pass,capital_growth=1.1706e-05; consumption_growth=1.68584e-05; output_growth_independent=8.40009e-07; capability_growth=9.45133e-06; shadow_growth=1.53699e-05; net_interest_rate=1.68584e-05
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,limiting_ai_share_error,0.0003754193712406928,<,0.0005,pass,s_X=(1-sigma_XL)/(1-alpha*sigma_XL)
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,terminal_inference_output_share,8.39384039441544e-05,<,0.0001,pass,
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,terminal_research_output_share,1.5507560692980658e-06,<,0.0001,pass,
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,terminal_human_population_share,6.440593169847688e-06,<,1e-05,pass,
-terminal_diagnostic,axm_complements_sigma_xl_075_hm_1,0.75,1.0,2000.0,terminal_wage_growth_independent,3.1546634253754036e-06,diagnostic,,pass,seven-point backward derivative; not an acceptance gate
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,maximum_nonimposed_growth_or_interest_error,1.1095216720637124e-05,<,2e-05,pass,capital_growth=3.55734e-06; consumption_growth=6.60224e-06; output_growth_independent=8.47322e-07; capability_growth=8.43978e-07; shadow_growth=1.10952e-05; net_interest_rate=6.60224e-06
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,limiting_ai_share_error,0.00012469989877850196,<,0.0005,pass,s_X=(1-sigma_XL)/(1-alpha*sigma_XL)
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,hm2_one_minus_machine_share,0.0016929269193253216,<,0.002,pass,
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,terminal_inference_output_share,2.7860097332040757e-05,<,0.0001,pass,
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,terminal_research_output_share,1.8579835648458055e-06,<,0.0001,pass,
-terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,terminal_human_population_share,7.043567334294305e-09,<,1e-05,pass,
-terminal_diagnostic,axm_complements_sigma_xl_075_hm_2,0.75,2.0,2000.0,terminal_wage_growth_independent,1.8537511260463546e-06,diagnostic,,pass,seven-point backward derivative; not an acceptance gate
-horizon_stability,"sigma_HM=1:T=1600,1800,2000",0.75,1.0,1600-2000,initial_log_consumption_range,7.637711296748506e-08,<,2e-06,pass,every horizon is a cold-start solve
-horizon_stability,"sigma_HM=1:T=1600,1800,2000",0.75,1.0,1600-2000,initial_log_shadow_range,5.717586589772117e-08,<,2e-06,pass,every horizon is a cold-start solve
-horizon_stability,"sigma_HM=2:T=1600,1800,2000",0.75,2.0,1600-2000,initial_log_consumption_range,7.65863720220139e-08,<,2e-06,pass,every horizon is a cold-start solve
-horizon_stability,"sigma_HM=2:T=1600,1800,2000",0.75,2.0,1600-2000,initial_log_shadow_range,5.733026474386005e-08,<,2e-06,pass,every horizon is a cold-start solve
+solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_rms_residual,7.654146656019622e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_static_equation_error,3.658939817796636e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_saved_rate_equation_error,3.5388358909926865e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_independent_dynamic_error,5.165572835481858e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_monopoly_foc_log_error,1.6563994620355516e-10,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,minimum_monopoly_soc_margin,0.07423013353470312,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,household_tvc_log_proxy,-124.44282036686938,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,developer_tvc_log_proxy,-134.8837866052551,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-35.8456, 32.4067]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_rms_residual,7.7090103548264e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_static_equation_error,5.31947819126799e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_saved_rate_equation_error,1.0269562977782698e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_independent_dynamic_error,5.195450066709101e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_monopoly_foc_log_error,3.1390712251777586e-10,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,minimum_monopoly_soc_margin,0.07421213443462571,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,household_tvc_log_proxy,-124.4428146843365,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,developer_tvc_log_proxy,-135.67837865969727,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-34.2627, 30.8306]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_rms_residual,8.35377395645046e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_static_equation_error,3.657874003692996e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_saved_rate_equation_error,3.5318969970887792e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_independent_dynamic_error,8.286225045787271e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_monopoly_foc_log_error,2.6703972366703965e-11,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,minimum_monopoly_soc_margin,0.0744200947432397,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,household_tvc_log_proxy,-99.24288305926932,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,developer_tvc_log_proxy,-107.7729099694515,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-28.868, 25.4291]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_rms_residual,9.350258362742094e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_static_equation_error,3.658229275060876e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_saved_rate_equation_error,3.5388358909926865e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_independent_dynamic_error,6.456778631185739e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_monopoly_foc_log_error,6.709477418098686e-11,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,minimum_monopoly_soc_margin,0.07428294332519776,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,household_tvc_log_proxy,-111.84283779527509,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,developer_tvc_log_proxy,-121.3282002079866,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-32.357, 28.918]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_rms_residual,7.654146656019622e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_static_equation_error,3.658939817796636e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_saved_rate_equation_error,3.5388358909926865e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_independent_dynamic_error,5.165572835481858e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_monopoly_foc_log_error,1.6563994620355516e-10,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,minimum_monopoly_soc_margin,0.07423013353470312,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,household_tvc_log_proxy,-124.44282036686938,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,developer_tvc_log_proxy,-134.8837866052551,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-35.8456, 32.4067]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_rms_residual,8.406902678083746e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_static_equation_error,5.31841237716435e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_saved_rate_equation_error,1.0200174038743626e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_independent_dynamic_error,8.343140075976058e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_monopoly_foc_log_error,3.9884540115053824e-11,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,minimum_monopoly_soc_margin,0.07432711491787831,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,household_tvc_log_proxy,-99.24285458898528,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,developer_tvc_log_proxy,-108.31941922137965,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-27.781, 24.3489]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_rms_residual,8.989860598878596e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_static_equation_error,5.32089927673951e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_saved_rate_equation_error,1.0200174038743626e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_independent_dynamic_error,6.498005512695082e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_monopoly_foc_log_error,6.679279351828882e-11,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,minimum_monopoly_soc_margin,0.07424131491253508,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,household_tvc_log_proxy,-111.84282481368567,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,developer_tvc_log_proxy,-121.99863907523235,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-31.0222, 27.5902]; rejected solver trials unobservable"
+solver,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,solver_success_flag,1.0,=,1.0,pass,
+solver,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,cold_start_flag,1.0,=,1.0,pass,no continuation from another horizon
+solver,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,solver_tolerance,1e-06,<=,1e-05,pass,declared ex-ante numerical tolerance
+solver,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_rms_residual,7.7090103548264e-07,<,1e-05,pass,cold-start solve
+equations,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_static_equation_error,5.31947819126799e-11,<,1e-08,pass,independent reconstruction
+equations,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_saved_rate_equation_error,1.0269562977782698e-15,<,2e-05,pass,saved ODE rates versus independently reconstructed RHS
+equations,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_independent_dynamic_error,5.195450066709101e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
+monopoly,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_monopoly_foc_log_error,3.1390712251777586e-10,<,1e-09,pass,dimensionless log FOC
+monopoly,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,minimum_monopoly_soc_margin,0.07421213443462571,>,0.0,pass,
+terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+transversality,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,household_tvc_log_proxy,-124.4428146843365,<,-20.0,pass,finite-horizon diagnostic
+transversality,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,developer_tvc_log_proxy,-135.67837865969727,<,-20.0,pass,finite-horizon diagnostic
+implementation,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
+implementation,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,accepted_path_bounded_exp_clipping_count,0.0,=,0.0,pass,"reconstructed argument range [-34.2627, 30.8306]; rejected solver trials unobservable"
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_nonimposed_growth_or_interest_error,1.135610315689678e-06,<,2e-05,pass,capital_growth=1.13561e-06; consumption_growth=9.80533e-07; output_growth_independent=1.87269e-07; capability_growth=3.45084e-07; shadow_growth=9.56377e-07; net_interest_rate=9.80533e-07
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,limiting_ai_share_error,2.9594223585893698e-05,<,0.0005,pass,s_X=(1-sigma_XL)/(1-alpha*sigma_XL)
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,terminal_inference_output_share,6.609965354794777e-06,<,0.0001,pass,
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,terminal_research_output_share,3.062016447912672e-08,<,0.0001,pass,
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,terminal_human_population_share,1.2710647043555793e-07,<,1e-05,pass,
+terminal_diagnostic,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,terminal_wage_growth_independent,-9.344780504960681e-08,diagnostic,,pass,seven-point backward derivative; not an acceptance gate
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_nonimposed_growth_or_interest_error,5.64460380518203e-07,<,2e-05,pass,capital_growth=5.08811e-07; consumption_growth=4.69101e-07; output_growth_independent=7.07678e-08; capability_growth=3.85033e-08; shadow_growth=5.6446e-07; net_interest_rate=4.69101e-07
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,limiting_ai_share_error,1.3458736976446062e-05,<,0.0005,pass,s_X=(1-sigma_XL)/(1-alpha*sigma_XL)
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,hm2_one_minus_machine_share,0.0001826257365395989,<,0.002,pass,
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,terminal_inference_output_share,3.0059063576885658e-06,<,0.0001,pass,
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,terminal_research_output_share,4.463330475438225e-08,<,0.0001,pass,
+terminal_nonimposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,terminal_human_population_share,1.822236468216024e-11,<,1e-05,pass,
+terminal_diagnostic,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,terminal_wage_growth_independent,-2.2408682798236157e-08,diagnostic,,pass,seven-point backward derivative; not an acceptance gate
+horizon_stability,"sigma_HM=1:T=3600,4050,4500",0.75,1.0,3600-4500,initial_log_consumption_range,2.8845223398743514e-07,<,2e-06,pass,every horizon is a cold-start solve
+horizon_stability,"sigma_HM=1:T=3600,4050,4500",0.75,1.0,3600-4500,initial_log_shadow_range,2.0443892695398702e-07,<,2e-06,pass,every horizon is a cold-start solve
+horizon_stability,"sigma_HM=2:T=3600,4050,4500",0.75,2.0,3600-4500,initial_log_consumption_range,2.9131864809350816e-07,<,2e-06,pass,every horizon is a cold-start solve
+horizon_stability,"sigma_HM=2:T=3600,4050,4500",0.75,2.0,3600-4500,initial_log_shadow_range,2.0668274526569608e-07,<,2e-06,pass,every horizon is a cold-start solve
 overall,all,0.75,,,all_ex_ante_acceptance_gates,0.0,=,0.0,pass,number of failed component gates

@@ -3,7 +3,12 @@
 from __future__ import annotations
 
 import csv
+import hashlib
+import json
 import math
+import platform
+import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -13,17 +18,35 @@ HORIZON_AUDIT = ROOT / "numerical_axm" / "equilibrium_horizon_robustness.csv"
 PATHS = ROOT / "numerical_axm" / "equilibrium_transition_paths.csv"
 HORIZON_PATHS = ROOT / "numerical_axm" / "equilibrium_horizon_paths.csv"
 REPORT = ROOT / "numerical_axm" / "audit_report.csv"
+MANIFEST = ROOT / "numerical_axm" / "unit_elasticity_audit_manifest.json"
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def file_record(path: Path) -> dict[str, str | int]:
+    return {
+        "path": path.relative_to(ROOT).as_posix(),
+        "bytes": path.stat().st_size,
+        "sha256": sha256_file(path),
+    }
 
 
 def analytical_checks() -> list[dict[str, str | float]]:
     alpha = 0.33
     omega_x = 0.20
     omega_m = 0.35
-    eta = 0.45
+    eta = 0.20
     population_growth = 0.012
     discount_rate = 0.04
     nu = omega_x / (1.0 - omega_x)
     theta = (1.0 - alpha) / alpha
+    research_burst_exponent = eta * theta / (1.0 - eta)
     d_cd = 1.0 - eta * omega_m * (1.0 + nu)
     d_ai = 1.0 - eta * (1.0 + nu)
     singular_denominator = 1.0 + theta - eta
@@ -99,6 +122,8 @@ def analytical_checks() -> list[dict[str, str | float]]:
     automated_contribution = machine_term / (human_term + machine_term)
     envelope_elasticity = eta * automated_contribution
     assertions = {
+        "large_scale_research_curvature": eta < alpha,
+        "research_burst_payoff_sublinear": research_burst_exponent < 1.0,
         "D_CD_positive": d_cd > 0.0,
         "D_AI_positive": d_ai > 0.0,
         "singular_investment_share_positive": investment_share > 0.0,
@@ -150,6 +175,11 @@ def analytical_checks() -> list[dict[str, str | float]]:
     if not all(assertions.values()):
         raise AssertionError(assertions)
     return [
+        {
+            "object": "research_burst_payoff_exponent",
+            "value": research_burst_exponent,
+            "status": "pass",
+        },
         {"object": "D_CD", "value": d_cd, "status": "pass"},
         {"object": "D_AI", "value": d_ai, "status": "pass"},
         {"object": "singular_h", "value": h, "status": "pass"},
@@ -238,6 +268,11 @@ def numerical_checks() -> list[dict[str, str | float]]:
     for row in rows:
         name = row["scenario"]
         tests = {
+            "alpha_provenance": math.isclose(float(row["alpha"]), 0.33),
+            "eta_provenance": math.isclose(float(row["eta"]), 0.20),
+            "solver_nodes_provenance": int(
+                float(row["solver_nodes_requested"])
+            ) == 401,
             "resource": float(row["max_abs_resource_residual"]) < 1e-10,
             "technologies": float(row["max_abs_technology_log_error"])
             < 1e-10,
@@ -312,11 +347,11 @@ def path_specification_checks() -> list[dict[str, str | float]]:
         raise AssertionError("The saved equilibrium-path file is empty.")
     if not horizon_rows:
         raise AssertionError("The saved horizon-path file is empty.")
-    if len(rows) != 1402:
-        raise AssertionError(f"Expected 1,402 baseline rows, found {len(rows)}.")
-    if len(horizon_rows) != 4206:
+    if len(rows) != 4452:
+        raise AssertionError(f"Expected 4,452 baseline rows, found {len(rows)}.")
+    if len(horizon_rows) != 13356:
         raise AssertionError(
-            f"Expected 4,206 horizon-audit rows, found {len(horizon_rows)}."
+            f"Expected 13,356 horizon-audit rows, found {len(horizon_rows)}."
         )
 
     scenario_sigma_hm = {
@@ -326,24 +361,24 @@ def path_specification_checks() -> list[dict[str, str | float]]:
     if {row["scenario"] for row in rows} != set(scenario_sigma_hm):
         raise AssertionError("Unexpected scenarios in the saved A*M paths.")
     expected_horizon_scenarios = {
-        "axm_sigma_xl_1_hm_1_T_1000",
-        "axm_sigma_xl_1_hm_1_T_1200",
-        "axm_sigma_xl_1_hm_1_T_1400",
-        "axm_sigma_xl_1_hm_2_T_1400",
-        "axm_sigma_xl_1_hm_2_T_1600",
-        "axm_sigma_xl_1_hm_2_T_1800",
+        "axm_sigma_xl_1_hm_1_T_2600",
+        "axm_sigma_xl_1_hm_1_T_3100",
+        "axm_sigma_xl_1_hm_1_T_3600",
+        "axm_sigma_xl_1_hm_2_T_5400",
+        "axm_sigma_xl_1_hm_2_T_5800",
+        "axm_sigma_xl_1_hm_2_T_6200",
     }
     if {row["scenario"] for row in horizon_rows} != expected_horizon_scenarios:
         raise AssertionError("Unexpected scenarios in the saved horizon paths.")
     expected_grids = {
-        "axm_sigma_xl_1_hm_1": 1200.0,
-        "axm_sigma_xl_1_hm_2": 1600.0,
-        "axm_sigma_xl_1_hm_1_T_1000": 1000.0,
-        "axm_sigma_xl_1_hm_1_T_1200": 1200.0,
-        "axm_sigma_xl_1_hm_1_T_1400": 1400.0,
-        "axm_sigma_xl_1_hm_2_T_1400": 1400.0,
-        "axm_sigma_xl_1_hm_2_T_1600": 1600.0,
-        "axm_sigma_xl_1_hm_2_T_1800": 1800.0,
+        "axm_sigma_xl_1_hm_1": 3100.0,
+        "axm_sigma_xl_1_hm_2": 5800.0,
+        "axm_sigma_xl_1_hm_1_T_2600": 2600.0,
+        "axm_sigma_xl_1_hm_1_T_3100": 3100.0,
+        "axm_sigma_xl_1_hm_1_T_3600": 3600.0,
+        "axm_sigma_xl_1_hm_2_T_5400": 5400.0,
+        "axm_sigma_xl_1_hm_2_T_5800": 5800.0,
+        "axm_sigma_xl_1_hm_2_T_6200": 6200.0,
     }
     structural_rows = rows + horizon_rows
     structural_report: list[dict[str, str | float]] = []
@@ -382,7 +417,7 @@ def path_specification_checks() -> list[dict[str, str | float]]:
 
     omega_m = 0.35
     omega_h = 1.0 - omega_m
-    eta = 0.45
+    eta = 0.20
     chi = 0.01
     max_errors = {
         "inference_service_X_equals_AU": 0.0,
@@ -496,6 +531,8 @@ def path_specification_checks() -> list[dict[str, str | float]]:
                 + omega_m * log_automated_services
             )
             automated_contribution = omega_m
+            log_automated_contribution = math.log(omega_m)
+            log_human_contribution = math.log(omega_h)
             log_reconstructed_research_price = (
                 omega_h * (log_wage - math.log(omega_h))
                 + omega_m * (-log_capability - math.log(omega_m))
@@ -512,7 +549,9 @@ def path_specification_checks() -> list[dict[str, str | float]]:
                 + math.exp(machine_term - anchor)
             )
             log_reconstructed_index = log_sum / ces_power
-            automated_contribution = math.exp(machine_term - log_sum)
+            log_automated_contribution = machine_term - log_sum
+            log_human_contribution = human_term - log_sum
+            automated_contribution = math.exp(log_automated_contribution)
             log_human_price_term = (
                 sigma_hm * math.log(omega_h)
                 + (1.0 - sigma_hm) * log_wage
@@ -593,14 +632,14 @@ def path_specification_checks() -> list[dict[str, str | float]]:
         log_research_compute_foc = (
             log_shadow
             + math.log(eta)
-            + math.log(automated_contribution)
+            + log_automated_contribution
             + log_capability_flow
             - log_research_compute
         )
         log_human_research_foc = (
             log_shadow
             + math.log(eta)
-            + math.log1p(-automated_contribution)
+            + log_human_contribution
             + log_capability_flow
             - log_human_research
             - log_wage
@@ -676,7 +715,7 @@ def horizon_checks() -> list[dict[str, str | float]]:
         alpha = 0.33
         omega_x = 0.20
         omega_m = 0.35
-        eta = 0.45
+        eta = 0.20
         beta = (1.0 - alpha) * omega_x
         upsilon = beta / (1.0 - alpha - beta)
         research_weight = omega_m if math.isclose(sigma_hm, 1.0) else 1.0
@@ -832,8 +871,8 @@ def horizon_checks() -> list[dict[str, str | float]]:
 
     report: list[dict[str, str | float]] = []
     expected_horizons = {
-        "1.0": {1000.0, 1200.0, 1400.0},
-        "2.0": {1400.0, 1600.0, 1800.0},
+        "1.0": {2600.0, 3100.0, 3600.0},
+        "2.0": {5400.0, 5800.0, 6200.0},
     }
     for sigma_hm, group in grouped.items():
         if len(group) != 3:
@@ -843,6 +882,14 @@ def horizon_checks() -> list[dict[str, str | float]]:
         if {float(row["horizon"]) for row in group} != expected_horizons[sigma_hm]:
             raise AssertionError(f"Unexpected horizons for sigma_HM={sigma_hm}.")
         for row in group:
+            if not (
+                math.isclose(float(row["alpha"]), 0.33)
+                and math.isclose(float(row["eta"]), 0.20)
+                and int(float(row["solver_nodes_requested"])) == 401
+            ):
+                raise AssertionError(
+                    f"Wrong parameter or mesh provenance for sigma_HM={sigma_hm}."
+                )
             scenario = (
                 f"axm_sigma_xl_1_hm_{float(sigma_hm):g}_T_"
                 f"{float(row['horizon']):g}"
@@ -981,7 +1028,57 @@ def main() -> None:
         )
         writer.writeheader()
         writer.writerows(rows)
-    print(f"{len(rows)} checks passed; wrote {REPORT.relative_to(ROOT)}")
+    accepted = all(row["status"] == "pass" for row in rows)
+    script_path = Path(__file__).resolve()
+    generator_path = ROOT / "scripts" / "simulate_axm_equilibrium.py"
+    manifest = {
+        "audit": "A*M unit-elasticity acceptance audit",
+        "audit_version": 1,
+        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "accepted": accepted,
+        "scope_note": (
+            "The audit independently reconstructs dated static identities, "
+            "but its dynamic-path checks use the stored collocation "
+            "derivatives. Finite terminal TVC proxies do not establish the "
+            "infinite-horizon limits."
+        ),
+        "parameters": {
+            "alpha": 0.33,
+            "eta": 0.20,
+            "population_growth": 0.012,
+            "discount": 0.04,
+            "depreciation": 0.05,
+            "sigma_xl": 1.0,
+            "sigma_hm": [1.0, 2.0],
+        },
+        "canonical_horizons": {
+            "sigma_hm_1": [2600.0, 3100.0, 3600.0],
+            "sigma_hm_2": [5400.0, 5800.0, 6200.0],
+            "primary": {"sigma_hm_1": 3100.0, "sigma_hm_2": 5800.0},
+        },
+        "files": {
+            "inputs": [
+                file_record(path)
+                for path in (PATHS, SUMMARY, HORIZON_PATHS, HORIZON_AUDIT)
+            ],
+            "audit_script": file_record(script_path),
+            "generator_script": file_record(generator_path),
+            "outputs": [file_record(REPORT)],
+        },
+        "runtime": {
+            "python": sys.version,
+            "platform": platform.platform(),
+        },
+    }
+    with MANIFEST.open("w", encoding="utf-8") as handle:
+        json.dump(manifest, handle, indent=2, sort_keys=True)
+        handle.write("\n")
+    if not accepted:
+        raise AssertionError("At least one unit-elasticity audit gate failed.")
+    print(
+        f"{len(rows)} checks passed; wrote {REPORT.relative_to(ROOT)} and "
+        f"{MANIFEST.relative_to(ROOT)}"
+    )
 
 
 if __name__ == "__main__":

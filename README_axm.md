@@ -15,8 +15,19 @@ $$
 with no separate $A^\phi$ term. The constant-returns effective-research index inside this
 equation is denoted by $E$ when useful, so the same law can be written
 $\dot A=\chi E^\eta$. The index $E$ is an accounting device, not a second
-production stage. The baseline maintains $0<\eta<1$; $\eta=1$ is the
-constant-returns boundary and is not covered by the current propositions.
+production stage. The baseline maintains $0<\eta<\alpha<1$ and uses
+$\eta=0.20$ with $\alpha=0.33$. For all positive CES elasticities and on every
+fixed regular horizon, the stronger restriction makes the developer's objective
+coercive in total research expenditure over all nonnegative research controls
+and gives a finite truncated value. When both CES nests permit gross
+substitution, $\eta>\alpha$ admits a fixed-duration research-compute expansion
+that makes the truncated value unbounded; under the stated extension conditions,
+its zero-control tail gives the same conclusion for the infinite-horizon
+developer objective. At equality, the fixed-duration leading term depends on
+coefficients and the boundary is not fully characterized. The coercivity result does
+not provide compactness, prove attainment or global optimality,
+control the infinite-horizon tail, or establish equilibrium existence. The
+boundary $\eta=1$ is not covered by the current propositions.
 At $\sigma_{HM}=1$, the continuous limit is
 $\dot A=\chi H^{\eta\omega_H}(AM)^{\eta\omega_M}$.
 
@@ -35,7 +46,10 @@ python scripts/plot_axm_feedback_diagnostic.py
 ```
 
 The first command solves the two reported perfect-foresight path approximations and writes
-their data to `numerical_axm/` and figures to `figures_axm/`. The second checks
+their data to `numerical_axm/` and figures to `figures_axm/`. With the reported
+calibration, the primary horizons are 3,100 years for $\sigma_{HM}=1$ and 5,800
+years for $\sigma_{HM}=2$; the six robustness horizons are 2,600, 3,100, 3,600
+and 5,400, 5,800, 6,200 years, respectively. The second command checks
 the analytical benchmark calculations and rejects numerical paths whose market,
 first-order, feasibility, second-order, terminal-target, or dynamic residuals
 exceed the documented tolerances. It also stores and audits all six paths used in
@@ -71,7 +85,7 @@ python scripts/audit_axm_complements.py
 
 The runner solves the new $A\times M$ specification at
 $\sigma_{XL}=0.75$, for $\sigma_{HM}=1$ and $2$, from cold starts at terminal
-dates 1,600, 1,800, and 2,000. The primary paths use the 2,000-year boundary.
+dates 3,600, 4,050, and 4,500. The primary paths use the 4,500-year boundary.
 Only $C/Y$ and $X/(qA^2)$ are imposed at that boundary; growth rates, factor
 shares, $X/L$, the research allocation, resource shares, and the interest rate
 are reported rather than imposed. The independent audit imports no solver

@@ -21,8 +21,8 @@ commercial adoption.
 }
 
 \begin{assumption}[Parameters]
-Throughout, \(0<\alpha<1\), \(0<n<\rho\), \(\delta\geq0\),
-\(\chi>0\), \(0<\eta<1\), \(\sigma_{XL},\sigma_{HM}>0\), and all CES
+Throughout, \(0<\alpha<1\), \(0<\eta<1\), \(0<n<\rho\), \(\delta\geq0\),
+\(\chi>0\), \(\sigma_{XL},\sigma_{HM}>0\), and all CES
 weights lie strictly between zero and one and sum to one within each CES
 aggregate.
 \end{assumption}
@@ -536,6 +536,96 @@ for the developer is
  \label{eq:axm-developer-tvc}
 \end{equation}
 
+\subsubsection{Large-scale research curvature}
+
+The preceding problem reveals that \(\eta<1\) is not, by itself, enough to
+control the developer's dynamic objective. It gives decreasing returns to
+current research inputs when capability is fixed, but research also raises
+capability, and capability raises future operating profit. The next result
+establishes a uniform bound over all nonnegative research policies on a fixed
+regular horizon. It also shows that the sufficient curvature restriction is
+sharp away from the boundary when both CES nests permit gross substitution.
+
+\begin{proposition}[Finite-horizon research-expenditure coercivity]
+\label{prop:axm-research-burst}
+Suppose \(\sigma_{XL}>0\), \(\sigma_{HM}>0\), and \(0<\eta<1\). Fix
+\(T>0\) and \(A(0)=A_0>0\). Let \(K,L,w\) be continuous and strictly
+positive on \([0,T]\), and let \(r\) be integrable. The developer takes these
+paths as given. For any nonnegative measurable research controls that generate
+an absolutely continuous capability path and satisfy
+\begin{equation}
+ S(H,M)\equiv\int_0^T(w_tH_t+M_t)\dd t<\infty,
+ \label{eq:axm-research-total-expenditure}
+\end{equation}
+define the truncated reduced payoff
+\[
+ J_T(H,M)=\int_0^T
+ \exp\left\{-\int_0^t r_s\dd s\right\}
+ [\pi(A_t;K_t,L_t)-w_tH_t-M_t]\dd t.
+\]
+There are finite constants \(C_A,C_0,C_1,c>0\), independent of the controls,
+such that
+\begin{align}
+ \max_{0\leq t\leq T}A_t
+ &\leq C_A\left(1+S(H,M)^{\eta/(1-\eta)}\right),
+ \label{eq:axm-finite-horizon-capability-bound}\\
+ J_T(H,M)&\leq C_0+C_1S(H,M)^p-cS(H,M),
+ \qquad
+ p=\frac{\eta(1-\alpha)}{\alpha(1-\eta)},
+ \label{eq:axm-finite-horizon-payoff-bound}
+\end{align}
+Consequently:
+\begin{enumerate}[label=(\roman*)]
+ \item if \(\eta<\alpha\), then \(p<1\), the truncated value is finite, and
+ \(J_T(H,M)\to-\infty\) along every sequence for which
+ \(S(H,M)\to\infty\); thus the objective is coercive in total research
+ expenditure over the entire admissible control class;
+ \item if, in addition, \(\sigma_{XL}>1\), \(\sigma_{HM}>1\), and
+ \(\eta>\alpha\), fix any \(\Delta\in(0,T)\), set \(H=0\) on
+ \([0,T]\), and set \(M=\mathcal B\) on \([0,\Delta]\) and \(M=0\)
+ afterward. When \(X\) maximizes pointwise operating profit, the resulting
+ payoff satisfies
+ \begin{equation}
+  J_T(\mathcal B)
+  =c_\pi\mathcal B^p-c_M\mathcal B+o(\mathcal B^p),
+  \qquad c_\pi,c_M>0,
+ \label{eq:axm-research-burst-payoff}
+ \end{equation}
+ and therefore tends to \(+\infty\); the truncated value is unbounded above.
+ If the exogenous paths admit extensions to \([0,\infty)\) for which the
+ primitive problem is defined, the zero-control tail is admissible, and
+ \(p_X(X;K,L)X\) is extended continuously at \(X=0\), then extending each
+ policy by setting \(X=H=M=0\) after \(T\) gives the same payoff and also
+ makes the corresponding infinite-horizon developer value unbounded;
+ \item if \(\sigma_{XL}>1\), \(\sigma_{HM}>1\), and \(\eta=\alpha\), then
+ \(J_T(\mathcal B)=(c_\pi-c_M)\mathcal B+o(\mathcal B)\) along this
+ fixed-duration family. Under the extension conditions in part (ii), both the
+ truncated and corresponding infinite-horizon values are unbounded when
+ \(c_\pi>c_M\); this family tends to \(-\infty\) if
+ \(c_\pi<c_M\); and
+ the leading-order calculation is inconclusive if \(c_\pi=c_M\).
+\end{enumerate}
+\end{proposition}
+
+\begin{assumption}[Baseline large-scale research curvature]
+\label{ass:axm-large-scale-curvature}
+All baseline equilibrium results and numerical exercises maintain
+\begin{equation}
+ 0<\eta<\alpha<1.
+ \label{eq:axm-large-scale-curvature}
+\end{equation}
+\end{assumption}
+
+The restriction is stronger than diminishing returns to current research
+inputs. Proposition \ref{prop:axm-research-burst} shows that, on every fixed
+regular horizon, it gives a finite truncated value and makes the objective
+coercive over all nonnegative research controls with finite expenditure. The
+result does not provide compactness of the admissible control set, prove that
+the finite-horizon supremum is attained, establish global concavity or a global
+optimum, control the infinite-horizon tail, or prove equilibrium existence. The
+benchmark uses a strict margin, \(\eta=0.20<\alpha=0.33\), chosen
+illustratively rather than estimated.
+
 \begin{remark}[The no-AI boundary]
 The no-AI economy is a useful boundary case, although it lies outside the
 maintained interior-weight assumption. If \(\omega_X=\omega_M=0\), then
@@ -559,9 +649,8 @@ equilibrium branch is reached or whether output becomes singular because \(M\)
 is endogenous. Moreover, the scale condition just derived becomes
 \(q\chi=P_E\) and no longer determines \(E\). If \(q\chi<P_E\), the developer
 chooses no research at the margin; if \(q\chi>P_E\), its unconstrained problem
-has no finite interior research choice. We maintain \(0<\eta<1\) in the
-baseline to distinguish substitution from research-scale effects. The boundary
-\(\eta=1\) requires a separate analysis of interiority, existence,
+has no finite interior research choice. We maintain \(0<\eta<\alpha<1\) in the
+baseline. The boundary \(\eta=1\) requires a separate analysis of interiority, existence,
 transversality, and the asymptotic equilibrium.
 \end{remark}
 
@@ -823,7 +912,7 @@ infinite-horizon candidate path is an interior equilibrium.
 \end{proposition}
 
 The proof is in the Appendix. The benchmark satisfies these restrictions with
-\(\beta=0.134\), \(\eta(1+\omega_M)=0.6075\), and \(2\eta=0.90\).
+\(\beta=0.134\), \(\eta(1+\omega_M)=0.2700\), and \(2\eta=0.40\).
 Thus the dated equations are necessary under the usual regularity conditions,
 and the full system is globally sufficient for both reported unit-elasticity
 parameterizations. We do not claim that the displayed transversality conditions

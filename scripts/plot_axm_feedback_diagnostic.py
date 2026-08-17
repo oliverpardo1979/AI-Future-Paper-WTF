@@ -36,6 +36,7 @@ PATH_FILE = RESULT_DIR / "equilibrium_transition_paths.csv"
 SUMMARY_FILE = RESULT_DIR / "equilibrium_transition_summary.csv"
 AUDIT_FILE = RESULT_DIR / "audit_report.csv"
 OUTPUT_FILE = FIGURE_DIR / "axm_unit_elasticity_feedback_diagnostic.png"
+ALPHA = 0.33
 
 SCENARIOS = {
     "axm_sigma_xl_1_hm_1": {
@@ -169,8 +170,10 @@ def validate_and_derive(
     eta = statistics.median(eta_observations)
     if max(abs(value - eta) for value in eta_observations) > 2.0e-9:
         raise ValueError("The dated research FOC does not imply a common eta.")
-    if not (0.0 < eta < 1.0):
-        raise ValueError(f"Recovered eta is outside (0,1): {eta}")
+    if not (0.0 < eta < ALPHA):
+        raise ValueError(
+            f"Recovered eta violates the maintained 0 < eta < alpha condition: {eta}"
+        )
 
     omega_x = statistics.median(ai_shares)
     if max(abs(value - omega_x) for value in ai_shares) > 2.0e-12:

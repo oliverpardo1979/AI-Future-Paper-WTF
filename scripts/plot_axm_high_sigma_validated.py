@@ -50,6 +50,10 @@ AUDIT_MANIFEST_FILE = (
     RESULT_DIR / "high_sigma_sigma150_validated_audit_manifest.json"
 )
 AUDIT_SCRIPT_FILE = ROOT / "scripts" / "audit_axm_high_sigma.py"
+GENERATOR_SCRIPT_FILE = (
+    ROOT / "scripts" / "simulate_axm_high_sigma_equilibrium.py"
+)
+CORE_MODEL_SCRIPT_FILE = ROOT / "scripts" / "simulate_axm_equilibrium.py"
 CANONICAL_INPUT_FILES = (
     PRIMARY_PATH_FILE,
     CONTINUATION_FILES[0],
@@ -122,6 +126,24 @@ def require_current_pass_manifest() -> None:
             "The audit script changed after the PASS manifest was written. "
             "Re-run python scripts/audit_axm_high_sigma.py."
         )
+
+    for manifest_key, expected_path in (
+        ("generator_script", GENERATOR_SCRIPT_FILE),
+        ("core_model_script", CORE_MODEL_SCRIPT_FILE),
+    ):
+        entry = manifest.get(manifest_key, {})
+        declared_path = (
+            ROOT / Path(str(entry.get("path", "")))
+        ).resolve()
+        if declared_path != expected_path.resolve():
+            raise ValueError(
+                f"The PASS manifest names a different {manifest_key}."
+            )
+        if str(entry.get("sha256", "")) != sha256_file(expected_path):
+            raise ValueError(
+                f"The {manifest_key} changed after the PASS manifest was "
+                "written. Re-run python scripts/audit_axm_high_sigma.py."
+            )
 
 
 def add_vertical_padding(
@@ -308,7 +330,7 @@ def derive_metadata_and_targets(
         raise ValueError("Research-share odds do not identify one sigma_HM.")
     sigma_hm = 1.0 + float(slope)
 
-    if not 0.0 < alpha < 1.0 or not 0.0 < eta < 1.0:
+    if not 0.0 < eta < alpha < 1.0:
         raise ValueError(f"Invalid recovered alpha={alpha} or eta={eta}.")
     if sigma_hm <= 1.0:
         raise ValueError("The plotted high-sigma branch requires sigma_HM > 1.")

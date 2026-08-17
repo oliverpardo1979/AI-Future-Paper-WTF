@@ -1,4 +1,5 @@
 "paper_block","solver_implementation","saved_diagnostic","logical_status"
+"Baseline large-scale curvature (eq:axm-large-scale-curvature; prop:axm-research-burst)","Parameters.__post_init__ and the three AXM audit scripts","eta; alpha; research_burst_payoff_exponent","eta<alpha is imposed in every reported simulation; the exponent audits finite-horizon research-expenditure coercivity, not attainment or infinite-horizon existence"
 "Exogenous population law (eq:axm-population)","log N(t)=log N(0)+nt in equilibrium_rates","imposed by construction; initial_population_log_error checks only N(0)","exact exogenous state path; no separate dated residual"
 "Labor-market clearing (eq:axm-labor-market)","equilibrium_static_block","labor_market_error","imposed only at the general-equilibrium stage"
 "Final production and CES share (eq:axm-final-production; eq:axm-sx)","monopoly_service_block and technology_log_errors","final_production_log_error and ai_share_definition_error","exact static condition"

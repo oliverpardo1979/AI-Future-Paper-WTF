@@ -50,8 +50,15 @@ class Parameters:
     discount: float = 0.04
     omega_m: float = 0.35
     sigma_hm: float = 2.00
-    eta: float = 0.45
+    eta: float = 0.20
     chi: float = 0.01
+
+    def __post_init__(self) -> None:
+        if not 0.0 < self.eta < self.alpha < 1.0:
+            raise ValueError(
+                "The maintained large-scale research-curvature condition "
+                "requires 0 < eta < alpha < 1."
+            )
 
 
 @dataclass(frozen=True)
@@ -141,7 +148,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--discount", type=float, default=0.04)
     parser.add_argument("--omega-m", type=float, default=0.35)
     parser.add_argument("--sigma-hm", type=float, default=2.00)
-    parser.add_argument("--eta", type=float, default=0.45)
+    parser.add_argument("--eta", type=float, default=0.20)
     parser.add_argument("--chi", type=float, default=0.01)
     parser.add_argument(
         "--no-fail-exit",
@@ -205,8 +212,13 @@ def log_ces(
     log_right: float,
     right_weight: float,
     elasticity: float,
-) -> tuple[float, float]:
-    """Return log CES quantity and the right input's technological share."""
+) -> tuple[float, float, float, float]:
+    """Return log CES quantity, right share, and both log shares.
+
+    The log shares preserve strict interiority when the larger share rounds to
+    one in levels.  This matters in the high-sigma tail, where subtracting
+    ``1 - right_share`` can erase a small but strictly positive left share.
+    """
 
     if not 0.0 < right_weight < 1.0:
         raise ValueError("CES weights must be strictly between zero and one.")
@@ -217,14 +229,23 @@ def log_ces(
             (1.0 - right_weight) * log_left
             + right_weight * log_right
         )
-        return log_quantity, right_weight
+        return (
+            log_quantity,
+            right_weight,
+            math.log1p(-right_weight),
+            math.log(right_weight),
+        )
     power = (elasticity - 1.0) / elasticity
     log_left_term = math.log1p(-right_weight) + power * log_left
     log_right_term = math.log(right_weight) + power * log_right
     log_denominator = logsumexp(log_left_term, log_right_term)
+    log_left_share = log_left_term - log_denominator
+    log_right_share = log_right_term - log_denominator
     return (
         log_denominator / power,
-        math.exp(log_right_term - log_denominator),
+        math.exp(log_right_share),
+        log_left_share,
+        log_right_share,
     )
 
 
@@ -399,19 +420,21 @@ def reconstruct_row(
     log_x = as_float(row, "log_ai_services")
     log_am = as_float(row, "log_automated_research_services")
 
-    log_z, ai_share = log_ces(
+    log_z, ai_share, log_labor_technology_share, log_ai_share = log_ces(
         log_l, log_x, omega_x, parameters.sigma_xl
     )
+    labor_technology_share = math.exp(log_labor_technology_share)
     log_y = alpha * log_k + (1.0 - alpha) * log_z
-    log_e, machine_share = log_ces(
+    log_e, machine_share, log_human_technology_share, log_machine_share = log_ces(
         log_h, log_am, omega_m, parameters.sigma_hm
     )
+    human_technology_share = math.exp(log_human_technology_share)
     log_dot_a = math.log(parameters.chi) + parameters.eta * log_e
     capability_growth = math.exp(log_dot_a - log_a)
 
     log_wage = (
         math.log1p(-alpha)
-        + math.log1p(-ai_share)
+        + log_labor_technology_share
         + log_y
         - log_l
     )
@@ -423,14 +446,14 @@ def reconstruct_row(
     )
     gross_return = alpha * math.exp(log_y - log_k)
     inverse_elasticity = (
-        (1.0 - ai_share) / parameters.sigma_xl
+        labor_technology_share / parameters.sigma_xl
         + alpha * ai_share
     )
     inverse_elasticity_derivative = (
         (alpha - 1.0 / parameters.sigma_xl)
         * (1.0 - 1.0 / parameters.sigma_xl)
         * ai_share
-        * (1.0 - ai_share)
+        * labor_technology_share
     )
     monopoly_soc_margin = (
         inverse_elasticity * (1.0 - inverse_elasticity)
@@ -462,7 +485,9 @@ def reconstruct_row(
     machine_cost_share = math.exp(log_m) / (
         math.exp(log_m) + math.exp(log_wage + log_h)
     )
-    production_labor_income_share = (1.0 - alpha) * (1.0 - ai_share)
+    production_labor_income_share = (
+        (1.0 - alpha) * labor_technology_share
+    )
     aggregate_labor_income_share = math.exp(log_wage + log_n - log_y)
     ai_operating_profit_share = (
         (1.0 - alpha) * ai_share - inference_share
@@ -533,6 +558,23 @@ def reconstruct_row(
         or abs(saved_human_share - 1e-14) <= 1e-16
         or abs(saved_human_share - (1.0 - 1e-14)) <= 1e-16
     )
+    minimum_log_share_or_soc = min(
+        log_c - log_y,
+        log_u - log_y,
+        log_m - log_y,
+        math.log(investment_share) if investment_share > 0.0 else -math.inf,
+        log_h - log_n,
+        log_l - log_n,
+        log_labor_technology_share,
+        log_ai_share,
+        log_human_technology_share,
+        log_machine_share,
+        (
+            math.log(monopoly_soc_margin)
+            if monopoly_soc_margin > 0.0
+            else -math.inf
+        ),
+    )
     positive = all(
         math.isfinite(value)
         for value in (
@@ -552,20 +594,13 @@ def reconstruct_row(
             log_e,
             log_wage,
             log_ai_price,
+            log_labor_technology_share,
+            log_ai_share,
+            log_human_technology_share,
+            log_machine_share,
+            minimum_log_share_or_soc,
         )
-    ) and min(
-        consumption_share,
-        inference_share,
-        research_share,
-        investment_share,
-        labor_h_share,
-        labor_l_share,
-        ai_share,
-        1.0 - ai_share,
-        machine_share,
-        1.0 - machine_share,
-        monopoly_soc_margin,
-    ) > 0.0
+    )
 
     result: dict[str, object] = {
         "scenario": row.get("scenario", ""),
@@ -618,7 +653,7 @@ def reconstruct_row(
         "household_budget_residual": household_budget_residual,
         "final_firm_zero_profit_residual": (
             alpha
-            + (1.0 - alpha) * (1.0 - ai_share)
+            + (1.0 - alpha) * labor_technology_share
             + (1.0 - alpha) * ai_share
             - 1.0
         ),
@@ -685,11 +720,12 @@ def reconstruct_row(
             labor_h_share,
             labor_l_share,
             ai_share,
-            1.0 - ai_share,
+            labor_technology_share,
             machine_share,
-            1.0 - machine_share,
+            human_technology_share,
             monopoly_soc_margin,
         ),
+        "minimum_log_positive_share_or_soc": minimum_log_share_or_soc,
         "positive_and_interior": int(positive),
         "share_clipping_detected": int(share_clipping),
         "bounded_exp_clipping_detected": int(
@@ -710,17 +746,42 @@ def maximum_absolute(
     return max(abs(float(row[field])) for row in rows for field in fields)
 
 
+def lagrange_derivative(
+    x0: float, xs: Sequence[float], ys: Sequence[float]
+) -> float:
+    """Derivative of the local interpolation polynomial at ``x0``."""
+
+    shifted = [value - x0 for value in xs]
+    derivative = 0.0
+    for j, xj in enumerate(shifted):
+        denominator = math.prod(
+            xj - xk for k, xk in enumerate(shifted) if k != j
+        )
+        numerator_derivative = 0.0
+        for m in range(len(shifted)):
+            if m == j:
+                continue
+            numerator_derivative += math.prod(
+                -xk
+                for k, xk in enumerate(shifted)
+                if k != j and k != m
+            )
+        derivative += ys[j] * numerator_derivative / denominator
+    return derivative
+
+
 def independent_dynamic_error(
     continuation: dict[float, dict[str, str]],
     paths: dict[float, list[dict[str, str]]],
     terminal_buffer: float,
-) -> float:
+) -> tuple[float, str]:
     """Finite-difference the saved states away from the artificial boundary.
 
     This does not reuse the BVP's derivative residual columns.  A centered
-    quarter-year difference is compared with each saved right-hand side on an
-    annual audit grid.  The terminal buffer avoids treating the singular tail's
-    interpolation error as an equilibrium residual.
+    seven-point local Lagrange derivative uses the actual saved, irregular
+    collocation/evaluation grid.  This avoids differentiating a piecewise-linear
+    interpolation at sub-grid dates.  The terminal buffer excludes the
+    artificial singular tail from this compact-path diagnostic.
     """
 
     state_rhs = (
@@ -729,27 +790,36 @@ def independent_dynamic_error(
         ("log_consumption", "consumption_growth"),
         ("log_shadow_value", "shadow_growth"),
     )
-    step = 0.25
     maximum = 0.0
+    location = ""
     for boundary, path_rows in paths.items():
         end = as_float(continuation[boundary], "duration") - terminal_buffer
         if end <= 2.0:
             raise ValueError("Not enough nonterminal path for a dynamic audit.")
+        ordered = sorted(path_rows, key=lambda row: as_float(row, "time"))
+        times = [as_float(row, "time") for row in ordered]
+        if len(times) < 7:
+            raise ValueError("At least seven saved dates are required.")
         for state_field, rhs_field in state_rhs:
-            state_times, state_values = interpolation_series(
-                path_rows, state_field
-            )
-            rhs_times, rhs_values = interpolation_series(path_rows, rhs_field)
-            time = 1.0
-            while time < end:
-                derivative = (
-                    interpolate(state_times, state_values, time + step)
-                    - interpolate(state_times, state_values, time - step)
-                ) / (2.0 * step)
-                rhs = interpolate(rhs_times, rhs_values, time)
-                maximum = max(maximum, abs(derivative - rhs))
-                time += 1.0
-    return maximum
+            state_values = [as_float(row, state_field) for row in ordered]
+            for index in range(3, len(ordered) - 3):
+                time = times[index]
+                if time > end:
+                    continue
+                derivative = lagrange_derivative(
+                    time,
+                    times[index - 3 : index + 4],
+                    state_values[index - 3 : index + 4],
+                )
+                rhs = as_float(ordered[index], rhs_field)
+                error = abs(derivative - rhs)
+                if error > maximum:
+                    maximum = error
+                    location = (
+                        f"argmax: z_T={boundary:g}, state={state_field}, "
+                        f"time={time:.17g}"
+                    )
+    return maximum, location
 
 
 def interpolation_series(
@@ -1467,10 +1537,12 @@ def build_acceptance_report(
             "Audits the residual columns saved by the BVP evaluator.",
         )
     )
-    independently_differenced = independent_dynamic_error(
-        continuation,
-        paths,
-        tolerances.common_window_terminal_buffer,
+    independently_differenced, independent_dynamic_location = (
+        independent_dynamic_error(
+            continuation,
+            paths,
+            tolerances.common_window_terminal_buffer,
+        )
     )
     report.append(
         gate_row(
@@ -1481,24 +1553,31 @@ def build_acceptance_report(
             tolerances.independent_dynamic,
             independently_differenced <= tolerances.independent_dynamic,
             (
-                "Centered quarter-year differences on an annual grid, "
-                f"excluding the last "
-                f"{tolerances.common_window_terminal_buffer:g} years."
+                "Centered seven-point local Lagrange derivatives on the "
+                "saved grid, excluding the last "
+                f"{tolerances.common_window_terminal_buffer:g} years; "
+                f"{independent_dynamic_location}."
             ),
         )
     )
-    min_positive = min(
-        float(row["minimum_positive_share_or_soc"]) for row in residuals
+    min_log_positive = min(
+        float(row["minimum_log_positive_share_or_soc"])
+        for row in residuals
     )
     all_positive = all(int(row["positive_and_interior"]) == 1 for row in residuals)
     report.append(
         gate_row(
             "interiority",
             "positive_allocations_and_monopoly_SOC",
-            min_positive,
-            ">",
-            0.0,
-            all_positive and min_positive > 0.0,
+            min_log_positive,
+            "finite",
+            "finite",
+            all_positive and math.isfinite(min_log_positive),
+            (
+                "Minimum is evaluated in logs so a CES share that is "
+                "strictly positive but below level-space subtraction "
+                "precision is not misclassified as zero."
+            ),
         )
     )
     clipping_count = sum(
@@ -1534,7 +1613,7 @@ def build_acceptance_report(
         and 0.0 < parameters.omega_m < 1.0
         and parameters.sigma_xl > 1.0
         and parameters.sigma_hm > 1.0
-        and 0.0 < parameters.eta < 1.0
+        and 0.0 < parameters.eta < parameters.alpha < 1.0
         and parameters.chi > 0.0
     )
     report.append(
@@ -1749,6 +1828,18 @@ def main() -> None:
         "audit_script": {
             "path": str(Path(__file__).resolve().relative_to(ROOT)),
             "sha256": sha256_file(Path(__file__).resolve()),
+        },
+        "generator_script": {
+            "path": "scripts/simulate_axm_high_sigma_equilibrium.py",
+            "sha256": sha256_file(
+                ROOT / "scripts" / "simulate_axm_high_sigma_equilibrium.py"
+            ),
+        },
+        "core_model_script": {
+            "path": "scripts/simulate_axm_equilibrium.py",
+            "sha256": sha256_file(
+                ROOT / "scripts" / "simulate_axm_equilibrium.py"
+            ),
         },
     }
     with manifest_path.open("w", encoding="utf-8") as handle:

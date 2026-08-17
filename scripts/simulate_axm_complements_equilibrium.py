@@ -29,12 +29,13 @@ FIGURE_DIR = ROOT / "figures_axm"
 
 SIGMA_XL = 0.75
 SIGMA_HM_VALUES = (1.0, 2.0)
-HORIZONS = (1600.0, 1800.0, 2000.0)
-PRIMARY_HORIZON = 2000.0
+HORIZONS = (3600.0, 4050.0, 4500.0)
+PRIMARY_HORIZON = 4500.0
 ACCEPTANCE_TOLERANCE = 1e-5
 SOLVER_TOLERANCE = 1e-6
 MONOPOLY_FOC_TOLERANCE = 1e-9
 PATH_STEP = 2.0
+SOLVER_NODES = 401
 
 SCENARIO_KEYS = {
     1.0: "axm_complements_sigma_xl_075_hm_1",
@@ -75,9 +76,12 @@ def add_provenance(
     return [
         {
             "scenario": row["scenario"],
+            "alpha": core.Parameters().alpha,
+            "eta": core.Parameters().eta,
             "sigma_xl": SIGMA_XL,
             "sigma_hm": sigma_hm,
             "horizon": horizon,
+            "solver_nodes_requested": SOLVER_NODES,
             "acceptance_tolerance": ACCEPTANCE_TOLERANCE,
             "solver_tolerance": SOLVER_TOLERANCE,
             **{key: value for key, value in row.items() if key != "scenario"},
@@ -234,6 +238,7 @@ def solve_cold_path(
         parameters,
         stocks,
         horizon=horizon,
+        nodes=SOLVER_NODES,
         tolerance=SOLVER_TOLERANCE,
     )
     scenario = f"{SCENARIO_KEYS[sigma_hm]}_T_{horizon:g}"
@@ -269,9 +274,12 @@ def result_record(
     exp_diagnostics = accepted_path_exp_diagnostics(rows, parameters)
     record: dict[str, float | str] = {
         "scenario": str(initial["scenario"]),
+        "alpha": parameters.alpha,
+        "eta": parameters.eta,
         "sigma_xl": SIGMA_XL,
         "sigma_hm": sigma_hm,
         "horizon": horizon,
+        "solver_nodes_requested": SOLVER_NODES,
         "cold_start": 1.0,
         "acceptance_tolerance": ACCEPTANCE_TOLERANCE,
         "solver_tolerance": SOLVER_TOLERANCE,
@@ -717,7 +725,7 @@ def draw_figures(
                 "references": [0.0],
             },
             {
-                "title": "Automated research expenditure share, s_M",
+                "title": "Automated research expenditure share",
                 "field": "automated_research_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",
@@ -777,11 +785,11 @@ def main() -> None:
         if primary_record is None:
             raise RuntimeError(f"Missing T={PRIMARY_HORIZON:g} primary path.")
         for record in horizon_records:
-            record["initial_log_consumption_distance_to_T2000"] = abs(
+            record["initial_log_consumption_distance_to_primary"] = abs(
                 float(record["initial_log_consumption"])
                 - float(primary_record["initial_log_consumption"])
             )
-            record["initial_log_shadow_distance_to_T2000"] = abs(
+            record["initial_log_shadow_distance_to_primary"] = abs(
                 float(record["initial_log_shadow_value"])
                 - float(primary_record["initial_log_shadow_value"])
             )

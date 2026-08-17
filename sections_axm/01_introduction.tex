@@ -29,7 +29,27 @@ Research substitution and research scale are separate. The elasticity
 \(\sigma_{HM}\) governs the response of the input mix to relative prices, whereas
 \(0<\eta<1\) imposes decreasing returns to a proportional expansion of current
 research inputs, holding capability fixed. The boundary \(\eta=1\) is substantive,
-not a normalization.
+not a normalization. The baseline imposes the stronger restriction
+\(\eta<\alpha\). Proposition \ref{prop:axm-research-burst} shows why. For all
+positive CES elasticities, on any fixed horizon with regular positive price and
+quantity paths, let \(S\) denote
+total research expenditure. Capability is at most of order
+\(1+S^{\eta/(1-\eta)}\), and optimized operating profit implies the bound
+\[
+ J_T\leq C_0+C_1S^{\eta(1-\alpha)/[\alpha(1-\eta)]}-cS.
+\]
+The exponent is below one exactly when \(\eta<\alpha\). The truncated
+developer objective is then coercive over all nonnegative research policies,
+and its supremum is finite. If both CES nests permit gross substitution and
+\(\eta>\alpha\), a fixed-duration expansion of research compute makes the
+truncated value unbounded. Extending each policy
+with zero controls after the truncation date also makes the corresponding
+infinite-horizon developer value unbounded under the stated extension conditions.
+At equality, coefficients rather than exponents determine the leading term of
+this family, and the boundary is not fully characterized. With
+\((\alpha,\eta)=(0.33,0.20)\), the exponent equals 0.5076. This result does
+not establish compactness of the control set, attainment of the supremum,
+global optimality, infinite-horizon well-posedness, or equilibrium existence.
 
 The distinction between raw compute and the services produced by compute is
 central. A unit of compute is not a unit of intelligence. Current capability

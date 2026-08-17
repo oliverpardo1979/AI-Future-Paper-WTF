@@ -57,12 +57,25 @@ class Parameters:
     discount: float = 0.04
     omega_m: float = 0.35
     sigma_hm: float = 2.00
-    eta: float = 0.45
+    eta: float = 0.20
     chi: float = 0.01
+
+    def __post_init__(self) -> None:
+        if not 0.0 < self.eta < self.alpha < 1.0:
+            raise ValueError(
+                "The maintained large-scale research-curvature condition "
+                "requires 0 < eta < alpha < 1."
+            )
 
 
 RESULT_DIR = ROOT / "numerical_axm"
 FIGURE_DIR = ROOT / "figures_axm"
+SOLVER_NODES = 401
+UNIT_HORIZONS = {
+    1.0: (2600.0, 3100.0, 3600.0),
+    2.0: (5400.0, 5800.0, 6200.0),
+}
+UNIT_PRIMARY_HORIZONS = {1.0: 3100.0, 2.0: 5800.0}
 
 
 def logsumexp_pair(left: float, right: float) -> float:
@@ -1458,10 +1471,10 @@ def draw_equilibrium_figures(
         "Macroeconomic growth and returns along unit-elasticity paths",
         "Annual percentage rates over the first 600 years; all panels use linear scales",
         [
-            {"title": "Output growth per capita", "field": "output_per_capita_growth", "transform": percent, "format": lambda value: f"{value:.1f}%", "reference_y": 0.0},
-            {"title": "Consumption growth per capita", "field": "consumption_per_capita_growth", "transform": percent, "format": lambda value: f"{value:.1f}%", "reference_y": 0.0},
-            {"title": "Real-wage growth", "field": "wage_growth", "transform": percent, "format": lambda value: f"{value:.2f}%", "reference_y": 0.0},
-            {"title": "Net return to capital", "field": "net_capital_return", "transform": percent, "format": lambda value: f"{value:.1f}%"},
+            {"title": "Output growth per capita", "field": "output_per_capita_growth", "transform": percent, "adaptive_percent_min_decimals": 1, "reference_y": 0.0},
+            {"title": "Consumption growth per capita", "field": "consumption_per_capita_growth", "transform": percent, "adaptive_percent_min_decimals": 1, "reference_y": 0.0},
+            {"title": "Real-wage growth", "field": "wage_growth", "transform": percent, "adaptive_percent_min_decimals": 2, "reference_y": 0.0},
+            {"title": "Net return to capital", "field": "net_capital_return", "transform": percent, "adaptive_percent_min_decimals": 1},
         ],
         display_rows,
         labels,
@@ -1503,10 +1516,10 @@ def draw_equilibrium_figures(
         "Allocation of final output along unit-elasticity paths",
         "Shares of final output in percent; all panels use linear scales and the four uses sum to one",
         [
-            {"title": "Consumption / output", "field": "consumption_share", "transform": percent, "format": lambda value: f"{value:.0f}%"},
-            {"title": "Investment / output", "field": "investment_share", "transform": percent, "format": lambda value: f"{value:.0f}%"},
-            {"title": "Inference resources / output", "field": "inference_share", "transform": percent, "format": lambda value: f"{value:.3f}%", "ylim": (1.79, 1.80)},
-            {"title": "Research compute / output", "field": "research_resource_share", "transform": percent, "format": lambda value: f"{value:.2f}%"},
+            {"title": "Consumption / output", "field": "consumption_share", "transform": percent, "adaptive_percent_min_decimals": 0},
+            {"title": "Investment / output", "field": "investment_share", "transform": percent, "adaptive_percent_min_decimals": 0},
+            {"title": "Inference resources / output", "field": "inference_share", "transform": percent, "adaptive_percent_min_decimals": 3, "ylim": (1.79, 1.80)},
+            {"title": "Research compute / output", "field": "research_resource_share", "transform": percent, "adaptive_percent_min_decimals": 2},
         ],
         display_rows,
         labels,
@@ -1521,7 +1534,7 @@ def draw_equilibrium_figures(
             {"title": "AI-service price", "field": "log_ai_price", "transform": log_change},
             {"title": "AI-service marginal cost", "field": "log_ai_marginal_cost", "transform": log_change},
             {"title": "Price / marginal cost", "field": "ai_markup"},
-            {"title": "Operating profits / output", "field": "ai_profit_share", "transform": percent, "format": lambda value: f"{value:.1f}%"},
+            {"title": "Operating profits / output", "field": "ai_profit_share", "transform": percent, "adaptive_percent_min_decimals": 1},
         ],
         display_rows,
         labels,
@@ -1535,12 +1548,12 @@ def draw_equilibrium_figures(
     mechanism.draw_multiplot(
         FIGURE_DIR / "axm_cobb_douglas_long_run.png",
         "Cobb-Douglas final production: long-run equilibrium-path approximation",
-        "Annual rates and shares in percent; the full 1,600-year solution is shown",
+        "Annual rates and shares in percent; the full 5,800-year solution is shown",
         [
-            {"title": "Capability growth", "field": "capability_growth", "transform": percent, "format": lambda value: f"{value:.1f}%"},
-            {"title": "Output growth per capita", "field": "output_per_capita_growth", "transform": percent, "format": lambda value: f"{value:.1f}%", "reference_y": 0.0},
-            {"title": "Automated research expenditure share", "field": "automated_research_share", "transform": percent, "format": lambda value: f"{value:.0f}%", "ylim": (0.0, 100.0)},
-            {"title": "Human researchers / population", "field": "human_research_share", "transform": percent, "format": lambda value: f"{value:.2f}%"},
+            {"title": "Capability growth", "field": "capability_growth", "transform": percent, "adaptive_percent_min_decimals": 1},
+            {"title": "Output growth per capita", "field": "output_per_capita_growth", "transform": percent, "adaptive_percent_min_decimals": 1, "reference_y": 0.0},
+            {"title": "Automated research expenditure share", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},
+            {"title": "Human researchers / population", "field": "human_research_share", "transform": percent, "adaptive_percent_min_decimals": 2},
         ],
         cobb_douglas_rows,
         labels,
@@ -1552,10 +1565,10 @@ def draw_equilibrium_figures(
         "Labor income and labor allocation along unit-elasticity paths",
         "wL/Y, wH/Y, and wN/Y are income shares; L/N is an allocation share; all panels are percentages",
         [
-            {"title": "Production labor income / output", "field": "production_labor_share", "transform": percent, "format": lambda value: f"{value:.1f}%", "ylim": (53.0, 54.0)},
-            {"title": "Research labor income / output", "field": "aggregate_labor_share", "transform": research_labor_income_percent, "format": lambda value: f"{value:.3f}%"},
-            {"title": "Aggregate labor income / output", "field": "aggregate_labor_share", "transform": percent, "format": lambda value: f"{value:.2f}%"},
-            {"title": "Production labor / population", "field": "production_labor_population_share", "transform": percent, "format": lambda value: f"{value:.2f}%"},
+            {"title": "Production labor income / output", "field": "production_labor_share", "transform": percent, "adaptive_percent_min_decimals": 1, "ylim": (53.0, 54.0)},
+            {"title": "Research labor income / output", "field": "aggregate_labor_share", "transform": research_labor_income_percent, "adaptive_percent_min_decimals": 3},
+            {"title": "Aggregate labor income / output", "field": "aggregate_labor_share", "transform": percent, "adaptive_percent_min_decimals": 2},
+            {"title": "Production labor / population", "field": "production_labor_population_share", "transform": percent, "adaptive_percent_min_decimals": 2},
         ],
         display_rows,
         labels,
@@ -1568,9 +1581,9 @@ def draw_equilibrium_figures(
         "Blue circles: sigma_HM = 1; orange squares: sigma_HM = 2; wage changes in logs, other panels in percent",
         [
             {"title": "Real wage", "field": "log_wage", "transform": log_change},
-            {"title": "Real-wage growth", "field": "wage_growth", "transform": percent, "format": lambda value: f"{value:.2f}%", "reference_y": 0.0},
-            {"title": "Production labor income / output", "field": "production_labor_share", "transform": percent, "format": lambda value: f"{value:.1f}%", "ylim": (53.0, 54.0)},
-            {"title": "Aggregate labor income / output", "field": "aggregate_labor_share", "transform": percent, "format": lambda value: f"{value:.2f}%"},
+            {"title": "Real-wage growth", "field": "wage_growth", "transform": percent, "adaptive_percent_min_decimals": 2, "reference_y": 0.0},
+            {"title": "Production labor income / output", "field": "production_labor_share", "transform": percent, "adaptive_percent_min_decimals": 1, "ylim": (53.0, 54.0)},
+            {"title": "Aggregate labor income / output", "field": "aggregate_labor_share", "transform": percent, "adaptive_percent_min_decimals": 2},
         ],
         display_rows,
         labels,
@@ -1597,9 +1610,9 @@ def draw_equilibrium_figures(
         "Research adjustment under alternative substitution elasticities",
         "Capability growth is an annual percent rate; both shares are percentages; AM/H is a natural-log change",
         [
-            {"title": "Capability growth", "field": "capability_growth", "transform": percent, "format": lambda value: f"{value:.1f}%"},
-            {"title": "Automated research expenditure share", "field": "automated_research_share", "transform": percent, "format": lambda value: f"{value:.0f}%", "ylim": (0.0, 100.0)},
-            {"title": "Human researchers / population", "field": "human_research_share", "transform": percent, "format": lambda value: f"{value:.2f}%"},
+            {"title": "Capability growth", "field": "capability_growth", "transform": percent, "adaptive_percent_min_decimals": 1},
+            {"title": "Automated research expenditure share", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},
+            {"title": "Human researchers / population", "field": "human_research_share", "transform": percent, "adaptive_percent_min_decimals": 2},
             {"title": "Automated research services / human research", "field": "human_to_automated_service_ratio", "transform": automated_to_human_service_log_change},
         ],
         research_technology_rows,
@@ -1629,8 +1642,18 @@ def main() -> None:
     scenario_rows: dict[str, list[dict[str, float | str]]] = {}
     primary_initial_jumps: dict[float, dict[str, float]] = {}
     for name, sigma_xl, sigma_hm, horizon in [
-        ("axm_sigma_xl_1_hm_1", 1.00, 1.00, 1200.0),
-        ("axm_sigma_xl_1_hm_2", 1.00, 2.00, 1600.0),
+        (
+            "axm_sigma_xl_1_hm_1",
+            1.00,
+            1.00,
+            UNIT_PRIMARY_HORIZONS[1.0],
+        ),
+        (
+            "axm_sigma_xl_1_hm_2",
+            1.00,
+            2.00,
+            UNIT_PRIMARY_HORIZONS[2.0],
+        ),
     ]:
         parameters = replace(
             baseline,
@@ -1641,6 +1664,7 @@ def main() -> None:
             parameters,
             initial_state,
             horizon=horizon,
+            nodes=SOLVER_NODES,
         )
         if not solution.success:
             raise RuntimeError(f"{name}: {solution.message}")
@@ -1666,9 +1690,12 @@ def main() -> None:
         summaries.append(
             {
                 "scenario": name,
+                "alpha": parameters.alpha,
+                "eta": parameters.eta,
                 "sigma_xl": sigma_xl,
                 "sigma_hm": sigma_hm,
                 "horizon": horizon,
+                "solver_nodes_requested": SOLVER_NODES,
                 "solver_status": solution.status,
                 "solver_message": solution.message,
                 "mesh_nodes": solution.x.size,
@@ -1704,10 +1731,7 @@ def main() -> None:
 
     horizon_rows: list[dict[str, float | str]] = []
     all_horizon_path_rows: list[dict[str, float | str]] = []
-    for sigma_hm, horizons in {
-        1.0: (1000.0, 1200.0, 1400.0),
-        2.0: (1400.0, 1600.0, 1800.0),
-    }.items():
+    for sigma_hm, horizons in UNIT_HORIZONS.items():
         parameters = replace(
             baseline,
             sigma_xl=1.0,
@@ -1731,6 +1755,7 @@ def main() -> None:
                     parameters,
                     initial_state,
                     horizon=horizon,
+                    nodes=SOLVER_NODES,
                 )
                 if not robustness_solution.success:
                     raise RuntimeError(
@@ -1788,8 +1813,11 @@ def main() -> None:
             all_horizon_path_rows.extend(robustness_rows)
             horizon_rows.append(
                 {
+                    "alpha": parameters.alpha,
+                    "eta": parameters.eta,
                     "sigma_hm": sigma_hm,
                     "horizon": horizon,
+                    "solver_nodes_requested": SOLVER_NODES,
                     **values,
                 }
             )

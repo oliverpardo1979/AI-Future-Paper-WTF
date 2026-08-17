@@ -51,8 +51,15 @@ class Parameters:
     delta: float = 0.05
     discount: float = 0.04
     omega_m: float = 0.35
-    eta: float = 0.45
+    eta: float = 0.20
     chi: float = 0.01
+
+    def __post_init__(self) -> None:
+        if not 0.0 < self.eta < self.alpha < 1.0:
+            raise ValueError(
+                "The maintained large-scale research-curvature condition "
+                "requires 0 < eta < alpha < 1."
+            )
 
 
 @dataclass(frozen=True)
@@ -77,8 +84,9 @@ class Gates:
 PARAMETERS = Parameters()
 GATES = Gates()
 SIGMA_HM_VALUES = (1.0, 2.0)
-ROBUSTNESS_HORIZONS = (1600.0, 1800.0, 2000.0)
-PRIMARY_HORIZON = 2000.0
+ROBUSTNESS_HORIZONS = (3600.0, 4050.0, 4500.0)
+PRIMARY_HORIZON = 4500.0
+SOLVER_NODES = 401
 STATE_LOG_FIELDS = (
     "log_capital",
     "log_capability",
@@ -640,9 +648,18 @@ def audit(
             raise ValueError(f"Saved path does not reach its horizon: {name}")
         if not math.isclose(number(rows[0], "sigma_xl"), PARAMETERS.sigma_xl):
             raise ValueError(f"Wrong sigma_XL in {name}.")
+        if not (
+            math.isclose(number(summary, "alpha"), PARAMETERS.alpha)
+            and math.isclose(number(summary, "eta"), PARAMETERS.eta)
+            and int(number(summary, "solver_nodes_requested")) == SOLVER_NODES
+        ):
+            raise ValueError(f"Wrong summary parameter provenance in {name}.")
         if not all(
             math.isclose(number(row, "sigma_hm"), sigma_hm)
             and math.isclose(number(row, "horizon"), horizon)
+            and math.isclose(number(row, "alpha"), PARAMETERS.alpha)
+            and math.isclose(number(row, "eta"), PARAMETERS.eta)
+            and int(number(row, "solver_nodes_requested")) == SOLVER_NODES
             for row in rows
         ):
             raise ValueError(f"Inconsistent path metadata in {name}.")
@@ -912,8 +929,8 @@ def audit(
                 )
             )
 
-    # The non-imposed asymptotic gates apply only to the canonical T=2000
-    # primary paths.  T=1600 and T=1800 identify horizon stability.
+    # The non-imposed asymptotic gates apply only to the canonical T=4500
+    # primary paths.  T=3600 and T=4050 identify horizon stability.
     for sigma_hm in SIGMA_HM_VALUES:
         name = scenario_name(sigma_hm)
         rows = primary_groups[name]
@@ -1061,9 +1078,9 @@ def audit(
                     "<",
                     GATES.initial_jump_range,
                     spread < GATES.initial_jump_range,
-                    f"sigma_HM={sigma_hm:g}:T=1600,1800,2000",
+                    f"sigma_HM={sigma_hm:g}:T=3600,4050,4500",
                     sigma_hm,
-                    "1600-2000",
+                    "3600-4500",
                     "every horizon is a cold-start solve",
                 )
             )
@@ -1107,6 +1124,8 @@ def main() -> None:
     write_rows(residual_path, residuals)
 
     script_path = Path(__file__).resolve()
+    generator_path = ROOT / "scripts" / "simulate_axm_complements_equilibrium.py"
+    core_solver_path = ROOT / "scripts" / "simulate_axm_equilibrium.py"
     manifest = {
         "audit": "A*M gross-complements independent acceptance audit",
         "audit_version": 1,
@@ -1168,6 +1187,16 @@ def main() -> None:
                 "path": script_path.relative_to(ROOT).as_posix(),
                 "bytes": script_path.stat().st_size,
                 "sha256": sha256_file(script_path),
+            },
+            "generator_script": {
+                "path": generator_path.relative_to(ROOT).as_posix(),
+                "bytes": generator_path.stat().st_size,
+                "sha256": sha256_file(generator_path),
+            },
+            "core_solver_script": {
+                "path": core_solver_path.relative_to(ROOT).as_posix(),
+                "bytes": core_solver_path.stat().st_size,
+                "sha256": sha256_file(core_solver_path),
             },
             "outputs": [
                 {

@@ -1,0 +1,80 @@
+{
+  "accepted": true,
+  "audit": "A*M unit-elasticity acceptance audit",
+  "audit_version": 1,
+  "canonical_horizons": {
+    "primary": {
+      "sigma_hm_1": 3100.0,
+      "sigma_hm_2": 5800.0
+    },
+    "sigma_hm_1": [
+      2600.0,
+      3100.0,
+      3600.0
+    ],
+    "sigma_hm_2": [
+      5400.0,
+      5800.0,
+      6200.0
+    ]
+  },
+  "created_utc": "2026-08-17T19:54:17.989327+00:00",
+  "files": {
+    "audit_script": {
+      "bytes": 42243,
+      "path": "scripts/audit_axm_model.py",
+      "sha256": "17c240f1d9341b745e9f2f46704c16e995e7c91600f6eedece405e7e3726590a"
+    },
+    "generator_script": {
+      "bytes": 71631,
+      "path": "scripts/simulate_axm_equilibrium.py",
+      "sha256": "4aedf08dc1f08d73597c42a22aedf59f9be523da0ea28ec4c99095230e7eeaea"
+    },
+    "inputs": [
+      {
+        "bytes": 5737048,
+        "path": "numerical_axm/equilibrium_transition_paths.csv",
+        "sha256": "625391cb965eac7c015d85c10cfb8d4e6a5739efd5838cfd4c5d2cf91aaee2f3"
+      },
+      {
+        "bytes": 3054,
+        "path": "numerical_axm/equilibrium_transition_summary.csv",
+        "sha256": "79a35a4f838b4cecf8808f91f6504aebe39c43e58bac7949edb2aa0eacfb7b90"
+      },
+      {
+        "bytes": 17282929,
+        "path": "numerical_axm/equilibrium_horizon_paths.csv",
+        "sha256": "6dbbe22b8304aa51cf911b0d65dc967b1c3943843aff143b12e2d792517370db"
+      },
+      {
+        "bytes": 4901,
+        "path": "numerical_axm/equilibrium_horizon_robustness.csv",
+        "sha256": "509eee208c7e2fbee504605bf4e987615f94b41d7af44f9fd540b31ef7bf180a"
+      }
+    ],
+    "outputs": [
+      {
+        "bytes": 7004,
+        "path": "numerical_axm/audit_report.csv",
+        "sha256": "f04fe2d9b02de41f2cc360a80018f9d1db94d205f1e7d14ea9a4ddb18bf631e1"
+      }
+    ]
+  },
+  "parameters": {
+    "alpha": 0.33,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "population_growth": 0.012,
+    "sigma_hm": [
+      1.0,
+      2.0
+    ],
+    "sigma_xl": 1.0
+  },
+  "runtime": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13 (main, Aug  7 2026, 02:26:41) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "scope_note": "The audit independently reconstructs dated static identities, but its dynamic-path checks use the stored collocation derivatives. Finite terminal TVC proxies do not establish the infinite-horizon limits."
+}

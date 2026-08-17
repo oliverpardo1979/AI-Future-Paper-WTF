@@ -776,6 +776,23 @@ def nice_ticks(lower: float, upper: float, count: int = 5) -> list[float]:
     return ticks
 
 
+def adaptive_tick_decimals(
+    ticks: list[float], minimum: int = 0, maximum: int = 6
+) -> int:
+    """Return the least precision that gives every finite tick a unique label."""
+
+    finite_ticks = [tick for tick in ticks if math.isfinite(tick)]
+    for decimals in range(minimum, maximum + 1):
+        zero_cutoff = 0.5 * 10.0 ** (-decimals)
+        labels = [
+            f"{(0.0 if abs(tick) < zero_cutoff else tick):.{decimals}f}"
+            for tick in finite_ticks
+        ]
+        if len(labels) == len(set(labels)):
+            return decimals
+    return maximum
+
+
 def draw_multiplot(
     output_path: Path,
     title: str,
@@ -837,7 +854,60 @@ def draw_multiplot(
             padding = 0.08 * max(y_max - y_min, 1e-8)
             y_min, y_max = y_min - padding, y_max + padding
 
-        for tick in nice_ticks(y_min, y_max, 5):
+        y_ticks = nice_ticks(y_min, y_max, 5)
+        tick_span = max(y_ticks) - min(y_ticks) if len(y_ticks) > 1 else 0.0
+        tick_scale = max(
+            1.0,
+            *(abs(tick) for tick in y_ticks),
+        )
+        effectively_flat = (
+            len(y_ticks) > 1 and tick_span <= 1e-7 * tick_scale
+        )
+        central_tick = y_ticks[len(y_ticks) // 2]
+        adaptive_percent_minimum = panel.get(
+            "adaptive_percent_min_decimals"
+        )
+        if adaptive_percent_minimum is not None:
+            percent_decimals = (
+                int(adaptive_percent_minimum)
+                if effectively_flat
+                else adaptive_tick_decimals(
+                    y_ticks, int(adaptive_percent_minimum)
+                )
+            )
+
+            def tick_formatter(value: float) -> str:
+                if effectively_flat and value != central_tick:
+                    return ""
+                zero_cutoff = 0.5 * 10.0 ** (-percent_decimals)
+                displayed = 0.0 if abs(value) < zero_cutoff else value
+                return f"{displayed:.{percent_decimals}f}%"
+        else:
+            configured_formatter = panel.get("format")
+            adaptive_numeric_minimum = panel.get(
+                "adaptive_numeric_min_decimals"
+            )
+            if adaptive_numeric_minimum is not None:
+                numeric_decimals = (
+                    int(adaptive_numeric_minimum)
+                    if effectively_flat
+                    else adaptive_tick_decimals(
+                        y_ticks, minimum=int(adaptive_numeric_minimum)
+                    )
+                )
+
+                def tick_formatter(value: float) -> str:
+                    if effectively_flat and value != central_tick:
+                        return ""
+                    zero_cutoff = 0.5 * 10.0 ** (-numeric_decimals)
+                    displayed = 0.0 if abs(value) < zero_cutoff else value
+                    return f"{displayed:.{numeric_decimals}f}"
+            elif configured_formatter is not None:
+                tick_formatter = configured_formatter
+            else:
+                tick_formatter = lambda value: f"{value:.2f}"
+
+        for tick in y_ticks:
             y_pixel = plot_bottom - (tick - y_min) / (y_max - y_min) * (
                 plot_bottom - plot_top
             )
@@ -846,7 +916,7 @@ def draw_multiplot(
                 fill=COLORS["grid"],
                 width=2,
             )
-            label = panel.get("format", lambda value: f"{value:.2f}")(tick)
+            label = tick_formatter(tick)
             bbox = draw.textbbox((0, 0), label, font=axis_font)
             draw.text(
                 (plot_left - 15 - (bbox[2] - bbox[0]), y_pixel - 12),

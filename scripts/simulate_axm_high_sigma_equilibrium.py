@@ -34,6 +34,12 @@ ROOT = Path(__file__).resolve().parents[1]
 RESULT_DIR = ROOT / "numerical_axm"
 FIGURE_DIR = ROOT / "figures_axm"
 
+# Purely numerical shape parameter for the first free-boundary guess.  It is
+# independent of the research curvature eta; keeping it named prevents the
+# old coincidence INITIAL_GUESS_PROFILE_CURVATURE == 2*eta from being read as
+# a model restriction when eta changes.
+INITIAL_GUESS_PROFILE_CURVATURE = 0.90
+
 
 def high_sigma_targets(parameters: equilibrium.Parameters) -> dict[str, float]:
     """Return AI-dominated singular-path ratios.
@@ -50,8 +56,10 @@ def high_sigma_targets(parameters: equilibrium.Parameters) -> dict[str, float]:
         raise ValueError(
             "The current high-sigma boundary requires sigma_hm > 1."
         )
-    if not 0.0 < parameters.eta < 1.0:
-        raise ValueError("The current singular ratios require 0 < eta < 1.")
+    if not 0.0 < parameters.eta < parameters.alpha < 1.0:
+        raise ValueError(
+            "The maintained singular branch requires 0 < eta < alpha < 1."
+        )
 
     alpha = parameters.alpha
     kappa = (1.0 - alpha) / alpha
@@ -264,7 +272,7 @@ def initial_free_boundary_guess(
 
     # Concentrate the change near the terminal boundary, as implied by
     # z(t) ~ 1 / [kappa h (T* - t)], while keeping a smooth initial guess.
-    curvature = 0.90
+    curvature = INITIAL_GUESS_PROFILE_CURVATURE
     profile = -np.log1p(-curvature * mesh) / -math.log1p(-curvature)
     log_capability = (
         log_initial_capability
@@ -1095,7 +1103,10 @@ def draw_published_figures(
     equilibrium.mechanism.draw_multiplot(
         FIGURE_DIR / "high_sigma_equilibrium_asymptotics.png",
         "Free-boundary convergence toward the singular limit",
-        "The common theoretical limit is g_A/(Y/K)=0.0624; T* is scenario-specific",
+        (
+            "The capability-growth ratio is assessed against its "
+            "parameter-implied limit; T* is scenario-specific"
+        ),
         [
             {"title": "ln output-capital ratio", "field": "output_capital_ratio", "transform": log_level},
             {"title": "Capability growth / (Y/K)", "field": "capability_growth_to_output_capital", "transform": percent, "format": lambda value: f"{value:.1f}%"},
@@ -1147,12 +1158,23 @@ PUBLISHED_PREFIX = "high_sigma_sigma150_validated"
 PUBLISHED_EXTRA_PREFIX = "high_sigma_sigma150_z128_validated"
 
 
-def published_reproduction_plan() -> dict[str, object]:
+def published_reproduction_plan(
+    parameters: equilibrium.Parameters | None = None,
+) -> dict[str, object]:
     """Return the immutable continuation plan used for the paper."""
 
+    parameters = parameters or equilibrium.Parameters()
+    targets = high_sigma_targets(
+        replace(parameters, sigma_xl=1.5, sigma_hm=2.0)
+    )
     return {
+        "alpha": parameters.alpha,
+        "eta": parameters.eta,
         "sigma_xl": 1.5,
         "sigma_hm": 2.0,
+        "conditional_limit_gA_over_YK": targets[
+            "capability_growth_to_z"
+        ],
         "unit_elasticity_seed_horizon": 1600.0,
         "initial_high_sigma_horizon": 100.0,
         "sigma_sequence": PUBLISHED_SIGMA_SEQUENCE,
@@ -1202,7 +1224,7 @@ def _check_continuation_solution(
 
 def _published_continuation_row(
     solution: object,
-    sigma_xl: float,
+    parameters: equilibrium.Parameters,
     boundary: float,
     targets: dict[str, float],
 ) -> dict[str, float]:
@@ -1210,7 +1232,10 @@ def _published_continuation_row(
 
     initial = solution.sol(0.0)
     return {
-        "sigma_xl": sigma_xl,
+        "alpha": parameters.alpha,
+        "eta": parameters.eta,
+        "sigma_xl": parameters.sigma_xl,
+        "sigma_hm": parameters.sigma_hm,
         "terminal_output_capital_ratio": boundary,
         "duration": float(solution.duration),
         "initial_log_consumption": float(initial[2]),
@@ -1329,11 +1354,15 @@ def assemble_published_results(
             parameters,
         )
         for row in rows:
+            row["alpha"] = parameters.alpha
+            row["eta"] = parameters.eta
+            row["sigma_xl"] = parameters.sigma_xl
+            row["sigma_hm"] = parameters.sigma_hm
             row["terminal_boundary_z"] = boundary
         saved_rows[boundary] = rows
         saved_summaries[boundary] = _published_continuation_row(
             previous_solution,
-            sigma_xl=1.5,
+            parameters=parameters,
             boundary=boundary,
             targets=targets,
         )
@@ -1360,7 +1389,7 @@ def assemble_published_results(
         saved_rows[128.0],
     )
     print("Canonical high-sigma outputs written:", flush=True)
-    for path in published_reproduction_plan()["canonical_outputs"]:
+    for path in published_reproduction_plan(baseline)["canonical_outputs"]:
         print(f"  {path}", flush=True)
 
 

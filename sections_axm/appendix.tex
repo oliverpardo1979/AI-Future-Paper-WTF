@@ -371,6 +371,215 @@ household transversality expression in \eqref{eq:axm-tvc} declines at rate
 for both transversality conditions once the stated constant ratios hold.
 \(\square\)
 
+\subsection{Proof of Proposition \ref{prop:axm-research-burst}}
+
+Write
+\[
+ \varrho_{XL}=\frac{\sigma_{XL}-1}{\sigma_{XL}}<1,
+ \qquad
+ \varrho_{HM}=\frac{\sigma_{HM}-1}{\sigma_{HM}}<1,
+ \qquad
+ \theta=\frac{1-\alpha}{\alpha}.
+\]
+We first establish bounds that hold for every admissible research policy. The
+weighted power mean of order \(\varrho_{HM}<1\) is no larger than its arithmetic
+mean, including the Cobb--Douglas limit and the standard continuous boundary
+extension. Hence
+\[
+ E=\left[\omega_HH^{\varrho_{HM}}
+ +\omega_M(AM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}}
+ \leq \omega_HH+\omega_MAM
+ \leq H+AM.
+\]
+Let
+\[
+ \underline w=\min_{0\leq t\leq T}w_t>0,
+ \qquad c_t=w_tH_t+M_t,
+ \qquad S=\int_0^T c_t\dd t.
+\]
+The capability law implies that \(A\) is nondecreasing, so \(A_t\geq A_0\).
+Therefore, almost everywhere,
+\begin{align*}
+ \frac{\dd}{\dd t}A_t^{1-\eta}
+ &=(1-\eta)\chi A_t^{-\eta}E_t^\eta\\
+ &\leq(1-\eta)\chi
+       \left(M_t+\frac{H_t}{A_t}\right)^\eta\\
+ &\leq(1-\eta)\chi
+       \left(1+\frac{1}{A_0\underline w}\right)^\eta c_t^\eta.
+\end{align*}
+H\"older's inequality then gives, for every \(t\leq T\),
+\[
+ A_t^{1-\eta}
+ \leq A_0^{1-\eta}
+ +\bar c\int_0^T c_s^\eta\dd s
+ \leq A_0^{1-\eta}+\bar cT^{1-\eta}S^\eta,
+\]
+where \(\bar c>0\) does not depend on the controls. Raising both sides to
+the power \(1/(1-\eta)\) proves
+\[
+ \max_{0\leq t\leq T}A_t
+ \leq C_A\left(1+S^{\eta/(1-\eta)}\right).
+\]
+This estimate includes arbitrarily concentrated measurable controls. In
+particular, if expenditure \(S\) is supported on a set of length \(d\leq T\),
+then \(\int c_t^\eta\dd t\leq d^{1-\eta}S^\eta\); shrinking the duration does
+not overturn the bound.
+
+We next bound optimized operating profit. Let
+\(\overline K=\max_{t\leq T}K_t\) and
+\(\overline L=\max_{t\leq T}L_t\). The weighted power-mean inequality and
+\(\omega_L+\omega_X=1\) imply \(Z\leq\omega_LL+\omega_XX\leq L+X\), including
+the Cobb--Douglas limit. The final-good firm's demand
+condition therefore gives
+\begin{align*}
+ p_X(X;K,L)X
+ &=(1-\alpha)s_XK^\alpha Z^{1-\alpha}\\
+ &\leq(1-\alpha)\overline K^\alpha
+       \left(\overline L^{1-\alpha}+X^{1-\alpha}\right).
+\end{align*}
+Set \(a=(1-\alpha)\overline K^\alpha\) and
+\(b=a\overline L^{1-\alpha}\). Maximizing the upper bound over \(X\geq0\)
+yields
+\begin{align*}
+ \pi(A;K,L)
+ &\leq b+\sup_{X\geq0}\left\{aX^{1-\alpha}-\frac{X}{A}\right\}\\
+ &=b+\alpha a[a(1-\alpha)]^\theta A^\theta
+ \leq C_\pi(1+A^\theta).
+\end{align*}
+The revenue product \(p_X(X;K,L)X\), rather than necessarily the unit price
+itself, has its continuous value zero at \(X=0\). The pointwise maximum defining
+\(\pi\) is attained because its objective is continuous and the linear inference
+cost eventually dominates revenue. The same domination is locally uniform in
+\((A,K,L)\), so \(\pi\) is continuous
+and therefore measurable along an admissible state path; a measurable
+pointwise maximizing selection also exists. The
+same bound applies to the primitive problem for any choice of \(X\), since its
+operating payoff cannot exceed \(\pi\).
+
+Integrability of \(r\) implies that
+\[
+ D_t=\exp\left\{-\int_0^t r_s\dd s\right\}
+\]
+has finite bounds \(0<\underline D\leq D_t\leq\overline D<\infty\) on
+\([0,T]\). Combining the capability and profit bounds gives
+\begin{align*}
+ J_T(H,M)
+ &\leq \overline D\int_0^T\pi(A_t;K_t,L_t)\dd t
+       -\underline DS\\
+ &\leq C_0+C_1S^{\eta\theta/(1-\eta)}-\underline DS.
+\end{align*}
+This proves equations \eqref{eq:axm-finite-horizon-capability-bound} and
+\eqref{eq:axm-finite-horizon-payoff-bound}. If \(\eta<\alpha\), then
+\(p=\eta\theta/(1-\eta)<1\), so the right-hand side tends to \(-\infty\)
+as \(S\to\infty\) and has a finite supremum over \(S\geq0\). The zero-research
+policy has a finite payoff. Hence the truncated value is finite and the
+objective is coercive in total research expenditure. Because \(w\) is bounded
+above and away from zero on \([0,T]\), \(S\) is equivalent to the
+\(L^1\) norm of the nonnegative pair \((H,M)\).
+
+It remains to establish the converse for \(\eta>\alpha\) and characterize the
+boundary when both CES nests permit gross substitution. Hence suppose now that
+\(\sigma_{XL}>1\) and \(\sigma_{HM}>1\), so both CES powers lie in \((0,1)\).
+A sharper operating-profit asymptotic is needed. For fixed positive
+\(K\) and \(L\), as \(X/L\to\infty\),
+\[
+ Z\sim\omega_X^{1/\varrho_{XL}}X,
+ \qquad s_X\to1,
+\]
+and hence
+\[
+ p_XX\sim d_XK^\alpha X^{1-\alpha},
+ \qquad
+ d_X=(1-\alpha)\omega_X^{(1-\alpha)/\varrho_{XL}}.
+\]
+Under the rescaling \(X=KA^{1/\alpha}x\),
+\[
+ \frac{p_X(X;K,L)X-X/A}{KA^\theta}
+ \longrightarrow d_Xx^{1-\alpha}-x.
+\]
+The limiting objective has the unique maximizer
+\[
+ x^\star=[d_X(1-\alpha)]^{1/\alpha}
+\]
+and value
+\[
+ \kappa_X=\alpha d_X[d_X(1-\alpha)]^\theta>0.
+\]
+The linear term in \(x\) keeps the maximizing sequence bounded, while the
+strictly positive limiting maximum keeps it away from zero. Consequently,
+\[
+ \pi(A;K,L)\sim\kappa_XKA^\theta.
+\]
+The convergence is uniform when \(K\) and \(L\) remain in compact subsets of
+the positive orthant.
+
+Fix \(\Delta\in(0,T)\). Set \(H=0\) on all of \([0,T]\), set
+\(M=\mathcal B\) on \([0,\Delta]\), and set \(M=0\) on
+\((\Delta,T]\). Because \(\sigma_{HM}>1\),
+\[
+ E=\omega_M^{1/\varrho_{HM}}AM
+\]
+along this policy. Capability therefore satisfies
+\[
+ A_{\mathcal B}(t)^{1-\eta}
+ =A_0^{1-\eta}+(1-\eta)d_M\mathcal B^\eta
+   \min\{t,\Delta\},
+ \qquad
+ d_M=\chi\omega_M^{\eta/\varrho_{HM}}>0.
+\]
+Choosing \(X\) to maximize operating profit at each date gives
+\[
+ J_T(\mathcal B)
+ =\int_0^T D_t\pi(A_{\mathcal B}(t);K_t,L_t)\dd t
+ -\mathcal B\int_0^\Delta D_t\dd t.
+\]
+For \(\mathcal B\geq1\), the explicit capability solution implies
+\[
+ \sup_{0\leq t\leq T}
+ \frac{A_{\mathcal B}(t)}
+ {\mathcal B^{\eta/(1-\eta)}}\leq C
+\]
+for a constant independent of \(\mathcal B\). The uniform profit bound above
+then bounds the discounted operating-profit integrand, after division by
+\(\mathcal B^{\eta\theta/(1-\eta)}\), by an integrable constant on
+\([0,T]\). Dominated convergence, the operating-profit asymptotic, and the
+capability solution therefore yield
+\[
+ J_T(\mathcal B)
+ =c_\pi\mathcal B^{\eta\theta/(1-\eta)}
+  -c_M\mathcal B
+  +o\!\left(\mathcal B^{\eta\theta/(1-\eta)}\right),
+\]
+where
+\[
+ c_M=\int_0^\Delta D_t\dd t>0
+\]
+and
+\[
+ c_\pi=\kappa_X[(1-\eta)d_M]^{\theta/(1-\eta)}
+ \int_0^T D_tK_t
+ \min\{t,\Delta\}^{\theta/(1-\eta)}\dd t>0.
+\]
+Finally,
+\[
+ \frac{\eta\theta}{1-\eta}
+ =\frac{\eta(1-\alpha)}{\alpha(1-\eta)}
+ \begin{cases}
+  >1,&\eta>\alpha,\\
+  =1,&\eta=\alpha,\\
+  <1,&\eta<\alpha.
+ \end{cases}
+\]
+Thus the fixed-duration family makes the truncated value unbounded when
+\(\eta>\alpha\). Under the additional extension and admissibility conditions in
+the proposition, setting \(X=H=M=0\) after \(T\) leaves the payoff of each
+policy unchanged: capability remains constant, and the continuous extension of
+sales revenue is zero at \(X=0\). The same family therefore also makes the
+corresponding infinite-horizon developer value unbounded. At equality, the sign of
+\(c_\pi-c_M\) determines this family's leading behavior; a nonpositive
+coefficient for this family does not rule out a different unbounded sequence.
+\(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-no-bgp}}
 
 Suppose for contradiction that an equilibrium satisfying the hypotheses has
@@ -706,7 +915,7 @@ variables \(C(0)\) and \(q(0)\). They approximate the infinite-horizon selection
 problem; they are not the transversality conditions themselves.
 
 The limiting rates and shares also generate an initial path guess on a uniform
-201-node mesh. Candidate levels are chosen by a small least-squares calculation
+401-node mesh. Candidate levels are chosen by a small least-squares calculation
 that matches the relevant limiting capital-output and shadow ratios. This guess
 initializes the nonlinear solver but is not retained as an equation. At every
 collocation evaluation, the algorithm solves the intratemporal map and evaluates
@@ -714,16 +923,23 @@ collocation evaluation, the algorithm solves the intratemporal map and evaluates
 met or the 8,000-node cap is reached. No shooting solution is used for any path
 reported in the paper.
 
+With \(A_0=N_0=1\), the same initialization computes the common
+\(K_0=2.9435284733\) from the unit-elasticity, \(\sigma_{HM}=2\) candidate
+capital--output ratio under the maintained parameter vector. The complementary
+paths use that same \(K_0\). It is therefore a parameter-dependent benchmark
+initialization, not an independently calibrated stock and not a quantity held
+fixed relative to the earlier \(\eta=0.45\) exercises.
+
 The reported unit-elasticity calculations use a solver tolerance of
-\(2\times10^{-5}\). The primary horizons are \(T=1{,}200\) for
-\(\sigma_{HM}=1\) and \(T=1{,}600\) for \(\sigma_{HM}=2\). They are re-solved at
-\(T\in\{1{,}000,1{,}200,1{,}400\}\) and
-\(T\in\{1{,}400,1{,}600,1{,}800\}\), respectively. The complementary-input
+\(2\times10^{-5}\). The primary horizons are \(T=3{,}100\) for
+\(\sigma_{HM}=1\) and \(T=5{,}800\) for \(\sigma_{HM}=2\). They are re-solved at
+\(T\in\{2{,}600,3{,}100,3{,}600\}\) and
+\(T\in\{5{,}400,5{,}800,6{,}200\}\), respectively. The complementary-input
 calculations use \(\sigma_{XL}=0.75\), a solver tolerance of \(10^{-6}\), and
-independent cold starts at \(T\in\{1{,}600,1{,}800,2{,}000\}\) for each value of
+independent cold starts at \(T\in\{3{,}600,4{,}050,4{,}500\}\) for each value of
 \(\sigma_{HM}\). Here a cold start means that no solution from a neighboring
 horizon is used; the analytical initial guess is still supplied. The
-\(T=2{,}000\) paths are displayed. Saved output is evaluated from the collocation
+\(T=4{,}500\) paths are displayed. Saved output is evaluated from the collocation
 spline at two-year intervals.
 
 The fixed-horizon algorithm can therefore be summarized as follows.
@@ -861,21 +1077,21 @@ collocation residuals in the differential equations and remain close to
 \toprule
 Diagnostic & \(\sigma_{HM}=1\) & \(\sigma_{HM}=2\)\\
 \midrule
-Maximum goods-market residual & \(2.2\times10^{-16}\) & \(2.2\times10^{-16}\)\\
-Maximum labor-market residual & \(8.9\times10^{-16}\) & \(1.8\times10^{-15}\)\\
-Maximum technology log error & \(2.4\times10^{-13}\) & \(2.4\times10^{-11}\)\\
-Maximum factor-price error & \(1.8\times10^{-15}\) & \(1.8\times10^{-15}\)\\
-Maximum research-duality error & \(3.6\times10^{-13}\) & \(2.7\times10^{-11}\)\\
-Maximum monopoly-FOC log error & \(5.4\times10^{-15}\) & \(7.2\times10^{-15}\)\\
-Maximum research-FOC log error & \(3.6\times10^{-13}\) & \(1.3\times10^{-11}\)\\
-Maximum dynamic path residual & \(4.4\times10^{-6}\) & \(1.2\times10^{-5}\)\\
-Maximum horizon-induced initial-jump range & \(7.4\times10^{-8}\) & \(1.6\times10^{-7}\)\\
+Maximum goods-market residual & \(2.2\times10^{-16}\) & \(3.3\times10^{-16}\)\\
+Maximum labor-market residual & \(3.6\times10^{-15}\) & \(7.1\times10^{-15}\)\\
+Maximum technology log error & \(1.4\times10^{-14}\) & \(2.4\times10^{-12}\)\\
+Maximum factor-price error & \(1.8\times10^{-15}\) & \(7.1\times10^{-15}\)\\
+Maximum research-duality error & \(1.8\times10^{-14}\) & \(4.9\times10^{-11}\)\\
+Maximum monopoly-FOC log error & \(1.6\times10^{-14}\) & \(2.7\times10^{-14}\)\\
+Maximum research-FOC log error & \(1.8\times10^{-14}\) & \(2.4\times10^{-11}\)\\
+Maximum dynamic path residual & \(1.2\times10^{-6}\) & \(5.4\times10^{-6}\)\\
+Maximum horizon-induced initial-jump range & \(2.6\times10^{-9}\) & \(7.4\times10^{-9}\)\\
 Minimum monopoly second-order margin & 0.1160 & 0.1160\\
-Absolute terminal capability-growth error & \(1.3\times10^{-5}\) & \(3.1\times10^{-5}\)\\
-Absolute terminal per-capita-output-growth error & \(2.9\times10^{-6}\) & \(6.6\times10^{-6}\)\\
-Terminal automated research-expenditure share & 0.3500 & 0.99999\\
-Log household terminal-TVC proxy & -32.03 & -43.24\\
-Log developer terminal-TVC proxy & -34.46 & -45.69\\
+Absolute terminal capability-growth error & \(6.1\times10^{-7}\) & \(4.1\times10^{-9}\)\\
+Absolute terminal per-capita-output-growth error & \(5.4\times10^{-8}\) & \(8.2\times10^{-10}\)\\
+Terminal automated research-expenditure share & 0.3500 & 1.00000\\
+Log household terminal-TVC proxy & -85.23 & -160.83\\
+Log developer terminal-TVC proxy & -87.54 & -163.14\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -883,11 +1099,10 @@ Log developer terminal-TVC proxy & -34.46 & -45.69\\
 The horizon-induced range is the larger of the ranges of \(\log C(0)\) and
 \(\log q(0)\), measured in log points. The terminal growth errors are absolute
 differences between annual rates expressed as decimals. Across all six horizon
-paths, the largest stored solver static-equation error is
-\(4.8\times10^{-11}\), while the independent row-by-row reconstruction has a
-maximum static error of \(1.5\times10^{-9}\). The largest differential-equation
-residual is \(1.7\times10^{-5}\), and both imposed terminal-ratio errors are below
-\(5.1\times10^{-7}\). Every saved quantity remains positive, and the monopoly
+paths, the largest reconstructed static-equation error is
+\(4.9\times10^{-11}\). The largest differential-equation residual is
+\(6.6\times10^{-6}\), and both imposed terminal-ratio errors are below
+\(8.0\times10^{-8}\). Every saved quantity remains positive, and the monopoly
 second-order margin is strictly positive.
 
 The two TVC entries evaluate the expressions in equation~\eqref{eq:axm-tvc} at
@@ -905,12 +1120,14 @@ dynamic residuals, positive and interior allocations, a positive monopoly
 second-order margin, no active saved clipping or fallback, accurate imposed
 terminal restrictions, convergence of non-imposed terminal quantities, and
 stable initial jumps across horizons.
-Across the two displayed \(T=2{,}000\) paths, the largest reconstructed static
-error is \(2.92\times10^{-11}\), the largest independently differentiated
-dynamic error is \(5.68\times10^{-7}\), and the largest monopoly first-order
-condition error is \(2.50\times10^{-11}\). The largest solver root-mean-square
-residual is \(9.43\times10^{-7}\), and the largest horizon-induced initial-jump
-range is \(7.7\times10^{-8}\) log points. Every prespecified acceptance gate
+Across the two displayed \(T=4{,}500\) paths, the largest reconstructed static
+error is \(5.32\times10^{-11}\), the largest independently differentiated
+dynamic error is \(5.20\times10^{-7}\), and the largest monopoly first-order
+condition error is \(3.14\times10^{-10}\). Across all six cold starts, the
+largest solver root-mean-square residual is \(9.36\times10^{-7}\), the largest
+independently differentiated dynamic error is \(8.35\times10^{-7}\), and the
+largest horizon-induced initial-jump range is \(2.92\times10^{-7}\) log points.
+Every prespecified acceptance gate
 passes, including the finite-date transversality proxies. These proxies remain
 truncation diagnostics and do not establish the infinite-horizon limits.
 
@@ -927,6 +1144,7 @@ the non-imposed terminal quantities, and stabilization of
 \eqref{eq:axm-singularity-tail-estimate}. All prespecified gates pass for
 \(z_T=16,32,64,128\).
 
+\begin{sloppypar}
 The simulation files and residual summaries are stored in
 \path{numerical_axm}. The canonical fixed-horizon solver is
 \path{scripts/simulate_axm_equilibrium.py}; the complementary-input runner and
@@ -939,15 +1157,21 @@ equations to solver objects and diagnostics is stored in
 earlier research specification and do not generate evidence used in this paper.
 Plotting scripts read accepted paths and do not solve an additional equilibrium
 system.
-The package list in \path{requirements-numerical.txt} does not pin software
-versions, so the paper does not claim bit-for-bit replication across computing
-environments.
+The reported reruns used Python 3.12.13, NumPy 2.5.2, SciPy 1.18.0, and Pillow
+12.3.0. These versions are pinned in \path{requirements-numerical.txt}.
+Floating-point arithmetic and platform-specific rendering can still prevent
+bit-for-bit identity across computing environments; acceptance is based on the
+reported numerical tolerances and equation audits rather than file identity
+alone.
 Within \path{numerical_axm}, diagnostic values and pass/fail status are stored in
 \path{audit_report.csv}, \path{complements_acceptance_report.csv}, and
 \path{high_sigma_sigma150_validated_acceptance_report.csv}. The last two reports
 also state their numerical thresholds, and their manifests record the audited
 inputs. Unit-elasticity thresholds are defined in
-\path{scripts/audit_axm_model.py}.
+\path{scripts/audit_axm_model.py};
+\path{unit_elasticity_audit_manifest.json} binds its four numerical inputs to
+the current audit and generator scripts by SHA-256 hash.
+\end{sloppypar}
 
 Convergence of the collocation routine establishes only that a finite-horizon or
 finite-boundary discretization satisfies its equations and imposed boundary
@@ -982,20 +1206,20 @@ conditional asymptotic characterization.
 \toprule
 Terminal \(Y/K\) & 16 & 32 & 64 & 128 & Limit\\
 \midrule
-Estimated \(T^*\) & 882.158 & 882.171 & 882.174 & 882.175 & ---\\
-\(g_A/(Y/K)\) & 0.05924 & 0.05834 & 0.05791 & 0.05771 & 0.05755\\
-\(U/Y\) & 0.44393 & 0.44658 & 0.44782 & 0.44840 & 0.44890\\
-\(M/Y\) & 0.08058 & 0.07936 & 0.07878 & 0.07850 & 0.07829\\
-\((\dot K+\delta K)/Y\) & 0.21583 & 0.21440 & 0.21375 & 0.21344 & 0.21315\\
-\(s_X\) & 0.99261 & 0.99655 & 0.99839 & 0.99925 & 1\\
-\(wN/Y\) & 0.00495 & 0.00231 & 0.00108 & 0.00050 & 0\\
+Estimated \(T^*\) & 1669.005 & 1669.021 & 1669.025 & 1669.026 & ---\\
+\(g_A/(Y/K)\) & 0.02265 & 0.02296 & 0.02313 & 0.02322 & 0.02332\\
+\(U/Y\) & 0.44889 & 0.44890 & 0.44890 & 0.44890 & 0.44890\\
+\(M/Y\) & 0.03081 & 0.03123 & 0.03146 & 0.03159 & 0.03172\\
+\((\dot K+\delta K)/Y\) & 0.28357 & 0.28315 & 0.28291 & 0.28279 & 0.28266\\
+\(s_X\) & 0.999986 & 0.999998 & 1.000000 & 1.000000 & 1\\
+\(wN/Y\) & \(9.37\times10^{-6}\) & \(1.65\times10^{-6}\) & \(2.91\times10^{-7}\) & \(5.16\times10^{-8}\) & 0\\
 \bottomrule
 \end{tabular}
 
 \medskip
 \parbox{0.94\textwidth}{\footnotesize \emph{Notes:} The estimated \(T^*\) is
 measured in model time. All remaining entries are ratios expressed as fractions,
-so, for example, 0.05924 corresponds to 5.924 percent. The final column reports
+so, for example, 0.02265 corresponds to 2.265 percent. The final column reports
 the conditional analytical limit.}
 \end{table}
 

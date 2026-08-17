@@ -2,7 +2,7 @@
   "accepted_claim": "The saved finite-boundary paths satisfy the audited necessary conditions and the specified boundary-convergence gates.",
   "audit_script": {
     "path": "scripts\\audit_axm_high_sigma.py",
-    "sha256": "ea1066e760cfb056b38e1dd69d1b31db46a8ba5e2f770e2b730dc59f6d264546"
+    "sha256": "c73f3cc61ca471d9ce861980ac37a4191669e76d7a79203c85a6ffe25fb366e2"
   },
   "audit_version": 3,
   "audited_boundaries": [
@@ -18,45 +18,53 @@
     "global optimality of the household or developer program",
     "reachability of the conditional branch from arbitrary initial states"
   ],
-  "created_at_utc": "2026-08-14T12:34:40.457030+00:00",
+  "core_model_script": {
+    "path": "scripts/simulate_axm_equilibrium.py",
+    "sha256": "4aedf08dc1f08d73597c42a22aedf59f9be523da0ea28ec4c99095230e7eeaea"
+  },
+  "created_at_utc": "2026-08-17T19:50:59.233965+00:00",
+  "generator_script": {
+    "path": "scripts/simulate_axm_high_sigma_equilibrium.py",
+    "sha256": "bf20018472c43a09445d9ca3e23d94e210597642a7f670ae621851fa52a5d482"
+  },
   "independence": "All reported model equations were reconstructed in this script; no equilibrium_static_block or solver equation function was called.",
   "inputs": [
     {
-      "bytes": 10083439,
+      "bytes": 13200907,
       "path": "numerical_axm\\high_sigma_sigma150_validated_boundary_paths.csv",
-      "sha256": "d47ca1d81c0a1b267d935539fb35e84aba61fb198ef08c6cc2065edb06192486"
+      "sha256": "08d3ac9eb3845a0f84cf8e25057ef9816493e71ed504fb1a209a2ce9cb59b76b"
     },
     {
-      "bytes": 490,
+      "bytes": 561,
       "path": "numerical_axm\\high_sigma_sigma150_validated_free_continuation.csv",
-      "sha256": "58df6eed3d9bd972cc7c203d11f48d0ee55393cdc1b10c2e10d28e41e7484e6a"
+      "sha256": "f7baa1ef8a4f091e5d1734c54932f876e7693aa56354daa994d6f9fc08812778"
     },
     {
-      "bytes": 4393945,
+      "bytes": 6037366,
       "path": "numerical_axm\\high_sigma_sigma150_z128_validated_boundary_paths.csv",
-      "sha256": "54e1fab35495fccb420c63ef451e6b45bc0c31b9c696b3e5e2d915cf0802e0ca"
+      "sha256": "db6ea10b15c327a0fb74c5a423a0c9d722b598eb23c75505e3fdd89595807ecd"
     },
     {
-      "bytes": 268,
+      "bytes": 302,
       "path": "numerical_axm\\high_sigma_sigma150_z128_validated_free_continuation.csv",
-      "sha256": "2a0b6587c71407c43d2ac88f8c57c30af82e99463c96848270b8d03202087f87"
+      "sha256": "125969afbf307d84fc6c390d6d01af6931f142c51b5a5da41b60387e6c56b2a9"
     }
   ],
   "outputs": [
     {
-      "bytes": 14415,
+      "bytes": 14641,
       "path": "numerical_axm\\high_sigma_sigma150_validated_acceptance_report.csv",
-      "sha256": "ac39fafa3fefb7ab73d7f6f1dfdd69babe09b4c7633d004ead0e84d83b48a65d"
+      "sha256": "26fb6f5e3cd76705b2e61a60a2e614b52ea21af46fa6ed28d9e72346aad222f1"
     },
     {
-      "bytes": 9637583,
+      "bytes": 13287894,
       "path": "numerical_axm\\high_sigma_sigma150_validated_equation_residuals.csv",
-      "sha256": "0af8b93976ad781daf34459d9a80fbd8b3144eb383fe4dfecb5ad99b35ba16cf"
+      "sha256": "17b73c34b541275a9396b63bf042b373bf9f07a520933ecd91feba6832e27099"
     },
     {
-      "bytes": 32959,
+      "bytes": 32978,
       "path": "numerical_axm\\high_sigma_sigma150_validated_boundary_convergence.csv",
-      "sha256": "6ae52312a5765f3bcc2885431fe34bc0cc7f6c91cae11ef79e5a48319de45952"
+      "sha256": "5ac837ba2717e02ef245d04a5e7f3daaaaf105bb4c881766703b2bcc5ed9b507"
     }
   ],
   "overall_accepted": true,
@@ -65,7 +73,7 @@
     "chi": 0.01,
     "delta": 0.05,
     "discount": 0.04,
-    "eta": 0.45,
+    "eta": 0.2,
     "n": 0.012,
     "omega_m": 0.35,
     "omega_x": 0.2,
@@ -81,7 +89,7 @@
   "row_counts": {
     "acceptance_gates": 76,
     "boundary_convergence": 133,
-    "equation_residuals": 11747
+    "equation_residuals": 15307
   },
   "source_prefixes": [
     "high_sigma_sigma150_validated",
