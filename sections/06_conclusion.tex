@@ -1,0 +1,239 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+The economic consequences of advanced AI depend on more than whether machines can
+perform existing jobs. A distinct transition occurs when AI can perform the research
+required to produce better AI. The toy model represents this transition as a gradual
+change in the composition of research. When human and automated-research services are
+gross substitutes ($\sigma_{HM}>1$), the automated share rises with the research wage
+relative to its unit resource cost.
+
+Population growth matters while human research dominates. With $\phi<1$ and a
+constant research-employment share, capability growth is semi-endogenous and equals
+$\eta n/(1-\phi)$. Research automation creates a separate feedback from capability
+to output, from output to automated research, and from research back to capability.
+The fully Cobb--Douglas counterfactual isolates this channel. Its reduced dynamics
+are stable when
+$D_{\mathrm{CD}}=1-\phi-\eta\omega_M\omega_X/\omega_L>0$.
+At $D_{\mathrm{CD}}=0$, capability is double exponential but remains finite at every
+finite date. At $D_{\mathrm{CD}}<0$, the reduced system reaches a finite-time
+singularity. Hence explosive growth does not require $\sigma_{XL}>1$.
+
+When $\sigma_{HM}>1$, the automated contribution to research changes endogenously.
+The relevant denominator becomes
+$D(s^M_t)=1-\phi-\eta\upsilon s^M_t$ and declines as automated research gains weight.
+Its AI-dominated limit,
+$D_{\mathrm{AI}}=1-\phi-\eta\upsilon$, must be positive for the stated finite
+constant-growth candidate. This condition is stricter than the human-essential one because the
+entire growth of automated research, rather than only the Cobb--Douglas weight
+$\omega_M$, feeds back into capability. A temporary negative value is not sufficient
+for a singularity; the negative-denominator episode must be sufficiently persistent
+to satisfy the integral condition derived in the paper.
+
+These feedback results have a deliberately limited status. The baseline parameters
+keep $D_{\mathrm{CD}}$ and its AI-dominated counterpart positive. The zero- and
+negative-denominator cases are analytical counterfactuals under proportional
+allocation. They do not establish that the fully optimizing monopoly follows the
+same path: consumption, research, or another allocation can reach a boundary first.
+Likewise, a failed constant-growth condition is not by itself proof of a finite-time
+singularity.
+
+The task-based extension identifies a separate extensive margin. Even when AI has a
+lower marginal cost for a research task, a fixed integration and verification cost
+can make human performance cheaper at low scale. Capability growth, a higher research
+wage, or an expansion of the research program can move tasks across their automation
+thresholds. The resulting aggregate elasticity can vary endogenously with the
+distribution of task-level costs, while the CES remains the parsimonious baseline.
+
+The production elasticity $\sigma_{XL}$ also separates the wage response from the
+response of the production-labor share. An expansion of AI services reduces this share when
+$\sigma_{XL}>1$, but it raises the wage when $\sigma_{XL}<1/\alpha$. Hence both outcomes occur
+when $1<\sigma_{XL}<1/\alpha$. This static result is a benchmark, not the paper's
+standalone contribution. In general equilibrium, capital deepening and the
+reallocation of workers between production and research also affect wages and the
+aggregate labor share. More precisely, aggregate labor-share growth equals
+production labor-share growth plus the growth of population relative to production
+labor. A rising human-research employment share raises the aggregate share relative
+to the production share; a declining human-research share lowers it.
+
+The capital-deepening benchmark clarifies which part of the growth result is specific
+to recursive AI research. If the labor substitute is an ordinary reproducible capital
+service, gross substitution can drive labor's share to zero while the wage rises, but
+constant saving produces at most an asymptotically linear $AK$ technology with a
+constant growth rate. In the baseline model, capability also lowers the unit resource
+cost of AI services and is produced with AI research. This additional loop can make
+the output--capital ratio and the return to capital increase without bound. The
+common ingredient in the paper's acceleration mechanisms is therefore recursive
+improvement, not gross substitution or capital deepening alone. A nonpositive
+research-feedback denominator can generate acceleration at unit elasticities;
+$\sigma_{XL}>1$ provides a distinct production-side amplifier when capability is
+unbounded.
+
+Research automation also has two distinct margins within the AI-development
+industry. The ratio $H/M$ measures human intensity, while $H/N$ measures the scale
+of human research employment. The first can fall while the second rises. This occurs
+when automated research per capita expands more rapidly than human input per unit of
+automated research contracts. In the equilibrium complementarity path, $H/N$
+declines monotonically. In the Cobb--Douglas equilibrium, it rises during the first
+part of the transition and later converges to zero while the automated research
+share approaches one. The asymptotic disappearance of human research as a relative
+input therefore does not imply that human research employment must fall throughout
+the transition.
+
+The production elasticity supplies the second dimension of the growth classification.
+When $\sigma_{XL}<1$, the low-elasticity candidate leaves labor essential
+and makes the productive return to further reductions in the unit cost of AI services
+vanish. At $\sigma_{XL}=1$, positive wage growth would make automated research
+asymptotically dominant. When $\sigma_{XL}>1$ and the effective unit cost of AI
+services vanishes relative to capital intensity, the production-labor share converges
+to zero. The unconditional nonexistence result is narrower and stronger where it
+applies: no interior steady state can combine finite constant growth rates with a
+positive constant capability-growth rate. The qualification is important:
+$\sigma_{XL}>1$ alone does not exclude a boundary path with bounded capability.
+
+The discontinuity at unit elasticity is an infinite-horizon classification, not a
+jump in finite allocations. At every finite relative price, the CES contribution
+share is continuous in $\sigma_{XL}$. But the limits $w/p^X\to\infty$ and
+$\sigma_{XL}\downarrow1$ do not commute: the share remains $\omega_X$ at exactly
+one and converges to one for every fixed elasticity above one. Under the paper's
+high-capability regularity condition, unbounded capability induces this relative-price
+limit. The relative-price threshold for the
+transition diverges as $\sigma_{XL}$ approaches one. This makes the result a singular
+perturbation and explains why an economy with $\sigma_{XL}$ only slightly above one
+can look Cobb--Douglas over an extremely large range of finite relative prices
+without possessing a finite-growth steady state asymptotically.
+
+The numerical experiments solve the decentralized perfect-foresight canonical system.
+Investment and research spending are endogenous, the household Euler equation holds,
+and the developer satisfies its research first-order and costate conditions. With
+$\sigma_{XL}=0.75$, output per capita falls initially, recovers, and then approaches
+a constant level even though capability continues to grow. By year 600,
+output-per-capita growth is 0.0056 percent and capability growth is 0.703 percent,
+close to its analytical limit of 0.675 percent. The production-labor share rises as
+labor becomes the bottleneck. With $\sigma_{XL}=1$ and $\sigma_{HM}=2$, capability
+growth rises gradually and reaches 2.271 percent by year 2,000. Output- and
+consumption-per-capita growth then approach 0.568 percent, while the automated
+research share approaches one. Changing only the research elasticity to
+$\sigma_{HM}=1$ lowers the limiting capability-growth rate to 1.738 percent and
+per-capita output growth to 0.435 percent. The automated research contribution then
+remains at 35 percent and human research employment converges to a positive share
+of the population, even though $H/M$ converges to zero.
+These transitions confirm that the asymptotic regime need not be a good medium-run
+approximation.
+
+For $\sigma_{XL}>1$, the paper solves a free-boundary equilibrium branch instead of
+imposing a finite-growth terminal state. Conditional on an AI-dominated singular
+limit, $g_A/(Y/K)$, the consumption share, the research-resource share, and $qA/K$
+converge to constants, while $Y/K$ grows in inverse proportion to the remaining
+time. The terminal conditions impose the limiting values of $C/Y$ and $qA/K$;
+those two ratios are not independent validation moments. For $\sigma_{XL}=1.35$,
+1.50, and 2.00, the non-imposed growth and resource-share ratios approach their
+analytical predictions, while the initial jumps and estimated boundary dates remain
+stable as the boundary moves outward. The estimated dates are 333.38, 280.45, and 209.08
+years, respectively. These dates illustrate the comparative dynamics of the model;
+they are not calibrated forecasts.
+
+The return to capital supplies the price counterpart to these quantity dynamics.
+Because saving is endogenous, the net return is an intertemporal equilibrium price
+rather than a marginal product evaluated along an imposed investment path. It
+converges to 4 percent under complementarity and to 4.568 percent in the
+Cobb--Douglas AI-dominated limit. Under gross substitution, the net return first
+remains moderate and then diverges with $Y/K$. Output and consumption growth also
+accelerate. The real wage rises in all three reported gross-substitution paths,
+while the aggregate labor share approaches zero. The earlier fixed-share paths
+remain available as mechanism exercises but are not evidence about equilibrium
+takeoff, interest rates, or wage declines.
+
+A separate conditional search considers production elasticities above the static
+wage threshold $1/\alpha$ and population growth as high as 3.9 percent. These paths
+satisfy the canonical equilibrium equations on their computed domains but
+extrapolate the AI-dominated terminal boundary beyond the region established by the
+analytical result. Wage growth becomes negative in three of the four selected
+configurations. The largest peak-to-trough wage decline is 9.39 percent when
+$\sigma_{XL}=6.28$ and $n=3.9$ percent. The wage subsequently recovers and its trough
+remains 16.72 percent above the initial wage. Capital deepening contributes to the
+recovery, while the expansion of human employment in AI research makes production
+labor scarce. More generally, the research first-order conditions imply that the
+wage diverges whenever automated research per capita diverges. They also imply that,
+with diminishing returns to the capability stock, a finite-time capability
+singularity cannot occur while the wage remains bounded. The conditional singular
+branch satisfies the stronger per-capita condition, so any finite wage decline on
+that branch must eventually be reversed in levels. The high-elasticity wage-decline
+searches use an extrapolated terminal boundary; proving recovery for every
+infinite-horizon accelerating equilibrium still requires showing that acceleration
+necessarily makes automated research per capita diverge.
+
+Taken together, these results explain why the automation of AI research matters for
+humans whether the real wage rises or falls temporarily. It can change the growth regime, reduce
+labor's share of an expanding economy, increase the return to capital, and shift
+income toward the owners of AI firms and other productive assets. It can also reduce
+the number of humans required per unit of research without reducing human research
+employment, because the development industry may expand faster than its human
+intensity falls. The distinction between finite and asymptotic behavior is equally
+important: observed stability over a finite range of capability and relative prices
+does not by itself identify the long-run regime.
+
+The current model does not establish whether an acceleration regime improves human
+welfare. Monopoly rents accrue to a representative household, so the model abstracts
+from unequal ownership and understates the distributional importance of a declining
+labor share. It also excludes agency failures, misalignment, existential damage, and
+political power. The numerical paths reported in the paper solve the decentralized
+canonical equilibrium conditions. For $\sigma_{XL}>1$, they use the conditional singular
+ratios derived in conditional result~\ref{cond:high-sigma-singular-scaling} and pass a
+free-boundary convergence test. This procedure provides numerical evidence for a
+locally regular singular branch from the stated initial conditions, but it is not a
+proof of the developer's global dynamic optimality, global existence, or uniqueness.
+The paper's acceleration and singularity calculations
+remain conditional on the assumptions stated in the relevant conditional results and are
+not quantitative forecasts. The paper does not assign probabilities to those
+regimes or determine their full welfare ranking.
+
+Market power creates a genuine policy trade-off. The monopolist restricts the current
+supply of AI services, but its operating rents raise the private return to frontier
+research. An explicit planner extension may value capability more than the monopolist
+does; if it establishes $Q_t>q_t$, private research is insufficient at the private
+allocation. The current model does not derive that inequality. Regulating the
+AI-service price without replacing the lost innovation return can therefore improve
+current deployment while slowing capability growth. The natural policy comparison is
+between laissez-faire monopoly, regulated access, explicit research support, and a
+joint policy that targets both margins.
+
+A further extension should make explicit an agency problem that is only implicit in
+the current model. As $H/M$ falls and automated systems choose a larger share of the
+experiments, code, and model modifications that move the frontier, human owners and
+researchers may become less able to observe their actions, verify their objectives,
+or anticipate the consequences of every research decision. Supervision would then
+be a costly choice rather than an implicit component of $H_t$. More intensive
+oversight could reduce the probability that automated research departs from the
+human principal's objectives, but it could also slow capability growth. Research
+automation would thus generate a principal--agent problem with costly monitoring in
+the spirit of \citet{holmstrom1979}.
+
+Market structure may alter this trade-off, although its sign is not predetermined.
+A protected monopolist internalizes a larger share of the loss to its installed
+rents and franchise value if its automated researchers escape effective control. It
+also faces less pressure to preempt a competitor. These forces may induce it to
+moderate capability growth or invest more in supervision. Under monopolistic
+competition, by contrast, each developer captures the private benefit of arriving
+first, while part of the expected cost of inadequate supervision is borne by rivals
+and society. Firms may consequently underinvest in oversight in order to accelerate
+development and preserve their competitive position. Monopoly is not, however, a
+guarantee of better control: concentration creates its own governance problems, and
+the threat of entry or a foreign rival can restore the race incentive. The race and
+slowdown branches in \citet{kokotajlo2025} illustrate precisely this tension: even a
+concentrated frontier developer that observes evidence of misalignment may hesitate
+to pause when another developer is close behind. A formal extension should therefore
+allow developers to choose innovation speed and supervisory effort, make the
+probability of an agency failure depend on automation and oversight, and compare
+monopoly with monopolistic competition. If human research provides supervision that
+is socially valuable but not fully remunerated, the extension could also evaluate a
+second-best policy that subsidizes $H_t$ and taxes $M_t$. The purpose of these wedges
+would not be to preserve human research employment, but to correct the effect of the
+research-input mix on agency risk. A subsidy to verifiable supervision or liability
+for agency failures would generally target the distortion more directly. A subsidy
+to $H_t$ and a tax on $M_t$ become relevant when supervision cannot be separately
+observed or contracted. These policies cannot be evaluated in the current model,
+which contains neither agency losses nor an explicit supervision technology. The
+central open question is when the
+monopolist's internalization of agency losses dominates the governance costs of
+concentration, and when competition turns effective supervision into an externality.

@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{needspace}
+\usepackage{enumitem}
+\usepackage[round,authoryear]{natbib}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{conditionalresult}{Conditional result}
+
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\gA}{g_A}
+\newcommand{\gY}{g_Y}
+\newcommand{\gw}{g_w}
+\newcommand{\sX}{s_X}
+\newcommand{\sM}{s_M}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{The Future of Growth and Human Labor under Automated AI Research:\\
+AI Capability as Research-Augmenting Technology}
+\author{Oliver Pardo}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper develops an endogenous-growth model in which current AI capability
+turns compute into both production services and automated research services. An
+integrated monopolist supplies AI services and invests in better AI using human
+researchers and capability-augmented research compute. Final output combines
+capital with a CES aggregate of labor and AI services. When labor and AI services
+are gross complements, every regular finite-rate balanced-growth path
+characterized here has constant output per person and real wages, while labor
+retains a positive income share. Audited finite-horizon paths show that capability
+can keep growing and automated services can receive nearly all research
+expenditure while these limits emerge. At unit elasticity in final production,
+positive per-capita growth under diminishing returns to current research inputs
+requires the feedback from better AI to output and research to be bounded; that
+restriction alone does not guarantee existence. If labor and AI services are
+gross substitutes and AI services come to dominate their composite, unbounded AI
+improvement rules out finite constant growth rates. On a conditional branch of
+the necessary conditions where output becomes unbounded in finite time, labor's
+income share vanishes, but the real wage eventually rises when the smaller of the
+two substitution elasticities remains below an explicit threshold. Free-boundary
+approximations support this conditional branch without establishing an
+infinite-horizon equilibrium.
+\end{abstract}
+
+\onehalfspacing
+
+\input{sections_axm/01_introduction}
+\input{sections_axm/02_literature}
+\input{sections_axm/03_model}
+\input{sections_axm/04_growth_regimes}
+\input{sections_axm/06_conclusion}
+
+\appendix
+\input{sections_axm/appendix}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

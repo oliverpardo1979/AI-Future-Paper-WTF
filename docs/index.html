@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Laboratorio interactivo del modelo de automatización de la investigación en IA de Oliver Pardo."
+    />
+    <meta name="theme-color" content="#f3f0e8" />
+    <title>AI Growth Lab · Equilibrium Simulator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="Volver al inicio">
+        <span class="brand-mark">AP</span>
+        <span>
+          <strong>AI Growth Lab</strong>
+          <small>Automated AI Research</small>
+        </span>
+      </a>
+      <div class="masthead-meta">
+        <span class="eyebrow">Interactive research companion</span>
+        <a
+          href="https://github.com/oliverpardo1979/AI-Future-Paper"
+          target="_blank"
+          rel="noreferrer"
+        >Repositorio ↗</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="solver-status status-warn" role="note">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Versión del modelo</strong>
+          <p>
+            Este laboratorio todavía implementa la especificación original de investigación,
+            no la nueva especificación CES entre H y A×M del paper paralelo.
+          </p>
+        </div>
+      </div>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Dynamic general equilibrium · monopoly benchmark</p>
+          <h1>Explore cómo la sustitución entre trabajo e IA cambia la trayectoria económica.</h1>
+        </div>
+        <p class="intro-copy">
+          Cambie tecnología, preferencias y condiciones iniciales. El laboratorio resuelve
+          la rama canónica de equilibrio, audita sus residuos y muestra cantidades, precios,
+          participaciones e investigación a través del tiempo.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Simulador de equilibrio">
+        <aside class="controls" aria-labelledby="parameters-title">
+          <div class="controls-heading">
+            <div>
+              <p class="eyebrow">Model inputs</p>
+              <h2 id="parameters-title">Parámetros</h2>
+            </div>
+            <button class="quiet-button" id="reset-button" type="button">Restablecer</button>
+          </div>
+
+          <label class="benchmark-picker">
+            <span>Trayectoria publicada</span>
+            <select id="benchmark-select">
+              <option value="equilibrium_sigma_0_75">Complementariedad · σXL = 0.75</option>
+              <option value="equilibrium_sigma_1_00" selected>Cobb–Douglas · σXL = 1.00</option>
+              <option value="equilibrium_sigma_1_00_hm_1_00">Investigación humana esencial · σXL = σHM = 1.00</option>
+              <option value="equilibrium_sigma_1_35">Sustitutos brutos · σXL = 1.35</option>
+              <option value="equilibrium_sigma_1_50">Sustitutos brutos · σXL = 1.50</option>
+              <option value="equilibrium_sigma_2_00">Sustitutos brutos · σXL = 2.00</option>
+            </select>
+          </label>
+          <button class="secondary-button full-width" id="load-benchmark" type="button">
+            Cargar benchmark validado
+          </button>
+
+          <form id="parameter-form">
+            <details open>
+              <summary>Producción final</summary>
+              <div class="field-grid">
+                <label><span>Capital, α</span><input data-param="alpha" type="number" min="0.05" max="0.90" step="0.01" value="0.33" /></label>
+                <label><span>Peso IA, ωX</span><input data-param="omega_x" type="number" min="0.01" max="0.95" step="0.01" value="0.20" /></label>
+                <label class="wide"><span>Elasticidad trabajo–IA, σXL</span><input data-param="sigma_xl" type="number" min="0.10" max="3.00" step="0.05" value="1.00" /></label>
+              </div>
+            </details>
+
+            <details open>
+              <summary>Investigación en IA</summary>
+              <div class="field-grid">
+                <label><span>Retornos a A, φ</span><input data-param="phi" type="number" min="-0.50" max="0.99" step="0.01" value="0.65" /></label>
+                <label><span>Elasticidad de E, η</span><input data-param="eta" type="number" min="0.05" max="0.95" step="0.01" value="0.45" /></label>
+                <label><span>Peso máquina, ωM</span><input data-param="omega_m" type="number" min="0.01" max="0.95" step="0.01" value="0.35" /></label>
+                <label><span>Elasticidad H–M, σHM</span><input data-param="sigma_hm" type="number" min="1.00" max="6.00" step="0.01" value="2.00" /></label>
+                <label><span>Productividad, χ</span><input data-param="chi" type="number" min="0.00001" max="2.00" step="any" value="0.0983886743" /></label>
+                <label><span>Costo de cómputo, ξ</span><input data-param="xi" type="number" min="0.001" max="20.00" step="0.001" value="1.00" /></label>
+              </div>
+            </details>
+
+            <details>
+              <summary>Hogar y acumulación</summary>
+              <div class="field-grid">
+                <label><span>Crecimiento población, n</span><input data-param="n" data-percent type="number" min="0" max="8" step="0.1" value="1.2" /></label>
+                <label><span>Depreciación, δ</span><input data-param="delta" data-percent type="number" min="0.1" max="30" step="0.1" value="5.0" /></label>
+                <label class="wide"><span>Descuento, ρ</span><input data-param="discount" data-percent type="number" min="0.1" max="30" step="0.1" value="4.0" /></label>
+              </div>
+            </details>
+
+            <details>
+              <summary>Condiciones iniciales</summary>
+              <div class="field-grid">
+                <label><span>Capital, K₀</span><input data-param="capital_initial" type="number" min="0.001" max="1000" step="any" value="2.5093528013" /></label>
+                <label><span>Capacidad, A₀</span><input data-param="capability_initial" type="number" min="0.001" max="1000" step="0.001" value="1.0" /></label>
+                <label class="wide"><span>Población, N₀</span><input data-param="population_initial" type="number" min="0.001" max="1000" step="0.001" value="1.0" /></label>
+              </div>
+            </details>
+
+            <details>
+              <summary>Opciones numéricas</summary>
+              <div class="field-grid">
+                <label><span>Horizonte (años)</span><input data-param="horizon" type="number" min="25" max="3000" step="25" value="2000" /></label>
+                <label><span>Puntos reportados</span><input data-param="points" type="number" min="61" max="401" step="20" value="181" /></label>
+                <label><span>Tolerancia</span><input data-param="tolerance" type="number" min="0.00001" max="0.001" step="0.00001" value="0.00005" /></label>
+                <label><span>Y/K objetivo o conjetura</span><input data-param="terminal_z" type="number" min="0.001" max="100" step="any" value="0.2899267967" /></label>
+                <label class="wide">
+                  <span>Frontera cuando σXL &gt; 1</span>
+                  <select data-param="high_method">
+                    <option value="fixed_horizon" selected>Horizonte fijo · más rápido</option>
+                    <option value="free_boundary">Frontera libre · experimental</option>
+                  </select>
+                </label>
+              </div>
+            </details>
+
+            <div class="condition-panel" id="condition-panel" aria-live="polite"></div>
+
+            <div class="button-row">
+              <button class="primary-button" id="simulate-button" type="submit">
+                Simular nueva rama
+              </button>
+              <button class="danger-button" id="cancel-button" type="button" hidden>
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </aside>
+
+        <section class="results" aria-labelledby="results-title">
+          <div class="result-toolbar">
+            <div>
+              <p class="eyebrow" id="result-kicker">Published benchmark</p>
+              <h2 id="results-title">Trayectoria Cobb–Douglas</h2>
+            </div>
+            <div class="toolbar-actions">
+              <button class="quiet-button" id="download-button" type="button">Descargar CSV</button>
+            </div>
+          </div>
+
+          <div class="solver-status status-pass" id="solver-status" role="status" aria-live="polite">
+            <span class="status-dot"></span>
+            <div>
+              <strong id="status-title">Benchmark validado</strong>
+              <p id="status-detail">Cargando resultados de replicación…</p>
+            </div>
+          </div>
+
+          <div class="metric-grid" id="metric-grid">
+            <article><span>Régimen</span><strong id="metric-regime">—</strong></article>
+            <article><span>Horizonte</span><strong id="metric-horizon">—</strong></article>
+            <article><span>Interés neto final</span><strong id="metric-interest">—</strong></article>
+            <article><span>Participación laboral final</span><strong id="metric-labor-share">—</strong></article>
+          </div>
+
+          <div class="chart-grid">
+            <header class="chart-stage chart-stage-first">
+              <p class="eyebrow">Labor allocation</p>
+              <div><h3>Asignación de la población</h3><span>N → L + H</span></div>
+            </header>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Uses of N</p><h3>Trabajo en producción e investigación</h3></div>
+                <span>participaciones en la población; suman 100%</span>
+              </div>
+              <canvas id="labor-allocation-chart" aria-label="Gráfico de la asignación de la población entre producción e investigación"></canvas>
+              <div class="legend" id="labor-allocation-legend"></div>
+            </article>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Labor income</p><h3>Participación del trabajo en el producto</h3></div>
+                <span>porcentaje del producto</span>
+              </div>
+              <canvas id="labor-income-chart" aria-label="Gráfico de la participación del ingreso laboral de producción y del ingreso laboral total"></canvas>
+              <div class="legend" id="labor-income-legend"></div>
+            </article>
+
+            <header class="chart-stage">
+              <p class="eyebrow">Production block</p>
+              <div><h3>Producción corriente</h3><span>A + U → X; L + X → Z; K + Z → Y</span></div>
+            </header>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Capability & inference</p><h3>Capacidad, cómputo operativo y servicios</h3></div>
+                <span>ln(Vₜ/V₀)</span>
+              </div>
+              <canvas id="ai-services-chart" aria-label="Gráfico logarítmico de capacidad, inferencia y servicios de inteligencia artificial"></canvas>
+              <div class="legend" id="ai-services-legend"></div>
+            </article>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">K + Z → Y</p><h3>Capital, compuesto de servicios y producto</h3></div>
+                <span>ln(Vₜ/V₀)</span>
+              </div>
+              <canvas id="production-levels-chart" aria-label="Gráfico logarítmico de capital, compuesto de servicios y producto por persona"></canvas>
+              <div class="legend" id="production-levels-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Household outcomes</p><h3>Consumo y salario real</h3></div>
+                <span>ln(Vₜ/V₀)</span>
+              </div>
+              <canvas id="household-levels-chart" aria-label="Gráfico logarítmico del consumo por persona y del salario real"></canvas>
+              <div class="legend" id="household-levels-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Growth</p><h3>Crecimiento de la frontera y la economía</h3></div>
+                <span>porcentaje anual</span>
+              </div>
+              <canvas id="growth-chart" aria-label="Gráfico de las tasas de crecimiento de la capacidad, el producto y el consumo"></canvas>
+              <div class="legend" id="growth-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Factor prices</p><h3>Salario e interés</h3></div>
+                <span>porcentaje anual</span>
+              </div>
+              <canvas id="factor-prices-chart" aria-label="Gráfico del crecimiento del salario y la tasa de interés neta"></canvas>
+              <div class="legend" id="factor-prices-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Automation margins</p><h3>IA en producción e investigación</h3></div>
+                <span>participaciones en Z y E</span>
+              </div>
+              <canvas id="automation-shares-chart" aria-label="Gráfico de las participaciones de los servicios de inteligencia artificial y de la investigación automatizada"></canvas>
+              <div class="legend" id="automation-shares-legend"></div>
+            </article>
+
+            <header class="chart-stage">
+              <p class="eyebrow">Integrated AI developer</p>
+              <div><h3>Precio, costo, markup y valor de la frontera</h3><span>A + U → X; beneficios → investigación</span></div>
+            </header>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Price & marginal cost</p><h3>Servicio de IA</h3></div>
+                <span>ln(Vₜ/V₀)</span>
+              </div>
+              <canvas id="ai-price-chart" aria-label="Gráfico logarítmico del precio y del costo marginal de los servicios de inteligencia artificial"></canvas>
+              <div class="legend" id="ai-price-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Market power</p><h3>Markup del monopolista</h3></div>
+                <span>razón precio-costo marginal</span>
+              </div>
+              <canvas id="markup-chart" aria-label="Gráfico del markup del monopolista de inteligencia artificial"></canvas>
+              <div class="legend" id="markup-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Operating profits</p><h3>Rentas que financian investigación</h3></div>
+                <span>porcentaje del producto</span>
+              </div>
+              <canvas id="developer-value-chart" aria-label="Gráfico de los beneficios operativos del desarrollador como participación del producto"></canvas>
+              <div class="legend" id="developer-value-legend"></div>
+            </article>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Frontier valuation</p><h3>Valor sombra de la capacidad de IA</h3></div>
+                <span>logaritmos de qA/Y y qA/K</span>
+              </div>
+              <canvas id="frontier-value-chart" aria-label="Gráfico del valor sombra de la capacidad de inteligencia artificial relativo al producto y al capital"></canvas>
+              <div class="legend" id="frontier-value-legend"></div>
+            </article>
+
+            <header class="chart-stage">
+              <p class="eyebrow">Resource allocation</p>
+              <div><h3>Uso del producto</h3><span>Y → C + I + ξU + ξM</span></div>
+            </header>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Uses of Y</p><h3>Asignación de recursos</h3></div>
+                <span>participaciones en el producto; suman 100%</span>
+              </div>
+              <canvas id="allocation-chart" aria-label="Gráfico de la asignación del producto entre consumo, inversión, inferencia e investigación automatizada"></canvas>
+              <div class="legend" id="allocation-legend"></div>
+            </article>
+
+            <header class="chart-stage">
+              <p class="eyebrow">AI research</p>
+              <div><h3>Producción de mejores sistemas</h3><span>H + M → E; A + E → Ȧ</span></div>
+            </header>
+
+            <article class="chart-card chart-card-wide">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Research quantities</p><h3>Escala de la investigación</h3></div>
+                <span>ln(Vₜ/V₀)</span>
+              </div>
+              <canvas id="research-levels-chart" aria-label="Gráfico logarítmico de investigación humana, automatizada y efectiva"></canvas>
+              <div class="legend" id="research-levels-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Research mix</p><h3>Humanos y máquinas</h3></div>
+                <span>contribución automatizada a E</span>
+              </div>
+              <canvas id="research-composition-chart" aria-label="Gráfico de la contribución automatizada a la investigación efectiva"></canvas>
+              <div class="legend" id="research-composition-legend"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-heading">
+                <div><p class="eyebrow">Research ratio</p><h3>Intensidad humana relativa</h3></div>
+                <span>ln(H/M)</span>
+              </div>
+              <canvas id="research-ratio-chart" aria-label="Gráfico de la relación entre investigación humana y automatizada"></canvas>
+              <div class="legend" id="research-ratio-legend"></div>
+            </article>
+          </div>
+
+          <section class="diagnostics" aria-labelledby="diagnostics-title">
+            <div class="section-heading">
+              <div><p class="eyebrow">Numerical audit</p><h3 id="diagnostics-title">Diagnóstico de equilibrio</h3></div>
+              <span id="diagnostic-verdict" class="verdict">—</span>
+            </div>
+            <div class="diagnostic-grid" id="diagnostic-grid"></div>
+            <p class="diagnostic-note" id="diagnostic-note"></p>
+          </section>
+        </section>
+      </section>
+
+      <section class="method-note">
+        <div>
+          <p class="eyebrow">What is being solved?</p>
+          <h2>Una herramienta de investigación, no una calculadora de pronósticos.</h2>
+        </div>
+        <div class="method-columns">
+          <p>
+            El solver impone acumulación de capital y capacidad, Euler del hogar,
+            costo-sombra del desarrollador, mercados, CES, monopolio y condiciones
+            terminales. Una corrida solo se etiqueta como rama canónica cuando pasa
+            los controles numéricos.
+          </p>
+          <p>
+            La convergencia no demuestra optimalidad dinámica global, existencia o
+            unicidad. Los parámetros son ilustrativos; las fechas singulares son
+            extrapolaciones condicionales y no pronósticos calibrados.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Oliver Pardo · AI Future Paper · 2026</span>
+      <span>El cálculo personalizado ocurre localmente en su navegador.</span>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

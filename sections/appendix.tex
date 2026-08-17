@@ -1,0 +1,659 @@
+\section{Proofs}
+\label{sec:appendix-proofs}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:capital-deepening-benchmark}]
+Let $\widetilde k_t\equiv\widetilde K_t/L_t$. Equations
+\eqref{eq:capital-benchmark-production}--
+\eqref{eq:capital-benchmark-allocation} give
+\begin{equation}
+    \frac{\widetilde Y_t}{\widetilde K_t}
+    =
+    \zeta^\alpha
+    \left[
+        \omega_L\widetilde k_t^{-\varrho_K}
+        +\omega_K(1-\zeta)^{\varrho_K}
+    \right]^{(1-\alpha)/\varrho_K}.
+    \label{eq:proof-capital-benchmark-output-capital}
+\end{equation}
+When $\varrho_K>0$, this expression is strictly decreasing in
+$\widetilde k_t$, diverges as $\widetilde k_t\downarrow0$, and converges to
+$B_K(\zeta)$ as $\widetilde k_t\to\infty$. Capital accumulation implies
+\begin{equation}
+    \frac{\dot{\widetilde k}_t}{\widetilde k_t}
+    =
+    s_K\frac{\widetilde Y_t}{\widetilde K_t}
+    -(\delta+n).
+    \label{eq:proof-capital-benchmark-law}
+\end{equation}
+If $s_KB_K(\zeta)<\delta+n$, monotonicity and the two boundary limits imply
+a unique finite stationary value of $\widetilde k_t$. If
+$s_KB_K(\zeta)>\delta+n$, equation
+\eqref{eq:proof-capital-benchmark-law} converges to the positive constant
+$s_KB_K(\zeta)-\delta-n$. Hence
+$g_{\widetilde K}=n+g_{\widetilde k}=s_KB_K(\zeta)-\delta$; asymptotic
+linearity gives the same rate for output. At equality, the right-hand side is
+positive at every finite $\widetilde k_t$ and converges to zero, so
+$\widetilde k_t$ diverges while its growth rate vanishes.
+
+The inner labor contribution satisfies
+$1-s^{K_2}_t\sim c\widetilde k_t^{-\varrho_K}$ for a positive constant $c$.
+Since $\widetilde Y_t/L_t\sim B_K(\zeta)\widetilde k_t$, the competitive
+wage obeys
+\[
+    w_t
+    =(1-\alpha)(1-s^{K_2}_t)\frac{\widetilde Y_t}{L_t}
+    \sim \widetilde c\,
+    \widetilde k_t^{1-\varrho_K}
+    =\widetilde c\,
+    \widetilde k_t^{1/\sigma_{KL}}
+\]
+for a positive constant $\widetilde c$. The labor share converges to zero and,
+on the positive-growth branch,
+$g_w=g_{\widetilde k}/\sigma_{KL}=g_{\widetilde Y/L}/\sigma_{KL}$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:wage-share-thresholds}]
+The CES expenditure share in \eqref{eq:ai-composite-share} implies
+\[
+    \frac{\partial\log(1-s^X_t)}{\partial\log X_t}
+    =
+    -\left(1-\frac{1}{\sigma_{XL}}\right)s^X_t.
+\]
+The output elasticity follows directly from
+\eqref{eq:final-production}--\eqref{eq:service-composite}. Combining these two
+expressions with \eqref{eq:labor-demand} yields
+\eqref{eq:labor-share-ai-elasticity} and \eqref{eq:wage-ai-elasticity}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:dynamic-labor-share}]
+Log-differentiating \eqref{eq:production-labor-share} and using the CES share
+equation gives \eqref{eq:dynamic-production-labor-share}. Since
+$L_t=(1-h_t)N_t$, $g_{L,t}=n-\dot h_t/(1-h_t)$.
+Log-differentiating \eqref{eq:aggregate-labor-share} then gives
+\eqref{eq:dynamic-aggregate-labor-share}.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:gradual-automation}]
+Equation~\eqref{eq:automation-odds} gives
+\[
+    \frac{s^M_t}{1-s^M_t}
+    =
+    \left(\frac{\omega_M}{\omega_H}\right)^{\sigma_{HM}}
+    \left(\frac{w_t}{\xi}\right)^{\sigma_{HM}-1}.
+\]
+If $\sigma_{HM}>1$ and $w_t/\xi\to\infty$, the right-hand side diverges and
+$s^M_t\to1$. Moreover, the unit cost in
+\eqref{eq:research-unit-cost} converges to
+\[
+    P^E_t\longrightarrow
+    \omega_M^{-\sigma_{HM}/(\sigma_{HM}-1)}\xi.
+\]
+The first expression in \eqref{eq:research-conditional-demands} then implies
+$H_t/E_t\to0$. If $w_t/\xi$ remains bounded, the odds in
+\eqref{eq:automation-odds} remain bounded, so $\sigma_{HM}>1$ does not by itself imply
+$s^M_t\to1$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:research-employment-scale}]
+Take growth rates in equation~\eqref{eq:research-input-ratio} to obtain the first
+identity. Combine it with equation~\eqref{eq:human-research-scale-identity} and
+$g_N=n$ to obtain the second. The two sign conditions follow directly.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:automated-research-wage}]
+Taking the $1/\sigma_{HM}$ power of
+\eqref{eq:research-input-ratio} and solving for the wage gives the equality in
+\eqref{eq:wage-automated-research-lower-bound}. Labor feasibility implies
+$0<H_t\leq N_t$, so $M_t/H_t\geq M_t/N_t$ and gives the inequality. Because
+$\xi$, the CES weights, and $\sigma_{HM}$ are positive and constant,
+$M_t/N_t\to\infty$ implies $w_t\to\infty$. Log differentiation of the equality
+gives \eqref{eq:wage-research-scale-growth}.
+
+For the finite-time claim, suppose instead that $w_t$ were bounded on a terminal
+interval $[t_0,T^*)$. Equation~\eqref{eq:research-input-ratio} would then bound
+$M_t/H_t$. Because $H_t\leq N_t=N_0e^{nt}$ and $T^*<\infty$, both $H_t$ and $M_t$
+would be bounded on that interval. The research CES would therefore bound $E_t$.
+But the ideas-production equation implies
+\[
+    A_t^{1-\phi}
+    =
+    A_{t_0}^{1-\phi}
+    +(1-\phi)\chi\int_{t_0}^{t}E_\tau^\eta\dd\tau.
+\]
+The right-hand side remains finite as $t\uparrow T^*$, contradicting
+$A_t\to\infty$. Hence the wage cannot be bounded on any terminal interval, which
+establishes \eqref{eq:finite-singularity-wage-unbounded}.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:ai-dominated-cd-limit}]
+Equations~\eqref{eq:ai-dominated-ga} and
+\eqref{eq:cd-ai-growth-relations} imply
+$D_{\mathrm{AI}}g_A=\eta n$. A positive finite $g_A$ therefore requires
+$D_{\mathrm{AI}}>0$ and gives \eqref{eq:cd-ai-ga}--
+\eqref{eq:cd-ai-gamma}. The household Euler equation, capital accumulation, the
+developer's research first-order and costate conditions, and the resource constraint
+then give \eqref{eq:aggregate-bg-rates}--\eqref{eq:bg-consumption-share}. The
+derivation of \eqref{eq:bg-research-resource-share} is reported below. Positive
+consumption is necessary for an interior household allocation.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:human-essentiality-acceleration}]
+Equations~\eqref{eq:fully-cd-output-capability-growth} and
+\eqref{eq:cd-research-growth} imply
+\eqref{eq:full-cd-ga}--\eqref{eq:full-cd-gamma}. Equations
+\eqref{eq:cd-ai-ga}--\eqref{eq:cd-ai-gamma} give the AI-dominated rates. Positive
+finite Cobb--Douglas rates follow from
+Assumption~\ref{ass:stable-human-essential-benchmark}; positive finite
+AI-dominated rates require $D_{\mathrm{AI}}>0$. Subtracting the two denominators gives
+\eqref{eq:feedback-denominator-gap}. The resource constraint
+gives \eqref{eq:fully-cd-consumption-feasibility} after substituting
+\eqref{eq:full-cd-ga}--\eqref{eq:fully-cd-inference-share} and
+\eqref{eq:full-cd-research-resource-share}.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:singularity-conditions}]
+Let $z_t\equiv1/g_{A,t}$. Equation
+\eqref{eq:ces-transition-growth-dynamics} implies the linear equation
+\[
+    \dot z_t=-\eta n z_t+D(s^M_t).
+\]
+Multiplying by $e^{\eta nt}$ and integrating gives
+\eqref{eq:time-varying-singularity-condition}. When
+$\sigma_{HM}=1$, $s^M_t=\omega_M$ and the constant denominator is
+$D_{\mathrm{CD}}$. If $D_{\mathrm{CD}}>0$, the logistic equation for $g_A$ has
+the stable positive fixed point $\eta n/D_{\mathrm{CD}}$.
+
+If $D_{\mathrm{CD}}=0$, direct integration gives
+\[
+    g_{A,t}=g_{A,0}e^{\eta nt},
+    \qquad
+    A_t
+    =
+    A_0\exp\left[
+        \frac{g_{A,0}}{\eta n}
+        \left(e^{\eta nt}-1\right)
+    \right].
+\]
+Both expressions are finite for every finite $t$. If $D_{\mathrm{CD}}<0$, the
+solution for the growth rate is
+\[
+    g_{A,t}
+    =
+    \frac{g_{A,0}e^{\eta nt}}
+    {1-\frac{(-D_{\mathrm{CD}})g_{A,0}}{\eta n}
+        \left(e^{\eta nt}-1\right)}.
+\]
+The denominator reaches zero at the date in
+\eqref{eq:constant-feedback-singularity-time}. Near that date, $g_A$ is
+proportional to $(T^*-t)^{-1}$, so both $g_A$ and $A$ diverge. When
+$\sigma_{HM}>1$, $D(s^M_t)$ is time varying. If it remains nonnegative, the bracket
+in \eqref{eq:time-varying-singularity-condition} remains positive. Otherwise the
+same divergence occurs exactly when that bracket reaches zero.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:production-ces-regimes}]
+Let $x_t\equiv X_t/L_t$, $k_t\equiv K_t/L_t$, and write
+$s_t\equiv s^X_t$. Final output per production worker is
+\[
+    \frac{Y_t}{L_t}
+    =
+    k_t^\alpha
+    \left[
+        \omega_L
+        +\omega_Xx_t^{(\sigma_{XL}-1)/\sigma_{XL}}
+    \right]^{(1-\alpha)\sigma_{XL}/(\sigma_{XL}-1)}.
+\]
+Using this expression in the monopoly first-order condition gives
+\begin{equation}
+    \frac{\xi}{A_tk_t^\alpha}
+    =
+    (1-\alpha)s_t[1-\varepsilon(s_t)]
+    \frac{
+        \left[
+            \omega_L
+            +\omega_Xx_t^{(\sigma_{XL}-1)/\sigma_{XL}}
+        \right]^{(1-\alpha)\sigma_{XL}/(\sigma_{XL}-1)}
+    }{x_t},
+    \qquad
+    \varepsilon(s)
+    =
+    \frac{1-s}{\sigma_{XL}}+\alpha s.
+    \label{eq:appendix-normalized-monopoly-condition}
+\end{equation}
+Condition~\eqref{eq:vanishing-normalized-ai-cost} makes the left-hand side
+converge to zero.
+
+For $\sigma_{XL}<1$, revenue approaches zero both as $x_t\to0$ and as
+$x_t\to\infty$. As normalized marginal cost converges to zero, the monopolist
+approaches the interior revenue-maximizing quantity, which satisfies
+$\varepsilon(\bar s^X)=1$.
+Solving this condition gives
+\[
+    \bar s^X=\frac{1-\sigma_{XL}}{1-\alpha\sigma_{XL}}.
+\]
+Because the CES mapping between $s^X$ and $X/L$ is one-to-one, the corresponding
+service ratio is finite.
+
+For $\sigma_{XL}=1$, the CES contribution $s^X_t$ equals the constant weight $\omega_X$.
+
+For $\sigma_{XL}>1$, the right-hand side of
+\eqref{eq:appendix-normalized-monopoly-condition} is strictly positive at every
+finite $x_t>0$ and diverges as $x_t\to0$. It can therefore converge to zero only if
+$x_t\to\infty$. The CES share equation then implies $s^X_t\to1$. Consequently,
+$\varepsilon^X_t\to\alpha$. Multiplying the monopoly first-order condition by
+$X_t/Y_t$ and using $X_t=A_tU_t$ gives
+\[
+    \frac{\xi U_t}{Y_t}\longrightarrow(1-\alpha)^2.
+\]
+Since
+\[
+    Z_t\sim
+    \omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}X_t,
+\]
+substituting $X_t=A_tU_t$ and the limiting compute share into production yields
+\[
+    \frac{Y_t}{K_t}
+    \sim
+    \left[
+        \frac{\omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}(1-\alpha)^2}{\xi}
+    \right]^{(1-\alpha)/\alpha}
+    A_t^{(1-\alpha)/\alpha}.
+\]
+This establishes \eqref{eq:high-sigma-ak-limit}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:production-unit-elasticity-knife-edge}]
+Combining relative demand in \eqref{eq:relative-ai-demand} with the definition of
+$s^X_t$ gives
+\[
+    \frac{s^X_t}{1-s^X_t}
+    =
+    \frac{\omega_X}{\omega_L}
+    \left(\frac{X_t}{L_t}\right)^{(\sigma_{XL}-1)/\sigma_{XL}}
+    =
+    \left(\frac{\omega_X}{\omega_L}\right)^{\sigma_{XL}}
+    \left(\frac{w_t}{p^X_t}\right)^{\sigma_{XL}-1}.
+\]
+For every finite relative price $\mathcal R>0$, the right-hand side converges to
+$\omega_X/\omega_L$ as $\sigma\to1$, which implies
+$s^X(\mathcal R,\sigma)\to\omega_X$. At $\sigma=1$, the exponent on the relative
+price is zero and the share is identically $\omega_X$. For every fixed $\sigma>1$,
+the odds diverge as $\mathcal R\to\infty$, so
+$s^X(\mathcal R,\sigma)\to1$. These observations establish the two
+iterated limits in \eqref{eq:noncommuting-production-limits}.
+
+Finally, set $s^X=\bar s$ in \eqref{eq:production-share-odds} and solve for
+$\mathcal R$ to obtain \eqref{eq:production-share-threshold}. Because
+$\bar s>\omega_X$,
+\[
+    \log\frac{\bar s}{1-\bar s}
+    +\log\frac{\omega_L}{\omega_X}>0.
+\]
+The logarithm of \eqref{eq:production-share-threshold} therefore diverges at rate
+$1/(\sigma-1)$ as $\sigma\downarrow1$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:gross-substitution-no-steady-state}]
+Suppose, to obtain a contradiction, that such a steady state exists and that
+$g_{A,t}\to\bar g_A>0$. Then $A_t\to\infty$.
+The CES share definition gives the exact identity
+\begin{equation}
+    \frac{Z_t}{X_t}
+    =
+    \left(\frac{\omega_X}{s^X_t}\right)^{
+        \sigma_{XL}/(\sigma_{XL}-1)}.
+    \label{eq:appendix-z-x-share-identity}
+\end{equation}
+The monopoly first-order condition and final-good demand for AI services imply
+\begin{equation}
+    \frac{X_t}{Y_t}
+    =
+    \frac{A_t}{\xi}(1-\alpha)s^X_t
+    (1-\varepsilon^X_t).
+    \label{eq:appendix-x-y-monopoly-identity}
+\end{equation}
+Since
+\[
+    \frac{Y_t}{K_t}
+    =
+    \left(
+        \frac{Z_t}{X_t}
+        \frac{X_t}{Y_t}
+        \frac{Y_t}{K_t}
+    \right)^{1-\alpha},
+\]
+substitution of \eqref{eq:appendix-z-x-share-identity} and
+\eqref{eq:appendix-x-y-monopoly-identity}, followed by solving for $Y_t/K_t$,
+yields
+\begin{equation}
+    \frac{Y_t}{K_t}
+    =
+    \left[
+        \frac{1-\alpha}{\xi}
+        \omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}
+        (s^X_t)^{-1/(\sigma_{XL}-1)}
+        (1-\varepsilon^X_t)A_t
+    \right]^{(1-\alpha)/\alpha}.
+    \label{eq:exact-high-sigma-output-capital}
+\end{equation}
+This equality makes clear which parts of the result require AI dominance. If
+$s^X_t\to1$, then $\varepsilon^X_t\to\alpha$, and
+\eqref{eq:exact-high-sigma-output-capital} becomes
+\begin{equation}
+    \frac{Y_t}{K_t}
+    \sim
+    D_{XL}A_t^{(1-\alpha)/\alpha},
+    \qquad
+    D_{XL}
+    =
+    \left[
+        \frac{(1-\alpha)^2}{\xi}
+        \omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}
+    \right]^{(1-\alpha)/\alpha}>0.
+    \label{eq:appendix-high-sigma-output-capital-limit}
+\end{equation}
+Conditional result~\ref{cond:production-ces-regimes} establishes $s^X_t\to1$ under
+\eqref{eq:vanishing-normalized-ai-cost}.
+
+The nonexistence result does not require that additional condition. When
+$\sigma_{XL}>1$ and $s^X_t\in(0,1)$,
+\[
+    (s^X_t)^{-1/(\sigma_{XL}-1)}\geq1,
+    \qquad
+    1-\varepsilon^X_t
+    \geq
+    \min\left\{1-\alpha,1-\frac{1}{\sigma_{XL}}\right\}>0.
+\]
+Equation~\eqref{eq:exact-high-sigma-output-capital} therefore implies
+\begin{equation}
+    \frac{Y_t}{K_t}
+    \geq
+    \underline D_{XL}A_t^{(1-\alpha)/\alpha},
+    \qquad
+    \underline D_{XL}>0.
+    \label{eq:high-sigma-output-capital-lower-bound}
+\end{equation}
+If $A_t\to\infty$, capital demand gives
+\begin{equation}
+    r_t
+    =\alpha\frac{Y_t}{K_t}
+    \longrightarrow\infty.
+    \label{eq:high-sigma-return-divergence}
+\end{equation}
+Because $c_t=C_t/N_t$ and $g_N=n$, the Euler equation implies
+\begin{equation}
+    g_{C,t}
+    =n+r_t-\delta-\rho
+    \longrightarrow\infty.
+    \label{eq:high-sigma-consumption-growth-divergence}
+\end{equation}
+Aggregate consumption cannot consequently grow at a finite constant rate. If $g_A$
+converged to the positive constant $\bar g_A$, the alleged steady state would require
+both finite constant consumption growth and divergent consumption growth. This is the
+required contradiction.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:high-sigma-singular-scaling}]
+Let $z_t\equiv Y_t/K_t$, $u_t\equiv q_tA_t/K_t$, and
+$a_t\equiv g_{A,t}/z_t$. AI dominance and
+\eqref{eq:appendix-high-sigma-output-capital-limit} imply
+\begin{equation}
+    z_t\sim D_{XL}A_t^\vartheta,
+    \qquad
+    \frac{\xi U_t}{Y_t}\longrightarrow d_U,
+    \qquad
+    \frac{r_t}{z_t}\longrightarrow\alpha.
+    \label{eq:appendix-singular-production-limits}
+\end{equation}
+Moreover,
+\begin{equation}
+    \frac{\pi^X_{A,t}/q_t}{z_t}
+    =
+    \frac{A_t\pi^X_{A,t}}{Y_t}\frac{1}{u_t}
+    \longrightarrow
+    \frac{d_U}{u_t}.
+    \label{eq:appendix-singular-profit-value}
+\end{equation}
+
+Let $\bar i$, $\bar c$, $\bar m_R$, $\bar a$, and $\bar u$ denote the
+positive limits of $I/Y$, $C/Y$, $\xi M/Y$, $a_t$, and $u_t$. The household
+Euler equation gives $g_C/z\to\alpha$. Asymptotic regularity of $C/Y$ therefore
+gives $g_Y/z\to\alpha$. Because
+$g_z=\vartheta g_A$ and $g_K/z\to\bar i$, output growth also satisfies
+\[
+    \frac{g_Y}{z}
+    \longrightarrow
+    \bar i+\vartheta\bar a.
+\]
+It follows that
+\begin{equation}
+    \bar i=\alpha-\vartheta\bar a.
+    \label{eq:appendix-singular-investment}
+\end{equation}
+
+When $s^M_t\to1$, the automated-research first-order condition becomes
+$\xi=q_t\eta\dot A_t/M_t$ asymptotically. Hence
+\begin{equation}
+    \bar m_R
+    =\eta\bar u\bar a.
+    \label{eq:appendix-singular-research-share}
+\end{equation}
+The growth rate of $u_t=q_tA_t/K_t$ and the developer's costate equation give
+\begin{align}
+    \frac{g_{u,t}}{z_t}
+    &\longrightarrow
+    \alpha-\bar i+(1-\phi)\bar a-\frac{d_U}{\bar u}\notag\\
+    &=
+    (1-\phi+\vartheta)\bar a-\frac{d_U}{\bar u}.
+    \label{eq:appendix-singular-shadow-ratio}
+\end{align}
+Asymptotic regularity of $u_t$ sets the left-hand side of
+\eqref{eq:appendix-singular-shadow-ratio} equal to zero, so
+\begin{equation}
+    \bar u
+    =
+    \frac{d_U}{(1-\phi+\vartheta)\bar a}.
+    \label{eq:appendix-singular-shadow-limit}
+\end{equation}
+
+Finally, automated research dominance and asymptotic regularity of the
+research-resource share imply
+$g_M/z\to g_Y/z\to\alpha$. Log differentiation of the ideas-production function
+therefore gives
+\[
+    \frac{g_{g_A}}{z}
+    \longrightarrow
+    (\phi-1)\bar a+\eta\alpha.
+\]
+Asymptotic regularity of $a_t=g_A/z$, together with
+$g_z=\vartheta g_A$, implies that the left-hand side also converges to
+$\vartheta\bar a$. Equating the two expressions yields
+\[
+    \bar a
+    =
+    \frac{\eta\alpha}{1-\phi+\vartheta}.
+\]
+Equations~\eqref{eq:appendix-singular-research-share} and
+\eqref{eq:appendix-singular-shadow-limit} then give
+$\bar u=d_U/(\eta\alpha)$ and
+$\bar m_R=\eta d_U/(1-\phi+\vartheta)$. The resource constraint gives
+$\bar c=1-d_U-\bar m_R-\bar i$.
+
+To obtain the time path, use $g_z=\vartheta g_A\sim\vartheta\bar a z$:
+\[
+    \dot z_t
+    \sim
+    \vartheta\bar a z_t^2.
+\]
+Integration gives
+$z_t\sim[\vartheta\bar a(T^*-t)]^{-1}$. Finally,
+\[
+    \frac{K_t}{C_t}
+    =
+    \frac{1}{(C_t/Y_t)z_t}
+    \longrightarrow0,
+    \qquad
+    \frac{q_tA_t}{C_t}
+    =
+    u_t\frac{K_t}{C_t}
+    \longrightarrow0.
+\]
+These limits establish the terminal-value claims.
+
+For the wage claim, combine $g_Y/z\to\alpha$ with the asymptotic expression for
+$z_t$. An application of l'H\^opital's rule gives
+\[
+    \frac{\log Y_t}{\log[1/(T^*-t)]}
+    \longrightarrow
+    \frac{\alpha}{\vartheta\bar a}>0.
+\]
+Thus $Y_t\to\infty$. Population remains finite because
+$N_t=N_0e^{nt}$ and $T^*<\infty$. Equation~\eqref{eq:appendix-singular-research-share}
+and constant $\xi$ imply $M_t/Y_t\to\bar m_R/\xi>0$. Hence
+$Y_t/N_t\to\infty$ and $M_t/N_t\to\infty$. Proposition
+\ref{prop:automated-research-wage} then implies $w_t\to\infty$.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:nonunit-ces-steady-states}]
+Consider first $\sigma_{XL}<1$. Conditional result~\ref{cond:production-ces-regimes}
+implies that $X_t/L_t$ converges to a positive constant. Because $L/N$ also
+converges to a positive constant, $g_L=g_X=n$.
+
+Because $K/Y$ is constant, $g_K=g_Y$. Because $X/L$ is constant, the service
+composite grows at rate $n$. The final-good production function therefore gives
+\[
+    g_Y=\alpha g_Y+(1-\alpha)n,
+\]
+so $g_Y=g_K=n$. Constant $C/Y$ gives $g_C=n$, and the household Euler equation
+implies $r-\delta=\rho$. Labor demand then implies $g_w=0$. Finally, $X=AU$ gives
+$g_U=n-g_A$.
+
+Let $m$ denote the common asymptotic growth rate of the two research inputs. This
+common rate follows from \eqref{eq:research-input-ratio}: the real wage and $\xi$ are
+constant, so $H_t/M_t$ is constant. Constant returns in the research CES then give
+$g_E=m$, while labor feasibility implies $m\leq n$.
+
+Write $a\equiv g_A>0$. Constant capability growth and $g_E=m$ imply
+\begin{equation}
+    (1-\phi)a=\eta m.
+    \label{eq:appendix-low-sigma-ideas-growth}
+\end{equation}
+The research first-order condition $q_tF_{M,t}=\xi$ supplies a second restriction.
+Because $g_{F_M}=a-m$, it implies
+\begin{equation}
+    g_q=m-a.
+    \label{eq:appendix-low-sigma-shadow-value-growth}
+\end{equation}
+At the optimal service quantity, the envelope theorem gives
+\begin{equation}
+    \pi^X_{A,t}=\frac{\xi X_t}{A_t^2},
+    \qquad
+    g_{\pi^X_A}=n-2a.
+    \label{eq:appendix-low-sigma-capability-profit}
+\end{equation}
+Divide the developer's costate equation \eqref{eq:private-costate} by $q_t$. Since
+$F_A=\phi a$, equations~\eqref{eq:appendix-low-sigma-ideas-growth} and
+\eqref{eq:appendix-low-sigma-shadow-value-growth} give
+\begin{equation}
+    \rho
+    =
+    \frac{\pi^X_{A,t}}{q_t}
+    +\phi a+m-a
+    =
+    \frac{\pi^X_{A,t}}{q_t}+(1-\eta)m.
+    \label{eq:appendix-low-sigma-costate-limit}
+\end{equation}
+Because $\rho>n$ and $m\leq n$, the ratio $\pi^X_A/q$ converges to the strictly
+positive constant $\rho-(1-\eta)m$. Its growth rate must therefore converge to zero.
+Equations~\eqref{eq:appendix-low-sigma-shadow-value-growth} and
+\eqref{eq:appendix-low-sigma-capability-profit} imply
+\[
+    g_{\pi^X_A/q}=n-2a-(m-a)=n-m-a,
+\]
+so $m+a=n$. Combining this condition with
+\eqref{eq:appendix-low-sigma-ideas-growth} yields
+\[
+    a=\frac{\eta n}{1-\phi+\eta},
+    \qquad
+    m=\frac{(1-\phi)n}{1-\phi+\eta}.
+\]
+It follows that $g_{H/N}=m-n=-a$ and, because $g_M=m$, $g_Y=n$, and $\xi$ is
+constant, $g_{\xi M/Y}=-a$. This proves part (i). Part (ii) is
+the exact lower-bound argument in the proof of
+Proposition~\ref{prop:gross-substitution-no-steady-state}, with unbounded capability
+imposed as part of the conditional candidate.
+\end{proof}
+
+\begin{proof}[Derivation of Equation~\eqref{eq:bg-research-resource-share}]
+
+In the Cobb--Douglas production benchmark, the envelope theorem and
+\eqref{eq:cd-monopoly} imply
+\[
+    \pi^X_{A,t}=\frac{\beta^2Y_t}{A_t}.
+\]
+The research first-order condition in the AI-dominated limit gives
+\[
+    \xi=q_t\eta\frac{\dot A_t}{M_t},
+    \qquad
+    \frac{q_tA_t}{Y_t}
+    =
+    \frac{m_R^\infty}{\eta g_A^\infty}.
+\]
+Because the right-hand side is constant on a balanced-growth path,
+$g_q=g_Y-g_A$. Dividing \eqref{eq:private-costate} by $q_t$, using
+$r-\delta=\rho+\gamma^\infty$ and $g_Y=n+\gamma^\infty$, and substituting the
+two expressions above gives
+\[
+    \rho-n
+    =
+    \frac{\beta^2\eta g_A^\infty}{m_R^\infty}
+    -(1-\phi)g_A^\infty.
+\]
+Solving for $m_R^\infty$ yields
+\eqref{eq:bg-research-resource-share}.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:sigma-hm-one-high-sigma-xl}]
+The first claim follows directly from
+\eqref{eq:sigma-hm-one-high-sigma-xl-capital-growth}. For the second, set
+$x_t=\log A_t$, $k_t=\log K_t$, $b=\eta\omega_M$, and
+$d=1-\phi-\vartheta b$. After using \eqref{eq:high-sigma-ak-limit} and dropping terms that
+vanish in the high-capability limit, the reduced system can be written as
+\begin{align}
+    \dot x_t
+    &=C\exp\!\left\{\eta\omega_Hnt+bk_t-dx_t\right\},
+    \label{eq:sigma-hm-one-high-sigma-xl-x}\\
+    \dot k_t
+    &=S\exp(\vartheta x_t)-\delta,
+    \qquad C,S>0.
+    \label{eq:sigma-hm-one-high-sigma-xl-k}
+\end{align}
+Define $u_t\equiv\dot x_t\exp(-\vartheta x_t)$. In this asymptotic system,
+\begin{equation}
+    \frac{\dot u_t}{u_t}
+    =
+    \eta\omega_Hn-b\delta
+    +\left[bS-(d+\vartheta)u_t\right]\exp(\vartheta x_t).
+    \label{eq:sigma-hm-one-high-sigma-xl-u}
+\end{equation}
+By the maintained assumption $A_t\to\infty$, $x_t$ eventually becomes arbitrarily
+large. Because $b>0$, equation~\eqref{eq:sigma-hm-one-high-sigma-xl-u} then keeps $u_t$
+bounded away from zero, whether $d+\vartheta$ is positive, zero, or negative. It follows that
+\begin{equation}
+    \frac{\dd}{\dd t}\exp(-\vartheta x_t)=-\vartheta u_t
+\end{equation}
+is eventually bounded above by a negative constant. Hence $\exp(-\vartheta x_t)$ reaches
+zero in finite time, so $A_t$ diverges at a finite date.
+\end{proof}
+
+\begin{proof}[Derivation for conditional result~\ref{cond:knowledge-wedge}]
+Evaluate the planner's marginal net benefit from research compute at the private
+allocation. Using \eqref{eq:private-compute-foc},
+\[
+    Q_tF_{M,t}-\xi
+    =
+    (Q_t-q_t)F_{M,t}.
+\]
+If $Q_t>q_t$, the expression is positive and the planner increases research compute
+locally relative to the private allocation.
+\end{proof}
