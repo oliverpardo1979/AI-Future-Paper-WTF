@@ -1,6 +1,6 @@
 {
-  "generated_on": "2026-08-14",
-  "record_count": 48,
+  "generated_on": "2026-08-17",
+  "record_count": 51,
   "records": [
     {
       "citation_key": "anthropiceconomicindex2026",
@@ -25,13 +25,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "autorkausik2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:63; sections/02_literature.tex:122; sections/03_toy_model.tex:871; sections/03_toy_model.tex:974; sections_axm/02_literature.tex:84",
+      "citation_locations": "sections/02_literature.tex:63; sections/02_literature.tex:122; sections/03_toy_model.tex:871; sections/03_toy_model.tex:974; sections_axm/02_literature.tex:117",
       "entry_type": "misc",
       "authors": "Autor, David H. and Kausik, B. N.",
       "title": "Resolving the Automation Paradox: Falling Labor Share, Rising Wages",
@@ -50,7 +50,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "buenodemesquitaetal2026",
@@ -75,13 +75,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "davidsonetal2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/01_introduction.tex:8; sections_axm/01_introduction.tex:39; sections_axm/01_introduction.tex:48; sections_axm/01_introduction.tex:170; sections_axm/02_literature.tex:16; sections_axm/02_literature.tex:60; sections_axm/03_model.tex:116; sections_axm/03_model.tex:199; sections_axm/03_model.tex:276; sections_axm/03_model.tex:336; sections_axm/04_growth_regimes.tex:323; sections_axm/04_growth_regimes.tex:636; sections_axm/04_growth_regimes.tex:958; sections_axm/06_conclusion.tex:9; sections_axm/06_conclusion.tex:76; sections_axm/06_conclusion.tex:82",
+      "citation_locations": "sections_axm/01_introduction.tex:8; sections_axm/01_introduction.tex:60; sections_axm/01_introduction.tex:71; sections_axm/01_introduction.tex:78; sections_axm/01_introduction.tex:223; sections_axm/02_literature.tex:16; sections_axm/02_literature.tex:31; sections_axm/02_literature.tex:89; sections_axm/03_model.tex:177; sections_axm/03_model.tex:312; sections_axm/03_model.tex:491; sections_axm/03_model.tex:726; sections_axm/04_growth_regimes.tex:280; sections_axm/04_growth_regimes.tex:589; sections_axm/04_growth_regimes.tex:653; sections_axm/04_growth_regimes.tex:942; sections_axm/06_conclusion.tex:9; sections_axm/06_conclusion.tex:40; sections_axm/06_conclusion.tex:122; sections_axm/06_conclusion.tex:140; sections_axm/appendix.tex:1046",
       "entry_type": "techreport",
       "authors": "Davidson, Tom and Halperin, Basil and Houlden, Thomas and Korinek, Anton",
       "title": "When Does Automating AI Research Produce Explosive Growth? Feedback Loops in Innovation Networks",
@@ -100,13 +100,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "iea2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:85; sections_axm/01_introduction.tex:92",
+      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:110; sections_axm/01_introduction.tex:117",
       "entry_type": "techreport",
       "authors": "International Energy Agency",
       "title": "Key Questions on Energy and AI",
@@ -125,13 +125,38 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
+    },
+    {
+      "citation_key": "jonestonetti2026",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_axm/02_literature.tex:77; sections_axm/06_conclusion.tex:70",
+      "entry_type": "unpublished",
+      "authors": "Jones, Charles I. and Tonetti, Christopher",
+      "title": "Past Automation and Future A.I.: How Weak Links Tame the Growth Explosion",
+      "year": "2026",
+      "venue": "",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "doi": "",
+      "document_url": "https://web.stanford.edu/~chadj/JonesTonetti_Automation.pdf",
+      "landing_page_url": "https://christophertonetti.com/research.html",
+      "abstract": "How much of past economic growth is due to automation, and what does this imply about the effects of A.I. in the coming decades? We perform growth accounting using a task-based model for key sectors in the U.S. economy. Historically, TFP growth is driven primarily by improvements in capital productivity. At the task level, capital productivity has grown approximately 4 percentage points per year faster than labor productivity in the U.S. private business sector, and substantially more in some industries. The main benefit of automation is therefore that we use rapidly-improving machines instead of slowly-improving humans on an increasing share of tasks. Looking to the future, we develop an endogenous growth model in which the production of both goods and ideas is endogenously automated and calibrate the model based on our historical accounting. Automation leads economic growth to accelerate, but the acceleration is remarkably slow because of the prominence of weak links, i.e., an elasticity of substitution among tasks substantially less than one. Even when most tasks are automated by rapidly-improving capital, output is constrained by the tasks performed by slowly-improving labor.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://web.stanford.edu/~chadj/JonesTonetti_Automation.pdf",
+      "metadata_source": "authors",
+      "verification_status": "official_landing_page",
+      "topics": "automation; weak links; task model; factor shares; endogenous growth; AI",
+      "notes": "Working paper, Version 0.5, May 2026",
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "korinekmckelvey2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:95; sections/01_introduction.tex:126; sections/02_literature.tex:85; sections/03_toy_model.tex:168; sections/03_toy_model.tex:338; sections/03_toy_model.tex:358; sections_axm/01_introduction.tex:41; sections_axm/01_introduction.tex:67; sections_axm/01_introduction.tex:84; sections_axm/02_literature.tex:40",
+      "citation_locations": "sections/01_introduction.tex:95; sections/01_introduction.tex:126; sections/02_literature.tex:85; sections/03_toy_model.tex:168; sections/03_toy_model.tex:338; sections/03_toy_model.tex:358; sections_axm/01_introduction.tex:62; sections_axm/01_introduction.tex:92; sections_axm/01_introduction.tex:109; sections_axm/02_literature.tex:56; sections_axm/03_model.tex:160",
       "entry_type": "techreport",
       "authors": "Korinek, Anton and McKelvey, Patrick",
       "title": "Measuring the AI Economy",
@@ -150,7 +175,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "metrtimehorizon2026",
@@ -175,7 +200,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "Updated May 8, 2026",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "nvidia2026",
@@ -200,7 +225,7 @@
       "verification_status": "official_filing",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "stanfordaiindex2026",
@@ -225,7 +250,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "yango2026",
@@ -250,13 +275,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "acemoglu2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:36; sections/02_literature.tex:92; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:72",
+      "citation_locations": "sections/02_literature.tex:36; sections/02_literature.tex:92; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:105",
       "entry_type": "article",
       "authors": "Acemoglu, Daron",
       "title": "The Simple Macroeconomics of AI",
@@ -275,7 +300,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "anthropiceconomicindex2025",
@@ -300,7 +325,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "cloudflareradar2025",
@@ -325,13 +350,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "demireretal2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:87; sections/02_literature.tex:101; sections/03_toy_model.tex:170; sections_axm/02_literature.tex:91",
+      "citation_locations": "sections/02_literature.tex:87; sections/02_literature.tex:101; sections/03_toy_model.tex:170; sections_axm/02_literature.tex:147",
       "entry_type": "techreport",
       "authors": "Demirer, Mert and Fradkin, Andrey and Tadelis, Nadav and Peng, Sida",
       "title": "The Emerging Market for Intelligence: Pricing, Supply, and Demand for LLMs",
@@ -350,13 +375,38 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
+    },
+    {
+      "citation_key": "erdiletal2025gate",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_axm/01_introduction.tex:239; sections_axm/02_literature.tex:46",
+      "entry_type": "misc",
+      "authors": "Erdil, Ege and Potlogea, Andrei and Besiroglu, Tamay and Roldan, Edu and Ho, Anson and Sevilla, Jaime and Barnett, Matthew and Vrzla, Matej and Sandler, Robert",
+      "title": "GATE: An Integrated Assessment Model for AI Automation",
+      "year": "2025",
+      "venue": "arXiv:2503.04941",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "doi": "10.48550/arXiv.2503.04941",
+      "document_url": "https://arxiv.org/pdf/2503.04941",
+      "landing_page_url": "https://arxiv.org/abs/2503.04941",
+      "abstract": "Assessing the economic impacts of artificial intelligence requires integrating insights from both computer science and economics. We present the Growth and AI Transition Endogenous model (GATE), a dynamic integrated assessment model that simulates the economic effects of AI automation. GATE combines three key ingredients that have not been brought together in previous work: (1) a compute-based model of AI development, (2) an AI automation framework, and (3) a semi-endogenous growth model featuring endogenous investment and adjustment costs. The model allows users to simulate the economic effects of the transition to advanced AI across a range of potential scenarios. GATE captures the interactions between economic variables, including investment, automation, innovation, and growth, as well as AI-related inputs such as compute and algorithms. This paper explains the model's structure and functionality, emphasizing AI development for economists and economic modeling for the AI community. The model is implemented in an interactive sandbox, enabling users to explore the impact of AI under different parameter choices and policy interventions.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://arxiv.org/abs/2503.04941",
+      "metadata_source": "arXiv",
+      "verification_status": "official_landing_page",
+      "topics": "AI automation; compute; endogenous growth; investment; integrated assessment",
+      "notes": "",
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "iea2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:84; sections_axm/01_introduction.tex:92",
+      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:109; sections_axm/01_introduction.tex:117",
       "entry_type": "techreport",
       "authors": "International Energy Agency",
       "title": "Energy and AI",
@@ -375,13 +425,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "jones2025rd",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:42; sections/02_literature.tex:127; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:33",
+      "citation_locations": "sections/02_literature.tex:42; sections/02_literature.tex:127; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:45",
       "entry_type": "techreport",
       "authors": "Jones, Benjamin F.",
       "title": "Artificial Intelligence in Research and Development",
@@ -400,7 +450,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "kokotajlo2025",
@@ -425,13 +475,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "Scenario forecast published April 3, 2025",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "metrclaude2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:186; sections_axm/01_introduction.tex:101",
+      "citation_locations": "sections/01_introduction.tex:186; sections_axm/01_introduction.tex:126",
       "entry_type": "misc",
       "authors": "Model Evaluation and Threat Research",
       "title": "Details about METR's Preliminary Evaluation of Claude 3.7",
@@ -450,7 +500,32 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
+    },
+    {
+      "citation_key": "restrepo2025agi",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_axm/01_introduction.tex:180; sections_axm/02_literature.tex:123; sections_axm/06_conclusion.tex:68",
+      "entry_type": "techreport",
+      "authors": "Restrepo, Pascual",
+      "title": "We Won't Be Missed: Work and Growth in the AGI World",
+      "year": "2025",
+      "venue": "National Bureau of Economic Research",
+      "volume": "",
+      "number": "34423",
+      "pages": "",
+      "doi": "10.3386/w34423",
+      "document_url": "https://www.nber.org/system/files/working_papers/w34423/w34423.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w34423",
+      "abstract": "This chapter explores the long-run implications of Artificial General Intelligence (AGI) for economic growth and labor markets. AGI makes it feasible to perform all economically valuable work using compute. I distinguish between bottleneck and supplementary work—tasks that are essential versus non-essential for unhindered growth. As computational resources expand: (i) the economy automates all bottleneck work, (ii) some supplementary work may be left exclusively to humans, (iii) output becomes linear in compute and labor and its growth is driven by the expansion of compute, (iv) wages converge to the opportunity cost of computational resources required to reproduce human work, and (v) the share of labor income in GDP converges to zero.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://www.nber.org/papers/w34423",
+      "metadata_source": "NBER",
+      "verification_status": "official_landing_page",
+      "topics": "AGI; compute; bottleneck work; labor share; wages; economic growth",
+      "notes": "",
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "stanfordaiindex2025",
@@ -475,13 +550,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "aumshin2024",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:58; sections_axm/02_literature.tex:54",
+      "citation_locations": "sections/02_literature.tex:58; sections_axm/02_literature.tex:72",
       "entry_type": "techreport",
       "authors": "Aum, Sangmin and Shin, Yongseok",
       "title": "Is Software Eating the World?",
@@ -500,13 +575,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "gans2024",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:99; sections/02_literature.tex:174; sections_axm/02_literature.tex:91",
+      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:99; sections/02_literature.tex:174; sections_axm/02_literature.tex:147",
       "entry_type": "techreport",
       "authors": "Gans, Joshua S.",
       "title": "Market Power in Artificial Intelligence",
@@ -525,7 +600,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "jones2024",
@@ -550,13 +625,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "korinekvipra2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:98; sections/02_literature.tex:174; sections_axm/02_literature.tex:91",
+      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:98; sections/02_literature.tex:174; sections_axm/02_literature.tex:147",
       "entry_type": "techreport",
       "authors": "Korinek, Anton and Vipra, Jai",
       "title": "Concentrating Intelligence: Scaling and Market Structure in Artificial Intelligence",
@@ -575,13 +650,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "Published in Economic Policy, 2025",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "metrrebench2024",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:184; sections_axm/01_introduction.tex:99",
+      "citation_locations": "sections/01_introduction.tex:184; sections_axm/01_introduction.tex:124",
       "entry_type": "misc",
       "authors": "Model Evaluation and Threat Research",
       "title": "Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts",
@@ -600,7 +675,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "sevillaroldan2024",
@@ -625,7 +700,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "guerreiroetal2023",
@@ -650,13 +725,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "Revised May 2026",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "trammellkorinek2023",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:40; sections/02_literature.tex:69; sections/02_literature.tex:120; sections/02_literature.tex:165; sections_axm/02_literature.tex:32; sections_axm/02_literature.tex:85",
+      "citation_locations": "sections/02_literature.tex:40; sections/02_literature.tex:69; sections/02_literature.tex:120; sections/02_literature.tex:165; sections_axm/01_introduction.tex:179; sections_axm/02_literature.tex:43; sections_axm/02_literature.tex:118; sections_axm/02_literature.tex:129; sections_axm/06_conclusion.tex:66",
       "entry_type": "techreport",
       "authors": "Trammell, Philip and Korinek, Anton",
       "title": "Economic Growth under Transformative AI",
@@ -675,7 +750,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "Revised April 2026",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "jones2022semiendogenous",
@@ -700,13 +775,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "semi-endogenous growth; research automation; singularity",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "nordhaus2021",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:39; sections/02_literature.tex:119; sections/02_literature.tex:165; sections_axm/02_literature.tex:31",
+      "citation_locations": "sections/02_literature.tex:39; sections/02_literature.tex:119; sections/02_literature.tex:165; sections_axm/02_literature.tex:42",
       "entry_type": "article",
       "authors": "Nordhaus, William D.",
       "title": "Are We Approaching an Economic Singularity? Information Technology and the Future of Economic Growth",
@@ -725,13 +800,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "acemoglurestrepo2019",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:51; sections/03_toy_model.tex:971; sections_axm/02_literature.tex:71",
+      "citation_locations": "sections/02_literature.tex:51; sections/03_toy_model.tex:971; sections_axm/01_introduction.tex:177; sections_axm/02_literature.tex:104; sections_axm/02_literature.tex:129; sections_axm/06_conclusion.tex:65",
       "entry_type": "article",
       "authors": "Acemoglu, Daron and Restrepo, Pascual",
       "title": "Automation and New Tasks: How Technology Displaces and Reinstates Labor",
@@ -750,13 +825,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "aghionjonesjones2019",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:34; sections/02_literature.tex:92; sections/02_literature.tex:119; sections/02_literature.tex:150; sections/03_toy_model.tex:1792; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:29; sections_axm/04_growth_regimes.tex:29",
+      "citation_locations": "sections/02_literature.tex:34; sections/02_literature.tex:92; sections/02_literature.tex:119; sections/02_literature.tex:150; sections/03_toy_model.tex:1792; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:39; sections_axm/04_growth_regimes.tex:32",
       "entry_type": "incollection",
       "authors": "Aghion, Philippe and Jones, Benjamin F. and Jones, Charles I.",
       "title": "Artificial Intelligence and Economic Growth",
@@ -775,7 +850,7 @@
       "verification_status": "manual_url",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "karabarbounisneiman2014",
@@ -800,13 +875,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "duffypapageorgiou2000",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:23; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:53",
+      "citation_locations": "sections/02_literature.tex:23; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:71",
       "entry_type": "article",
       "authors": "Duffy, John and Papageorgiou, Chris",
       "title": "A Cross-Country Empirical Investigation of the Aggregate Production Function Specification",
@@ -825,7 +900,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "kruselletral2000",
@@ -850,13 +925,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "This editorial synopsis emphasizes the production structure relevant for the capital-deepening benchmark.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "jones1995",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:10; sections_axm/02_literature.tex:5; sections_axm/02_literature.tex:6; sections_axm/02_literature.tex:12",
+      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:10; sections_axm/01_introduction.tex:78; sections_axm/02_literature.tex:5; sections_axm/02_literature.tex:6; sections_axm/02_literature.tex:12; sections_axm/03_model.tex:312",
       "entry_type": "article",
       "authors": "Jones, Charles I.",
       "title": "R&D-Based Models of Economic Growth",
@@ -875,7 +950,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "kremer1993",
@@ -900,7 +975,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "population growth; technological change; long-run growth; hyperbolic dynamics",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "vinge1993",
@@ -925,7 +1000,7 @@
       "verification_status": "manual_url",
       "topics": "technological singularity; superhuman intelligence; AI forecasting",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "aghionhowitt1992",
@@ -950,13 +1025,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "rebelo1991",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:21; sections_axm/02_literature.tex:49",
+      "citation_locations": "sections/02_literature.tex:21; sections_axm/02_literature.tex:67",
       "entry_type": "article",
       "authors": "Rebelo, Sergio",
       "title": "Long-Run Policy Analysis and Long-Run Growth",
@@ -975,13 +1050,13 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "jonesmanuelli1990",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:20; sections_axm/02_literature.tex:49",
+      "citation_locations": "sections/02_literature.tex:20; sections_axm/02_literature.tex:67",
       "entry_type": "article",
       "authors": "Jones, Larry E. and Manuelli, Rodolfo E.",
       "title": "A Convex Model of Equilibrium Growth: Theory and Policy Implications",
@@ -1000,7 +1075,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "romer1990",
@@ -1025,7 +1100,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "",
       "notes": "",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "holmstrom1979",
@@ -1050,7 +1125,7 @@
       "verification_status": "manual_url",
       "topics": "",
       "notes": "No conventional abstract was available in the metadata consulted; this is an editorial synopsis.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "revankar1971",
@@ -1075,7 +1150,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "variable elasticity of substitution; production functions; VES",
       "notes": "No conventional abstract was available in the metadata consulted; this is an editorial synopsis.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "satohofmann1968",
@@ -1100,7 +1175,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "variable elasticity of substitution; production functions; empirical testing",
       "notes": "No conventional abstract was available in the metadata consulted; this is an editorial synopsis.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "good1965",
@@ -1125,13 +1200,13 @@
       "verification_status": "doi_metadata_matched",
       "topics": "intelligence explosion; recursive self-improvement; superintelligence",
       "notes": "No conventional abstract was available in the metadata consulted. This is an editorial synopsis. Some databases date the volume 1966; the chapter is conventionally cited as 1965.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "pitchford1960",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:18; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:49",
+      "citation_locations": "sections/02_literature.tex:18; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:67",
       "entry_type": "article",
       "authors": "Pitchford, John D.",
       "title": "Growth and the Elasticity of Factor Substitution",
@@ -1150,7 +1225,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "No conventional abstract was available on the publisher page; this is an editorial synopsis.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "vonfoerster1960",
@@ -1175,7 +1250,7 @@
       "verification_status": "doi_metadata_matched",
       "topics": "population; finite-time singularity; hyperbolic growth",
       "notes": "PubMed explicitly reports that no abstract is available; this is an editorial synopsis.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     },
     {
       "citation_key": "solow1956",
@@ -1200,7 +1275,7 @@
       "verification_status": "official_landing_page",
       "topics": "",
       "notes": "The publisher page provides an article outline rather than a conventional abstract; this is an editorial synopsis.",
-      "last_verified": "2026-08-14"
+      "last_verified": "2026-08-17"
     }
   ]
 }

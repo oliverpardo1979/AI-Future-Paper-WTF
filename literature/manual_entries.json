@@ -155,6 +155,36 @@
       "metadata_source": "NBER",
       "verification_status": "official_landing_page"
     },
+    "restrepo2025agi": {
+      "abstract": "This chapter explores the long-run implications of Artificial General Intelligence (AGI) for economic growth and labor markets. AGI makes it feasible to perform all economically valuable work using compute. I distinguish between bottleneck and supplementary work—tasks that are essential versus non-essential for unhindered growth. As computational resources expand: (i) the economy automates all bottleneck work, (ii) some supplementary work may be left exclusively to humans, (iii) output becomes linear in compute and labor and its growth is driven by the expansion of compute, (iv) wages converge to the opportunity cost of computational resources required to reproduce human work, and (v) the share of labor income in GDP converges to zero.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://www.nber.org/papers/w34423",
+      "document_url": "https://www.nber.org/system/files/working_papers/w34423/w34423.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w34423",
+      "metadata_source": "NBER",
+      "verification_status": "official_landing_page",
+      "topics": "AGI; compute; bottleneck work; labor share; wages; economic growth"
+    },
+    "erdiletal2025gate": {
+      "abstract": "Assessing the economic impacts of artificial intelligence requires integrating insights from both computer science and economics. We present the Growth and AI Transition Endogenous model (GATE), a dynamic integrated assessment model that simulates the economic effects of AI automation. GATE combines three key ingredients that have not been brought together in previous work: (1) a compute-based model of AI development, (2) an AI automation framework, and (3) a semi-endogenous growth model featuring endogenous investment and adjustment costs. The model allows users to simulate the economic effects of the transition to advanced AI across a range of potential scenarios. GATE captures the interactions between economic variables, including investment, automation, innovation, and growth, as well as AI-related inputs such as compute and algorithms. This paper explains the model's structure and functionality, emphasizing AI development for economists and economic modeling for the AI community. The model is implemented in an interactive sandbox, enabling users to explore the impact of AI under different parameter choices and policy interventions.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://arxiv.org/abs/2503.04941",
+      "document_url": "https://arxiv.org/pdf/2503.04941",
+      "landing_page_url": "https://arxiv.org/abs/2503.04941",
+      "metadata_source": "arXiv",
+      "verification_status": "official_landing_page",
+      "topics": "AI automation; compute; endogenous growth; investment; integrated assessment"
+    },
+    "jonestonetti2026": {
+      "abstract": "How much of past economic growth is due to automation, and what does this imply about the effects of A.I. in the coming decades? We perform growth accounting using a task-based model for key sectors in the U.S. economy. Historically, TFP growth is driven primarily by improvements in capital productivity. At the task level, capital productivity has grown approximately 4 percentage points per year faster than labor productivity in the U.S. private business sector, and substantially more in some industries. The main benefit of automation is therefore that we use rapidly-improving machines instead of slowly-improving humans on an increasing share of tasks. Looking to the future, we develop an endogenous growth model in which the production of both goods and ideas is endogenously automated and calibrate the model based on our historical accounting. Automation leads economic growth to accelerate, but the acceleration is remarkably slow because of the prominence of weak links, i.e., an elasticity of substitution among tasks substantially less than one. Even when most tasks are automated by rapidly-improving capital, output is constrained by the tasks performed by slowly-improving labor.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://web.stanford.edu/~chadj/JonesTonetti_Automation.pdf",
+      "document_url": "https://web.stanford.edu/~chadj/JonesTonetti_Automation.pdf",
+      "landing_page_url": "https://christophertonetti.com/research.html",
+      "metadata_source": "authors",
+      "verification_status": "official_landing_page",
+      "topics": "automation; weak links; task model; factor shares; endogenous growth; AI"
+    },
     "kokotajlo2025": {
       "abstract": "AI 2027 presents a scenario in which AI systems automate a growing share of AI research during 2027, rapidly produce systems with capabilities beyond those of human researchers, and create severe alignment and geopolitical risks. The scenario is a forecast exercise rather than an estimated economic model.",
       "abstract_type": "editorial_summary",

@@ -345,5 +345,13 @@
   "10.3386/w35155": {
     "openalex_error": "URLError",
     "crossref_error": "URLError"
+  },
+  "10.3386/w34423": {
+    "openalex_error": "URLError",
+    "crossref_error": "URLError"
+  },
+  "10.48550/arxiv.2503.04941": {
+    "openalex_error": "URLError",
+    "crossref_error": "URLError"
   }
 }

@@ -36,14 +36,20 @@ unbounded-value deviation in the developer's problem. Neither condition, by
 itself, proves equilibrium existence.
 
 The paper is also related to broader work on AI and economic growth.
-\citet{aghionjonesjones2019} organize the possibility that automation of the idea
-production function may generate very rapid growth and use ``singularity'' for a
-finite-time divergence. \citet{nordhaus2021} develops empirical diagnostics for
-an economic singularity, while \citet{trammellkorinek2023} studies growth under
-transformative AI. \citet{jones2025rd} focuses directly on AI in research and
-development. Relative to this literature, the present paper emphasizes how
-equilibrium prices and two factor-substitution margins determine the strength of
-the feedback and its distributional consequences.
+\citet{aghionjonesjones2019} show how extending automation to idea production can
+generate very rapid growth, while essential tasks that remain difficult to
+automate can preserve bottlenecks; they use ``singularity'' for a finite-time
+divergence. \citet{nordhaus2021} develops empirical diagnostics for an economic
+singularity, while \citet{trammellkorinek2023} distinguishes the automation of
+ordinary production from the automation of R\&D in a model of transformative AI.
+\citet{jones2025rd} focuses directly on AI in research and development.
+\citet{erdiletal2025gate} integrate a compute-based model of AI development, an
+AI-automation block, and semi-endogenous growth with endogenous investment and
+adjustment costs in a quantitative scenario model that abstracts from market
+prices and market structure. Relative to these papers, our narrower analytical
+objective is to determine how equilibrium prices and two factor-substitution
+margins govern the feedback, the allocation of compute, and the distribution of
+output.
 
 The terminology used to distinguish inference output, training activity,
 algorithms, and model capital is informed by the economic accounting proposed by
@@ -53,7 +59,9 @@ algorithmic advances. In our reduced notation, raw inference compute and raw
 research compute are paid uses of final output, while one capability stock
 transforms both into economically useful services. Thus \(A\) combines objects
 that their accounting keeps separate. This is a tractability assumption, not an
-exact relabeling of their framework.
+exact relabeling of their framework. We use their measurement distinctions; the
+decentralized equilibrium and distributional results below do not follow from
+that accounting framework.
 
 The final-production block connects to the older literature on the elasticity of
 substitution and growth \citep{pitchford1960,jonesmanuelli1990,rebelo1991}. CES
@@ -66,6 +74,17 @@ complementarity between equipment and labor but gross substitution between
 software and labor. Their estimates do not calibrate our AI-service elasticity,
 but they support separating software-like inputs from undifferentiated physical
 capital.
+\citet{jonestonetti2026} provide a task-based counterpart to our
+complementarity regime. With an elasticity of substitution below one across
+tasks, the remaining tasks performed by slowly improving labor act as weak links
+and delay the growth acceleration even when most tasks have been automated.
+Their simulations also show that automation alone does not determine the
+limiting factor shares: the capital share can rise to one under complete
+automation, fall toward zero when some weak links can never be automated, or
+remain approximately stable along an intermediate path. The analogy is not an
+identity. Their elasticity aggregates tasks and automation changes the set of
+tasks assigned to capital; our \(\sigma_{XL}\) aggregates production labor and a
+flow of quality-adjusted AI services.
 The complementarity result adds an endogenous-research margin to this older CES
 logic. \citet{davidsonetal2026} also show why, under CES aggregation, the relevant
 object is the current elasticity of the appropriate aggregate with respect to its
@@ -100,6 +119,29 @@ feedback and monopoly supply. \citet{trammellkorinek2023} likewise show that wag
 can rise or fall when output expands and labor income as a share of output contracts. Our conditional
 AI-dominated limit maps that ambiguity into an explicit threshold for the
 smaller of the substitution elasticities in final production and AI research.
+
+\citet{restrepo2025agi} provides the closest antecedent to the limiting
+distributional mechanism. When compute can perform all bottleneck work and
+computational resources expand, output becomes linear in compute and labor,
+growth is driven by compute, and labor's income share converges to zero. That
+paper establishes the broad possibility that removing the human bottleneck can
+make labor asymptotically inessential for aggregate growth. Together with
+\citet{acemoglurestrepo2019} and \citet{trammellkorinek2023}, it means that neither
+the displacement mechanism nor a vanishing labor share is a new result of our
+paper.
+
+The contribution here is to place related mechanisms in a different
+decentralized architecture and characterize their associated prices and
+allocations under the hypotheses of each regime. The two CES elasticities
+determine whether human labor remains a production or research bottleneck; the
+integrated developer links the same capability stock to inference revenue and
+research investment; and the consolidated accounts separate gross capital
+payments, production and research wages, distributed developer profit, inference
+compute, and research compute along the transition. This decomposition also
+limits its own interpretation. Inference and research compute are resource uses,
+not final income recipients. Without an upstream compute sector, the model cannot
+determine whether the associated payments accrue to hardware producers, energy
+suppliers, workers, or owners of additional capital.
 
 Finally, the integrated developer connects the analysis to the emerging literature
 on AI market structure \citep{korinekvipra2025,gans2024,demireretal2025}. Monopoly
