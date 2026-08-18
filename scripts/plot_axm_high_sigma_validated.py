@@ -792,8 +792,12 @@ def draw_transition_allocation_figures(
     """Separate production allocation from the AI-research allocation."""
 
     percent = lambda _rows, values: 100.0 * values
-    normalized_time_ticks = [0.0, 200.0, 400.0, 600.0, 800.0]
-    normalized_time_labels = [f"{value:.0f}" for value in normalized_time_ticks]
+    display_end = float(rows[-1]["time"])
+    model_time_ticks = mechanism.nice_ticks(0.0, display_end, 5)
+    model_time_ticks = [
+        value for value in model_time_ticks if 0.0 <= value <= display_end
+    ]
+    model_time_labels = [f"{value:.0f}" for value in model_time_ticks]
     subtitle = (
         "Percent on linear scales; final-production elasticity "
         f"{metadata['sigma_xl']:.2f}, research elasticity "
@@ -838,8 +842,8 @@ def draw_transition_allocation_figures(
         rows,
         x_value=lambda row: float(row["time"]),
         x_label="Model time (years)",
-        x_tick_values=normalized_time_ticks,
-        x_tick_labels=normalized_time_labels,
+        x_tick_values=model_time_ticks,
+        x_tick_labels=model_time_labels,
         series_label=series_label,
     )
     add_vertical_padding(
@@ -883,8 +887,8 @@ def draw_transition_allocation_figures(
         rows,
         x_value=lambda row: float(row["time"]),
         x_label="Model time (years)",
-        x_tick_values=normalized_time_ticks,
-        x_tick_labels=normalized_time_labels,
+        x_tick_values=model_time_ticks,
+        x_tick_labels=model_time_labels,
         series_label=series_label,
         canvas_height=1700,
         panel_y_offset=100,
