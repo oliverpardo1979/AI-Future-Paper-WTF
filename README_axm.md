@@ -152,5 +152,16 @@ whose shares are negative or fail to sum to one within the documented
 tolerance. In particular, it reconstructs distributed profit \(\Pi/Y\); it does
 not misinterpret the saved operating-profit field as distributed profit.
 
+Generate the exact CES experiment used to illustrate the non-commuting limits
+near \(\sigma_{XL}=1\) with
+
+```
+python scripts/plot_axm_noncommuting_limits.py
+```
+
+This command evaluates the final-production technology directly and writes the
+underlying values to `numerical_axm/noncommuting_limits_technology.csv`. It does
+not solve or approximate an additional equilibrium path.
+
 Compile the manuscript from the repository root with
 `tectonic --keep-logs --outdir build_axm main_axm.tex`.
