@@ -14,7 +14,7 @@ feedback can settle into balanced growth or enter an accelerating branch depend
 on substitution possibilities in both sectors, the strength of the resulting
 feedback, and the branch that is reached.
 
-This paper studies that feedback in a general-equilibrium growth model. Raw
+I develop a general-equilibrium growth model to study that feedback. Raw
 compute has two uses. Inference compute is transformed by current AI capability
 into services used in final production. AI R\&D compute---called research compute
 below---is transformed by the same capability into automated research services.
@@ -54,14 +54,14 @@ global optimality, infinite-horizon well-posedness, or equilibrium existence.
 The distinction between raw compute and the services produced by compute is
 central. A unit of compute is not a unit of intelligence. Current capability
 determines what a given unit of hardware, energy, and datacenter time can produce.
-We therefore write production services as the product of capability and inference
+I therefore write production services as the product of capability and inference
 compute, and automated research services as the product of capability and research
 compute. This capability-times-compute architecture is the one-capability analogue
 of the capability--compute architecture in \citet{davidsonetal2026}. It is also informed by
 the richer distinction between inference output, training activity, algorithms,
-and model capital in \citet{korinekmckelvey2026}. Our reduction is substantive:
+and model capital in \citet{korinekmckelvey2026}. My reduction is substantive:
 one stock \(A\) combines model quality and algorithmic efficiency and augments
-both uses of compute. Our term research compute corresponds to their broad
+both uses of compute. I use the term research compute for their broad
 training-and-R\&D compute category. It includes pretraining, post-training,
 experimentation, synthetic-data generation, automated algorithmic search, and
 compute used by AI systems engaged in research.
@@ -70,7 +70,8 @@ The model deliberately excludes a separate power of the capability stock from it
 baseline research technology. Better AI affects research only by making research
 compute more productive. In the terminology of \citet{davidsonetal2026}, the
 parameter governing returns to the current scale of research and the parameter
-governing intertemporal idea difficulty are distinct. Our \(\eta\) is the former;
+governing intertemporal idea difficulty are distinct. In my specification,
+\(\eta\) is the former;
 the baseline imposes \(b=1\) on the latter. A term such as \(A^{1-b}\) could make
 that second margin free: holding the effective-research index fixed, any \(b>0\)
 introduces the familiar ideas-getting-harder force in the growth rate of capability,
@@ -151,8 +152,8 @@ visible: capability keeps growing in both reported complementarity cases, and
 with substitutable research the automated research-expenditure share approaches
 one. Over the same transition, output per person, consumption per person, and the
 real wage move toward their conditional constant limits, while labor retains a
-positive income share. At unit elasticity, the paper
-derives the growth rates and resource shares of balanced-growth candidates. An
+positive income share. At unit elasticity, I derive the growth rates and resource
+shares of balanced-growth candidates. An
 asymptotically automated research sector places greater weight on the feedback
 from capability to both production and research and therefore tightens the
 condition for positive balanced growth. When the final-production elasticity
@@ -161,8 +162,8 @@ unbounded capability raises \(Y/K\) and the net interest rate without bound. A f
 balanced-growth path is then impossible.
 
 For the regime with gross substitution in both final production and AI research,
-the paper goes beyond this nonexistence result.
-It characterizes a conditional AI-dominated limiting branch of the necessary
+I go beyond this nonexistence result and characterize a conditional AI-dominated
+limiting branch of the necessary
 conditions on which output, capital, consumption, and capability accelerate. The characterization assumes
 that the path remains interior, converges to the postulated ratios, and satisfies
 the monopoly second-order condition. Under those conditions,
@@ -193,7 +194,7 @@ Transformative-AI models also show that sufficiently extensive automation can
 sharply reduce labor's share \citep{trammellkorinek2023}. Most directly,
 \citet{restrepo2025agi} shows that, once compute can perform all bottleneck work,
 the expansion of compute can drive growth while labor's income share converges
-to zero. We do not claim this qualitative limiting possibility as new.
+to zero. I do not claim this qualitative limiting possibility as new.
 
 Across the three regimes, the outer Cobb--Douglas technology fixes the
 final-good firm's gross capital payment at \(\alpha Y\). The
@@ -205,7 +206,7 @@ firm's zero-profit condition with the developer's profit identity gives
 \[
  Y=(r+\delta)K+wL+wH+\Pi+U+M.
 \]
-The model's distributional contribution is to derive how this decomposition
+My distributional contribution is to derive how this decomposition
 changes across the three substitution regimes and along their numerical paths.
 In particular, a fall in \(wL/Y\) is not mechanically a rise in conventional
 capital income or in distributed monopoly profit. Aggregate labor income also
@@ -215,7 +216,7 @@ receives the payments embodied in compute would require an upstream compute
 sector and an ownership structure that the baseline does not contain.
 
 The complementarity and unit-elasticity computations solve the same dated
-equilibrium system under the capability law used in the paper. The two reported
+equilibrium system under the capability law specified in the model. The two reported
 unit-elasticity parameterizations also satisfy the sufficient
 concavity restrictions in Proposition \ref{prop:axm-equilibrium-sufficiency}.
 Their numerical path approximations solve the household Euler equation, the developer's
@@ -236,24 +237,24 @@ arbitrary initial states, or continuation beyond the finite-time boundary.
 
 The closest analytical benchmark is \citet{davidsonetal2026}, who already
 combine nonrival AI capability with rival compute and distinguish technological
-from economic feedback in a multitechnology innovation network. This paper embeds
-a one-capability version of that architecture in a decentralized Ramsey economy
-with an integrated monopolist. Its contribution is to determine inference and
+from economic feedback in a multitechnology innovation network. I embed a
+one-capability version of that architecture in a decentralized Ramsey economy
+with an integrated monopolist. I use this framework to determine inference and
 research compute, production and research labor, saving, prices, and factor shares
 jointly rather than fixing the relevant allocation shares. The two CES margins
 make the local link weights endogenous equilibrium objects determined jointly by
 relative prices and allocations. In the
 unit-elasticity regime, the balanced-growth denominator becomes the scalar analogue
 of Davidson et al.'s feedback-matrix condition. In the conditional AI-dominated
-limit, the model also derives an explicit threshold separating rising from falling
+limit, I also derive an explicit threshold separating rising from falling
 wages: the relevant elasticity is the smaller of the substitution elasticities in
 final production and AI research. This result does not infer wage behavior from
 labor income's share of output.
 
 At a broader quantitative level, \citet{erdiletal2025gate} integrate a
 compute-based model of AI development, AI automation, semi-endogenous growth,
-endogenous investment, and adjustment costs. We therefore do not claim to be the
+endogenous investment, and adjustment costs. I therefore do not claim to be the
 first to combine AI development, automation, investment, and aggregate growth.
-Our narrower objective is to characterize the decentralized prices, research
+My narrower objective is to characterize the decentralized prices, research
 choices, feedback conditions, and payments-and-resource-use accounting generated
 by the two CES substitution margins and an integrated developer.

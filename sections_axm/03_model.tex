@@ -76,8 +76,8 @@ demand and links household labor supply to the two sectors' labor demands.
 \subsection{Final-good firms}
 
 Competitive final-good firms take \(r,w,p_X\) as given and demand capital,
-production labor, and AI services. To preserve the notation used in the rest of
-the paper and in the numerical code, \(K\) and \(X\) are not given agent-specific
+production labor, and AI services. To preserve the notation I use throughout the
+analysis and in the numerical code, I do not give \(K\) and \(X\) agent-specific
 superscripts. In this subsection they denote capital and AI services demanded by
 the final sector; in the household problem \(K\) denotes capital holdings, and in
 the developer's problem \(X\) denotes sales. Equality of the corresponding
@@ -125,7 +125,7 @@ Constant returns and the three first-order conditions imply zero profit:
  \label{eq:axm-final-zero-profit}
 \end{equation}
 Solving the AI-demand condition for its price yields the inverse demand schedule
-\(p_X(X;K,L)\). The notation retains the paper's convention: \(p_X\) without
+\(p_X(X;K,L)\). I use the following notational convention: \(p_X\) without
 arguments denotes the realized price, whereas \(p_X(X;K,L)\) denotes the inverse
 demand function. This schedule comes from final-good firms' optimal demand; it is
 not a first-order condition of the developer. Its inverse absolute elasticity is
@@ -156,11 +156,11 @@ factor shares, and the allocation of labor between the two sectors.
 The model distinguishes two uses of compute. \(U\) is inference compute: raw
 compute used to operate existing AI systems and supply services to final-good
 firms. \(M\) is AI R\&D compute---called research compute below---used to
-improve AI capability. We use the term in the broad training-and-R\&D sense of
+improve AI capability. I use the term in the broad training-and-R\&D sense of
 \citet{korinekmckelvey2026}: it includes pretraining, post-training,
 experimentation, synthetic-data generation, automated algorithmic search, and
 compute used by AI systems engaged in research. The two inputs are flows, not
-stocks of chips. They have the same constant unit resource cost. We choose units
+stocks of chips. They have the same constant unit resource cost. I choose units
 of raw compute so that one unit costs one unit of final output.
 
 \(A\) indexes current AI capability: what one unit of compute can accomplish.
@@ -488,8 +488,8 @@ final-production CES. The equality
 \(s_M=\partial\ln E/\partial\ln(AM)\) combines the research CES with interior
 conditional cost minimization. Evaluated along an interior equilibrium path,
 both are endogenous local feedback weights of the kind emphasized by
-\citet{davidsonetal2026}. Unlike their fractions of tasks already automated, our
-weights are not task shares.
+\citet{davidsonetal2026}. Unlike their fractions of tasks already automated, the
+weights I derive are not task shares.
 
 If the capability law contained the additional term \(A^{1-b}\), then, along
 the interior cost-minimizing allocation, the net local elasticity would be
@@ -499,7 +499,7 @@ ideas-difficulty force need not dominate the automation feedback.
 Let \(q\) be the current-value shadow price of capability. Under the compute-unit
 normalization described above, its rescaled counterpart is
 \(\widetilde q=\xi q\); the untilded \(q\) below is the normalized shadow price
-used throughout the analysis and simulations. The direct first-order conditions
+I use throughout the analysis and simulations. The direct first-order conditions
 for the two research inputs are
 \begin{equation}
  q\frac{\partial\dot A}{\partial H}=w,\qquad
@@ -649,7 +649,7 @@ equilibrium branch is reached or whether output becomes singular because \(M\)
 is endogenous. Moreover, the scale condition just derived becomes
 \(q\chi=P_E\) and no longer determines \(E\). If \(q\chi<P_E\), the developer
 chooses no research at the margin; if \(q\chi>P_E\), its unconstrained problem
-has no finite interior research choice. We maintain \(0<\eta<\alpha<1\) in the
+has no finite interior research choice. I maintain \(0<\eta<\alpha<1\) in the
 baseline. The boundary \(\eta=1\) requires a separate analysis of interiority, existence,
 transversality, and the asymptotic equilibrium.
 \end{remark}
@@ -860,7 +860,7 @@ characterizes a root on the selected interior branch for the candidate
 quantities \(L,H,U,M,X,E,\) and \(Y\). It also determines the prices
 \(r,w,p_X,P_E\) and the shares \(s_X,s_M\). The numerical solver computes an
 interior root and retains it only if the ex-post audit also verifies the monopoly
-second-order condition; no claim of global uniqueness is made.
+second-order condition; I make no claim of global uniqueness.
 
 The reduction now combines conditions that were kept separate in the individual
 problems. The capital law uses the accounting derivation in
@@ -935,7 +935,7 @@ The proof is in the Appendix. The benchmark satisfies these restrictions with
 \(\beta=0.134\), \(\eta(1+\omega_M)=0.2700\), and \(2\eta=0.40\).
 Thus the dated equations are necessary under the usual regularity conditions,
 and the full system is globally sufficient for both reported unit-elasticity
-parameterizations. We do not claim that the displayed transversality conditions
+parameterizations. I do not claim that the displayed transversality conditions
 are universally necessary without additional infinite-horizon regularity. Nor
 does the proposition turn a finite-horizon numerical approximation into a proof
 that an infinite-horizon path exists or satisfies those limits.

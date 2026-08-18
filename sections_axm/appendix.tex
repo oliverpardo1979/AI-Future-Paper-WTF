@@ -6,7 +6,7 @@ Under the usual normality and differentiability conditions, every regular
 interior equilibrium satisfies the dated first-order conditions, state equations,
 and market-clearing identities. The proposition conditions the converse on the
 two displayed transversality restrictions; it does not claim that those limits
-are necessary for every conceivable infinite-horizon optimum. We prove the stated
+are necessary for every conceivable infinite-horizon optimum. I prove the stated
 global sufficiency.
 
 With \(\sigma_{XL}=1\), write
@@ -185,7 +185,7 @@ Define the nonnegative marginal-benefit term
 The costate equation gives
 \(d_t=r_t-\eta s_{M,t}g_{A,t}-g_{q,t}\). The maintained convergence of the
 growth rates and the limit of \(s_M\) derived below therefore imply that \(d_t\)
-has a finite nonnegative limit. We now show, rather than assume, that this limit
+has a finite nonnegative limit. I now show, rather than assume, that this limit
 is strictly positive.
 
 First consider \(\sigma_{HM}=1\). Interior cost minimization gives
@@ -381,7 +381,7 @@ Write
  \qquad
  \theta=\frac{1-\alpha}{\alpha}.
 \]
-We first establish bounds that hold for every admissible research policy. The
+I first establish bounds that hold for every admissible research policy. The
 weighted power mean of order \(\varrho_{HM}<1\) is no larger than its arithmetic
 mean, including the Cobb--Douglas limit and the standard continuous boundary
 extension. Hence
@@ -425,7 +425,7 @@ particular, if expenditure \(S\) is supported on a set of length \(d\leq T\),
 then \(\int c_t^\eta\dd t\leq d^{1-\eta}S^\eta\); shrinking the duration does
 not overturn the bound.
 
-We next bound optimized operating profit. Let
+I next bound optimized operating profit. Let
 \(\overline K=\max_{t\leq T}K_t\) and
 \(\overline L=\max_{t\leq T}L_t\). The weighted power-mean inequality and
 \(\omega_L+\omega_X=1\) imply \(Z\leq\omega_LL+\omega_XX\leq L+X\), including
@@ -775,8 +775,8 @@ Finally, \(g_z\sim\theta g_A\sim\theta hz\), so
 \(\dot z\geq(\theta h/2)z^2\). Integrating the corresponding inequality for
 \(1/z\) shows that \(z\) becomes unbounded in finite additional time. Since
 \(i=\alpha-\theta h>0\), \(g_K\sim iz>0\). Thus \(K\) does not fall near that
-date and \(Y=zK\) also becomes unbounded, meeting the paper's definition of a
-finite-time singularity.
+date and \(Y=zK\) also becomes unbounded, thereby meeting the definition of a
+finite-time singularity used here.
 
 For the wage, log-differentiating the exact relation for \(Aw\) gives
 \[
@@ -802,9 +802,9 @@ limiting positive share of the population. \(\square\)
 \section{Numerical solution algorithm and equilibrium-system audit}
 \label{app:axm-numerical-algorithm}
 
-The numerical exercises are boundary-value calculations. They are not forward
-simulations from arbitrary values of the jump variables. Initial capital and
-capability are fixed at \(K_0\) and \(A_0\), while \(C(0)\) and \(q(0)\) are
+I formulate the numerical exercises as boundary-value calculations, not as forward
+simulations from arbitrary values of the jump variables. I fix initial capital and
+capability at \(K_0\) and \(A_0\), while \(C(0)\) and \(q(0)\) are
 determined jointly with the transition by terminal restrictions. The fixed-horizon
 calculations approximate paths satisfying the dated equilibrium system in
 Section~\ref{sec:axm-dated-equilibrium-system}. The free-boundary calculation
@@ -915,13 +915,13 @@ variables \(C(0)\) and \(q(0)\). They approximate the infinite-horizon selection
 problem; they are not the transversality conditions themselves.
 
 The limiting rates and shares also generate an initial path guess on a uniform
-401-node mesh. Candidate levels are chosen by a small least-squares calculation
+401-node mesh. I choose candidate levels by a small least-squares calculation
 that matches the relevant limiting capital-output and shadow ratios. This guess
 initializes the nonlinear solver but is not retained as an equation. At every
 collocation evaluation, the algorithm solves the intratemporal map and evaluates
 \eqref{eq:axm-numerical-rhs}. The mesh then adapts until the residual tolerance is
-met or the 8,000-node cap is reached. No shooting solution is used for any path
-reported in the paper.
+met or the 8,000-node cap is reached. I do not use a shooting solution for any
+reported path.
 
 With \(A_0=N_0=1\), the same initialization computes the common
 \(K_0=2.9435284733\) from the unit-elasticity, \(\sigma_{HM}=2\) candidate
@@ -938,8 +938,8 @@ The reported unit-elasticity calculations use a solver tolerance of
 calculations use \(\sigma_{XL}=0.75\), a solver tolerance of \(10^{-6}\), and
 independent cold starts at \(T\in\{3{,}600,4{,}050,4{,}500\}\) for each value of
 \(\sigma_{HM}\). Here a cold start means that no solution from a neighboring
-horizon is used; the analytical initial guess is still supplied. The
-\(T=4{,}500\) paths are displayed. Saved output is evaluated from the collocation
+horizon is used; I still supply the analytical initial guess. I display the
+\(T=4{,}500\) paths. Saved output is evaluated from the collocation
 spline at two-year intervals.
 
 The fixed-horizon algorithm can therefore be summarized as follows.
@@ -1027,7 +1027,7 @@ The numerical files and figures denote this estimate by \(T^*(z_T)\). It
 extrapolates beyond the solved boundary and is not the true endpoint established
 by the numerical calculation, a terminal condition, or a calendar forecast. The
 alternative shooting routine retained in the source code is experimental and
-does not generate any result reported in the paper.
+does not generate any result I report.
 
 \subsection{Supplementary transition diagnostic}
 
@@ -1154,7 +1154,7 @@ the free-boundary solver are
 equations to solver objects and diagnostics is stored in
 \path{numerical_axm/equilibrium_equation_map.csv}. Scripts without the
 \texttt{axm} designation that solve or simulate an equilibrium implement the
-earlier research specification and do not generate evidence used in this paper.
+earlier research specification and do not generate evidence for this analysis.
 Plotting scripts read accepted paths and do not solve an additional equilibrium
 system. In particular,
 \path{scripts/plot_axm_distribution_decomposition.py} verifies the hashes in
