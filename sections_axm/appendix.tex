@@ -1156,7 +1156,12 @@ equations to solver objects and diagnostics is stored in
 \texttt{axm} designation that solve or simulate an equilibrium implement the
 earlier research specification and do not generate evidence used in this paper.
 Plotting scripts read accepted paths and do not solve an additional equilibrium
-system.
+system. In particular,
+\path{scripts/plot_axm_distribution_decomposition.py} verifies the hashes in
+all three accepted audit manifests, reconstructs the six components of
+\eqref{eq:axm-consolidated-distribution} from dated prices and quantities, and
+checks nonnegativity and accounting closure before drawing the cross-regime
+figure.
 The reported reruns used Python 3.12.13, NumPy 2.5.2, SciPy 1.18.0, and Pillow
 12.3.0. These versions are pinned in \path{requirements-numerical.txt}.
 Floating-point arithmetic and platform-specific rendering can still prevent

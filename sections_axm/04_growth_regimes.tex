@@ -1093,14 +1093,17 @@ that revenue according to
  \frac{p_XX}{Y}=\frac{U}{Y}+\frac{wH}{Y}+\frac{M}{Y}+\frac{\Pi}{Y}.
  \label{eq:axm-developer-revenue-distribution}
 \end{equation}
-Inference compute, human research, and research compute are paid before the
-residual \(\Pi\) is distributed to the household. Finally, consolidating the two
-producers gives Equation \eqref{eq:axm-consolidated-distribution}. Its
-income terms are \(rK/Y\), \(wN/Y\), and \(\Pi/Y\); depreciation and compute
-account for the difference between their sum and final output. This
-consolidation avoids counting the intermediate payment \(p_XX\) twice. It also
-shows why \(wL/Y\) is not aggregate labor's income share and why \(\alpha\) is
-not the household's net capital-income share.
+Inference compute, the research-labor wage bill, and research compute are paid
+before the residual \(\Pi\) is distributed to the household. Finally,
+consolidating the two producers gives Equation
+\eqref{eq:axm-consolidated-distribution}. Substituting the developer's revenue
+decomposition into the final firm's payment identity yields the six-part
+consolidated decomposition: gross capital payments, production and research wages,
+distributed profit, inference compute, and research compute. The equivalent
+net-income form separates \(rK/Y\), \(wN/Y\), and \(\Pi/Y\) from depreciation
+and compute uses. This consolidation avoids counting the intermediate payment
+\(p_XX\) twice. It also shows why \(wL/Y\) is not aggregate labor's income share
+and why \(\alpha\) is not the household's net capital-income share.
 
 The final-production elasticity does not determine these shares by itself at a
 finite date because \(s_X\) also depends on the equilibrium ratio \(X/L\). The
@@ -1133,7 +1136,7 @@ long-run distribution of an established infinite-horizon equilibrium.
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\caption{Conditional distributional limits in the three benchmark regimes}
+\caption{Payments and resource uses at the conditional limits of the three benchmark regimes}
 \label{tab:axm-distributional-synthesis}
 
 \textit{Panel A: payments by the final-good firm}\par\smallskip
@@ -1160,14 +1163,14 @@ Gross substitutes, \(\sigma_{XL}=1.5\) & 67.000 & 44.890 & 0.000 & 3.172 & 18.93
 \end{tabular}
 
 \medskip
-\textit{Panel C: consolidated decomposition of final output}\par\smallskip
-\begin{tabular}{lrrrrr}
+\textit{Panel C: six-part decomposition of final output}\par\smallskip
+\begin{tabular}{lrrrrrr}
 \toprule
-Final-production regime & \(rK/Y\) & \(wN/Y\) & \(\Pi/Y\) & \(\delta K/Y\) & \((U+M)/Y\)\\
+Final-production regime & \((r+\delta)K/Y\) & \(wL/Y\) & \(wH/Y\) & \(\Pi/Y\) & \(U/Y\) & \(M/Y\)\\
 \midrule
-Complements, \(\sigma_{XL}=0.75\) & 14.667 & 44.741 & 22.259 & 18.333 & 0.000\\
-Unit elasticity, \(\sigma_{XL}=1\) & 14.828 & 53.600 & 11.567 & 18.172 & 1.833\\
-Gross substitutes, \(\sigma_{XL}=1.5\) & 33.000 & 0.000 & 18.938 & 0.000 & 48.062\\
+Complements, \(\sigma_{XL}=0.75\) & 33.000 & 44.741 & 0.000 & 22.259 & 0.000 & 0.000\\
+Unit elasticity, \(\sigma_{XL}=1\) & 33.000 & 53.600 & 0.000 & 11.567 & 1.796 & 0.038\\
+Gross substitutes, \(\sigma_{XL}=1.5\) & 33.000 & 0.000 & 0.000 & 18.938 & 44.890 & 3.172\\
 \bottomrule
 \end{tabular}
 
@@ -1175,7 +1178,10 @@ Gross substitutes, \(\sigma_{XL}=1.5\) & 33.000 & 0.000 & 18.938 & 0.000 & 48.06
 \parbox{0.95\textwidth}{\footnotesize \emph{Notes:} Entries are percentages of
 \(Y\). Zeros denote limiting shares, not zero quantities at every finite date.
 Panel A sums to final output. Panel B decomposes gross AI-service revenue. Panel
-C also sums to final output. Here \(\Pi\) is distributed developer profit after
+C replaces \(p_XX/Y\) in Panel A with the four uses reported in Panel B. Its six
+mutually exclusive components therefore sum to final output without counting
+the intermediate payment twice.
+Here \(\Pi\) is distributed developer profit after
 inference and research expenditure. Operating profit before research
 expenditure is \(\pi=p_XX-U\) and is not reported separately. The first row is
 a conditional regular balanced-growth limit; the second is the unit-elasticity
@@ -1184,18 +1190,45 @@ balanced-growth candidate. The last row is the conditional pre-singular limit fo
 equilibrium. Differences in displayed sums can arise from rounding.}
 \end{table}
 
-The table yields three distributional conclusions. Under production
-complementarity, labor retains a positive share of final output. Because
-research labor and both compute uses vanish relative to output in the
-characterized limit, aggregate labor income approaches production-labor income
-and gross AI-service revenue approaches distributed developer profit. At unit
-elasticity, the final-good firm's payment shares are constant, but the developer
-still divides gross revenue between compute expenditures and profit. On the
-conditional gross-substitutes branch, production and aggregate labor income
-vanish relative to output, whereas gross AI-service revenue approaches
-\(1-\alpha\). Of the 67 percent of output paid for AI services, inference and
-research compute absorb 48.06 percent of output, leaving 18.94 percent as
-distributed profit.
+Table \ref{tab:axm-distributional-synthesis} reports conditional limiting shares
+but not the adjustment toward them. Figure
+\ref{fig:axm-distributional-paths} applies the same six-part decomposition at
+each simulated date of the three \(\sigma_{HM}=2\) numerical benchmarks. The
+horizontal axes report model years, but their ranges differ across panels. The
+figure therefore compares changes in composition, not transition speeds or a
+continuous comparative-static experiment in \(\sigma_{XL}\).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures_axm/axm_distributional_decomposition_paths.png}
+\caption{Consolidated decomposition of final output along the three benchmark
+numerical paths. Each panel stacks the six components in Equation
+\eqref{eq:axm-consolidated-distribution} on a linear 0--100 percent scale; by
+construction, they sum to 100 percent at each date. Panels A and B report the
+candidate-path approximations over their full simulated horizons. Panel C
+reports the conditional \(z_T=128\) finite-boundary approximation only through
+\(Y/K\leq5\); this branch is not a proved infinite-horizon equilibrium. Because
+the horizons differ, horizontal distances are not comparable across panels.}
+\label{fig:axm-distributional-paths}
+\end{figure}
+
+The gross-capital-payment band remains exactly 33 percent of output in every
+panel. The adjustment occurs in the remaining five components. Under production
+complementarity, production-labor income rises from 36.23 to 44.74 percent of
+output while inference compute falls from 3.92 percent to approximately zero;
+distributed profit declines from 26.78 to 22.26 percent. At unit elasticity,
+gross capital payments, production-labor income, and inference compute remain
+constant. The only adjustment is a small reallocation among the research-labor
+wage bill, research compute, and distributed profit.
+
+On the conditional gross-substitutes branch, production-labor income falls from
+63.22 percent to 0.02 percent by the display cutoff, while inference compute
+rises from 1.33 to 44.87 percent and research compute rises from less than 0.01
+to 2.95 percent. Distributed profit rises from 2.43 percent to a maximum of
+19.93 percent and then falls to 19.16 percent at the cutoff, close to---but
+still above---the 18.94 percent conditional limit. The human-research wage bill
+never exceeds 0.063 percent of output on the displayed paths, so its band is
+nearly invisible at the common 0--100 percent scale.
 
 The net interest rate and the capital-income share are also different objects.
 The gross capital-payment share remains \(\alpha\) in every regime, but

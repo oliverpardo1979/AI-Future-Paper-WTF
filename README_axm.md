@@ -37,6 +37,11 @@ one; capability and research productivity are correspondingly rescaled.
 
 ## Reproduce the verified figures and audit
 
+Install the pinned numerical and rendering packages with
+`python -m pip install -r requirements-numerical.txt`. The consolidated
+distribution chart uses DejaVu Sans and fails explicitly if that font is not
+available, rather than silently changing the published layout.
+
 Run `python scripts/simulate_axm_equilibrium.py` and then
 `python scripts/audit_axm_model.py`. The Davidson-style feedback diagnostic is
 generated separately, without rerunning the solver:
@@ -132,6 +137,20 @@ finite-boundary approximations to a conditional pre-singular branch satisfying
 dated necessary conditions." It does not
 establish an infinite-horizon equilibrium, transversality at infinity, or global
 intertemporal optimality.
+
+After all three regime-specific audits pass, generate the cross-regime
+decomposition of final output with
+
+```
+python scripts/plot_axm_distribution_decomposition.py
+```
+
+This plotting-only script verifies every hash recorded in the three accepted
+audit manifests before reading the canonical paths. It reconstructs the six
+mutually exclusive shares from dated prices and quantities and rejects any path
+whose shares are negative or fail to sum to one within the documented
+tolerance. In particular, it reconstructs distributed profit \(\Pi/Y\); it does
+not misinterpret the saved operating-profit field as distributed profit.
 
 Compile the manuscript from the repository root with
 `tectonic --keep-logs --outdir build_axm main_axm.tex`.
