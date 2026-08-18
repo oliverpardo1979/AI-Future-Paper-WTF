@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import html
 import json
 import re
@@ -24,10 +25,13 @@ CACHE_PATH = OUT_DIR / "metadata_cache.json"
 
 FIELDS = [
     "citation_key", "source_group", "cited_in_manuscript", "citation_locations",
+    "cited_in_axm", "citation_locations_axm", "cited_in_legacy",
+    "citation_locations_legacy",
     "entry_type", "authors", "title", "year", "venue", "volume", "number",
     "pages", "doi", "document_url", "landing_page_url", "abstract",
     "abstract_type", "abstract_source_url", "metadata_source",
-    "verification_status", "topics", "notes", "last_verified",
+    "verification_status", "topics", "evidence_type", "method", "key_results",
+    "use_in_axm", "limits_for_axm", "notes", "last_verified",
 ]
 
 
@@ -125,17 +129,40 @@ def normalize_bib_entry(entry: dict[str, str]) -> dict[str, str]:
 
 def citation_locations(root: Path) -> dict[str, list[str]]:
     locations: dict[str, list[str]] = {}
-    pattern = re.compile(r"\\cite\w*\s*(?:\[[^\]]*\]\s*)*\{([^}]+)\}")
+    pattern = re.compile(r"\\cite\w*\s*(?:\[[^\]]*\]\s*)*\{([^}]+)\}", re.DOTALL)
     for path in sorted(root.rglob("*.tex")):
         if any(part in {"build", "tmp", "output"} for part in path.parts):
             continue
-        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-            for match in pattern.finditer(line):
-                for key in match.group(1).split(","):
-                    locations.setdefault(key.strip(), []).append(
-                        f"{path.relative_to(root).as_posix()}:{lineno}"
-                    )
+        text = path.read_text(encoding="utf-8")
+        for match in pattern.finditer(text):
+            lineno = text.count("\n", 0, match.start()) + 1
+            for key in match.group(1).split(","):
+                locations.setdefault(key.strip(), []).append(
+                    f"{path.relative_to(root).as_posix()}:{lineno}"
+                )
     return locations
+
+
+def source_fingerprint(root: Path) -> str:
+    """Hash every checked-in source that determines citation coverage or output."""
+    paths = [
+        BIB_PATH,
+        MANUAL_PATH,
+        CACHE_PATH,
+        OUT_DIR / "browser_template.html",
+        Path(__file__).resolve(),
+    ]
+    paths.extend(
+        path for path in root.rglob("*.tex")
+        if not any(part in {"build", "tmp", "output"} for part in path.parts)
+    )
+    digest = hashlib.sha256()
+    for path in sorted({item.resolve() for item in paths if item.exists()}):
+        digest.update(path.relative_to(root).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
 
 
 def get_json(url: str, attempts: int = 2, timeout: int = 12) -> dict:
@@ -234,7 +261,7 @@ def enrich_entry(entry: dict[str, str], cache: dict, refresh: bool) -> dict[str,
         entry.setdefault("verification_status", "manual_url")
         return entry
     cached = cache.get(doi, {})
-    if refresh or not cached:
+    if refresh:
         fetched: dict[str, str] = {}
         try:
             fetched = fetch_openalex(doi)
@@ -245,9 +272,15 @@ def enrich_entry(entry: dict[str, str], cache: dict, refresh: bool) -> dict[str,
                 merge_nonempty(fetched, fetch_crossref_abstract(doi))
             except Exception as exc:
                 fetched["crossref_error"] = type(exc).__name__
-        cached = fetched
-        cache[doi] = cached
+        # A transient provider failure must not replace a previously valid cache.
+        if fetched.get("title") or fetched.get("abstract"):
+            cached = fetched
+            cache[doi] = cached
         time.sleep(0.1)
+    if not cached:
+        # Offline rebuilds rely on the checked-in manual record when no cache exists.
+        entry.setdefault("verification_status", "manual_doi")
+        return entry
     merge_nonempty(entry, cached)
     entry["verification_status"] = (
         "doi_metadata_matched" if cached.get("title") else "doi_unresolved"
@@ -258,8 +291,20 @@ def enrich_entry(entry: dict[str, str], cache: dict, refresh: bool) -> dict[str,
 def finalize_entry(entry: dict[str, str], locations: dict[str, list[str]]) -> dict[str, str]:
     key = entry["citation_key"]
     refs = locations.get(key, [])
+    axm_refs = [
+        ref for ref in refs
+        if ref.startswith("main_axm.tex:") or ref.startswith("sections_axm/")
+    ]
+    legacy_refs = [
+        ref for ref in refs
+        if ref.startswith("main.tex:") or ref.startswith("sections/")
+    ]
     entry["cited_in_manuscript"] = "yes" if refs else "no"
     entry["citation_locations"] = "; ".join(refs)
+    entry["cited_in_axm"] = "yes" if axm_refs else "no"
+    entry["citation_locations_axm"] = "; ".join(axm_refs)
+    entry["cited_in_legacy"] = "yes" if legacy_refs else "no"
+    entry["citation_locations_legacy"] = "; ".join(legacy_refs)
     if not entry.get("document_url"):
         entry["document_url"] = entry.get("landing_page_url", "")
     if not entry.get("landing_page_url") and entry.get("doi"):
@@ -274,6 +319,11 @@ def finalize_entry(entry: dict[str, str], locations: dict[str, list[str]]) -> di
     entry.setdefault("metadata_source", "manual")
     entry.setdefault("verification_status", "manual")
     entry.setdefault("topics", "")
+    entry.setdefault("evidence_type", "")
+    entry.setdefault("method", "")
+    entry.setdefault("key_results", "")
+    entry.setdefault("use_in_axm", "")
+    entry.setdefault("limits_for_axm", "")
     entry.setdefault("notes", "")
     entry["last_verified"] = date.today().isoformat()
     return {field: str(entry.get(field, "")) for field in FIELDS}
@@ -288,9 +338,10 @@ def write_csv(entries: list[dict[str, str]]) -> None:
         writer.writerows(entries)
 
 
-def write_json(entries: list[dict[str, str]]) -> None:
+def write_json(entries: list[dict[str, str]], fingerprint: str) -> None:
     payload = {
         "generated_on": date.today().isoformat(),
+        "source_fingerprint": fingerprint,
         "record_count": len(entries),
         "records": entries,
     }
@@ -300,8 +351,9 @@ def write_json(entries: list[dict[str, str]]) -> None:
     )
 
 
-def write_html(entries: list[dict[str, str]]) -> None:
+def write_html(entries: list[dict[str, str]], report: dict) -> None:
     data = json.dumps(entries, ensure_ascii=False).replace("</", "<\\/")
+    build = json.dumps(report, ensure_ascii=False).replace("</", "<\\/")
     template = """<!doctype html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -357,22 +409,47 @@ document.querySelector("#results").innerHTML=rows.length?rows.map(x=>"<article><
 "</div></article>").join(""):"<div class='empty'>No hay resultados para estos filtros.</div>"}
 ["q","group","atype"].forEach(id=>document.querySelector("#"+id).addEventListener("input",render));render();
 </script></body></html>"""
+    template_path = OUT_DIR / "browser_template.html"
+    if not template_path.exists():
+        raise FileNotFoundError(f"Literature-browser template not found: {template_path}")
+    template = template_path.read_text(encoding="utf-8")
+    required_placeholders = ("__DATA__", "__BUILD__")
+    missing_placeholders = [
+        placeholder for placeholder in required_placeholders if placeholder not in template
+    ]
+    if missing_placeholders:
+        raise ValueError(
+            "Literature-browser template is missing required placeholders: "
+            + ", ".join(missing_placeholders)
+        )
     (OUT_DIR / "literature_browser.html").write_text(
-        template.replace("__DATA__", data), encoding="utf-8"
+        template.replace("__DATA__", data).replace("__BUILD__", build),
+        encoding="utf-8",
     )
 
 
 def validation_report(
-    entries: list[dict[str, str]], locations: dict[str, list[str]]
+    entries: list[dict[str, str]], locations: dict[str, list[str]], fingerprint: str
 ) -> dict:
-    keys = {entry["citation_key"] for entry in entries}
+    citation_keys: dict[str, list[str]] = {}
+    for entry in entries:
+        citation_keys.setdefault(entry["citation_key"], []).append(entry["source_group"])
+    keys = set(citation_keys)
     cited_keys = set(locations)
     dois: dict[str, list[str]] = {}
     for entry in entries:
         if entry["doi"]:
             dois.setdefault(entry["doi"].lower(), []).append(entry["citation_key"])
+    structured_fields = ("method", "key_results", "use_in_axm", "limits_for_axm")
+    incomplete_structured_reviews = [
+        entry["citation_key"]
+        for entry in entries
+        if any(entry[field] for field in structured_fields)
+        and not all(entry[field] for field in structured_fields)
+    ]
     return {
         "generated_on": date.today().isoformat(),
+        "source_fingerprint": fingerprint,
         "record_count": len(entries),
         "manuscript_bibliography_count": sum(
             entry["source_group"] == "manuscript_bibliography" for entry in entries
@@ -380,10 +457,20 @@ def validation_report(
         "conversation_addition_count": sum(
             entry["source_group"] == "conversation_addition" for entry in entries
         ),
+        "cited_in_axm_count": sum(entry["cited_in_axm"] == "yes" for entry in entries),
+        "cited_in_legacy_count": sum(
+            entry["cited_in_legacy"] == "yes" for entry in entries
+        ),
+        "structured_review_count": sum(
+            bool(entry["method"] or entry["key_results"] or entry["use_in_axm"])
+            for entry in entries
+        ),
+        "incomplete_structured_reviews": incomplete_structured_reviews,
         "source_abstract_count": sum(
             entry["abstract_type"] in {
                 "openalex_indexed_abstract",
                 "crossref_registered_abstract",
+                "semantic_scholar_abstract",
                 "source_abstract",
             }
             for entry in entries
@@ -401,6 +488,9 @@ def validation_report(
             entry["citation_key"] for entry in entries if not entry["document_url"]
         ],
         "cited_keys_missing_from_database": sorted(cited_keys - keys),
+        "duplicate_citation_keys": {
+            key: groups for key, groups in citation_keys.items() if len(groups) > 1
+        },
         "duplicate_dois": {
             doi: doi_keys for doi, doi_keys in dois.items() if len(doi_keys) > 1
         },
@@ -435,18 +525,24 @@ def main() -> None:
         merge_nonempty(entry, overrides.get(entry["citation_key"], {}), overwrite=True)
         finished.append(finalize_entry(entry, locations))
     finished.sort(key=lambda item: (-int(item["year"] or 0), item["authors"], item["title"]))
-    write_csv(finished)
-    write_json(finished)
-    write_html(finished)
     CACHE_PATH.write_text(
         json.dumps(cache, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    report = validation_report(finished, locations)
+    fingerprint = source_fingerprint(ROOT)
+    report = validation_report(finished, locations, fingerprint)
+    write_csv(finished)
+    write_json(finished, fingerprint)
+    write_html(finished, report)
     (OUT_DIR / "validation_report.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if report["cited_keys_missing_from_database"] or report["duplicate_dois"]:
+    if (
+        report["cited_keys_missing_from_database"]
+        or report["duplicate_citation_keys"]
+        or report["duplicate_dois"]
+        or report["incomplete_structured_reviews"]
+    ):
         raise SystemExit(1)
 
 

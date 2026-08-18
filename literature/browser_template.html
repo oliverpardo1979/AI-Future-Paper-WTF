@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revisión de literatura — AI Future Paper</title>
+<style>
+:root{
+  --ink:#17231d;--muted:#607067;--line:#dce4df;--paper:#f7f9f7;--card:#fff;
+  --accent:#176b4d;--tag:#e7f3ed;--warn:#fff5e8
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:#123d2f;color:white;padding:2.4rem max(5vw,1rem)}
+header h1{margin:0 0 .45rem;font:clamp(2rem,5vw,3.5rem)/1.1 Georgia,serif}
+header p{margin:.25rem 0;color:#dbeae3;max-width:74rem}
+.build{font-size:.82rem;opacity:.82}
+.controls{
+  position:sticky;top:0;z-index:2;display:grid;
+  grid-template-columns:minmax(16rem,2fr) repeat(4,minmax(10rem,1fr));gap:.7rem;
+  padding:1rem max(5vw,1rem);background:#f7f9f7ef;border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px)
+}
+label{display:grid;gap:.25rem;color:var(--muted);font-size:.78rem;font-weight:700}
+input,select{
+  width:100%;padding:.75rem;border:1px solid #aebbb4;border-radius:.45rem;
+  background:white;color:var(--ink);font:400 1rem/1.2 system-ui,-apple-system,Segoe UI,sans-serif
+}
+.summary{padding:1rem max(5vw,1rem) 0;color:var(--muted)}
+main{display:grid;gap:1rem;padding:1rem max(5vw,1rem) 3rem}
+article{
+  background:var(--card);border:1px solid var(--line);border-radius:.65rem;padding:1.2rem;
+  box-shadow:0 2px 10px #163c2910
+}
+article.axm{border-left:5px solid var(--accent)}
+h2{font:1.35rem/1.25 Georgia,serif;margin:.25rem 0}
+.meta{color:var(--muted);margin:.3rem 0 .8rem}
+.abstract{max-width:82rem}
+.abstract h3,.review h3{
+  margin:.9rem 0 .25rem;font-size:.82rem;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--muted)
+}
+.abstract p{margin:.2rem 0}
+.tags,.links{display:flex;gap:.4rem;flex-wrap:wrap}
+.tag{background:var(--tag);color:#14583f;border-radius:999px;padding:.15rem .55rem;font-size:.78rem}
+.tag.core{background:#d9eee4;font-weight:750}
+.tag.legacy{background:#eef0ec;color:#536157}
+.tag.topic{background:#f0f4f1;color:#405a4b}
+.review{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:1rem}
+.review section{background:#f4f8f5;border-radius:.45rem;padding:.75rem}
+.review section.limit{background:var(--warn)}
+.review h3{margin:0 0 .25rem}
+.review p{margin:0}
+.links{gap:1rem;margin-top:.9rem}
+a{color:var(--accent);font-weight:650}
+details{margin-top:.85rem;border-top:1px solid var(--line);padding-top:.65rem}
+summary{cursor:pointer;color:var(--muted);font-weight:700}
+.trace{display:grid;grid-template-columns:max-content 1fr;gap:.3rem .8rem;margin:.65rem 0 0;font-size:.86rem}
+.trace dt{font-weight:750}
+.trace dd{margin:0;overflow-wrap:anywhere}
+.empty{text-align:center;color:var(--muted)}
+@media(max-width:1100px){
+  .controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .controls label:first-child{grid-column:1/-1}
+}
+@media(max-width:720px){
+  .controls{grid-template-columns:1fr;position:static}
+  .controls label:first-child{grid-column:auto}
+  .review{grid-template-columns:1fr}
+  .trace{grid-template-columns:1fr}
+  .trace dd{margin-bottom:.4rem}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Revisión de literatura del proyecto</h1>
+  <p>La herramienta reúne la bibliografía de los dos papers y las referencias adicionales discutidas durante la revisión.</p>
+  <p>Separa el abstract o resumen de la fuente de la lectura editorial: método, resultado, uso en el paper A×M y límites de la comparación.</p>
+  <p class="build" id="build"></p>
+</header>
+<section class="controls">
+  <label>Buscar<input id="q" type="search" placeholder="Autor, título, resultado, tema…"></label>
+  <label>Corpus
+    <select id="paper">
+      <option value="">Todos</option>
+      <option value="axm">Paper A×M</option>
+      <option value="legacy">Paper anterior</option>
+      <option value="addition">Referencias adicionales</option>
+    </select>
+  </label>
+  <label>Tema<select id="topic"><option value="">Todos los temas</option></select></label>
+  <label>Tipo de evidencia<select id="etype"><option value="">Todos</option></select></label>
+  <label>Origen del resumen
+    <select id="atype">
+      <option value="">Todos</option>
+      <option value="abstract">Abstract o resumen de la fuente</option>
+      <option value="editorial_summary">Síntesis editorial</option>
+      <option value="unavailable">No disponible</option>
+    </select>
+  </label>
+</section>
+<div class="summary" id="summary"></div>
+<main id="results"></main>
+<script>
+const records=__DATA__;
+const build=__BUILD__;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+const isEditorial=x=>x.abstract_type==="editorial_summary";
+const isAbstract=x=>x.abstract_type&&!["editorial_summary","unavailable"].includes(x.abstract_type);
+const splitTopics=x=>String(x.topics||"").split(";").map(v=>v.trim()).filter(Boolean);
+const sourceLabels={
+  manuscript_bibliography:"Bibliografía del manuscrito",
+  conversation_addition:"Referencia adicional"
+};
+const topicValues=[...new Set(records.flatMap(splitTopics))].sort((a,b)=>a.localeCompare(b,"es"));
+const evidenceValues=[...new Set(records.map(x=>x.evidence_type).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
+document.querySelector("#topic").innerHTML+=topicValues.map(v=>
+  "<option value=\""+esc(v.toLowerCase())+"\">"+esc(v)+"</option>"
+).join("");
+document.querySelector("#etype").innerHTML+=evidenceValues.map(v=>
+  "<option value=\""+esc(v)+"\">"+esc(v)+"</option>"
+).join("");
+document.querySelector("#build").textContent=
+  "Compilado "+build.generated_on+" · "+build.record_count+" registros · huella "+build.source_fingerprint.slice(0,12);
+
+function reviewBlock(x){
+  const rows=[
+    ["Método",x.method,""],
+    ["Resultado principal",x.key_results,""],
+    ["Uso en el paper A×M",x.use_in_axm,""],
+    ["Límite para A×M",x.limits_for_axm,"limit"]
+  ].filter(row=>row[1]);
+  if(!rows.length)return "";
+  return "<div class=\"review\">"+rows.map(row=>
+    "<section class=\""+row[2]+"\"><h3>"+esc(row[0])+"</h3><p>"+esc(row[1])+"</p></section>"
+  ).join("")+"</div>";
+}
+
+function traceBlock(x){
+  const rows=[
+    ["Clave",x.citation_key],
+    ["Tipo de evidencia",x.evidence_type],
+    ["Citas en A×M",x.citation_locations_axm],
+    ["Citas en el paper anterior",x.citation_locations_legacy],
+    ["Tipo de resumen",x.abstract_type],
+    ["Estado de verificación",x.verification_status],
+    ["Fecha de compilación",x.last_verified],
+    ["Notas",x.notes]
+  ].filter(row=>row[1]);
+  return "<details><summary>Metadatos y trazabilidad</summary><dl class=\"trace\">"+
+    rows.map(row=>"<dt>"+esc(row[0])+"</dt><dd>"+esc(row[1])+"</dd>").join("")+
+    "</dl></details>";
+}
+
+function render(){
+  const q=document.querySelector("#q").value.toLowerCase().trim();
+  const paper=document.querySelector("#paper").value;
+  const topic=document.querySelector("#topic").value;
+  const etype=document.querySelector("#etype").value;
+  const atype=document.querySelector("#atype").value;
+  const rows=records.filter(x=>{
+    const hay=Object.values(x).join(" ").toLowerCase();
+    const corpus=!paper||
+      (paper==="axm"&&x.cited_in_axm==="yes")||
+      (paper==="legacy"&&x.cited_in_legacy==="yes")||
+      (paper==="addition"&&x.source_group==="conversation_addition");
+    const topicMatch=!topic||splitTopics(x).some(v=>v.toLowerCase()===topic);
+    const abstractMatch=!atype||
+      (atype==="editorial_summary"&&isEditorial(x))||
+      (atype==="abstract"&&isAbstract(x))||
+      (atype==="unavailable"&&x.abstract_type==="unavailable");
+    return(!q||hay.includes(q))&&corpus&&topicMatch&&(!etype||x.evidence_type===etype)&&abstractMatch;
+  });
+  const axmShown=rows.filter(x=>x.cited_in_axm==="yes").length;
+  document.querySelector("#summary").textContent=
+    rows.length+" de "+records.length+" referencias · "+axmShown+" citadas en A×M";
+  document.querySelector("#results").innerHTML=rows.length?rows.map(x=>{
+    const topics=splitTopics(x).map(v=>"<span class=\"tag topic\">"+esc(v)+"</span>").join("");
+    const abstractLabel=isEditorial(x)?"Síntesis editorial":"Abstract o resumen de la fuente";
+    let html="<article class=\""+(x.cited_in_axm==="yes"?"axm":"")+"\"><div class=\"tags\">";
+    html+="<span class=\"tag\">"+esc(x.year)+"</span>";
+    if(x.cited_in_axm==="yes")html+="<span class=\"tag core\">Citado en A×M</span>";
+    if(x.cited_in_legacy==="yes")html+="<span class=\"tag legacy\">Paper anterior</span>";
+    html+="<span class=\"tag\">"+esc(sourceLabels[x.source_group]||x.source_group)+"</span></div>";
+    html+="<h2>"+esc(x.title)+"</h2><div class=\"meta\">"+esc(x.authors)+" · "+esc(x.venue)+"</div>";
+    html+="<div class=\"tags\">"+topics+"</div>";
+    html+="<div class=\"abstract\"><h3>"+esc(abstractLabel)+"</h3><p>"+
+      (esc(x.abstract)||"<em>Resumen no disponible.</em>")+"</p></div>";
+    html+=reviewBlock(x)+"<div class=\"links\">";
+    if(x.document_url)html+="<a href=\""+esc(x.document_url)+"\" target=\"_blank\" rel=\"noopener\">Documento</a>";
+    if(x.landing_page_url&&x.landing_page_url!==x.document_url)
+      html+="<a href=\""+esc(x.landing_page_url)+"\" target=\"_blank\" rel=\"noopener\">Ficha oficial</a>";
+    if(x.abstract_source_url)
+      html+="<a href=\""+esc(x.abstract_source_url)+"\" target=\"_blank\" rel=\"noopener\">Fuente del resumen</a>";
+    html+="</div>"+traceBlock(x)+"</article>";
+    return html;
+  }).join(""):"<div class=\"empty\">No hay resultados para estos filtros.</div>";
+}
+["q","paper","topic","etype","atype"].forEach(id=>
+  document.querySelector("#"+id).addEventListener("input",render)
+);
+render();
+</script>
+</body>
+</html>
