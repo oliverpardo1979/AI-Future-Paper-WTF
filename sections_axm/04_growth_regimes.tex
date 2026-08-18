@@ -48,12 +48,12 @@ Regular interior limit has bounded output per person,
 \(s_M=\omega_M\), and
 \(g_A=n/(1+\eta^{-1}-\omega_M)\) &
 Human-essential balanced-growth candidate characterized below &
- No finite-rate balanced growth if AI services dominate the labor--AI composite; the singular form is not characterized\\
+ No finite-rate balanced growth if AI production services dominate the labor--AI composite; the singular form is not characterized\\
 \(\sigma_{HM}>1\) &
  Regular interior limit has bounded output per person,
  \(s_M\to1\), and \(g_A=\eta n\) &
  Automated balanced-growth candidate characterized below &
- No finite-rate balanced growth if AI services dominate the labor--AI composite; conditional singular ratios are characterized\\
+ No finite-rate balanced growth if AI production services dominate the labor--AI composite; conditional singular ratios are characterized\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -79,14 +79,14 @@ and therefore
   (Aw)^{\sigma_{HM}-1}.
  \label{eq:axm-automation-odds}
 \end{equation}
-The unit resource cost of automated research services is \(1/A\). The relevant
+The unit resource cost of AI research services is \(1/A\). The relevant
 relative price is therefore \(Aw=w/(1/A)\): the price of human research relative
-to the price of automated research services.
+to the price of AI research services.
 
 \begin{proposition}[Research automation]
 \label{prop:axm-research-automation}
 Along any interior path on which \(Aw\to\infty\), the research-expenditure share
-allocated to automated services satisfies
+allocated to AI research services satisfies
 \[
  s_M\to
  \begin{cases}
@@ -95,13 +95,13 @@ allocated to automated services satisfies
   1,&\sigma_{HM}>1.
  \end{cases}
 \]
-For \(\sigma_{HM}>1\), automated research services asymptotically dominate the
+For \(\sigma_{HM}>1\), AI research services asymptotically dominate the
 effective-research index even though human research can remain positive at every
 finite date.
 \end{proposition}
 
 Gross substitution alone does not guarantee automation: the relative-price
-condition \(Aw\to\infty\) is essential. The result concerns automated services
+condition \(Aw\to\infty\) is essential. The result concerns AI research services
 \(AM\), not raw compute \(M\); a higher \(AM/H\) can reflect more compute,
 better capability, or both.
 
@@ -209,7 +209,7 @@ Thus labor retains a positive income share even though capability is unbounded.
 \end{proposition}
 
 This is a conditional result, not an existence theorem. It shows that unbounded
-capability does not sustain per-capita growth when labor and AI services are
+capability does not sustain per-capita growth when labor and AI production services are
 complements. Unlike the CES bottleneck in \citet{davidsonetal2026}, the monopoly
 optimum keeps \(X/L\) finite: inference compute \(U=X/A\) vanishes relative to
 output while labor remains the limiting input.
@@ -319,7 +319,7 @@ compute vanishes relative to output, and labor retains a positive income share.
 \centering
 \includegraphics[width=\textwidth]{figures_axm/axm_complements_factor_shares_automation.png}
 \caption{Production and labor allocation with \(\sigma_{XL}=0.75\). Here
-\(s_X\) is AI services' technological share within the labor--AI composite, not
+\(s_X\) is AI production services' technological share within the labor--AI composite, not
 their final-output income share. Ratios and shares use linear scales; the
 \(L/N\) panel uses a focused vertical scale. Horizontal reference lines are
 conditional analytical limits.}
@@ -335,7 +335,7 @@ one and \(H/N\) approaches zero, while capability continues to rise.
 \includegraphics[width=\textwidth]{figures_axm/axm_complements_research_resources.png}
 \caption{AI research with \(\sigma_{XL}=0.75\). Capability is shown as a
 natural-log change from date zero. The human-research population share, the
-automated research-expenditure share, and research compute relative to output
+share of research expenditure allocated to AI research services, and research compute relative to output
 are percentages on linear scales. Positive allocations at every saved finite
 date preserve interiority even as \(H/N\) and \(M/Y\) approach zero.}
 \label{fig:axm-complement-research}
@@ -362,7 +362,7 @@ Set \(\sigma_{XL}=1\), and define
  \label{eq:axm-cd-definitions}
 \end{equation}
 Combining the final-good firm's AI-demand condition, the monopolist's markup
-condition, and AI-service-market clearing with \(X=AU\) gives
+condition, and market clearing for AI production services with \(X=AU\) gives
 \begin{equation}
  \frac{U}{Y}=\beta^2,
  \label{eq:axm-inference-share-cd}
@@ -380,7 +380,7 @@ equation gives
  \label{eq:axm-output-growth-cd}
 \end{equation}
 
-It is useful to treat Cobb--Douglas research and asymptotically automated research
+It is useful to treat Cobb--Douglas research and research that asymptotically relies on AI research services
 separately. Let
 \begin{equation}
  \bar s=
@@ -546,11 +546,11 @@ allocations, the developer's costate, and the transversality conditions.
 \subsubsection{\texorpdfstring{Case II: human-essential research, \(\sigma_{HM}=1\)}{Case II: human-essential research, sigma HM = 1}}
 \label{sec:axm-case-human-essential}
 
-When \(\sigma_{XL}=\sigma_{HM}=1\), the relevant limiting automated
-research-expenditure share is \(\bar s=\omega_M\). A balanced-growth candidate
+When \(\sigma_{XL}=\sigma_{HM}=1\), the limiting share of research expenditure
+allocated to AI research services is \(\bar s=\omega_M\). A balanced-growth candidate
 therefore requires \(D(\omega_M)>0\) and the remaining feasibility conditions in
 Proposition \ref{prop:axm-cd-bgp}. Human research and population grow at the same
-rate, so \(H/N\) converges to a positive constant. The quantity of automated
+rate, so \(H/N\) converges to a positive constant. The quantity of AI
 research services can nevertheless grow faster than human research; human input
 remains essential even as its quantity becomes small relative to \(AM\).
 
@@ -574,8 +574,8 @@ conditions would fall under Proposition
 \ref{prop:axm-equilibrium-sufficiency}.
 
 Figure \ref{fig:axm-growth-returns} shows that the two research technologies
-produce similar macroeconomic rates initially and separate as automated research
-becomes important. The Euler equation implies
+produce similar macroeconomic rates initially and separate as AI research
+services become important. The Euler equation implies
 \(r=\rho+g_{C/N}\) on every path.
 
 \begin{figure}[H]
@@ -629,10 +629,10 @@ Let
  \label{eq:axm-theta}
 \end{equation}
 Along an interior branch with \(\sigma_{XL}>1\), \(s_X\to1\), and
-\(A\to\infty\), AI services dominate the labor--AI CES aggregate. Capital
+\(A\to\infty\), AI production services dominate the labor--AI CES aggregate. Capital
 remains a separate input with elasticity \(\alpha\). Combining the final-good
 firm's AI-demand condition, the monopolist's markup condition,
-AI-service-market clearing with \(X=AU\), and final production then gives
+market clearing for AI production services with \(X=AU\), and final production then gives
 \begin{equation}
  \frac{U}{Y}\to(1-\alpha)^2,\qquad
  \frac{Y}{K}\sim \mathcal D A^\theta
@@ -837,7 +837,7 @@ displayed path.
 \includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_production_allocation.png}
 \caption{Production and income allocation along the finite-boundary
 approximation with \(\sigma_{XL}=1.5\) and \(\sigma_{HM}=2\). All panels use
-linear percentages and stop at \(Y/K\leq5\), reached near \(t=1664.5\). Here \(s_X\) is AI services'
+linear percentages and stop at \(Y/K\leq5\), reached near \(t=1664.5\). Here \(s_X\) is AI production services'
 technological share within the labor--AI composite, not an output-income share.}
 \label{fig:axm-high-sigma-production}
 \end{figure}
@@ -867,9 +867,9 @@ final-good sector implies
 \end{equation}
 Thus \(\alpha\) is the gross capital-payment share, including depreciation, and
 \(s_X\) determines how the remaining output is divided between production labor
-and AI-service purchases.
+and purchases of AI production services.
 
-Gross AI-service revenue is not developer profit:
+Gross revenue from AI production services is not developer profit:
 \begin{equation}
  \frac{p_XX}{Y}=\frac{U}{Y}+\frac{wH}{Y}+\frac{M}{Y}+\frac{\Pi}{Y}.
  \label{eq:axm-developer-revenue-distribution}
@@ -895,7 +895,7 @@ complementarity, for any \(0<\sigma_{XL}<1\) satisfying the hypotheses of Propos
 At unit elasticity, \(s_X=\omega_X\), so the final-good firm's gross payment
 shares are constant. On the conditional AI-dominated gross-substitutes branch,
 \(s_X\to1\), aggregate labor income vanishes relative to output, and gross
-AI-service revenue approaches \(1-\alpha\).
+revenue from AI production services approaches \(1-\alpha\).
 
 Table \ref{tab:axm-distributional-synthesis} reports the conditional limits for
 the three \(\sigma_{HM}=2\) benchmarks. The first two rows use balanced-growth
@@ -920,7 +920,7 @@ Gross substitutes, \(\sigma_{XL}=1.5\) & 33.000 & 0.000 & 0.000 & 18.938 & 44.89
 \medskip
 \parbox{0.95\textwidth}{\footnotesize \emph{Notes:} Entries are percentages of
 \(Y\). The six components sum to final output without counting the intermediate
-AI-service payment twice. Zeros are limiting shares, not zero quantities at every
+payment for AI production services twice. Zeros are limiting shares, not zero quantities at every
 finite date. The first two rows are balanced-growth limits or candidates; the
 last is the conditional pre-singular limit, not a proved infinite-horizon
 equilibrium.}

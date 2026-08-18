@@ -1,4 +1,4 @@
-"""Finite-horizon perfect-foresight path approximations with A*M research services.
+"""Finite-horizon perfect-foresight path approximations with A*M AI research services.
 
 This module replaces the proportional-investment and proportional-research
 closure in ``simulate_model.py`` with the household Euler equation and the
@@ -11,7 +11,7 @@ The research technology is the generalized CES
 F(A,H,M)=chi*((1-omega_m)*H**rho_hm + omega_m*(A*M)**rho_hm)**(eta/rho_hm),
 where rho_hm=(sigma_hm-1)/sigma_hm, or equivalently
 chi*E(H,A*M)**eta, where E is the effective-research CES index. Thus U and M are raw compute, A*U is
-inference output, and A*M is automated-research services. This file is
+AI production services, and A*M is AI research services. This file is
 intentionally separate from ``simulate_equilibrium``:
 the extra A inside the research CES changes both the research price and the
 developer's costate equation.
@@ -360,7 +360,7 @@ def equilibrium_static_block(
     _, block = allocation(logit_human_share)
 
     sigma = parameters.sigma_hm
-    # Conditional demand is for automated-research services R=A*M.  The
+    # Conditional demand is for AI research services R=A*M.  The
     # resource constraint prices normalized raw compute M=R/A at one.
     log_automated_research_services = (
         sigma * math.log(parameters.omega_m)
@@ -1487,7 +1487,7 @@ def draw_equilibrium_figures(
         "Change in natural logs from each path's date-zero per-capita level",
         [
             {"title": "Inference compute per capita", "field": "log_inference_compute", "transform": per_capita_log_change},
-            {"title": "AI services per capita", "field": "log_ai_services", "transform": per_capita_log_change},
+            {"title": "AI production services per capita", "field": "log_ai_services", "transform": per_capita_log_change},
             {"title": "Service composite per capita", "field": "log_service_composite", "transform": per_capita_log_change},
             {"title": "Final output per capita", "field": "log_output_per_capita", "transform": log_change},
         ],
@@ -1531,8 +1531,8 @@ def draw_equilibrium_figures(
         "Perfect-foresight equilibrium-path approximation: the integrated AI developer",
         "Natural-log price changes, markup ratio, and operating profits as a share of output",
         [
-            {"title": "AI-service price", "field": "log_ai_price", "transform": log_change},
-            {"title": "AI-service marginal cost", "field": "log_ai_marginal_cost", "transform": log_change},
+            {"title": "Price of AI production services", "field": "log_ai_price", "transform": log_change},
+            {"title": "Marginal cost of AI production services", "field": "log_ai_marginal_cost", "transform": log_change},
             {"title": "Price / marginal cost", "field": "ai_markup"},
             {"title": "Operating profits / output", "field": "ai_profit_share", "transform": percent, "adaptive_percent_min_decimals": 1},
         ],
@@ -1552,7 +1552,7 @@ def draw_equilibrium_figures(
         [
             {"title": "Capability growth", "field": "capability_growth", "transform": percent, "adaptive_percent_min_decimals": 1},
             {"title": "Output growth per capita", "field": "output_per_capita_growth", "transform": percent, "adaptive_percent_min_decimals": 1, "reference_y": 0.0},
-            {"title": "Automated research expenditure share", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},
+            {"title": "Research expenditure on AI research services", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},
             {"title": "Human researchers / population", "field": "human_research_share", "transform": percent, "adaptive_percent_min_decimals": 2},
         ],
         cobb_douglas_rows,
@@ -1611,9 +1611,9 @@ def draw_equilibrium_figures(
         "Capability growth is an annual percent rate; both shares are percentages; AM/H is a natural-log change",
         [
             {"title": "Capability growth", "field": "capability_growth", "transform": percent, "adaptive_percent_min_decimals": 1},
-            {"title": "Automated research expenditure share", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},
+            {"title": "Research expenditure on AI research services", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},
             {"title": "Human researchers / population", "field": "human_research_share", "transform": percent, "adaptive_percent_min_decimals": 2},
-            {"title": "Automated research services / human research", "field": "human_to_automated_service_ratio", "transform": automated_to_human_service_log_change},
+            {"title": "AI research services / human research", "field": "human_to_automated_service_ratio", "transform": automated_to_human_service_log_change},
         ],
         research_technology_rows,
         research_labels,

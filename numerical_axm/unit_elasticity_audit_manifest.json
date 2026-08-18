@@ -18,7 +18,7 @@
       6200.0
     ]
   },
-  "created_utc": "2026-08-17T19:54:17.989327+00:00",
+  "created_utc": "2026-08-18T10:58:26.704635+00:00",
   "files": {
     "audit_script": {
       "bytes": 42243,
@@ -26,9 +26,9 @@
       "sha256": "17c240f1d9341b745e9f2f46704c16e995e7c91600f6eedece405e7e3726590a"
     },
     "generator_script": {
-      "bytes": 71631,
+      "bytes": 71669,
       "path": "scripts/simulate_axm_equilibrium.py",
-      "sha256": "4aedf08dc1f08d73597c42a22aedf59f9be523da0ea28ec4c99095230e7eeaea"
+      "sha256": "7bd7497d8e057f34e636a7d100581c81d3deb3ed2697122cdf4f73050b093f74"
     },
     "inputs": [
       {

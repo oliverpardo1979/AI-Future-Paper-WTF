@@ -3,8 +3,8 @@
 
 Time is continuous. There is one final good, a representative household,
 competitive final-good firms, and an integrated AI developer. The developer
-monopolistically supplies AI services and invests in better AI. The initial
-economy already uses AI services; the model does not describe their first
+monopolistically supplies AI production services and invests in better AI. The initial
+economy already uses AI production services; the model does not describe their first
 commercial adoption.
 
 \tikzset{
@@ -69,16 +69,16 @@ demand and links household labor supply to the two sectors' labor demands.
 \subsection{Final-good firms}
 
 Competitive final-good firms take \(r,w,p_X\) as given and demand capital,
-production labor, and AI services, where \(p_X\) is the price of AI services.
+production labor, and AI production services, where \(p_X\) is their price.
 To preserve the notation I use throughout the
 analysis and in the numerical code, I do not give \(K\) and \(X\) agent-specific
-superscripts. In this subsection they denote capital and AI services demanded by
+superscripts. In this subsection they denote capital and AI production services demanded by
 the final sector; in the household problem \(K\) denotes capital holdings, and in
 the developer's problem \(X\) denotes sales. Equality of the corresponding
 quantities is imposed only in equilibrium. Let \(0<\alpha<1\) be the physical-capital
 elasticity, let \(\delta\geq0\) be the depreciation rate, and let
 \(\sigma_{XL}>0\) be the elasticity of substitution between production labor and
-AI services. The CES weights satisfy \(\omega_L,\omega_X\in(0,1)\) and
+AI production services. The CES weights satisfy \(\omega_L,\omega_X\in(0,1)\) and
 \(\omega_L+\omega_X=1\). The production technology is
 \begin{align}
  Y&=K^\alpha Z^{1-\alpha},\\
@@ -90,7 +90,7 @@ AI services. The CES weights satisfy \(\omega_L,\omega_X\in(0,1)\) and
 \end{align}
 At the unit-elasticity parameter limit, \(\sigma_{XL}\to1\), the CES becomes the
 Cobb--Douglas aggregate \(Z=L^{\omega_L}X^{\omega_X}\). Define the contribution
-of AI services to the CES quantity index as
+of AI production services to the CES quantity index as
 \begin{equation}
  s_X=\frac{\omega_X X^{(\sigma_{XL}-1)/\sigma_{XL}}}
  {\omega_L L^{(\sigma_{XL}-1)/\sigma_{XL}}
@@ -111,11 +111,11 @@ The interior first-order conditions are
  p_X=(1-\alpha)s_X\frac{Y}{X}.
  \label{eq:axm-factor-prices}
 \end{equation}
-The final-good firm's AI-demand condition implies that AI-service expenditure
+The final-good firm's AI-demand condition implies that expenditure on AI production services
 as a share of final output is
 \(p_XX/Y=(1-\alpha)s_X\). Equivalently, within total payments to the
-noncapital composite, \(p_XX/[(1-\alpha)Y]=s_X\). After AI-service-market
-clearing, the first ratio is the developer's gross service revenue as a share of
+noncapital composite, \(p_XX/[(1-\alpha)Y]=s_X\). After market clearing for AI
+production services, the first ratio is the developer's gross service revenue as a share of
 final output.
 Constant returns and the three first-order conditions imply zero profit:
 \begin{equation}
@@ -143,7 +143,7 @@ not job creation, unemployment, or the number of tasks displaced by AI.
 
 \subsection{Integrated AI developer}
 
-\subsubsection{AI-service technology}
+\subsubsection{AI production services}
 
 The model distinguishes two uses of compute. \(U\) is inference compute: raw
 compute used to operate existing AI systems and supply services to final-good
@@ -153,17 +153,17 @@ the same constant unit resource cost. I choose units so that one unit of raw
 compute costs one unit of final output.
 
 \(A\) indexes current AI capability: what one unit of compute can accomplish.
-Inference compute produces the flow of quality-adjusted AI services supplied by
+Inference compute produces the flow of AI production services supplied by
 the developer,
 \begin{equation}
  X=AU.
  \label{eq:axm-ai-service}
 \end{equation}
-Research compute analogously produces the automated research service flow
+Research compute analogously produces the AI research service flow
 \(AM\), which enters the research technology below. The paid inputs are \(U\)
 and \(M\), whereas \(X\) and \(AM\) are service flows. This product of nonrival
-capability and rival compute is the one-capability version of the AI-service
-accounting in \citet{davidsonetal2026}.
+capability and rival compute is the one-capability version of the
+capability--compute accounting in \citet{davidsonetal2026}.
 
 The normalization does not make compute free. A common unit cost \(\xi>0\) can
 be absorbed by defining \(\widetilde U=\xi U\), \(\widetilde M=\xi M\), and
@@ -172,7 +172,7 @@ Producing one unit of either service flow therefore uses \(1/A\) units of final
 output in the normalized economy.
 
 Figure~\ref{fig:axm-current-production-flow} collects the current-production
-technology. It separates raw inference compute, the AI services purchased by
+technology. It separates raw inference compute, the AI production services purchased by
 final-good firms, and the service composite used in production. The two
 technology diagrams in this subsection are schematics, not numerical results.
 Gray boxes denote current inputs, blue boxes denote stocks, and orange boxes
@@ -185,7 +185,7 @@ denote transformations or outputs.
   \node[axm-model-state]      (A) at (-8.0, 0.7) {\(A\)\\capability};
   \node[axm-model-input]      (U) at (-8.0,-0.7) {\(U\)\\inference compute};
   \node[axm-model-technology] (X) at (-4.5, 0.0)
-   {\(X=AU\)\\AI services};
+   {\(X=AU\)\\AI production services};
   \node[axm-model-input]      (L) at (-4.5, 2.5)
    {\(L\)\\production labor};
   \node[axm-model-technology] (Z) at ( 0.0, 1.2)
@@ -204,7 +204,7 @@ denote transformations or outputs.
  \end{tikzpicture}%
  }
  \caption{Current production. Capability and inference compute produce AI
- services; AI services and production labor form the CES service composite;
+ production services; AI production services and production labor form the CES service composite;
  the service composite and physical capital produce final output. All arrows
  denote within-date technological relations.}
  \label{fig:axm-current-production-flow}
@@ -213,10 +213,10 @@ denote transformations or outputs.
 \subsubsection{Frontier research technology}
 
 Let \(\sigma_{HM}>0\) be the elasticity of substitution between human and
-automated research services. The CES weights satisfy
+AI research services. The CES weights satisfy
 \(\omega_H,\omega_M\in(0,1)\) and \(\omega_H+\omega_M=1\). The parameter
 \(\chi>0\) shifts research productivity, while \(0<\eta<1\) governs returns to
-the current scale of research. For \(\sigma_{HM}\neq1\), human researchers and automated research services
+the current scale of research. For \(\sigma_{HM}\neq1\), human researchers and AI research services
 improve capability through the homothetic CES technology
 \begin{equation}
  \dot A=\chi
@@ -250,18 +250,18 @@ stock, or production stage. The capability law is equivalently
 \end{equation}
 
 The parameters have separate economic roles. The elasticity \(\sigma_{HM}\)
-governs substitution between human research services \(H\) and automated
+governs substitution between human research services \(H\) and AI
 research services \(AM\). The exponent \(\eta\) governs returns to their joint
 scale: for a fixed \(A\), multiplying both \(H\) and \(M\) by \(\lambda\)
 multiplies \(\dot A\) by \(\lambda^\eta\). The scalar \(\chi\) shifts research
 productivity and affects the level and timing of capability improvement.
-Finally, \(A\) enters inside \(AM\) because capability raises the automated
+Finally, \(A\) enters inside \(AM\) because capability raises the AI
 research services produced by one unit of research compute. A high substitution
 elasticity therefore does not remove decreasing returns when \(0<\eta<1\).
 
 Figure~\ref{fig:axm-research-flow} makes the new research specification
 explicit. Capability does not enter \(\dot A\) through a separate stock term.
-It raises the automated research services produced by the paid input \(M\).
+It raises the AI research services produced by the paid input \(M\).
 
 \begin{figure}[H]
  \centering
@@ -272,7 +272,7 @@ It raises the automated research services produced by the paid input \(M\).
   \node[axm-model-input]      (M)  at (-6.3,-1.1)
    {\(M\)\\research compute};
   \node[axm-model-technology] (AM) at (-2.8, 0.3)
-   {\(AM\)\\automated research services};
+   {\(AM\)\\AI research services};
   \node[axm-model-input]      (H)  at (-2.8,-2.3)
    {\(H\)\\human research};
   \node[axm-model-technology] (E)  at ( 1.0,-0.6)
@@ -290,7 +290,7 @@ It raises the automated research services produced by the paid input \(M\).
  \end{tikzpicture}%
  }
  \caption{Frontier research and capability accumulation. Capability and raw
- research compute produce automated research services \(AM\). Those services
+ research compute produce AI research services \(AM\). Those services
  and human research form the effective-research index \(E\), which produces
  new capability. The dashed arrow denotes the accumulation of \(\dot A\) into
  \(A\). There is no separate \(A^\phi\) term.}
@@ -298,7 +298,7 @@ It raises the automated research services produced by the paid input \(M\).
 \end{figure}
 
 The baseline contains no separate power of the capability stock. Better
-capability affects research only by raising the automated services produced by
+capability affects research only by raising the AI research services produced by
 \(M\). Thus \(\eta\) governs the current scale of research, not a separate
 ideas-getting-harder force \citep{jones1995,davidsonetal2026}.
 
@@ -338,7 +338,7 @@ within-date allocation of research inputs. The scale of research remains a
 dynamic choice. These decompositions belong to the developer's single
 optimization problem; they are not additional equilibrium conditions.
 
-\subsubsection{Within-date AI-service supply}
+\subsubsection{Within-date supply of AI production services}
 
 Conditional on current \(A,K,\) and \(L\), the choice of \(X\) is pointwise.
 The developer chooses a sales quantity along the inverse demand schedule; this
@@ -456,7 +456,7 @@ Conditional input demands are
  AM=\omega_M^{\sigma_{HM}}(AP_E)^{\sigma_{HM}}E.
  \label{eq:axm-research-demands}
 \end{equation}
-The share of research expenditure allocated to automated research services is
+The share of research expenditure allocated to AI research services is
 \begin{equation}
  s_M=\frac{M}{wH+M}.
  \label{eq:axm-sm}
@@ -495,7 +495,7 @@ interior maximizing branch, the envelope theorem applied to
 \eqref{eq:axm-service-supply} gives \(\pi_A=X/A^2\), where \(X\) is the selected
 sales quantity. Along the interior cost-minimizing research allocation,
 \(\partial\dot A/\partial A=\eta s_M\dot A/A\), because a fixed \(M\) supplies
-more research services when \(A\) rises. The current-value costate equation is
+more AI research services when \(A\) rises. The current-value costate equation is
 \begin{equation}
  \frac{\dot q}{q}=r-\frac{X}{qA^2}
  -\eta s_M\frac{\dot A}{A}.
@@ -604,7 +604,7 @@ illustratively rather than estimated.
 \subsection{Equilibrium}
 
 Capital-market clearing requires the household's capital holdings to equal the
-capital rented by final-good firms. AI-service-market clearing requires the
+capital rented by final-good firms. Market clearing for AI production services requires the
 quantity purchased by final-good firms to equal the quantity sold by the
 developer at the transaction price \(p_X\). These conditions identify the
 quantities denoted by \(K\) and \(X\) in the separate agent problems. From this
@@ -617,8 +617,8 @@ clearing imposes
 
 The aggregate resource constraint is derived rather than imposed as an
 additional restriction. Substitute developer profit
-\eqref{eq:axm-developer-profit}, labor-market clearing, and AI-service-market
-clearing into the household budget \eqref{eq:axm-household-budget}:
+\eqref{eq:axm-developer-profit}, labor-market clearing, and market clearing for
+AI production services into the household budget \eqref{eq:axm-household-budget}:
 \begin{equation}
  \dot K=rK+wL+p_XX-U-M-C.
  \label{eq:axm-capital-aggregation-step}
@@ -700,7 +700,7 @@ with positive quantities and positive \(w\) and \(p_X\); the net interest rate
 \(r\) may have either sign. The household solves its intertemporal problem
 subject to \eqref{eq:axm-household-budget} and \(K\geq0\), competitive
 final-good firms maximize profits, the integrated developer solves
-\eqref{eq:axm-developer-problem}, and labor, capital, AI-service, and goods
+\eqref{eq:axm-developer-problem}, and labor, capital, AI production services, and goods
 markets clear.
 \end{definition}
 
@@ -710,7 +710,7 @@ satisfies the household Euler and flow-budget equations, the population law,
 competitive factor demands, the monopoly first- and second-order conditions,
 both research first-order conditions, the developer's state, costate, and
 transversality condition, the household transversality condition, all technology
-and service identities, and labor, capital, AI-service, and goods market clearing.
+and service identities, and labor, capital, AI production services, and goods market clearing.
 \end{definition}
 
 \subsection{Equilibrium conditions and candidate-path characterization}
@@ -721,7 +721,7 @@ household Euler equation and the developer costate are first obtained in terms o
 the market return each agent takes as given. The final-good firm's factor-price
 conditions are derived separately. Only after market clearing are these
 conditions combined in \eqref{eq:axm-euler-reduced} and
-\eqref{eq:axm-costate-reduced}. The same order applies to capital and AI-service
+\eqref{eq:axm-costate-reduced}. The same order applies to capital and AI-production-service
 quantities: their meanings are local to each agent's problem until market
 clearing identifies the common equilibrium quantities.
 
@@ -735,7 +735,7 @@ candidate path.
 
 \subsubsection{Reduced dynamic system}
 
-After imposing capital- and AI-service-market clearing, the independent
+After imposing capital-market clearing and market clearing for AI production services, the independent
 algebraic subsystem given \(K,A,N,q\) consists of labor
 clearing; final production, shares, and prices; the service identity \(X=AU\);
 inverse demand and the monopoly first-order condition; and the research price,

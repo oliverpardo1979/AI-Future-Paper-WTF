@@ -811,7 +811,7 @@ def draw_transition_allocation_figures(
         subtitle,
         [
             {
-                "title": "AI share of the labor and AI composite",
+                "title": "AI production services' share of the labor--AI composite",
                 "field": "ai_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",
@@ -856,7 +856,7 @@ def draw_transition_allocation_figures(
         subtitle,
         [
             {
-                "title": "Automated share of research expenditure",
+                "title": "Research expenditure on AI research services",
                 "field": "automated_research_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",
@@ -982,14 +982,14 @@ def main() -> None:
         ),
         [
             {
-                "title": "AI-service CES share within Z, s_X",
+                "title": "AI production-service CES share within Z, s_X",
                 "field": "ai_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",
                 "ylim": (0.0, 100.0),
             },
             {
-                "title": "Automated-research expenditure share, s_M",
+                "title": "Research expenditure on AI research services, s_M",
                 "field": "automated_research_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",

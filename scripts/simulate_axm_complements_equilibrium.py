@@ -669,7 +669,7 @@ def draw_figures(
                 "references": [100.0],
             },
             {
-                "title": "AI services / production labor, X/L",
+                "title": "AI production services / production labor, X/L",
                 "field": "ai_labor_ratio",
                 "format": lambda value: f"{value:.2f}",
                 "references": [
@@ -677,7 +677,7 @@ def draw_figures(
                 ],
             },
             {
-                "title": "AI share in the L--X composite, s_X (percent)",
+                "title": "AI production-service share in the L--X composite, s_X (percent)",
                 "field": "ai_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",
@@ -725,7 +725,7 @@ def draw_figures(
                 "references": [0.0],
             },
             {
-                "title": "Automated research expenditure share",
+                "title": "Research expenditure on AI research services",
                 "field": "automated_research_share",
                 "transform": percent,
                 "format": lambda value: f"{value:.0f}%",
