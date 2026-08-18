@@ -1,164 +1,89 @@
 \section{Related literature}
 
-The research technology belongs to the tradition of endogenous and
-semi-endogenous growth models in which resources devoted to ideas determine the
-evolution of productivity \citep{romer1990,aghionhowitt1992,jones1995}. The
-population term matters for the same reason it matters in \citet{jones1995}: when
-human researchers remain essential, growth in the research workforce can anchor
-long-run innovation. I ask when that anchor disappears because
-capability-augmented research services can substitute for human researchers. I use
-a homothetic CES research technology to separate substitution between research
-inputs from returns to their current joint scale. The latter role of \(\eta\) is analogous
-to the intratemporal research-scale parameter in \citet{jones1995}; the baseline
-fixes the separate stock-of-ideas exponent at zero, corresponding to \(b=1\) in
-the extension discussed below.
+The research technology follows the endogenous- and semi-endogenous-growth
+tradition in which resources devoted to ideas determine productivity growth
+\citep{romer1990,aghionhowitt1992,jones1995}. When human researchers remain
+essential, population growth can anchor long-run innovation. I ask when that
+anchor disappears because AI services can substitute for research labor. Unlike
+the standard formulation, I separate substitution between research inputs from
+returns to their current scale.
 
-The closest paper for the feedback architecture is \citet{davidsonetal2026}. They model innovation as a network
-of technological and economic feedbacks, classify its growth regimes using the
-spectral radius of a nonnegative feedback matrix, and combine nonrival AI
-capability with rival compute. Their application distinguishes software, hardware
-quality, and general productivity, but fixes saving and resource-allocation shares
-and treats task automation as exogenous, including an exogenous path in its CES
-extension. I collapse that technology network into one
-capability stock and place its two feedback loops inside a decentralized Ramsey
-equilibrium with an integrated monopolist, endogenous inference and research
-compute, endogenous labor allocation, two CES substitution margins, and factor
-prices. The mapping is not literal: in my formulation, \(U\) and \(M\) are flow
-resource uses, not separate accumulable hardware stocks. The unit-elasticity
-denominator in my model is therefore a scalar analogue of their
-feedback criterion, not an application of their general network theorem.
+\citet{davidsonetal2026} provide the closest feedback architecture. They model
+innovation as a network of technological and economic links, classify growth
+using a feedback matrix, and distinguish nonrival AI capability from rival
+compute. Their quantitative application fixes saving and resource-allocation
+shares and treats automation as exogenous. I reduce the technology network to one
+capability stock and place its production and research loops inside a
+decentralized Ramsey economy. Saving, labor allocation, compute use, prices, and
+factor payments are then equilibrium outcomes. My balanced-growth feedback
+condition is a scalar analogue of their matrix criterion, not an application of
+their general theorem.
 
-The large-scale curvature restriction derived below answers a different
-question from \citet{davidsonetal2026}'s feedback criterion. Their matrix
-criterion classifies a coupled system of technological and economic feedbacks.
-Davidson et al.'s matrix criterion concerns the propagation of feedback through
-a coupled growth system. By contrast, \(\eta<\alpha\) rules out a particular
-unbounded-value deviation in the developer's problem. Neither condition, by
-itself, proves equilibrium existence.
+This distinction also separates my research-curvature restriction from Davidson
+et al.'s feedback condition. Their condition determines whether technological
+and economic feedback can sustain explosive growth. Mine prevents a developer
+from obtaining unbounded value through an arbitrarily large research outlay on a
+fixed horizon. Neither condition alone proves equilibrium existence.
 
-I also relate the model to broader work on AI and economic growth.
-\citet{aghionjonesjones2019} show how extending automation to idea production can
-generate very rapid growth, while essential tasks that remain difficult to
-automate can preserve bottlenecks; they use ``singularity'' for a finite-time
-divergence. \citet{nordhaus2021} develops empirical diagnostics for an economic
-singularity, while \citet{trammellkorinek2023} distinguishes the automation of
-ordinary production from the automation of R\&D in a model of transformative AI.
-\citet{jones2025rd} focuses directly on AI in research and development.
-\citet{erdiletal2025gate} integrate a compute-based model of AI development, an
-AI-automation block, and semi-endogenous growth with endogenous investment and
-adjustment costs in a quantitative scenario model that abstracts from market
-prices and market structure. Relative to these papers, I focus more narrowly on
-how equilibrium prices and two factor-substitution margins govern the feedback,
-the allocation of compute, and the distribution of output.
+Several papers study related AI-growth mechanisms. Extending automation to idea
+production can generate rapid growth, while tasks that remain difficult to
+automate preserve bottlenecks \citep{aghionjonesjones2019}. Other work develops
+empirical diagnostics for an economic singularity, distinguishes automation in
+production from automation in R\&D, or studies AI directly as an input into
+research \citep{nordhaus2021,trammellkorinek2023,jones2025rd}.
+\citet{erdiletal2025gate} combine AI development, automation, endogenous
+investment, adjustment costs, and semi-endogenous growth in a quantitative
+scenario model. They abstract from market prices and market structure. I instead
+focus on how decentralized prices and two substitution margins determine the
+feedback and the allocation of resources.
 
-The terminology used to distinguish inference output, training activity,
-algorithms, and model capital is informed by the economic accounting proposed by
-\citet{korinekmckelvey2026}. Their framework treats compute as a central input
-allocated between inference and training/R\&D and separates model capital from
-algorithmic advances. In my reduced notation, raw inference compute and raw
-research compute are paid uses of final output, while one capability stock
-transforms both into economically useful services. Thus \(A\) combines objects
-that their accounting keeps separate. This is a tractability assumption, not an
-exact relabeling of their framework. I use their measurement distinctions; the
-decentralized equilibrium and distributional results below do not follow from
-that accounting framework.
+The model's compute accounting is informed by \citet{korinekmckelvey2026}. They
+distinguish physical compute, inference, training and R\&D, algorithms, and model
+capital. I retain the distinction between compute used for inference and compute
+used for research, but combine model quality and algorithmic efficiency in one
+capability stock. This is a tractability choice, not a relabeling of their full
+accounting framework.
 
-The final-production block connects to the older literature on the elasticity of
-substitution and growth \citep{pitchford1960,jonesmanuelli1990,rebelo1991}. CES
-production is not a cosmetic generalization of Cobb--Douglas: whether the
-elasticity lies below or above one governs whether labor remains a bottleneck or
-AI services can asymptotically dominate along the paths studied here. Empirical work such as
-\citet{duffypapageorgiou2000} illustrates why the aggregate elasticity should not
-be imposed without scrutiny. \citet{aumshin2024} sharpen this point by estimating
-complementarity between equipment and labor but gross substitution between
-software and labor. Their estimates do not calibrate the model's AI-service elasticity,
-but they support separating software-like inputs from undifferentiated physical
-capital.
-\citet{jonestonetti2026} provide a task-based counterpart to the model's
-complementarity regime. With an elasticity of substitution below one across
-tasks, the remaining tasks performed by slowly improving labor act as weak links
-and delay the growth acceleration even when most tasks have been automated.
-Their simulated aggregate paths under endogenous automation can remain difficult
-to distinguish for a long interval before their growth rates diverge sharply. This is the closest
-dynamic precedent for the delayed takeoff in my finite-boundary calculations.
-An earlier illustration in \citet{aghionjonesjones2019} likewise shows that
-bottlenecks can sustain relatively low aggregate growth while automation
-continues, although their numerical automation path is exogenous.
-Jones and Tonetti's simulations also show that automation alone does not determine the
-limiting factor shares: the capital share can rise to one under complete
-automation, fall toward zero when some weak links can never be automated, or
-remain approximately stable along an intermediate path. The analogy is not an
-identity. Their elasticity aggregates tasks and automation changes the set of
-tasks assigned to capital; the model's \(\sigma_{XL}\) aggregates production labor and a
-flow of quality-adjusted AI services.
-The complementarity result adds an endogenous-research margin to this older CES
-logic. \citet{davidsonetal2026} also show why, under CES aggregation, the relevant
-object is the current elasticity of the appropriate aggregate with respect to its
-AI input rather than a raw count of automated tasks. In my model,
-\(s_X=\partial\ln Z/\partial\ln X\) and
-\(s_M=\partial\ln E/\partial\ln(AM)\) play that role within
-the two CES aggregators; the corresponding downstream elasticities are
-\((1-\alpha)s_X\) for final output and \(\eta s_M\) for capability improvement.
-Davidson et al. provide the closer analogue for feedback amplification and its
-explosive-growth threshold, not for the endogenous timing of the low-growth
-phase: their quantitative exercise imposes an automation change and fixes the
-relevant research-resource shares. The simulated dates reported in those papers
-are therefore not transferable to this economy.
-These objects are endogenous CES shares rather than fractions of tasks. The adjustment is
-also different: on the complementary-input branch I characterize, monopoly supply
-keeps \(X/L\) finite and \(s_X\) positive while the raw-compute cost \(U=X/A\)
-vanishes. On the regular complementary-input balanced-growth limit characterized
-here, capability can continue to improve and research expenditure can become
-almost fully automated while labor remains essential, output and consumption per
-person remain bounded, and labor retains a positive income share.
+The production side connects to the literature on substitution and growth
+\citep{pitchford1960,jonesmanuelli1990,rebelo1991}. Whether the relevant
+elasticity is below or above one determines whether the slower-growing input
+remains a bottleneck. Empirical work shows why the elasticity should not be
+assumed mechanically: equipment can complement labor even when software is a
+gross substitute \citep{duffypapageorgiou2000,aumshin2024}. These estimates do
+not calibrate the AI-service elasticity in my model, but they support separating
+software-like services from undifferentiated physical capital.
 
-The wage and factor-share results relate to the task and automation literature.
-\citet{acemoglurestrepo2019} emphasize displacement and reinstatement of labor in
-a task framework, and \citet{acemoglu2025} studies the macroeconomic gains from AI
-through task exposure. That literature distinguishes tasks---units of work used
-in production---from jobs, which bundle several tasks. Automation can therefore
-change the tasks performed within a job without eliminating the job itself. My
-model abstracts from task content, occupations, and the creation of new human
-tasks. Labor is an aggregate input and full employment holds by construction.
-The results should therefore be interpreted as model implications for wages,
-factor shares, and sectoral labor allocation, not as predictions about the number
-of jobs displaced. Within that abstraction, the model shows how a wage can rise
-even when labor income as a share of output falls because the scale of output
-changes endogenously.
-This mechanism is related to the distinction between wages and labor income shares
-emphasized by \citet{autorkausik2026}, but here it is generated by AI research
-feedback and monopoly supply. \citet{trammellkorinek2023} likewise show that wages
-can rise or fall when output expands and labor income as a share of output contracts. The conditional
-AI-dominated limit I characterize maps that ambiguity into an explicit threshold for the
-smaller of the substitution elasticities in final production and AI research.
+\citet{jonestonetti2026} provide the closest dynamic precedent for the delayed
+takeoff. In their task model, slowly improving human tasks remain weak links, so
+aggregate paths can look similar for a long time before diverging sharply. An
+earlier illustration in \citet{aghionjonesjones2019} also produces prolonged low
+growth while automation continues, although their automation path is exogenous.
+These task models and my CES formulation are not equivalent. Their state variable
+is the set of tasks assigned to capital; mine is the service flow produced by AI
+and combined with labor. The common mechanism is that a complementary human input
+can delay or prevent AI dominance.
 
-\citet{restrepo2025agi} provides the closest antecedent to the limiting
-distributional mechanism. When compute can perform all bottleneck work and
-computational resources expand, output becomes linear in compute and labor,
-growth is driven by compute, and labor's income share converges to zero. That
-paper establishes the broad possibility that removing the human bottleneck can
-make labor asymptotically inessential for aggregate growth. Taken together,
-\citet{restrepo2025agi}, \citet{acemoglurestrepo2019}, and
-\citet{trammellkorinek2023} establish both the displacement mechanism and the
-possibility of a vanishing labor share. I claim neither as new.
+The distributional results build on the automation literature. Task automation
+displaces labor, while new human tasks can reinstate labor demand
+\citep{acemoglurestrepo2019}. Wages and labor's income share need not move in the
+same direction when output changes rapidly
+\citep{trammellkorinek2023,autorkausik2026}. Most directly,
+\citet{restrepo2025agi} shows that if compute can perform all bottleneck work,
+compute-driven growth can make labor asymptotically inessential and drive its
+income share to zero. I do not claim either labor displacement or a vanishing
+labor share as new.
 
-My contribution is to place related mechanisms in a different
-decentralized architecture and characterize their associated prices and
-allocations under the hypotheses of each regime. The two CES elasticities
-determine whether human labor remains a production or research bottleneck; the
-integrated developer links the same capability stock to inference revenue and
-research investment; and the consolidated accounts separate gross capital
-payments, production and research wages, distributed developer profit, inference
-compute, and research compute along the transition. This decomposition also
-limits its own interpretation. Inference and research compute are resource uses,
-not final income recipients. Without an upstream compute sector, the model cannot
-determine whether the associated payments accrue to hardware producers, energy
-suppliers, workers, or owners of additional capital.
+My contribution is to derive these outcomes in a decentralized economy that
+separates conventional capital, production and research labor, inference and
+research compute, and developer profit. This accounting matters because the
+final-good firm's payment for AI services is gross revenue, not monopoly profit,
+and compute expenditure is a resource use rather than a final income recipient.
+The model does not assign the upstream compute payments to hardware producers,
+energy suppliers, workers, or owners of additional capital.
 
-Finally, the integrated developer connects the analysis to the emerging literature
-on AI market structure \citep{korinekvipra2025,gans2024,demireretal2025}. Monopoly
-and integration enter through separate channels: the developer charges a markup
-on production AI services and internalizes the future operating profits created
-by better capability. I hold market structure fixed in order to isolate the
-technology. Comparing this
-benchmark with monopolistic competition is a natural next step.
+Finally, the integrated developer connects the analysis to work on AI market
+structure \citep{korinekvipra2025,gans2024,demireretal2025}. The developer
+charges a markup on production AI services and internalizes the future profit
+created by better capability. I hold this market structure fixed to isolate the
+technology; comparing it with monopolistic competition remains a natural
+extension.

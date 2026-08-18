@@ -1,165 +1,79 @@
 \section{Conclusion}
 
-I develop an endogenous-growth model in which current AI capability raises the
-productivity of compute used both to supply current AI services and to improve
-future AI. When one unit of raw compute costs one, a unit of either
-capability-augmented service has resource cost \(1/A\). Placing \(A\) inside
-\(AM\) creates a recursive innovation channel: better AI lowers the resource
-cost of automated research services and thereby raises future capability.
-In the language of \citet{davidsonetal2026}, this is the technological loop. The
-economic loop runs from capability to output and from output to accumulation and
-research resources. In my model, their effective strengths depend jointly on
-primitive parameters and equilibrium allocations and prices.
+I develop an endogenous-growth model in which AI capability makes compute more
+productive both in current production and in AI research. This creates two
+feedback loops. The technological loop runs from capability to more effective
+research compute and back to capability. The economic loop runs from capability
+to output, accumulation, and research expenditure. Following the logic of
+\citet{davidsonetal2026}, the strength of these loops depends not only on
+technology but also on equilibrium prices and allocations.
 
-A finite-horizon result is needed before interpreting the growth regimes. For
-all positive CES elasticities, \(\eta<\alpha\) is sufficient for the developer's
-truncated objective to be coercive in total research expenditure over all
-nonnegative research policies, and the truncated value is finite. When both CES
-nests permit gross substitution, \(\eta>\alpha\) allows a fixed-duration
-expansion of research compute that makes the value unbounded; under the stated
-extension conditions, a zero-control tail carries the same conclusion to the
-infinite-horizon objective. At equality, the fixed-duration leading term depends
-on coefficients and the boundary is not fully characterized. The benchmark
-\(\eta=0.20<\alpha=0.33\) is an illustrative value
-materially inside the maintained parameter region, not an empirical estimate.
-The coercivity result does not provide compactness, prove that a global optimum
-is attained, control the infinite-horizon tail, or establish equilibrium
-existence.
+The first result concerns the developer's research problem. On every finite
+horizon, \(\eta<\alpha\) makes the objective coercive in total research
+expenditure and keeps its value finite. When both CES technologies permit gross
+substitution, \(\eta>\alpha\) instead allows research-compute expansions that
+make the value unbounded. The benchmark \(\eta=0.20<\alpha=0.33\) is therefore a
+deliberate regularity restriction, not an empirical estimate. Coercivity is
+necessary for a well-behaved problem, but it does not by itself prove existence
+of a global optimum or an infinite-horizon equilibrium.
 
-Three results organize the analysis. First, conditional on \(Aw\to\infty\), the
-research elasticity determines whether the research-expenditure share allocated
-to automated services
-tends to zero, remains at \(\omega_M\), or tends to one.
-Second, the final-production elasticity governs whether human labor remains a
-long-run bottleneck. On any finite-rate balanced-growth path satisfying the
-conditions characterized under complementarity, output per person is constant
-when production labor remains a positive population share. For the interior
-candidate with unit elasticity in final production characterized here, positive
-capability growth requires
-a positive feedback denominator. Its reciprocal is the scalar analogue of
-\citet{davidsonetal2026}'s feedback multiplier; this condition alone does not establish
-feasibility or existence. With gross substitution in final production, if AI services asymptotically
-dominate the labor--AI composite, unbounded capability makes \(Y/K\) and the
-return to capital unbounded, ruling out finite constant growth rates.
+The final-production elasticity then organizes the macroeconomic results. When
+labor and AI services are complements, labor remains a bottleneck and output per
+person converges to a constant even though capability continues to improve. At
+unit elasticity, the model admits a candidate balanced-growth path when the
+feedback denominator is positive. Its reciprocal is the scalar counterpart of
+the feedback multiplier in \citet{davidsonetal2026}. When labor and AI services
+are gross substitutes and AI services dominate the final-production composite,
+\(Y/K\) and the return to capital become unbounded, so no finite-rate
+balanced-growth path can describe that branch.
 
-Third, factor shares and factor prices must be distinguished. The outer
-Cobb--Douglas technology keeps the final-good firm's gross capital payment equal
-to \(\alpha Y\) in all three regimes. The final-good firm's payment \(p_XX\) is
-gross AI-service revenue, not developer profit. The developer uses that revenue
-to pay for inference compute, human research, and research compute before
-distributing the residual \(\Pi\). Likewise,
-\(\alpha Y\) includes depreciation, so the household's net capital-income share
-is \(rK/Y\), not \(\alpha\). On the conditional accelerating branch of the
-necessary conditions in which AI services dominate the labor--AI composite, both
-labor-income measures vanish relative to output: \(wL/Y\to0\) and
-\(wN/Y\to0\). Yet the real
-wage eventually rises when the smaller of the final-production and research
-elasticities of substitution is below \(1/(\alpha\eta)\) along the characterized
-limit; above that threshold the real wage eventually falls. A vanishing share does not by itself imply a
-falling level when the scale of the economy grows sufficiently fast.
-At the threshold itself, the leading asymptotic term is zero and the model does
-not sign the eventual wage change.
+These regimes also have sharply different distributional implications. The
+outer Cobb--Douglas technology fixes the final-good firm's gross capital payment
+at \(\alpha Y\), including depreciation. What changes with \(\sigma_{XL}\) is
+the division of the remaining output between production labor and purchases of
+AI services. Those purchases are not developer profit: they finance inference
+compute, human research, and research compute before the residual \(\Pi\) is
+distributed. On the conditional gross-substitutes branch, aggregate labor
+income vanishes relative to output while compute uses and distributed developer
+profit expand. Yet the real wage can still rise because output grows faster
+than labor income. This is a decomposition of functional payments and resource
+uses, not a prediction about interpersonal inequality: the representative
+household owns capital and the developer, and the model does not specify who
+ultimately receives payments for upstream compute.
 
-The broad direction of this result is already present in the automation
-literature. Task models distinguish the displacement of labor from its
-reinstatement in new human tasks \citep{acemoglurestrepo2019}.
-\citet{trammellkorinek2023} show that sufficiently extensive automation can
-lower labor's income share even when the wage need not fall, while
-\citet{restrepo2025agi} obtains the closest limiting result: once compute can
-perform all bottleneck work, growth becomes compute-driven and labor's income
-share converges to zero. \citet{jonestonetti2026} likewise show how persistent
-human weak links can prevent that limiting transformation. My contribution is
-therefore not the qualitative possibility of a vanishing labor share. I connect
-that possibility to the two substitution margins in a decentralized Ramsey
-economy and separate conventional capital payments,
-production and research wages, inference and research compute, and distributed
-developer profit along the transition.
+The broad displacement mechanism is known. Task models distinguish automation
+from the creation of new human tasks \citep{acemoglurestrepo2019}, and
+\citet{restrepo2025agi} shows that labor's income share can converge to zero once
+compute performs all bottleneck work. My contribution is to connect that
+possibility to two explicit substitution margins in a decentralized Ramsey
+economy and to separate physical-capital payments, production and research
+wages, inference and research compute, and distributed developer profit along
+the transition.
 
-This accounting distinction also limits the distributive interpretation. The
-resource expenditures \(U\) and \(M\) are not final income recipients. A model
-with an upstream compute sector would be needed to determine how those payments
-are divided among semiconductor producers, datacenters, energy suppliers,
-workers, and the owners of additional capital. Moreover, the representative
-household owns physical capital and the developer. I therefore characterize the
-functional decomposition of payments and resource uses, not interpersonal
-inequality.
+The numerical transition under gross substitution adds an important timing
+result. In the reported normalization, output-per-capita growth remains modest
+for most of the conditional path and accelerates only near its estimated finite
+boundary. Structural change begins much earlier: labor's income share declines
+and AI services become more important while aggregate growth still appears
+nearly stable. This delayed acceleration is closest to the weak-link mechanism
+in \citet{jonestonetti2026}; the feedback threshold is closest to
+\citet{davidsonetal2026}. The simulated dates are model time, not calendar
+forecasts.
 
-The complementarity computations show that automating research does not
-necessarily remove labor as an aggregate constraint. With
-\(\sigma_{XL}=0.75\), both reported candidate paths approach constant output per
-person, consumption per person, and real wages while capability continues to
-grow. When \(\sigma_{HM}=2\), the automated research-expenditure share approaches
-one and the human-research population share approaches zero, yet aggregate labor
-income remains close to its positive analytical limit. These are audited
-finite-horizon approximations to a conditional balanced-growth path, not an
-existence proof.
+The numerical evidence has a precise but limited interpretation. The
+complementarity and unit-elasticity calculations are audited finite-horizon
+approximations to the conditional paths characterized analytically. The
+gross-substitutes calculations are convergent finite-boundary approximations to
+a pre-singular branch of the necessary conditions. They satisfy the reported
+equations and numerical acceptance tests, but they do not establish an
+infinite-horizon equilibrium, global optimality, or arrival at the singularity.
 
-The unit-elasticity perfect-foresight simulations likewise illustrate the
-analytical results without being used as proofs. At unit elasticity in final production,
-both Cobb--Douglas and gross-substitutes research path approximations move toward
-the corresponding balanced-growth rates over the reported horizons; they are
-constructed using those terminal limits.
-In the reported approximation in which automated research services are gross
-substitutes for human research, the human-research employment share is hump-shaped:
-it can increase for centuries in the numerical normalization before automation
-eventually dominates the research-input index and its expenditure share approaches
-one. Separating
-\(M\) from \(AM\) makes this transition visible. The simulations also display
-the Euler-equation link between consumption growth and the net real interest
-rate. These paths are numerical illustrations, not forecasts of calendar time.
-
-A central numerical result is the separation between the timing of
-observable growth and the timing of structural change on the conditional
-gross-substitutes branch. Output-per-capita growth remains below 2 percent for
-more than nine-tenths of the extrapolated interval, even as labor's income share
-is already declining and AI services' weight in the labor--AI composite is
-rising. Growth and the interest rate then rise sharply, and the final collapse in labor's share
-is concentrated near that delayed takeoff, while the wage continues to rise. As
-the terminal value of \(Y/K\) increases from 16 to 128, the initial jump variables
-remain unchanged to numerical precision and the analytically extrapolated
-singularity date converges. The calculation validates convergence on common
-pre-singular intervals and toward successively larger boundaries; it does not
-establish that a solution exists all the way to the singularity, establish an
-infinite-horizon equilibrium, or turn the normalized time axis into a forecast.
-The delayed acceleration is closest to the weak-link transition in
-\citet{jonestonetti2026}, whereas the feedback amplification and explosive-growth
-threshold are closest to \citet{davidsonetal2026}. The calibration and simulated
-dates in either paper are not transferable to this economy.
-
-The curvature restriction does not eliminate the conditional accelerating
-branch. Under \(\eta<\alpha\), the own-capability term in the asymptotic
-growth-rate matrix is negative, but the determinant remains negative because
-capability raises accumulation and accumulation finances research. The coupled
-system therefore retains one positive feedback direction. This distinction is
-central: the conditional acceleration is not the mechanical consequence of the
-large-expenditure pathology excluded by finite-horizon coercivity. It remains a
-characterization of the necessary conditions rather than a proof of an
-infinite-horizon equilibrium.
-
-Several extensions are important. A direct term \(A^{1-b}\) could distinguish
-intertemporal idea difficulty from the research-scale parameter \(\eta\): holding
-the effective-research index fixed, \(b\) governs the factor \(A^{-b}\) in
-capability growth, while \(1-b\) governs the stock's separate level effect on
-\(\dot A\). A larger extension would follow
-\citet{davidsonetal2026} by separating software capability, hardware quality, and
-general productivity into distinct stocks with cross-technology feedbacks. Their
-matrix notation would organize the technology network; its spectral-radius
-classification would apply if the relevant feedback weights converge to constants.
-The present Ramsey--monopoly structure would determine prices and allocations.
-Physical capital could also enter AI research explicitly, separating
-chips, datacenters, and energy infrastructure. Alternative market structures
-could clarify how competition changes the balance between current inference
-supply and research investment. A further extension is the constant-returns
-boundary \(\eta=1\), where the research first-order condition no longer determines
-an interior scale.
-
-Finally, greater automation of AI research may create agency and supervision
-problems that are absent here. If human oversight is needed to keep automated
-research aligned with the developer's objective, an integrated monopolist may
-internalize part of that problem and moderate research speed. Competing developers
-may instead reduce supervision to avoid losing a race. That extension would make
-human research valuable not only as a productive input but also as a governance
-input. It could provide a disciplined basis for studying subsidies to human AI
-research or taxes on insufficiently supervised research automation; those policy
-claims require an explicit agency model and do not follow from the present
-technology alone.
+Three extensions would be especially useful. An upstream compute sector would
+determine how compute expenditure is divided among hardware, datacenters,
+energy, labor, and rents. Separate software, hardware, and general-productivity
+stocks would bring the richer feedback network of \citet{davidsonetal2026} into
+the equilibrium allocation problem. Finally, allowing human researchers to
+provide supervision as well as ideas would connect research automation to
+competition, control, and AI governance. Each extension changes an economic
+mechanism rather than merely adding notation, and therefore belongs in a model
+designed expressly for that question.

@@ -20,16 +20,9 @@ commercial adoption.
  axm-model-dynamics/.style={->, semithick, dashed}
 }
 
-\begin{assumption}[Parameters]
-Throughout, \(0<\alpha<1\), \(0<\eta<1\), \(0<n<\rho\), \(\delta\geq0\),
-\(\chi>0\), \(\sigma_{XL},\sigma_{HM}>0\), and all CES
-weights lie strictly between zero and one and sum to one within each CES
-aggregate.
-\end{assumption}
-
 \subsection{Population and labor endowment}
 
-Population grows exogenously at rate \(n\):
+Population grows exogenously at the constant rate \(n>0\):
 \begin{equation}
  \dot N=nN.
  \label{eq:axm-population}
@@ -43,7 +36,7 @@ when equilibrium is defined. For any positive variable \(V\), write
 
 \subsection{Household}
 
-The representative household takes the paths of the net interest rate \(r\),
+The representative household discounts utility at rate \(\rho>n\). It takes the paths of the net interest rate \(r\),
 the wage \(w\), distributed developer profit \(\Pi\), and population \(N\) as
 given. Let \(K\) denote its holdings of physical capital. Given \(K(0)>0\), it
 chooses \(C\) and \(K\) to maximize
@@ -76,12 +69,17 @@ demand and links household labor supply to the two sectors' labor demands.
 \subsection{Final-good firms}
 
 Competitive final-good firms take \(r,w,p_X\) as given and demand capital,
-production labor, and AI services. To preserve the notation I use throughout the
+production labor, and AI services, where \(p_X\) is the price of AI services.
+To preserve the notation I use throughout the
 analysis and in the numerical code, I do not give \(K\) and \(X\) agent-specific
 superscripts. In this subsection they denote capital and AI services demanded by
 the final sector; in the household problem \(K\) denotes capital holdings, and in
 the developer's problem \(X\) denotes sales. Equality of the corresponding
-quantities is imposed only in equilibrium. The production technology is
+quantities is imposed only in equilibrium. Let \(0<\alpha<1\) be the physical-capital
+elasticity, let \(\delta\geq0\) be the depreciation rate, and let
+\(\sigma_{XL}>0\) be the elasticity of substitution between production labor and
+AI services. The CES weights satisfy \(\omega_L,\omega_X\in(0,1)\) and
+\(\omega_L+\omega_X=1\). The production technology is
 \begin{align}
  Y&=K^\alpha Z^{1-\alpha},\\
  Z&=\left[\omega_L L^{\frac{\sigma_{XL}-1}{\sigma_{XL}}}
@@ -137,16 +135,10 @@ not a first-order condition of the developer. Its inverse absolute elasticity is
 \Needspace{11\baselineskip}
 \begin{remark}[Tasks, jobs, and labor services]
 The inputs \(L\) and \(H\) are quantities of homogeneous labor services, not
-numbers of tasks, occupations, or jobs. A job can combine several tasks, and AI
-can replace some of them without eliminating the job. The model abstracts from
-that margin. In the equilibrium defined below, labor-market clearing imposes
-full employment: people can move between final production and AI research, but
-the model contains neither unemployment nor job creation and destruction.
-Consequently, \(\sigma_{XL}\)
-measures substitution between aggregate labor and AI services in final
-production. It is not a task-level elasticity or a direct measure of the number
-of jobs displaced by AI. The model's labor-market predictions concern wages,
-factor shares, and the allocation of labor between the two sectors.
+numbers of tasks, occupations, or jobs. Labor-market clearing imposes full
+employment and allows workers to move between production and research. The
+model therefore predicts wages, factor shares, and sectoral labor allocation,
+not job creation, unemployment, or the number of tasks displaced by AI.
 \end{remark}
 
 \subsection{Integrated AI developer}
@@ -156,12 +148,9 @@ factor shares, and the allocation of labor between the two sectors.
 The model distinguishes two uses of compute. \(U\) is inference compute: raw
 compute used to operate existing AI systems and supply services to final-good
 firms. \(M\) is AI R\&D compute---called research compute below---used to
-improve AI capability. I use the term in the broad training-and-R\&D sense of
-\citet{korinekmckelvey2026}: it includes pretraining, post-training,
-experimentation, synthetic-data generation, automated algorithmic search, and
-compute used by AI systems engaged in research. The two inputs are flows, not
-stocks of chips. They have the same constant unit resource cost. I choose units
-of raw compute so that one unit costs one unit of final output.
+improve AI capability. Both are flows rather than stocks of chips, and both have
+the same constant unit resource cost. I choose units so that one unit of raw
+compute costs one unit of final output.
 
 \(A\) indexes current AI capability: what one unit of compute can accomplish.
 Inference compute produces the flow of quality-adjusted AI services supplied by
@@ -176,14 +165,11 @@ and \(M\), whereas \(X\) and \(AM\) are service flows. This product of nonrival
 capability and rival compute is the one-capability version of the AI-service
 accounting in \citet{davidsonetal2026}.
 
-The common unit cost is a normalization, not an assumption that compute is
-economically free. To see this, start from a common cost \(\xi>0\), define
-\(\widetilde U=\xi U\), \(\widetilde M=\xi M\),
-\(\widetilde A=A/\xi\), and then use the normalized variables. Both service
-flows and all resource costs are unchanged. The corresponding rescaling of
-research productivity is stated after the capability law. Producing one unit of
-either service flow---one unit of \(X\) or of \(AM\)---therefore uses \(1/A\)
-units of the final good.
+The normalization does not make compute free. A common unit cost \(\xi>0\) can
+be absorbed by defining \(\widetilde U=\xi U\), \(\widetilde M=\xi M\), and
+\(\widetilde A=A/\xi\), leaving service flows and resource costs unchanged.
+Producing one unit of either service flow therefore uses \(1/A\) units of final
+output in the normalized economy.
 
 Figure~\ref{fig:axm-current-production-flow} collects the current-production
 technology. It separates raw inference compute, the AI services purchased by
@@ -226,7 +212,11 @@ denote transformations or outputs.
 
 \subsubsection{Frontier research technology}
 
-For \(\sigma_{HM}\neq1\), human researchers and automated research services
+Let \(\sigma_{HM}>0\) be the elasticity of substitution between human and
+automated research services. The CES weights satisfy
+\(\omega_H,\omega_M\in(0,1)\) and \(\omega_H+\omega_M=1\). The parameter
+\(\chi>0\) shifts research productivity, while \(0<\eta<1\) governs returns to
+the current scale of research. For \(\sigma_{HM}\neq1\), human researchers and automated research services
 improve capability through the homothetic CES technology
 \begin{equation}
  \dot A=\chi
@@ -307,15 +297,10 @@ It raises the automated research services produced by the paid input \(M\).
  \label{fig:axm-research-flow}
 \end{figure}
 
-The baseline contains no additional \(A^\phi\) term. Better capability affects
-research only by raising the services produced by \(M\). Following the distinction
-in \citet{jones1995,davidsonetal2026}, \(\eta\) is an intratemporal scale parameter,
-not an intertemporal idea-difficulty parameter. A separate term \(A^{1-b}\) would
-add that second margin. Holding the effective-research index fixed, it contributes
-the factor \(A^{-b}\) to capability growth, so any \(b>0\) introduces
-intertemporal diminishing returns; if \(1-b>0\), the stock also has a positive
-level effect on \(\dot A\). The baseline imposes \(b=1\), removes the separate
-level-stock term, and isolates research automation.
+The baseline contains no separate power of the capability stock. Better
+capability affects research only by raising the automated services produced by
+\(M\). Thus \(\eta\) governs the current scale of research, not a separate
+ideas-getting-harder force \citep{jones1995,davidsonetal2026}.
 
 \subsubsection{Dynamic problem}
 
@@ -482,19 +467,9 @@ of \(E\) with respect to \(AM\). It follows that the elasticity of \(\dot A\)
 with respect to \(AM\) is \(\eta s_M\). Holding \(H\) and \(M\) fixed, this is
 also the local elasticity of \(\dot A\) with respect to the predetermined
 capability stock \(A\). These equalities use interior cost minimization; \(s_M\)
-is not a physical fraction of research tasks performed by AI. More generally,
-\(s_X=\partial\ln Z/\partial\ln X\) follows directly from the
-final-production CES. The equality
-\(s_M=\partial\ln E/\partial\ln(AM)\) combines the research CES with interior
-conditional cost minimization. Evaluated along an interior equilibrium path,
-both are endogenous local feedback weights of the kind emphasized by
-\citet{davidsonetal2026}. Unlike their fractions of tasks already automated, the
-weights I derive are not task shares.
-
-If the capability law contained the additional term \(A^{1-b}\), then, along
-the interior cost-minimizing allocation, the net local elasticity would be
-\(\partial\ln g_A/\partial\ln A\vert_{H,M}=\eta s_M-b\). Thus the separate
-ideas-difficulty force need not dominate the automation feedback.
+is not a physical fraction of research tasks performed by AI. Together with
+\(s_X=\partial\ln Z/\partial\ln X\), it is an endogenous local feedback weight,
+not a task share.
 
 Let \(q\) be the current-value shadow price of capability. Under the compute-unit
 normalization described above, its rescaled counterpart is
@@ -626,34 +601,6 @@ optimum, control the infinite-horizon tail, or prove equilibrium existence. The
 benchmark uses a strict margin, \(\eta=0.20<\alpha=0.33\), chosen
 illustratively rather than estimated.
 
-\begin{remark}[The no-AI boundary]
-The no-AI economy is a useful boundary case, although it lies outside the
-maintained interior-weight assumption. If \(\omega_X=\omega_M=0\), then
-\(Z=L\) and capability has no productive use. Once the developer's problem is
-imposed, capability therefore has no market value and an optimal developer
-conducts no research. The model reduces to a Ramsey--Cass--Koopmans economy with
-population growth and no technological progress.
-\end{remark}
-
-\begin{remark}[The constant-returns boundary]
-\label{rem:axm-eta-one}
-At \(\eta=1\), doubling \(H\) and \(M\) for a fixed capability stock doubles
-\(\dot A\). If, in addition, \(\sigma_{HM}>1\) and \(AM/H\to\infty\), then
-\[
- \frac{\dot A}{A}
- \sim \chi\,\omega_M^{1/\varrho_{HM}}M.
-\]
-In this technological limit, a higher level of research compute raises the
-growth rate of capability. This scaling does not by itself establish which
-equilibrium branch is reached or whether output becomes singular because \(M\)
-is endogenous. Moreover, the scale condition just derived becomes
-\(q\chi=P_E\) and no longer determines \(E\). If \(q\chi<P_E\), the developer
-chooses no research at the margin; if \(q\chi>P_E\), its unconstrained problem
-has no finite interior research choice. I maintain \(0<\eta<\alpha<1\) in the
-baseline. The boundary \(\eta=1\) requires a separate analysis of interiority, existence,
-transversality, and the asymptotic equilibrium.
-\end{remark}
-
 \subsection{Equilibrium}
 
 Capital-market clearing requires the household's capital holdings to equal the
@@ -767,87 +714,24 @@ and service identities, and labor, capital, AI-service, and goods market clearin
 \end{definition}
 
 \subsection{Equilibrium conditions and candidate-path characterization}
-
-Every regular interior equilibrium necessarily satisfies the following dated
-conditions. Together, the three blocks below characterize an interior candidate
-path; they characterize a globally optimal equilibrium only under the conditions
-of Proposition \ref{prop:axm-equilibrium-sufficiency}. The first block repeats
-the dated conditions in the order of their source. In particular, the household
-Euler equation and the developer costate remain in terms of the market return
-\(r\) that each agent takes as given. The block is written for
-\(\sigma_{XL}\neq1\) and
-\(\sigma_{HM}\neq1\); at unit
-elasticity, the corresponding CES and price-index equations are replaced by the
-continuous limits stated above. Let \(e_X=\varepsilon_X^{-1}\).
-
-\subsubsection{Dated equilibrium conditions by source}
 \label{sec:axm-dated-equilibrium-system}
-Because market clearing has now been imposed, the collected system uses the
-single quantities \(K\) and \(X\). This notational consolidation occurs here,
-not in the individual derivations above. The headings retain the source of each
-condition before the conditions are combined.
-\begingroup
-\allowdisplaybreaks[4]
-\begin{align}
-\intertext{\textit{Exogenous process:}}
- \dot N&=nN,\\
-\intertext{\textit{Household feasibility and optimality in prices:}}
- \dot K&=rK+wN+\Pi-C,\\
- \frac{\dot C}{C}&=n+r-\rho,\\
-\intertext{\textit{Final-good firms:}}
- Y&=K^\alpha Z^{1-\alpha},\\
- Z&=\left[
- \omega_L L^{(\sigma_{XL}-1)/\sigma_{XL}}
- +\omega_X X^{(\sigma_{XL}-1)/\sigma_{XL}}
- \right]^{\sigma_{XL}/(\sigma_{XL}-1)},\\
- s_X&=\frac{\omega_X X^{(\sigma_{XL}-1)/\sigma_{XL}}}
- {\omega_LL^{(\sigma_{XL}-1)/\sigma_{XL}}
- +\omega_X X^{(\sigma_{XL}-1)/\sigma_{XL}}},\\
- r&=\alpha\frac{Y}{K}-\delta,\\
- w&=(1-\alpha)(1-s_X)\frac{Y}{L},\\
- p_X&=(1-\alpha)s_X\frac{Y}{X},\\
- Y&=(r+\delta)K+wL+p_XX,\\
- e_X&=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X,\\
-\intertext{\textit{AI-developer technologies, accounting, and optimality:}}
- X&=AU,\\
- E&=\left[\omega_HH^{\varrho_{HM}}
- +\omega_M(AM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}},\\
- \dot A&=\chi E^\eta,\\
- p_X(1-e_X)&=\frac{1}{A},\\
- P_E&=\left[
- \omega_H^{\sigma_{HM}}w^{1-\sigma_{HM}}
- +\omega_M^{\sigma_{HM}}A^{\sigma_{HM}-1}
- \right]^{1/(1-\sigma_{HM})},\\
- q\chi\eta E^{\eta-1}&=P_E,\\
- H&=\omega_H^{\sigma_{HM}}
- \left(\frac{P_E}{w}\right)^{\sigma_{HM}}E,\\
- AM&=\omega_M^{\sigma_{HM}}(AP_E)^{\sigma_{HM}}E,\\
- s_M&=\frac{M}{wH+M},\\
- q\frac{\partial\dot A}{\partial H}&=w,\\
- q\frac{\partial\dot A}{\partial M}&=1,\\
- \Pi&=p_XX-U-wH-M,\\
- \frac{\dot q}{q}&=r-\frac{X}{qA^2}
- -\eta s_M\frac{\dot A}{A},\\
-\intertext{\textit{Market clearing and aggregate accounting:}}
- N&=L+H,\\
- C+\dot K+\delta K+U+M&=Y.
-\end{align}
-\endgroup
-The block is supplemented by the strict monopoly second-order condition
-\eqref{eq:axm-monopoly-soc}. It deliberately displays equivalent
-representations and audit identities, not additional independent restrictions.
-The inverse-demand schedule was derived from final-good firms' optimal demand
-before it was used in the developer's problem. Capital- and AI-service-market
-clearing then identify the quantities denoted by \(K\) and \(X\) across those
-separate problems; they do not add tautological equations to the collected
-system.
-The dual research conditions imply the two direct research first-order
-conditions; the research price and both conditional demands imply the CES
-identity for \(E\); and the final-firm first-order conditions imply zero profit.
-After market clearing, the household budget, developer profit, final-firm zero
-profit, and the resource constraint are also alternative representations of the
-same aggregate accounting. Keeping them visible permits an equation-by-equation
-audit of the reduced numerical system without obscuring their origin.
+
+Every regular interior equilibrium satisfies the conditions derived above. The
+household Euler equation and the developer costate are first obtained in terms of
+the market return each agent takes as given. The final-good firm's factor-price
+conditions are derived separately. Only after market clearing are these
+conditions combined in \eqref{eq:axm-euler-reduced} and
+\eqref{eq:axm-costate-reduced}. The same order applies to capital and AI-service
+quantities: their meanings are local to each agent's problem until market
+clearing identifies the common equilibrium quantities.
+
+Some displayed conditions are equivalent representations rather than additional
+restrictions. The dual research system implies the direct research first-order
+conditions, the final-firm first-order conditions imply zero profit, and the
+household budget becomes the resource constraint after market clearing. The
+equation-by-equation numerical map records these identities separately for audit
+purposes; the reduced system below retains only the equations needed to solve the
+candidate path.
 
 \subsubsection{Reduced dynamic system}
 
@@ -911,7 +795,7 @@ The dated first-order, state, market, and accounting conditions are necessary fo
 a regular interior equilibrium. The transversality conditions are maintained
 terminal restrictions; their universal necessity is not asserted. The static
 second-order condition verifies local monopoly optimality in \(X\), but the
-paper does not establish global concavity of the developer's intertemporal
+I do not establish global concavity of the developer's intertemporal
 problem for all parameter values. Outside the sufficient cases stated next, a
 solution of the displayed equations is therefore only a candidate path.
 

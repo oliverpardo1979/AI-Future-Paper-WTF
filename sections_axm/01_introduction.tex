@@ -2,103 +2,49 @@
 
 The economic question is not only whether artificial intelligence can perform
 tasks currently done by workers. It is also whether AI can perform the research
-that produces better AI. When current AI capability determines the productivity
-of compute used both in final production and in AI research, a familiar
-substitution problem also creates a dynamic feedback. Following the useful
-distinction in \citet{davidsonetal2026}, higher capability operates through two
-loops. The technological loop raises the services produced by research compute;
-the economic loop raises output and therefore the resources that can be devoted
-to accumulation and research. Higher capability also lowers the resource cost of
-a unit of AI service. The conditions under which this
-feedback can settle into balanced growth or enter an accelerating branch depend
-on substitution possibilities in both sectors, the strength of the resulting
-feedback, and the branch that is reached.
+that produces better AI. When current capability makes compute more productive
+in both production and research, better AI raises current output and helps create
+still better AI. Following \citet{davidsonetal2026}, I distinguish a
+technological loop, from capability to research productivity, and an economic
+loop, from capability to output and therefore to the resources available for
+investment and research.
 
-I develop a general-equilibrium growth model to study that feedback. Raw
-compute has two uses. Inference compute is transformed by current AI capability
-into services used in final production. AI R\&D compute---called research compute
-below---is transformed by the same capability into automated research services.
-Human researchers and automated research services are combined with a CES
-technology to improve AI capability.
-An integrated monopolist sells production services to final-good firms and uses
-automated research services internally. The representative household owns capital
-and the developer, supplies labor, and chooses consumption. Population grows
-exogenously.
+I study these loops in a decentralized endogenous-growth model. Raw compute has
+two uses. Inference compute produces AI services for final-good firms. Research
+compute produces automated services used together with human researchers to
+improve AI capability. An integrated developer sells production AI services and
+chooses how much to invest in capability. A representative household owns
+physical capital and the developer, supplies labor, and chooses consumption.
 
-Research substitution and research scale are separate. The elasticity
-\(\sigma_{HM}\) governs the response of the input mix to relative prices, whereas
-\(0<\eta<1\) imposes decreasing returns to a proportional expansion of current
-research inputs, holding capability fixed. The boundary \(\eta=1\) is substantive,
-not a normalization. The baseline imposes the stronger restriction
-\(\eta<\alpha\). Proposition \ref{prop:axm-research-burst} shows why. For all
-positive CES elasticities, on any fixed horizon with regular positive price and
-quantity paths, let \(S\) denote
-total research expenditure. Capability is at most of order
-\(1+S^{\eta/(1-\eta)}\), and optimized operating profit implies the bound
-\[
- J_T\leq C_0+C_1S^{\eta(1-\alpha)/[\alpha(1-\eta)]}-cS.
-\]
-The exponent is below one exactly when \(\eta<\alpha\). The truncated
-developer objective is then coercive over all nonnegative research policies,
-and its supremum is finite. If both CES nests permit gross substitution and
-\(\eta>\alpha\), a fixed-duration expansion of research compute makes the
-truncated value unbounded. Extending each policy
-with zero controls after the truncation date also makes the corresponding
-infinite-horizon developer value unbounded under the stated extension conditions.
-At equality, coefficients rather than exponents determine the leading term of
-this family, and the boundary is not fully characterized. With
-\((\alpha,\eta)=(0.33,0.20)\), the exponent equals 0.5076. This result does
-not establish compactness of the control set, attainment of the supremum,
-global optimality, infinite-horizon well-posedness, or equilibrium existence.
+Two substitution margins organize the analysis. The first measures how easily
+AI services replace labor in final production. The second measures how easily
+automated research services replace human researchers. Research scale is a
+separate margin: expanding all current research inputs has decreasing returns.
+The formal model introduces these elasticities and the research-curvature
+parameter only after presenting the relevant technologies.
 
-The distinction between raw compute and the services produced by compute is
-central. A unit of compute is not a unit of intelligence. Current capability
-determines what a given unit of hardware, energy, and datacenter time can produce.
-I therefore write production services as the product of capability and inference
-compute, and automated research services as the product of capability and research
-compute. This capability-times-compute architecture is the one-capability analogue
-of the capability--compute architecture in \citet{davidsonetal2026}. It is also informed by
-the richer distinction between inference output, training activity, algorithms,
-and model capital in \citet{korinekmckelvey2026}. My reduction is substantive:
-one stock \(A\) combines model quality and algorithmic efficiency and augments
-both uses of compute. I use the term research compute for their broad
-training-and-R\&D compute category. It includes pretraining, post-training,
-experimentation, synthetic-data generation, automated algorithmic search, and
-compute used by AI systems engaged in research.
-
-The model deliberately excludes a separate power of the capability stock from its
-baseline research technology. Better AI affects research only by making research
-compute more productive. In the terminology of \citet{davidsonetal2026}, the
-parameter governing returns to the current scale of research and the parameter
-governing intertemporal idea difficulty are distinct. In my specification,
-\(\eta\) is the former;
-the baseline imposes \(b=1\) on the latter. A term such as \(A^{1-b}\) could make
-that second margin free: holding the effective-research index fixed, any \(b>0\)
-introduces the familiar ideas-getting-harder force in the growth rate of capability,
-while \(1-b>0\) also gives the stock a positive level effect on \(\dot A\)
-\citep{jones1995,davidsonetal2026}. Setting \(b=1\) removes this separate
-level-stock term and isolates the feedback carried by automated research services.
+The distinction between raw compute and AI services is essential. A unit of
+hardware, energy, and datacenter time is not a unit of intelligence. Capability
+determines the service flow produced by a unit of compute. I therefore model both
+production and research services as capability times the corresponding compute
+input. This one-capability representation is a tractable version of the broader
+capability--compute architecture in \citet{davidsonetal2026}. It is also
+consistent with the distinction in \citet{korinekmckelvey2026} between physical
+compute, training and R\&D activity, algorithms, inference output, and model
+capital. My capability stock combines model quality and algorithmic efficiency;
+my research-compute input includes training, post-training, experimentation,
+synthetic-data generation, and automated algorithmic research.
 
 \subsection{Empirical motivation}
 
-Available data do not measure the objects at the center of the research block:
-the relative use and contribution of human researchers and automated research
-services. They do, however, provide
-separate measures of raw compute, electricity use, and quality-adjusted AI output.
-In the data cited below, both the physical resources devoted to AI and the
-services obtained from those resources expand rapidly, with quality-adjusted
-output rising faster. These measures motivate the distinction between raw compute
-and AI services; they do not identify either substitution elasticity.
-
-\citet{korinekmckelvey2026} estimate that U.S. AI compute expenditure rose from
-\$36.9 billion in 2023 to \$219.2 billion in 2025, while raw compute capacity rose
-from 1.09 million to 10.7 million H100-equivalent units of compute capacity, a measure normalized
-to the computing capacity of an NVIDIA H100 accelerator. Over the same two years,
-their quality-adjusted inference and training indexes increased by factors
-of approximately 1,502 and 78. The quality-adjusted series are model-based
-estimates assembled from sparse data and allocation assumptions, not
-national-account aggregates. Their relevance here is conceptual: more compute and
-more services per unit of compute are distinct margins.
+Available evidence supports separating compute from the services it produces,
+but it does not identify the model's substitution elasticities. According to
+\citet{korinekmckelvey2026}, U.S. AI compute expenditure rose from \$36.9 billion
+in 2023 to \$219.2 billion in 2025, while estimated raw capacity rose from 1.09
+million to 10.7 million NVIDIA H100-equivalent units. Their quality-adjusted
+indexes of inference and training output increased much faster. These indexes
+are model-based estimates, not national-account aggregates, but they show why
+compute and AI services should not be treated as the same object.
 
 \begin{figure}[t]
 \centering
@@ -112,149 +58,78 @@ projection for 2030. Sources: \citet{korinekmckelvey2026}, \citet{iea2025}, and
 \label{fig:axm-empirical-scale}
 \end{figure}
 
-Compute nevertheless remains a real resource. The International Energy Agency
-estimates that global data-center electricity use rose from 415 TWh in 2024 to
-485 TWh in 2025, and it projects approximately 950 TWh in 2030
-\citep{iea2025,iea2026}. Normalizing the
-common unit cost of inference and research compute therefore changes units; it
-does not remove compute from the resource constraint.
+Compute also remains a real resource. The International Energy Agency estimates
+that global data-center electricity use rose from 415 TWh in 2024 to 485 TWh in
+2025 and projects about 950 TWh in 2030 \citep{iea2025,iea2026}. Normalizing the
+unit cost of compute therefore changes units; it does not remove compute from the
+economy's resource constraint.
 
-Evidence closest to AI research automation comes from controlled evaluations. In
-the original RE-Bench study, human experts with a 32-hour budget achieved almost
-twice the average score of the best AI agent on machine-learning
-research-engineering tasks \citep{metrrebench2024}. In a later evaluation on a
-five-task subset, aggregating shorter Claude 3.7 runs to 32 hours produced a score
-comparable to the median human score at eight hours \citep{metrclaude2025}.
-These five tasks have unusually clear objectives and rapid feedback, and the model,
-surrounding agent software and tools, tasks, and time budgets differ. The results
-are therefore neither a comparable time series nor a measure of substitution in
-real-world AI research. They
-motivate the possibility of substitution in AI research without measuring
-\(H/(AM)\) or \(\sigma_{HM}\).
-
-The numerical exercises below are therefore scenarios rather than forecasts. The
-evidence motivates the distinction between raw compute and service flows and the
-two uses of compute, but it does not calibrate the feedback strength or the
-conditions under which the economy reaches the accelerating branch.
+Evidence on automated AI research is more limited. Human experts substantially
+outperformed the best AI agent in the original 32-hour RE-Bench evaluation
+\citep{metrrebench2024}. A later evaluation on five selected tasks found that
+aggregated shorter Claude 3.7 runs could match the median score reached by humans
+at eight hours \citep{metrclaude2025}. The tasks, models, tools, and time budgets
+differ across the two exercises. They motivate the possibility that AI can
+substitute for some research labor, but they do not measure that elasticity in
+the economy. I therefore treat the numerical exercises as scenarios, not
+forecasts or calibrations to these studies.
 
 \subsection{Results and contribution}
 
-The analysis separates three regimes according to the elasticity of substitution
-between labor and AI services in final production. When the elasticity is below
-one, an interior complementarity limit satisfying the regularity conditions in
-Proposition~\ref{prop:axm-complements} has a finite ratio of AI services to
-production labor. Final output then becomes asymptotically proportional to a
-Cobb--Douglas function of capital and production labor. On any finite-rate
-balanced-growth path that satisfies the stated conditions and keeps production
-labor at a positive population share, output per capita is constant. The audited
-finite-horizon candidate paths make the distinction from research automation
-visible: capability keeps growing in both reported complementarity cases, and
-with substitutable research the automated research-expenditure share approaches
-one. Over the same transition, output per person, consumption per person, and the
-real wage move toward their conditional constant limits, while labor retains a
-positive income share. At unit elasticity, I derive the growth rates and resource
-shares of balanced-growth candidates. An
-asymptotically automated research sector places greater weight on the feedback
-from capability to both production and research and therefore tightens the
-condition for positive balanced growth. When the final-production elasticity
-exceeds one and AI services asymptotically dominate the labor--AI composite,
-unbounded capability raises \(Y/K\) and the net interest rate without bound. A finite-rate
-balanced-growth path is then impossible.
+I obtain three regimes. When AI services and labor are complements in final
+production, labor remains a bottleneck. Along the regular finite-rate
+balanced-growth paths characterized below, output per person and real wages
+approach constants and labor retains a positive income share. Capability can
+nevertheless keep improving, and automated services can receive almost all
+research expenditure when they substitute for human researchers.
 
-For the regime with gross substitution in both final production and AI research,
-I go beyond this nonexistence result and characterize a conditional AI-dominated
-limiting branch of the necessary
-conditions on which output, capital, consumption, and capability accelerate. The characterization assumes
-that the path remains interior, converges to the postulated ratios, and satisfies
-the monopoly second-order condition. Under those conditions,
-aggregate labor income as a share of output tends to zero, while the real wage
-rises when the smaller of the two substitution elasticities is below an explicit
-threshold and falls when it is above that threshold. The distinction between labor income's
-share of output and the wage level is economically important: a factor may
-receive a vanishing fraction of an economy that is expanding even faster.
+At unit elasticity in final production, positive balanced growth requires the
+feedback from capability to production and research to remain below an explicit
+threshold. The threshold is necessary but not sufficient for an equilibrium to
+exist. It is the scalar counterpart of the feedback-matrix condition in
+\citet{davidsonetal2026}.
 
-The timing of this transition is itself a central numerical result. In the
-reported finite-boundary approximation, output-per-capita growth remains below
-0.5 percent from approximately \(t=10\) to \(t=1330\), and below 2 percent until
-approximately \(t=1521\), more than 90 percent of the way to the tail-corrected
-boundary estimate near \(t=1669\). It exceeds 10 percent only about 50 model years
-before that estimated boundary. The long low-growth phase is not a no-change
-phase: by \(t=1000\), when output-per-capita growth is only about 0.15 percent,
-aggregate labor income has already fallen from 63.2 to 52.1 percent of output.
-The final collapse is nevertheless sharply concentrated: labor's share falls
-below 5 percent only about 55 model years before the estimated boundary. The
-delayed timing parallels the weak-link transition in \citet{jonestonetti2026},
-although their task-automation mechanism is different. These durations are
-benchmark model time, not calendar forecasts.
+When AI services are gross substitutes for labor and become dominant, unbounded
+capability makes the output--capital ratio and the interest rate unbounded. A
+finite-rate balanced-growth path is then impossible. I characterize a
+conditional branch of the necessary conditions on which output, capital,
+consumption, and capability accelerate and output becomes unbounded in finite
+model time. Labor's income share converges to zero, although the real wage can
+rise because output grows even faster.
 
-The qualitative connection between automation and labor's income share is
-already established. Task automation generates a displacement effect, while
-new human tasks can reinstate labor demand \citep{acemoglurestrepo2019}.
-Transformative-AI models also show that sufficiently extensive automation can
-sharply reduce labor's share \citep{trammellkorinek2023}. Most directly,
-\citet{restrepo2025agi} shows that, once compute can perform all bottleneck work,
-the expansion of compute can drive growth while labor's income share converges
-to zero. I do not claim this qualitative limiting possibility as new.
+The numerical transition on this branch is strongly back-loaded. In the
+benchmark path, output-per-capita growth remains below 0.5 percent from about
+model year 10 to year 1330 and below 2 percent until about year 1521. It exceeds
+10 percent only about 50 model years before the estimated boundary. Distribution
+changes earlier: by year 1000, when output-per-capita growth is still about 0.15
+percent, labor's share has fallen from 63.2 to 52.1 percent. These dates depend on
+the normalization and are not calendar forecasts. The delayed acceleration is
+closest to the weak-link transition in \citet{jonestonetti2026}, although the
+mechanism differs.
 
-Across the three regimes, the outer Cobb--Douglas technology fixes the
-final-good firm's gross capital payment at \(\alpha Y\). The
-final-production elasticity changes how the remaining \((1-\alpha)Y\) is
-divided between production labor and gross purchases of AI services. Those
-purchases are not developer profit. They finance inference compute and research
-inputs before the residual profit is distributed. Combining the final-good
-firm's zero-profit condition with the developer's profit identity gives
-\[
- Y=(r+\delta)K+wL+wH+\Pi+U+M.
-\]
-My distributional contribution is to derive how this decomposition
-changes across the three substitution regimes and along their numerical paths.
-In particular, a fall in \(wL/Y\) is not mechanically a rise in conventional
-capital income or in distributed monopoly profit. Aggregate labor income also
-includes research wages, while \(U\) and \(M\) are real resource uses rather
-than income received by a household in the model. Identifying who ultimately
-receives the payments embodied in compute would require an upstream compute
-sector and an ownership structure that the baseline does not contain.
+I also separate labor displacement from the uses of the displaced
+share. The outer production technology keeps the final-good firm's gross capital
+payment fixed. A fall in labor income therefore raises gross payments for AI
+services, not developer profit one for one. The developer uses that revenue to
+pay for inference compute, human research, and research compute before
+distributing the residual profit. This decomposition extends the established
+result that sufficiently extensive automation can reduce labor's share
+\citep{acemoglurestrepo2019,trammellkorinek2023,restrepo2025agi}. It does not
+determine interpersonal inequality because the model does not specify who owns
+the upstream compute sector.
 
-The complementarity and unit-elasticity computations solve the same dated
-equilibrium system under the capability law specified in the model. The two reported
-unit-elasticity parameterizations also satisfy the sufficient
-concavity restrictions in Proposition \ref{prop:axm-equilibrium-sufficiency}.
-Their numerical path approximations solve the household Euler equation, the developer's
-research first-order conditions and costate equation, the monopoly pricing
-condition, both market-clearing conditions, and the two laws of motion. The
-simulations are used to illustrate propositions, not to replace them. The reported
-paths are rejected unless all dated static, first-order, market, and dynamic
-residuals are small and the monopoly second-order margin is positive. Finite
-terminal conditions approximate, but do not prove, the infinite-horizon
-transversality limits.
+My main contribution is to determine production, research, saving, prices, and
+the allocation of compute jointly in a decentralized Ramsey economy with an
+integrated AI developer. Davidson et al. provide the closest feedback
+architecture, but hold key saving and resource shares fixed. The quantitative
+framework in \citet{erdiletal2025gate} combines AI development, automation,
+investment, and growth but abstracts from market prices and market structure. I
+focus on how equilibrium prices and the two substitution margins govern growth,
+wages, factor payments, compute use, and developer profit.
 
-For gross substitution in final production, a separate free-boundary calculation
-solves the necessary conditions up to successively larger values of \(Y/K\).
-The resulting paths converge on common pre-singular intervals and their estimated
-singularity dates converge. This is evidence for the conditional accelerating
-branch, but not a proof of its global intertemporal optimality, reachability from
-arbitrary initial states, or continuation beyond the finite-time boundary.
-
-The closest analytical benchmark is \citet{davidsonetal2026}, who already
-combine nonrival AI capability with rival compute and distinguish technological
-from economic feedback in a multitechnology innovation network. I embed a
-one-capability version of that architecture in a decentralized Ramsey economy
-with an integrated monopolist. I use this framework to determine inference and
-research compute, production and research labor, saving, prices, and factor shares
-jointly rather than fixing the relevant allocation shares. The two CES margins
-make the local link weights endogenous equilibrium objects determined jointly by
-relative prices and allocations. In the
-unit-elasticity regime, the balanced-growth denominator becomes the scalar analogue
-of Davidson et al.'s feedback-matrix condition. In the conditional AI-dominated
-limit, I also derive an explicit threshold separating rising from falling
-wages: the relevant elasticity is the smaller of the substitution elasticities in
-final production and AI research. This result does not infer wage behavior from
-labor income's share of output.
-
-At a broader quantitative level, \citet{erdiletal2025gate} integrate a
-compute-based model of AI development, AI automation, semi-endogenous growth,
-endogenous investment, and adjustment costs. I therefore do not claim to be the
-first to combine AI development, automation, investment, and aggregate growth.
-My narrower objective is to characterize the decentralized prices, research
-choices, feedback conditions, and payments-and-resource-use accounting generated
-by the two CES substitution margins and an integrated developer.
+The analytical claims are conditional on the assumptions stated with each
+result. The complementarity and unit-elasticity simulations are finite-horizon
+approximations to candidate paths. The gross-substitutes calculation is a
+finite-boundary approximation to a conditional pre-singular branch of the
+necessary conditions. It does not establish an infinite-horizon equilibrium,
+global optimality, or a calendar date for a singularity.
