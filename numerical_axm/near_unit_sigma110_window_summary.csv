@@ -1,0 +1,4 @@
+terminal_boundary_z,duration,solver_tolerance,max_rms_residual,mesh_nodes,initial_log_consumption,initial_log_shadow_value,source
+16.0,4671.1705204052505,3e-05,2.8915142587049908e-05,929,-0.4428741805088376,-0.6905897538159557,continued from the audited sigma_XL=1.50 z=16 path
+12.0,4668.3588001642,3e-05,2.9880376928518117e-05,1166,-0.44287418066343204,-0.6905897539459523,boundary continuation from z=16
+8.0,4664.047119214605,3e-05,2.999090618521005e-05,1295,-0.44287418065642375,-0.6905897539422716,boundary continuation from z=16

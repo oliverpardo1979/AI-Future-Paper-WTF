@@ -985,15 +985,37 @@ taking each branch's asymptotic limit first:
  \label{eq:axm-noncommuting-distribution-limits}
 \end{equation}
 The table therefore compares distinct conditional regimes rather than tracing a
-smooth experiment in \(\sigma_{XL}\). Figure~\ref{fig:axm-noncommuting-limits}
-isolates the source of this distinction without imposing another equilibrium
-path. I hold \(L\) fixed and vary \(X/L\) in the final-production CES for
-elasticities close to one. At every finite ratio, the curves change continuously
-with \(\sigma_{XL}\). As \(X/L\) becomes large, however, \(s_X\) moves toward
-zero below one, remains at \(\omega_X\) at one, and moves toward one above one.
-The payment to production labor, \((1-\alpha)(1-s_X)Y\), and the gross payment
-for AI production services, \((1-\alpha)s_XY\), can therefore remain similar
-over a range of AI use before separating sharply.
+smooth comparative-static curve in \(\sigma_{XL}\). The equilibrium paths near
+the unit-elasticity boundary are nevertheless informative. I solve the same
+dated equilibrium system at \(\sigma_{XL}=0.90,1.00,1.10\), holding
+\(\sigma_{HM}=2\), all other parameters, and the predetermined initial stocks
+fixed. Figure \ref{fig:axm-near-unit-equilibrium} reports a common 4,500-year
+window. The \(0.90\) and unit-elasticity paths are finite-horizon equilibrium-path
+approximations. The \(1.10\) path is a conditional finite-boundary equilibrium
+path; its displayed segment is stable when the artificial terminal value of
+\(Y/K\) is changed from 8 to 12 or 16.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures_axm/axm_near_unit_equilibrium_paths.png}
+\caption{Numerical equilibrium paths around unit elasticity. Each line solves
+the dated equilibrium conditions under the same calibration and predetermined
+initial stocks. For \(\sigma_{XL}=0.90\), I show the \(T=5{,}600\) path; for
+\(\sigma_{XL}=1\), the \(T=5{,}800\) path; and for \(\sigma_{XL}=1.10\), the
+\(z_T=16\) finite-boundary path. The last is shown only through year 4,500, a
+window over which the independently audited \(z_T=8,12,16\) solutions overlap.
+Annual rates and the labor share are percentages.}
+\label{fig:axm-near-unit-equilibrium}
+\end{figure}
+
+The comparison makes the regime boundary concrete. By year 4,500, output per
+person grows at 0.003 percent for \(\sigma_{XL}=0.90\), 0.080 percent at unit
+elasticity, and 4.083 percent for \(\sigma_{XL}=1.10\). The corresponding net
+interest rates are 4.003, 4.080, and 7.920 percent, while labor receives 57.39,
+53.60, and 12.70 percent of output. These differences emerge gradually rather
+than through a discontinuity at any finite date. They show why an elasticity
+slightly above one can look moderate for a long time even though its
+equilibrium path eventually departs sharply from the unit-elasticity path.
 
 Finally, these are functional distribution results, not predictions about
 interpersonal inequality. The representative household supplies all labor and
@@ -1001,20 +1023,6 @@ owns both physical capital and the developer. A vanishing labor-income share
 also need not imply a falling real wage: along the conditional gross-substitutes
 branch, the wage can rise while \(wN/Y\) falls because output grows faster than
 labor income.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.98\textwidth]{figures_axm/axm_noncommuting_limits.png}
-\caption{Finite-input continuity and non-commuting limits near unit elasticity.
-The figure evaluates the final-production CES exactly at \(\alpha=0.33\),
-\(\omega_X=0.20\), and five values of \(\sigma_{XL}\). The horizontal axis is
-the log AI-service--labor ratio, not calendar time. This is a technology
-experiment, not an equilibrium path: the full equilibrium system determines
-how fast \(X/L\) changes. At every finite ratio the CES is continuous in
-\(\sigma_{XL}\), but its limiting payment shares differ because the large-
-\(X/L\) and \(\sigma_{XL}\to1\) limits do not commute.}
-\label{fig:axm-noncommuting-limits}
-\end{figure}
 
 \subsection{Cross-regime synthesis and limits of the evidence}
 

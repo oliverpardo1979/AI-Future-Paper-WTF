@@ -1029,6 +1029,36 @@ by the numerical calculation, a terminal condition, or a calendar forecast. The
 alternative shooting routine retained in the source code is experimental and
 does not generate any result I report.
 
+\subsection{Equilibrium paths near unit elasticity}
+
+Figure \ref{fig:axm-near-unit-equilibrium} is based on three solutions of the
+dated equilibrium system. For
+\(\sigma_{XL}=0.90\), I solve independent finite-horizon boundary-value problems
+at \(T=5{,}000,5{,}300,5{,}600\), using a 401-node initial mesh and a tolerance
+of \(10^{-6}\). I display the \(T=5{,}600\) solution. The independent audit
+reconstructs the static equations, differentiates the four saved log paths, and
+checks the terminal conditions and the stability of the two initial jump
+variables across all three horizons.
+
+For \(\sigma_{XL}=1.10\), I begin with the audited
+\(\sigma_{XL}=1.50,z_T=16\) solution and continue the elasticity through
+\(1.45,1.40,1.35,1.30,1.25,1.20,1.175,1.15,1.125,1.10\). At
+\(\sigma_{XL}=1.10\), I then solve the same boundary-value problem at
+\(z_T=16,12,8\), with tolerance \(3\times10^{-5}\). All three boundaries lie
+beyond the displayed interval. On \(t\in[0,4{,}500]\), their maximum spreads
+are below \(1.3\times10^{-4}\) for each log path and below
+\(3.0\times10^{-6}\) for the reported growth rates, return, labor share, and
+AI share. An independent reconstruction also verifies the dated technologies,
+prices, first-order conditions, market clearing, and dynamic equations on that
+window.
+
+The terminal approximation differs across regimes, but the object plotted in
+each case is an equilibrium-system solution. ``Finite boundary'' describes the
+numerical terminal condition for the gross-substitutes path, not a change in the
+economic system being solved. The audit supports the reported common window. It
+does not establish convergence of the uncomputed tail, an infinite-horizon
+equilibrium, transversality at infinity, global optimality, or uniqueness.
+
 \subsection{Supplementary transition diagnostic}
 
 Figure \ref{fig:axm-feedback-diagnostic} evaluates the scalar feedback accounting

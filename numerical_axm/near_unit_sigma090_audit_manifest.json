@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2026-08-19T07:23:55.544586+00:00",
+  "accepted": true,
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.2,
+    "sigma_xl": 0.9,
+    "population_growth": 0.012,
+    "delta": 0.05,
+    "discount": 0.04,
+    "omega_m": 0.35,
+    "eta": 0.2,
+    "chi": 0.01
+  },
+  "horizons": [
+    5000.0,
+    5300.0,
+    5600.0
+  ],
+  "python": "3.12.13",
+  "files": {
+    "scripts/simulate_axm_near_unit_lower.py": {
+      "bytes": 4325,
+      "sha256": "f51bea2080740d751d97e47e31dfa47e5633b1c09d3002b6370f3562b5545512"
+    },
+    "scripts/audit_axm_near_unit_lower.py": {
+      "bytes": 11150,
+      "sha256": "4abb3e897696ce504e163eef1cd194ff8ba58236b329444e14260143af8e756c"
+    },
+    "numerical_axm/near_unit_sigma090_horizon_paths.csv": {
+      "bytes": 10830264,
+      "sha256": "5ca89d9dd19621b8dfedf003309f0328546a9c75ac0428ddd5ce00d11973ce39"
+    },
+    "numerical_axm/near_unit_sigma090_horizon_summary.csv": {
+      "bytes": 1181,
+      "sha256": "b370c145cfc3aa0d6ef1dd677b8ee2401b8ca4fef936c920e125d3095872dd13"
+    },
+    "numerical_axm/near_unit_sigma090_acceptance_report.csv": {
+      "bytes": 5204,
+      "sha256": "a1b5d8dc633d1d1e09388a0c9043cbb9c239333cf989bc658b17b355b688acf8"
+    },
+    "numerical_axm/near_unit_sigma090_equation_residuals.csv": {
+      "bytes": 5824665,
+      "sha256": "5e694c71a9cedf47a1680d6e437f41021438bf5632d2133c21784c6b8dbbc6f9"
+    }
+  },
+  "claim_not_established": [
+    "existence or uniqueness of an infinite-horizon equilibrium",
+    "global optimality",
+    "transversality from a finite-horizon proxy alone"
+  ]
+}

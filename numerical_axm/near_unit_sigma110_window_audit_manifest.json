@@ -1,0 +1,56 @@
+{
+  "created_at_utc": "2026-08-19T07:24:03.379241+00:00",
+  "overall_accepted": true,
+  "accepted_claim": "The three finite-boundary solutions satisfy the audited dated conditions and overlap on the displayed interval t in [0,4500].",
+  "claims_not_established": [
+    "convergence of the singular tail",
+    "existence of an infinite-horizon equilibrium",
+    "transversality at infinity",
+    "global optimality or uniqueness"
+  ],
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.2,
+    "sigma_xl": 1.1,
+    "n": 0.012,
+    "delta": 0.05,
+    "discount": 0.04,
+    "omega_m": 0.35,
+    "sigma_hm": 2.0,
+    "eta": 0.2,
+    "chi": 0.01
+  },
+  "boundaries": [
+    8.0,
+    12.0,
+    16.0
+  ],
+  "display_end": 4500.0,
+  "python": "3.12.13",
+  "files": {
+    "scripts/simulate_axm_near_unit_high.py": {
+      "bytes": 6252,
+      "sha256": "8c1150fd942d55185184238a05fd145ca1117a9bc37632bc85685f6eb2f9d4b4"
+    },
+    "scripts/audit_axm_near_unit_high.py": {
+      "bytes": 10044,
+      "sha256": "d0d2727e0893402cd028bb7dd5f11205294e1bb23c0766c2f14192a24af5f746"
+    },
+    "numerical_axm/near_unit_sigma110_window_boundary_paths.csv": {
+      "bytes": 22797526,
+      "sha256": "53297b507233a6c544cdc29d41cbcdb62dc424a096418abbf2616052532970a1"
+    },
+    "numerical_axm/near_unit_sigma110_window_summary.csv": {
+      "bytes": 538,
+      "sha256": "06a2d678711a7b6811cf16c63f4a16c789ee61786021a23bcb38d5809bbc3155"
+    },
+    "numerical_axm/near_unit_sigma110_window_acceptance_report.csv": {
+      "bytes": 1763,
+      "sha256": "b9a4c65adfe4f55e01039caa25245968f126064c80de7e03d1a0e01ceae76db4"
+    },
+    "numerical_axm/near_unit_sigma110_window_equation_residuals.csv": {
+      "bytes": 13714115,
+      "sha256": "54fb7fc155cf86f82e562e019b3267d071e1a8857c80263bf75f6add9b28e6e8"
+    }
+  }
+}

@@ -138,6 +138,26 @@ dated necessary conditions." It does not
 establish an infinite-horizon equilibrium, transversality at infinity, or global
 intertemporal optimality.
 
+The comparison immediately below and above unit elasticity uses separate
+equilibrium-system runners and independent audits:
+
+```
+python scripts/simulate_axm_near_unit_lower.py
+python scripts/audit_axm_near_unit_lower.py
+python scripts/simulate_axm_near_unit_high.py
+python scripts/audit_axm_near_unit_high.py
+python scripts/plot_axm_near_unit_equilibrium.py
+```
+
+The lower runner solves $\sigma_{XL}=0.90$ at horizons 5,000, 5,300, and
+5,600. The upper runner continues the audited $\sigma_{XL}=1.50$ branch to
+$\sigma_{XL}=1.10$, then solves artificial terminal boundaries
+$Y/K=8,12,16$. The plotted upper path stops at model year 4,500, before the
+smallest boundary. Its independent audit requires the three boundary solutions
+to overlap on that entire displayed window. These are simulations of the dated
+equilibrium system; the finite-boundary qualification limits the claim about the
+uncomputed tail rather than changing the economic equations being solved.
+
 After all three regime-specific audits pass, generate the cross-regime
 decomposition of final output with
 
@@ -151,17 +171,6 @@ mutually exclusive shares from dated prices and quantities and rejects any path
 whose shares are negative or fail to sum to one within the documented
 tolerance. In particular, it reconstructs distributed profit \(\Pi/Y\); it does
 not misinterpret the saved operating-profit field as distributed profit.
-
-Generate the exact CES experiment used to illustrate the non-commuting limits
-near \(\sigma_{XL}=1\) with
-
-```
-python scripts/plot_axm_noncommuting_limits.py
-```
-
-This command evaluates the final-production technology directly and writes the
-underlying values to `numerical_axm/noncommuting_limits_technology.csv`. It does
-not solve or approximate an additional equilibrium path.
 
 Compile the manuscript from the repository root with
 `tectonic --keep-logs --outdir build_axm main_axm.tex`.
