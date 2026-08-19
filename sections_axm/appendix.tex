@@ -394,8 +394,20 @@ extension. Hence
 Let
 \[
  \underline w=\min_{0\leq t\leq T}w_t>0,
- \qquad c_t=w_tH_t+M_t,
- \qquad S=\int_0^T c_t\dd t.
+ \qquad c_t=w_tH_t+M_t.
+\]
+Define total research expenditure by
+\begin{equation}
+ S(H,M)\equiv\int_0^T c_t\dd t
+ =\int_0^T(w_tH_t+M_t)\dd t,
+ \label{eq:axm-research-total-expenditure}
+\end{equation}
+and write it as \(S\) when there is no ambiguity.
+For a research policy, define the reduced payoff over this horizon by
+\[
+ J_T(H,M)=\int_0^T
+ \exp\left\{-\int_0^t r_s\dd s\right\}
+ [\pi(A_t;K_t,L_t)-w_tH_t-M_t]\dd t.
 \]
 The capability law implies that \(A\) is nondecreasing, so \(A_t\geq A_0\).
 Therefore, almost everywhere,
@@ -416,10 +428,11 @@ H\"older's inequality then gives, for every \(t\leq T\),
 \]
 where \(\bar c>0\) does not depend on the controls. Raising both sides to
 the power \(1/(1-\eta)\) proves
-\[
+\begin{equation}
  \max_{0\leq t\leq T}A_t
  \leq C_A\left(1+S^{\eta/(1-\eta)}\right).
-\]
+ \label{eq:axm-finite-horizon-capability-bound}
+\end{equation}
 This estimate includes arbitrarily concentrated measurable controls. In
 particular, if expenditure \(S\) is supported on a set of length \(d\leq T\),
 then \(\int c_t^\eta\dd t\leq d^{1-\eta}S^\eta\); shrinking the duration does
@@ -462,12 +475,16 @@ Integrability of \(r\) implies that
 \]
 has finite bounds \(0<\underline D\leq D_t\leq\overline D<\infty\) on
 \([0,T]\). Combining the capability and profit bounds gives
-\begin{align*}
+\begin{align}
  J_T(H,M)
  &\leq \overline D\int_0^T\pi(A_t;K_t,L_t)\dd t
        -\underline DS\\
- &\leq C_0+C_1S^{\eta\theta/(1-\eta)}-\underline DS.
-\end{align*}
+ &\leq C_0+C_1S^p-\underline DS,
+ \qquad
+ p=\frac{\eta\theta}{1-\eta}
+  =\frac{\eta(1-\alpha)}{\alpha(1-\eta)}.
+ \label{eq:axm-finite-horizon-payoff-bound}
+\end{align}
 This proves equations \eqref{eq:axm-finite-horizon-capability-bound} and
 \eqref{eq:axm-finite-horizon-payoff-bound}. If \(\eta<\alpha\), then
 \(p=\eta\theta/(1-\eta)<1\), so the right-hand side tends to \(-\infty\)
@@ -544,12 +561,13 @@ then bounds the discounted operating-profit integrand, after division by
 \(\mathcal B^{\eta\theta/(1-\eta)}\), by an integrable constant on
 \([0,T]\). Dominated convergence, the operating-profit asymptotic, and the
 capability solution therefore yield
-\[
+\begin{equation}
  J_T(\mathcal B)
  =c_\pi\mathcal B^{\eta\theta/(1-\eta)}
   -c_M\mathcal B
   +o\!\left(\mathcal B^{\eta\theta/(1-\eta)}\right),
-\]
+ \label{eq:axm-research-burst-payoff}
+\end{equation}
 where
 \[
  c_M=\int_0^\Delta D_t\dd t>0
@@ -571,13 +589,14 @@ Finally,
  \end{cases}
 \]
 Thus the fixed-duration family makes the truncated value unbounded when
-\(\eta>\alpha\). Under the additional extension and admissibility conditions in
-the proposition, setting \(X=H=M=0\) after \(T\) leaves the payoff of each
-policy unchanged: capability remains constant, and the continuous extension of
-sales revenue is zero at \(X=0\). The same family therefore also makes the
-corresponding infinite-horizon developer value unbounded. At equality, the sign of
-\(c_\pi-c_M\) determines this family's leading behavior; a nonpositive
-coefficient for this family does not rule out a different unbounded sequence.
+\(\eta>\alpha\). If the exogenous paths admit extensions to \([0,\infty)\)
+for which the primitive problem is defined, a zero-control tail is admissible,
+and sales revenue is extended continuously at \(X=0\), setting \(X=H=M=0\)
+after \(T\) leaves each payoff unchanged. Under those additional conditions,
+the same family also makes the corresponding infinite-horizon value unbounded.
+At equality, the sign of \(c_\pi-c_M\) determines this family's leading
+behavior; a nonpositive coefficient for this family does not rule out a
+different unbounded sequence.
 \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-no-bgp}}
