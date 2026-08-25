@@ -1,0 +1,30 @@
+{
+  "question": "Does human participation in AI research delay takeoff when sigma_XL=1.5?",
+  "reference_source": "numerical_axm/high_sigma_sigma150_z128_validated_boundary_paths.csv",
+  "reference_omega_h": 0.65,
+  "reference_chi": 0.01,
+  "matched_zero_h_chi": 0.009484034594491028,
+  "matched_initial_capability_growth_target": 0.0016370742288376924,
+  "fixed_chi_comparison": true,
+  "matched_initial_growth_comparison": true,
+  "reported_boundaries_fixed_chi": [
+    16.0,
+    32.0,
+    64.0,
+    128.0
+  ],
+  "reported_boundaries_matched_growth": [
+    64.0,
+    128.0
+  ],
+  "preliminary_tolerance": 3e-05,
+  "reported_tolerance": 1e-06,
+  "outputs": {
+    "summary": "numerical_axm/human_research_delay_sigma150_summary.csv",
+    "comparison_paths": "numerical_axm/human_research_delay_sigma150_comparison_paths.csv",
+    "boundary_convergence": "numerical_axm/human_research_delay_sigma150_boundary_convergence.csv",
+    "zero_h_fixed_full_path": "numerical_axm/human_research_delay_sigma150_zero_h_fixed_paths.csv",
+    "zero_h_matched_full_path": "numerical_axm/human_research_delay_sigma150_zero_h_matched_paths.csv",
+    "figure": "figures_axm/human_research_delay_sigma150_comparison.png"
+  }
+}

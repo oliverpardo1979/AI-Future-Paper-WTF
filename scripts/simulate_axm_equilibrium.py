@@ -106,6 +106,12 @@ def research_unit_cost(
 ) -> float:
     """Log unit expenditure for the effective-research index E."""
 
+    # Exact benchmark corner: effective research is E=A*M, whose unit cost
+    # in units of final output is 1/A.  Treating this case explicitly avoids
+    # evaluating log(omega_H) when omega_H=1-omega_m is zero.
+    if parameters.omega_m >= 1.0 - 1e-14:
+        return -log_capability
+
     sigma = parameters.sigma_hm
     log_machine_service_price = -log_capability
     if abs(sigma - 1.0) <= 1e-10:
@@ -260,6 +266,81 @@ def equilibrium_static_block(
     parameters: Parameters,
 ) -> dict[str, float]:
     """Solve all intratemporal equilibrium conditions at one date."""
+
+    if parameters.omega_m >= 1.0 - 1e-14:
+        # Benchmark with no human input in capability production:
+        # H=0, L=N, E=A*M, and dot A=chi*(A*M)^eta.  The boundary is a true
+        # Kuhn--Tucker corner, not the limit of the interior labor root below.
+        production = monopoly_service_block(
+            log_capital,
+            log_population,
+            log_capability,
+            parameters,
+        )
+        log_output = production["log_output"]
+        ai_share = production["ai_share"]
+        log_wage = (
+            math.log1p(-parameters.alpha)
+            + math.log1p(-ai_share)
+            + log_output
+            - log_population
+        )
+        log_research_price = -log_capability
+        log_effective_research = (
+            log_shadow_value
+            + math.log(parameters.chi)
+            + math.log(parameters.eta)
+            - log_research_price
+        ) / (1.0 - parameters.eta)
+        log_automated_research_services = log_effective_research
+        log_automated_research = (
+            log_automated_research_services - log_capability
+        )
+        log_ai_services = log_population + production["log_ai_ratio"]
+        log_inference_compute = log_ai_services - log_capability
+        log_capability_flow = (
+            math.log(parameters.chi)
+            + parameters.eta * log_effective_research
+        )
+        capability_growth = bounded_exp(
+            log_capability_flow - log_capability
+        )
+        gross_capital_return = parameters.alpha * bounded_exp(
+            log_output - log_capital
+        )
+        return {
+            "human_share": 0.0,
+            "log_human_research": -math.inf,
+            "log_production_labor": log_population,
+            "log_ai_ratio": production["log_ai_ratio"],
+            "log_output": log_output,
+            "ai_share": ai_share,
+            "monopoly_root_fallback": production[
+                "monopoly_root_fallback"
+            ],
+            "log_wage": log_wage,
+            "log_research_price": log_research_price,
+            "log_effective_research": log_effective_research,
+            "log_automated_research": log_automated_research,
+            "log_automated_research_services": (
+                log_automated_research_services
+            ),
+            "log_ai_services": log_ai_services,
+            "log_inference_compute": log_inference_compute,
+            "capability_growth": capability_growth,
+            "gross_capital_return": gross_capital_return,
+            "automated_research_share": 1.0,
+            "inference_share": bounded_exp(
+                log_inference_compute - log_output
+            ),
+            "research_resource_share": bounded_exp(
+                log_automated_research - log_output
+            ),
+            "capability_profit_derivative": bounded_exp(
+                log_ai_services - 2.0 * log_capability
+            ),
+            "labor_root_fallback": False,
+        }
 
     def allocation(logit_human_share: float) -> tuple[float, dict[str, float]]:
         human_share = min(
@@ -521,14 +602,17 @@ def technology_log_errors(
         + (1.0 - parameters.alpha) * log_composite
     )
 
-    log_human_research = block["log_human_research"]
     log_automated_services = block["log_automated_research_services"]
-    if abs(parameters.sigma_hm - 1.0) <= 1e-10:
+    if parameters.omega_m >= 1.0 - 1e-14:
+        reconstructed_research = log_automated_services
+    elif abs(parameters.sigma_hm - 1.0) <= 1e-10:
+        log_human_research = block["log_human_research"]
         reconstructed_research = (
             (1.0 - parameters.omega_m) * log_human_research
             + parameters.omega_m * log_automated_services
         )
     else:
+        log_human_research = block["log_human_research"]
         ces_power = (parameters.sigma_hm - 1.0) / parameters.sigma_hm
         reconstructed_research = logsumexp_pair(
             math.log1p(-parameters.omega_m)
@@ -1055,17 +1139,24 @@ def evaluate_solution(
             )
             / parameters.sigma_hm
         )
-        log_f_h = (
-            math.log(parameters.chi)
-            + math.log(parameters.eta)
-            + (parameters.eta - 1.0) * block["log_effective_research"]
-            + math.log1p(-parameters.omega_m)
-            + (
-                block["log_effective_research"]
-                - block["log_human_research"]
+        automated_only_research = parameters.omega_m >= 1.0 - 1e-14
+        if automated_only_research:
+            # omega_H=0 makes H=0 a corner.  The human FOC is an inequality,
+            # so there is no interior log residual to evaluate.
+            log_f_h = -math.inf
+        else:
+            log_f_h = (
+                math.log(parameters.chi)
+                + math.log(parameters.eta)
+                + (parameters.eta - 1.0)
+                * block["log_effective_research"]
+                + math.log1p(-parameters.omega_m)
+                + (
+                    block["log_effective_research"]
+                    - block["log_human_research"]
+                )
+                / parameters.sigma_hm
             )
-            / parameters.sigma_hm
-        )
         if abs(parameters.sigma_xl - 1.0) <= 1e-10:
             reconstructed_ai_share = parameters.omega_x
         else:
@@ -1084,17 +1175,22 @@ def evaluate_solution(
         reconstructed_research_price = research_unit_cost(
             block["log_wage"], log_capability, parameters
         )
-        reconstructed_automated_share = logistic(
-            block["log_automated_research"]
-            - block["log_wage"]
-            - block["log_human_research"]
-        )
-        log_human_conditional_demand = (
-            parameters.sigma_hm * math.log1p(-parameters.omega_m)
-            + parameters.sigma_hm
-            * (block["log_research_price"] - block["log_wage"])
-            + block["log_effective_research"]
-        )
+        if automated_only_research:
+            reconstructed_automated_share = 1.0
+            log_human_conditional_demand = -math.inf
+        else:
+            reconstructed_automated_share = logistic(
+                block["log_automated_research"]
+                - block["log_wage"]
+                - block["log_human_research"]
+            )
+            log_human_conditional_demand = (
+                parameters.sigma_hm
+                * math.log1p(-parameters.omega_m)
+                + parameters.sigma_hm
+                * (block["log_research_price"] - block["log_wage"])
+                + block["log_effective_research"]
+            )
         log_automated_service_conditional_demand = (
             parameters.sigma_hm * math.log(parameters.omega_m)
             + parameters.sigma_hm
@@ -1206,7 +1302,9 @@ def evaluate_solution(
                 block["log_research_price"] - reconstructed_research_price
             ),
             "human_conditional_demand_log_error": (
-                block["log_human_research"]
+                0.0
+                if automated_only_research
+                else block["log_human_research"]
                 - log_human_conditional_demand
             ),
             "automated_service_demand_log_error": (
@@ -1230,7 +1328,12 @@ def evaluate_solution(
                 log_shadow + log_f_m
             ),
             "research_human_foc_log_error": (
-                log_shadow + log_f_h - block["log_wage"]
+                0.0
+                if automated_only_research
+                else log_shadow + log_f_h - block["log_wage"]
+            ),
+            "research_human_kkt_slack": (
+                -1.0 if automated_only_research else 0.0
             ),
             "labor_market_error": (
                 math.exp(block["log_production_labor"] - log_population)

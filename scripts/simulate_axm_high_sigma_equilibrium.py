@@ -774,17 +774,22 @@ def evaluate_free_boundary_solution(
             )
             / parameters.sigma_hm
         )
-        log_f_h = (
-            math.log(parameters.chi)
-            + math.log(parameters.eta)
-            + (parameters.eta - 1.0) * block["log_effective_research"]
-            + math.log1p(-parameters.omega_m)
-            + (
-                block["log_effective_research"]
-                - block["log_human_research"]
+        automated_only_research = parameters.omega_m >= 1.0 - 1e-14
+        if automated_only_research:
+            log_f_h = -math.inf
+        else:
+            log_f_h = (
+                math.log(parameters.chi)
+                + math.log(parameters.eta)
+                + (parameters.eta - 1.0)
+                * block["log_effective_research"]
+                + math.log1p(-parameters.omega_m)
+                + (
+                    block["log_effective_research"]
+                    - block["log_human_research"]
+                )
+                / parameters.sigma_hm
             )
-            / parameters.sigma_hm
-        )
         row: dict[str, float | str] = {
             "scenario": name,
             "time": float(time),
@@ -872,7 +877,12 @@ def evaluate_free_boundary_solution(
                 log_shadow + log_f_m
             ),
             "research_human_foc_log_error": (
-                log_shadow + log_f_h - block["log_wage"]
+                0.0
+                if automated_only_research
+                else log_shadow + log_f_h - block["log_wage"]
+            ),
+            "research_human_kkt_slack": (
+                -1.0 if automated_only_research else 0.0
             ),
             "labor_market_error": (
                 math.exp(block["log_production_labor"] - log_population)
