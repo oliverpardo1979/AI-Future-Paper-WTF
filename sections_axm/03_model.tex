@@ -130,6 +130,85 @@ Labor productivity \(A\) affects the wage through \(Y\) and \(s_X\). It does
 not appear as an additional factor in the displayed wage equation because
 \(AL\) is linear in \(L\), so the output elasticity with respect to \(L\) equals
 the elasticity with respect to effective labor \(AL\).
+
+To ask how an expansion of AI production services affects production labor,
+holding \(K\) fixed is not enough: either the wage or labor must also be held
+fixed. I therefore state both sides of the same comparative static. The
+conditional labor-demand response holds \(K\), \(A\), and \(w\) fixed; the dual
+wage response holds \(K\), \(A\), and \(L\) fixed. The distinction between the
+wage and labor-share responses follows the general result in
+\citet[Theorem~1]{autorkausik2026}. For this nested Cobb--Douglas--CES
+technology, \citet[Proposition~2.2, Appendix~A.4, Lemma~4.1, and
+Proposition~4.2]{yango2026} derive the corresponding labor-demand sign and the
+two elasticity thresholds.
+
+Define production labor's share of final output as
+\begin{equation}
+ \ell^Y\equiv\frac{wL}{Y}=(1-\alpha)(1-s_X).
+ \label{eq:axm-production-labor-share}
+\end{equation}
+
+\Needspace{24\baselineskip}
+\begin{proposition}[AI services and production labor]
+\label{prop:axm-ai-labor-comparative-static}
+For an interior final-good firm, an increase in \(X\), holding \(K\), \(A\),
+and \(L\) fixed, satisfies
+\begin{align}
+ \left.\frac{\partial\ln Y}{\partial\ln X}\right|_{K,A,L}
+ &=(1-\alpha)s_X>0,
+ \label{eq:axm-output-x-elasticity}\\
+ \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,A,L}
+ &=\left(\frac{1}{\sigma_{XL}}-\alpha\right)s_X,
+ \label{eq:axm-wage-x-elasticity}\\
+ \left.\frac{\partial\ln \ell^Y}{\partial\ln X}\right|_{K,A,L}
+ &=-\left(1-\frac{1}{\sigma_{XL}}\right)s_X.
+ \label{eq:axm-labor-share-x-elasticity}
+\end{align}
+Equivalently, holding \(K\), \(A\), and \(w\) fixed, conditional production-labor
+demand satisfies
+\begin{equation}
+ \left.\frac{\partial\ln L}{\partial\ln X}\right|_{K,A,w}
+ =
+ \frac{s_X\left(\sigma_{XL}^{-1}-\alpha\right)}
+ {\alpha(1-s_X)+s_X/\sigma_{XL}}.
+ \label{eq:axm-labor-demand-x-elasticity}
+\end{equation}
+Thus an expansion of AI production services raises conditional labor demand---or,
+at fixed labor, raises the wage---if and only if
+\(\sigma_{XL}<1/\alpha\). It lowers conditional labor demand and the wage if and
+only if \(\sigma_{XL}>1/\alpha\). By contrast, production labor's share falls if
+and only if \(\sigma_{XL}>1\). Since \(0<\alpha<1\), the interval
+\begin{equation}
+ 1<\sigma_{XL}<\frac{1}{\alpha}
+ \label{eq:axm-wage-share-decoupling-region}
+\end{equation}
+is nonempty: within it, more AI production services raise labor demand at a
+given wage, and raise the wage at a given employment level, even as labor
+receives a smaller share of output.
+\end{proposition}
+
+\begin{proof}
+The CES share in \eqref{eq:axm-sx} implies
+\[
+ \left.\frac{\partial\ln(1-s_X)}{\partial\ln X}\right|_{A,L}
+ =-\left(1-\frac{1}{\sigma_{XL}}\right)s_X.
+\]
+The output elasticity in \eqref{eq:axm-output-x-elasticity} follows directly
+from \eqref{eq:axm-final-production}. Combining these two elasticities with the
+wage equation in \eqref{eq:axm-factor-prices} gives
+\eqref{eq:axm-wage-x-elasticity}; combining the share equation above with
+\eqref{eq:axm-production-labor-share} gives
+\eqref{eq:axm-labor-share-x-elasticity}. Finally,
+\[
+ \left.\frac{\partial\ln w}{\partial\ln L}\right|_{K,A,X}
+ =-\left[\alpha(1-s_X)+\frac{s_X}{\sigma_{XL}}\right]<0.
+\]
+Implicit differentiation of the labor-demand condition at fixed \(w\) then
+gives \eqref{eq:axm-labor-demand-x-elasticity}. Its denominator is strictly
+positive, so its sign is the sign of \(\sigma_{XL}^{-1}-\alpha\). The remaining
+sign statements follow from the displayed elasticities.
+\end{proof}
+
 The final-good firm's AI-demand condition implies that expenditure on AI production services
 as a share of final output is
 \(p_XX/Y=(1-\alpha)s_X\). Equivalently, within total payments to the
