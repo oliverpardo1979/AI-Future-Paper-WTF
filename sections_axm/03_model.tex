@@ -994,3 +994,149 @@ exists for every independently specified pair \((K_0,B_0)\): the construction
 selects the two initial stocks that place the economy on the balanced-growth
 path. Establishing a transition equilibrium from arbitrary initial stocks still
 requires a global boundary-value existence argument.
+
+\subsection{Local equilibrium selection and elasticities near one}
+
+I next ask two narrower questions. First, can the unit-elastic equilibrium be
+reached from predetermined stocks close to their balanced-growth values?
+Second, which part of that result survives when \(\sigma_{XL}\) is close to,
+but different from, one? The first question has a local infinite-horizon
+answer. The second has a finite-window answer only; the limit
+\(\sigma_{XL}\to1\) cannot by itself determine the asymptotic regime.
+
+Take one of the balanced-growth equilibria constructed in Proposition
+\ref{prop:axm-benchmark-equilibrium-existence}, and denote its paths by a
+superscript \(*\). Define the stationary log deviations
+\begin{equation}
+ \xi_K=\ln\frac{K}{K^*},\qquad
+ \xi_B=\ln\frac{B}{B^*},\qquad
+ \xi_C=\ln\frac{C}{C^*},\qquad
+ \xi_q=\ln\frac{q}{q^*}.
+ \label{eq:axm-benchmark-log-deviations}
+\end{equation}
+After imposing the unit-elastic static conditions, these four variables form an
+autonomous system. Let \(J^*\) denote its Jacobian at \(\xi=0\); the Appendix
+derives it directly from the dated equilibrium equations.
+
+\begin{proposition}[Local transition equilibrium at unit elasticity]
+\label{prop:axm-unit-saddle-path}
+Maintain the assumptions of Propositions
+\ref{prop:axm-equilibrium-sufficiency} and
+\ref{prop:axm-benchmark-equilibrium-existence}. Suppose \(J^*\) is hyperbolic,
+has exactly two eigenvalues with negative real parts, and the projection of its
+stable eigenspace onto \((\xi_K,\xi_B)\) is nonsingular. Then there is a
+neighborhood of \((K_0^*,B_0^*)\) in which \((C_0,q_0)\) is a continuously
+differentiable function of the two predetermined stocks. The resulting path is
+the unique nearby equilibrium that remains in the neighborhood and converges
+to the balanced-growth path.
+\end{proposition}
+
+The proposition is local: it does not establish reachability from arbitrary
+stocks or exclude other equilibria far from the balanced path. It nevertheless
+closes the existence gap in a neighborhood of the calibrated unit-elastic
+equilibrium. For the baseline parameters, the four eigenvalues of \(J^*\), in
+annual units, are
+\begin{equation}
+ -0.08989,\qquad -0.002940,\qquad 0.03112,\qquad 0.12988.
+ \label{eq:axm-calibrated-jacobian-roots}
+\end{equation}
+The determinant of the state block of normalized stable eigenvectors is
+\(0.6069\), so the required projection is nonsingular. There are therefore two
+stable directions for the two predetermined variables and two unstable
+directions eliminated by the initial choices of \(C\) and \(q\).
+
+To study nearby elasticities without changing notation, let
+\begin{equation}
+ \varphi\equiv\frac{\sigma_{XL}-1}{\sigma_{XL}},\qquad
+ d\equiv\ln\frac{X}{AL},\qquad h\equiv\varphi d.
+ \label{eq:axm-near-unit-definitions}
+\end{equation}
+The final-input aggregate can then be written exactly as
+\begin{equation}
+ Z=AL\left[\omega_L+\omega_Xe^{\varphi d}\right]^{1/\varphi}.
+ \label{eq:axm-near-unit-ces}
+\end{equation}
+For bounded \(d\), its continuous expansion around \(\varphi=0\) is
+\begin{align}
+ \ln Z={}&\omega_L\ln(AL)+\omega_X\ln X
+ +\frac{\varphi}{2}\omega_L\omega_Xd^2
+ +O(\varphi^2d^3),
+ \label{eq:axm-near-unit-ces-expansion}\\
+ s_X={}&\omega_X+\varphi\omega_L\omega_Xd
+ +O(\varphi^2d^2).
+ \label{eq:axm-near-unit-share-expansion}
+\end{align}
+Thus proximity to Cobb--Douglas is governed by \(h=\varphi d\), not by
+\(|\sigma_{XL}-1|\) alone.
+
+\begin{proposition}[Finite-window continuation around unit elasticity]
+\label{prop:axm-near-unit-finite-window}
+Fix \(T<\infty\), predetermined initial stocks, and two continuously
+differentiable terminal restrictions for the dated benchmark system. Suppose
+the unit-elastic boundary-value problem has a strictly interior solution and
+its linearized boundary-value operator is invertible. Then there is
+\(\varepsilon_T>0\) such that, for
+\(|\sigma_{XL}-1|<\varepsilon_T\), the same dated system and terminal
+restrictions have a unique nearby solution. Writing
+\(y=(\ln K,\ln B,\ln C,\ln q)\), there is a constant \(C_T<\infty\) such that
+\begin{equation}
+ \lVert y^{\sigma_{XL}}-y^1\rVert_{C^1[0,T]}
+ \leq C_T|\sigma_{XL}-1|.
+ \label{eq:axm-near-unit-finite-window-bound}
+\end{equation}
+\end{proposition}
+
+This is a continuation result for solutions of the dated equilibrium
+conditions. It becomes a statement about equilibrium paths only when the
+continued solution has an admissible infinite-horizon tail satisfying both
+transversality conditions. Neither \(\varepsilon_T\) nor \(C_T\) is uniform in
+\(T\), so the proposition does not transfer the unit-elastic asymptotics to
+\(\sigma_{XL}\neq1\).
+
+The reason is transparent along the unit-elastic balanced path. Define
+\(G=n+\gamma_A\). Equations
+\eqref{eq:axm-benchmark-existence-growth} and
+\eqref{eq:axm-benchmark-existence-path} imply
+\begin{equation}
+ \dot d=g_X^*-G
+ \equiv\nu
+ =\frac{\eta G}{\omega_L-\eta}>0.
+ \label{eq:axm-relative-ai-input-growth}
+\end{equation}
+For every \(\sigma_{XL}\), meanwhile,
+\begin{equation}
+ \dot h=\varphi\left(g_X-\gamma_A-g_L\right),
+ \label{eq:axm-near-unit-slow-law}
+\end{equation}
+and \(g_L=n\) in the automated-research benchmark. Therefore \(h\) moves only
+at order \(|\sigma_{XL}-1|\) while the path remains close to its unit-elastic
+counterpart.
+
+\begin{proposition}[Near-unit separation scale]
+\label{prop:axm-near-unit-separation-scale}
+Consider a continued benchmark path with bounded \(d(0)\). As long as it
+remains in a regular neighborhood in which
+\(g_X-G\) is bounded above and below by positive constants, the time required
+for \(|h|\) to reach any fixed small threshold is of order
+\(1/|\sigma_{XL}-1|\). The unit-elastic growth rate in
+\eqref{eq:axm-relative-ai-input-growth} gives the local diagnostic
+\begin{equation}
+ T_{\varepsilon}\approx
+ \frac{1}{|\varepsilon|\nu}
+ =\frac{\omega_L-\eta}
+ {\eta(n+\gamma_A)|\varepsilon|},
+ \qquad \varepsilon=\sigma_{XL}-1.
+ \label{eq:axm-near-unit-separation-time}
+\end{equation}
+\end{proposition}
+
+The proportionality constant depends on what departure from Cobb--Douglas is
+treated as economically material, so \eqref{eq:axm-near-unit-separation-time}
+is a scale calculation rather than a calendar forecast. With the baseline
+values \(\omega_L=0.80\), \(\eta=0.20\), \(n=0.012\), and
+\(\gamma_A=0\), \(\nu=0.004\). The corresponding order-one scales are about
+2,500 model years for \(|\varepsilon|=0.10\) and 25,000 for
+\(|\varepsilon|=0.01\). This explains how elasticities on opposite sides of
+one can generate nearly indistinguishable paths for a long time without having
+the same long-run implications. Section \ref{sec:axm-growth-regimes} derives
+those regime-specific tails separately.

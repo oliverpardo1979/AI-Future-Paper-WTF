@@ -20,9 +20,13 @@ of a global optimum or an infinite-horizon equilibrium.
 The final-production elasticity then organizes the macroeconomic results. When
 labor and AI production services are complements, labor remains a bottleneck and output per
 person converges to a constant even though capability continues to improve. At
-unit elasticity, the model admits a candidate balanced-growth path when the
-feedback denominator is positive. Its reciprocal is the scalar counterpart of
-the feedback multiplier in \citet{davidsonetal2026}. When labor and AI production services
+unit elasticity, the automated-research benchmark admits an equilibrium
+balanced-growth path under explicit restrictions, and the calibration has the
+local saddle-path structure needed for transition equilibrium from nearby
+stocks. In the human-research extension, the corresponding growth restrictions
+remain necessary rather than sufficient. The reciprocal of the feedback
+denominator is the scalar counterpart of the feedback multiplier in
+\citet{davidsonetal2026}. When labor and AI production services
 are gross substitutes and AI production services dominate the final-production composite,
 \(Y/K\) and the return to capital become unbounded, so no finite-rate
 balanced-growth path can describe that branch.
@@ -56,7 +60,10 @@ result. In the reported normalization, output-per-capita growth remains modest
 for most of the conditional path and accelerates only near its estimated finite
 boundary. Structural change begins much earlier: labor's income share declines
 and AI production services become more important while aggregate growth still appears
-nearly stable. This delayed acceleration is closest to the weak-link mechanism
+nearly stable. Analytically, paths near unit elasticity separate from the
+unit-elastic benchmark on a time scale of order
+\(1/|\sigma_{XL}-1|\); the numerical delay is therefore a structural feature,
+not just a solver artifact. This delayed acceleration is closest to the weak-link mechanism
 in \citet{jonestonetti2026}; the feedback threshold is closest to
 \citet{davidsonetal2026}. The simulated dates are model time, not calendar
 forecasts.

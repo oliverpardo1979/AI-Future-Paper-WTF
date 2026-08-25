@@ -254,6 +254,176 @@ developer's discounted payoff are finite for the same reason. Proposition
 \ref{prop:axm-equilibrium-sufficiency} then establishes global optimality and
 completes the construction of an equilibrium. \(\square\)
 
+\subsection{Proof of Proposition \ref{prop:axm-unit-saddle-path}}
+
+I first derive the Jacobian from the dated equilibrium system. Let
+\begin{equation}
+ a_K=\frac{\alpha}{1-\beta},\qquad
+ a_B=\frac{\beta}{1-\beta},\qquad
+ R^*=r^*+\delta,
+ \qquad
+ \psi^*=\frac{U^*}{q^*B^*}
+ =\rho-n+\eta g_Y^*.
+ \label{eq:axm-saddle-jacobian-definitions}
+\end{equation}
+For the ordering
+\(\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'\), let \(e_K,e_B,e_C,e_q\)
+denote the corresponding unit row vectors and define
+\begin{align}
+ y_\xi&=(a_K,a_B,0,0),\notag\\
+ m_\xi&=\frac{\eta}{1-\eta}e_B
+       +\frac{1}{1-\eta}e_q,\notag\\
+ b_\xi&=g_B^*\left[(\eta-1)e_B+\eta m_\xi\right].
+ \label{eq:axm-saddle-linear-blocks}
+\end{align}
+These expressions follow respectively from
+\begin{equation}
+ \widehat Y=a_K\xi_K+a_B\xi_B,\qquad
+ \widehat M=\frac{\xi_q+\eta\xi_B}{1-\eta},\qquad
+ \widehat g_B=b_\xi\xi,
+ \label{eq:axm-saddle-log-linear-identities}
+\end{equation}
+where a hat denotes a log deviation, except that
+\(\widehat g_B\) denotes the level deviation of the capability growth rate.
+Using the output shares in
+\eqref{eq:axm-benchmark-existence-shares}, the four rows of the Jacobian are
+\begin{align}
+ J_K^*&=\frac{1-u^*}{k^*}y_\xi
+ -(g_Y^*+\delta)e_K-\frac{c^*}{k^*}e_C
+ -\frac{m^*}{k^*}m_\xi,\notag\\
+ J_B^*&=b_\xi,\notag\\
+ J_C^*&=R^*(y_\xi-e_K),\notag\\
+ J_q^*&=R^*(y_\xi-e_K)
+ -\psi^*(y_\xi-e_q-e_B)-\eta b_\xi.
+ \label{eq:axm-saddle-jacobian}
+\end{align}
+The four terms have direct origins: capital accumulation, capability
+accumulation, the Euler equation, and the developer's costate equation. No
+terminal condition has been used to construct \(J^*\).
+
+Under the baseline calibration, the balanced-growth values are
+\begin{align*}
+ &g_Y^*=0.0128,\quad g_B^*=0.0032,\quad r^*=0.0408,
+ \quad u^*=0.017956,\\
+ &k^*=3.634361,\quad m^*=0.0003760,\quad c^*=0.753430,
+ \quad \psi^*=0.03056.
+\end{align*}
+Substitution into \eqref{eq:axm-saddle-jacobian} gives
+\begin{equation}
+ J^*=\begin{pmatrix}
+  0.0401672& 0.0417851&-0.2073074&-0.0001293\\
+  0        &-0.0024000& 0        & 0.0008000\\
+ -0.0561995& 0.0140499& 0        & 0\\
+ -0.0678448& 0.0403612& 0        & 0.0304000
+ \end{pmatrix}.
+ \label{eq:axm-calibrated-saddle-jacobian}
+\end{equation}
+Its characteristic roots are those reported in
+\eqref{eq:axm-calibrated-jacobian-roots}. Hence the steady point of the
+normalized system is hyperbolic and its stable manifold has dimension two. If
+the two stable eigenvectors are normalized to Euclidean length one, their
+\((\xi_K,\xi_B)\) block is
+\[
+ \begin{pmatrix}
+ 0.764287&0.208893\\
+ -0.003953&0.792972
+ \end{pmatrix},
+\]
+whose determinant is \(0.6069\). The projection of the local stable manifold
+onto the two predetermined variables is therefore locally invertible.
+
+The stable-manifold theorem now gives a two-dimensional continuously
+differentiable manifold of paths converging to the normalized steady point.
+The inverse-function theorem writes that manifold locally as a graph from
+\((K_0,B_0)\) to \((C_0,q_0)\). This graph selects the unique path that both
+starts from the stated nearby stocks and remains in the local neighborhood.
+Convergence to the balanced path preserves positivity and implies that both
+terminal expressions decline asymptotically at a rate arbitrarily close to
+\(\rho-n>0\). The two transversality conditions therefore hold. Proposition
+\ref{prop:axm-equilibrium-sufficiency} establishes global optimality along each
+such admissible path, which completes the local equilibrium proof. \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-near-unit-finite-window}}
+
+The representation in \eqref{eq:axm-near-unit-ces} has a removable singularity
+at \(\varphi=0\). To verify smoothness, expand
+\[
+ e^{\varphi d}=1+\varphi d+\frac{\varphi^2d^2}{2}
+ +O(\varphi^3d^3)
+\]
+and then expand the logarithm of
+\(\omega_L+\omega_Xe^{\varphi d}\). Because
+\(\omega_L+\omega_X=1\), division by \(\varphi\) yields
+\eqref{eq:axm-near-unit-ces-expansion}. Differentiation with respect to
+\(\ln X\) yields \eqref{eq:axm-near-unit-share-expansion}. Thus the production
+block is continuously differentiable in quantities and \(\sigma_{XL}\) on
+every strictly interior compact set around \(\sigma_{XL}=1\).
+
+Proposition \ref{prop:axm-monopoly-existence} gives a strict second-order
+condition for the service choice. Its optimizer is therefore continuously
+differentiable in the dated variables and \(\sigma_{XL}\) near one. After
+substitution of the static conditions, write the four dynamic equations as
+\[
+ \dot y=f(t,y,\sigma_{XL}),
+ \qquad y=(\ln K,\ln B,\ln C,\ln q).
+\]
+Let \(P_Sy(0)=(\ln K_0,\ln B_0)\) impose the two initial-state conditions and
+let \(\Psi_T(y(T),\sigma_{XL})=0\) collect the two stated terminal
+restrictions. The boundary-value operator is
+\[
+ \mathcal F_T(y,\sigma_{XL})=
+ \left(\dot y-f(t,y,\sigma_{XL}),
+ P_Sy(0)-(\ln K_0,\ln B_0),
+ \Psi_T(y(T),\sigma_{XL})\right).
+\]
+It maps a neighborhood in \(C^1([0,T],\mathbb R^4)\) into
+\(C^0([0,T],\mathbb R^4)\times\mathbb R^4\) and is continuously
+differentiable. By assumption, its derivative with respect to \(y\) at the
+unit-elastic solution is invertible. The implicit-function theorem on Banach
+spaces therefore gives a unique continuously differentiable branch
+\(y^{\sigma_{XL}}\) for \(\sigma_{XL}\) sufficiently close to one.
+Continuous differentiability of this branch gives
+\eqref{eq:axm-near-unit-finite-window-bound}, after shrinking the parameter
+neighborhood if necessary. Strict interiority is preserved by continuity.
+The construction says nothing about dates beyond \(T\), which is why no
+infinite-horizon conclusion follows. \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-near-unit-separation-scale}}
+
+Because \(\varphi\) is constant and \(d=\ln X-\ln A-\ln L\), direct
+differentiation gives \eqref{eq:axm-near-unit-slow-law}. Along the unit-elastic
+balanced path,
+\[
+ g_X^*-G=g_Y^*+g_B^*-(n+\gamma_A).
+\]
+Using \(\beta=(1-\alpha)\omega_X\),
+\(\lambda=(1-\alpha)\omega_L\), and
+\(\omega_L+\omega_X=1\) in
+\eqref{eq:axm-benchmark-existence-growth} reduces this expression to
+\[
+ \nu=\frac{\eta(n+\gamma_A)}{\omega_L-\eta}.
+\]
+The denominator is positive because \(\Delta>0\).
+
+Now suppose that, until the departure threshold is reached,
+\(0<a_-\leq g_X-G\leq a_+<\infty\). Integrating the exact law gives
+\[
+ h(t)=\varphi\left[d(0)+\int_0^t(g_X(s)-G)\dd s\right].
+\]
+For a fixed threshold \(\bar h>0\) and sufficiently small nonzero
+\(\varphi\), the first date at which \(h\) reaches
+\(\operatorname{sign}(\varphi)\bar h\) satisfies
+\[
+ \frac{\bar h/|\varphi|-d(0)}{a_+}
+ \leq T_{\varphi}(\bar h)\leq
+ \frac{\bar h/|\varphi|-d(0)}{a_-}.
+\]
+Boundedness of \(d(0)\) and
+\(|\varphi|=|\sigma_{XL}-1|/\sigma_{XL}\) prove the stated
+\(1/|\sigma_{XL}-1|\) order. Taking the local benchmark value \(\nu\) for the
+relative-input growth rate and an order-one threshold gives
+\eqref{eq:axm-near-unit-separation-time}. \(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-research-automation}}
 
 The ratio of the conditional demands in \eqref{eq:axm-research-demands} is
