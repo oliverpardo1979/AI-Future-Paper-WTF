@@ -1,5 +1,79 @@
 \section{Proofs}
 
+\subsection{Proof of Proposition \ref{prop:axm-monopoly-existence}}
+
+Fix \(K,A,L,B>0\), and let
+\(R(X)=p_X(X;K,A,L)X\) denote service revenue. Write
+\[
+ u=\frac{1}{\sigma_{XL}},\qquad s=s_X,\qquad
+ e=u(1-s)+\alpha s.
+\]
+The demand elasticity in \eqref{eq:axm-inverse-elasticity} and the CES-share
+derivative imply
+\[
+ R'(X)=p_X(1-e),\qquad
+ \frac{\dd s}{\dd\ln X}=(1-u)s(1-s).
+\]
+Let \(m(X)=R'(X)\). Wherever marginal revenue is positive, \(0<e<1\), and
+direct differentiation gives
+\begin{equation}
+ -\frac{Xm'(X)}{p_X}
+ =e(1-e)+(\alpha-u)(1-u)s(1-s)\equiv D(s).
+ \label{eq:axm-monopoly-proof-curvature}
+\end{equation}
+I next show that \(D(s)>0\). If
+\((\alpha-u)(1-u)\geq0\), the result follows immediately. If this product is
+negative, the maintained restrictions imply \(0<\alpha<u<1\). In that case,
+\begin{align*}
+ D(s)={}&u(1-u)(1-s)^2
+ +[u^2+2\alpha-3\alpha u]s(1-s)
+ +\alpha(1-\alpha)s^2.
+\end{align*}
+The middle coefficient is positive. For \(u\leq2/3\), this follows from
+\(u^2+\alpha(2-3u)>0\). For \(u>2/3\), the facts that \(\alpha<u\) and
+\(2-3u<0\) imply
+\[
+ u^2+\alpha(2-3u)>u^2+u(2-3u)=2u(1-u)>0.
+\]
+Thus all three terms are positive for \(s\in(0,1)\), and marginal revenue is
+strictly decreasing whenever it is positive.
+
+The CES asymptotics complete the argument. As \(X\downarrow0\), revenue is
+proportional to \(X^{1-u}\) when \(\sigma_{XL}>1\), to \(X^\beta\) when
+\(\sigma_{XL}=1\), and to \(X^{1-\alpha}\) when \(\sigma_{XL}<1\). Each
+exponent lies strictly between zero and one, so \(m(X)\to\infty\). When
+\(X\to\infty\), marginal revenue converges to zero from above if
+\(\sigma_{XL}\geq1\); if \(\sigma_{XL}<1\), it eventually becomes negative.
+Therefore the equation \(m(X)=1/B\) has exactly one solution. Operating profit
+increases before this solution and decreases after it. Moreover, its linear
+resource cost dominates revenue as \(X\to\infty\), so the solution is the unique
+global maximum. Equation \eqref{eq:axm-monopoly-proof-curvature} also establishes
+the strict second-order condition. The implicit-function theorem implies that
+the optimizer is continuously differentiable in \((K,A,L,B)\).
+
+\subsection{Proof of Proposition \ref{prop:axm-local-canonical-existence}}
+
+Proposition \ref{prop:axm-monopoly-existence} and the implicit-function theorem
+give a unique continuously differentiable service-supply function
+\[
+ X=\mathcal X(K,A,L,B)>0.
+\]
+In the benchmark, \(L=N\), \(U=X/B\), and the research first-order condition
+gives the explicit function
+\[
+ M=(q\chi\eta B^\eta)^{1/(1-\eta)}>0.
+\]
+Final production, shares, prices, and profit are therefore continuously
+differentiable functions of \((K,A,B,N,q)\) on the positive orthant. Substituting
+these functions into \eqref{eq:axm-canonical-system-benchmark} produces an
+ordinary differential equation for \((N,A,K,B,C,q)\) whose right-hand side is
+continuously differentiable, and hence locally Lipschitz, on that orthant.
+The Picard--Lindel\"of theorem gives a unique local solution for every positive
+initial vector \((K_0,A_0,B_0,N_0,C_0,q_0)\). The standard continuation theorem
+extends this solution uniquely until it reaches the boundary of the positive
+domain or becomes unbounded. Neither theorem selects \((C_0,q_0)\) or proves
+the transversality conditions.
+
 \subsection{Proof of Proposition \ref{prop:axm-equilibrium-sufficiency}}
 
 Under the usual normality and differentiability conditions, every regular
@@ -9,65 +83,73 @@ two displayed transversality restrictions; it does not claim that those limits
 are necessary for every conceivable infinite-horizon optimum. I prove the stated
 global sufficiency.
 
-With \(\sigma_{XL}=1\), write
+With \(\sigma_{XL}=1\), define
 \[
- \beta=(1-\alpha)\omega_X,\qquad
- B_t=K_t^\alpha L_t^{(1-\alpha)\omega_L}.
+ \beta=(1-\alpha)\omega_X,
+ \qquad G_t=K_t^\alpha(A_tL_t)^{(1-\alpha)\omega_L}.
 \]
 Conditional on the paths that the developer takes as given, final output is
-\(Y=B_tX^\beta\). The final-good firm's AI-demand condition gives
-\(p_XX=\beta Y\) after market clearing for AI production services, so the developer's revenue is
-\(\beta B_tX^\beta\).
-The unique global maximizer of operating profit is therefore
+\(Y=G_tX^\beta\). The final-good firm's AI-demand condition gives
+\(p_XX=\beta Y\), so developer revenue is \(\beta G_tX^\beta\). Proposition
+\ref{prop:axm-monopoly-existence} gives
 \[
- X^*=(\beta^2B_tA)^{1/(1-\beta)},
+ X^*=(\beta^2G_tB)^{1/(1-\beta)}
 \]
-and optimized operating profit is
+and optimized operating profit
 \[
- \pi_t(A)=\beta(1-\beta)B_t
- (\beta^2B_tA)^{\beta/(1-\beta)}.
+ \pi_t(B)=\beta(1-\beta)G_t
+ (\beta^2G_tB)^{\beta/(1-\beta)}.
 \]
-This function is concave in \(A\) when \(\beta\leq1/2\).
+This function is concave in capability \(B\) when \(\beta\leq1/2\).
 
-When \(\sigma_{HM}=1\), the capability law is
+In the automated-research benchmark, the capability law is
 \[
- F(A,H,M)=\chi H^{\eta\omega_H}A^{\eta\omega_M}M^{\eta\omega_M}.
+ F(B,M)=\chi B^\eta M^\eta.
 \]
-It is jointly concave in \((A,H,M)\) when the sum of its exponents,
-\(\eta(1+\omega_M)\), does not exceed one. When \(\sigma_{HM}=2\),
+It is jointly concave in \((B,M)\) when \(2\eta\leq1\). In the human-research
+extension with \(\sigma_{HM}=1\), the law is
 \[
- F(A,H,M)=\chi\left[\omega_H\sqrt H+
- \omega_M\sqrt{AM}\right]^{2\eta}.
+ F(B,H,M)=\chi H^{\eta\omega_H}
+ B^{\eta\omega_M}M^{\eta\omega_M}.
 \]
-Both \(\sqrt H\) and the geometric mean \(\sqrt{AM}\) are concave. Their
+It is jointly concave in \((B,H,M)\) when the sum of its exponents,
+\(\eta(1+\omega_M)\), does not exceed one. With \(\sigma_{HM}=2\),
+\[
+ F(B,H,M)=\chi\left[\omega_H\sqrt H+
+ \omega_M\sqrt{BM}\right]^{2\eta}.
+\]
+Both \(\sqrt H\) and the geometric mean \(\sqrt{BM}\) are concave. Their
 weighted sum is concave, and composition with the increasing concave map
 \(v\mapsto v^{2\eta}\) preserves concavity when \(2\eta\leq1\).
 
 Let
 \[
- D_t=\exp\left\{-\int_0^t r_s\dd s\right\},
- \qquad \mu_t=D_tq_t.
+ \mathcal D_t=\exp\left\{-\int_0^t r_s\dd s\right\},
+ \qquad \mu_t=\mathcal D_tq_t.
 \]
-The present-value Hamiltonian of the reduced developer problem
-\eqref{eq:axm-developer-problem-reduced} is
+For the extension, define \(\mathcal C_t(H,M)=w_tH+M\); for the benchmark,
+define \(\mathcal C_t(M)=M\). The present-value Hamiltonian of the corresponding
+reduced developer problem is
 \[
  \mathcal H_t^p
- =D_t[\pi_t(A)-w_tH-M]+\mu_tF(A,H,M).
+ =\mathcal D_t[\pi_t(B)-\mathcal C_t]+\mu_tF.
 \]
 The research-compute first-order condition implies \(q>0\), so this Hamiltonian
-is concave in the state and controls in both cases covered by the proposition.
-The interior first-order conditions consequently maximize the Hamiltonian
-globally. Concavity and the costate equation imply, for any admissible alternative
-\((\widetilde A,\widetilde H,\widetilde M)\) with the same initial capability,
-where \(J_T\) denotes the developer's objective truncated at date \(T\),
+is concave in the state and relevant controls in each case covered by the
+proposition. The interior first-order conditions consequently maximize the
+Hamiltonian globally. Concavity and the costate equation imply, for any
+admissible alternative \((\widetilde B,\widetilde H,\widetilde M)\), with
+\(\widetilde H\) omitted in the benchmark and with the same initial capability,
+that
 \[
  J_T^*-\widetilde J_T
- \geq \mu_T(\widetilde A_T-A_T^*).
+ \geq \mu_T(\widetilde B_T-B_T^*),
 \]
-Because \(\widetilde A_T\geq0\), \(\mu_T\geq0\), and the developer's
-transversality condition gives \(\mu_TA_T^*\to0\),
+where \(J_T\) denotes the developer's objective truncated at date \(T\).
+Because \(\widetilde B_T\geq0\), \(\mu_T\geq0\), and the developer's
+transversality condition gives \(\mu_TB_T^*\to0\),
 \[
- \mu_T(\widetilde A_T-A_T^*)\geq-\mu_TA_T^*\to0.
+ \mu_T(\widetilde B_T-B_T^*)\geq-\mu_TB_T^*\to0.
 \]
 Because both improper objective integrals converge to finite real values,
 taking the lower limit as \(T\to\infty\) establishes global optimality.
@@ -91,6 +173,86 @@ the improper utilities then establishes household optimality. Competitive
 final-good firms face a concave constant-returns technology, so their factor
 demands are globally optimal. Market clearing then establishes an interior
 equilibrium. \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-benchmark-equilibrium-existence}}
+
+Let \(g_Y^*,g_B^*,r^*,u^*,k^*,i^*,m^*,c^*\) be defined by
+\eqref{eq:axm-benchmark-existence-growth}--
+\eqref{eq:axm-benchmark-existence-shares}. The denominators are positive because
+\(\Delta>0\) and
+\[
+ \rho-n+\eta g_Y^*>0.
+\]
+Define
+\[
+ d=\frac{1-\eta}{\eta}-\frac{\beta}{\lambda}
+   =\frac{\Delta}{\eta\lambda}>0,
+\]
+and, for given \(A_0,N_0>0\), let
+\[
+ P=A_0N_0(k^*)^{\alpha/\lambda}(u^*)^{\beta/\lambda},
+ \qquad
+ R=\frac{(g_B^*/\chi)^{1/\eta}}{m^*}.
+\]
+Choose
+\begin{equation}
+ B_0=\left(\frac{P}{R}\right)^{1/d},\qquad
+ Y_0=P B_0^{\beta/\lambda},\qquad K_0=k^*Y_0.
+ \label{eq:axm-benchmark-existence-levels}
+\end{equation}
+These choices equate the initial-output levels implied by final production and
+the capability law:
+\[
+ Y_0=P B_0^{\beta/\lambda}
+ =R B_0^{(1-\eta)/\eta}.
+\]
+Set
+\[
+ U_0=u^*Y_0,\quad M_0=m^*Y_0,\quad C_0=c^*Y_0,
+ \quad X_0=B_0U_0,\quad
+ q_0=\frac{M_0}{\eta g_B^*B_0}.
+\]
+All these values are positive. Consider the exponential paths
+\begin{align*}
+ Y_t&=Y_0e^{g_Y^*t},& K_t&=k^*Y_t,&
+ C_t&=c^*Y_t,& U_t&=u^*Y_t,& M_t&=m^*Y_t,\\
+ A_t&=A_0e^{\gamma_At},& N_t&=L_t=N_0e^{nt},&
+ B_t&=B_0e^{g_B^*t},& X_t&=B_tU_t,\\
+ q_t&=q_0e^{(g_Y^*-g_B^*)t}.&&&&&&
+\end{align*}
+
+The definition of \(g_Y^*\) is equivalent to
+\[
+ g_Y^*=n+\gamma_A+\frac{\beta}{\lambda}g_B^*,
+\]
+so the production equation holds at every date once it holds at date zero.
+Similarly, \(g_B^*=\eta(g_B^*+g_Y^*)\), so the capability law holds at every
+date. At unit elasticity, \(s_X=\omega_X\),
+\(p_XX=\beta Y\), and \(u^*=\beta^2\); these identities establish the monopoly
+condition. Since \(\dot B=g_B^*B\), the research first-order condition is
+\(q\eta g_B^*B/M=1\), which follows from the definition of \(q_0\) and the
+growth rates above.
+
+The capital-price condition follows from \(k^*=\alpha/(r^*+\delta)\), and the
+Euler equation follows from \(r^*=\rho+g_Y^*-n\). The definition of \(c^*\)
+establishes the resource constraint. Finally, the costate equation reduces to
+\[
+ g_Y^*-g_B^*
+ =r^*-\frac{u^*\eta g_B^*}{m^*}-\eta g_B^*,
+\]
+which is exactly the definition of \(m^*\). Thus the entire dated equilibrium
+system holds.
+
+Both terminal conditions hold because
+\[
+ e^{-\rho t}\frac{N_tK_t}{C_t}
+ \quad\text{and}\quad
+ \exp(-r^*t)q_tB_t
+\]
+decline at the common exponential rate \(\rho-n>0\). Household utility and the
+developer's discounted payoff are finite for the same reason. Proposition
+\ref{prop:axm-equilibrium-sufficiency} then establishes global optimality and
+completes the construction of an equilibrium. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-research-automation}}
 
