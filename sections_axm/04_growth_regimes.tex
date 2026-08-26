@@ -125,25 +125,26 @@ audits.
 
 \begin{table}[H]
 \centering
-\caption{Ramsey--Cass--Koopmans and AI benchmark scenarios}
+\caption{Parameter values across the no-AI and AI scenarios}
 \label{tab:axm-parameters}
 \small
 \begin{tabular}{P{0.13\textwidth}P{0.17\textwidth}P{0.16\textwidth}P{0.43\textwidth}}
 \toprule
-Parameter & Ramsey--Cass--Koopmans & AI benchmark & Source\\
+Parameter & No AI: \(\omega_X=0\) & AI: \(\omega_X=0.20\) & Source\\
 \midrule
 \(\alpha\) & 0.33 & 0.33 & Standard macroeconomic calibration: one-third capital share\\
-\(n\) & 0.012 & 0.012 & Scenario calibration: 1.2 percent annual population growth\\
+\(n\) & 0.0025 & 0.0025 & Default world population-growth scenario in GATE \citep{erdiletal2025gate}\\
 \(\delta\) & 0.05 & 0.05 & Standard annual calibration, consistent with PWT 11.0 \citep{pwt110}\\
 \(\rho\) & 0.04 & 0.04 & Standard annual preference calibration\\
-\(\gamma_A\) & 0 & 0 & Benchmark assumption: no exogenous labor-productivity growth\\
+\(\gamma_A\) & 0.01 & 0.01 & Long-run global technical-progress assumption \citep{oecdlongrun2025}\\
 \(\omega_L\) & 1 & 0.80 & CES normalization: \(\omega_L=1-\omega_X\)\\
 \(\omega_X\) & 0 & 0.20 & Scenario calibration; not an empirical estimate \citep{oecdaiinvestment2025,oecdproductivity2026}\\
-\(\sigma_{XL}\) & Not applicable & 1 & Analytical benchmark: unit elasticity in the AI scenario\\
+\(\sigma_{XL}\) & Not applicable & 1 in the benchmark & Varied below and above one in the additional AI scenarios\\
 \(\eta\) & Not applicable & 0.20 & Model calibration satisfying \(\eta<\alpha\); not estimated\\
 \(\chi\) & Not applicable & 0.01 & Time normalization; not estimated\\
-\((K_0,A_0,N_0)\) & (2.944, 1, 1) & (2.944, 1, 1) & Initial-condition calibration; \(A_0\) and \(N_0\) are normalized\\
+\((A_0,N_0)\) & (1, 1) & (1, 1) & Normalizations common to all scenarios\\
 \(B_0\) & Not applicable & 1 & Normalization of initial AI capability\\
+\(K_0\) & Scenario-specific & Scenario-specific & Implied by the initial equilibrium after fixing each scenario\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -155,16 +156,17 @@ The first column is the nested Ramsey--Cass--Koopmans economy: setting
 \(\omega_X=0\) removes AI production services and makes \(\sigma_{XL}\),
 \(\eta\), \(\chi\), and \(B_0\) economically irrelevant. The second column
 introduces AI with \(\omega_X=0.20\) and begins from the unit-elastic case
-\(\sigma_{XL}=1\). The regime exercises below hold the common parameters fixed
-and vary \(\sigma_{XL}\). The human-research extension separately uses
+\(\sigma_{XL}=1\). All AI regime exercises retain \(\omega_X=0.20\), hold the
+common parameters fixed, and vary \(\sigma_{XL}\). The human-research extension separately uses
 \((\omega_H,\omega_M)=(0.65,0.35)\) and reports
 \(\sigma_{HM}\in\{1,2\}\).
 
 The value \(\eta=0.20\) is illustrative and lies strictly inside the maintained
-region \(\eta<\alpha=0.33\). Given \(A_0=B_0=N_0=1\), the initialization sets
-\(K_0=2.944\) to match the unit-elasticity, \(\sigma_{HM}=2\) candidate
-capital--output ratio. The level of \(\chi\) and the initial conditions affect
-model time, so the horizontal axes are not calendar forecasts.
+region \(\eta<\alpha=0.33\). The normalizations set \(A_0=B_0=N_0=1\) whenever
+the corresponding state is present. The initial capital stock is not a common
+primitive: \(K_0\) must be chosen separately to place each scenario on its
+intended initial equilibrium. The level of \(\chi\) and the initial conditions
+affect model time, so the horizontal axes are not calendar forecasts.
 
 The weight \(\omega_X\) is also uncertain. It is not an observed AI investment
 or income share. The OECD notes that national accounts do not yet recognize AI
