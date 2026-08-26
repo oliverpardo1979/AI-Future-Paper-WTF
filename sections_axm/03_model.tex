@@ -345,6 +345,56 @@ governs decreasing returns to the current flow of research compute.
  \label{fig:axm-research-flow}
 \end{figure}
 
+\subsubsection{Market structure and research finance}
+
+AI capability is nonrival within the model: once \(B\) has been developed, the
+same capability can augment every unit of inference or research compute. The
+inputs used to improve capability are nevertheless rival and costly. In the
+benchmark, producing a larger \(B\) requires research compute \(M\), measured in
+units of the final good. Nonrivalry therefore creates an appropriation problem,
+not a technological requirement that AI services be supplied by a single firm.
+
+To see the problem, consider competitive AI-service providers with free access
+to the common capability stock. Each provider would face the unit cost \(1/B\),
+and free entry would imply
+\begin{equation}
+ p_X=\frac{1}{B},
+ \qquad
+ p_XX-\frac{X}{B}=0.
+ \label{eq:axm-competitive-ai-services}
+\end{equation}
+The service market would then generate no operating surplus with which a
+private developer could recover current research expenditure. Competition does
+not make capability creation impossible, but it requires a separate mechanism
+that makes its return appropriable or finances it directly.
+
+I represent that mechanism with an integrated monopolist that owns \(B\), sells
+AI production services, and invests in better capability. Market power allows
+the developer to charge more than the current compute cost of supplying a unit
+of \(X\). Expected future operating rents then give the developer an incentive
+to pay for \(M\) today. The role of monopoly is therefore to connect the cost of
+creating a nonrival capability stock to an appropriable return, as in the
+standard endogenous-growth logic linking nonrival ideas and imperfect
+competition \citep{romer1990}. It is not a claim that nonrivalry logically
+requires a single AI firm or that the current AI market is literally a
+monopoly.
+
+Other market structures could provide the same missing link. An owner of \(B\)
+could license it to competitive service providers; a per-unit royalty would
+act like a markup, while a fixed or two-part fee would change how rents are
+collected. An oligopoly or monopolistically competitive industry could finance
+research from firm-specific rents, but would require separate capability stocks,
+strategic interaction, entry, and possible duplication of research. Publicly
+funded or open-source capability could preserve competitive service provision,
+but taxes, subsidies, public ownership, or another explicit funding institution
+would have to pay for research. These alternatives would change prices, rents,
+and the distribution of income. I use the integrated monopoly to retain a
+single capability stock and shadow value and to isolate the technological
+feedback studied in the paper; recent analyses of AI market structure examine
+the alternatives in greater detail
+\citep{korinekvipra2025,gans2024,demireretal2025}.
+
+\Needspace{12\baselineskip}
 \subsubsection{Dynamic problem}
 
 The developer sells \(X\), pays \(X/B\) for inference compute, uses \(M\) for
