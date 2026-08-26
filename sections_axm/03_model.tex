@@ -1169,25 +1169,25 @@ If \(c^*>0\), then for every \(A_0,N_0>0\) there are positive values
 \end{equation}
 \end{proposition}
 
-This proposition proves that the set of infinite-horizon benchmark equilibria
-is nonempty under explicit restrictions. It does not prove that an equilibrium
-exists for every independently specified pair \((K_0,B_0)\): the construction
-selects the two initial stocks that place the economy on the balanced-growth
-path. Establishing a transition equilibrium from arbitrary initial stocks still
-requires a global boundary-value existence argument.
+Proposition \ref{prop:axm-benchmark-equilibrium-existence} constructs one
+particular equilibrium trajectory: a balanced-growth path. Balanced growth is
+not the definition of equilibrium and is not imposed on the transition paths
+below. The proposition supplies an exact reference trajectory, but it does not
+establish the existence of an equilibrium trajectory for independently chosen
+stocks \((K_0,B_0)\).
 
-\subsection{Local equilibrium selection and elasticities near one}
+\subsection{Local existence of equilibrium trajectories and elasticities near one}
 
-I next ask two narrower questions. First, can the unit-elastic equilibrium be
-reached from predetermined stocks close to their balanced-growth values?
-Second, which part of that result survives when \(\sigma_{XL}\) is close to,
-but different from, one? The first question has a local infinite-horizon
-answer. The second has a finite-window answer only; the limit
-\(\sigma_{XL}\to1\) cannot by itself determine the asymptotic regime.
+I next ask whether an equilibrium trajectory exists when the predetermined
+stocks are close to, but need not equal, the values on the reference
+balanced-growth path. I then ask which part of that result survives when
+\(\sigma_{XL}\) is close to, but different from, one. The first question has a
+local infinite-horizon answer. The second has a finite-window answer only; the
+limit \(\sigma_{XL}\to1\) cannot by itself determine the asymptotic regime.
 
-Take one of the balanced-growth equilibria constructed in Proposition
-\ref{prop:axm-benchmark-equilibrium-existence}, and denote its paths by a
-superscript \(*\). Define the stationary log deviations
+Use the balanced-growth equilibrium constructed in Proposition
+\ref{prop:axm-benchmark-equilibrium-existence} only as a reference path, and
+denote it by a superscript \(*\). Define the stationary log deviations
 \begin{equation}
  \xi_K=\ln\frac{K}{K^*},\qquad
  \xi_B=\ln\frac{B}{B^*},\qquad
@@ -1202,7 +1202,7 @@ and columns correspond to the predetermined stocks \((K,B)\), while the last
 two correspond to the jump variables \((C,q)\).
 
 \Needspace{0.30\textheight}
-\begin{proposition}[Existence and local uniqueness of a positive-AI transition]
+\begin{proposition}[Local existence of positive-AI equilibrium trajectories]
 \label{prop:axm-unit-saddle-path}
 Maintain the assumptions of Propositions
 \ref{prop:axm-equilibrium-sufficiency} and
@@ -1220,17 +1220,22 @@ such that every \((K_0,B_0)\in\mathcal N\) generates a regular interior
 infinite-horizon equilibrium trajectory. In stationary variables, this
 trajectory remains near \(\xi=0\), converges to the balanced-growth path, and
 satisfies both transversality conditions. Uniqueness is among nearby paths that
-remain in this neighborhood and converge to the balanced-growth path.
+remain in this neighborhood and converge to the balanced-growth path. No
+balanced-growth restriction is imposed along these trajectories: when
+\((K_0,B_0)\ne(K_0^*,B_0^*)\), the path is a transition and its growth rates
+and allocation shares may vary over time.
 \end{proposition}
 
 The Appendix derives \(J^*\) from the equilibrium system and proves the
 proposition using the stable-manifold and inverse-function theorems.
 
-The proposition is local: it does not establish reachability from arbitrary
-stocks or exclude other equilibria far from the balanced path. It nevertheless
-closes the existence gap in a neighborhood of the calibrated unit-elastic
-equilibrium. For the baseline parameters, the four eigenvalues of \(J^*\), in
-annual units, are
+This is the equilibrium-trajectory existence result. Its scope is local: it
+does not establish existence from arbitrary stocks or exclude other equilibria
+far from the balanced-growth path. In particular, the theorem alone does not
+show that the normalization \(B_0=1\) lies inside \(\mathcal N\); numerical
+continuation can test whether the computed branch reaches that value, but such
+a calculation is not a global existence proof. For the baseline parameters,
+the four eigenvalues of \(J^*\), in annual units, are
 \begin{equation}
  -0.098971,\qquad -0.003194,\qquad 0.040391,\qquad 0.149290.
  \label{eq:axm-calibrated-jacobian-roots}

@@ -334,6 +334,12 @@ the two stable eigenvectors are normalized to Euclidean length one, their
 whose determinant is \(0.6037\). The projection of the local stable manifold
 onto the two predetermined variables is therefore locally invertible.
 
+By Proposition \ref{prop:axm-local-canonical-existence}, the exact unit-elastic
+conditions give a continuously differentiable system
+\(\dot\xi=f(\xi)\) near \(\xi=0\), with \(f(0)=0\) and \(Df(0)=J^*\).
+Every nonzero orbit reconstructs the full dated candidate system without
+imposing constant growth rates or constant allocation shares.
+
 Because \(J^*\) is hyperbolic, the stable-manifold theorem gives a
 two-dimensional continuously differentiable manifold \(\mathcal W^s\) of
 initial conditions whose paths remain near \(\xi=0\) and converge to it
@@ -343,17 +349,20 @@ inverse-function theorem makes \(\mathcal W^s\) locally the graph of a unique
 continuously differentiable function from \((K_0,B_0)\) to \((C_0,q_0)\).
 
 For every pair of predetermined stocks in the resulting neighborhood, this
-graph selects a unique nearby path that remains in the neighborhood and
-converges to the balanced-growth path. Shrinking the neighborhood if necessary
-preserves strict positivity and all dated interior conditions. Exponential
-convergence also makes the deviations of \(r\) from \(r^*\) integrable. Each
-transversality expression therefore equals its balanced-growth counterpart,
-which declines at rate \(\rho-n>0\), times a positive factor converging to a
-finite limit. Both transversality conditions hold. Proposition
-\ref{prop:axm-equilibrium-sufficiency} then establishes agent optimality and
-turns the selected candidate path into an equilibrium. This proves existence
-and uniqueness within the class of nearby paths that remain near the
-balanced-growth equilibrium and converge to it. \(\square\)
+graph selects a unique nearby solution of the exact dated candidate system.
+When the initial stocks differ from their reference values, \(\xi(0)\ne0\), so
+this solution is an equilibrium transition rather than the balanced-growth
+trajectory. Shrinking the neighborhood if necessary preserves strict
+positivity and all dated interior conditions.
+
+Exponential convergence makes the deviations of \(r\) from \(r^*\)
+integrable. Each transversality expression therefore equals its
+balanced-growth counterpart, which declines at rate \(\rho-n>0\), times a
+positive factor converging to a finite limit. Both transversality conditions
+hold. Proposition \ref{prop:axm-equilibrium-sufficiency} then establishes
+household and developer optimality and turns each selected candidate path into
+an equilibrium trajectory. This proves local existence and uniqueness among
+equilibrium trajectories that converge to the reference path. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-near-unit-finite-window}}
 
