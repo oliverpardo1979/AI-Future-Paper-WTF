@@ -1140,10 +1140,12 @@ Define
  \label{eq:axm-benchmark-existence-definitions}
 \end{equation}
 
-\begin{proposition}[Existence of a unit-elastic benchmark equilibrium]
+\begin{proposition}[Existence of a strictly positive-AI balanced-growth equilibrium]
 \label{prop:axm-benchmark-equilibrium-existence}
-Suppose \(\sigma_{XL}=1\), \(0<\eta<\alpha\), \(\beta\leq1/2\),
-\(2\eta\leq1\), and \(\Delta>0\). Define
+Suppose \(\sigma_{XL}=1\), \(0<\omega_X<1\),
+\(\omega_L=1-\omega_X\), \(0<\eta<\alpha<1\), \(\chi>0\),
+\(\delta\geq0\), \(\rho>n\), and \(n+\gamma_A>0\). Suppose also that
+\(\beta\leq1/2\), \(2\eta\leq1\), and \(\Delta>0\). Define
 \begin{align}
  g_Y^*&=\frac{\lambda(1-\eta)}{\Delta}(n+\gamma_A),
  &g_B^*&=\frac{\eta}{1-\eta}g_Y^*,
@@ -1157,8 +1159,8 @@ Suppose \(\sigma_{XL}=1\), \(0<\eta<\alpha\), \(\beta\leq1/2\),
  \label{eq:axm-benchmark-existence-shares}
 \end{align}
 If \(c^*>0\), then for every \(A_0,N_0>0\) there are positive values
-\(K_0,B_0,C_0,q_0\) and a regular interior benchmark equilibrium. Along this
-equilibrium,
+\(K_0,B_0,C_0,q_0\) and an infinite-horizon regular interior equilibrium with
+\(\omega_X>0\). Along this equilibrium,
 \begin{equation}
  g_K=g_C=g_U=g_M=g_Y^*,\qquad
  g_B=g_B^*,\qquad g_X=g_Y^*+g_B^*,\qquad
@@ -1195,20 +1197,34 @@ superscript \(*\). Define the stationary log deviations
 \end{equation}
 After imposing the unit-elastic static conditions, these four variables form an
 autonomous system. Let \(J^*\) denote its Jacobian at \(\xi=0\); the Appendix
-derives it directly from the dated equilibrium equations.
+derives it directly from the dated equilibrium equations. The first two rows
+and columns correspond to the predetermined stocks \((K,B)\), while the last
+two correspond to the jump variables \((C,q)\).
 
-\begin{proposition}[Local transition equilibrium at unit elasticity]
+\Needspace{0.30\textheight}
+\begin{proposition}[Existence and local uniqueness of a positive-AI transition]
 \label{prop:axm-unit-saddle-path}
 Maintain the assumptions of Propositions
 \ref{prop:axm-equilibrium-sufficiency} and
-\ref{prop:axm-benchmark-equilibrium-existence}. Suppose \(J^*\) is hyperbolic,
-has exactly two eigenvalues with negative real parts, and the projection of its
-stable eigenspace onto \((\xi_K,\xi_B)\) is nonsingular. Then there is a
-neighborhood of \((K_0^*,B_0^*)\) in which \((C_0,q_0)\) is a continuously
-differentiable function of the two predetermined stocks. The resulting path is
-the unique nearby equilibrium that remains in the neighborhood and converges
-to the balanced-growth path.
+\ref{prop:axm-benchmark-equilibrium-existence}; in particular,
+\(\sigma_{XL}=1\) and \(0<\omega_X<1\). Suppose \(J^*\) is hyperbolic and has
+exactly two eigenvalues with negative real parts. Let
+\(V_S\in\mathbb R^{4\times2}\) contain any basis for the stable eigenspace of
+\(J^*\), and let \(V_{KB}\in\mathbb R^{2\times2}\) be its first two rows. If
+\(\det(V_{KB})\ne0\), there is a neighborhood \(\mathcal N\) of
+\((K_0^*,B_0^*)\) and a unique continuously differentiable function
+\[
+ (C_0,q_0)=\mathcal G(K_0,B_0)>0
+\]
+such that every \((K_0,B_0)\in\mathcal N\) generates a regular interior
+infinite-horizon equilibrium trajectory. In stationary variables, this
+trajectory remains near \(\xi=0\), converges to the balanced-growth path, and
+satisfies both transversality conditions. Uniqueness is among nearby paths that
+remain in this neighborhood and converge to the balanced-growth path.
 \end{proposition}
+
+The Appendix derives \(J^*\) from the equilibrium system and proves the
+proposition using the stable-manifold and inverse-function theorems.
 
 The proposition is local: it does not establish reachability from arbitrary
 stocks or exclude other equilibria far from the balanced path. It nevertheless
@@ -1216,11 +1232,11 @@ closes the existence gap in a neighborhood of the calibrated unit-elastic
 equilibrium. For the baseline parameters, the four eigenvalues of \(J^*\), in
 annual units, are
 \begin{equation}
- -0.08989,\qquad -0.002940,\qquad 0.03112,\qquad 0.12988.
+ -0.098971,\qquad -0.003194,\qquad 0.040391,\qquad 0.149290.
  \label{eq:axm-calibrated-jacobian-roots}
 \end{equation}
 The determinant of the state block of normalized stable eigenvectors is
-\(0.6069\), so the required projection is nonsingular. There are therefore two
+\(0.6037\), so the required projection is nonsingular. There are therefore two
 stable directions for the two predetermined variables and two unstable
 directions eliminated by the initial choices of \(C\) and \(q\).
 

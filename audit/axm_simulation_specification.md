@@ -299,13 +299,16 @@ finite-horizon approximation and a regression check.
 
 ### Local saddle calculations
 
-For \(H=0\), the baseline Jacobian and eigenvalues are those proved in the
-paper:
+For \(H=0\), the Jacobian evaluated at the current Table 2 calibration has
+eigenvalues
 
 \[
  \operatorname{eig}(J^*)=
- \{-0.08989,-0.002940,0.03112,0.12988\}.
+ \{-0.098971,-0.003194,0.040391,0.149290\}.
 \]
+
+The determinant of the state block of Euclidean-normalized stable
+eigenvectors is \(0.6037\).
 
 For the exact \(\sigma_{HM}=1\) interior balanced path, implicit
 differentiation of the labor allocation and research block gives, at

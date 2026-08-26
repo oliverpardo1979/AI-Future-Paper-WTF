@@ -305,18 +305,18 @@ terminal condition has been used to construct \(J^*\).
 
 Under the baseline calibration, the balanced-growth values are
 \begin{align*}
- &g_Y^*=0.0128,\quad g_B^*=0.0032,\quad r^*=0.0408,
+ &g_Y^*=0.0138667,\quad g_B^*=0.0034667,\quad r^*=0.0508667,
  \quad u^*=0.017956,\\
- &k^*=3.634361,\quad m^*=0.0003760,\quad c^*=0.753430,
- \quad \psi^*=0.03056.
+ &k^*=3.271646,\quad m^*=0.0003130,\quad c^*=0.772782,
+ \quad \psi^*=0.0397733.
 \end{align*}
 Substitution into \eqref{eq:axm-saddle-jacobian} gives
 \begin{equation}
  J^*=\begin{pmatrix}
-  0.0401672& 0.0417851&-0.2073074&-0.0001293\\
-  0        &-0.0024000& 0        & 0.0008000\\
- -0.0561995& 0.0140499& 0        & 0\\
- -0.0678448& 0.0403612& 0        & 0.0304000
+  0.0505161& 0.0464224&-0.2362059&-0.0001196\\
+  0        &-0.0026000& 0        & 0.0008667\\
+ -0.0624302& 0.0156075& 0        & 0\\
+ -0.0775863& 0.0497466& 0        & 0.0396000
  \end{pmatrix}.
  \label{eq:axm-calibrated-saddle-jacobian}
 \end{equation}
@@ -327,23 +327,33 @@ the two stable eigenvectors are normalized to Euclidean length one, their
 \((\xi_K,\xi_B)\) block is
 \[
  \begin{pmatrix}
- 0.764287&0.208893\\
- -0.003953&0.792972
+ 0.763724&0.207707\\
+ -0.003858&0.789358
  \end{pmatrix},
 \]
-whose determinant is \(0.6069\). The projection of the local stable manifold
+whose determinant is \(0.6037\). The projection of the local stable manifold
 onto the two predetermined variables is therefore locally invertible.
 
-The stable-manifold theorem now gives a two-dimensional continuously
-differentiable manifold of paths converging to the normalized steady point.
-The inverse-function theorem writes that manifold locally as a graph from
-\((K_0,B_0)\) to \((C_0,q_0)\). This graph selects the unique path that both
-starts from the stated nearby stocks and remains in the local neighborhood.
-Convergence to the balanced path preserves positivity and implies that both
-terminal expressions decline asymptotically at a rate arbitrarily close to
-\(\rho-n>0\). The two transversality conditions therefore hold. Proposition
-\ref{prop:axm-equilibrium-sufficiency} establishes global optimality along each
-such admissible path, which completes the local equilibrium proof. \(\square\)
+Because \(J^*\) is hyperbolic, the stable-manifold theorem gives a
+two-dimensional continuously differentiable manifold \(\mathcal W^s\) of
+initial conditions whose paths remain near \(\xi=0\) and converge to it
+exponentially. The derivative of the projection from \(\mathcal W^s\) onto
+\((\xi_K,\xi_B)\) is \(V_{KB}\). Since \(\det(V_{KB})\ne0\), the
+inverse-function theorem makes \(\mathcal W^s\) locally the graph of a unique
+continuously differentiable function from \((K_0,B_0)\) to \((C_0,q_0)\).
+
+For every pair of predetermined stocks in the resulting neighborhood, this
+graph selects a unique nearby path that remains in the neighborhood and
+converges to the balanced-growth path. Shrinking the neighborhood if necessary
+preserves strict positivity and all dated interior conditions. Exponential
+convergence also makes the deviations of \(r\) from \(r^*\) integrable. Each
+transversality expression therefore equals its balanced-growth counterpart,
+which declines at rate \(\rho-n>0\), times a positive factor converging to a
+finite limit. Both transversality conditions hold. Proposition
+\ref{prop:axm-equilibrium-sufficiency} then establishes agent optimality and
+turns the selected candidate path into an equilibrium. This proves existence
+and uniqueness within the class of nearby paths that remain near the
+balanced-growth equilibrium and converge to it. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-near-unit-finite-window}}
 
