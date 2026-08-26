@@ -1711,7 +1711,7 @@ def draw_equilibrium_figures(
     mechanism.draw_multiplot(
         FIGURE_DIR / "axm_research_technology_comparison.png",
         "Research adjustment under alternative substitution elasticities",
-        "Capability growth is an annual percent rate; both shares are percentages; AM/H is a natural-log change",
+        "Capability growth is an annual percent rate; both shares are percentages; BM/H is a natural-log change",
         [
             {"title": "Capability growth", "field": "capability_growth", "transform": percent, "adaptive_percent_min_decimals": 1},
             {"title": "Research expenditure on AI research services", "field": "automated_research_share", "transform": percent, "adaptive_percent_min_decimals": 0, "ylim": (0.0, 100.0)},

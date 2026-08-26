@@ -428,181 +428,181 @@ relative-input growth rate and an order-one threshold gives
 
 The ratio of the conditional demands in \eqref{eq:axm-research-demands} is
 \[
- \frac{AM}{H}
+ \frac{BM}{H}
  =\left(\frac{\omega_M}{\omega_H}\right)^{\sigma_{HM}}
-  (Aw)^{\sigma_{HM}}.
+  (Bw)^{\sigma_{HM}}.
 \]
-Because \(s_M/(1-s_M)=M/(wH)=(AM/H)/(Aw)\), substitution yields
+Because \(s_M/(1-s_M)=M/(wH)=(BM/H)/(Bw)\), substitution yields
 \[
  \frac{s_M}{1-s_M}
  =\left(\frac{\omega_M}{\omega_H}\right)^{\sigma_{HM}}
-  (Aw)^{\sigma_{HM}-1}.
+  (Bw)^{\sigma_{HM}-1}.
 \]
 Taking the stated limit proves all three cases. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-complements}}
 
-Write \(x=X/L\) and first use the final-good firm's AI-demand condition.
+Write \(\mathcal L=AL\), \(x=X/\mathcal L\), and first use the final-good
+firm's AI-demand condition.
 Let
 \[
  z(x)=\left[\omega_L+\omega_Xx^{(\sigma_{XL}-1)/\sigma_{XL}}
  \right]^{\sigma_{XL}/(\sigma_{XL}-1)}.
 \]
-Then \(Y=K^\alpha L^{1-\alpha}z(x)^{1-\alpha}\) and that demand condition gives
+Then \(Y=K^\alpha\mathcal L^{1-\alpha}z(x)^{1-\alpha}\) and that demand condition gives
 \[
- p_X=(K/L)^\alpha\widetilde p(x),\qquad
+ p_X=(K/\mathcal L)^\alpha\widetilde p(x),\qquad
  \widetilde p(x)=(1-\alpha)s_X\frac{z(x)^{1-\alpha}}{x}.
 \]
 Substitution into the monopolist's markup condition, followed by normalization
-by \((K/L)^\alpha\), gives
+by \((K/\mathcal L)^\alpha\), gives
 \[
  \widetilde p(x)
  \left[1-\frac{1-s_X}{\sigma_{XL}}-\alpha s_X\right]
- =\frac{1}{A(K/L)^\alpha}.
+ =\frac{1}{B(K/\mathcal L)^\alpha}.
 \]
 The right-hand side tends to zero by hypothesis. The assumption that
-\(p_X/(K/L)^\alpha=\widetilde p(x)\) remains bounded away from zero therefore
+\(p_X/(K/\mathcal L)^\alpha=\widetilde p(x)\) remains bounded away from zero therefore
 implies that the term in square brackets converges to zero. Solving gives
 \[
  \bar s_X=\frac{1-\sigma_{XL}}{1-\alpha\sigma_{XL}}.
 \]
 For \(\sigma_{XL}<1\), this number is strictly between zero and one. The CES share
-mapping \eqref{eq:axm-sx} is one-to-one in \(X/L\), so \(X/L\) converges to a
+mapping \eqref{eq:axm-sx} is one-to-one in \(X/\mathcal L\), so \(X/\mathcal L\) converges to a
 finite positive constant. Inverting that mapping gives exactly \(\bar x\) in
 \eqref{eq:axm-complement-ratios}; substituting \(\bar x\) into the CES gives
-\(Z/L\to\bar z\). Hence \(Y\) is asymptotically a positive constant multiple
-of \(K^\alpha L^{1-\alpha}\).
+\(Z/\mathcal L\to\bar z\). Hence \(Y\) is asymptotically a positive constant multiple
+of \(K^\alpha\mathcal L^{1-\alpha}\).
 
 Now suppose, as in the proposition, that a finite-rate balanced path exists.
 The household Euler equation makes the net interest rate finite when consumption
 growth is finite. The final-good firm's capital-demand condition then requires
 \(Y/K=(r+\delta)/\alpha\) to have a finite limit. This limit cannot be zero.
-Because \(Z/L\) has a positive constant limit,
-\(Y/K\to0\) would require \(K/L\to\infty\); then gross investment divided by
+Because \(Z/\mathcal L\) has a positive constant limit,
+\(Y/K\to0\) would require \(K/\mathcal L\to\infty\); then gross investment divided by
 output, \((g_K+\delta)K/Y\), would diverge. To see why, balanced growth makes
-both \(g_K\) and \(g_L\) converge; because \(K/L\to\infty\) and \(g_L\to n\),
-the limiting capital-growth rate cannot be below \(n>0\). This violates the
+both \(g_K\) and \(g_{\mathcal L}\) converge; because
+\(K/\mathcal L\to\infty\) and \(g_{\mathcal L}\to n+\gamma_A\),
+the limiting capital-growth rate cannot be below \(n+\gamma_A>0\). This violates the
 resource constraint. Hence
 \(Y/K\) converges to a positive constant.
-Because \(Z/L\) also converges to a positive constant, final production implies
-that \(K/L\) converges to a constant. Since \(L/N\) has a positive constant limit
-and \(N\) grows at \(n\), \(L,K,\) and \(Y\) grow at \(n\). Output per person and
-the wage therefore converge to finite positive levels. The positive limit of
-\(C/Y\) implies \(g_C\to n\). The household Euler equation then gives
-\(r\to\rho\), and the final-good firm's capital-demand condition gives
-\(K/Y\to\alpha/(\rho+\delta)\).
+Because \(Z/\mathcal L\) also converges to a positive constant, final production implies
+that \(K/\mathcal L\) converges to a constant. Since \(L/N\) has a positive
+constant limit, \(\mathcal L,K,Y,X,\) and \(C\) grow at
+\(G=n+\gamma_A\). The labor-payment identity gives
+\(g_w=G-n=\gamma_A\). The household Euler equation then gives
+\(r\to\rho+\gamma_A\), and the final-good firm's capital-demand condition gives
+\(K/Y\to\alpha/(\rho+\gamma_A+\delta)\).
 Finally, the final firm's labor payment satisfies
 \(wL/Y=(1-\alpha)(1-s_X)\), which converges to the strictly positive value in
 \eqref{eq:axm-complement-factor-limits}. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-complements-research}}
 
-Proposition \ref{prop:axm-complements} implies that \(w\) converges to a finite
-positive level, \(g_X\to n\), and \(r\to\rho\). Therefore \(Aw\to\infty\).
-Because \(X=AU\),
+Proposition \ref{prop:axm-complements} implies that
+\(g_w\to\gamma_A\), \(g_X\to G=n+\gamma_A\), and
+\(r\to\rho+\gamma_A\). Therefore \(Bw\to\infty\).
+Because \(X=BU\),
 \begin{equation}
- g_U\to n-\bar g_A.
+ g_U\to G-\bar g_B.
  \label{eq:axm-proof-complement-gu}
 \end{equation}
-The capability law and the regular convergence of \(g_A\) imply
+The capability law and the regular convergence of \(g_B\) imply
 \begin{equation}
- g_E\to\frac{\bar g_A}{\eta}.
+ g_E\to\frac{\bar g_B}{\eta}.
  \label{eq:axm-proof-complement-ge}
 \end{equation}
 Define the nonnegative marginal-benefit term
 \begin{equation}
- d_t\equiv\frac{X_t}{q_tA_t^2}=\frac{U_t}{q_tA_t}.
+ d_t\equiv\frac{X_t}{q_tB_t^2}=\frac{U_t}{q_tB_t}.
  \label{eq:axm-proof-complement-d}
 \end{equation}
 The costate equation gives
-\(d_t=r_t-\eta s_{M,t}g_{A,t}-g_{q,t}\). The maintained convergence of the
+\(d_t=r_t-\eta s_{M,t}g_{B,t}-g_{q,t}\). The maintained convergence of the
 growth rates and the limit of \(s_M\) derived below therefore imply that \(d_t\)
 has a finite nonnegative limit. I now show, rather than assume, that this limit
 is strictly positive.
 
 First consider \(\sigma_{HM}=1\). Interior cost minimization gives
-\(s_M=\omega_M\) and \(M/(wH)=\omega_M/\omega_H\). Since \(g_w\to0\), the
-limiting growth rates of \(M\) and \(H\) coincide. Log differentiation of the
+\(s_M=\omega_M\) and \(M/(wH)=\omega_M/\omega_H\). Hence
+\(g_M=g_H+\gamma_A\). Log differentiation of the
 Cobb--Douglas research index, combined with
 \eqref{eq:axm-proof-complement-ge}, yields
 \begin{equation}
- g_M=g_H=(\eta^{-1}-\omega_M)\bar g_A.
+ g_M=(\eta^{-1}-\omega_M)\bar g_B+\omega_H\gamma_A,
+ \qquad g_H=g_M-\gamma_A.
  \label{eq:axm-proof-complement-cd-gm}
 \end{equation}
 The research-compute first-order condition is
 \begin{equation}
- M=q\eta\omega_M g_AA.
+ M=q\eta\omega_M g_B B.
  \label{eq:axm-proof-complement-cd-mfoc}
 \end{equation}
-Regular convergence of \(g_A\) then gives
-\(g_q=g_M-\bar g_A=(\eta^{-1}-\omega_M-1)\bar g_A\).
+Regular convergence of \(g_B\) then gives
+\(g_q=g_M-\bar g_B=(\eta^{-1}-\omega_M-1)\bar g_B\).
 
-Suppose for contradiction that \(d_t\to0\). Taking limits in the costate
-equation and using the preceding identities gives
-\[
- (1-\eta)(\eta^{-1}-\omega_M)\bar g_A=\rho.
-\]
-Equation \eqref{eq:axm-proof-complement-cd-gm} would then imply
-\(g_M=\rho/(1-\eta)>\rho\). By
-\eqref{eq:axm-proof-complement-cd-mfoc}, \(qA\) has the same limiting growth
-rate as \(M\). The developer's terminal object would therefore grow rather than
+Suppose for contradiction that \(d_t\to0\). The costate equation would imply
+that the growth rate of \(qB\), which equals \(g_M\) by
+\eqref{eq:axm-proof-complement-cd-mfoc}, exceeds the discount rate
+\(r\to\rho+\gamma_A\) by \((1-\eta\omega_M)\bar g_B>0\).
+The developer's terminal object would therefore grow rather than
 converge to zero, contradicting its transversality condition. Thus
 \(d_t\to\bar d>0\). Its log growth rate has a limit, and convergence to a
 positive constant makes that limiting rate zero. The identity in
 \eqref{eq:axm-proof-complement-d} therefore requires
-\(g_U=g_q+\bar g_A=g_M\). Combining this equality with
+\(g_U=g_q+\bar g_B=g_M\). Combining this equality with
 \eqref{eq:axm-proof-complement-gu} and
 \eqref{eq:axm-proof-complement-cd-gm} gives
 \[
- \bar g_A=\frac{n}{1+\eta^{-1}-\omega_M}.
+ \bar g_B=\frac{n+\omega_M\gamma_A}
+ {1+\eta^{-1}-\omega_M}.
 \]
 The remaining rates in \eqref{eq:axm-complement-cd-research-growth} follow
-directly. In particular, \(g_{AM}=\bar g_A+g_M=n\).
+directly. In particular, \(g_{BM}=\bar g_B+g_M=G\).
 
-Now let \(\sigma_{HM}>1\). Since \(Aw\to\infty\), Proposition
+Now let \(\sigma_{HM}>1\). Since \(Bw\to\infty\), Proposition
 \ref{prop:axm-research-automation} implies \(s_M\to1\). The exact share identity
 \[
- g_E=(1-s_M)g_H+s_M(g_A+g_M)
+ g_E=(1-s_M)g_H+s_M(g_B+g_M)
 \]
 and the finite limiting growth rate of \(H\) imply, together with
 \eqref{eq:axm-proof-complement-ge}, that
 \begin{equation}
- g_M=(\eta^{-1}-1)\bar g_A.
+ g_M=(\eta^{-1}-1)\bar g_B.
  \label{eq:axm-proof-complement-ces-gm}
 \end{equation}
 The research-compute first-order condition can be written
 \begin{equation}
- M=q\eta s_Mg_AA.
+ M=q\eta s_M g_B B.
  \label{eq:axm-proof-complement-ces-mfoc}
 \end{equation}
 Equation \eqref{eq:axm-automation-odds} implies that the log growth rate of
 \(s_M\) tends to zero. Hence
-\(g_q=(\eta^{-1}-2)\bar g_A\).
+\(g_q=(\eta^{-1}-2)\bar g_B\).
 
-If \(d_t\to0\), the costate equation and
-\eqref{eq:axm-proof-complement-ces-gm} would instead imply
-\(g_M=\rho/(1-\eta)>\rho\). Equation
+If \(d_t\to0\), the costate equation would make the growth rate of \(qB\)
+exceed \(r\) by \((1-\eta)\bar g_B>0\). Equation
 \eqref{eq:axm-proof-complement-ces-mfoc} would again make the developer's
 terminal object grow, contradicting transversality. Therefore
 \(d_t\to\bar d>0\). Its limiting log growth rate is zero, so
 \eqref{eq:axm-proof-complement-d} again requires \(g_U=g_M\). Equations
 \eqref{eq:axm-proof-complement-gu} and
 \eqref{eq:axm-proof-complement-ces-gm} then give
-\(\bar g_A=\eta n\) and \(g_M=(1-\eta)n\). Finally, log differentiation of
-\eqref{eq:axm-input-ratio}, using \(g_w\to0\), gives
+\(\bar g_B=\eta G\) and \(g_M=(1-\eta)G\). Finally, log differentiation of
+\eqref{eq:axm-input-ratio}, using \(g_w\to\gamma_A\), gives
 \[
- g_H=g_A+g_M-\sigma_{HM}g_A=(1-\eta\sigma_{HM})n.
+ g_H=G-\sigma_{HM}(\eta G+\gamma_A).
 \]
 This proves all rates in \eqref{eq:axm-complement-ces-research-growth}.
 
-In both cases, \(g_M=g_U<n=g_Y\), so \(M/Y\to0\) and \(U/Y\to0\). Also
+In both cases, \(g_M=g_U<G=g_Y\), so \(M/Y\to0\) and \(U/Y\to0\). Also
 \(g_H<n=g_N\), so \(H/N\to0\), and labor clearing gives \(L/N\to1\).
 Substitution in the resource constraint, together with
-\(K/Y\to\alpha/(\rho+\delta)\), gives the consumption share in
+\(K/Y\to\alpha/(\rho+\gamma_A+\delta)\), gives the consumption share in
 \eqref{eq:axm-complement-vanishing-shares}. Given the positive limiting ratios,
 the maintained household TVC requires \(n-\rho<0\). Since the derived rate of
-research compute satisfies \(g_M<n\), the developer's terminal object has
-limiting log growth \(g_M-\rho<0\). The derived rates therefore reproduce both
+research compute satisfies \(g_M<G\), the developer's terminal object has
+limiting log growth \(g_M-(\rho+\gamma_A)<0\). The derived rates therefore reproduce both
 maintained terminal restrictions. This is a consistency check; the developer's
 TVC was used above to select the positive-\(d\) branch. \(\square\)
 
@@ -610,98 +610,131 @@ TVC was used above to select the positive-\(d\) branch. \(\square\)
 
 With \(\sigma_{XL}=1\), the final technology is
 \[
- Y=K^\alpha L^\lambda X^\beta.
+ Y=K^\alpha(AL)^\lambda X^\beta.
 \]
-The final-good firm's AI-demand condition gives \(p_XX=\beta Y\) after
-market clearing for AI production services. The inverse demand elasticity is \(1-\beta\), so the
-monopoly first-order condition becomes \(\beta p_X=1/A\). Combining these two
-conditions with \(X=AU\) yields
-\(X/A=\beta^2Y\), proving \eqref{eq:axm-inference-share-cd}. Replacing
-\(X\) by \(\beta^2AY\) gives \eqref{eq:axm-reduced-cd}. Taking growth rates
-and using the assumed positive constant limits of \(K/Y\) and \(L/N\) yields
+The final-good firm's AI-demand condition gives \(p_XX=\beta Y\). The inverse
+demand elasticity is \(1-\beta\), so the monopoly condition is
+\(\beta p_X=1/B\). Combining the two equations with \(X=BU\) gives
+\(U/Y=\beta^2\), and substitution gives \eqref{eq:axm-reduced-cd}. Constant
+\(K/Y\) and \(L/N\) then imply
 \[
- g_Y=n+\nu g_A.
+ g_Y=n+\gamma_A+\nu g_B.
 \]
 
-The wage satisfies \(w=\lambda Y/L\), so \(g_w=\nu g_A\). Consequently,
-\(g_{Aw}=(1+\nu)g_A>0\). If \(\sigma_{HM}>1\), this proves \(Aw\to\infty\),
-and Proposition \ref{prop:axm-research-automation} gives \(s_M\to1\).
-In either research regime, a positive constant total research-expenditure share
-therefore makes raw research compute a positive constant output share, so
-\(g_M=g_Y=n+\nu g_A\). If \(\sigma_{HM}=1\), \(s_M=\omega_M\); a constant total
-research-expenditure share then implies \(g_{wH}=g_Y\). Because
-\(g_w=\nu g_A\), human research grows at \(g_H=n\), and
+The wage satisfies \(w=\lambda Y/L\), so
+\(g_w=\gamma_A+\nu g_B\). Consequently, \(Bw\to\infty\) when
+\(\sigma_{HM}>1\), and Proposition \ref{prop:axm-research-automation} gives
+\(s_M\to1\). A positive constant research-expenditure share makes \(M/Y\)
+constant, so \(g_M=g_Y\). If \(\sigma_{HM}=1\), constant \(wH/Y\) gives
+\(g_H=n\), and
 \[
- g_E=\omega_H n+\omega_M(g_A+g_M)
- =n+\omega_M(1+\nu)g_A.
+ g_E=\omega_Hn+\omega_M(g_B+g_M)
+ =n+\omega_M\gamma_A+\omega_M(1+\nu)g_B.
 \]
-Moreover, if \(R=(wH+M)/Y\) denotes the positive limiting research-expenditure
-share, then \(wH/Y=(1-\omega_M)R>0\). Since \(w=\lambda Y/L\), this gives a
-positive constant \(H/L\), and hence a positive constant \(H/N\).
-If \(\sigma_{HM}>1\), the result just established that \(s_M\to1\). Then the
-effective-research index \(E\) is asymptotically proportional
-to \(AM\), giving
+If \(\sigma_{HM}>1\), \(E\) is asymptotically proportional to \(BM\), and
 \[
- g_E=g_A+g_M=n+(1+\nu)g_A.
+ g_E=n+\gamma_A+(1+\nu)g_B.
 \]
-Both cases are \(g_E=n+\bar s(1+\nu)g_A\). Since
-\(\dot A=\chi E^\eta\), \(g_{\dot A}=\eta g_E\). The identity
-\(\dot A=g_AA\) and the assumed regular convergence of \(g_A>0\) also give
-\(g_{\dot A}=g_A+o(1)\). Equating the limiting rates yields
+Both cases can be written
 \[
- g_A=\eta[n+\bar s(1+\nu)g_A].
+ g_E=n+\bar s\gamma_A+\bar s(1+\nu)g_B.
 \]
-Solving gives \eqref{eq:axm-cd-growth-rates}; a positive solution requires
+Because \(\dot B=\chi E^\eta=g_BB\) and \(g_B\) converges regularly,
+equating growth rates gives
+\[
+ g_B=\eta[n+\bar s\gamma_A+\bar s(1+\nu)g_B].
+\]
+Solving establishes \eqref{eq:axm-cd-growth-rates}; positivity requires
 \(D(\bar s)>0\).
 
-The inference share is constant, so \(g_U=g_Y\) and
-\(g_X=g_A+g_Y\). The monopoly condition gives \(g_{p_X}=-g_A\), while a
-constant \(M/Y\), \(s_M\), and \(g_A\) in the research-compute first-order
-condition makes \(qA/Y\) constant and gives \(g_q=g_Y-g_A\). The capability
-law implies that the effective-research index grows at \(g_E=g_A/\eta\), and the positive
-limiting employment share \(L/N\) gives
-\(g_L=n\). For \(\sigma_{HM}>1\), take growth rates in
-\eqref{eq:axm-input-ratio}. Since \(g_w=\nu g_A\),
+The constant inference share gives \(g_U=g_Y\), \(g_X=g_B+g_Y\), and
+\(g_{p_X}=-g_B\). The research-compute condition makes \(qB/Y\) constant and
+therefore gives \(g_q=g_Y-g_B\). The capability law gives
+\(g_E=g_B/\eta\), while \(g_L=n\). When \(\sigma_{HM}>1\), the input-ratio
+condition gives
 \[
- g_{AM}-g_H=\sigma_{HM}(g_A+g_w)
- =\sigma_{HM}(1+\nu)g_A.
+ g_{BM}-g_H=\sigma_{HM}(g_B+g_w)
+ =\sigma_{HM}[\gamma_A+(1+\nu)g_B].
 \]
-Using \(g_{AM}=g_A+g_M=n+(1+\nu)g_A\) yields
-\eqref{eq:axm-human-research-growth}. These observations prove
-\eqref{eq:axm-cd-remaining-rates} and the remaining labor result.
+Using \(g_{BM}=g_B+g_M=n+\gamma_A+(1+\nu)g_B\) yields
+\eqref{eq:axm-human-research-growth}.
 
-The household Euler equation gives \(r=\rho+\gamma\). Combining it with the
-final-good firm's capital-demand condition gives
-\(K/Y=\alpha/(\rho+\delta+\gamma)\), which implies the investment share in
-\eqref{eq:axm-cd-shares}. Let \(m=M/Y\) and
-\(u=\beta^2\). The research-compute first-order condition can be written
+The household Euler equation gives \(r=\rho+\gamma\), where
+\(\gamma=\gamma_A+\nu g_B\). The capital-demand condition gives
+\(K/Y=\alpha/(\rho+\delta+\gamma)\) and hence the investment share in
+\eqref{eq:axm-cd-shares}. Let \(m=M/Y\) and \(u=\beta^2\). The research
+first-order condition implies
 \[
- q\,\eta\bar s\,\frac{\dot A}{M}=1,
- \qquad\text{so}\qquad
- \frac{qA}{Y}=\frac{m}{\eta\bar s g_A}.
+ \frac{qB}{Y}=\frac{m}{\eta\bar s g_B}.
 \]
-Because this ratio is constant, \(g_q=g_Y-g_A\). The envelope derivative of
-operating profits implies
+The envelope derivative of optimized operating profit is
 \[
- \frac{\pi_A}{q}
- =\frac{uY/A}{q}
- =\frac{u\eta\bar s g_A}{m}.
+ \frac{\pi_B}{q}=\frac{uY/B}{q}
+ =\frac{u\eta\bar s g_B}{m}.
 \]
-Substitute these expressions into the costate equation and use
-\(g_Y=n+\gamma\) and the Euler condition:
+Substitution into the costate equation gives
 \[
- n+\gamma-g_A
- =\rho+\gamma-\eta\bar s g_A
-  -\frac{u\eta\bar s g_A}{m}.
+ n+\gamma-g_B
+ =\rho+\gamma-\eta\bar s g_B
+ -\frac{u\eta\bar s g_B}{m},
 \]
-Solving for \(m\) gives \eqref{eq:axm-cd-shares}. The resource constraint gives
-\(c=1-u-i-m\). Positivity, interiority, and the second-order condition are
-separate requirements, as stated. On the candidate path, the
-household transversality expression in \eqref{eq:axm-tvc} declines at rate
-\(\rho-n\). The developer's expression declines at the same rate because
-\(g_{qA}=g_Y=n+\gamma\) and \(r=\rho+\gamma\). Hence \(\rho>n\) is sufficient
-for both transversality conditions once the stated constant ratios hold.
-\(\square\)
+which yields the research share in \eqref{eq:axm-cd-shares}. The resource
+constraint gives \(c=1-u-i-m\). Both transversality expressions decline at
+rate \(\rho-n\), because \(g_{qB}=g_Y=n+\gamma\) and
+\(r=\rho+\gamma\). This proves the proposition. \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-cd-human-existence}}
+
+Evaluate the unit-elastic formulas at \(\bar s=\omega_M\), and let
+\(g_B^*,g_Y^*,u^*,k^*,m^*,c^*,\ell^*\) denote the resulting values. The
+denominator
+\[
+ d_H=\frac1\eta-\omega_M(1+\nu)=\frac{D(\omega_M)}{\eta}
+\]
+is positive. For given \(A_0,N_0>0\), define
+\[
+ H_0=(1-\ell^*)N_0,\qquad
+ P=A_0\ell^*N_0(k^*)^{\alpha/\lambda}
+ (u^*)^{\beta/\lambda}.
+\]
+Choose
+\[
+ B_0=\left[
+ \left(\frac{\chi}{g_B^*}\right)^{1/\eta}
+ H_0^{\omega_H}(m^*P)^{\omega_M}
+ \right]^{1/d_H},\qquad
+ Y_0=PB_0^{\beta/\lambda},\qquad K_0=k^*Y_0.
+\]
+Set \(L_0=\ell^*N_0\), \(M_0=m^*Y_0\), \(U_0=u^*Y_0\),
+\(C_0=c^*Y_0\), \(X_0=B_0U_0\), and
+\[
+ q_0=\frac{M_0}{\eta\omega_M g_B^*B_0}.
+\]
+The definitions make final production and the capability law hold at date zero.
+The growth rates in Proposition \ref{prop:axm-cd-bgp} preserve both equations
+at every date. Equation \eqref{eq:axm-cd-human-labor-share} is equivalent to
+\(M/(wH)=\omega_M/\omega_H\); hence both research first-order conditions and
+labor clearing hold. The remaining dated equations and the two transversality
+conditions follow as in the preceding proof. Proposition
+\ref{prop:axm-equilibrium-sufficiency} establishes global optimality.
+
+For the local calculation, let
+\(\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'\) be the normalized log deviations. Implicitly
+differentiating labor clearing, the two research conditions, and the
+unit-elastic final-production block gives the calibrated Jacobian
+\[
+ J_{HM=1}^*=\begin{pmatrix}
+  0.0401778& 0.0417493&-0.2070996&-0.0001158\\
+ -0.0001628&-0.0024661&0&0.0006575\\
+ -0.0561020&0.0140298&0&-0.0000264\\
+ -0.0676956&0.0399367&0&0.0303825
+ \end{pmatrix}.
+\]
+Its roots are those in \eqref{eq:axm-cd-human-jacobian-roots}. The determinant
+of the \((\xi_K,\xi_B)\) block of Euclidean-normalized stable eigenvectors is
+\(0.6097\). The stable-manifold and inverse-function arguments used in the proof
+of Proposition \ref{prop:axm-unit-saddle-path} therefore establish the stated
+local selection result. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-research-burst}}
 
@@ -719,9 +752,9 @@ mean, including the Cobb--Douglas limit and the standard continuous boundary
 extension. Hence
 \[
  E=\left[\omega_HH^{\varrho_{HM}}
- +\omega_M(AM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}}
- \leq \omega_HH+\omega_MAM
- \leq H+AM.
+ +\omega_M(BM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}}
+ \leq \omega_HH+\omega_MBM
+ \leq H+BM.
 \]
 Let
 \[
@@ -739,30 +772,30 @@ For a research policy, define the reduced payoff over this horizon by
 \[
  J_T(H,M)=\int_0^T
  \exp\left\{-\int_0^t r_s\dd s\right\}
- [\pi(A_t;K_t,L_t)-w_tH_t-M_t]\dd t.
+ [\pi(B_t;K_t,A_t,L_t)-w_tH_t-M_t]\dd t.
 \]
-The capability law implies that \(A\) is nondecreasing, so \(A_t\geq A_0\).
+The capability law implies that \(B\) is nondecreasing, so \(B_t\geq B_0\).
 Therefore, almost everywhere,
 \begin{align*}
- \frac{\dd}{\dd t}A_t^{1-\eta}
- &=(1-\eta)\chi A_t^{-\eta}E_t^\eta\\
+ \frac{\dd}{\dd t}B_t^{1-\eta}
+ &=(1-\eta)\chi B_t^{-\eta}E_t^\eta\\
  &\leq(1-\eta)\chi
-       \left(M_t+\frac{H_t}{A_t}\right)^\eta\\
+       \left(M_t+\frac{H_t}{B_t}\right)^\eta\\
  &\leq(1-\eta)\chi
-       \left(1+\frac{1}{A_0\underline w}\right)^\eta c_t^\eta.
+       \left(1+\frac{1}{B_0\underline w}\right)^\eta c_t^\eta.
 \end{align*}
 H\"older's inequality then gives, for every \(t\leq T\),
 \[
- A_t^{1-\eta}
- \leq A_0^{1-\eta}
+ B_t^{1-\eta}
+ \leq B_0^{1-\eta}
  +\bar c\int_0^T c_s^\eta\dd s
- \leq A_0^{1-\eta}+\bar cT^{1-\eta}S^\eta,
+ \leq B_0^{1-\eta}+\bar cT^{1-\eta}S^\eta,
 \]
 where \(\bar c>0\) does not depend on the controls. Raising both sides to
 the power \(1/(1-\eta)\) proves
 \begin{equation}
- \max_{0\leq t\leq T}A_t
- \leq C_A\left(1+S^{\eta/(1-\eta)}\right).
+ \max_{0\leq t\leq T}B_t
+ \leq C_B\left(1+S^{\eta/(1-\eta)}\right).
  \label{eq:axm-finite-horizon-capability-bound}
 \end{equation}
 This estimate includes arbitrarily concentrated measurable controls. In
@@ -772,30 +805,31 @@ not overturn the bound.
 
 I next bound optimized operating profit. Let
 \(\overline K=\max_{t\leq T}K_t\) and
-\(\overline L=\max_{t\leq T}L_t\). The weighted power-mean inequality and
-\(\omega_L+\omega_X=1\) imply \(Z\leq\omega_LL+\omega_XX\leq L+X\), including
+\(\overline{\mathcal L}=\max_{t\leq T}A_tL_t\). The weighted power-mean inequality and
+\(\omega_L+\omega_X=1\) imply
+\(Z\leq\omega_LAL+\omega_XX\leq AL+X\), including
 the Cobb--Douglas limit. The final-good firm's demand
 condition therefore gives
 \begin{align*}
  p_X(X;K,L)X
  &=(1-\alpha)s_XK^\alpha Z^{1-\alpha}\\
  &\leq(1-\alpha)\overline K^\alpha
-       \left(\overline L^{1-\alpha}+X^{1-\alpha}\right).
+       \left(\overline{\mathcal L}^{1-\alpha}+X^{1-\alpha}\right).
 \end{align*}
 Set \(a=(1-\alpha)\overline K^\alpha\) and
-\(b=a\overline L^{1-\alpha}\). Maximizing the upper bound over \(X\geq0\)
+\(b=a\overline{\mathcal L}^{1-\alpha}\). Maximizing the upper bound over \(X\geq0\)
 yields
 \begin{align*}
- \pi(A;K,L)
- &\leq b+\sup_{X\geq0}\left\{aX^{1-\alpha}-\frac{X}{A}\right\}\\
- &=b+\alpha a[a(1-\alpha)]^\theta A^\theta
- \leq C_\pi(1+A^\theta).
+ \pi(B;K,A,L)
+ &\leq b+\sup_{X\geq0}\left\{aX^{1-\alpha}-\frac{X}{B}\right\}\\
+ &=b+\alpha a[a(1-\alpha)]^\theta B^\theta
+ \leq C_\pi(1+B^\theta).
 \end{align*}
-The revenue product \(p_X(X;K,L)X\), rather than necessarily the unit price
+The revenue product \(p_X(X;K,A,L)X\), rather than necessarily the unit price
 itself, has its continuous value zero at \(X=0\). The pointwise maximum defining
 \(\pi\) is attained because its objective is continuous and the linear inference
 cost eventually dominates revenue. The same domination is locally uniform in
-\((A,K,L)\), so \(\pi\) is continuous
+\((B,K,A,L)\), so \(\pi\) is continuous
 and therefore measurable along an admissible state path; a measurable
 pointwise maximizing selection also exists. The
 same bound applies to the primitive problem for any choice of \(X\), since its
@@ -809,7 +843,7 @@ has finite bounds \(0<\underline D\leq D_t\leq\overline D<\infty\) on
 \([0,T]\). Combining the capability and profit bounds gives
 \begin{align}
  J_T(H,M)
- &\leq \overline D\int_0^T\pi(A_t;K_t,L_t)\dd t
+ &\leq \overline D\int_0^T\pi(B_t;K_t,A_t,L_t)\dd t
        -\underline DS\\
  &\leq C_0+C_1S^p-\underline DS,
  \qquad
@@ -830,7 +864,7 @@ It remains to establish the converse for \(\eta>\alpha\) and characterize the
 boundary when both CES nests permit gross substitution. Hence suppose now that
 \(\sigma_{XL}>1\) and \(\sigma_{HM}>1\), so both CES powers lie in \((0,1)\).
 A sharper operating-profit asymptotic is needed. For fixed positive
-\(K\) and \(L\), as \(X/L\to\infty\),
+\(K,A,\) and \(L\), as \(X/(AL)\to\infty\),
 \[
  Z\sim\omega_X^{1/\varrho_{XL}}X,
  \qquad s_X\to1,
@@ -841,9 +875,9 @@ and hence
  \qquad
  d_X=(1-\alpha)\omega_X^{(1-\alpha)/\varrho_{XL}}.
 \]
-Under the rescaling \(X=KA^{1/\alpha}x\),
+Under the rescaling \(X=KB^{1/\alpha}x\),
 \[
- \frac{p_X(X;K,L)X-X/A}{KA^\theta}
+ \frac{p_X(X;K,A,L)X-X/B}{KB^\theta}
  \longrightarrow d_Xx^{1-\alpha}-x.
 \]
 The limiting objective has the unique maximizer
@@ -857,21 +891,21 @@ and value
 The linear term in \(x\) keeps the maximizing sequence bounded, while the
 strictly positive limiting maximum keeps it away from zero. Consequently,
 \[
- \pi(A;K,L)\sim\kappa_XKA^\theta.
+ \pi(B;K,A,L)\sim\kappa_XKB^\theta.
 \]
-The convergence is uniform when \(K\) and \(L\) remain in compact subsets of
+The convergence is uniform when \(K,A,\) and \(L\) remain in compact subsets of
 the positive orthant.
 
 Fix \(\Delta\in(0,T)\). Set \(H=0\) on all of \([0,T]\), set
 \(M=\mathcal B\) on \([0,\Delta]\), and set \(M=0\) on
 \((\Delta,T]\). Because \(\sigma_{HM}>1\),
 \[
- E=\omega_M^{1/\varrho_{HM}}AM
+ E=\omega_M^{1/\varrho_{HM}}BM
 \]
 along this policy. Capability therefore satisfies
 \[
- A_{\mathcal B}(t)^{1-\eta}
- =A_0^{1-\eta}+(1-\eta)d_M\mathcal B^\eta
+ B_{\mathcal B}(t)^{1-\eta}
+ =B_0^{1-\eta}+(1-\eta)d_M\mathcal B^\eta
    \min\{t,\Delta\},
  \qquad
  d_M=\chi\omega_M^{\eta/\varrho_{HM}}>0.
@@ -879,13 +913,13 @@ along this policy. Capability therefore satisfies
 Choosing \(X\) to maximize operating profit at each date gives
 \[
  J_T(\mathcal B)
- =\int_0^T D_t\pi(A_{\mathcal B}(t);K_t,L_t)\dd t
+ =\int_0^T D_t\pi(B_{\mathcal B}(t);K_t,A_t,L_t)\dd t
  -\mathcal B\int_0^\Delta D_t\dd t.
 \]
 For \(\mathcal B\geq1\), the explicit capability solution implies
 \[
  \sup_{0\leq t\leq T}
- \frac{A_{\mathcal B}(t)}
+ \frac{B_{\mathcal B}(t)}
  {\mathcal B^{\eta/(1-\eta)}}\leq C
 \]
 for a constant independent of \(\mathcal B\). The uniform profit bound above
@@ -938,23 +972,23 @@ finite constant growth rates. With \(\sigma_{XL}>1\), AI production services dom
 labor--AI CES as their relative quantity becomes large. The limiting final technology is
 proportional to \(K^\alpha X^{1-\alpha}\). The inverse demand elasticity tends
 to \(\alpha\). Combining the final-good firm's AI-demand condition, the
-monopolist's markup condition, and market clearing for AI production services with \(X=AU\)
+monopolist's markup condition, and market clearing for AI production services with \(X=BU\)
 implies
 \[
- \frac{X}{A}=(1-\alpha)^2Y[1+o(1)].
+ \frac{X}{B}=(1-\alpha)^2Y[1+o(1)].
 \]
 Moreover, the final CES satisfies
 \[
  Z=\omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}X[1+o(1)].
 \]
-Substituting \(X=(1-\alpha)^2AY[1+o(1)]\) back into final production gives
+Substituting \(X=(1-\alpha)^2BY[1+o(1)]\) back into final production gives
 \[
- \frac{Y}{K}=\mathcal D A^{(1-\alpha)/\alpha}[1+o(1)],\qquad
+ \frac{Y}{K}=\mathcal D B^{(1-\alpha)/\alpha}[1+o(1)],\qquad
  \mathcal D=
  \left[\omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}
  (1-\alpha)^2\right]^{(1-\alpha)/\alpha},
 \]
-which makes the claimed proportionality explicit. Since \(A\to\infty\),
+which makes the claimed proportionality explicit. Since \(B\to\infty\),
 \(Y/K\to\infty\). Both \(\alpha Y/K\) and the net interest rate
 \(r=\alpha Y/K-\delta\) therefore diverge. Equation \eqref{eq:axm-euler} then
 makes consumption growth unbounded, contradicting finite constant growth.
@@ -963,12 +997,12 @@ makes consumption growth unbounded, contradicting finite constant growth.
 \subsection{Derivation of the AI-dominated singular limit}
 
 Let \(z=Y/K\), \(u=U/Y\), \(m=M/Y\), \(i=(\dot K+\delta K)/Y\), and
-\(c=C/Y\). Let \(\widehat h>0\) denote the assumed limit of \(g_A/z\).
+\(c=C/Y\). Let \(\widehat h>0\) denote the assumed limit of \(g_B/z\).
 Whenever no ambiguity arises below, a lower-case share also denotes its limit.
 Combining the final-good firm's AI-demand condition, the monopolist's markup
-condition, market clearing for AI production services with \(X=AU\), and final production gives
+condition, market clearing for AI production services with \(X=BU\), and final production gives
 \[
- u\to(1-\alpha)^2,\qquad z\sim\mathcal D A^\theta,\qquad
+ u\to(1-\alpha)^2,\qquad z\sim\mathcal D B^\theta,\qquad
  \theta=\frac{1-\alpha}{\alpha}.
 \]
 The household Euler equation, the final-good firm's condition
@@ -987,41 +1021,43 @@ Since \(g_Y=g_K+g_z\), \(g_K/z\to i\), and the regular scaling relation gives
 Before using the research technology, define
 \[
  \varrho_{XL}=\frac{\sigma_{XL}-1}{\sigma_{XL}},\qquad
- \mathcal Q=AY,\qquad
+ \mathcal Q=BY,\qquad
  \psi=\frac{\sigma_{HM}}{\sigma_{XL}}.
 \]
 The final CES share odds and the wage equation imply the exact relation
 \[
- Aw=(1-\alpha)s_X\frac{\omega_L}{\omega_X}
+ Bw=(1-\alpha)s_X\frac{\omega_L}{\omega_X}
  u^{-\varrho_{XL}}
+ A^{\varrho_{XL}}
  \left(\frac{\mathcal Q}{L}\right)^{1/\sigma_{XL}}.
 \]
 The conditional research demands then give
 \begin{equation}
- \frac{H}{L}=B_t
+ \frac{H}{L}=\mathcal B_t
  \left(\frac{\mathcal Q}{L}\right)^{1-\psi},
  \qquad
- B_t=m\left(\frac{\omega_H}{\omega_M}\right)^{\sigma_{HM}}
+ \mathcal B_t=mA^{-\varrho_{XL}\sigma_{HM}}
+ \left(\frac{\omega_H}{\omega_M}\right)^{\sigma_{HM}}
  \left[(1-\alpha)s_X\frac{\omega_L}{\omega_X}
  u^{-\varrho_{XL}}\right]^{-\sigma_{HM}}.
  \label{eq:axm-app-sectoral-labor}
 \end{equation}
 To establish the required regularity without assuming it for an additional
 endogenous ratio, combine the final-good firm's AI-demand condition, the
-monopolist's markup condition, and market clearing for AI production services with \(X=AU\):
+monopolist's markup condition, and market clearing for AI production services with \(X=BU\):
 \[
  u=(1-\alpha)s_X(1-e_X),\qquad
  e_X=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X.
 \]
 Regularity of \(s_X\) therefore implies
 \(u\to(1-\alpha)^2\) and \(g_u=o(z)\). It follows from
-\eqref{eq:axm-app-sectoral-labor} that \(B_t\to B>0\) and
-\(g_{B_t}=o(z)\). Moreover,
+\eqref{eq:axm-app-sectoral-labor} that \(\mathcal B_t\to\mathcal B_*>0\) and
+\(g_{\mathcal B_t}=o(z)\). Moreover,
 \[
- \frac{g_{\mathcal Q/N}}{g_A}
+ \frac{g_{\mathcal Q/N}}{g_B}
  \to\frac{\widehat h+\alpha}{\widehat h}>0.
 \]
-Because \(A\to\infty\), the integral of \(g_A\) diverges. Integrating the last
+Because \(B\to\infty\), the integral of \(g_B\) diverges. Integrating the last
 relation therefore gives \(\mathcal Q/N\to\infty\).
 Equation \eqref{eq:axm-app-sectoral-labor}, together with \(H+L=N\), therefore
 implies
@@ -1036,28 +1072,28 @@ implies
 When \(\psi=1\), taking limits in
 \eqref{eq:axm-app-sectoral-labor} gives
 \[
- \bar h_N=\frac{B}{1+B},\qquad
- B=\frac{\eta}{\Delta}
+ \bar h_N=\frac{\mathcal R_\sigma}{1+\mathcal R_\sigma},\qquad
+ \mathcal R_\sigma=\frac{\eta}{\Delta}A_*^{1-\sigma}
  \left[
   \frac{(1-\alpha)\omega_H\omega_X}{\omega_M\omega_L}
- \right]^{\sigma},qquad
+ \right]^{\sigma},\qquad
  \sigma=\sigma_{XL}=\sigma_{HM},
 \]
-which proves equation
+where \(A_*=A_0e^{\gamma_AT^*}\in(0,\infty)\). This proves equation
 \eqref{eq:axm-singular-equal-elasticity-share}.
 To obtain the sectoral labor growth rates without assuming an endogenous limit,
 let \(y=H/L\), \(a_H=H/N=y/(1+y)\), and
 \(\kappa=1-\psi\). Log-differentiating
 \eqref{eq:axm-app-sectoral-labor} and using \(N=L+H\) gives the exact pair
 \[
- g_y=g_{B_t}+\kappa(g_{\mathcal Q}-g_L),\qquad
+ g_y=g_{\mathcal B_t}+\kappa(g_{\mathcal Q}-g_L),\qquad
  n=g_L+a_Hg_y.
 \]
 Consequently,
 \[
  \frac{g_L}{z}
  =
- \frac{n/z-a_H\{g_{B_t}/z+\kappa g_{\mathcal Q}/z\}}
+ \frac{n/z-a_H\{g_{\mathcal B_t}/z+\kappa g_{\mathcal Q}/z\}}
  {1-\kappa a_H}.
 \]
 Using the labor-allocation limits above shows that \(g_L/z\to0\) when
@@ -1074,7 +1110,7 @@ implies that \(g_w/z\) is finite.
 
 The effective-research index has the exact envelope identity
 \[
- g_E=(1-s_M)g_H+s_M(g_A+g_M).
+ g_E=(1-s_M)g_H+s_M(g_B+g_M).
 \]
 Regularity of \(M/Y\) gives \(g_M=g_Y+o(z)\). Because \(s_M\to1\) and
 \(g_H=O(z)\), it follows that
@@ -1083,13 +1119,13 @@ Regularity of \(M/Y\) gives \(g_M=g_Y+o(z)\). Because \(s_M\to1\) and
 \[
  g_E=(\widehat h+\alpha)z+o(z).
 \]
-Log-differentiating the exact identity \(g_A=\chi E^\eta/A\) gives
+Log-differentiating the exact identity \(g_B=\chi E^\eta/B\) gives
 \[
- g_{g_A}=(\eta-1)g_A+\eta g_Y+o(z).
+ g_{g_B}=(\eta-1)g_B+\eta g_Y+o(z).
 \]
-Because \(g_A/z\to\widehat h\) and this ratio converges asymptotically regularly,
-\(g_{g_A}/z\) and \(g_z/z\) have the same limit. Likewise,
-\(z/(\mathcal D A^\theta)\to1\) gives
+Because \(g_B/z\to\widehat h\) and this ratio converges asymptotically regularly,
+\(g_{g_B}/z\) and \(g_z/z\) have the same limit. Likewise,
+\(z/(\mathcal D B^\theta)\to1\) gives
 \(g_z/z\to\theta\widehat h\). Dividing by \(z\)
 therefore yields
 \[
@@ -1103,12 +1139,12 @@ Equation \eqref{eq:axm-app-resource-growth} gives \(i=\alpha-\theta h\).
 
 The exact research-compute first-order condition can be written as
 \[
- \frac{qA}{K}=\frac{M/Y}{\eta s_M(g_A/z)}.
+ \frac{qB}{K}=\frac{M/Y}{\eta s_M(g_B/z)}.
 \]
-Let \(Q\equiv\lim qA/K\). Taking limits gives \(Q=m/(\eta h)\). The capability
-derivative of optimized operating profit gives \(\pi_A/q=uz/(qA/K)\).
-Asymptotic regularity of \(qA/K\) implies that
-\(g_q-(g_K-g_A)=o(z)\). Substituting these results into the costate equation and using
+Let \(Q\equiv\lim qB/K\). Taking limits gives \(Q=m/(\eta h)\). The capability
+derivative of optimized operating profit gives \(\pi_B/q=uz/(qB/K)\).
+Asymptotic regularity of \(qB/K\) implies that
+\(g_q-(g_K-g_B)=o(z)\). Substituting these results into the costate equation and using
 \eqref{eq:axm-app-resource-growth} yields
 \[
  Q=\frac{u}{\eta\alpha},
@@ -1121,7 +1157,7 @@ are positive; in fact
  c=\alpha(1-\alpha)
  \left(1+\frac{\eta}{1+\theta-\eta}\right)>0.
 \]
-Finally, \(g_z\sim\theta g_A\sim\theta hz\), so
+Finally, \(g_z\sim\theta g_B\sim\theta hz\), so
 \(\dot z\sim\theta hz^2\). For all sufficiently large \(z\), therefore,
 \(\dot z\geq(\theta h/2)z^2\). Integrating the corresponding inequality for
 \(1/z\) shows that \(z\) becomes unbounded in finite additional time. Since
@@ -1129,7 +1165,7 @@ Finally, \(g_z\sim\theta g_A\sim\theta hz\), so
 date and \(Y=zK\) also becomes unbounded, thereby meeting the definition of a
 finite-time singularity used here.
 
-For the wage, log-differentiating the exact relation for \(Aw\) gives
+For the wage, log-differentiating the exact relation for \(Bw\) gives
 \[
  \frac{g_w}{z}
  \to\frac{\alpha-(\sigma_{XL}-1)h-g_L/z}{\sigma_{XL}}.
@@ -1155,7 +1191,7 @@ limiting positive share of the population. \(\square\)
 
 I formulate the numerical exercises as boundary-value calculations, not as forward
 simulations from arbitrary values of the jump variables. I fix initial capital and
-capability at \(K_0\) and \(A_0\), while \(C(0)\) and \(q(0)\) are
+capability at \(K_0\) and \(B_0\), while \(C(0)\) and \(q(0)\) are
 determined jointly with the transition by terminal restrictions. The fixed-horizon
 calculations approximate paths satisfying the dated equilibrium system in
 Section~\ref{sec:axm-dated-equilibrium-system}. The free-boundary calculation
@@ -1168,30 +1204,40 @@ analytical model.
 The outer solver uses the four log variables
 \begin{equation}
  \mathbf y(t)=
- \begin{pmatrix}\log K(t)&\log A(t)&\log C(t)&\log q(t)\end{pmatrix}^{\prime},
- \qquad N(t)=N_0e^{nt}.
+ \begin{pmatrix}\log K(t)&\log B(t)&\log C(t)&\log q(t)\end{pmatrix}^{\prime},
+ \qquad A(t)=A_0e^{\gamma_At},\qquad N(t)=N_0e^{nt}.
  \label{eq:axm-numerical-state}
 \end{equation}
-Population is therefore evaluated analytically rather than added as a fifth
-numerical state. Logs preserve positivity of \(K,A,C,\) and \(q\). Within the
+Labor productivity and population are therefore evaluated analytically rather
+than added as numerical states. Logs preserve positivity of \(K,B,C,\) and \(q\). Within the
 dated static calculation, the human-research share \(H/N\) is represented by a
 logit, which keeps \(0<H/N<1\) and implies \(L=N-H>0\).
 
-For a given date and a trial value of \((K,A,N,q)\), the code constructs the
+The archived implementation predates the notation change summarized in
+equation~\eqref{eq:axm-labor-productivity}: its internal capability object is
+named \texttt{A}, and saved paths label its logarithm \texttt{log\_capability}.
+Both objects mean manuscript capability \(B\), not labor productivity \(A\).
+All results reported in this version set \(\gamma_A=0\) and \(A_0=1\), so the
+new labor-productivity process is identically one and the relabeling leaves every
+stored equation and numerical value unchanged. Simulations with
+\(\gamma_A\ne0\) require the migration specified in
+\path{audit/axm_simulation_specification.md}; they are not reported here.
+
+For a given date and a trial value of \((K,B,A,N,q)\), the code constructs the
 intratemporal equilibrium as follows.
 \begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
  \item Given a trial labor allocation, it solves the monopoly first-order
- condition for \(\log(X/L)\). At \(\sigma_{XL}=1\), the corresponding
+ condition for \(\log[X/(AL)]\). At \(\sigma_{XL}=1\), the corresponding
  Cobb--Douglas block has a closed-form solution. Otherwise the code uses a
  bracketed scalar root for
- \(\log p_X+\log(1-e_X)+\log A=0\).
+ \(\log p_X+\log(1-e_X)+\log B=0\).
  \item It uses the final-good firm's demand conditions to recover \(Y,Z,s_X,r,w,\)
  and \(p_X\). It then computes the unit expenditure \(P_E\), solves the research
  scale condition \(q\chi\eta E^{\eta-1}=P_E\), and applies the two conditional
  CES research demands.
  \item It solves a second bracketed scalar equation equating the trial \(H\) to
- the conditional demand for human research. It then recovers \(AM\),
- \(M=AM/A\), \(U=X/A\), \(s_M\), and every remaining dated allocation and price.
+ the conditional demand for human research. It then recovers \(BM\),
+ \(M=BM/B\), \(U=X/B\), \(s_M\), and every remaining dated allocation and price.
 \end{enumerate}
 When the monopoly root is required, it is solved to a numerical tolerance of
 \(10^{-13}\); the labor--research root is solved to \(10^{-11}\). The direct research first-order conditions
@@ -1204,7 +1250,7 @@ have positive allocations and a strictly positive margin in the monopoly
 second-order condition \eqref{eq:axm-monopoly-soc}.
 
 The resulting static allocation is inserted into the four canonical dynamic equations for
-\(K,A,C,\) and \(q\) in \eqref{eq:axm-canonical-system}. Thus the outer right-hand
+\(K,B,C,\) and \(q\) in \eqref{eq:axm-canonical-system}. Thus the outer right-hand
 side can be written as
 \begin{equation}
  \dot{\mathbf y}=\mathcal F\bigl(t,\mathbf y\bigr),
@@ -1225,7 +1271,7 @@ analytical Jacobian, so the library approximates it numerically.
 It works with detrended logs
 \(\widetilde{\mathbf y}(t)=\mathbf y(t)-\bar{\mathbf g}t\), where, in the state
 order of \eqref{eq:axm-numerical-state},
-\(\bar{\mathbf g}=(\bar g_K,\bar g_A,\bar g_C,\bar g_q)'\) contains the candidate
+\(\bar{\mathbf g}=(\bar g_K,\bar g_B,\bar g_C,\bar g_q)'\) contains the candidate
 limiting rates derived in the text. This transformation improves numerical
 conditioning. The raw logs are reconstructed before every evaluation of the
 intratemporal map, so detrending does not impose the candidate growth rates on
@@ -1234,7 +1280,7 @@ the solution.
 There are four boundary conditions for the four log paths. The two initial
 conditions are
 \begin{equation}
- K(0)=K_0,\qquad A(0)=A_0.
+ K(0)=K_0,\qquad B(0)=B_0.
  \label{eq:axm-fixed-initial-boundary}
 \end{equation}
 At the terminal date, the algorithm imposes the analytical candidate value
@@ -1243,23 +1289,23 @@ At the terminal date, the algorithm imposes the analytical candidate value
  \frac{C(T)}{Y(T)}=c^\star,\qquad
  \begin{cases}
  \displaystyle
- \frac{X(T)}{q(T)A(T)^2}
- =\rho-n+\bigl(2-\eta\bar s\bigr)\bar g_A,
+ \frac{X(T)}{q(T)B(T)^2}
+ =\rho-n+\bigl(2-\eta\bar s\bigr)\bar g_B,
  &\sigma_{XL}<1,\\[9pt]
  \displaystyle
- \frac{q(T)A(T)}{Y(T)}
- =\frac{m^\star}{\eta\bar s g_A^\star},
+ \frac{q(T)B(T)}{Y(T)}
+ =\frac{m^\star}{\eta\bar s g_B^\star},
  &\sigma_{XL}=1.
  \end{cases}
  \label{eq:axm-fixed-terminal-boundary}
 \end{equation}
 For \(\sigma_{XL}<1\),
-\(c^\star=1-\alpha(n+\delta)/(\rho+\delta)\), with
+\(c^\star=1-\alpha(n+\gamma_A+\delta)/(\rho+\gamma_A+\delta)\), with
 \(\bar s=\omega_M\) when \(\sigma_{HM}=1\) and \(\bar s=1\) when
-\(\sigma_{HM}>1\). The corresponding \(\bar g_A\) is given by
+\(\sigma_{HM}>1\). The corresponding \(\bar g_B\) is given by
 \eqref{eq:axm-complement-cd-research-growth} or
 \eqref{eq:axm-complement-ces-research-growth}. For \(\sigma_{XL}=1\),
-\(g_A^\star\), \(m^\star\), and \(c^\star\) are the candidate quantities in
+\(g_B^\star\), \(m^\star\), and \(c^\star\) are the candidate quantities in
 \eqref{eq:axm-cd-growth-rates} and \eqref{eq:axm-cd-shares}, with \(\bar s\)
 defined in \eqref{eq:axm-sbar}. The two terminal restrictions select the jump
 variables \(C(0)\) and \(q(0)\). They approximate the infinite-horizon selection
@@ -1274,7 +1320,7 @@ collocation evaluation, the algorithm solves the intratemporal map and evaluates
 met or the 8,000-node cap is reached. I do not use a shooting solution for any
 reported path.
 
-With \(A_0=N_0=1\), the same initialization computes the common
+With \(A_0=B_0=N_0=1\), the same initialization computes the common
 \(K_0=2.9435284733\) from the unit-elasticity, \(\sigma_{HM}=2\) candidate
 capital--output ratio under the maintained parameter vector. The complementary
 paths use that same \(K_0\). It is therefore a parameter-dependent benchmark
@@ -1295,7 +1341,7 @@ spline at two-year intervals.
 
 The fixed-horizon algorithm can therefore be summarized as follows.
 \begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=4.5em,labelsep=0.6em]
- \item Fix the parameters, \((K_0,A_0,N_0)\), the horizon, and the two analytical
+ \item Fix the parameters, \((K_0,A_0,B_0,N_0)\), the horizon, and the two analytical
  terminal ratios.
  \item Construct the detrended analytical guess on the initial mesh.
  \item At each collocation evaluation, solve the labor-allocation root and, when
@@ -1328,11 +1374,11 @@ unrestricted scalar. Four paths plus this scalar require five boundary
 conditions:
 \begin{equation}
  \begin{split}
- K(0)&=K_0,\qquad A(0)=A_0,\\
+ K(0)&=K_0,\qquad B(0)=B_0,\\
  \frac{C(T)}{Y(T)}
  &=1-(1-\alpha)^2-\alpha+\theta h
  -\frac{\eta(1-\alpha)^2}{1+\theta-\eta},\\
- \frac{q(T)A(T)}{K(T)}&=\frac{(1-\alpha)^2}{\eta\alpha},\qquad
+ \frac{q(T)B(T)}{K(T)}&=\frac{(1-\alpha)^2}{\eta\alpha},\qquad
  \frac{Y(T)}{K(T)}=z_T,
  \end{split}
  \label{eq:axm-free-boundary-conditions}
@@ -1342,9 +1388,9 @@ The two terminal ratios are the conditional limits in
 determined endogenously by the finite-boundary problem.
 
 The reference path used to initialize this problem incorporates the singular
-scaling \(g_A/z\to h\), with \(h\) defined in the conditional result. It is then
+scaling \(g_B/z\to h\), with \(h\) defined in the conditional result. It is then
 represented by cubic splines, and the collocation solver works on corrections to
-that reference. The condition \(g_A/z=h\) helps construct the terminal guess; it
+that reference. The condition \(g_B/z=h\) helps construct the terminal guess; it
 is not one of the five restrictions in
 \eqref{eq:axm-free-boundary-conditions}. Its convergence is checked ex post.
 
@@ -1501,7 +1547,7 @@ global optimality, uniqueness, or reachability from arbitrary initial states.
 
 Table \ref{tab:axm-high-sigma-convergence} and Figure
 \ref{fig:axm-high-sigma-ratios} report the free-boundary diagnostics removed from
-the sequence of economic outcomes in the main text. Only \(C/Y\), \(qA/K\), and
+the sequence of economic outcomes in the main text. Only \(C/Y\), \(qB/K\), and
 terminal \(Y/K\) are imposed at each boundary. The other terminal quantities and
 the agreement of overlapping path segments are overidentifying checks on the
 conditional asymptotic characterization.
@@ -1517,7 +1563,7 @@ conditional asymptotic characterization.
 Terminal \(Y/K\) & 16 & 32 & 64 & 128 & Limit\\
 \midrule
 Estimated \(T^*\) & 1669.005 & 1669.021 & 1669.025 & 1669.026 & ---\\
-\(g_A/(Y/K)\) & 0.02265 & 0.02296 & 0.02313 & 0.02322 & 0.02332\\
+\(g_B/(Y/K)\) & 0.02265 & 0.02296 & 0.02313 & 0.02322 & 0.02332\\
 \(U/Y\) & 0.44889 & 0.44890 & 0.44890 & 0.44890 & 0.44890\\
 \(M/Y\) & 0.03081 & 0.03123 & 0.03146 & 0.03159 & 0.03172\\
 \((\dot K+\delta K)/Y\) & 0.28357 & 0.28315 & 0.28291 & 0.28279 & 0.28266\\

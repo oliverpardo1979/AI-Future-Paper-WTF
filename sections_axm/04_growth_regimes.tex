@@ -9,8 +9,9 @@ dynamic analysis focuses on \(\sigma_{HM}\geq1\).
 
 All three final-production regimes are substantive. In particular, unit
 elasticity is not merely a benchmark: it is the regime in which the model can
-admit finite positive per-capita growth on a balanced-growth path, subject to
-the feedback, feasibility, and optimality conditions derived below.
+admit finite positive endogenous per-capita growth on a balanced-growth path,
+in addition to the exogenous growth in labor productivity. The result remains
+subject to the feedback, feasibility, and optimality conditions derived below.
 
 All results maintain Assumption \ref{ass:axm-large-scale-curvature},
 \(0<\eta<\alpha<1\).
@@ -44,14 +45,14 @@ equilibrium: global intertemporal optimality and an allocation at or after
 Research-input elasticity & \(\sigma_{XL}<1\) & \(\sigma_{XL}=1\) & \(\sigma_{XL}>1\)\\
 \midrule
 \(\sigma_{HM}=1\) &
-Regular interior limit has bounded output per person,
+Regular interior limit has per-capita growth \(\gamma_A\),
 \(s_M=\omega_M\), and
-\(g_A=n/(1+\eta^{-1}-\omega_M)\) &
+\(g_B=(n+\omega_M\gamma_A)/(1+\eta^{-1}-\omega_M)\) &
 Human-essential balanced-growth candidate characterized below &
  No finite-rate balanced growth if AI production services dominate the labor--AI composite; the singular form is not characterized\\
 \(\sigma_{HM}>1\) &
- Regular interior limit has bounded output per person,
- \(s_M\to1\), and \(g_A=\eta n\) &
+ Regular interior limit has per-capita growth \(\gamma_A\),
+ \(s_M\to1\), and \(g_B=\eta(n+\gamma_A)\) &
  Automated balanced-growth candidate characterized below &
  No finite-rate balanced growth if AI production services dominate the labor--AI composite; conditional singular ratios are characterized\\
 \bottomrule
@@ -75,25 +76,25 @@ outcomes while implying sharply different limiting behavior.
 The research block can be understood before solving the dynamics. Dividing the
 two conditional demands in \eqref{eq:axm-research-demands} gives
 \begin{equation}
- \frac{AM}{H}
+ \frac{BM}{H}
  =\left(\frac{\omega_M}{\omega_H}\right)^{\sigma_{HM}}
-  (Aw)^{\sigma_{HM}},
+  (Bw)^{\sigma_{HM}},
  \label{eq:axm-input-ratio}
 \end{equation}
 and therefore
 \begin{equation}
  \frac{s_M}{1-s_M}
  =\left(\frac{\omega_M}{\omega_H}\right)^{\sigma_{HM}}
-  (Aw)^{\sigma_{HM}-1}.
+  (Bw)^{\sigma_{HM}-1}.
  \label{eq:axm-automation-odds}
 \end{equation}
-The unit resource cost of AI research services is \(1/A\). The relevant
-relative price is therefore \(Aw=w/(1/A)\): the price of human research relative
+The unit resource cost of AI research services is \(1/B\). The relevant
+relative price is therefore \(Bw=w/(1/B)\): the price of human research relative
 to the price of AI research services.
 
 \begin{proposition}[Research automation]
 \label{prop:axm-research-automation}
-Along any interior path on which \(Aw\to\infty\), the research-expenditure share
+Along any interior path on which \(Bw\to\infty\), the research-expenditure share
 allocated to AI research services satisfies
 \[
  s_M\to
@@ -109,8 +110,8 @@ finite date.
 \end{proposition}
 
 Gross substitution alone does not guarantee automation: the relative-price
-condition \(Aw\to\infty\) is essential. The result concerns AI research services
-\(AM\), not raw compute \(M\); a higher \(AM/H\) can reflect more compute,
+condition \(Bw\to\infty\) is essential. The result concerns AI research services
+\(BM\), not raw compute \(M\); a higher \(BM/H\) can reflect more compute,
 better capability, or both.
 
 \subsection{Common parameters, numerical method, and validation}
@@ -138,7 +139,8 @@ Object & Value & Interpretation\\
 \((\omega_H,\omega_M)\) & (0.65, 0.35) & Research CES weights\\
 \(\eta\) & 0.20 & Returns to scale in AI research inputs\\
 \(\chi\) & 0.01 & Research-productivity normalization\\
-\((K_0,A_0,N_0)\) & (2.944, 1, 1) & Initial stocks\\
+\(\gamma_A\) & 0 & Exogenous labor-productivity growth\\
+\((K_0,A_0,B_0,N_0)\) & (2.944, 1, 1, 1) & Initial stocks\\
 \(\sigma_{XL}\) & 0.75, 1, or 1.5 & Final-production elasticity\\
 \(\sigma_{HM}\) & 1 or 2 & Research elasticity\\
 \bottomrule
@@ -146,7 +148,7 @@ Object & Value & Interpretation\\
 \end{table}
 
 The value \(\eta=0.20\) is illustrative and lies strictly inside the maintained
-region \(\eta<\alpha=0.33\). Given \(A_0=N_0=1\), the initialization sets
+region \(\eta<\alpha=0.33\). Given \(A_0=B_0=N_0=1\), the initialization sets
 \(K_0=2.944\) to match the unit-elasticity, \(\sigma_{HM}=2\) candidate
 capital--output ratio. The level of \(\chi\) and the initial conditions affect
 model time, so the horizontal axes are not calendar forecasts.
@@ -161,8 +163,8 @@ audits do not prove that an infinite-horizon equilibrium exists.
 \subsubsection{Analytical characterization}
 
 Consider \(\sigma_{XL}<1\) and an interior sequence along which the normalized
-inverse demand \(p_X/(K/L)^\alpha\) remains bounded away from zero while the
-normalized marginal cost \(1/[A(K/L)^\alpha]\) tends to zero. The monopoly
+inverse demand \(p_X(AL/K)^\alpha\) remains bounded away from zero while the
+normalized marginal cost \((AL/K)^\alpha/B\) tends to zero. The monopoly
 condition then requires normalized marginal revenue to tend to zero. Hence
 \begin{equation}
  s_X\longrightarrow
@@ -188,28 +190,29 @@ final-production technology, not by an assumed limiting allocation.
 \begin{proposition}[Labor bottleneck under production complementarity]
 \label{prop:axm-complements}
 Suppose \(\sigma_{XL}<1\) and an interior candidate path satisfying the dated
-equilibrium conditions has \(A\to\infty\). Suppose
-\(p_X/(K/L)^\alpha\) remains bounded away from zero and the normalized marginal
+equilibrium conditions has \(B\to\infty\). Suppose
+\(p_X(AL/K)^\alpha\) remains bounded away from zero and the normalized marginal
 cost satisfies
 \[
- \frac{1}{A(K/L)^\alpha}\to0,
+ \frac{(AL/K)^\alpha}{B}\to0,
 \]
 and suppose that the candidate path converges to a finite-rate balanced-growth path
 on which \(L/N\to\ell\in(0,1]\) and \(C/Y\) has a positive limit. Then
 \begin{equation}
- s_X\to\bar s_X,\qquad \frac{X}{L}\to\bar x,\qquad
- \frac{Z}{L}\to\bar z,
+ s_X\to\bar s_X,\qquad \frac{X}{AL}\to\bar x,\qquad
+ \frac{Z}{AL}\to\bar z,
  \label{eq:axm-complement-static-limits}
 \end{equation}
 and final production becomes asymptotically proportional to
-\(K^\alpha L^{1-\alpha}\). Moreover,
+\(K^\alpha(AL)^{1-\alpha}\). Writing \(G=n+\gamma_A\), moreover,
 \[
- g_Y=g_K=g_L=n,\qquad g_{Y/N}=0,\qquad g_w=0.
+ g_Y=g_K=g_X=g_C=G,\qquad g_{Y/N}=g_w=\gamma_A.
 \]
-Output per person and the real wage converge to finite positive levels,
+Output per effective worker and the productivity-adjusted real wage converge to
+finite positive levels,
 \begin{equation}
- r\to\rho,\qquad
- \frac{K}{Y}\to\frac{\alpha}{\rho+\delta},\qquad
+ r\to\rho+\gamma_A,\qquad
+ \frac{K}{Y}\to\frac{\alpha}{\rho+\gamma_A+\delta},\qquad
  \frac{wL}{Y}\to(1-\alpha)(1-\bar s_X)>0.
  \label{eq:axm-complement-factor-limits}
 \end{equation}
@@ -217,9 +220,10 @@ Thus labor retains a positive income share even though capability is unbounded.
 \end{proposition}
 
 This is a conditional result, not an existence theorem. It shows that unbounded
-capability does not sustain per-capita growth when labor and AI production services are
-complements. Unlike the CES bottleneck in \citet{davidsonetal2026}, the monopoly
-optimum keeps \(X/L\) finite: inference compute \(U=X/A\) vanishes relative to
+capability does not generate per-capita growth beyond \(\gamma_A\) when labor
+and AI production services are complements. Unlike the CES bottleneck in
+\citet{davidsonetal2026}, the monopoly
+optimum keeps \(X/(AL)\) finite: inference compute \(U=X/B\) vanishes relative to
 output while labor remains the limiting input.
 
 The research block sharpens this conclusion substantially. The following
@@ -234,11 +238,11 @@ Maintain the hypotheses of Proposition \ref{prop:axm-complements}. Suppose the
 research allocation remains interior, the path satisfies the dated equilibrium
 conditions in Section \ref{sec:axm-model} and the two transversality conditions
 in \eqref{eq:axm-tvc}, and
-\(g_A\to\bar g_A>0\) with \(\dot g_A/g_A\to0\). Assume explicitly that
+\(g_B\to\bar g_B>0\) with \(\dot g_B/g_B\to0\). Assume explicitly that
 \(g_q,g_U,g_M,g_H,\) and \(g_E\) converge to finite limits. Then
 \begin{equation}
  \frac{L}{N}\to1,\qquad
- \frac{Y}{N}\to\bar y\in(0,\infty),\qquad
+ \frac{Y}{AN}\to\bar y\in(0,\infty),\qquad
  \frac{wN}{Y}\to(1-\alpha)(1-\bar s_X)>0,
  \label{eq:axm-complement-labor-limits}
 \end{equation}
@@ -248,33 +252,37 @@ and
  \frac{M}{Y}\to0,\qquad
  \frac{H}{N}\to0,\qquad
  \frac{C}{Y}\to
- 1-\alpha\frac{n+\delta}{\rho+\delta}>0.
+ 1-\alpha\frac{n+\gamma_A+\delta}
+ {\rho+\gamma_A+\delta}>0.
  \label{eq:axm-complement-vanishing-shares}
 \end{equation}
 The limiting growth rates differ across the two research technologies.
 
 If \(\sigma_{HM}=1\), then \(s_M=\omega_M\) and
 \begin{align}
- \bar g_A&=\frac{n}{1+\eta^{-1}-\omega_M},
- &g_U=g_M=g_H&=(\eta^{-1}-\omega_M)\bar g_A,
+ \bar g_B&=\frac{n+\omega_M\gamma_A}
+ {1+\eta^{-1}-\omega_M},
+ &g_U=g_M&=n+\gamma_A-\bar g_B,
  \label{eq:axm-complement-cd-research-growth}\\
- g_q&=(\eta^{-1}-\omega_M-1)\bar g_A,
- &g_{AM}&=n,
- &g_E&=\frac{\bar g_A}{\eta}.
+ g_H&=n-\bar g_B,
+ &g_q&=n+\gamma_A-2\bar g_B,\notag\\
+ g_{BM}&=n+\gamma_A,
+ &g_E&=\frac{\bar g_B}{\eta}.
  \notag
 \end{align}
 If \(\sigma_{HM}>1\), then \(s_M\to1\) and
 \begin{align}
- \bar g_A&=\eta n,
- &g_U=g_M&=(1-\eta)n,
- &g_H&=(1-\eta\sigma_{HM})n,
+ \bar g_B&=\eta(n+\gamma_A),
+ &g_U=g_M&=(1-\eta)(n+\gamma_A),
+ &g_H&=n+\gamma_A
+ -\sigma_{HM}[\eta(n+\gamma_A)+\gamma_A],
  \label{eq:axm-complement-ces-research-growth}\\
- g_q&=(1-2\eta)n,
- &g_{AM}&=n,
- &g_E&=n.
+ g_q&=(1-2\eta)(n+\gamma_A),
+ &g_{BM}&=n+\gamma_A,
+ &g_E&=n+\gamma_A.
  \notag
 \end{align}
-In both cases, \(g_X=g_Y=g_K=g_L=g_C=n\), while raw inference and research
+In both cases, \(g_X=g_Y=g_K=g_C=n+\gamma_A\), while raw inference and research
 compute grow more slowly than output. Human research may grow in levels, remain
 constant, or decline; its population share nevertheless vanishes.
 
@@ -287,7 +295,8 @@ terminal objects have asymptotic log growth rates
  e^{-\rho t}\frac{N_tK_t}{C_t}\right)=n-\rho<0,
  \qquad
  \lim_{t\to\infty}\frac{1}{t}\ln\left(
- e^{-\int_0^t r_s\,\dd s}q_tA_t\right)=\bar g_M-\rho<0.
+ e^{-\int_0^t r_s\,\dd s}q_tB_t\right)
+ =\bar g_M-(\rho+\gamma_A)<0.
  \label{eq:axm-complement-tvc-rates}
 \end{equation}
 The resulting rates are therefore consistent with the two maintained
@@ -296,10 +305,11 @@ transversality conditions.
 
 \subsubsection{Numerical transitions and independent audit}
 
-The complementarity experiment sets \(\sigma_{XL}=0.75\) and compares
+The complementarity experiment sets \(\gamma_A=0\),
+\(\sigma_{XL}=0.75\), and compares
 \(\sigma_{HM}=1\) with \(\sigma_{HM}=2\). I display the 4,500-year solutions;
 shorter horizons are used for robustness. The boundary conditions impose the
-analytical limits of \(C/Y\) and \(X/(qA^2)\), but not the remaining growth
+analytical limits of \(C/Y\) and \(X/(qB^2)\), but not the remaining growth
 rates, prices, or shares. Appendix \ref{app:axm-numerical-algorithm} reports the
 full specification and audit.
 
@@ -320,7 +330,7 @@ forecast.}
 \end{figure}
 
 Figure \ref{fig:axm-complement-shares} shows the bottleneck directly. Production
-labor approaches the population, \(X/L\) approaches a finite ratio, inference
+labor approaches the population, \(X/(AL)\) approaches a finite ratio, inference
 compute vanishes relative to output, and labor retains a positive income share.
 
 \begin{figure}[H]
@@ -370,7 +380,7 @@ Set \(\sigma_{XL}=1\), and define
  \label{eq:axm-cd-definitions}
 \end{equation}
 Combining the final-good firm's AI-demand condition, the monopolist's markup
-condition, and market clearing for AI production services with \(X=AU\) gives
+condition, and market clearing for AI production services with \(X=BU\) gives
 \begin{equation}
  \frac{U}{Y}=\beta^2,
  \label{eq:axm-inference-share-cd}
@@ -378,13 +388,13 @@ condition, and market clearing for AI production services with \(X=AU\) gives
 Substituting that identity into final production gives the reduced equation
 \begin{equation}
  Y^{1-\beta}
- =K^\alpha L^\lambda(\beta^2A)^\beta.
+ =K^\alpha(AL)^\lambda(\beta^2B)^\beta.
  \label{eq:axm-reduced-cd}
 \end{equation}
 On a balanced path with constant \(K/Y\) and a positive constant \(L/N\), this
 equation gives
 \begin{equation}
- g_Y=n+\nu g_A.
+ g_Y=n+\gamma_A+\nu g_B.
  \label{eq:axm-output-growth-cd}
 \end{equation}
 
@@ -394,7 +404,7 @@ separately. Let
  \bar s=
  \begin{cases}
   \omega_M,&\sigma_{HM}=1,\\
-  1,&\sigma_{HM}>1\text{ and }Aw\to\infty.
+  1,&\sigma_{HM}>1\text{ and }Bw\to\infty.
  \end{cases}
  \label{eq:axm-sbar}
 \end{equation}
@@ -408,31 +418,31 @@ Define the feedback denominator
 \label{prop:axm-cd-bgp}
 Suppose \(\sigma_{XL}=1\), research remains interior, total research expenditure
 \((wH+M)/Y\) converges to a positive output share, and \(K/Y\), \(C/Y\), and
-\(L/N\) converge to positive constants. Suppose also that \(g_A\) converges to a
-positive constant regularly, in the sense that \(\dot g_A/g_A\to0\).
+\(L/N\) converge to positive constants. Suppose also that \(g_B\) converges to a
+positive constant regularly, in the sense that \(\dot g_B/g_B\to0\).
 
 \begin{enumerate}[label=(\roman*)]
 \item If \(\sigma_{HM}=1\), every such balanced-growth equilibrium must have
  \(D(\omega_M)>0\).
 \item If \(\sigma_{HM}>1\), the balanced-growth restrictions imply
- \(Aw\to\infty\) and \(s_M\to1\); every such equilibrium must have \(D(1)>0\).
+ \(Bw\to\infty\) and \(s_M\to1\); every such equilibrium must have \(D(1)>0\).
 \end{enumerate}
 
 If the relevant denominator is positive, the only growth rates consistent with
 these necessary restrictions are
 \begin{equation}
- g_A=\frac{\eta n}{D(\bar s)},\qquad
- g_Y=g_K=g_C=n+\nu g_A,\qquad
- g_w=\nu g_A.
+ g_B=\frac{\eta(n+\bar s\gamma_A)}{D(\bar s)},\qquad
+ g_Y=g_K=g_C=n+\gamma_A+\nu g_B,\qquad
+ g_w=\gamma_A+\nu g_B.
  \label{eq:axm-cd-growth-rates}
 \end{equation}
 The remaining prices and quantities have the candidate rates
 \begin{align}
  g_U&=g_M=g_Y,&
- g_X&=g_Y+g_A,&
- g_{p_X}&=-g_A,\\
- g_q&=g_Y-g_A,&
- g_E&=\frac{g_A}{\eta},&
+ g_X&=g_Y+g_B,&
+ g_{p_X}&=-g_B,\\
+ g_q&=g_Y-g_B,&
+ g_E&=\frac{g_B}{\eta},&
  g_L&=n.
  \label{eq:axm-cd-remaining-rates}
 \end{align}
@@ -441,22 +451,22 @@ Human research satisfies
  g_H=
  \begin{cases}
  n,&\sigma_{HM}=1,\\
- n-(\sigma_{HM}-1)(1+\nu)g_A,
+ n-(\sigma_{HM}-1)[\gamma_A+(1+\nu)g_B],
  &\sigma_{HM}>1,\ s_M\to1.
  \end{cases}
  \label{eq:axm-human-research-growth}
 \end{equation}
 Thus \(H/N\) converges to a positive constant in the Cobb--Douglas research
 case, whereas it falls asymptotically at rate
-\((\sigma_{HM}-1)(1+\nu)g_A\) when research inputs are gross substitutes.
-Let \(\gamma=\nu g_A\). The candidate output shares are
+\((\sigma_{HM}-1)[\gamma_A+(1+\nu)g_B]\) when research inputs are gross substitutes.
+Let \(\gamma=\gamma_A+\nu g_B\). The candidate output shares are
 \begin{align}
  u&\equiv\frac{U}{Y}=\beta^2,\\
  i&\equiv\frac{\dot K+\delta K}{Y}
  =\frac{\alpha(n+\gamma+\delta)}{\rho+\delta+\gamma},\\
  m&\equiv\frac{M}{Y}
- =\frac{\beta^2\eta\bar s\,g_A}
- {\rho-n+(1-\eta\bar s)g_A},\\
+ =\frac{\beta^2\eta\bar s\,g_B}
+ {\rho-n+(1-\eta\bar s)g_B},\\
  c&\equiv\frac{C}{Y}=1-u-i-m.
  \label{eq:axm-cd-shares}
 \end{align}
@@ -472,25 +482,59 @@ transversality conditions.
 The proposition states necessary growth restrictions and lists the remaining
 conditions needed for existence; it does not infer existence from \(D>0\) alone.
 
+The Cobb--Douglas research case admits a stronger constructive result. Define
+\begin{equation}
+ \ell^*=\frac{\lambda\omega_M}
+ {\lambda\omega_M+m^*\omega_H},
+ \label{eq:axm-cd-human-labor-share}
+\end{equation}
+where \(m^*\) is the share in \eqref{eq:axm-cd-shares} evaluated at
+\(\bar s=\omega_M\).
+
+\begin{proposition}[Existence and local selection with Cobb--Douglas human research]
+\label{prop:axm-cd-human-existence}
+Suppose \(\sigma_{XL}=\sigma_{HM}=1\), \(D(\omega_M)>0\),
+\(\beta\leq1/2\), \(\eta(1+\omega_M)\leq1\), \(\rho>n\), and the
+shares in \eqref{eq:axm-cd-shares} satisfy \(c^*>0\). Then, for every
+\(A_0,N_0>0\), there are positive \(K_0,B_0,C_0,q_0\) and a regular interior
+balanced-growth equilibrium with \(L/N=\ell^*\).
+
+At the baseline calibration \(\gamma_A=0\), the normalized Jacobian has roots
+\begin{equation}
+ -0.08967,\qquad -0.002945,\qquad 0.03100,\qquad 0.12971.
+ \label{eq:axm-cd-human-jacobian-roots}
+\end{equation}
+The projection of its stable eigenspace onto \((K,B)\) is nonsingular.
+Consequently, consumption and the shadow value of capability are locally unique
+functions of the two predetermined stocks, and the resulting nearby paths
+converge to the balanced-growth equilibrium.
+\end{proposition}
+
+The result does not apply the automated benchmark's Jacobian to a model with
+human research. The Appendix derives the human-research Jacobian from its own
+labor-allocation and research equations. When \(\sigma_{HM}>1\), human research
+vanishes only asymptotically; the corresponding finite-date Jacobian must be
+computed from the interior static map.
+
 \paragraph{Feedback-matrix interpretation.}
 The feedback accounting of \citet{davidsonetal2026} makes the denominator
-transparent. Let \(\widetilde g_Y=g_Y-n\). The limiting balanced-growth
+transparent. Let \(\widetilde g_Y=g_Y-(n+\gamma_A)\). The limiting balanced-growth
 restrictions can be written as
 \begin{equation}
- \begin{pmatrix}g_A\\ \widetilde g_Y\end{pmatrix}
+ \begin{pmatrix}g_B\\ \widetilde g_Y\end{pmatrix}
  =
- \begin{pmatrix}\eta n\\0\end{pmatrix}
+ \begin{pmatrix}\eta(n+\bar s\gamma_A)\\0\end{pmatrix}
  +
  \underbrace{\begin{pmatrix}
   \eta\bar s&\eta\bar s\\
   \nu&0
  \end{pmatrix}}_{\mathcal F(\bar s)}
- \begin{pmatrix}g_A\\ \widetilde g_Y\end{pmatrix}.
+ \begin{pmatrix}g_B\\ \widetilde g_Y\end{pmatrix}.
  \label{eq:axm-feedback-matrix}
 \end{equation}
 The upper-left entry is the technological loop
-\(A\to AM\to\dot A\). The off-diagonal cycle is the economic loop
-\(A\to Y\to M\to AM\to\dot A\). Consequently,
+\(B\to BM\to\dot B\). The off-diagonal cycle is the economic loop
+\(B\to Y\to M\to BM\to\dot B\). Consequently,
 \begin{equation}
  \det[I-\mathcal F(\bar s)]
  =1-\eta\bar s(1+\nu)=D(\bar s),
@@ -505,13 +549,17 @@ confusing it with the household discount rate \(\rho\). Because \(\mathcal F\)
 is nonnegative, \(r_{\mathrm{sp}}(\mathcal F)<1\) if and only if
 \(D(\bar s)>0\). In that case,
 \[
- \begin{pmatrix}g_A\\ \widetilde g_Y\end{pmatrix}
+ \begin{pmatrix}g_B\\ \widetilde g_Y\end{pmatrix}
  =[I-\mathcal F(\bar s)]^{-1}
- \begin{pmatrix}\eta n\\0\end{pmatrix}.
+ \begin{pmatrix}\eta(n+\bar s\gamma_A)\\0\end{pmatrix}.
 \]
 Thus \(1/D(\bar s)\) is the scalar feedback multiplier after eliminating
 \(\widetilde g_Y\), analogous to the relevant element of Davidson et al.'s
 Leontief inverse.
+
+Exogenous labor-productivity growth changes the source vector through
+\(n+\bar s\gamma_A\), but it does not change the feedback matrix or its
+stability threshold.
 
 Equivalently, the reduced technological and economic gains are
 \[
@@ -560,7 +608,7 @@ therefore requires \(D(\omega_M)>0\) and the remaining feasibility conditions in
 Proposition \ref{prop:axm-cd-bgp}. Human research and population grow at the same
 rate, so \(H/N\) converges to a positive constant. The quantity of AI
 research services can nevertheless grow faster than human research; human input
-remains essential even as its quantity becomes small relative to \(AM\).
+remains essential even as its quantity becomes small relative to \(BM\).
 
 \subsubsection{\texorpdfstring{Case III: substitutable research, \(\sigma_{HM}>1\)}{Case III: substitutable research, sigma HM > 1}}
 \label{sec:axm-case-substitutable-research}
@@ -575,7 +623,7 @@ from capability to research. Human research grows more slowly than population an
 
 \subsubsection{Numerical transitions: macro outcomes, allocation, and research}
 
-I hold \(\sigma_{XL}=1\) fixed and compare \(\sigma_{HM}=1\) with
+I hold \(\gamma_A=0\) and \(\sigma_{XL}=1\) fixed and compare \(\sigma_{HM}=1\) with
 \(\sigma_{HM}=2\). The displayed paths are finite-horizon approximations; only
 an admissible infinite-horizon continuation satisfying both transversality
 conditions would fall under Proposition
@@ -617,7 +665,7 @@ one, capability growth approaches 0.32 percent, and \(H/N\) approaches zero.
 \includegraphics[width=\textwidth]{figures_axm/axm_research_technology_comparison.png}
 \caption{Research adjustment with \(\sigma_{XL}=1\). Capability growth is an
 annual percentage rate; \(s_M\) and \(H/N\) are linear percentages; and the
-relative quantity \(AM/H\) is shown as a natural-log change from date zero.}
+relative quantity \(BM/H\) is shown as a natural-log change from date zero.}
 \label{fig:axm-research-comparison}
 \end{figure}
 
@@ -637,13 +685,13 @@ Let
  \label{eq:axm-theta}
 \end{equation}
 Along an interior branch with \(\sigma_{XL}>1\), \(s_X\to1\), and
-\(A\to\infty\), AI production services dominate the labor--AI CES aggregate. Capital
+\(B\to\infty\), AI production services dominate the labor--AI CES aggregate. Capital
 remains a separate input with elasticity \(\alpha\). Combining the final-good
 firm's AI-demand condition, the monopolist's markup condition,
-market clearing for AI production services with \(X=AU\), and final production then gives
+market clearing for AI production services with \(X=BU\), and final production then gives
 \begin{equation}
  \frac{U}{Y}\to(1-\alpha)^2,\qquad
- \frac{Y}{K}\sim \mathcal D A^\theta
+ \frac{Y}{K}\sim \mathcal D B^\theta
  \label{eq:axm-high-sigma-scaling}
 \end{equation}
 for a positive constant \(\mathcal D\).
@@ -663,7 +711,7 @@ singularity.
 
 \begin{proposition}[No finite-rate balanced growth with gross substitution]
 \label{prop:axm-no-bgp}
-Suppose \(\sigma_{XL}>1\), \(A\to\infty\), and an interior path satisfying the
+Suppose \(\sigma_{XL}>1\), \(B\to\infty\), and an interior path satisfying the
 necessary equilibrium conditions remains on an
 interior monopoly branch on which \(s_X\to1\). Then there is no balanced-growth
 path with finite constant growth rates. In particular, \(Y/K\to\infty\), so the marginal
@@ -683,13 +731,13 @@ Assume \(\sigma_{XL}>1\), \(\sigma_{HM}>1\), \(0<\eta<\alpha<1\), and an
 interior path satisfies all dated technology and service identities, competitive
 price equations, static first- and second-order conditions, market-clearing
 conditions, and canonical differential equations on its maximal time interval.
-Suppose that the path approaches an AI-dominated limit, with \(A\to\infty\), \(s_X\to1\),
+Suppose that the path approaches an AI-dominated limit, with \(B\to\infty\), \(s_X\to1\),
 and \(s_M\to1\). Suppose its consumption, investment, and research-compute
 shares---respectively \(C/Y\),
-\((\dot K+\delta K)/Y\), and \(M/Y\)---as well as \(g_A/(Y/K)\) and \(qA/K\),
+\((\dot K+\delta K)/Y\), and \(M/Y\)---as well as \(g_B/(Y/K)\) and \(qB/K\),
 converge to positive finite limits.
 Assume that the convergences of \(s_X\), \(s_M\), all the listed ratios, and the scaling ratio
-\((Y/K)/(\mathcal D A^\theta)\to1\) are asymptotically regular: the growth rate
+\((Y/K)/(\mathcal D B^\theta)\to1\) are asymptotically regular: the growth rate
 of each convergent ratio, divided by \(Y/K\), tends to zero. Write \(z=Y/K\) and
 \[
  \Delta=1+\theta-\eta,\qquad
@@ -697,11 +745,11 @@ of each convergent ratio, divided by \(Y/K\), tends to zero. Write \(z=Y/K\) and
 \]
 Then
 \begin{align}
- \frac{g_A}{z}&\to h,&
+ \frac{g_B}{z}&\to h,&
  \frac{U}{Y}&\to(1-\alpha)^2,\\
  \frac{\dot K+\delta K}{Y}&\to\alpha-\theta h,&
  \frac{M}{Y}&\to\frac{\eta(1-\alpha)^2}{\Delta},\\
- \frac{qA}{K}&\to\frac{(1-\alpha)^2}{\eta\alpha},&
+ \frac{qB}{K}&\to\frac{(1-\alpha)^2}{\eta\alpha},&
  \frac{C}{Y}&\to
  1-(1-\alpha)^2-\alpha+\theta h
  -\frac{\eta(1-\alpha)^2}{\Delta}.
@@ -733,13 +781,15 @@ The allocation of labor satisfies
 \end{equation}
 In the equal-elasticity case, the limiting share is pinned down by
 \begin{equation}
- \bar h_N=\frac{B}{1+B},\qquad
- B=\frac{\eta}{\Delta}
+ \bar h_N=\frac{\mathcal R_\sigma}{1+\mathcal R_\sigma},\qquad
+ \mathcal R_\sigma=\frac{\eta}{\Delta}A_*^{1-\sigma}
  \left[
   \frac{(1-\alpha)\omega_H\omega_X}{\omega_M\omega_L}
  \right]^{\sigma}.
  \label{eq:axm-singular-equal-elasticity-share}
 \end{equation}
+Here \(A_*=\lim_{t\uparrow T^*}A_t\) is finite and positive because labor
+productivity grows exogenously and the singular date is finite.
 Both production labor income, \(wL/Y\), and aggregate labor income, \(wN/Y\),
 vanish as shares of output, while
 \begin{equation}
@@ -769,25 +819,25 @@ determine the eventual direction of the wage.
 The growth-rate transformation used by \citet{davidsonetal2026} provides a useful
 interpretation of this conditional branch. The limiting ratios imply
 \[
- \dot A\sim \kappa_A A^{\eta(1+\theta)}K^\eta,
+ \dot B\sim \kappa_B B^{\eta(1+\theta)}K^\eta,
  \qquad
- \dot K\sim \kappa_K A^\theta K
+ \dot K\sim \kappa_K B^\theta K
 \]
-for positive constants \(\kappa_A,\kappa_K\). Hence the growth rates satisfy
+for positive constants \(\kappa_B,\kappa_K\). Hence the growth rates satisfy
 \begin{equation}
  \begin{pmatrix}
-  \dot g_A/g_A\\[2pt] \dot g_K/g_K
+  \dot g_B/g_B\\[2pt] \dot g_K/g_K
  \end{pmatrix}
  \sim
  \underbrace{\begin{pmatrix}
   \eta(1+\theta)-1&\eta\\
   \theta&0
  \end{pmatrix}}_{\Omega_\infty}
- \begin{pmatrix}g_A\\g_K\end{pmatrix}.
+ \begin{pmatrix}g_B\\g_K\end{pmatrix}.
  \label{eq:axm-singular-feedback-matrix}
 \end{equation}
 Under Assumption \ref{ass:axm-large-scale-curvature}, the diagonal
-\(g_A\)-feedback coefficient is negative:
+\(g_B\)-feedback coefficient is negative:
 \[
  \eta(1+\theta)-1=\frac{\eta}{\alpha}-1<0.
 \]
@@ -807,7 +857,7 @@ continuation beyond the finite-time boundary.
 
 I approximate the branch with \((\sigma_{XL},\sigma_{HM})=(1.5,2)\) using a
 free-boundary algorithm. It imposes the conditional limits of \(C/Y\) and
-\(qA/K\) at progressively larger terminal values of \(Y/K\). The initial jumps,
+\(qB/K\) at progressively larger terminal values of \(Y/K\). The initial jumps,
 non-imposed ratios, common path segments, and tail-corrected boundary estimate
 converge across \(Y/K=16,32,64,128\). Appendix
 \ref{app:axm-numerical-algorithm} reports the algorithm and audit.
@@ -859,7 +909,7 @@ one and research compute absorbs a positive share of output.
 \includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_research_allocation.png}
 \caption{AI-research allocation along the same finite-boundary approximation.
 All panels use linear percentages and stop at \(Y/K\leq5\). The ratio
-\(g_A/(Y/K)\) is shown in percent.}
+\(g_B/(Y/K)\) is shown in percent.}
 \label{fig:axm-high-sigma-research}
 \end{figure}
 
@@ -888,7 +938,7 @@ accounts yields the six-part decomposition in
 \eqref{eq:axm-consolidated-distribution} without counting \(p_XX\) twice.
 
 The final-production elasticity does not determine these shares by itself at a
-finite date because \(s_X\) also depends on the equilibrium ratio \(X/L\). The
+finite date because \(s_X\) also depends on the equilibrium ratio \(X/(AL)\). The
 propositions above determine the following conditional limiting shares. Under
 complementarity, for any \(0<\sigma_{XL}<1\) satisfying the hypotheses of Propositions
 \ref{prop:axm-complements} and \ref{prop:axm-complements-research},
@@ -1026,7 +1076,7 @@ labor income.
 
 \subsection{Cross-regime synthesis and limits of the evidence}
 
-The feedback mechanism differs across regimes. Complementarity keeps \(X/L\)
+The feedback mechanism differs across regimes. Complementarity keeps \(X/(AL)\)
 finite because raw inference compute falls as capability rises. Unit elasticity
 produces the constant limiting matrix \(\mathcal F(\bar s)\). Gross substitution
 makes the feedback state dependent; on the conditional AI-dominated branch it is
