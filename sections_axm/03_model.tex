@@ -657,17 +657,31 @@ initial values. It satisfies the relevant flow budget and state equations, and
 its improper objective integrals converge to finite real values.
 \end{definition}
 
-\subsubsection{Benchmark equilibrium in one block}
+\subsubsection{Benchmark equilibrium}
 
-I now collect the complete benchmark system. This repeats conditions derived
-above so that the reader can see in one place what determines an equilibrium
-trajectory. Given positive predetermined initial conditions, the dated
-conditions are
+\begin{definition}[Regular interior benchmark equilibrium]
+Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
+the predetermined stocks \(K_0,B_0>0\). The exogenous paths are
+\(A_t=A_0e^{\gamma_At}\) and \(N_t=N_0e^{nt}\). A regular interior benchmark
+equilibrium is an admissible infinite-horizon trajectory
+\begin{equation}
+ \left\{K_t,B_t,C_t,q_t,L_t,U_t,M_t,X_t,Z_t,Y_t,r_t,w_t,p_{X,t},
+ s_{X,t},e_{X,t},\Pi_t\right\}_{t\geq0}
+ \label{eq:axm-benchmark-equilibrium-trajectory}
+\end{equation}
+of strictly positive quantities and prices \(w,p_X,q\), with
+\(s_X,e_X\in(0,1)\); \(r\) and \(\Pi\) may have either sign. The paths
+\(K,B,C,q\) are absolutely continuous. For every \(t\geq0\), the trajectory
+satisfies the following system, with the differential equations understood
+almost everywhere:
 \begin{subequations}
 \label{eq:axm-canonical-system-benchmark}
 \begin{align}
- \dot N&=nN,\qquad \dot A=\gamma_AA,
+ A_t&=A_0e^{\gamma_At},&
+ N_t&=N_0e^{nt},
  \label{eq:axm-equilibrium-exogenous-block}\\
+ K(0)&=K_0,& B(0)&=B_0,
+ \label{eq:axm-benchmark-initial-conditions}\\
  L&=N,\\
  Z&=\left[\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
  +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}\right]^{
@@ -680,84 +694,58 @@ conditions are
  e_X&=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X,
  \label{eq:axm-equilibrium-share-block}\\
  r&=\alpha\frac{Y}{K}-\delta,\\
- w&=(1-\alpha)(1-s_X)\frac{Y}{L},\qquad
- p_X=(1-\alpha)s_X\frac{Y}{X},
+ w&=(1-\alpha)(1-s_X)\frac{Y}{L},&
+ p_X&=(1-\alpha)s_X\frac{Y}{X},
  \label{eq:axm-equilibrium-price-block}\\
- p_X(1-e_X)&=\frac{1}{B},\\
- X&=BU,\\
+ p_X(1-e_X)&=\frac{1}{B},& X&=BU,\displaybreak[4]\\
  q\chi\eta B(BM)^{\eta-1}&=1,
  \label{eq:axm-equilibrium-developer-static-block}\\
- \dot B&=\chi(BM)^\eta,\\
- \dot K&=Y-C-U-M-\delta K,
- \label{eq:axm-equilibrium-state-block}\\
- \frac{\dot C}{C}&=n+r-\rho,\\
- \frac{\dot q}{q}&=r-\frac{X}{qB^2}
- -\eta\frac{\dot B}{B}
- =r-\frac{U}{qB}-\eta\frac{\dot B}{B},
- \label{eq:axm-equilibrium-jump-block}\\
  \Pi&=p_XX-U-M,\\
- Y&=C+\dot K+\delta K+U+M.
- \label{eq:axm-equilibrium-accounting-block}
+ \dot K&=Y-C-U-M-\delta K,&
+ \dot B&=\chi(BM)^\eta,
+ \label{eq:axm-equilibrium-state-block}\\
+ \frac{\dot C}{C}&=n+r-\rho,&
+ \frac{\dot q}{q}&=r-\frac{X}{qB^2}
+ -\eta\frac{\dot B}{B}.
+ \label{eq:axm-equilibrium-jump-block}
 \end{align}
 \end{subequations}
-At \(\sigma_{XL}=1\), the CES equations in
-\eqref{eq:axm-equilibrium-production-block}--
-\eqref{eq:axm-equilibrium-share-block} are understood at their continuous limit:
-\(Z=(AL)^{\omega_L}X^{\omega_X}\) and \(s_X=\omega_X\).
-
-The predetermined variables satisfy
 \begin{equation}
- K(0)=K_0,\qquad A(0)=A_0,\qquad
- B(0)=B_0,\qquad N(0)=N_0,\qquad K_0,A_0,B_0,N_0>0.
- \label{eq:axm-benchmark-initial-conditions}
-\end{equation}
-The initial values \(C(0)\) and \(q(0)\) are not additional primitives. They
-must be selected so that the household and developer satisfy their terminal
-conditions:
-\begin{equation}
- \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0,\qquad
- \lim_{t\to\infty}
- \exp\left\{-\int_0^t\left(\alpha\frac{Y_s}{K_s}-\delta\right)\dd s\right\}
- q_tB_t=0.
+ \begin{gathered}
+  \displaystyle
+  \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0,\\
+  \displaystyle
+  \lim_{t\to\infty}
+  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
+ \end{gathered}
  \label{eq:axm-tvc}
 \end{equation}
-
-\begin{definition}[Regular interior benchmark equilibrium]
-Fix the model's parameters and positive initial stocks
-\((K_0,A_0,B_0,N_0)\). A regular interior benchmark equilibrium is an
-infinite-horizon trajectory
-\begin{equation}
- \left\{K_t,A_t,B_t,N_t,C_t,q_t,L_t,U_t,M_t,X_t,Z_t,Y_t,
- r_t,w_t,p_{X,t},s_{X,t},e_{X,t},\Pi_t\right\}_{t\geq0}
- \label{eq:axm-benchmark-equilibrium-trajectory}
-\end{equation}
-with the following properties:
-\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=0.25\baselineskip,
- topsep=0.4\baselineskip,parsep=0pt]
- \item The trajectory is admissible; the quantities and the prices
- \(w,p_X,q\) are strictly positive; \(s_X,e_X\in(0,1)\);
- \(K,A,B,N,C,q\) are absolutely continuous; and the remaining dated variables
- have the regularity required by the displayed equations. The net interest
- rate \(r\) and developer payout \(\Pi\) may have either sign.
- \item The predetermined variables satisfy
- \eqref{eq:axm-benchmark-initial-conditions}. The initial values \(C(0)\) and
- \(q(0)\) are selected as part of the equilibrium.
- \item The algebraic equalities and differential equations in
- \eqref{eq:axm-canonical-system-benchmark} hold at every date, with
- differential equations understood almost everywhere.
- \item The two transversality conditions in \eqref{eq:axm-tvc} hold.
- \item The household and developer solve their respective optimization
- problems, final-good firms maximize profits, and all markets clear.
-\end{enumerate}
-Regularity means that the maximum-principle multipliers are normal and the
-displayed derivatives exist wherever they are used.
+At \(\sigma_{XL}=1\), the production relations in the system are understood
+at their continuous limits: \(Z=(AL)^{\omega_L}X^{\omega_X}\) and
+\(s_X=\omega_X\). The initial values \(C(0)\) and \(q(0)\) are not data; they
+are selected so that the trajectory satisfies the two transversality
+conditions. Finally, the household and developer solve their respective
+optimization problems, final-good firms maximize profits, and all markets
+clear. Regularity means that the maximum-principle multipliers are normal and
+the displayed derivatives exist wherever they are used.
 \end{definition}
 
-For general parameter values, the displayed equations and terminal conditions
-are necessary but need not be sufficient for global dynamic optimality. I call
-an admissible path that satisfies them a candidate equilibrium path. I derive
-sufficient conditions for global optimality only after presenting the
-human-research extension.
+The block contains no separate resource identity because that identity is
+exactly the law of capital accumulation. Final-good zero profit, the household budget,
+and the consolidated income identity follow from constant returns, the factor-
+price equations, market clearing, and the definition of \(\Pi\); they are not
+additional equilibrium restrictions. Given \((A,N,K,B,C,q)\), the twelve
+algebraic variables in the displayed trajectory are determined by twelve
+intratemporal equations. The four dynamic variables are \((K,B,C,q)\):
+\(K_0\) and \(B_0\) are predetermined, while the two transversality conditions
+select \(C(0)\) and \(q(0)\).
+
+For general parameter values, the displayed system and terminal conditions are
+necessary but need not be sufficient for global dynamic optimality. I call an
+admissible path that satisfies the full block a candidate equilibrium path. It
+is an equilibrium only if the agent-optimality requirements in the definition
+also hold. I derive sufficient conditions after presenting the human-research
+extension.
 
 \begin{proposition}[Local existence of the benchmark canonical path]
 \label{prop:axm-local-canonical-existence}
@@ -951,74 +939,96 @@ Whenever \(s_M<1\), human research weakens the local capability feedback. If
 AI research services eventually dominate research expenditure, then
 \(s_M\to1\) and the extension approaches the benchmark feedback.
 
-Given \(K,A,B,N,q\), the extension's algebraic subsystem consists of labor
-clearing; final production and prices; the service identity; inverse demand and
-the monopoly condition; and the research price, conditional demands, and scale
-condition. On the selected interior branch, it determines allocations
-\(L,H,U,M,X,E,Z\), output \(Y\), prices \(r,w,p_X,P_E\), and shares \(s_X,s_M\).
-The dynamic system is
+\begin{definition}[Regular interior equilibrium with human research]
+Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
+the predetermined stocks \(K_0,B_0>0\). The exogenous paths are
+\(A_t=A_0e^{\gamma_At}\) and \(N_t=N_0e^{nt}\). A regular interior equilibrium
+with human research is an admissible infinite-horizon trajectory
+\begin{equation}
+ \left\{K_t,B_t,C_t,q_t,L_t,H_t,U_t,M_t,X_t,E_t,Z_t,Y_t,
+ r_t,w_t,p_{X,t},P_{E,t},s_{X,t},s_{M,t},e_{X,t},\Pi_t\right\}_{t\geq0}
+ \label{eq:axm-human-equilibrium-trajectory}
+\end{equation}
+of strictly positive quantities and prices \(w,p_X,P_E,q\), with
+\(s_X,s_M,e_X\in(0,1)\); \(r\) and \(\Pi\) may have either sign. The paths
+\(K,B,C,q\) are absolutely continuous. For every \(t\geq0\), the trajectory
+satisfies the following system, with the differential equations understood
+almost everywhere:
 \begin{subequations}
 \label{eq:axm-canonical-system}
 \begin{align}
- \frac{\dot N}{N}&=n,\\
- \frac{\dot A}{A}&=\gamma_A,\\
- \frac{\dot K}{K}&=\frac{Y-C-U-M}{K}-\delta,\\
- \frac{\dot B}{B}&=\frac{\chi E^\eta}{B},\\
- \frac{\dot C}{C}&=n+\alpha\frac{Y}{K}-\delta-\rho,\\
- \frac{\dot q}{q}
- &=\alpha\frac{Y}{K}-\delta-\frac{X}{qB^2}
+ A_t&=A_0e^{\gamma_At},& N_t&=N_0e^{nt},\\
+ K(0)&=K_0,& B(0)&=B_0.
+\end{align}
+\begin{align}
+ N&=L+H,\\
+ Z&=\left[\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
+ +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}\right]^{
+ \sigma_{XL}/(\sigma_{XL}-1)},\\
+ Y&=K^\alpha Z^{1-\alpha},\\
+ s_X&=\frac{\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}}
+ {\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
+ +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}},\\
+ e_X&=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X,\\
+ r&=\alpha\frac{Y}{K}-\delta,\\
+ w&=(1-\alpha)(1-s_X)\frac{Y}{L},\\
+ p_X&=(1-\alpha)s_X\frac{Y}{X},\\
+ p_X(1-e_X)&=\frac{1}{B},\\
+ X&=BU.
+\end{align}
+\begin{align}
+ E&=\left[\omega_HH^{\varrho_{HM}}
+ +\omega_M(BM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}},\\
+ q\chi\eta\omega_HE^{\eta-\varrho_{HM}}
+ H^{\varrho_{HM}-1}&=w,\\
+ q\chi\eta\omega_ME^{\eta-\varrho_{HM}}
+ (BM)^{\varrho_{HM}-1}B&=1,\\
+ P_E&=q\chi\eta E^{\eta-1},\\
+ s_M&=\frac{M}{wH+M},\\
+ \Pi&=p_XX-U-wH-M,\\
+ \dot K&=Y-C-U-M-\delta K,\\
+ \dot B&=\chi E^\eta,\\
+ \frac{\dot C}{C}&=n+r-\rho,\\
+ \frac{\dot q}{q}&=r-\frac{X}{qB^2}
  -\eta s_M\frac{\dot B}{B}.
 \end{align}
 \end{subequations}
-
-\begin{definition}[Regular interior equilibrium with human research]
-Fix the model's parameters and positive initial stocks
-\((K_0,A_0,B_0,N_0)\). A regular interior equilibrium with human research is an
-infinite-horizon trajectory
 \begin{equation}
- \left\{K_t,A_t,B_t,N_t,C_t,q_t,L_t,H_t,U_t,M_t,X_t,E_t,Z_t,Y_t,
- r_t,w_t,p_{X,t},P_{E,t},s_{X,t},s_{M,t},e_{X,t},\Pi_t\right\}_{t\geq0}
-\label{eq:axm-human-equilibrium-trajectory}
+ \begin{gathered}
+  \displaystyle
+  \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0,\\
+  \displaystyle
+  \lim_{t\to\infty}
+  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
+ \end{gathered}
+ \label{eq:axm-human-tvc}
 \end{equation}
-with the following properties:
-\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=0.25\baselineskip,
- topsep=0.4\baselineskip,parsep=0pt]
- \item The trajectory is admissible; \(K,A,B,N,C,q\) are absolutely
- continuous; all quantities and the prices \(w,p_X,P_E,q\) are strictly
- positive; \(s_X,s_M,e_X\in(0,1)\); and the remaining dated variables have the
- regularity required by the displayed equations. The net interest rate \(r\)
- and developer payout \(\Pi\) may have either sign.
- \item The predetermined variables satisfy \(K(0)=K_0\), \(A(0)=A_0\),
- \(B(0)=B_0\), and \(N(0)=N_0\). The initial values \(C(0)\) and \(q(0)\)
- are selected as part of the equilibrium.
- \item At every date the trajectory satisfies labor-market clearing
- \eqref{eq:axm-labor-market}; final production, the AI share, factor prices,
- and inverse-demand elasticity in \eqref{eq:axm-final-production},
- \eqref{eq:axm-sx}, \eqref{eq:axm-factor-prices}, and
- \eqref{eq:axm-inverse-elasticity}, with \(e_X=\varepsilon_X^{-1}\); the
- service identity and monopoly condition in \eqref{eq:axm-ai-service} and
- \eqref{eq:axm-monopoly-foc}; the effective-research technology, research
- price, conditional demands, research share, and scale condition in
- \eqref{eq:axm-effective-research}, \eqref{eq:axm-research-price},
- \eqref{eq:axm-research-demands}, \eqref{eq:axm-sm}, and
- \eqref{eq:axm-research-scale-foc}; and the household budget, developer profit,
- and resource identity in \eqref{eq:axm-household-budget},
- \eqref{eq:axm-developer-profit}, and \eqref{eq:axm-resource}. All CES
- relations are understood at their stated unit-elasticity limits.
- \item The differential equations in \eqref{eq:axm-canonical-system} hold
- almost everywhere, and the two transversality conditions in
- \eqref{eq:axm-tvc} hold.
- \item The household and developer solve their respective optimization
- problems, final-good firms maximize profits, and all markets clear.
-\end{enumerate}
-Regularity has the same meaning as in the benchmark definition.
+At \(\sigma_{XL}=1\), the production relations use
+\(Z=(AL)^{\omega_L}X^{\omega_X}\) and \(s_X=\omega_X\). At
+\(\sigma_{HM}=1\), \(\varrho_{HM}=0\) and the research relation uses
+\(E=H^{\omega_H}(BM)^{\omega_M}\); the two displayed research-input
+conditions are evaluated at \(\varrho_{HM}=0\). The initial values \(C(0)\)
+and \(q(0)\) are selected so that both transversality conditions hold.
+Finally, the household and developer solve their respective optimization
+problems, final-good firms maximize profits, and all markets clear. Regularity
+has the same meaning as in the benchmark definition.
 \end{definition}
 
-\Needspace{6\baselineskip}
-The first four clauses of the definition collect the dated first-order, state,
-market, accounting, initial, and terminal conditions. A path satisfying those
-clauses is a candidate equilibrium path. The final clause distinguishes an
-equilibrium from a candidate by requiring global agent optimality. Proposition
+The extension is also exactly determined conditional on the dynamic variables.
+For given current values of \(A,N,K,B,C\), and \(q\), sixteen algebraic
+variables are determined by sixteen intratemporal equations. The unit-cost formula
+\eqref{eq:axm-research-price} and conditional demands
+\eqref{eq:axm-research-demands} are the dual representation of the effective-
+research relation and the two direct research-input conditions in the
+definition; imposing both representations would be redundant. The numerical
+algorithm uses the dual representation to solve the same static allocation.
+As in the benchmark, \((K,B,C,q)\) are the four dynamic variables, \(K_0\) and
+\(B_0\) are predetermined, and the two transversality conditions select
+\(C(0)\) and \(q(0)\).
+
+An admissible path satisfying the displayed system, including both terminal
+conditions, is a candidate equilibrium path. It is an equilibrium only if the
+agent-optimality requirements in the definition also hold. Proposition
 \ref{prop:axm-monopoly-existence} establishes the unique global choice of \(X\),
 but the extension's labor-allocation block can still have multiple roots, and I
 do not establish global concavity of the developer's dynamic problem for all
