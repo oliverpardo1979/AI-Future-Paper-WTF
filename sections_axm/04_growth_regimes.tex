@@ -128,29 +128,32 @@ audits.
 \caption{Parameter values across the no-AI and AI scenarios}
 \label{tab:axm-parameters}
 \small
-\begin{tabular}{P{0.13\textwidth}P{0.17\textwidth}P{0.16\textwidth}P{0.43\textwidth}}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{P{0.10\textwidth}P{0.11\textwidth}P{0.11\textwidth}P{0.235\textwidth}P{0.335\textwidth}}
 \toprule
-Parameter & No AI: \(\omega_X=0\) & AI: \(\omega_X=0.20\) & Source\\
+Parameter & No AI: \(\omega_X=0\) & AI: \(\omega_X=0.20\) & Interpretation & Source\\
 \midrule
-\(\alpha\) & \multicolumn{2}{c}{0.33} & Standard macroeconomic calibration: one-third capital share\\
-\(n\) & \multicolumn{2}{c}{0.003} & Constant-rate equivalent of the UN world population projection for 2024--2100 \citep{unwpp2024}\\
-\(\delta\) & \multicolumn{2}{c}{0.05} & Standard annual calibration, consistent with PWT 11.0 \citep{pwt110}\\
-\(\rho\) & \multicolumn{2}{c}{0.04} & Standard annual preference calibration\\
-\(\gamma_A\) & \multicolumn{2}{c}{0.01} & Long-run global technical-progress assumption \citep{oecdlongrun2025}\\
-\(\omega_L\) & 1 & 0.80 & CES normalization: \(\omega_L=1-\omega_X\)\\
-\(\omega_X\) & 0 & 0.20 & Scenario calibration; not an empirical estimate \citep{oecdaiinvestment2025,oecdproductivity2026}\\
-\(\sigma_{XL}\) & Not applicable & 1 in the benchmark & Varied below and above one in the additional AI scenarios\\
-\(\eta\) & Not applicable & 0.20 & Model calibration satisfying \(\eta<\alpha\); not estimated\\
-\(\chi\) & Not applicable & 0.01 & Time normalization; not estimated\\
-\((A_0,N_0)\) & \multicolumn{2}{c}{(1, 1)} & Normalizations common to all scenarios\\
-\(B_0\) & Not applicable & 1 & Normalization of initial AI capability\\
-\(K_0\) & Scenario-specific & Scenario-specific & Implied by the initial equilibrium after fixing each scenario\\
+\(\alpha\) & \multicolumn{2}{c}{0.33} & Elasticity of final output with respect to physical capital & Standard macroeconomic calibration: one-third capital share\\
+\(n\) & \multicolumn{2}{c}{0.003} & Exogenous annual population-growth rate & Constant-rate equivalent of the UN world population projection for 2024--2100 \citep{unwpp2024}\\
+\(\delta\) & \multicolumn{2}{c}{0.05} & Annual depreciation rate of physical capital & Standard annual calibration, consistent with PWT 11.0 \citep{pwt110}\\
+\(\rho\) & \multicolumn{2}{c}{0.04} & Household discount rate & Standard annual preference calibration\\
+\(\gamma_A\) & \multicolumn{2}{c}{0.01} & Exogenous annual growth rate of labor productivity & Long-run global technical-progress assumption \citep{oecdlongrun2025}\\
+\(\omega_L\) & 1 & 0.80 & CES weight on effective production labor, \(AL\) & CES normalization: \(\omega_L=1-\omega_X\)\\
+\(\omega_X\) & 0 & 0.20 & CES weight on AI production services, \(X\) & Scenario calibration; not an empirical estimate \citep{oecdaiinvestment2025,oecdproductivity2026}\\
+\(\sigma_{XL}\) & Not applicable & 1 in the benchmark & Elasticity of substitution between \(AL\) and \(X\) & Varied below and above one in the additional AI scenarios\\
+\(\eta\) & Not applicable & 0.20 & Elasticity of \(\dot B\) with respect to effective AI research & Model calibration satisfying \(\eta<\alpha\); not estimated\\
+\(\chi\) & Not applicable & 0.01 & Productivity scale in the capability law & Time normalization; not estimated\\
+\((A_0,N_0)\) & \multicolumn{2}{c}{(1, 1)} & Initial labor productivity and population & Normalizations common to all scenarios\\
+\(B_0\) & Not applicable & 1 & Initial AI capability & Normalization of initial AI capability\\
+\(K_0\) & Scenario-specific & Scenario-specific & Initial physical-capital stock & Implied by the initial equilibrium after fixing each scenario\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The source column distinguishes standard macroeconomic calibrations, scenario
-choices, and normalizations. None of the AI-specific parameters is estimated.
+The interpretation column records each parameter's role in the model. The source
+column distinguishes standard macroeconomic calibrations, scenario choices, and
+normalizations. None of the AI-specific parameters is estimated.
 
 The first column is the nested Ramsey--Cass--Koopmans economy: setting
 \(\omega_X=0\) removes AI production services and makes \(\sigma_{XL}\),
