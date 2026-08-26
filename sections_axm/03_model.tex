@@ -500,12 +500,42 @@ therefore
  \frac{\dot q}{q}=r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}.
  \label{eq:axm-costate-benchmark}
 \end{equation}
+The costate equation has an asset-pricing interpretation. Rearranging it gives
+\begin{equation}
+ rq=\frac{X}{B^2}+q\eta\frac{\dot B}{B}+\dot q.
+ \label{eq:axm-capability-return-decomposition}
+\end{equation}
+An additional unit of capability pays two current returns. First, it reduces
+the inference compute required to supply a given quantity of AI production
+services, saving \(X/B^2\) units of final output. Second, holding current
+research compute fixed, it raises the productivity of AI research. That second
+return is worth \(q\eta\dot B/B\). Together with the capital gain \(\dot q\),
+these two returns must equal the market return \(rq\). A larger current return
+therefore allows the shadow value of capability to grow more slowly while still
+delivering the return available to the developer's owner.
+
 The infinite-horizon terminal restriction maintained for the developer is
 \begin{equation}
  \lim_{t\to\infty}
  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
  \label{eq:axm-developer-tvc}
 \end{equation}
+This condition rules out a path that leaves a positive discounted terminal
+value in capability. It does not require \(B\), \(q\), or their undiscounted
+product to converge to zero.
+
+Given \(B_0\) and paths for \(K,A,L,\) and \(r\), the monopoly condition,
+research first-order condition, state equation, and costate equation form a
+boundary-value problem. At each date, the monopoly condition determines \(X\)
+from current capability and the demand schedule, while the research condition
+determines \(M\) from \(B\) and \(q\). The state and costate equations then
+govern the evolution of \(B\) and \(q\). Initial capability \(B_0\) is given,
+but \(q_0\) is not: it must be selected so that the resulting path satisfies
+\eqref{eq:axm-developer-tvc}. The solution is therefore a dynamic trajectory,
+not a sequence of unrelated static choices. In general equilibrium, household
+optimization, final-good production, and market clearing determine \(K,L,\)
+and \(r\), while \(A\) follows its exogenous law, and all of these paths must be
+consistent with the developer's solution.
 
 \subsection{Benchmark equilibrium}
 
