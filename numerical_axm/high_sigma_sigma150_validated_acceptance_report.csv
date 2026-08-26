@@ -28,6 +28,7 @@ boundary_convergence,common_window_consumption_growth,1,==,1,pass,,finite-bounda
 boundary_convergence,common_window_log_capability,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,common_window_log_capital,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,common_window_log_consumption,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
+boundary_convergence,common_window_log_labor_productivity,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,common_window_log_output,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,common_window_log_shadow_value,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,common_window_log_wage,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
@@ -39,6 +40,7 @@ boundary_convergence,event_16_consumption_growth,1,==,1,pass,,finite-boundary ap
 boundary_convergence,event_16_log_capability,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_16_log_capital,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_16_log_consumption,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
+boundary_convergence,event_16_log_labor_productivity,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_16_log_output,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_16_log_shadow_value,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_16_log_wage,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
@@ -51,6 +53,7 @@ boundary_convergence,event_32_consumption_growth,1,==,1,pass,,finite-boundary ap
 boundary_convergence,event_32_log_capability,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_32_log_capital,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_32_log_consumption,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
+boundary_convergence,event_32_log_labor_productivity,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_32_log_output,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_32_log_shadow_value,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium
 boundary_convergence,event_32_log_wage,1,==,1,pass,,finite-boundary approximations to a conditional pre-singular branch; not an infinite-horizon equilibrium

@@ -253,7 +253,7 @@ def derive_metadata_and_targets(
     The dated identities imply ``alpha = (gross return)/(Y/K)`` and the
     research-compute FOC implies
 
-        eta = (M/Y) / [s_M (qA/Y) g_A].
+        eta = (M/Y) / [s_M (qB/Y) g_B].
 
     For the research CES, the slope of ``logit(s_M)`` with respect to
     ``log(Aw)`` is ``sigma_HM - 1``.  These identities let the plotter recover

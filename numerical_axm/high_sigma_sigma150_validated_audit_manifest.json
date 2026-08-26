@@ -2,7 +2,7 @@
   "accepted_claim": "The saved finite-boundary paths satisfy the audited necessary conditions and the specified boundary-convergence gates.",
   "audit_script": {
     "path": "scripts\\audit_axm_high_sigma.py",
-    "sha256": "c73f3cc61ca471d9ce861980ac37a4191669e76d7a79203c85a6ffe25fb366e2"
+    "sha256": "d56e566c3d9d1a5176c2ed4a5b08b98df80ccee0a3fdb17b80598a0bfe25a215"
   },
   "audit_version": 3,
   "audited_boundaries": [
@@ -20,19 +20,19 @@
   ],
   "core_model_script": {
     "path": "scripts/simulate_axm_equilibrium.py",
-    "sha256": "7bd7497d8e057f34e636a7d100581c81d3deb3ed2697122cdf4f73050b093f74"
+    "sha256": "590122264e4a561386c42b4a403acae7746b3320218550725965fe9601f3a192"
   },
-  "created_at_utc": "2026-08-18T10:58:47.284322+00:00",
+  "created_at_utc": "2026-08-26T10:45:38.547885+00:00",
   "generator_script": {
     "path": "scripts/simulate_axm_high_sigma_equilibrium.py",
-    "sha256": "bf20018472c43a09445d9ca3e23d94e210597642a7f670ae621851fa52a5d482"
+    "sha256": "bf99f8292947b894b01e29688bb77945bf0b1a48ca4263fbc88352198088954f"
   },
   "independence": "All reported model equations were reconstructed in this script; no equilibrium_static_block or solver equation function was called.",
   "inputs": [
     {
-      "bytes": 13200907,
+      "bytes": 14187966,
       "path": "numerical_axm\\high_sigma_sigma150_validated_boundary_paths.csv",
-      "sha256": "08d3ac9eb3845a0f84cf8e25057ef9816493e71ed504fb1a209a2ce9cb59b76b"
+      "sha256": "b54537bdce31e36a531bbb618a463022302fe4b859fd140f1c8fe586dce0890f"
     },
     {
       "bytes": 561,
@@ -40,9 +40,9 @@
       "sha256": "f7baa1ef8a4f091e5d1734c54932f876e7693aa56354daa994d6f9fc08812778"
     },
     {
-      "bytes": 6037366,
+      "bytes": 6491037,
       "path": "numerical_axm\\high_sigma_sigma150_z128_validated_boundary_paths.csv",
-      "sha256": "db6ea10b15c327a0fb74c5a423a0c9d722b598eb23c75505e3fdd89595807ecd"
+      "sha256": "39827f5c38bd07ca7465897b82fe324c68f84bac6542630ad2061d633e4e2f84"
     },
     {
       "bytes": 302,
@@ -52,19 +52,19 @@
   ],
   "outputs": [
     {
-      "bytes": 14641,
+      "bytes": 15162,
       "path": "numerical_axm\\high_sigma_sigma150_validated_acceptance_report.csv",
-      "sha256": "26fb6f5e3cd76705b2e61a60a2e614b52ea21af46fa6ed28d9e72346aad222f1"
+      "sha256": "9fd8bc8c0c07a541e8f7826d0f05f10a1114a6104dbdda28c7c2f3b5b4f058aa"
     },
     {
-      "bytes": 13287894,
+      "bytes": 13410424,
       "path": "numerical_axm\\high_sigma_sigma150_validated_equation_residuals.csv",
-      "sha256": "17b73c34b541275a9396b63bf042b373bf9f07a520933ecd91feba6832e27099"
+      "sha256": "40917c24c7113d808b45da2d5a17866db3c5ef36921c9595b331f5a7482eb609"
     },
     {
-      "bytes": 32978,
+      "bytes": 34072,
       "path": "numerical_axm\\high_sigma_sigma150_validated_boundary_convergence.csv",
-      "sha256": "5ac837ba2717e02ef245d04a5e7f3daaaaf105bb4c881766703b2bcc5ed9b507"
+      "sha256": "55b13373cf2f3190540251757cf4380d2339aa7e7a5af3ac013dd6b17865a7e2"
     }
   ],
   "overall_accepted": true,
@@ -74,6 +74,8 @@
     "delta": 0.05,
     "discount": 0.04,
     "eta": 0.2,
+    "initial_labor_productivity": 1.0,
+    "labor_productivity_growth": 0.0,
     "n": 0.012,
     "omega_m": 0.35,
     "omega_x": 0.2,
@@ -87,8 +89,8 @@
     64.0
   ],
   "row_counts": {
-    "acceptance_gates": 76,
-    "boundary_convergence": 133,
+    "acceptance_gates": 79,
+    "boundary_convergence": 137,
     "equation_residuals": 15307
   },
   "source_prefixes": [

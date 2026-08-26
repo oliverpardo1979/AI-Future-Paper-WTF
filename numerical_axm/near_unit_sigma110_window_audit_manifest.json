@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-08-19T07:24:03.379241+00:00",
+  "created_at_utc": "2026-08-26T10:46:05.885633+00:00",
   "overall_accepted": true,
   "accepted_claim": "The three finite-boundary solutions satisfy the audited dated conditions and overlap on the displayed interval t in [0,4500].",
   "claims_not_established": [
@@ -13,6 +13,8 @@
     "omega_x": 0.2,
     "sigma_xl": 1.1,
     "n": 0.012,
+    "labor_productivity_growth": 0.0,
+    "initial_labor_productivity": 1.0,
     "delta": 0.05,
     "discount": 0.04,
     "omega_m": 0.35,
@@ -29,16 +31,16 @@
   "python": "3.12.13",
   "files": {
     "scripts/simulate_axm_near_unit_high.py": {
-      "bytes": 6252,
-      "sha256": "8c1150fd942d55185184238a05fd145ca1117a9bc37632bc85685f6eb2f9d4b4"
+      "bytes": 6452,
+      "sha256": "954cc51a3cbd8ac8c68a8dea4561c759615e56a361971014ce5da18c51a62b64"
     },
     "scripts/audit_axm_near_unit_high.py": {
       "bytes": 10044,
       "sha256": "d0d2727e0893402cd028bb7dd5f11205294e1bb23c0766c2f14192a24af5f746"
     },
     "numerical_axm/near_unit_sigma110_window_boundary_paths.csv": {
-      "bytes": 22797526,
-      "sha256": "53297b507233a6c544cdc29d41cbcdb62dc424a096418abbf2616052532970a1"
+      "bytes": 24347296,
+      "sha256": "265e426186f870bdc6c9bf6efaa8b5c29112c2e0b5dda7034d6699cc44301c26"
     },
     "numerical_axm/near_unit_sigma110_window_summary.csv": {
       "bytes": 538,
@@ -49,8 +51,8 @@
       "sha256": "b9a4c65adfe4f55e01039caa25245968f126064c80de7e03d1a0e01ceae76db4"
     },
     "numerical_axm/near_unit_sigma110_window_equation_residuals.csv": {
-      "bytes": 13714115,
-      "sha256": "54fb7fc155cf86f82e562e019b3267d071e1a8857c80263bf75f6add9b28e6e8"
+      "bytes": 13843013,
+      "sha256": "7f18a327ea62444d4424bb6eeb684557a2d35c8cc1ed92c9ea6e5839e133f0a4"
     }
   }
 }

@@ -1,4 +1,4 @@
-"""Independent audit of the A*M high-sigma free-boundary paths.
+"""Independent audit of the A--B high-sigma free-boundary paths.
 
 This script deliberately does not import either equilibrium solver.  It reads
 each canonical grouped ``boundary_paths.csv``, reconstructs the model from its
@@ -46,6 +46,8 @@ class Parameters:
     omega_x: float = 0.20
     sigma_xl: float = 1.50
     n: float = 0.012
+    labor_productivity_growth: float = 0.0
+    initial_labor_productivity: float = 1.0
     delta: float = 0.05
     discount: float = 0.04
     omega_m: float = 0.35
@@ -96,7 +98,11 @@ STATE_LOG_FIELDS = (
     "log_consumption",
     "log_shadow_value",
 )
-COMMON_LOG_FIELDS = STATE_LOG_FIELDS + ("log_output", "log_wage")
+COMMON_LOG_FIELDS = STATE_LOG_FIELDS + (
+    "log_labor_productivity",
+    "log_output",
+    "log_wage",
+)
 COMMON_LEVEL_FIELDS = (
     "ai_share",
     "automated_research_share",
@@ -114,7 +120,7 @@ STORED_DYNAMIC_FIELDS = (
 
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Audit conditional high-sigma A*M free-boundary paths."
+        description="Audit conditional high-sigma A--B free-boundary paths."
     )
     parser.add_argument("--input-prefix", default=DEFAULT_PREFIX)
     parser.add_argument("--result-dir", type=Path, default=RESULT_DIR)
@@ -414,6 +420,17 @@ def reconstruct_row(
     log_c = as_float(row, "log_consumption")
     log_q = as_float(row, "log_shadow_value")
     log_l = as_float(row, "log_production_labor")
+    log_labor_productivity = (
+        as_float(row, "log_labor_productivity")
+        if "log_labor_productivity" in row
+        else math.log(parameters.initial_labor_productivity)
+        + parameters.labor_productivity_growth * as_float(row, "time")
+    )
+    log_effective_labor = (
+        as_float(row, "log_effective_production_labor")
+        if "log_effective_production_labor" in row
+        else log_labor_productivity + log_l
+    )
     log_h = as_float(row, "log_human_research")
     log_u = as_float(row, "log_inference_compute")
     log_m = as_float(row, "log_automated_research")
@@ -421,7 +438,7 @@ def reconstruct_row(
     log_am = as_float(row, "log_automated_research_services")
 
     log_z, ai_share, log_labor_technology_share, log_ai_share = log_ces(
-        log_l, log_x, omega_x, parameters.sigma_xl
+        log_effective_labor, log_x, omega_x, parameters.sigma_xl
     )
     labor_technology_share = math.exp(log_labor_technology_share)
     log_y = alpha * log_k + (1.0 - alpha) * log_z
@@ -584,6 +601,8 @@ def reconstruct_row(
             log_c,
             log_q,
             log_l,
+            log_labor_productivity,
+            log_effective_labor,
             log_h,
             log_u,
             log_m,
@@ -609,6 +628,14 @@ def reconstruct_row(
         "path_label": PATH_LABEL,
         "population_law_log_residual": (
             log_n - parameters.n * as_float(row, "time")
+        ),
+        "labor_productivity_law_log_residual": (
+            log_labor_productivity
+            - math.log(parameters.initial_labor_productivity)
+            - parameters.labor_productivity_growth * as_float(row, "time")
+        ),
+        "effective_labor_identity_log_residual": (
+            log_effective_labor - log_labor_productivity - log_l
         ),
         "final_ces_log_residual": (
             as_float(row, "log_service_composite") - log_z

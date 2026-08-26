@@ -1213,15 +1213,20 @@ than added as numerical states. Logs preserve positivity of \(K,B,C,\) and \(q\)
 dated static calculation, the human-research share \(H/N\) is represented by a
 logit, which keeps \(0<H/N<1\) and implies \(L=N-H>0\).
 
-The archived implementation predates the notation change summarized in
-equation~\eqref{eq:axm-labor-productivity}: its internal capability object is
-named \texttt{A}, and saved paths label its logarithm \texttt{log\_capability}.
-Both objects mean manuscript capability \(B\), not labor productivity \(A\).
-All results reported in this version set \(\gamma_A=0\) and \(A_0=1\), so the
-new labor-productivity process is identically one and the relabeling leaves every
-stored equation and numerical value unchanged. Simulations with
-\(\gamma_A\ne0\) require the migration specified in
-\path{audit/axm_simulation_specification.md}; they are not reported here.
+The implementation evaluates \(A(t)\) analytically. It uses \(B\) as the
+capability state in every dated equation. Saved paths retain the descriptive
+field name \texttt{log\_capability}; this field means
+\(\log B\), not \(\log A\). All results reported in this version set
+\(\gamma_A=0\) and \(A_0=1\), so labor productivity is constant and the
+migration does not change the earlier numerical experiments. I verify this
+claim with \path{scripts/check_axm_ab_regression.py}: at \(\gamma_A=0\), the
+migrated dated map and paths reproduce sampled observations from the
+unit-elasticity, complementary-input, and gross-substitutes files archived at
+commit \texttt{d019192}, with zero numerical difference.
+The same check verifies the exact balanced-growth equations at
+\(\gamma_A=0.01\) for the automated-research benchmark and the
+\(\sigma_{HM}=1\) extension, although I do not report those positive-growth
+experiments in the paper.
 
 For a given date and a trial value of \((K,B,A,N,q)\), the code constructs the
 intratemporal equilibrium as follows.

@@ -15,14 +15,20 @@ from dataclasses import replace
 from pathlib import Path
 from types import SimpleNamespace
 
+
+ROOT = Path(__file__).resolve().parents[1]
+TMP_DEPS = ROOT / "tmp" / "pydeps"
+LOCAL_DEPS = ROOT / ".python-packages"
+if LOCAL_DEPS.exists():
+    sys.path.insert(0, str(LOCAL_DEPS))
+elif TMP_DEPS.exists():
+    sys.path.insert(0, str(TMP_DEPS))
+sys.path.insert(0, str(ROOT / "scripts"))
+
 import numpy as np
 import scipy  # noqa: F401
 from scipy.interpolate import CubicSpline
 from PIL import Image  # noqa: F401
-
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
 
 import simulate_axm_equilibrium as core  # noqa: E402
 import simulate_axm_high_sigma_equilibrium as high  # noqa: E402

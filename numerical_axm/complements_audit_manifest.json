@@ -1,6 +1,6 @@
 {
   "accepted": true,
-  "audit": "A*M gross-complements independent acceptance audit",
+  "audit": "A--B gross-complements independent acceptance audit",
   "audit_version": 1,
   "canonical_scenarios": {
     "horizon_robustness": [
@@ -16,7 +16,7 @@
       "axm_complements_sigma_xl_075_hm_2"
     ]
   },
-  "created_utc": "2026-08-18T11:03:49.721887+00:00",
+  "created_utc": "2026-08-26T10:45:20.959661+00:00",
   "ex_ante_gates": {
     "clipping_lower": -700.0,
     "clipping_upper": 60.0,
@@ -36,52 +36,52 @@
   },
   "files": {
     "audit_script": {
-      "bytes": 43954,
+      "bytes": 45016,
       "path": "scripts/audit_axm_complements.py",
-      "sha256": "3946ceee23a24227c83b1e5691c2843b29f6416e466fd2e634ba586004c9ed8c"
+      "sha256": "80464f1d5695d145746324bf5ba7bfae8322e660590aa586f9474e908d1a2aa1"
     },
     "core_solver_script": {
-      "bytes": 71669,
+      "bytes": 82354,
       "path": "scripts/simulate_axm_equilibrium.py",
-      "sha256": "7bd7497d8e057f34e636a7d100581c81d3deb3ed2697122cdf4f73050b093f74"
+      "sha256": "590122264e4a561386c42b4a403acae7746b3320218550725965fe9601f3a192"
     },
     "generator_script": {
-      "bytes": 31101,
+      "bytes": 31802,
       "path": "scripts/simulate_axm_complements_equilibrium.py",
-      "sha256": "06e3ff8698f2d08bbd53d9312c874c32d384cc87a09eb109a54e545002b299e0"
+      "sha256": "22702e9872482dd30efd1bb6740f6f1c0eb45de773e002623bfebe71e3078241"
     },
     "inputs": [
       {
-        "bytes": 6220691,
+        "bytes": 6656652,
         "path": "numerical_axm/complements_transition_paths.csv",
-        "sha256": "30104bf90a147bdde1a97ec8777c1bd55d4633b749be30b5ecf7d56aed68985e"
+        "sha256": "6b4b7c599929074771c11e31bd4b8ced008fbfda1948a9ba025c65f003456ce4"
       },
       {
-        "bytes": 5223,
+        "bytes": 5456,
         "path": "numerical_axm/complements_transition_summary.csv",
-        "sha256": "03b99780d2a53839c5755e4d8c0d7dcf09ea646f24d073cf7dcbb754c4504183"
+        "sha256": "3ccf8246fffabf5855432a5f24e7199339d41d67b37120552f76b67df0c28149"
       },
       {
-        "bytes": 16820088,
+        "bytes": 17997985,
         "path": "numerical_axm/complements_horizon_paths.csv",
-        "sha256": "5fcb299268f5c319f091210ac4e9d15c2b1d7b8fc8378f9ad21619ad39ec32b0"
+        "sha256": "72a6d952b0c8df114be563b89aa5a79e1d003e82e3cf8b3118ba4d1a7255c256"
       },
       {
-        "bytes": 11398,
+        "bytes": 11830,
         "path": "numerical_axm/complements_horizon_robustness.csv",
-        "sha256": "2c0b8e723ebaf00ef724d4ddbaf277fa649ce156bdb3db1410fbb62e77358995"
+        "sha256": "d313f6a73767f490d4c48b8bc506e662fa142bac248e140ee45045153a6dc396"
       }
     ],
     "outputs": [
       {
         "bytes": 20565,
         "path": "numerical_axm/complements_acceptance_report.csv",
-        "sha256": "0127aabbc3ed05fe54349fb65cac691888a3630ffb2fd65d0a328fb3d84e25d5"
+        "sha256": "8b2825b958330027b919b430d1bc7c6f79e68d5d7302c747bd162c85b77d8b4c"
       },
       {
-        "bytes": 14074938,
+        "bytes": 14208263,
         "path": "numerical_axm/complements_equation_residuals.csv",
-        "sha256": "e1923783a1d27ba2b23572e68322036bd526019ed4bf6b09bad3e7e2549ca28c"
+        "sha256": "fd0d652b70f5e643162f8f9743325b4bce8ba0ca6ca74f80e0e60ef54cf91420"
       }
     ]
   },
@@ -92,6 +92,8 @@
     "delta": 0.05,
     "discount": 0.04,
     "eta": 0.2,
+    "initial_labor_productivity": 1.0,
+    "labor_productivity_growth": 0.0,
     "omega_m": 0.35,
     "omega_x": 0.2,
     "population_growth": 0.012,
@@ -106,7 +108,7 @@
   "terminal_condition_provenance": {
     "imposed": [
       "C/Y",
-      "X/(q A^2)"
+      "X/(q B^2)"
     ],
     "nonimposed": [
       "gK",

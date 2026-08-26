@@ -215,7 +215,7 @@ def main() -> None:
             ("equations", "maximum_independent_dynamic_error", dynamic_max, "<", gates.independent_dynamics, dynamic_max < gates.independent_dynamics, "centered seven-point derivatives"),
             ("monopoly", "maximum_monopoly_foc_log_error", foc_max, "<", gates.monopoly_foc_log, foc_max < gates.monopoly_foc_log, ""),
             ("monopoly", "minimum_monopoly_soc_margin", soc_min, ">", 0.0, soc_min > 0.0, ""),
-            ("terminal", "maximum_imposed_terminal_error", imposed_error, "<", gates.imposed_terminal, imposed_error < gates.imposed_terminal, "C/Y and X/(qA^2)"),
+            ("terminal", "maximum_imposed_terminal_error", imposed_error, "<", gates.imposed_terminal, imposed_error < gates.imposed_terminal, "C/Y and X/(qB^2)"),
             ("terminal", "maximum_nonimposed_limit_error", nonimposed_error, "<", 5e-4, nonimposed_error < 5e-4, "growth, r, and s_X"),
             ("implementation", "maximum_fallback_flag", fallback_max, "=", 0.0, fallback_max == 0.0, ""),
             ("implementation", "bounded_exp_clipping_count", clipping_count, "=", 0.0, clipping_count == 0.0, ""),

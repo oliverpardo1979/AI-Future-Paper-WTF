@@ -2,15 +2,27 @@
 
 ## Status and scope
 
-This document is the contract for the next numerical implementation. It fixes
-the economic system, notation, state vector, terminal restrictions, and
-acceptance tests before any simulation code is changed. The current Python
-files and saved numerical outputs still implement the earlier notation in
-which `A` denotes AI capability. They remain the regression baseline until the
-migration described below is complete.
+This document records the numerical contract for the A--B implementation. It
+fixes the economic system, notation, state vector, terminal restrictions, and
+acceptance tests. The core migration is complete: the Python solver evaluates
+labor productivity as `A(t)=A0*exp(gamma_A*t)`, treats `B` as AI capability,
+and uses effective production labor `A*L`. Descriptive public fields such as
+`log_capability` retain their names and now unambiguously mean `log(B)`.
 
-The migration must reorganize notation and add exogenous labor productivity.
-It must not change the economic model when labor productivity is held fixed.
+The reported simulations continue to use `A0=1` and `gamma_A=0`. The script
+`scripts/check_axm_ab_regression.py` reconstructs sampled dated allocations
+and rates from the previously audited unit-elasticity, complementarity, and
+gross-substitutes files frozen at commit `d019192`, with a maximum absolute
+difference of zero. It also
+checks exact positive-`gamma_A` balanced paths for the automated benchmark and
+the `sigma_HM=1` extension. Thus the migration reorganizes notation and adds
+the exogenous productivity path without changing the model when labor
+productivity is held fixed.
+
+The broader near-unit grid, rescaled-time diagnostic, and boundary-Jacobian
+conditioning test below remain implementation extensions. The currently
+reported points `sigma_XL` in `{0.90,1.00,1.10}` have been re-solved and
+accepted under their existing horizon and common-window audits.
 
 ## 1. Notation contract
 
@@ -499,16 +511,23 @@ Every reported path must pass all of the following checks:
 - the \(1/|\sigma_{XL}-1|\) separation diagnostic around unit elasticity;
 - exact recovery of the current audited paths when \(\gamma_A=0\).
 
-## 13. Migration order
+## 13. Implementation status
 
-1. Rename capability symbols in the paper, appendix, audits, and public output
-   metadata without changing equations.
-2. Add the exogenous \(A_t\) path and replace production labor by \(A_tL_t\).
-3. Migrate and validate the automated benchmark \(H=0\).
-4. Reproduce the existing \(\gamma_A=0\) benchmark outputs.
-5. Migrate the \(\sigma_{HM}=1\) human-research case and verify its saddle
-   calculation.
-6. Migrate the \(\sigma_{HM}>1\) extension and verify convergence toward the
-   automated limiting Jacobian.
-7. Run the near-unit grid and the rescaled-time diagnostic.
-8. Only after all gates pass, regenerate the paper's tables and figures.
+1. **Complete:** rename capability symbols in the paper, appendix, audits, and
+   public output metadata without changing the equations.
+2. **Complete:** add the exogenous \(A_t\) path and replace production labor by
+   \(A_tL_t\).
+3. **Complete in the common solver:** implement the automated benchmark \(H=0\)
+   and verify its exact balanced path at positive \(\gamma_A\).
+4. **Complete:** reproduce and re-audit the reported \(\gamma_A=0\) benchmark
+   outputs.
+5. **Complete:** migrate the \(\sigma_{HM}=1\) human-research case and verify its
+   exact positive-\(\gamma_A\) balanced path.
+6. **Complete for the reported paths:** migrate the \(\sigma_{HM}>1\) extension
+   and re-solve the complementary, unit-elasticity, and gross-substitutes
+   exercises.
+7. **Partly complete:** re-solve and audit the near-unit points 0.90, 1.00, and
+   1.10. The denser grid, slow-time diagnostic, and explicit Jacobian
+   conditioning measure remain to be implemented.
+8. **Complete for the currently reported exercises:** regenerate their tables,
+   figures, audit reports, and manifests only after the applicable gates pass.

@@ -1,4 +1,4 @@
-"""Finite-horizon perfect-foresight path approximations with A*M AI research services.
+"""Finite-horizon perfect-foresight paths for the A--B model.
 
 This module replaces the proportional-investment and proportional-research
 closure in ``simulate_model.py`` with the household Euler equation and the
@@ -7,13 +7,14 @@ capital and capability are predetermined.  Initial consumption and the private
 shadow value of capability jump so that the path approaches the relevant
 constant-growth limit.
 
+Labor productivity is A(t)=A(0)*exp(gamma_A*t), while B is AI capability.
 The research technology is the generalized CES
-F(A,H,M)=chi*((1-omega_m)*H**rho_hm + omega_m*(A*M)**rho_hm)**(eta/rho_hm),
+F(B,H,M)=chi*((1-omega_m)*H**rho_hm + omega_m*(B*M)**rho_hm)**(eta/rho_hm),
 where rho_hm=(sigma_hm-1)/sigma_hm, or equivalently
-chi*E(H,A*M)**eta, where E is the effective-research CES index. Thus U and M are raw compute, A*U is
-AI production services, and A*M is AI research services. This file is
-intentionally separate from ``simulate_equilibrium``:
-the extra A inside the research CES changes both the research price and the
+chi*E(H,B*M)**eta, where E is the effective-research CES index. Thus U and M are raw compute, B*U is
+AI production services, and B*M is AI research services. This file is
+intentionally separate from ``simulate_equilibrium``: capability B enters both
+AI-service identities and therefore changes the research price and the
 developer's costate equation.
 """
 
@@ -47,12 +48,14 @@ import simulate_model as mechanism  # noqa: E402
 
 @dataclass(frozen=True)
 class Parameters:
-    """Parameters of the A*M specification; no direct A**phi term exists."""
+    """Parameters of the A--B specification; no direct B**phi term exists."""
 
     alpha: float = 0.33
     omega_x: float = 0.20
     sigma_xl: float = 1.00
     n: float = 0.012
+    labor_productivity_growth: float = 0.0
+    initial_labor_productivity: float = 1.0
     delta: float = 0.05
     discount: float = 0.04
     omega_m: float = 0.35
@@ -66,6 +69,10 @@ class Parameters:
                 "The maintained large-scale research-curvature condition "
                 "requires 0 < eta < alpha < 1."
             )
+        if self.labor_productivity_growth < 0.0:
+            raise ValueError("Labor-productivity growth must be nonnegative.")
+        if self.initial_labor_productivity <= 0.0:
+            raise ValueError("Initial labor productivity must be positive.")
 
 
 RESULT_DIR = ROOT / "numerical_axm"
@@ -106,8 +113,8 @@ def research_unit_cost(
 ) -> float:
     """Log unit expenditure for the effective-research index E."""
 
-    # Exact benchmark corner: effective research is E=A*M, whose unit cost
-    # in units of final output is 1/A.  Treating this case explicitly avoids
+    # Exact benchmark corner: effective research is E=B*M, whose unit cost
+    # in units of final output is 1/B.  Treating this case explicitly avoids
     # evaluating log(omega_H) when omega_H=1-omega_m is zero.
     if parameters.omega_m >= 1.0 - 1e-14:
         return -log_capability
@@ -134,7 +141,7 @@ def research_unit_cost(
 
 def monopoly_service_block(
     log_capital: float,
-    log_labor: float,
+    log_effective_labor: float,
     log_capability: float,
     parameters: Parameters,
 ) -> dict[str, float]:
@@ -148,17 +155,17 @@ def monopoly_service_block(
             + parameters.alpha * log_capital
             + (1.0 - parameters.alpha)
             * (1.0 - parameters.omega_x)
-            * log_labor
+            * log_effective_labor
         ) / (1.0 - beta)
         log_output = (
             parameters.alpha * log_capital
             + (1.0 - parameters.alpha)
             * (1.0 - parameters.omega_x)
-            * log_labor
+            * log_effective_labor
             + beta * log_ai_services
         )
         return {
-            "log_ai_ratio": log_ai_services - log_labor,
+            "log_ai_ratio": log_ai_services - log_effective_labor,
             "log_output": log_output,
             "ai_share": parameters.omega_x,
             "monopoly_root_fallback": False,
@@ -175,7 +182,7 @@ def monopoly_service_block(
         log_output = (
             parameters.alpha * log_capital
             + (1.0 - parameters.alpha)
-            * (log_labor + log_z_per_worker)
+            * (log_effective_labor + log_z_per_worker)
         )
         return log_output, min(max(ai_share, 1e-14), 1.0 - 1e-14)
 
@@ -192,7 +199,7 @@ def monopoly_service_block(
             math.log1p(-parameters.alpha)
             + math.log(ai_share)
             + log_output
-            - log_labor
+            - log_effective_labor
             - log_ratio
         )
         return (
@@ -264,16 +271,20 @@ def equilibrium_static_block(
     log_population: float,
     log_shadow_value: float,
     parameters: Parameters,
+    log_labor_productivity: float = 0.0,
 ) -> dict[str, float]:
     """Solve all intratemporal equilibrium conditions at one date."""
 
     if parameters.omega_m >= 1.0 - 1e-14:
         # Benchmark with no human input in capability production:
-        # H=0, L=N, E=A*M, and dot A=chi*(A*M)^eta.  The boundary is a true
+        # H=0, L=N, E=B*M, and dot B=chi*(B*M)^eta.  The boundary is a true
         # Kuhn--Tucker corner, not the limit of the interior labor root below.
+        log_effective_production_labor = (
+            log_labor_productivity + log_population
+        )
         production = monopoly_service_block(
             log_capital,
-            log_population,
+            log_effective_production_labor,
             log_capability,
             parameters,
         )
@@ -296,7 +307,9 @@ def equilibrium_static_block(
         log_automated_research = (
             log_automated_research_services - log_capability
         )
-        log_ai_services = log_population + production["log_ai_ratio"]
+        log_ai_services = (
+            log_effective_production_labor + production["log_ai_ratio"]
+        )
         log_inference_compute = log_ai_services - log_capability
         log_capability_flow = (
             math.log(parameters.chi)
@@ -312,6 +325,9 @@ def equilibrium_static_block(
             "human_share": 0.0,
             "log_human_research": -math.inf,
             "log_production_labor": log_population,
+            "log_effective_production_labor": (
+                log_effective_production_labor
+            ),
             "log_ai_ratio": production["log_ai_ratio"],
             "log_output": log_output,
             "ai_share": ai_share,
@@ -348,10 +364,13 @@ def equilibrium_static_block(
         )
         log_human_research = log_population + math.log(human_share)
         log_production_labor = log_population + math.log1p(-human_share)
+        log_effective_production_labor = (
+            log_labor_productivity + log_production_labor
+        )
 
         production = monopoly_service_block(
             log_capital,
-            log_production_labor,
+            log_effective_production_labor,
             log_capability,
             parameters,
         )
@@ -383,6 +402,9 @@ def equilibrium_static_block(
             "human_share": human_share,
             "log_human_research": log_human_research,
             "log_production_labor": log_production_labor,
+            "log_effective_production_labor": (
+                log_effective_production_labor
+            ),
             "log_ai_ratio": log_ai_ratio,
             "log_output": log_output,
             "ai_share": ai_share,
@@ -441,8 +463,8 @@ def equilibrium_static_block(
     _, block = allocation(logit_human_share)
 
     sigma = parameters.sigma_hm
-    # Conditional demand is for AI research services R=A*M.  The
-    # resource constraint prices normalized raw compute M=R/A at one.
+    # Conditional demand is for AI research services R=B*M.  The
+    # resource constraint prices normalized raw compute M=R/B at one.
     log_automated_research_services = (
         sigma * math.log(parameters.omega_m)
         + sigma
@@ -455,7 +477,9 @@ def equilibrium_static_block(
     log_automated_research = (
         log_automated_research_services - log_capability
     )
-    log_ai_services = block["log_production_labor"] + block["log_ai_ratio"]
+    log_ai_services = (
+        block["log_effective_production_labor"] + block["log_ai_ratio"]
+    )
     log_inference_compute = log_ai_services - log_capability
     log_capability_flow = (
         math.log(parameters.chi)
@@ -512,12 +536,17 @@ def equilibrium_rates(
         float, state
     )
     log_population = log_initial_population + parameters.n * time
+    log_labor_productivity = (
+        math.log(parameters.initial_labor_productivity)
+        + parameters.labor_productivity_growth * time
+    )
     block = equilibrium_static_block(
         log_capital,
         log_capability,
         log_population,
         log_shadow_value,
         parameters,
+        log_labor_productivity,
     )
 
     output_capital_ratio = bounded_exp(block["log_output"] - log_capital)
@@ -568,6 +597,7 @@ def equilibrium_rates(
             "consumption_growth": consumption_growth,
             "shadow_growth": shadow_growth,
             "log_population": log_population,
+            "log_labor_productivity": log_labor_productivity,
             "log_consumption": log_consumption,
             "log_shadow_value": log_shadow_value,
         }
@@ -583,17 +613,18 @@ def technology_log_errors(
 ) -> dict[str, float]:
     """Reconstruct the three static technologies independently in logs."""
 
-    log_labor = block["log_production_labor"]
+    log_effective_labor = block["log_effective_production_labor"]
     log_ai_services = block["log_ai_services"]
     if abs(parameters.sigma_xl - 1.0) <= 1e-10:
         log_composite = (
-            (1.0 - parameters.omega_x) * log_labor
+            (1.0 - parameters.omega_x) * log_effective_labor
             + parameters.omega_x * log_ai_services
         )
     else:
         ces_power = (parameters.sigma_xl - 1.0) / parameters.sigma_xl
         log_composite = logsumexp_pair(
-            math.log1p(-parameters.omega_x) + ces_power * log_labor,
+            math.log1p(-parameters.omega_x)
+            + ces_power * log_effective_labor,
             math.log(parameters.omega_x)
             + ces_power * log_ai_services,
         ) / ces_power
@@ -647,29 +678,35 @@ def asymptotic_targets(parameters: Parameters) -> dict[str, float | str]:
     research_feedback_weight = (
         parameters.omega_m if human_essential else 1.0
     )
+    gamma_a = parameters.labor_productivity_growth
+    effective_labor_growth = parameters.n + gamma_a
 
     if parameters.sigma_xl < 1.0 - 1e-9:
-        # When final-production inputs are gross complements, X/L converges
-        # to a finite constant while the resource costs U=X/A and M vanish
+        # When final-production inputs are gross complements, X/(A*L) converges
+        # to a finite constant while the resource costs U=X/B and M vanish
         # relative to output.  The limiting Euler equation therefore gives
-        # r=rho and K/Y=alpha/(rho+delta).  A constant U/(qA) closes the
+        # r=rho+gamma_A and K/Y=alpha/(rho+gamma_A+delta).  A constant
+        # U/(qB) closes the
         # developer costate equation and yields the growth rates below.
         capability_growth = (
             parameters.eta
-            * parameters.n
+            * (
+                parameters.n
+                + research_feedback_weight * gamma_a
+            )
             / (
                 1.0
                 + parameters.eta
                 * (1.0 - research_feedback_weight)
             )
         )
-        aggregate_growth = parameters.n
-        shadow_growth = parameters.n - 2.0 * capability_growth
+        aggregate_growth = effective_labor_growth
+        shadow_growth = aggregate_growth - 2.0 * capability_growth
         capital_output_ratio = parameters.alpha / (
-            parameters.discount + parameters.delta
+            parameters.discount + gamma_a + parameters.delta
         )
         investment_share = (
-            parameters.n + parameters.delta
+            aggregate_growth + parameters.delta
         ) * capital_output_ratio
         consumption_share = 1.0 - investment_share
         profit_shadow_ratio = (
@@ -713,7 +750,7 @@ def asymptotic_targets(parameters: Parameters) -> dict[str, float | str]:
             "limiting_research_weight": research_feedback_weight,
             "limiting_ai_share": limiting_ai_share,
             "limiting_ai_labor_ratio": limiting_ai_labor_ratio,
-            "limiting_net_interest_rate": parameters.discount,
+            "limiting_net_interest_rate": parameters.discount + gamma_a,
         }
 
     if abs(parameters.sigma_xl - 1.0) <= 1e-9:
@@ -727,10 +764,18 @@ def asymptotic_targets(parameters: Parameters) -> dict[str, float | str]:
         )
         if denominator <= 0.0:
             raise ValueError(
-                "The A*M Cobb--Douglas asymptotic denominator is not positive."
+                "The B*M Cobb--Douglas asymptotic denominator is not positive."
             )
-        capability_growth = parameters.eta * parameters.n / denominator
-        per_capita_growth = upsilon * capability_growth
+        capability_growth = (
+            parameters.eta
+            * (
+                parameters.n
+                + research_feedback_weight * gamma_a
+            )
+            / denominator
+        )
+        per_capita_growth = gamma_a + upsilon * capability_growth
+        aggregate_growth = parameters.n + per_capita_growth
         research_denominator = (
             parameters.discount
             - parameters.n
@@ -766,10 +811,10 @@ def asymptotic_targets(parameters: Parameters) -> dict[str, float | str]:
             + per_capita_growth
         )
         return {
-            "aggregate_growth": parameters.n + per_capita_growth,
+            "aggregate_growth": aggregate_growth,
             "capability_growth": capability_growth,
             "shadow_growth": (
-                parameters.n + per_capita_growth - capability_growth
+                aggregate_growth - capability_growth
             ),
             "consumption_share": (
                 1.0 - investment_share - beta**2 - research_share
@@ -792,6 +837,100 @@ def asymptotic_targets(parameters: Parameters) -> dict[str, float | str]:
     )
 
 
+def unit_balanced_growth_levels(
+    parameters: Parameters,
+    initial_population: float = 1.0,
+) -> dict[str, float]:
+    """Construct exact date-zero levels for the unit-elastic BGP.
+
+    The construction applies to the automated benchmark (omega_m=1) and to
+    the exact Cobb--Douglas human-research case (sigma_hm=1).  It implements
+    the level formulas proved in the paper and therefore provides a direct
+    numerical test of the positive-gamma_A specification.
+    """
+
+    if abs(parameters.sigma_xl - 1.0) > 1e-10:
+        raise ValueError("Exact balanced-growth levels require sigma_XL=1.")
+    automated = parameters.omega_m >= 1.0 - 1e-14
+    human_cobb_douglas = abs(parameters.sigma_hm - 1.0) <= 1e-10
+    if not automated and not human_cobb_douglas:
+        raise ValueError(
+            "Exact levels are implemented for H=0 or sigma_HM=1."
+        )
+    if initial_population <= 0.0:
+        raise ValueError("Initial population must be positive.")
+
+    targets = asymptotic_targets(parameters)
+    beta = (1.0 - parameters.alpha) * parameters.omega_x
+    lam = (1.0 - parameters.alpha) * (1.0 - parameters.omega_x)
+    nu = beta / lam
+    u_share = beta**2
+    m_share = float(targets["research_share"])
+    c_share = float(targets["consumption_share"])
+    k_ratio = float(targets["capital_output_ratio"])
+    capability_growth = float(targets["capability_growth"])
+    research_weight = 1.0 if automated else parameters.omega_m
+
+    if automated:
+        production_labor_share = 1.0
+        human_research_zero = 0.0
+    else:
+        omega_h = 1.0 - parameters.omega_m
+        production_labor_share = (
+            lam * parameters.omega_m
+            / (lam * parameters.omega_m + m_share * omega_h)
+        )
+        human_research_zero = (
+            1.0 - production_labor_share
+        ) * initial_population
+
+    labor_productivity_zero = parameters.initial_labor_productivity
+    level_scale = (
+        labor_productivity_zero
+        * production_labor_share
+        * initial_population
+        * k_ratio ** (parameters.alpha / lam)
+        * u_share ** (beta / lam)
+    )
+    level_exponent = 1.0 / parameters.eta - research_weight * (1.0 + nu)
+    if level_exponent <= 0.0:
+        raise ValueError("The balanced-growth level exponent is not positive.")
+    capability_base = (
+        (parameters.chi / capability_growth) ** (1.0 / parameters.eta)
+        * (m_share * level_scale) ** research_weight
+    )
+    if not automated:
+        capability_base *= human_research_zero ** (1.0 - research_weight)
+    capability_zero = capability_base ** (1.0 / level_exponent)
+    output_zero = level_scale * capability_zero**nu
+    capital_zero = k_ratio * output_zero
+    consumption_zero = c_share * output_zero
+    research_compute_zero = m_share * output_zero
+    inference_compute_zero = u_share * output_zero
+    shadow_zero = (
+        research_compute_zero
+        / (
+            parameters.eta
+            * research_weight
+            * capability_growth
+            * capability_zero
+        )
+    )
+    return {
+        "labor_productivity": labor_productivity_zero,
+        "population": initial_population,
+        "production_labor_share": production_labor_share,
+        "human_research": human_research_zero,
+        "capability": capability_zero,
+        "output": output_zero,
+        "capital": capital_zero,
+        "consumption": consumption_zero,
+        "inference_compute": inference_compute_zero,
+        "research_compute": research_compute_zero,
+        "shadow_value": shadow_zero,
+    }
+
+
 def fixed_share_guess(
     parameters: Parameters,
     initial_state: tuple[float, float, float],
@@ -801,6 +940,9 @@ def fixed_share_guess(
     targets = asymptotic_targets(parameters)
     log_initial_capability = math.log(initial_state[1])
     log_initial_population = math.log(initial_state[2])
+    log_initial_labor_productivity = math.log(
+        parameters.initial_labor_productivity
+    )
     terminal_shadow_object = str(targets["terminal_shadow_object"])
 
     def initial_ratios(values: np.ndarray) -> np.ndarray:
@@ -811,6 +953,7 @@ def fixed_share_guess(
             log_initial_population,
             log_shadow,
             parameters,
+            log_initial_labor_productivity,
         )
         if terminal_shadow_object == "profit_shadow_ratio":
             shadow_residual = (
@@ -864,6 +1007,8 @@ def fixed_share_guess(
             log_initial_population + parameters.n * float(time),
             float(log_shadow[index]),
             parameters,
+            log_initial_labor_productivity
+            + parameters.labor_productivity_growth * float(time),
         )
         log_consumption[index] = (
             block["log_output"]
@@ -1023,6 +1168,7 @@ def solve_equilibrium_shooting(
         math.log(initial_state[2]),
         float(jump_guess[1]),
         parameters,
+        math.log(parameters.initial_labor_productivity),
     )
     log_initial_output = initial_block["log_output"]
     lower_bounds = np.asarray(
@@ -1074,6 +1220,10 @@ def evaluate_solution(
             float, states[:, index]
         )
         log_population = log_initial_population + parameters.n * float(time)
+        log_labor_productivity = (
+            math.log(parameters.initial_labor_productivity)
+            + parameters.labor_productivity_growth * float(time)
+        )
         investment_share = (
             (derivatives[0] + parameters.delta)
             * math.exp(log_capital - block["log_output"])
@@ -1169,7 +1319,7 @@ def evaluate_solution(
                 + final_ces_power
                 * (
                     block["log_ai_services"]
-                    - block["log_production_labor"]
+                    - block["log_effective_production_labor"]
                 )
             )
         reconstructed_research_price = research_unit_cost(
@@ -1202,6 +1352,7 @@ def evaluate_solution(
             "time": float(time),
             "log_capital": log_capital,
             "log_capability": log_capability,
+            "log_labor_productivity": log_labor_productivity,
             "log_population": log_population,
             "log_consumption": log_consumption,
             "log_shadow_value": log_shadow,
@@ -1215,6 +1366,9 @@ def evaluate_solution(
             "log_inference_compute": block["log_inference_compute"],
             "log_human_research": block["log_human_research"],
             "log_production_labor": block["log_production_labor"],
+            "log_effective_production_labor": block[
+                "log_effective_production_labor"
+            ],
             "log_automated_research": block["log_automated_research"],
             "log_automated_research_services": block[
                 "log_automated_research_services"
@@ -1260,6 +1414,7 @@ def evaluate_solution(
                 * math.exp(-log_shadow)
             ),
             "ai_labor_ratio": math.exp(block["log_ai_ratio"]),
+            "ai_effective_labor_ratio": math.exp(block["log_ai_ratio"]),
             "monopoly_root_fallback": float(
                 bool(block["monopoly_root_fallback"])
             ),
@@ -1273,6 +1428,11 @@ def evaluate_solution(
                 - block["log_automated_research_services"]
             ),
             "log_output_per_capita": block["log_output"] - log_population,
+            "log_output_per_effective_person": (
+                block["log_output"]
+                - log_population
+                - log_labor_productivity
+            ),
             "log_consumption_per_capita": log_consumption - log_population,
             "log_capital_per_capita": log_capital - log_population,
             "monopoly_foc_log_error": monopoly_foc_log_error,
@@ -1369,6 +1529,11 @@ def evaluate_solution(
     for row, growth, wage_rate in zip(rows, output_growth, wage_growth):
         row["output_growth"] = float(growth)
         row["output_per_capita_growth"] = float(growth - parameters.n)
+        row["output_per_effective_person_growth"] = float(
+            growth
+            - parameters.n
+            - parameters.labor_productivity_growth
+        )
         row["wage_growth"] = float(wage_rate)
     return rows
 
@@ -1795,6 +1960,12 @@ def main() -> None:
                 "scenario": name,
                 "alpha": parameters.alpha,
                 "eta": parameters.eta,
+                "labor_productivity_growth": (
+                    parameters.labor_productivity_growth
+                ),
+                "initial_labor_productivity": (
+                    parameters.initial_labor_productivity
+                ),
                 "sigma_xl": sigma_xl,
                 "sigma_hm": sigma_hm,
                 "horizon": horizon,

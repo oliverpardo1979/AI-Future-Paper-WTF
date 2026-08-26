@@ -1,11 +1,13 @@
 {
-  "generated_at_utc": "2026-08-19T07:23:55.544586+00:00",
+  "generated_at_utc": "2026-08-26T10:45:50.540791+00:00",
   "accepted": true,
   "parameters": {
     "alpha": 0.33,
     "omega_x": 0.2,
     "sigma_xl": 0.9,
     "population_growth": 0.012,
+    "labor_productivity_growth": 0.0,
+    "initial_labor_productivity": 1.0,
     "delta": 0.05,
     "discount": 0.04,
     "omega_m": 0.35,
@@ -25,11 +27,11 @@
     },
     "scripts/audit_axm_near_unit_lower.py": {
       "bytes": 11150,
-      "sha256": "4abb3e897696ce504e163eef1cd194ff8ba58236b329444e14260143af8e756c"
+      "sha256": "5835b7c8611dfa1bd0846e27c651d05ac69bcca30704c3c8519bb472d30fece0"
     },
     "numerical_axm/near_unit_sigma090_horizon_paths.csv": {
-      "bytes": 10830264,
-      "sha256": "5ca89d9dd19621b8dfedf003309f0328546a9c75ac0428ddd5ce00d11973ce39"
+      "bytes": 11519733,
+      "sha256": "8a55893140e342699eeac364536afcf97a3009c919339e121d6350219253b8bd"
     },
     "numerical_axm/near_unit_sigma090_horizon_summary.csv": {
       "bytes": 1181,
@@ -37,11 +39,11 @@
     },
     "numerical_axm/near_unit_sigma090_acceptance_report.csv": {
       "bytes": 5204,
-      "sha256": "a1b5d8dc633d1d1e09388a0c9043cbb9c239333cf989bc658b17b355b688acf8"
+      "sha256": "526a872c71172cc3372e0e67aa475badf743004d6cb764a60eefac48fbabc179"
     },
     "numerical_axm/near_unit_sigma090_equation_residuals.csv": {
-      "bytes": 5824665,
-      "sha256": "5e694c71a9cedf47a1680d6e437f41021438bf5632d2133c21784c6b8dbbc6f9"
+      "bytes": 5888350,
+      "sha256": "a7148f75e94046920bede89a15da3a216732da63d3b61d246f3f407412b5ab2b"
     }
   },
   "claim_not_established": [

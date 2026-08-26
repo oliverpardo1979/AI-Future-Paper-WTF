@@ -1,4 +1,4 @@
-"""Reproducible algebraic and numerical audit for the A*M paper."""
+"""Reproducible algebraic and numerical audit for the A--B model."""
 
 from __future__ import annotations
 
@@ -337,7 +337,7 @@ def numerical_checks() -> list[dict[str, str | float]]:
 
 
 def path_specification_checks() -> list[dict[str, str | float]]:
-    """Reconstruct the consolidated A*M research block from every saved row."""
+    """Reconstruct the consolidated B*M research block from every saved row."""
 
     with PATHS.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
@@ -359,7 +359,7 @@ def path_specification_checks() -> list[dict[str, str | float]]:
         "axm_sigma_xl_1_hm_2": 2.0,
     }
     if {row["scenario"] for row in rows} != set(scenario_sigma_hm):
-        raise AssertionError("Unexpected scenarios in the saved A*M paths.")
+        raise AssertionError("Unexpected scenarios in the saved A--B paths.")
     expected_horizon_scenarios = {
         "axm_sigma_xl_1_hm_1_T_2600",
         "axm_sigma_xl_1_hm_1_T_3100",
@@ -420,8 +420,11 @@ def path_specification_checks() -> list[dict[str, str | float]]:
     eta = 0.20
     chi = 0.01
     max_errors = {
-        "inference_service_X_equals_AU": 0.0,
-        "automated_research_service_equals_AM": 0.0,
+        "inference_service_X_equals_BU": 0.0,
+        "automated_research_service_equals_BM": 0.0,
+        "labor_productivity_path": 0.0,
+        "effective_labor_identity": 0.0,
+        "final_production": 0.0,
         "competitive_factor_prices": 0.0,
         "net_interest_rate": 0.0,
         "household_budget_equivalence": 0.0,
@@ -453,10 +456,44 @@ def path_specification_checks() -> list[dict[str, str | float]]:
         log_output = float(row["log_output"])
         log_capital = float(row["log_capital"])
         log_production_labor = float(row["log_production_labor"])
+        log_labor_productivity = float(
+            row.get("log_labor_productivity", 0.0)
+        )
+        log_effective_production_labor = float(
+            row.get(
+                "log_effective_production_labor",
+                log_labor_productivity + log_production_labor,
+            )
+        )
         log_ai_price = float(row["log_ai_price"])
         log_research_price = float(row["log_research_price"])
         alpha = 0.33
         omega_x = 0.20
+
+        max_errors["labor_productivity_path"] = max(
+            max_errors["labor_productivity_path"],
+            abs(log_labor_productivity),
+        )
+        max_errors["effective_labor_identity"] = max(
+            max_errors["effective_labor_identity"],
+            abs(
+                log_effective_production_labor
+                - log_labor_productivity
+                - log_production_labor
+            ),
+        )
+        reconstructed_output = (
+            alpha * log_capital
+            + (1.0 - alpha)
+            * (
+                (1.0 - omega_x) * log_effective_production_labor
+                + omega_x * log_ai_services
+            )
+        )
+        max_errors["final_production"] = max(
+            max_errors["final_production"],
+            abs(log_output - reconstructed_output),
+        )
 
         factor_price_errors = (
             float(row["gross_capital_return"])
@@ -512,12 +549,12 @@ def path_specification_checks() -> list[dict[str, str | float]]:
             abs(float(row["ai_share"]) - omega_x),
         )
 
-        max_errors["inference_service_X_equals_AU"] = max(
-            max_errors["inference_service_X_equals_AU"],
+        max_errors["inference_service_X_equals_BU"] = max(
+            max_errors["inference_service_X_equals_BU"],
             abs(log_ai_services - log_capability - log_inference_compute),
         )
-        max_errors["automated_research_service_equals_AM"] = max(
-            max_errors["automated_research_service_equals_AM"],
+        max_errors["automated_research_service_equals_BM"] = max(
+            max_errors["automated_research_service_equals_BM"],
             abs(
                 log_automated_services
                 - log_capability
@@ -667,8 +704,11 @@ def path_specification_checks() -> list[dict[str, str | float]]:
         )
 
     tolerances = {
-        "inference_service_X_equals_AU": 1e-10,
-        "automated_research_service_equals_AM": 1e-10,
+        "inference_service_X_equals_BU": 1e-10,
+        "automated_research_service_equals_BM": 1e-10,
+        "labor_productivity_path": 1e-12,
+        "effective_labor_identity": 1e-12,
+        "final_production": 1e-10,
         "competitive_factor_prices": 1e-10,
         "net_interest_rate": 1e-10,
         "household_budget_equivalence": 1e-10,
@@ -689,7 +729,7 @@ def path_specification_checks() -> list[dict[str, str | float]]:
         if error >= tolerances[name]
     }
     if failed:
-        raise AssertionError({"A*M path reconstruction failures": failed})
+        raise AssertionError({"A--B path reconstruction failures": failed})
     return structural_report + [
         {
             "object": f"all_saved_paths:{name}",
@@ -1032,7 +1072,7 @@ def main() -> None:
     script_path = Path(__file__).resolve()
     generator_path = ROOT / "scripts" / "simulate_axm_equilibrium.py"
     manifest = {
-        "audit": "A*M unit-elasticity acceptance audit",
+        "audit": "A--B unit-elasticity acceptance audit",
         "audit_version": 1,
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "accepted": accepted,

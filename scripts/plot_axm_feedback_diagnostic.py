@@ -152,7 +152,7 @@ def validate_and_derive(
             ai_shares.append(s_x)
 
             # The research-compute FOC stored in the equilibrium system is
-            # M/Y = eta*s_M*(qA/Y)*g_A.  Recovering eta row by row prevents the
+            # M/Y = eta*s_M*(qB/Y)*g_B.  Recovering eta row by row prevents the
             # plotter from silently using a parameter different from the path.
             denominator = (
                 s_m

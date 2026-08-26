@@ -8,7 +8,7 @@ equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_saved_rate_e
 equations,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_independent_dynamic_error,5.165572835481858e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_monopoly_foc_log_error,1.6563994620355516e-10,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,minimum_monopoly_soc_margin,0.07423013353470312,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,household_tvc_log_proxy,-124.44282036686938,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,developer_tvc_log_proxy,-134.8837866052551,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_1,0.75,1.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -22,7 +22,7 @@ equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_saved_rate_e
 equations,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_independent_dynamic_error,5.195450066709101e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_monopoly_foc_log_error,3.1390712251777586e-10,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,minimum_monopoly_soc_margin,0.07421213443462571,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,household_tvc_log_proxy,-124.4428146843365,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,developer_tvc_log_proxy,-135.67837865969727,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_2,0.75,2.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -36,7 +36,7 @@ equations,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_saved
 equations,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_independent_dynamic_error,8.286225045787271e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_monopoly_foc_log_error,2.6703972366703965e-11,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,minimum_monopoly_soc_margin,0.0744200947432397,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,household_tvc_log_proxy,-99.24288305926932,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,developer_tvc_log_proxy,-107.7729099694515,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_1_T_3600,0.75,1.0,3600.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -50,7 +50,7 @@ equations,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_saved
 equations,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_independent_dynamic_error,6.456778631185739e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_monopoly_foc_log_error,6.709477418098686e-11,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,minimum_monopoly_soc_margin,0.07428294332519776,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,household_tvc_log_proxy,-111.84283779527509,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,developer_tvc_log_proxy,-121.3282002079866,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_1_T_4050,0.75,1.0,4050.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -64,7 +64,7 @@ equations,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_saved
 equations,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_independent_dynamic_error,5.165572835481858e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_monopoly_foc_log_error,1.6563994620355516e-10,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,minimum_monopoly_soc_margin,0.07423013353470312,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,household_tvc_log_proxy,-124.44282036686938,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,developer_tvc_log_proxy,-134.8837866052551,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_1_T_4500,0.75,1.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -78,7 +78,7 @@ equations,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_saved
 equations,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_independent_dynamic_error,8.343140075976058e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_monopoly_foc_log_error,3.9884540115053824e-11,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,minimum_monopoly_soc_margin,0.07432711491787831,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,household_tvc_log_proxy,-99.24285458898528,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,developer_tvc_log_proxy,-108.31941922137965,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_2_T_3600,0.75,2.0,3600.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -92,7 +92,7 @@ equations,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_saved
 equations,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_independent_dynamic_error,6.498005512695082e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_monopoly_foc_log_error,6.679279351828882e-11,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,minimum_monopoly_soc_margin,0.07424131491253508,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,household_tvc_log_proxy,-111.84282481368567,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,developer_tvc_log_proxy,-121.99863907523235,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_2_T_4050,0.75,2.0,4050.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths
@@ -106,7 +106,7 @@ equations,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_saved
 equations,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_independent_dynamic_error,5.195450066709101e-07,<,2e-05,pass,centered seven-point derivatives on interior dates
 monopoly,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_monopoly_foc_log_error,3.1390712251777586e-10,<,1e-09,pass,dimensionless log FOC
 monopoly,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,minimum_monopoly_soc_margin,0.07421213443462571,>,0.0,pass,
-terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q A^2) only
+terminal_imposed,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_imposed_terminal_error,4.107825191113079e-15,<,1e-07,pass,C/Y and X/(q B^2) only
 transversality,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,household_tvc_log_proxy,-124.4428146843365,<,-20.0,pass,finite-horizon diagnostic
 transversality,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,developer_tvc_log_proxy,-135.67837865969727,<,-20.0,pass,finite-horizon diagnostic
 implementation,axm_complements_sigma_xl_075_hm_2_T_4500,0.75,2.0,4500.0,maximum_static_fallback_flag,0.0,=,0.0,pass,monopoly and labor root flags on accepted paths

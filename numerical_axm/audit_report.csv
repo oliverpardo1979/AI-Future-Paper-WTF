@@ -58,8 +58,11 @@ axm_sigma_xl_1_hm_1_T_3600:complete_finite_time_grid,1801.0,pass
 axm_sigma_xl_1_hm_2_T_5400:complete_finite_time_grid,2701.0,pass
 axm_sigma_xl_1_hm_2_T_5800:complete_finite_time_grid,2901.0,pass
 axm_sigma_xl_1_hm_2_T_6200:complete_finite_time_grid,3101.0,pass
-all_saved_paths:inference_service_X_equals_AU,0.0,pass
-all_saved_paths:automated_research_service_equals_AM,0.0,pass
+all_saved_paths:inference_service_X_equals_BU,0.0,pass
+all_saved_paths:automated_research_service_equals_BM,0.0,pass
+all_saved_paths:labor_productivity_path,0.0,pass
+all_saved_paths:effective_labor_identity,0.0,pass
+all_saved_paths:final_production,2.842170943040401e-14,pass
 all_saved_paths:competitive_factor_prices,7.105427357601002e-15,pass
 all_saved_paths:net_interest_rate,0.0,pass
 all_saved_paths:household_budget_equivalence,9.01362318117549e-15,pass

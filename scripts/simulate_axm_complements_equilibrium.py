@@ -1,6 +1,6 @@
 """Equilibrium paths for gross complements in final production.
 
-This runner deliberately imports the canonical A*M equilibrium solver rather
+This runner deliberately imports the canonical A--B equilibrium solver rather
 than duplicating its economic equations.  It solves the sigma_XL=0.75 branch
 from a cold start at three horizons for both Cobb--Douglas and gross-substitute
 AI research.  The longest horizon is the primary path used for figures.
@@ -54,7 +54,7 @@ MARKERS = {1.0: "circle", 2.0: "square"}
 
 
 def initial_state() -> tuple[float, float, float]:
-    """Use the same predetermined stocks as the canonical A*M experiments."""
+    """Use the same predetermined stocks as the canonical B*M experiments."""
 
     reference = replace(core.Parameters(), sigma_xl=1.0, sigma_hm=2.0)
     seed = core.fixed_share_guess(
@@ -78,6 +78,12 @@ def add_provenance(
             "scenario": row["scenario"],
             "alpha": core.Parameters().alpha,
             "eta": core.Parameters().eta,
+            "labor_productivity_growth": (
+                core.Parameters().labor_productivity_growth
+            ),
+            "initial_labor_productivity": (
+                core.Parameters().initial_labor_productivity
+            ),
             "sigma_xl": SIGMA_XL,
             "sigma_hm": sigma_hm,
             "horizon": horizon,
@@ -276,6 +282,8 @@ def result_record(
         "scenario": str(initial["scenario"]),
         "alpha": parameters.alpha,
         "eta": parameters.eta,
+        "labor_productivity_growth": parameters.labor_productivity_growth,
+        "initial_labor_productivity": parameters.initial_labor_productivity,
         "sigma_xl": SIGMA_XL,
         "sigma_hm": sigma_hm,
         "horizon": horizon,
@@ -309,6 +317,9 @@ def result_record(
         "terminal_consumption_share": float(terminal["consumption_share"]),
         "terminal_resource_share_sum": float(terminal["resource_share_sum"]),
         "terminal_ai_share": float(terminal["ai_share"]),
+        "terminal_ai_effective_labor_ratio": float(
+            terminal["ai_effective_labor_ratio"]
+        ),
         "terminal_ai_labor_ratio": float(terminal["ai_labor_ratio"]),
         "terminal_automated_research_share": float(
             terminal["automated_research_share"]
@@ -335,6 +346,10 @@ def result_record(
         "terminal_ai_share_target_error": abs(
             float(terminal["ai_share"])
             - float(targets["limiting_ai_share"])
+        ),
+        "terminal_ai_effective_labor_ratio_target_error": abs(
+            float(terminal["ai_effective_labor_ratio"])
+            - float(targets["limiting_ai_labor_ratio"])
         ),
         "terminal_ai_labor_ratio_target_error": abs(
             float(terminal["ai_labor_ratio"])
@@ -670,7 +685,7 @@ def draw_figures(
             },
             {
                 "title": "AI production services / effective production labor, X/(AL)",
-                "field": "ai_labor_ratio",
+                "field": "ai_effective_labor_ratio",
                 "format": lambda value: f"{value:.2f}",
                 "references": [
                     float(targets_by_sigma[1.0]["limiting_ai_labor_ratio"])

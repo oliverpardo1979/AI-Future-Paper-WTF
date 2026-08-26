@@ -1,11 +1,11 @@
-"""Independent acceptance audit for the A*M gross-complements paths.
+"""Independent acceptance audit for the A--B gross-complements paths.
 
 The audit deliberately does not import ``simulate_axm_equilibrium`` or any
 solver function.  It reads the four canonical ``complements_*`` CSV files,
 reconstructs the equilibrium equations from primitives, differentiates the
 saved state paths independently, and applies the ex-ante acceptance gates.
 
-The finite-horizon terminal conditions impose only C/Y and X/(q A^2).  All
+The finite-horizon terminal conditions impose only C/Y and X/(q B^2).  All
 reported long-run growth, interest-rate, CES-share, and vanishing-resource
 checks are therefore non-imposed diagnostics.  Rejected Newton trial states
 are not observable in the saved files: the clipping check certifies the
@@ -48,6 +48,8 @@ class Parameters:
     omega_x: float = 0.20
     sigma_xl: float = 0.75
     population_growth: float = 0.012
+    labor_productivity_growth: float = 0.0
+    initial_labor_productivity: float = 1.0
     delta: float = 0.05
     discount: float = 0.04
     omega_m: float = 0.35
@@ -103,7 +105,7 @@ RATE_FIELDS = (
 
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Independently audit sigma_XL<1 A*M equilibrium paths."
+        description="Independently audit sigma_XL<1 A--B equilibrium paths."
     )
     parser.add_argument("--result-dir", type=Path, default=DEFAULT_RESULT_DIR)
     parser.add_argument(
@@ -243,13 +245,21 @@ def target_values(sigma_hm: float) -> dict[str, float]:
     research_weight = p.omega_m if math.isclose(sigma_hm, 1.0) else 1.0
     capability_growth = (
         p.eta
-        * p.population_growth
+        * (
+            p.population_growth
+            + research_weight * p.labor_productivity_growth
+        )
         / (1.0 + p.eta * (1.0 - research_weight))
     )
-    shadow_growth = p.population_growth - 2.0 * capability_growth
-    capital_output_ratio = p.alpha / (p.discount + p.delta)
+    aggregate_growth = (
+        p.population_growth + p.labor_productivity_growth
+    )
+    shadow_growth = aggregate_growth - 2.0 * capability_growth
+    capital_output_ratio = p.alpha / (
+        p.discount + p.labor_productivity_growth + p.delta
+    )
     investment_share = (
-        p.population_growth + p.delta
+        aggregate_growth + p.delta
     ) * capital_output_ratio
     consumption_share = 1.0 - investment_share
     profit_shadow_ratio = (
@@ -261,7 +271,7 @@ def target_values(sigma_hm: float) -> dict[str, float]:
         1.0 - p.alpha * p.sigma_xl
     )
     return {
-        "aggregate_growth": p.population_growth,
+        "aggregate_growth": aggregate_growth,
         "capability_growth": capability_growth,
         "shadow_growth": shadow_growth,
         "capital_output_ratio": capital_output_ratio,
@@ -269,7 +279,7 @@ def target_values(sigma_hm: float) -> dict[str, float]:
         "consumption_share": consumption_share,
         "profit_shadow_ratio": profit_shadow_ratio,
         "limiting_ai_share": limiting_ai_share,
-        "net_interest_rate": p.discount,
+        "net_interest_rate": p.discount + p.labor_productivity_growth,
         "research_weight": research_weight,
     }
 
@@ -293,12 +303,23 @@ def reconstruct_row(
     log_u = number(row, "log_inference_compute")
     log_h = number(row, "log_human_research")
     log_l = number(row, "log_production_labor")
+    log_labor_productivity = (
+        number(row, "log_labor_productivity")
+        if "log_labor_productivity" in row
+        else math.log(p.initial_labor_productivity)
+        + p.labor_productivity_growth * number(row, "time")
+    )
+    log_effective_labor = (
+        number(row, "log_effective_production_labor")
+        if "log_effective_production_labor" in row
+        else log_labor_productivity + log_l
+    )
     log_m = number(row, "log_automated_research")
     log_am = number(row, "log_automated_research_services")
     log_e = number(row, "log_effective_research")
 
     log_z, s_x = log_ces_and_right_share(
-        log_l, log_x, p.omega_x, p.sigma_xl
+        log_effective_labor, log_x, p.omega_x, p.sigma_xl
     )
     log_e_reconstructed, s_m = log_ces_and_right_share(
         log_h, log_am, p.omega_m, sigma_hm
@@ -404,6 +425,14 @@ def reconstruct_row(
     static_errors = {
         "population_path_error": (
             log_n - p.population_growth * number(row, "time")
+        ),
+        "labor_productivity_path_error": (
+            log_labor_productivity
+            - math.log(p.initial_labor_productivity)
+            - p.labor_productivity_growth * number(row, "time")
+        ),
+        "effective_labor_identity_error": (
+            log_effective_labor - log_labor_productivity - log_l
         ),
         "labor_market_error_independent": human_share + labor_share - 1.0,
         "final_production_log_error_independent": (
@@ -871,7 +900,7 @@ def audit(
                 GATES.imposed_terminal,
                 path_metrics[name]["imposed_terminal_max"]
                 < GATES.imposed_terminal,
-                "C/Y and X/(q A^2) only",
+                "C/Y and X/(q B^2) only",
             ),
             (
                 "transversality",
@@ -1127,7 +1156,7 @@ def main() -> None:
     generator_path = ROOT / "scripts" / "simulate_axm_complements_equilibrium.py"
     core_solver_path = ROOT / "scripts" / "simulate_axm_equilibrium.py"
     manifest = {
-        "audit": "A*M gross-complements independent acceptance audit",
+        "audit": "A--B gross-complements independent acceptance audit",
         "audit_version": 1,
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "accepted": accepted,
@@ -1151,7 +1180,7 @@ def main() -> None:
             ],
         },
         "terminal_condition_provenance": {
-            "imposed": ["C/Y", "X/(q A^2)"],
+            "imposed": ["C/Y", "X/(q B^2)"],
             "nonimposed": [
                 "gK",
                 "gC",

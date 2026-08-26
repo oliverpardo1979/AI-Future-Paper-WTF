@@ -1,4 +1,4 @@
-"""Free-boundary A*M equilibrium transitions for gross substitution.
+"""Free-boundary A--B equilibrium transitions for gross substitution.
 
 For ``sigma_xl > 1`` and unbounded capability, the model has no finite-rate
 terminal balanced-growth path.  This module therefore does not impose one.  It
@@ -45,8 +45,8 @@ def high_sigma_targets(parameters: equilibrium.Parameters) -> dict[str, float]:
     """Return AI-dominated singular-path ratios.
 
     Write ``z = Y/K`` and ``kappa = (1-alpha)/alpha``.  Along the
-    AI-dominated necessary-condition singularity, ``g_A / z``, the consumption share,
-    the investment share, the automated-research resource share, and ``q A/K``
+    AI-dominated necessary-condition singularity, ``g_B / z``, the consumption share,
+    the investment share, the automated-research resource share, and ``q B/K``
     converge to constants.
     """
 
@@ -64,8 +64,8 @@ def high_sigma_targets(parameters: equilibrium.Parameters) -> dict[str, float]:
     alpha = parameters.alpha
     kappa = (1.0 - alpha) / alpha
     # In the automated limit, the generalized CES implies
-    # dot A proportional to (A*M)^eta, so A enters research directly through
-    # A*M. The singular denominator is therefore
+    # dot B proportional to (B*M)^eta, so B enters research directly through
+    # B*M. The singular denominator is therefore
     # 1+kappa-eta, not the denominator of a model in which raw M enters
     # the research CES without being augmented by A.
     denominator = 1.0 + kappa - parameters.eta
@@ -100,7 +100,7 @@ def high_sigma_targets(parameters: equilibrium.Parameters) -> dict[str, float]:
 def asymptotic_output_capital_coefficient(
     parameters: equilibrium.Parameters,
 ) -> float:
-    """Coefficient D in Y/K ~ D A**((1-alpha)/alpha)."""
+    """Coefficient D in Y/K ~ D B**((1-alpha)/alpha)."""
 
     alpha = parameters.alpha
     exponent = (1.0 - alpha) / alpha
@@ -148,10 +148,10 @@ def asymptotic_terminal_state(
 ) -> np.ndarray:
     """Construct an exact-static terminal state near the singular boundary.
 
-    The analytical scaling supplies starting levels for ``A`` and ``K``.  A
+    The analytical scaling supplies starting levels for ``B`` and ``K``.  A
     two-dimensional least-squares correction then imposes, using the full
     intratemporal block at the guessed terminal date, both ``Y/K=z_T`` and
-    ``g_A/z=h``.  Consumption and the capability shadow value follow from the
+    ``g_B/z=h``.  Consumption and the capability shadow value follow from the
     two terminal ratios that the free-boundary problem imposes.
     """
 
@@ -189,6 +189,8 @@ def asymptotic_terminal_state(
             math.log(initial_state[2]) + parameters.n * duration_guess,
             log_shadow,
             parameters,
+            math.log(parameters.initial_labor_productivity)
+            + parameters.labor_productivity_growth * duration_guess,
         )
         log_z = block["log_output"] - log_capital
         log_g_a = (
@@ -230,6 +232,8 @@ def asymptotic_terminal_state(
         math.log(initial_state[2]) + parameters.n * duration_guess,
         log_shadow,
         parameters,
+        math.log(parameters.initial_labor_productivity)
+        + parameters.labor_productivity_growth * duration_guess,
     )
     log_consumption = (
         math.log(targets["consumption_share"]) + block["log_output"]
@@ -691,6 +695,10 @@ def evaluate_free_boundary_solution(
             float, states[:, index]
         )
         log_population = parameters.n * float(time)
+        log_labor_productivity = (
+            math.log(parameters.initial_labor_productivity)
+            + parameters.labor_productivity_growth * float(time)
+        )
         output_capital_ratio = math.exp(block["log_output"] - log_capital)
         investment_share = (
             (derivatives[0] + parameters.delta) / output_capital_ratio
@@ -700,7 +708,13 @@ def evaluate_free_boundary_solution(
             log_shadow + log_capability - log_capital
         )
         direction = np.asarray(
-            [derivatives[0], derivatives[1], parameters.n, derivatives[3]]
+            [
+                derivatives[0],
+                derivatives[1],
+                parameters.n,
+                derivatives[3],
+                parameters.labor_productivity_growth,
+            ]
         )
         directional_step = 1e-4 / max(1.0, float(np.max(np.abs(direction))))
 
@@ -712,6 +726,7 @@ def evaluate_free_boundary_solution(
                 log_population + float(shift[2]),
                 log_shadow + float(shift[3]),
                 parameters,
+                log_labor_productivity + float(shift[4]),
             )
 
         plus_block = shifted_static(1.0)
@@ -796,6 +811,7 @@ def evaluate_free_boundary_solution(
             "time_to_terminal": duration - float(time),
             "log_capital": log_capital,
             "log_capability": log_capability,
+            "log_labor_productivity": log_labor_productivity,
             "log_population": log_population,
             "log_consumption": log_consumption,
             "log_shadow_value": log_shadow,
@@ -808,12 +824,20 @@ def evaluate_free_boundary_solution(
             "log_inference_compute": block["log_inference_compute"],
             "log_human_research": block["log_human_research"],
             "log_production_labor": block["log_production_labor"],
+            "log_effective_production_labor": block[
+                "log_effective_production_labor"
+            ],
             "log_automated_research": block["log_automated_research"],
             "log_automated_research_services": block[
                 "log_automated_research_services"
             ],
             "log_effective_research": block["log_effective_research"],
             "log_output_per_capita": block["log_output"] - log_population,
+            "log_output_per_effective_person": (
+                block["log_output"]
+                - log_population
+                - log_labor_productivity
+            ),
             "log_consumption_per_capita": log_consumption - log_population,
             "log_capital_per_capita": log_capital - log_population,
             "capital_growth": float(derivatives[0]),
@@ -824,6 +848,11 @@ def evaluate_free_boundary_solution(
             "shadow_growth": float(derivatives[3]),
             "output_growth": float(output_growth),
             "output_per_capita_growth": float(output_growth - parameters.n),
+            "output_per_effective_person_growth": float(
+                output_growth
+                - parameters.n
+                - parameters.labor_productivity_growth
+            ),
             "wage_growth": float(wage_growth),
             "output_capital_ratio": output_capital_ratio,
             "capability_growth_to_output_capital": float(derivatives[1])
@@ -881,6 +910,7 @@ def evaluate_free_boundary_solution(
                 if automated_only_research
                 else log_shadow + log_f_h - block["log_wage"]
             ),
+            "ai_effective_labor_ratio": math.exp(block["log_ai_ratio"]),
             "research_human_kkt_slack": (
                 -1.0 if automated_only_research else 0.0
             ),
@@ -1180,6 +1210,8 @@ def published_reproduction_plan(
     return {
         "alpha": parameters.alpha,
         "eta": parameters.eta,
+        "labor_productivity_growth": parameters.labor_productivity_growth,
+        "initial_labor_productivity": parameters.initial_labor_productivity,
         "sigma_xl": 1.5,
         "sigma_hm": 2.0,
         "conditional_limit_gA_over_YK": targets[
@@ -1366,6 +1398,12 @@ def assemble_published_results(
         for row in rows:
             row["alpha"] = parameters.alpha
             row["eta"] = parameters.eta
+            row["labor_productivity_growth"] = (
+                parameters.labor_productivity_growth
+            )
+            row["initial_labor_productivity"] = (
+                parameters.initial_labor_productivity
+            )
             row["sigma_xl"] = parameters.sigma_xl
             row["sigma_hm"] = parameters.sigma_hm
             row["terminal_boundary_z"] = boundary
@@ -1421,6 +1459,18 @@ def parse_arguments() -> argparse.Namespace:
         type=float,
         default=None,
         help="Override chi for an explicitly labeled acceleration experiment.",
+    )
+    parser.add_argument(
+        "--labor-productivity-growth",
+        type=float,
+        default=0.0,
+        help="Exogenous growth rate gamma_A of labor productivity.",
+    )
+    parser.add_argument(
+        "--initial-labor-productivity",
+        type=float,
+        default=1.0,
+        help="Initial labor productivity A(0).",
     )
     parser.add_argument("--terminal-z", type=float, default=10.0)
     parser.add_argument("--duration-guess", type=float, default=300.0)
@@ -1521,6 +1571,8 @@ def main() -> None:
             if arguments.research_productivity is None
             else arguments.research_productivity
         ),
+        labor_productivity_growth=arguments.labor_productivity_growth,
+        initial_labor_productivity=arguments.initial_labor_productivity,
     )
     if arguments.method == "shooting":
         solution, targets = solve_high_sigma_shooting(

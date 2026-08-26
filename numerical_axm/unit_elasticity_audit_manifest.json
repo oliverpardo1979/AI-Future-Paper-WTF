@@ -1,6 +1,6 @@
 {
   "accepted": true,
-  "audit": "A*M unit-elasticity acceptance audit",
+  "audit": "A--B unit-elasticity acceptance audit",
   "audit_version": 1,
   "canonical_horizons": {
     "primary": {
@@ -18,33 +18,33 @@
       6200.0
     ]
   },
-  "created_utc": "2026-08-18T10:58:26.704635+00:00",
+  "created_utc": "2026-08-26T10:45:01.516183+00:00",
   "files": {
     "audit_script": {
-      "bytes": 42243,
+      "bytes": 43599,
       "path": "scripts/audit_axm_model.py",
-      "sha256": "17c240f1d9341b745e9f2f46704c16e995e7c91600f6eedece405e7e3726590a"
+      "sha256": "369a0b542aa55d4ba1990fae20c48546e9f4016c5284cea703623d7653fdb5a2"
     },
     "generator_script": {
-      "bytes": 71669,
+      "bytes": 82354,
       "path": "scripts/simulate_axm_equilibrium.py",
-      "sha256": "7bd7497d8e057f34e636a7d100581c81d3deb3ed2697122cdf4f73050b093f74"
+      "sha256": "590122264e4a561386c42b4a403acae7746b3320218550725965fe9601f3a192"
     },
     "inputs": [
       {
-        "bytes": 5737048,
+        "bytes": 6120978,
         "path": "numerical_axm/equilibrium_transition_paths.csv",
-        "sha256": "625391cb965eac7c015d85c10cfb8d4e6a5739efd5838cfd4c5d2cf91aaee2f3"
+        "sha256": "8af7fe0529614b5877054092e3ea0828652c4341f58acbc999f08f9e6d0c8706"
       },
       {
-        "bytes": 3054,
+        "bytes": 3123,
         "path": "numerical_axm/equilibrium_transition_summary.csv",
-        "sha256": "79a35a4f838b4cecf8808f91f6504aebe39c43e58bac7949edb2aa0eacfb7b90"
+        "sha256": "2369ad7c22ca70948633d9f64d464cd569e95dbfe01c7bfa953152108288494c"
       },
       {
-        "bytes": 17282929,
+        "bytes": 18434393,
         "path": "numerical_axm/equilibrium_horizon_paths.csv",
-        "sha256": "6dbbe22b8304aa51cf911b0d65dc967b1c3943843aff143b12e2d792517370db"
+        "sha256": "007d36caed23724893447ab3b2048db3ec2acdb438801cbec8a6e10e5ecda9ac"
       },
       {
         "bytes": 4901,
@@ -54,9 +54,9 @@
     ],
     "outputs": [
       {
-        "bytes": 7004,
+        "bytes": 7166,
         "path": "numerical_axm/audit_report.csv",
-        "sha256": "f04fe2d9b02de41f2cc360a80018f9d1db94d205f1e7d14ea9a4ddb18bf631e1"
+        "sha256": "6ebe2c49dd64a93e76b795e813f2310055a75a3bed5a6eb3f4653ff244c299ee"
       }
     ]
   },
