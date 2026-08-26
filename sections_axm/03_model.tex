@@ -660,81 +660,129 @@ its improper objective integrals converge to finite real values.
 \subsubsection{Benchmark equilibrium}
 
 \begin{definition}[Regular interior benchmark equilibrium]
-Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
-the predetermined stocks \(K_0,B_0>0\). The exogenous paths are
-\(A_t=A_0e^{\gamma_At}\) and \(N_t=N_0e^{nt}\). A regular interior benchmark
-equilibrium is an admissible infinite-horizon trajectory
+Fix
+\begin{equation*}
+ \begin{gathered}
+  0<\alpha<1,\quad \delta\geq0,\quad \rho>n>0,\quad
+  \gamma_A\geq0,\quad \chi>0,\quad 0<\eta<1,\quad \sigma_{XL}>0,\\
+  \omega_L,\omega_X\in(0,1),\quad \omega_L+\omega_X=1,
+  \qquad A_0,N_0,K_0,B_0>0.
+ \end{gathered}
+\end{equation*}
+The values \(A_0\) and \(N_0\) determine the exogenous paths of labor
+productivity and population. The stocks \(K_0\) and \(B_0\) are predetermined.
+A regular interior benchmark equilibrium is an infinite-horizon trajectory
 \begin{equation}
  \left\{K_t,B_t,C_t,q_t,L_t,U_t,M_t,X_t,Z_t,Y_t,r_t,w_t,p_{X,t},
  s_{X,t},e_{X,t},\Pi_t\right\}_{t\geq0}
  \label{eq:axm-benchmark-equilibrium-trajectory}
 \end{equation}
-of strictly positive quantities and prices \(w,p_X,q\), with
-\(s_X,e_X\in(0,1)\); \(r\) and \(\Pi\) may have either sign. The paths
-\(K,B,C,q\) are absolutely continuous. For every \(t\geq0\), the trajectory
-satisfies the following system, with the differential equations understood
-almost everywhere:
+in which all quantity paths and \(w,p_X,q\) are measurable and strictly
+positive, \(s_X,e_X\in(0,1)\), and \(r\) and \(\Pi\) may have either sign. The
+paths \(K,B,C,q\) are absolutely continuous, \(q\) is the normal current-value
+multiplier on the developer's capability law, and the two improper objective
+integrals displayed below converge to finite real values. For every \(t\geq0\),
+the trajectory satisfies the following system, with differential equations
+understood almost everywhere:
 \begin{subequations}
 \label{eq:axm-canonical-system-benchmark}
+\noindent
+The exogenous paths and initial conditions are
 \begin{align}
- A_t&=A_0e^{\gamma_At},&
- N_t&=N_0e^{nt},
- \label{eq:axm-equilibrium-exogenous-block}\\
- K(0)&=K_0,& B(0)&=B_0,
- \label{eq:axm-benchmark-initial-conditions}\\
+ A_t&=A_0e^{\gamma_At},\\
+ N_t&=N_0e^{nt},\\
+ K(0)&=K_0,\\
+ B(0)&=B_0.
+ \label{eq:axm-benchmark-initial-conditions}
+\end{align}
+\par\medskip\noindent
+At each date, the intratemporal allocation and prices satisfy
+\begin{align}
  L&=N,\\
  Z&=\left[\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
  +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}\right]^{
  \sigma_{XL}/(\sigma_{XL}-1)},\\
- Y&=K^\alpha Z^{1-\alpha},
- \label{eq:axm-equilibrium-production-block}\\
+ Y&=K^\alpha Z^{1-\alpha},\\
  s_X&=\frac{\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}}
  {\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
  +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}},\\
- e_X&=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X,
- \label{eq:axm-equilibrium-share-block}\\
+ e_X&=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X,\\
  r&=\alpha\frac{Y}{K}-\delta,\\
- w&=(1-\alpha)(1-s_X)\frac{Y}{L},&
- p_X&=(1-\alpha)s_X\frac{Y}{X},
- \label{eq:axm-equilibrium-price-block}\\
- p_X(1-e_X)&=\frac{1}{B},& X&=BU,\displaybreak[4]\\
- q\chi\eta B(BM)^{\eta-1}&=1,
- \label{eq:axm-equilibrium-developer-static-block}\\
- \Pi&=p_XX-U-M,\\
- \dot K&=Y-C-U-M-\delta K,&
- \dot B&=\chi(BM)^\eta,
- \label{eq:axm-equilibrium-state-block}\\
- \frac{\dot C}{C}&=n+r-\rho,&
+ w&=(1-\alpha)(1-s_X)\frac{Y}{L},\\
+ p_X&=(1-\alpha)s_X\frac{Y}{X},\\
+ p_X(1-e_X)&=\frac{1}{B},\\
+ X&=BU,\\
+ q\chi\eta B(BM)^{\eta-1}&=1,\\
+ \Pi&=p_XX-U-M.
+\end{align}
+\par\medskip\noindent
+The four dynamic equations are
+\begin{align}
+ \dot K&=Y-C-U-M-\delta K,\\
+ \dot B&=\chi(BM)^\eta,\\
+ \frac{\dot C}{C}&=n+r-\rho,\\
  \frac{\dot q}{q}&=r-\frac{X}{qB^2}
  -\eta\frac{\dot B}{B}.
- \label{eq:axm-equilibrium-jump-block}
 \end{align}
 \end{subequations}
-\begin{equation}
- \begin{gathered}
-  \displaystyle
-  \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0,\\
-  \displaystyle
-  \lim_{t\to\infty}
-  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
- \end{gathered}
+\par\medskip\noindent
+The two transversality conditions are
+\begin{subequations}
  \label{eq:axm-tvc}
-\end{equation}
+\begin{align}
+ \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}&=0,\\
+ \lim_{t\to\infty}
+ \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t&=0.
+\end{align}
+\end{subequations}
 At \(\sigma_{XL}=1\), the production relations in the system are understood
 at their continuous limits: \(Z=(AL)^{\omega_L}X^{\omega_X}\) and
 \(s_X=\omega_X\). The initial values \(C(0)\) and \(q(0)\) are not data; they
 are selected so that the trajectory satisfies the two transversality
-conditions. Finally, the household and developer solve their respective
-optimization problems, final-good firms maximize profits, and all markets
-clear. Regularity means that the maximum-principle multipliers are normal and
-the displayed derivatives exist wherever they are used.
+conditions. In addition, the following three optimality requirements hold:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=0.35\baselineskip,
+ topsep=0.45\baselineskip,parsep=0pt]
+ \item Given \(r,w,\Pi,N\) and \(K_0\), the paths \((C,K)\) solve
+ \begin{equation*}
+  \max_{\{C,K\}}
+  \int_0^\infty e^{-\rho t}N_t\log(C_t/N_t)\dd t
+ \end{equation*}
+ subject to
+ \begin{align*}
+  \dot K&=rK+wN+\Pi-C,\\
+  K(0)&=K_0.
+ \end{align*}
+ \item At every date, given \(A,r,w,p_X\), the allocation \((K,L,X)\)
+ globally maximizes
+ \begin{equation*}
+  K^\alpha Z(AL,X)^{1-\alpha}-(r+\delta)K-wL-p_XX,
+  \qquad K,L,X\geq0,
+ \end{equation*}
+ where \(Z(AL,X)\) is the CES aggregate displayed in the equilibrium system.
+ \item Given \(K,A,L,r\) and \(B_0\), the controls \((X,M)\) solve
+ \begin{equation*}
+  \max_{\{X,M\}}
+  \int_0^\infty
+  \exp\left\{-\int_0^t r_s\dd s\right\}
+  \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-M_t\right]\dd t
+ \end{equation*}
+ subject to \(\dot B=\chi(BM)^\eta\), \(B(0)=B_0\), and nonnegative
+ measurable controls. Here \(p_X\) is the inverse demand generated by the
+ final-good problem in clause (ii), conditional on \(K,A,L\).
+\end{enumerate}
+The common variables \(K\) and \(X\) clear the capital and AI-service markets;
+\(L=N\) clears the labor market; and the law for \(K\) clears the final-good
+market. These equations, initial and terminal conditions, global optimality
+requirements, and market-clearing conditions jointly define the equilibrium.
 \end{definition}
 
-The block contains no separate resource identity because that identity is
-exactly the law of capital accumulation. Final-good zero profit, the household budget,
-and the consolidated income identity follow from constant returns, the factor-
-price equations, market clearing, and the definition of \(\Pi\); they are not
-additional equilibrium restrictions. Given \((A,N,K,B,C,q)\), the twelve
+The canonical system contains no separate resource identity because that
+identity is exactly the law of capital accumulation. The household budget is
+stated in the household's problem, but it is not repeated in the canonical
+system: after market clearing, it is equivalent to the law for \(K\). Final-
+good zero profit and the consolidated income identity also follow from constant
+returns, the factor-price equations, market clearing, and the definition of
+\(\Pi\). Given \((A,N,K,B,C,q)\), the twelve
 algebraic variables in the displayed trajectory are determined by twelve
 intratemporal equations. The four dynamic variables are \((K,B,C,q)\):
 \(K_0\) and \(B_0\) are predetermined, while the two transversality conditions
@@ -940,26 +988,45 @@ AI research services eventually dominate research expenditure, then
 \(s_M\to1\) and the extension approaches the benchmark feedback.
 
 \begin{definition}[Regular interior equilibrium with human research]
-Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
-the predetermined stocks \(K_0,B_0>0\). The exogenous paths are
-\(A_t=A_0e^{\gamma_At}\) and \(N_t=N_0e^{nt}\). A regular interior equilibrium
-with human research is an admissible infinite-horizon trajectory
+Fix
+\begin{equation*}
+ \begin{gathered}
+  0<\alpha<1,\quad \delta\geq0,\quad \rho>n>0,\quad
+  \gamma_A\geq0,\quad \chi>0,\quad 0<\eta<1,\\
+  \sigma_{XL},\sigma_{HM}>0,\quad
+  \omega_L,\omega_X,\omega_H,\omega_M\in(0,1),\\
+  \omega_L+\omega_X=1,\quad \omega_H+\omega_M=1,
+  \qquad A_0,N_0,K_0,B_0>0.
+ \end{gathered}
+\end{equation*}
+Let \(\varrho_{HM}=(\sigma_{HM}-1)/\sigma_{HM}\). The values \(A_0\) and
+\(N_0\) determine the exogenous paths of labor productivity and population;
+\(K_0\) and \(B_0\) are predetermined stocks. A regular interior equilibrium
+with human research is an infinite-horizon trajectory
 \begin{equation}
  \left\{K_t,B_t,C_t,q_t,L_t,H_t,U_t,M_t,X_t,E_t,Z_t,Y_t,
  r_t,w_t,p_{X,t},P_{E,t},s_{X,t},s_{M,t},e_{X,t},\Pi_t\right\}_{t\geq0}
  \label{eq:axm-human-equilibrium-trajectory}
 \end{equation}
-of strictly positive quantities and prices \(w,p_X,P_E,q\), with
-\(s_X,s_M,e_X\in(0,1)\); \(r\) and \(\Pi\) may have either sign. The paths
-\(K,B,C,q\) are absolutely continuous. For every \(t\geq0\), the trajectory
-satisfies the following system, with the differential equations understood
-almost everywhere:
+in which all quantity paths and \(w,p_X,P_E,q\) are measurable and strictly
+positive, \(s_X,s_M,e_X\in(0,1)\), and \(r\) and \(\Pi\) may have either sign.
+The paths \(K,B,C,q\) are absolutely continuous, \(q\) is the normal current-
+value multiplier on the developer's capability law, and the two improper
+objective integrals displayed below converge to finite real values. For every
+\(t\geq0\), the trajectory satisfies the following system, with differential
+equations understood almost everywhere:
 \begin{subequations}
 \label{eq:axm-canonical-system}
+\noindent
+The exogenous paths and initial conditions are
 \begin{align}
- A_t&=A_0e^{\gamma_At},& N_t&=N_0e^{nt},\\
- K(0)&=K_0,& B(0)&=B_0.
+ A_t&=A_0e^{\gamma_At},\\
+ N_t&=N_0e^{nt},\\
+ K(0)&=K_0,\\
+ B(0)&=B_0.
 \end{align}
+\par\medskip\noindent
+At each date, labor clearing, final production, and AI-service supply satisfy
 \begin{align}
  N&=L+H,\\
  Z&=\left[\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
@@ -976,6 +1043,8 @@ almost everywhere:
  p_X(1-e_X)&=\frac{1}{B},\\
  X&=BU.
 \end{align}
+\par\medskip\noindent
+The research allocation and developer payout satisfy
 \begin{align}
  E&=\left[\omega_HH^{\varrho_{HM}}
  +\omega_M(BM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}},\\
@@ -985,7 +1054,11 @@ almost everywhere:
  (BM)^{\varrho_{HM}-1}B&=1,\\
  P_E&=q\chi\eta E^{\eta-1},\\
  s_M&=\frac{M}{wH+M},\\
- \Pi&=p_XX-U-wH-M,\\
+ \Pi&=p_XX-U-wH-M.
+\end{align}
+\par\medskip\noindent
+The four dynamic equations are
+\begin{align}
  \dot K&=Y-C-U-M-\delta K,\\
  \dot B&=\chi E^\eta,\\
  \frac{\dot C}{C}&=n+r-\rho,\\
@@ -993,25 +1066,58 @@ almost everywhere:
  -\eta s_M\frac{\dot B}{B}.
 \end{align}
 \end{subequations}
-\begin{equation}
- \begin{gathered}
-  \displaystyle
-  \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0,\\
-  \displaystyle
-  \lim_{t\to\infty}
-  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
- \end{gathered}
+\par\medskip\noindent
+The two transversality conditions are
+\begin{subequations}
  \label{eq:axm-human-tvc}
-\end{equation}
+\begin{align}
+ \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}&=0,\\
+ \lim_{t\to\infty}
+ \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t&=0.
+\end{align}
+\end{subequations}
 At \(\sigma_{XL}=1\), the production relations use
 \(Z=(AL)^{\omega_L}X^{\omega_X}\) and \(s_X=\omega_X\). At
 \(\sigma_{HM}=1\), \(\varrho_{HM}=0\) and the research relation uses
 \(E=H^{\omega_H}(BM)^{\omega_M}\); the two displayed research-input
 conditions are evaluated at \(\varrho_{HM}=0\). The initial values \(C(0)\)
 and \(q(0)\) are selected so that both transversality conditions hold.
-Finally, the household and developer solve their respective optimization
-problems, final-good firms maximize profits, and all markets clear. Regularity
-has the same meaning as in the benchmark definition.
+In addition, the following three optimality requirements hold:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=0.35\baselineskip,
+ topsep=0.45\baselineskip,parsep=0pt]
+ \item Given \(r,w,\Pi,N\) and \(K_0\), the paths \((C,K)\) solve
+ \begin{equation*}
+  \max_{\{C,K\}}
+  \int_0^\infty e^{-\rho t}N_t\log(C_t/N_t)\dd t
+ \end{equation*}
+ subject to
+ \begin{align*}
+  \dot K&=rK+wN+\Pi-C,\\
+  K(0)&=K_0.
+ \end{align*}
+ \item At every date, given \(A,r,w,p_X\), the allocation \((K,L,X)\)
+ globally maximizes
+ \begin{equation*}
+  K^\alpha Z(AL,X)^{1-\alpha}-(r+\delta)K-wL-p_XX,
+  \qquad K,L,X\geq0,
+ \end{equation*}
+ where \(Z(AL,X)\) is the CES aggregate displayed in the equilibrium system.
+ \item Given \(K,A,L,r,w\) and \(B_0\), the controls \((X,H,M)\) solve
+ \begin{equation*}
+  \max_{\{X,H,M\}}
+  \int_0^\infty
+  \exp\left\{-\int_0^t r_s\dd s\right\}
+  \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-w_tH_t-M_t\right]\dd t
+ \end{equation*}
+ subject to \(\dot B=\chi E^\eta\), \(B(0)=B_0\), the research aggregator
+ displayed above, and nonnegative measurable controls. Here \(p_X\) is the
+ inverse demand generated by the final-good problem in clause (ii), conditional
+ on \(K,A,L\).
+\end{enumerate}
+The common variables \(K\) and \(X\) clear the capital and AI-service markets;
+\(N=L+H\) clears the labor market; and the law for \(K\) clears the final-good
+market. These equations, initial and terminal conditions, global optimality
+requirements, and market-clearing conditions jointly define the equilibrium.
 \end{definition}
 
 The extension is also exactly determined conditional on the dynamic variables.
