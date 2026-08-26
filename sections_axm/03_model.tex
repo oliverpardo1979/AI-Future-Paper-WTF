@@ -1092,6 +1092,22 @@ maximizer exists, establish global concavity, control the infinite-horizon tail,
 or prove equilibrium existence. The numerical exercises use
 \(\eta=0.20<\alpha=0.33\), chosen illustratively rather than estimated.
 
+The threshold \(\alpha\) has a direct large-scale interpretation. Let \(S\)
+denote total research expenditure on a fixed horizon. The proof in the Appendix
+shows that the resulting profit benefit grows no faster than
+\begin{equation}
+ S^{\eta(1-\alpha)/[\alpha(1-\eta)]},
+ \label{eq:axm-research-benefit-order}
+\end{equation}
+whereas the resource cost grows linearly with \(S\). The condition
+\(\eta<\alpha\) is exactly the condition that the exponent in
+\eqref{eq:axm-research-benefit-order} is smaller than one. Research costs then
+eventually dominate the additional profit. If \(\eta>\alpha\), the benefit can
+grow faster than the cost along the research-compute expansions constructed in
+Proposition \ref{prop:axm-research-burst}, making the developer's value
+unbounded. At \(\eta=\alpha\), both terms have the same order and the result
+depends on their coefficients.
+
 \begin{proposition}[Global sufficiency in the unit-elasticity cases]
 \label{prop:axm-equilibrium-sufficiency}
 Let \(\sigma_{XL}=1\) and
