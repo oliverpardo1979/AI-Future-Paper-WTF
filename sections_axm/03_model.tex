@@ -1108,6 +1108,61 @@ Proposition \ref{prop:axm-research-burst}, making the developer's value
 unbounded. At \(\eta=\alpha\), both terms have the same order and the result
 depends on their coefficients.
 
+The large-scale restriction does not by itself establish global optimality.
+Away from unit elasticity, the missing condition can be stated directly in
+terms of optimized operating profit. Implicit differentiation of the monopoly
+condition \eqref{eq:axm-monopoly-foc} gives
+\begin{equation}
+ \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
+ =\frac{1-e_X}{
+ e_X(1-e_X)
+ +(\alpha-\sigma_{XL}^{-1})(1-\sigma_{XL}^{-1})s_X(1-s_X)}.
+ \label{eq:axm-service-capability-elasticity}
+\end{equation}
+Using \(\pi_B=X^*/B^2\), a second differentiation yields
+\begin{equation}
+ \pi_{BB}=\frac{X^*}{B^3}
+ \left(
+ \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
+ -2\right).
+ \label{eq:axm-operating-profit-curvature}
+\end{equation}
+Thus the optimized operating-profit function is concave in capability if and
+only if the elasticity in \eqref{eq:axm-service-capability-elasticity} does not
+exceed two.
+
+\begin{proposition}[Path-specific sufficiency outside unit elasticity]
+\label{prop:axm-path-specific-sufficiency}
+Consider an admissible infinite-horizon candidate path for any
+\(\sigma_{XL}>0\). At every date, hold the paths taken as given by the
+developer fixed and evaluate the pointwise optimizer \(X^*(B)\) for every
+capability level \(B\geq B_0\). Suppose
+\begin{equation}
+ \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
+ \leq2
+ \quad\text{for every }t\geq0\text{ and }B\geq B_0.
+ \label{eq:axm-path-specific-profit-concavity}
+\end{equation}
+Suppose also that one of the following research conditions holds:
+\begin{enumerate}
+ \item the automated-research benchmark applies and \(2\eta\leq1\);
+ \item the human-research extension has
+ \(\sigma_{HM}=1\) and \(\eta(1+\omega_M)\leq1\); or
+ \item the human-research extension has
+ \(\sigma_{HM}=2\) and \(2\eta\leq1\).
+\end{enumerate}
+If the candidate satisfies the two transversality conditions, then the
+developer's policy is globally optimal. If the other agent-optimality and
+market-clearing requirements in the relevant equilibrium definition also
+hold, the candidate is an equilibrium.
+\end{proposition}
+
+This proposition is deliberately path-specific. It does not transfer the
+unit-elasticity sufficiency result to neighboring elasticities. A nonunit
+numerical path must establish \eqref{eq:axm-path-specific-profit-concavity}
+over its entire reachable capability domain, in addition to satisfying the
+dated equations, its own asymptotic regime, and both transversality conditions.
+
 \begin{proposition}[Global sufficiency in the unit-elasticity cases]
 \label{prop:axm-equilibrium-sufficiency}
 Let \(\sigma_{XL}=1\) and

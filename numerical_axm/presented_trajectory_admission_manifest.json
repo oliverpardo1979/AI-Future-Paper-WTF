@@ -13,19 +13,21 @@
     "adoption_audit_accepted": true,
     "all_admitted_trajectory_figures_are_referenced": true,
     "complement_audit_accepted": true,
+    "complement_global_optimality_audit_accepted": true,
     "near_unit_audit_accepted": true,
     "near_unit_exports_only_admitted_sigmas": true,
     "no_rejected_trajectory_figure_is_referenced": true,
-    "no_rejected_trajectory_table_is_referenced": true
+    "no_rejected_trajectory_table_is_referenced": true,
+    "upper_near_unit_is_explicitly_rejected": true
   },
   "inputs": {
     "main_axm.tex": "642abdd518c000865459f021563a3269fa61af013b6bb2d7916e41a42382e29e",
     "sections_axm/01_introduction.tex": "d42dee4921ced1f51f0b380469776ca82b9b38597c2523f4c967a632fca94b5d",
     "sections_axm/02_literature.tex": "a641598e030d34d8a3c59425432a5c980605490af010e4eb60e65d00d9bb54a9",
-    "sections_axm/03_model.tex": "14419253c4737001e234338fe9cc252831f9bcfe8988dffb0ace0620b5b94edf",
-    "sections_axm/04_growth_regimes.tex": "752908a02920aa074640552a2a68f04974f5ae06d381ed93cc32efaa319b63ad",
+    "sections_axm/03_model.tex": "c2b20b6e14b5bd33016831ec9cb948ff05d737d988cc8a0bbb15ea14e0c0893e",
+    "sections_axm/04_growth_regimes.tex": "558f7986a87d91b38c3f1871c646337b141c9bd53adbb6ba58f52290e6f21d0f",
     "sections_axm/06_conclusion.tex": "5695a8631831e016ce0c52eee9deccb483eef38d7b036a1b431f2f6634c2097a",
-    "sections_axm/appendix.tex": "49782f1b4b6fb280facf8d5573803cd1e943ac8677c49aedbebb53b80875990f"
+    "sections_axm/appendix.tex": "55a0478c3a23cb992b630d070ef276f8bc665612a85a185948ad85d9f3af9488"
   },
   "missing_admitted_references": [],
   "rejected_figures": {

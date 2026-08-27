@@ -86,20 +86,24 @@ independent auditor:
 ```
 python scripts/simulate_axm_complements_equilibrium.py
 python scripts/audit_axm_complements.py
+python scripts/audit_axm_complements_global_optimality.py
 ```
 
-The runner solves the new $A\times M$ specification at
+The runner solves the capability specification at
 $\sigma_{XL}=0.75$, for $\sigma_{HM}=1$ and $2$, from cold starts at terminal
 dates 3,600, 4,050, and 4,500. The primary paths use the 4,500-year boundary.
-Only $C/Y$ and $X/(qA^2)$ are imposed at that boundary; growth rates, factor
+Only $C/Y$ and $X/(qB^2)$ are imposed at that boundary; growth rates, factor
 shares, $X/L$, the research allocation, resource shares, and the interest rate
 are reported rather than imposed. The independent audit imports no solver
 functions, reconstructs every static equation, computes separate seven-point
 dynamic residuals, checks horizon stability and finite-date TVC proxies, and
-hashes all four canonical inputs. Its acceptance label is limited to
-"finite-horizon candidate paths satisfying the dated equilibrium system and
-the stated terminal conditions." It is not an existence theorem for an exact
-infinite-horizon equilibrium.
+hashes all four canonical inputs. The second audit supplies the nonunit
+global-optimality gate: it verifies concavity of optimized operating profit for
+every capability level reachable from $B_0$ and joint concavity of the research
+technology. Together with the analytical complementary tail and its negative
+TVC growth rates, these checks admit the two paths as numerical equilibrium
+trajectories. They do not prove existence or uniqueness from arbitrary initial
+stocks.
 
 The web-based AI Growth Lab in `docs/`, the model-simulation artifacts in
 `numerical/` and `figures/`, and simulation scripts without `_axm` in their names
@@ -109,14 +113,13 @@ for the parallel A-M manuscript until revalidated. The empirical evidence figure
 simulation.
 
 `scripts/simulate_axm_high_sigma_equilibrium.py` contains the separate
-free-boundary solver for $\sigma_{XL}>1$. The reported case uses
+free-boundary diagnostic for $\sigma_{XL}>1$. The archived case uses
 $\sigma_{XL}=1.5$ and $\sigma_{HM}=2$ and continues the terminal boundary through
 $Y/K=16,32,64,128$. Reproduce the staged continuation and its audit with
 
 ```
 python scripts/simulate_axm_high_sigma_equilibrium.py --assemble-published
 python scripts/audit_axm_high_sigma.py
-python scripts/plot_axm_high_sigma_validated.py
 ```
 
 The first command starts from the unit-elasticity, $\sigma_{HM}=2$ solution,
@@ -138,39 +141,40 @@ dated necessary conditions." It does not
 establish an infinite-horizon equilibrium, transversality at infinity, or global
 intertemporal optimality.
 
-The comparison immediately below and above unit elasticity uses separate
-equilibrium-system runners and independent audits:
+The current near-unit comparison starts from the exact strictly positive-AI
+balanced-growth equilibrium at $\sigma_{XL}=1$ and uses the same predetermined
+stocks on both sides:
 
 ```
-python scripts/simulate_axm_near_unit_lower.py
-python scripts/audit_axm_near_unit_lower.py
-python scripts/simulate_axm_near_unit_high.py
-python scripts/audit_axm_near_unit_high.py
+python scripts/simulate_axm_near_unit_bgp_perturbation.py
+python scripts/audit_axm_near_unit_equilibrium_status.py
+python scripts/audit_axm_upper_near_unit_equilibrium.py --nodes 161 --tolerance 0.0001
 python scripts/plot_axm_near_unit_equilibrium.py
 ```
 
-The lower runner solves $\sigma_{XL}=0.90$ at horizons 5,000, 5,300, and
-5,600. The upper runner continues the audited $\sigma_{XL}=1.50$ branch to
-$\sigma_{XL}=1.10$, then solves artificial terminal boundaries
-$Y/K=8,12,16$. The plotted upper path stops at model year 4,500, before the
-smallest boundary. Its independent audit requires the three boundary solutions
-to overlap on that entire displayed window. These are simulations of the dated
-equilibrium system; the finite-boundary qualification limits the claim about the
-uncomputed tail rather than changing the economic equations being solved.
+The lower audit re-solves $\sigma_{XL}=0.99$ with the complementary-input
+terminal regime, extends the horizon from 2,500 to 12,000 years, verifies both
+TVC rates, and checks global developer optimality on the full reachable domain
+$B\geq B_0$. The unit path is analytical. Only these two paths are exported for
+the figure.
 
-After all three regime-specific audits pass, generate the cross-regime
-decomposition of final output with
+The upper audit preserves the agreed continuation order for
+$\sigma_{XL}=1.01$: unit seed, elasticity change on a short horizon, then
+horizon continuation through 5,000 years. This calculation is deliberately
+rejected. A regular bounded-capability tail contradicts the costate equation;
+the regular AI-dominated tail reaches a finite-time singularity and is not an
+infinite-horizon equilibrium. The audit writes no plot-ready upper trajectory.
+
+Finally run the paper-wide admission guard:
 
 ```
-python scripts/plot_axm_distribution_decomposition.py
+python scripts/audit_axm_presented_trajectories.py
 ```
 
-This plotting-only script verifies every hash recorded in the three accepted
-audit manifests before reading the canonical paths. It reconstructs the six
-mutually exclusive shares from dated prices and quantities and rejects any path
-whose shares are negative or fail to sum to one within the documented
-tolerance. In particular, it reconstructs distributed profit \(\Pi/Y\); it does
-not misinterpret the saved operating-profit field as distributed profit.
+The guard requires every referenced trajectory figure to be backed by dated
+equations, a regime-specific infinite-horizon tail, sufficient optimality
+conditions, both TVCs, and numerical robustness. It also requires the upper
+near-unit calculation to remain explicitly rejected.
 
 Compile the manuscript from the repository root with
 `tectonic --keep-logs --outdir build_axm main_axm.tex`.

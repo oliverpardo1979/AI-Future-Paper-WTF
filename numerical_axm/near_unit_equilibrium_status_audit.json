@@ -11,6 +11,8 @@
   },
   "gates": {
     "all_lower_tail_solves_successful": true,
+    "lower_reachable_operating_profit_is_concave": true,
+    "lower_research_technology_is_jointly_concave": true,
     "lower_segment_matches_regime_terminal_solution": true,
     "lower_tail_final_refinement": true,
     "lower_tail_horizon_stability": true,
@@ -19,6 +21,16 @@
     "only_admitted_trajectories_are_exported": true
   },
   "lower_tail": {
+    "developer_global_optimality": {
+      "date_of_maximum_counterfactual_share": 9.0,
+      "initial_capability_lower_bound": 0.44367093160980464,
+      "limiting_ai_share": 0.014852220406950853,
+      "maximizing_share": 0.2087036847314151,
+      "maximum_counterfactual_ai_share_at_initial_capability": 0.2087036847314151,
+      "maximum_service_capability_elasticity": 1.14055426241638,
+      "optimized_operating_profit_concave": true,
+      "profit_concavity_margin": 0.85944573758362
+    },
     "expected_developer_tvc_log_rate": -0.0396,
     "expected_household_tvc_log_rate": -0.037,
     "final_refinement": {
@@ -257,7 +269,7 @@
     "sigma_xl_0.99": {
       "classification": "numerically_admitted_equilibrium_trajectory",
       "qualification": "Numerical equilibrium, not an existence proof.",
-      "verified": "The plotted segment matches a complementary-tail BVP from the same stocks; the asymptotic tail makes both TVC objects decay."
+      "verified": "The plotted segment matches a complementary-tail BVP from the same stocks; the asymptotic tail makes both TVC objects decay; and optimized operating profit and the research technology are concave on the reachable domain."
     },
     "sigma_xl_1.00": {
       "classification": "analytical_infinite_horizon_equilibrium",

@@ -99,11 +99,17 @@ def run_audit() -> dict[str, object]:
         path.read_text(encoding="utf-8") for path in SECTION_FILES
     )
     complement = load_json("numerical_axm/complements_audit_manifest.json")
+    complement_optimality = load_json(
+        "numerical_axm/complements_global_optimality_audit.json"
+    )
     adoption = load_json(
         "numerical_axm/ai_adoption_unit_elasticity_audit_manifest.json"
     )
     near_unit = load_json(
         "numerical_axm/near_unit_equilibrium_status_audit.json"
+    )
+    upper_near_unit = load_json(
+        "numerical_axm/upper_near_unit_equilibrium_audit.json"
     )
 
     rejected_references = {
@@ -122,9 +128,19 @@ def run_audit() -> dict[str, object]:
     near_values = near_unit.get("exported_path", {}).get("sigma_xl_values")
     gates = {
         "complement_audit_accepted": complement.get("accepted") is True,
+        "complement_global_optimality_audit_accepted": (
+            complement_optimality.get("accepted") is True
+        ),
         "adoption_audit_accepted": adoption.get("accepted") is True,
         "near_unit_audit_accepted": near_unit.get("accepted") is True,
         "near_unit_exports_only_admitted_sigmas": near_values == [0.99, 1.0],
+        "upper_near_unit_is_explicitly_rejected": (
+            upper_near_unit.get("accepted") is False
+            and upper_near_unit.get("regular_tail_audit", {}).get(
+                "admissible_regular_infinite_horizon_tail_found"
+            )
+            is False
+        ),
         "no_rejected_trajectory_figure_is_referenced": not rejected_references,
         "no_rejected_trajectory_table_is_referenced": (
             not rejected_table_references

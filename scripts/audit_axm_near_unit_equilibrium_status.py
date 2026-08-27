@@ -4,9 +4,11 @@ The plotted nonunit paths use the unit-elastic terminal projection.  This
 script performs the additional regime-specific check currently available for
 ``sigma_XL=0.99``: it solves the same dated model from the same predetermined
 stocks with the complementary-input terminal restrictions and extends the
-terminal horizon by continuation.  Agreement on the displayed window is
-evidence that the lower-elasticity segment lies on the complementary branch;
-it is not, by itself, a proof of an infinite-horizon continuation.
+terminal horizon by continuation. Agreement on the displayed window is
+evidence that the lower-elasticity segment lies on the complementary branch.
+The audit also verifies a path-specific global-optimality condition for the
+developer: optimized operating profit is concave in capability over every
+capability level reachable from the predetermined initial stock.
 
 For ``sigma_XL=1.01`` the model has no finite-rate balanced-growth terminal
 condition.  The existing free-boundary algorithm describes a conditional
@@ -41,6 +43,10 @@ from define_positive_ai_branch import (  # noqa: E402
     balanced_growth_seed,
 )
 import simulate_axm_equilibrium as equilibrium  # noqa: E402
+from audit_axm_profit_concavity import (  # noqa: E402
+    maximum_service_capability_elasticity,
+    share_at_lower_capability,
+)
 
 
 SOURCE_PATH = ROOT / "numerical_axm" / "near_unit_bgp_perturbation_paths.csv"
@@ -155,6 +161,59 @@ def tvc_log_objects(
     return household, developer
 
 
+def profit_concavity_audit(
+    solution: object,
+    parameters: equilibrium.Parameters,
+    initial_capability: float,
+    horizon: float,
+) -> dict[str, float | bool]:
+    """Verify concavity of optimized operating profit for reachable ``B``."""
+
+    times = np.linspace(0.0, horizon, 12_001)
+    states = np.asarray(solution.sol(times))
+    log_lower_capability = math.log(initial_capability)
+    maximum_counterfactual_share = 0.0
+    maximum_share_time = 0.0
+    for index, time in enumerate(times):
+        state = states[:, index]
+        _, block = equilibrium.equilibrium_rates(
+            float(time), state, parameters, 0.0
+        )
+        counterfactual_share = share_at_lower_capability(
+            current_share=float(block["ai_share"]),
+            log_current_capability=float(state[1]),
+            log_lower_capability=log_lower_capability,
+            sigma_xl=parameters.sigma_xl,
+            alpha=parameters.alpha,
+            omega_x=parameters.omega_x,
+        )
+        if counterfactual_share > maximum_counterfactual_share:
+            maximum_counterfactual_share = counterfactual_share
+            maximum_share_time = float(time)
+
+    limiting_share = (1.0 - parameters.sigma_xl) / (
+        1.0 - parameters.alpha * parameters.sigma_xl
+    )
+    curvature = maximum_service_capability_elasticity(
+        lower_share=limiting_share,
+        upper_share=maximum_counterfactual_share,
+        sigma_xl=parameters.sigma_xl,
+        alpha=parameters.alpha,
+    )
+    return {
+        "initial_capability_lower_bound": initial_capability,
+        "limiting_ai_share": limiting_share,
+        "maximum_counterfactual_ai_share_at_initial_capability": (
+            maximum_counterfactual_share
+        ),
+        "date_of_maximum_counterfactual_share": maximum_share_time,
+        **curvature,
+        "optimized_operating_profit_concave": (
+            float(curvature["profit_concavity_margin"]) > 0.0
+        ),
+    }
+
+
 def run_audit() -> dict[str, object]:
     benchmark, parameters, initial_state = canonical_parameters()
     seed = balanced_growth_seed(benchmark)
@@ -237,6 +296,12 @@ def run_audit() -> dict[str, object]:
         * (parameters.n + parameters.labor_productivity_growth)
         - (parameters.discount + parameters.labor_productivity_growth)
     )
+    concavity = profit_concavity_audit(
+        previous,
+        parameters,
+        initial_state[1],
+        HORIZONS[-1],
+    )
     gates = {
         "all_lower_tail_solves_successful": all(
             bool(record["success"]) for record in records
@@ -257,6 +322,12 @@ def run_audit() -> dict[str, object]:
         "lower_tail_tvc_rates_negative": (
             expected_household_tvc_rate < 0.0
             and expected_developer_tvc_rate < 0.0
+        ),
+        "lower_reachable_operating_profit_is_concave": bool(
+            concavity["optimized_operating_profit_concave"]
+        ),
+        "lower_research_technology_is_jointly_concave": (
+            2.0 * parameters.eta <= 1.0
         ),
     }
     lower_rows = equilibrium.evaluate_solution(
@@ -337,7 +408,9 @@ def run_audit() -> dict[str, object]:
                 "verified": (
                     "The plotted segment matches a complementary-tail BVP "
                     "from the same stocks; the asymptotic tail makes both "
-                    "TVC objects decay."
+                    "TVC objects decay; and optimized operating profit and "
+                    "the research technology are concave on the reachable "
+                    "domain."
                 ),
                 "qualification": "Numerical equilibrium, not an existence proof.",
             },
@@ -382,6 +455,7 @@ def run_audit() -> dict[str, object]:
             "terminal_developer_tvc_log_object": developer_tvc_log,
             "expected_household_tvc_log_rate": expected_household_tvc_rate,
             "expected_developer_tvc_log_rate": expected_developer_tvc_rate,
+            "developer_global_optimality": concavity,
         },
         "exported_path": {
             "path": str(EQUILIBRIUM_PATH.relative_to(ROOT)).replace("\\", "/"),

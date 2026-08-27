@@ -76,6 +76,62 @@ extends this solution uniquely until it reaches the boundary of the positive
 domain or becomes unbounded. Neither theorem selects \((C_0,q_0)\) or proves
 the transversality conditions.
 
+\subsection{Proof of Proposition \ref{prop:axm-path-specific-sufficiency}}
+
+Fix a date and the paths that the developer takes as given. Differentiating
+the logarithm of \eqref{eq:axm-monopoly-foc} with respect to \(\ln B\) gives
+\eqref{eq:axm-service-capability-elasticity}. The denominator is positive by
+the strict pointwise second-order condition
+\eqref{eq:axm-monopoly-soc}. The envelope theorem gives
+\(\pi_B=X^*/B^2\), so differentiation with respect to \(B\) gives
+\eqref{eq:axm-operating-profit-curvature}. Condition
+\eqref{eq:axm-path-specific-profit-concavity} therefore makes
+\(\pi_t(B)\) concave over the full state domain reachable from \(B_0\).
+Capability cannot fall because every research technology in the model has
+\(\dot B\geq0\).
+
+In the automated-research benchmark,
+\(F(B,M)=\chi B^\eta M^\eta\) is jointly concave when \(2\eta\leq1\). With
+human research and \(\sigma_{HM}=1\),
+\[
+ F(B,H,M)=\chi H^{\eta\omega_H}
+ B^{\eta\omega_M}M^{\eta\omega_M}
+\]
+is jointly concave when \(\eta(1+\omega_M)\leq1\). With
+\(\sigma_{HM}=2\),
+\[
+ F(B,H,M)=\chi\left[\omega_H\sqrt H+
+ \omega_M\sqrt{BM}\right]^{2\eta}
+\]
+is jointly concave when \(2\eta\leq1\): the geometric mean
+\(\sqrt{BM}\) is concave, and the outer power is increasing and concave.
+
+Let
+\[
+ \mathcal D_t=\exp\left\{-\int_0^t r_s\dd s\right\},
+ \qquad \mu_t=\mathcal D_tq_t.
+\]
+Optimized operating profit is concave in \(B\), research cost is linear in
+the controls, and the relevant capability law is jointly concave. Since
+\(q_t>0\), the developer's present-value Hamiltonian is therefore jointly
+concave in the state and controls. The candidate's first-order and costate
+conditions maximize that Hamiltonian globally. For any admissible alternative
+with the same initial capability, the standard concavity inequality gives
+\[
+ J_T^*-\widetilde J_T
+ \geq \mu_T(\widetilde B_T-B_T^*)
+ \geq-\mu_TB_T^*.
+\]
+The developer's transversality condition makes the final term converge to
+zero. Taking the lower limit as \(T\to\infty\) establishes global developer
+optimality because both improper objective integrals are finite by
+admissibility. Household optimality follows from concave log utility, the
+linear budget, its Euler equation, and its transversality condition.
+Competitive final-good firms face a concave constant-returns technology, and
+Proposition \ref{prop:axm-monopoly-existence} establishes the pointwise global
+choice of \(X\). The remaining dated conditions and market clearing therefore
+establish the relevant equilibrium. \(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-equilibrium-sufficiency}}
 
 Under the usual normality and differentiability conditions, every regular
@@ -1515,7 +1571,8 @@ The fixed-horizon algorithm can therefore be summarized as follows.
 
 \subsection{Free-boundary continuation for \texorpdfstring{\(\sigma_{XL}>1\)}{sigma XL > 1}}
 
-For the reported unbounded-capability, AI-dominated gross-substitutes branch, a
+For the archived unbounded-capability, AI-dominated gross-substitutes
+diagnostic, a
 finite balanced-growth terminal condition is unavailable. The implementation
 uses the reported normalization \(N_0=1\), stops at an artificial boundary
 \(z_T=(Y/K)(T)\), treats the terminal date \(T\) as an unknown, and increases
@@ -1551,7 +1608,7 @@ that reference. The condition \(g_B/z=h\) helps construct the terminal guess; it
 is not one of the five restrictions in
 \eqref{eq:axm-free-boundary-conditions}. Its convergence is checked ex post.
 
-The reported boundary solutions are obtained through the following continuation
+The archived boundary solutions are obtained through the following continuation
 sequence.
 \begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=4.5em,labelsep=0.6em]
  \item Solve a \(\sigma_{XL}=1,\sigma_{HM}=2\) seed at \(T=1{,}600\).
@@ -1563,10 +1620,10 @@ sequence.
  \(z_T=0.5,0.6,0.8,1,1.5,2,3,4\), followed by
  \(6,8,12,16,24,32,48,64\).
  \item Starting from that continuation, re-solve sequentially at
- \(z_T=16,32,64,128\). Only these refined solutions enter the reported
- convergence exercise.
+ \(z_T=16,32,64,128\). Only these refined solutions enter the archived
+convergence audit.
 \end{enumerate}
-The preliminary stages use a tolerance of \(3\times10^{-5}\). The four reported
+The preliminary stages use a tolerance of \(3\times10^{-5}\). The four archived
 free-boundary solutions use \(10^{-6}\), an initial mesh of 301 nodes, and a
 12,000-node cap. The full route consists of 38 boundary-value solves. Increasing
 \(z_T\) tests whether the initial jumps, paths on common pre-terminal windows,
@@ -1614,17 +1671,35 @@ explains why the visible lower-elasticity curve barely changes even though its
 economic classification does. The log levels of the household and developer
 transversality objects at the terminal are \(-442.6\) and \(-446.1\); their
 analytical tail growth rates are \(n-\rho=-0.037\) and \(-0.0396\), respectively.
-The sufficiency restrictions in Proposition
-\ref{prop:axm-equilibrium-sufficiency} also hold. I therefore admit the
-\(\sigma_{XL}=0.99\) result as a numerical equilibrium trajectory.
+The unit-elasticity sufficiency proposition does not apply at \(0.99\). I
+instead use Proposition \ref{prop:axm-path-specific-sufficiency}. For each
+saved date, the audit holds \((K,A,L)\) fixed and computes the largest
+\(s_X\) attainable over the full reachable domain \(B\geq B_0\). Across the
+path and its complementary tail, that upper share is \(0.208704\). The exact
+maximum of the service-capability elasticity in
+\eqref{eq:axm-service-capability-elasticity} over the resulting share interval
+is \(1.140555\), leaving a concavity margin of \(0.859445\) below the threshold
+of two. The benchmark research technology is jointly concave because
+\(2\eta=0.40<1\). I therefore admit the \(\sigma_{XL}=0.99\) result as a
+numerical equilibrium trajectory.
 
 The earlier \(\sigma_{XL}=1.01\) calculation used the unit-elastic stable
 projection and established only a finite-window solution of the dated
-conditions. A finite-boundary continuation toward a singularity is not an
-admissible infinite-horizon equilibrium under the benchmark equilibrium
-definition in Section \ref{sec:axm-model}. I therefore exclude that curve
-from every reported trajectory figure. The source and audit files remain in the
-repository to document the rejected calculation.
+conditions. The corrected audit retains the agreed continuation sequence and
+extends the fixed-horizon calculation to \(T=5{,}000\). Its initial jump
+variables stabilize, but the terminal AI share is only \(0.230289\), so the
+calculation has not reached the AI-dominated asymptotic regime. The implied
+near-unit separation timescale is about 23,300 model years.
+
+More importantly, Proposition \ref{prop:axm-no-bounded-capability-tail}
+rejects the regular bounded-capability tail, while the regular AI-dominated
+tail reaches a finite-time singularity. Neither is an admissible
+infinite-horizon equilibrium under the benchmark definition. In addition, the
+limiting service-capability elasticity is \(1/\alpha=3.0303>2\), so the
+path-specific concavity condition fails in that limit. The audit therefore
+records \texttt{accepted: false}, writes no plot-ready trajectory, and excludes
+\(1.01\) from every reported trajectory figure. The source and audit files
+remain in the repository to document the rejected calculation.
 
 \subsection{Acceptance tests, independent audits, and limits of the evidence}
 
@@ -1636,6 +1711,15 @@ to a terminal regime derived for the same value of \(\sigma_{XL}\); satisfy the
 sufficient optimality restrictions; and imply that both transversality objects
 converge to zero along that tail. Passing only the dated equations is not
 enough.
+
+For the two displayed \(\sigma_{XL}=0.75\) paths, the separate nonunit
+optimality audit evaluates \eqref{eq:axm-service-capability-elasticity} over
+every capability value \(B\geq B_0\) at each saved date. The largest elasticity
+is \(0.670940\) when \(\sigma_{HM}=1\) and \(0.670862\) when
+\(\sigma_{HM}=2\), both well below two. The corresponding research concavity
+margins are \(1-\eta(1+\omega_M)=0.73\) and \(1-2\eta=0.60\). These checks
+complete the path-specific sufficient-optimality condition that the earlier
+dated-equation audit did not contain.
 
 Three groups pass. The first contains the no-AI and positive-AI adoption
 equilibria at \(\sigma_{XL}=1\). The second contains the complementary-input
@@ -1673,7 +1757,11 @@ evidence for this analysis.
 Plotting scripts read accepted paths and do not solve an additional equilibrium
 system. The paper-wide guard
 \path{scripts/audit_axm_presented_trajectories.py} verifies the accepted
-manifests and scans the manuscript for every rejected trajectory figure. Its
+manifests, including the nonunit optimality checks in
+\path{scripts/audit_axm_complements_global_optimality.py} and
+\path{scripts/audit_axm_near_unit_equilibrium_status.py}. It also verifies that
+the upper near-unit audit remains rejected and scans the manuscript for every
+rejected trajectory figure. Its
 machine-readable result is
 \path{numerical_axm/presented_trajectory_admission_manifest.json}.
 The reported reruns used Python 3.12.13, NumPy 2.5.2, SciPy 1.18.0, and Pillow
@@ -1683,8 +1771,10 @@ bit-for-bit identity across computing environments; acceptance is based on the
 reported numerical tolerances and equation audits rather than file identity
 alone.
 Within \path{numerical_axm}, diagnostic values and pass/fail status are stored in
-\path{audit_report.csv}, \path{complements_acceptance_report.csv}, and
-\path{near_unit_equilibrium_status_audit.json}. The separate high-sigma report
+\path{audit_report.csv}, \path{complements_acceptance_report.csv},
+\path{complements_global_optimality_audit.json},
+\path{near_unit_equilibrium_status_audit.json}, and
+\path{upper_near_unit_equilibrium_audit.json}. The separate high-sigma report
 audits a finite-boundary calculation but does not grant equilibrium admission.
 Unit-elasticity thresholds are defined in
 \path{scripts/audit_axm_model.py};

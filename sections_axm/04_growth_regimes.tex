@@ -347,7 +347,8 @@ analytical limits of \(C/Y\) and \(X/(qB^2)\), but not the remaining growth
 rates, prices, or shares. Appendix \ref{app:axm-numerical-algorithm} reports the
 full specification and audit. I admit these paths as numerical equilibrium
 trajectories because they satisfy the dated equilibrium equations, the
-sufficiency restrictions in Proposition \ref{prop:axm-equilibrium-sufficiency},
+path-specific sufficiency conditions in Proposition
+\ref{prop:axm-path-specific-sufficiency},
 convergence to the complementary-input terminal regime, horizon stability, and
 negative asymptotic growth rates for both transversality objects. This is a
 numerical classification, not a theorem establishing existence from arbitrary
@@ -844,6 +845,47 @@ remain bounded, a globally admissible continuation may fail, or the
 infinite-horizon problem may not admit an optimum. The next result characterizes
 the accelerating branch when it exists.
 
+The bounded-capability alternative is also unavailable under a regular
+stationary tail in the automated-research benchmark.
+
+\begin{proposition}[No regular bounded-capability tail]
+\label{prop:axm-no-bounded-capability-tail}
+Suppose the automated-research benchmark applies,
+\(\sigma_{XL}>1\), and \(n+\gamma_A>0\). There is no regular interior
+infinite-horizon candidate path satisfying
+\[
+ B\to\bar B\in(0,\infty),\qquad
+ \frac{K}{AN}\to\bar k\in(0,\infty),\qquad
+ \frac{C}{AN}\to\bar c\in(0,\infty),
+\]
+with bounded \(r\), \(g_B\to0\), and the dated conditions in the benchmark
+equilibrium definition in Section \ref{sec:axm-model}.
+\end{proposition}
+
+\begin{proof}
+The pointwise monopoly problem is homogeneous in effective labor. Given the
+positive limits of \(K/(AN)\) and \(B\), its unique solution therefore has
+\(X/(AN)\to\bar x\in(0,\infty)\). Since \(n+\gamma_A>0\), this implies
+\(X\to\infty\). The capability law and \(g_B\to0\) imply \(M\to0\).
+The research condition \eqref{eq:axm-research-demand-benchmark} then implies
+\(q\to0\).
+In levels, the costate equation is
+\[
+ \dot q=(r-\eta g_B)q-\frac{X}{B^2}.
+\]
+The first term converges to zero, while the second tends to minus infinity.
+Hence \(\dot q\) is eventually bounded above by a negative constant, so the
+positive shadow value \(q\) must cross zero in finite time. This contradicts
+interiority.
+\end{proof}
+
+This proposition rules out the regular bounded-capability tail relevant to the
+near-unit numerical experiment. The conditional result below rules out the
+regular unbounded, AI-dominated tail as an infinite-horizon equilibrium because
+that tail ends in finite time. Together, the two results exhaust the regular
+terminal regimes used by the algorithm. They do not constitute a theorem that
+rules out every irregular path allowed by the primitive model.
+
 \begin{conditionalresult}[AI-dominated singular limit]
 \label{prop:axm-singular-limit}
 Assume \(\sigma_{XL}>1\), \(\sigma_{HM}>1\), \(0<\eta<\alpha<1\), and an
@@ -974,15 +1016,38 @@ continuation beyond the finite-time boundary.
 
 \subsubsection{Why no gross-substitutes trajectory is reported}
 
-The free-boundary algorithm for \((\sigma_{XL},\sigma_{HM})=(1.5,2)\) solves
-the dated necessary conditions up to a finite artificial boundary and converges
-toward the conditional ratios above. It does not construct an admissible path
-for all \(t\geq0\), verify the two infinite-horizon transversality conditions,
-or establish global optimality. Under the equilibrium definition in Section
-\ref{sec:axm-model}, a branch ending at a finite-time singularity is not an
-infinite-horizon equilibrium. I therefore report no simulated trajectory for
-\(\sigma_{XL}>1\). The free-boundary code is retained as a diagnostic for the
-conditional analytical result, not as a generator of paper figures.
+For \(\sigma_{XL}=1.01\), the algorithm follows the continuation order used on
+the two sides of one: it starts from the exact strictly positive-AI
+unit-elastic equilibrium, changes \(\sigma_{XL}\) on a short horizon, and then
+extends the horizon while preserving the same dated equations and initial
+stocks. The initial consumption and shadow-value jumps stabilize, but this does
+not identify an infinite-horizon tail. At \(T=5{,}000\), the terminal AI share
+is only \(0.2303\), far from the AI-dominated limit. The local separation rate
+\((\sigma_{XL}-1)\eta(n+\gamma_A)/\sigma_{XL}\) is
+\(4.29\times10^{-5}\), whose inverse is about 23,300 model years. Near-unit
+finite-window similarity is therefore expected even though the long-run
+regimes differ.
+
+Proposition \ref{prop:axm-no-bounded-capability-tail} rejects the regular
+bounded-capability terminal regime for this benchmark. The regular
+AI-dominated alternative is the finite-time branch in Conditional Result
+\ref{prop:axm-singular-limit}, not an infinite-horizon allocation. Moreover,
+as \(s_X\to1\), the service-capability elasticity in
+\eqref{eq:axm-service-capability-elasticity} tends to
+\(1/\alpha=3.03>2\) under the calibration. The path-specific concavity
+condition used to establish developer global optimality therefore also fails
+in that limit. Failure of this sufficient condition is not a nonexistence
+proof, but it is another reason the computed branch cannot be admitted as an
+equilibrium.
+
+The older free-boundary calculation for
+\((\sigma_{XL},\sigma_{HM})=(1.5,2)\) likewise solves the dated necessary
+conditions only up to a finite artificial boundary. Under the equilibrium
+definition in Section \ref{sec:axm-model}, neither calculation constructs an
+admissible path for every \(t\geq0\). I therefore report no simulated
+trajectory for \(\sigma_{XL}>1\). Both calculations remain in the repository
+as diagnostics for the conditional analytical result, not as sources of paper
+figures.
 
 \subsection{Factor payments and resource uses across regimes}
 \label{sec:axm-distributional-accounting}
@@ -1099,7 +1164,10 @@ flow is rescaled. The \(0.99\) algorithm uses the complementary-input terminal
 regime and verifies both transversality conditions; the unit path is the
 analytical balanced-growth equilibrium. I exclude \(1.01\) because its
 unit-elastic terminal projection does not establish an admissible
-infinite-horizon equilibrium.
+infinite-horizon equilibrium. For \(0.99\), the separate optimality audit also
+checks Proposition \ref{prop:axm-path-specific-sufficiency} over every
+capability level \(B\geq B_0\), rather than applying the unit-elasticity
+sufficiency proposition outside its domain.
 
 \begin{figure}[H]
 \centering
@@ -1132,7 +1200,9 @@ economically important. Thus the limits \(\sigma_{XL}\to1\) and
 \(t\to\infty\) need not commute. The regime propositions, rather than this
 finite-window comparison, characterize the conditional tails. A bilateral
 equilibrium comparison around one remains incomplete until an admissible
-\(\sigma_{XL}>1\) equilibrium is constructed.
+\(\sigma_{XL}>1\) equilibrium is constructed. The current algorithm finds no
+admissible regular terminal regime on that side of one, so it rejects the
+computed finite-window path instead of presenting it as an equilibrium.
 
 Finally, these are functional distribution results, not predictions about
 interpersonal inequality. The representative household supplies all labor and

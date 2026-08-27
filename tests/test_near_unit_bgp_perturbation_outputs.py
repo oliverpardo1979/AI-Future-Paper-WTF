@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RESULT_DIR = ROOT / "numerical_axm"
 MANIFEST_PATH = RESULT_DIR / "near_unit_bgp_perturbation_audit_manifest.json"
 STATUS_AUDIT_PATH = RESULT_DIR / "near_unit_equilibrium_status_audit.json"
+UPPER_AUDIT_PATH = RESULT_DIR / "upper_near_unit_equilibrium_audit.json"
 PATH_FILE = RESULT_DIR / "near_unit_bgp_perturbation_paths.csv"
 EQUILIBRIUM_PATH = RESULT_DIR / "near_unit_equilibrium_paths.csv"
 
@@ -32,6 +33,9 @@ class NearUnitBGPPerturbationOutputTests(unittest.TestCase):
         cls.manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
         cls.status_audit = json.loads(
             STATUS_AUDIT_PATH.read_text(encoding="utf-8")
+        )
+        cls.upper_audit = json.loads(
+            UPPER_AUDIT_PATH.read_text(encoding="utf-8")
         )
         with PATH_FILE.open("r", encoding="utf-8", newline="") as handle:
             cls.rows = list(csv.DictReader(handle))
@@ -84,6 +88,25 @@ class NearUnitBGPPerturbationOutputTests(unittest.TestCase):
         exported = self.status_audit["exported_path"]
         self.assertEqual(exported["sigma_xl_values"], [0.99, 1.0])
         self.assertEqual(sha256(EQUILIBRIUM_PATH), exported["sha256"])
+        optimality = self.status_audit["lower_tail"][
+            "developer_global_optimality"
+        ]
+        self.assertTrue(optimality["optimized_operating_profit_concave"])
+        self.assertGreater(optimality["profit_concavity_margin"], 0.0)
+
+    def test_upper_branch_is_rejected_without_an_infinite_horizon_tail(self) -> None:
+        self.assertFalse(self.upper_audit["accepted"])
+        self.assertFalse(
+            self.upper_audit["regular_tail_audit"][
+                "admissible_regular_infinite_horizon_tail_found"
+            ]
+        )
+        self.assertLess(
+            self.upper_audit["developer_optimality_audit"][
+                "limiting_profit_concavity_margin"
+            ],
+            0.0,
+        )
 
     def test_scenarios_share_unit_bgp_predetermined_stocks(self) -> None:
         initial = [row for row in self.rows if float(row["time"]) == 0.0]

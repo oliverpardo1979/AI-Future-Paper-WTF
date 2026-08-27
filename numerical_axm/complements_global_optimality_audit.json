@@ -1,0 +1,47 @@
+{
+  "accepted": true,
+  "purpose": "Supply the nonunit global-optimality gate missing from the dated-equation and terminal audits for presented complements.",
+  "scenarios": {
+    "axm_complements_sigma_xl_075_hm_1": {
+      "accepted": true,
+      "date_of_maximum_counterfactual_share": 46.0,
+      "gates": {
+        "capability_never_below_initial_stock": true,
+        "optimized_operating_profit_concave_on_reachable_domain": true,
+        "research_technology_jointly_concave": true
+      },
+      "initial_capability": 1.0,
+      "limiting_ai_share": 0.33222591362126247,
+      "maximizing_share": 0.4651614108303185,
+      "maximum_counterfactual_ai_share_at_initial_capability": 0.4651614108303185,
+      "maximum_service_capability_elasticity": 0.6709390170268223,
+      "minimum_log_capability_gap_from_initial": 0.0,
+      "profit_concavity_margin": 1.3290609829731777,
+      "research_concavity_condition": "eta*(1+omega_M)<=1",
+      "research_concavity_margin": 0.73,
+      "sigma_hm": 1.0,
+      "sigma_xl": 0.75
+    },
+    "axm_complements_sigma_xl_075_hm_2": {
+      "accepted": true,
+      "date_of_maximum_counterfactual_share": 44.0,
+      "gates": {
+        "capability_never_below_initial_stock": true,
+        "optimized_operating_profit_concave_on_reachable_domain": true,
+        "research_technology_jointly_concave": true
+      },
+      "initial_capability": 1.0,
+      "limiting_ai_share": 0.33222591362126247,
+      "maximizing_share": 0.46513038728114653,
+      "maximum_counterfactual_ai_share_at_initial_capability": 0.46513038728114653,
+      "maximum_service_capability_elasticity": 0.6708619040079198,
+      "minimum_log_capability_gap_from_initial": 0.0,
+      "profit_concavity_margin": 1.3291380959920802,
+      "research_concavity_condition": "2*eta<=1",
+      "research_concavity_margin": 0.6,
+      "sigma_hm": 2.0,
+      "sigma_xl": 0.75
+    }
+  },
+  "source": "numerical_axm/complements_transition_paths.csv"
+}
