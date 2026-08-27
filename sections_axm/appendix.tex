@@ -1245,6 +1245,111 @@ instead approximates the dated necessary conditions on the conditional
 pre-singular branch. Both use the same timing, prices, and normalizations as the
 analytical model.
 
+\subsection{Off-balanced-growth validation of the unit-elastic benchmark}
+\label{app:axm-off-bgp-validation}
+
+The numerical construction follows the nesting of the model. I first solve the
+no-AI Ramsey--Cass--Koopmans economy as a two-dimensional problem. I then solve
+the strictly positive-AI economy as a separate four-dimensional problem. I do
+not continue mechanically through \(\omega_X=0\): at zero, \(B,q,U,\) and
+\(M\) cease to affect final production, the developer's conditions disappear,
+and the dimension and rank of the equilibrium system change.
+
+For the no-AI economy, define capital and consumption per unit of effective
+labor by \(k=K/(AN)\) and \(c=C/(AN)\). Their laws of motion are
+\begin{equation}
+ \dot k=k^\alpha-c-(\delta+n+\gamma_A)k,\qquad
+ \frac{\dot c}{c}
+ =\alpha k^{\alpha-1}-\delta-\rho-\gamma_A.
+ \label{eq:axm-rck-validation-system}
+\end{equation}
+The initial value \(k_0\) is predetermined and \(c_0\) is a jump variable. I
+solve the system in logs with residual-controlled collocation. A terminal
+condition places the endpoint on the stable linear direction of the
+detrended steady state. I move \(k_0\) from the steady-state value to its
+target by continuation. A separately coded backward integration of the Ramsey
+system recovers the same \(c_0\). This calculation verifies the numerical
+architecture in the standard model before the developer is introduced.
+
+For the positive-AI calculation, I fix
+\((\omega_X,\sigma_{XL})=(0.20,1)\) and use the automated-research benchmark.
+The exact balanced-growth solution in Proposition
+\ref{prop:axm-benchmark-equilibrium-existence} supplies a stationary reference,
+not the initial condition imposed on the transition. In the log deviations
+\(\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'\) defined in
+\eqref{eq:axm-benchmark-log-deviations}, the unit-elastic static conditions
+eliminate \(Y,U,\) and \(M\) exactly. Substitution into capital accumulation,
+the capability law, the household Euler equation, and the developer's costate
+equation gives the autonomous system \(\dot\xi=f(\xi)\) used to derive
+\eqref{eq:axm-saddle-jacobian}. Thus the numerical solver uses equations
+already derived from the dated equilibrium system; it does not add a terminal
+growth equation or impose balanced growth along the transition.
+
+Let \(V_S\) span the two stable directions of \(J^*\), and let
+\(P_\perp\) contain two independent rows orthogonal to \(V_S\). For each
+finite horizon \(T\), the four boundary conditions are
+\begin{equation}
+ \begin{split}
+ \xi_K(0)&=\log(K_0/K_0^*),\qquad
+ \xi_B(0)=\log(B_0/B_0^*),\\
+ P_\perp\xi(T)&=0.
+ \end{split}
+ \label{eq:axm-positive-ai-stable-boundary}
+\end{equation}
+The first line fixes the two predetermined stocks. The second line removes the
+two unstable linear components and thereby selects \(\xi_C(0)\) and
+\(\xi_q(0)\), or equivalently \(C_0\) and \(q_0\). It does not set
+\(\xi(T)=0\), impose the balanced-growth allocation at \(T\), or replace the
+transversality conditions.
+
+The off-BGP calculation proceeds in six steps.
+\begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=4.5em,labelsep=0.6em]
+ \item Construct the exact positive-AI balanced-growth levels, verify every
+ dated equilibrium equation at those levels, and compute \(J^*\).
+ \item Verify that \(J^*\) has two stable and two unstable roots and that the
+ projection of the stable eigenspace onto \((\xi_K,\xi_B)\) is nonsingular.
+ \item Set \(B_0=1\). Choose \(K_0\) so that the date-zero capital--output ratio
+ equals its balanced-growth value after solving the date-zero production
+ equation. This is an initialization rule, not an equilibrium condition.
+ \item At \(T=100\), move the two initial log-stock deviations from zero to
+ their targets in 12 steps. Each accepted collocation solution initializes the
+ next step.
+ \item Holding \((K_0,B_0)\) fixed, extend the horizon through
+ \(T=150,200,250\). Compare the two initial jump variables and the paths on
+ common initial windows.
+ \item Reconstruct the static and dynamic equations independently, tighten the
+ solver tolerance, densify the initial mesh, increase the number of stock
+ continuation steps, and reintegrate short segments of the path backward with
+ a different integrator.
+\end{enumerate}
+
+Under the baseline parameters, \(B_0^*=0.4436709\). The target therefore has
+\(\xi_B(0)=0.8126721\); the capital initialization gives
+\(\xi_K(0)=0.2031680\). The 12-step continuation reaches this pair. Between
+\(T=200\) and \(T=250\), the largest change in the two initial jump variables
+is \(1.84\times10^{-6}\). Tightening the tolerance from \(10^{-8}\) to
+\(10^{-9}\), increasing the initial mesh from 121 to 181 nodes, and increasing
+the stock-continuation steps from 12 to 16 changes the initial jumps by at most
+\(5.1\times10^{-13}\). Over the first 50 years, the largest change in any of
+the four log paths is \(7.7\times10^{-10}\).
+
+The refined solution has a maximum resource residual of
+\(3.0\times10^{-9}\), a maximum boundary residual of
+\(2.8\times10^{-17}\), and maximum residuals below
+\(3.0\times10^{-9}\) for the other reconstructed equilibrium equations. The
+backward, segment-by-segment reconstruction differs from the collocation path
+by at most \(2.0\times10^{-10}\). Consumption and research expenditure remain
+positive, and both finite-date transversality expressions are lower at
+\(T=250\) than at date zero.
+
+These checks establish numerical stability of the finite-horizon branch from
+the stated off-BGP stocks. They do not prove that \(B_0=1\) belongs to the
+local neighborhood in Proposition \ref{prop:axm-unit-saddle-path}, establish
+global existence or uniqueness, or verify transversality as \(t\to\infty\).
+The terminal projection is a finite-horizon approximation to the nonlinear
+stable manifold. A failure at a longer horizon would therefore be a numerical
+diagnostic, not evidence that an equilibrium trajectory does not exist.
+
 \subsection{Numerical representation and the intratemporal equilibrium map}
 
 The outer solver uses the four log variables
@@ -1536,7 +1641,11 @@ positivity, the monopoly second-order condition, terminal restrictions, and the
 stability of the initial jump variables. The complementary-input and
 gross-substitutes auditors do not import the solver's static-equilibrium routine
 and differentiate the saved log paths independently. The unit-elasticity audit
-uses the collocation derivative for its dynamic residuals.
+for the previously reported paths uses the collocation derivative for its
+dynamic residuals. The off-BGP benchmark audit in Subsection
+\ref{app:axm-off-bgp-validation} instead reconstructs the normalized
+right-hand side separately and checks it with backward integrations over short
+segments.
 
 All prespecified gates pass. For unit elasticity, the largest errors are
 \(4.9\times10^{-11}\) for static equations and \(6.6\times10^{-6}\) for
@@ -1562,9 +1671,17 @@ the free-boundary solver are
 \path{scripts/simulate_axm_complements_equilibrium.py} and
 \path{scripts/simulate_axm_high_sigma_equilibrium.py}. The mapping from manuscript
 equations to solver objects and diagnostics is stored in
-\path{numerical_axm/equilibrium_equation_map.csv}. Scripts without the
-\texttt{axm} designation that solve or simulate an equilibrium implement the
-earlier research specification and do not generate evidence for this analysis.
+\path{numerical_axm/equilibrium_equation_map.csv}. The layered validation in
+Subsection \ref{app:axm-off-bgp-validation} is
+implemented in \path{scripts/solve_rck_no_ai_bvp.py},
+\path{scripts/define_positive_ai_branch.py}, and
+\path{scripts/solve_positive_ai_bvp.py}. Its automated tests are
+\path{tests/test_rck_no_ai_bvp.py},
+\path{tests/test_positive_ai_branch.py}, and
+\path{tests/test_positive_ai_bvp.py}.
+Other scripts without the \texttt{axm} designation that solve or simulate an
+equilibrium implement the earlier research specification and do not generate
+evidence for this analysis.
 Plotting scripts read accepted paths and do not solve an additional equilibrium
 system. In particular,
 \path{scripts/plot_axm_distribution_decomposition.py} verifies the hashes in

@@ -1312,6 +1312,22 @@ The determinant of the state block of normalized stable eigenvectors is
 stable directions for the two predetermined variables and two unstable
 directions eliminated by the initial choices of \(C\) and \(q\).
 
+The normalization \(B_0=1\) is not on this balanced-growth path: under the
+baseline parameters, \(B_0^*=0.4437\). I therefore use the balanced-growth
+solution only as the starting point of a numerical continuation. Holding
+\((\omega_X,\sigma_{XL})=(0.20,1)\) fixed, I move the predetermined initial
+stocks from \((K_0^*,B_0^*)\) to the target pair \((K_0,1)\). At each step, a
+boundary-value solver selects \(C_0\) and \(q_0\) by eliminating the two
+unstable terminal components. The continuation reaches the target and is
+stable to tighter tolerances, a denser mesh, and additional continuation
+steps; the initial jumps also stabilize as the horizon increases from 100 to
+250 years. This result is numerical evidence that
+the finite-horizon equilibrium system can be solved from the stated off-BGP
+stocks. It is not a global existence proof and does not verify either
+transversality condition at infinity. Appendix
+\ref{app:axm-off-bgp-validation} describes the calculation and its independent
+audit.
+
 To study nearby elasticities without changing notation, let
 \begin{equation}
  \varphi\equiv\frac{\sigma_{XL}-1}{\sigma_{XL}},\qquad
