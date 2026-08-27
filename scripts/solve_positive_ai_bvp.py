@@ -118,6 +118,32 @@ def _validate_horizons(horizons: tuple[float, ...]) -> tuple[float, ...]:
     return values
 
 
+def subdivide_horizon_schedule(
+    horizons: tuple[float, ...],
+) -> tuple[float, ...]:
+    """Insert continuation horizons so no step exceeds the first horizon.
+
+    Extending a finite-horizon solution with the BGP linearization is a local
+    predictor.  A very large horizon jump can extrapolate that predictor far
+    outside its useful range and overflow the exponential terms before the
+    collocation corrector can recover.  The first solved horizon provides a
+    conservative, scale-aware maximum continuation step.
+    """
+
+    values = _validate_horizons(horizons)
+    maximum_step = values[0]
+    expanded = [values[0]]
+    for target in values[1:]:
+        start = expanded[-1]
+        step_count = max(1, int(math.ceil((target - start) / maximum_step)))
+        increment = (target - start) / step_count
+        expanded.extend(
+            start + increment * step
+            for step in range(1, step_count + 1)
+        )
+    return tuple(float(value) for value in expanded)
+
+
 def _linear_stable_correction(
     mesh: np.ndarray,
     state_deviation: np.ndarray,
@@ -209,7 +235,7 @@ def solve_transition(
     if tolerance <= 0.0 or boundary_tolerance <= 0.0:
         raise ValueError("Solver tolerances must be strictly positive.")
 
-    horizon_values = _validate_horizons(horizons)
+    horizon_values = subdivide_horizon_schedule(horizons)
     seed = balanced_growth_seed(parameters)
     subspace = stable_subspace(parameters, seed)
     jacobian = normalized_jacobian(np.zeros(4), parameters, seed)

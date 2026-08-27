@@ -665,6 +665,18 @@ conditional on \eqref{eq:axm-adoption-output-continuity}. At unit elasticity,
 the production-labor, gross-capital, and inference-compute shares are fixed by
 the model and do not depend on this matching rule.
 
+The calibration satisfies the restrictions in Proposition
+\ref{prop:axm-benchmark-equilibrium-existence}. In particular,
+\(\eta=0.20<\alpha=0.33\), \(\beta=0.134<1/2\), \(2\eta=0.40<1\),
+\(\Delta=0.402>0\), and \(\rho=0.04>n=0.003\). Hence the positive-AI model
+has the analytical balanced-growth equilibrium characterized there. Its
+per-capita output growth rate is \(g_Y^*-n=1.0867\) percent and its net
+interest rate is \(r^*=5.0867\) percent. The adoption experiment starts far
+from that reference path: \(\xi_B(0)=4.2445\). Moreover, the slow stable root
+of the normalized system is \(-0.003194\), whose local half-life is about 217
+years. Convergence should therefore not be visible within a short simulation
+window.
+
 Figure \ref{fig:axm-ai-adoption-macro} compares the two equilibrium paths.
 Output does not jump by construction. Consumption falls by 2.26 percent at
 adoption, while the real wage falls by 20 percent. The wage falls because the
@@ -672,7 +684,12 @@ production-labor share decreases from \(1-\alpha=0.67\) to
 \((1-\alpha)\omega_L=0.536\), even though initial output is unchanged. Output
 per person subsequently remains close to the no-AI path: after 250 years it is
 0.61 percent higher. The net interest rate rises from 5 percent to 5.0035
-percent over the same interval.
+percent over the same interval---an increase of only 0.0035 percentage points.
+Since \(r=\alpha Y/K-\delta\), output continuity and the inherited capital
+stock keep the interest rate at 5 percent at adoption. Output then grows
+slightly faster than capital, so \(Y/K\) and the interest rate rise slowly.
+The focused interest-rate scale magnifies this small movement; it does not
+represent an explosive increase.
 
 \begin{figure}[H]
 \centering
@@ -682,7 +699,8 @@ research at date zero. The AI path sets \(\omega_X=0.20\) and
 \(\sigma_{XL}=1\); the counterfactual keeps \(\omega_X=0\). Output per person,
 consumption per person, and the real wage use a common date-zero no-AI index
 and logarithmic vertical scales. The interest-rate panel uses a focused linear
-scale. Model time is not a calendar forecast.}
+scale spanning only 0.004 percentage points. Model time is not a calendar
+forecast.}
 \label{fig:axm-ai-adoption-macro}
 \end{figure}
 
@@ -690,13 +708,20 @@ Figure \ref{fig:axm-ai-adoption-mechanism} explains why the macroeconomic
 effects accumulate slowly. The annual growth rate of output per person rises
 from 1.0006 percent at adoption to 1.0036 percent after 250 years, and
 capability increases by 2.55 percent. The shadow value \(qB/Y\) changes little.
+The numerical solution is extended to 3,000 years solely as a convergence
+audit. At that horizon, per-capita growth is 1.08637 percent and the net
+interest rate is 5.08637 percent, both within 0.00030 percentage points of
+their analytical balanced-growth values. The figures retain the first 250
+years because that is the economically relevant transition window, not
+because the model lacks a long-run limit.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures_axm/axm_ai_adoption_mechanism_distribution.png}
 \caption{Growth and capability after AI adoption. Growth and \(qB/Y\) use
-focused linear scales; \(B/B_0\) uses a logarithmic scale. The gray dashed line
-in the first panel is the no-AI growth rate.}
+focused linear scales; the growth panel spans only 0.004 percentage points.
+\(B/B_0\) uses a logarithmic scale. The gray dashed line in the first panel is
+the no-AI growth rate.}
 \label{fig:axm-ai-adoption-mechanism}
 \end{figure}
 

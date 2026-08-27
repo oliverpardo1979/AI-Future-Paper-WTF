@@ -58,7 +58,8 @@ SUMMARY_FILE = RESULT_DIR / "ai_adoption_unit_elasticity_summary.csv"
 MANIFEST_FILE = RESULT_DIR / "ai_adoption_unit_elasticity_audit_manifest.json"
 
 DISPLAY_HORIZON = 250.0
-SOLVER_HORIZONS = (100.0, 200.0, 300.0, 400.0, 500.0, 600.0)
+SAVED_PATH_HORIZON = 600.0
+SOLVER_HORIZONS = tuple(float(year) for year in range(100, 3001, 100))
 PATH_POINTS = 1201
 TOLERANCE = 1.0e-9
 BOUNDARY_TOLERANCE = 1.0e-11
@@ -146,9 +147,12 @@ def solve_experiment() -> tuple[
         boundary_tolerance=BOUNDARY_TOLERANCE,
         maximum_nodes=MAXIMUM_NODES,
     )
-    solver_audit = audit_solution(solution, sample_points=3001)
+    solver_audit = audit_solution(solution, sample_points=6001)
 
-    times = np.linspace(0.0, SOLVER_HORIZONS[-1], PATH_POINTS)
+    # The published figures use only the first 250 years.  Preserve the
+    # half-year resolution of the saved path while solving much farther out
+    # to verify convergence to the analytical positive-AI BGP.
+    times = np.linspace(0.0, SAVED_PATH_HORIZON, PATH_POINTS)
     deviations = np.asarray(solution.raw.sol(times), dtype=float)
     derivatives = np.asarray(solution.raw.sol(times, 1), dtype=float)
     xi_k, xi_b, xi_c, xi_q = deviations
@@ -343,6 +347,41 @@ def solve_experiment() -> tuple[
     )
     maximum_accounting_error = float(np.max(np.abs(ai_accounting - 1.0)))
     minimum_profit_share = float(np.min(ai_profit_share))
+    terminal_deviations = np.asarray(
+        solution.raw.sol(solution.horizon), dtype=float
+    )
+    terminal_derivatives = np.asarray(
+        solution.raw.sol(solution.horizon, 1), dtype=float
+    )
+    terminal_output_deviation_growth = (
+        output_k_loading * terminal_derivatives[0]
+        + output_b_loading * terminal_derivatives[1]
+    )
+    terminal_output_pc_growth = (
+        seed.output_growth
+        + terminal_output_deviation_growth
+        - ai_parameters.population_growth
+    )
+    terminal_output_deviation = (
+        output_k_loading * terminal_deviations[0]
+        + output_b_loading * terminal_deviations[1]
+    )
+    terminal_capital_output_ratio = seed.capital_output_ratio * math.exp(
+        terminal_deviations[0] - terminal_output_deviation
+    )
+    terminal_net_interest = (
+        ai_parameters.alpha / terminal_capital_output_ratio
+        - ai_parameters.depreciation
+    )
+    bgp_output_pc_growth = (
+        seed.output_growth - ai_parameters.population_growth
+    )
+    terminal_output_pc_growth_gap = abs(
+        terminal_output_pc_growth - bgp_output_pc_growth
+    )
+    terminal_net_interest_gap = abs(
+        terminal_net_interest - seed.net_interest_rate
+    )
     gates = {
         "solver_success": bool(solver_audit["success"]),
         "initial_output_continuity": initial_output_log_gap < 1.0e-10,
@@ -361,6 +400,11 @@ def solve_experiment() -> tuple[
             solver_audit["last_horizon_initial_jump_change"]
         )
         < 1.0e-6,
+        "terminal_bgp_convergence": (
+            float(solver_audit["terminal_deviation_norm"]) < 1.0e-2
+            and terminal_output_pc_growth_gap < 5.0e-6
+            and terminal_net_interest_gap < 5.0e-6
+        ),
         "accounting_identity": maximum_accounting_error < 1.0e-12,
         "positive_consumption": bool(np.all(ai_consumption > 0.0)),
         "positive_research": bool(np.all(ai_research > 0.0)),
@@ -402,6 +446,7 @@ def solve_experiment() -> tuple[
         "solver_configuration": {
             "horizons": list(SOLVER_HORIZONS),
             "display_horizon": DISPLAY_HORIZON,
+            "saved_path_horizon": SAVED_PATH_HORIZON,
             "continuation_steps": CONTINUATION_STEPS,
             "initial_nodes": INITIAL_NODES,
             "tolerance": TOLERANCE,
@@ -415,6 +460,12 @@ def solve_experiment() -> tuple[
             "initial_services_log_gap": initial_services_log_gap,
             "maximum_accounting_error": maximum_accounting_error,
             "minimum_profit_share": minimum_profit_share,
+            "terminal_output_pc_growth": terminal_output_pc_growth,
+            "bgp_output_pc_growth": bgp_output_pc_growth,
+            "terminal_output_pc_growth_gap": terminal_output_pc_growth_gap,
+            "terminal_net_interest": terminal_net_interest,
+            "bgp_net_interest": seed.net_interest_rate,
+            "terminal_net_interest_gap": terminal_net_interest_gap,
         },
         "gates": gates,
     }

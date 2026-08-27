@@ -1,11 +1,17 @@
 {
   "accepted": true,
   "additional_audit": {
+    "bgp_net_interest": 0.050866666666666664,
+    "bgp_output_pc_growth": 0.010866666666666667,
     "initial_capital_log_gap": 0.0,
     "initial_output_log_gap": 0.0,
     "initial_services_log_gap": 2.2204460492503128e-16,
     "maximum_accounting_error": 2.220446049250313e-16,
-    "minimum_profit_share": 0.11600035779417528
+    "minimum_profit_share": 0.11600404069217801,
+    "terminal_net_interest": 0.050863715983849964,
+    "terminal_net_interest_gap": 2.9506828167005783e-06,
+    "terminal_output_pc_growth": 0.010863736605085033,
+    "terminal_output_pc_growth_gap": 2.930061581633836e-06
   },
   "ai_balanced_growth_seed": {
     "ai_service_price": 16.820318924403615,
@@ -50,14 +56,14 @@
   },
   "artifacts": {
     "paths": {
-      "bytes": 753151,
+      "bytes": 753185,
       "path": "numerical_axm\\ai_adoption_unit_elasticity_paths.csv",
-      "sha256": "411f9a1059dc06de65622d30601bfb6fcad0db9aa2d2ab630fe0242a2eb39998"
+      "sha256": "edc328294cb6306b108f1b346b38798020456db9ed8bdddd40f87deb09fb76b5"
     },
     "summary": {
-      "bytes": 1535,
+      "bytes": 1536,
       "path": "numerical_axm\\ai_adoption_unit_elasticity_summary.csv",
-      "sha256": "b6109f36e33e68e98dec2a4625578608afcb4e5ea1acaea4c18c66f115d0eefd"
+      "sha256": "812edb2ce356860f69f77f2a61cb97c44fc8da10afc594908ff5f3b9ffa753d2"
     }
   },
   "experiment": "Unexpected adoption of omega_X=0.20 at sigma_XL=1 from the no-AI RCK balanced-growth path",
@@ -74,21 +80,22 @@
     "nonnegative_profit_share": true,
     "positive_consumption": true,
     "positive_research": true,
-    "solver_success": true
+    "solver_success": true,
+    "terminal_bgp_convergence": true
   },
   "initial_condition_rule": "K0, A0, and N0 are inherited from the no-AI BGP; B0 makes Y(0+) equal Y(0-) and therefore X0=A0*L0; C0 and q0 are selected by the positive-AI boundary-value problem",
   "initial_conditions": {
     "initial_ai_consumption": 1.3938746702962894,
     "initial_ai_output": 1.8004765233646332,
     "initial_ai_services": 1.0000000000000002,
-    "initial_ai_shadow_value": 0.02820565140309344,
+    "initial_ai_shadow_value": 0.028205651402664417,
     "initial_capability": 30.93163952821728,
     "initial_capital": 5.94157252710329,
     "initial_log_deviations": [
       1.0750550907714378,
       4.244451729350565,
       1.0682202427759822,
-      -3.107258304044328
+      -3.1072583040595383
     ],
     "initial_no_ai_output": 1.8004765233646332
   },
@@ -107,25 +114,25 @@
     "population_growth": 0.003
   },
   "solver_audit": {
-    "continuation_stages": 37,
-    "developer_log_tvc_change": -22.13579220533077,
-    "final_nodes": 1124,
-    "household_log_tvc_change": -22.197963546897352,
-    "last_horizon_initial_jump_change": 7.70774999381274e-10,
-    "max_boundary_residual": 2.220446049250313e-16,
-    "max_capability_residual": 2.7231591547688394e-13,
-    "max_costate_residual": 6.272976982557013e-10,
-    "max_euler_residual": 4.708746864645619e-10,
-    "max_normalized_ode_residual": 1.1175741959461305e-09,
+    "continuation_stages": 61,
+    "developer_log_tvc_change": -111.06876450710863,
+    "final_nodes": 5468,
+    "household_log_tvc_change": -111.00681173635657,
+    "last_horizon_initial_jump_change": 0.0,
+    "max_boundary_residual": 2.168404344971009e-19,
+    "max_capability_residual": 1.9532335818195357e-14,
+    "max_costate_residual": 1.7008970275257055e-11,
+    "max_euler_residual": 1.9094219261273082e-11,
+    "max_normalized_ode_residual": 3.020016289996541e-11,
     "max_research_foc_log_residual": 2.220446049250313e-16,
-    "max_resource_residual": 3.688135907786716e-09,
+    "max_resource_residual": 9.965894776087225e-11,
     "maximum_rms_residual": 9.989779057677047e-10,
-    "minimum_consumption_share": 0.7727529918679554,
-    "minimum_research_share": 6.403551908859927e-06,
-    "segmented_backward_function_evaluations": 19020,
-    "segmented_backward_reconstruction_gap": 1.3307854818123133e-10,
+    "minimum_consumption_share": 0.7727866277136688,
+    "minimum_research_share": 6.403551908738174e-06,
+    "segmented_backward_function_evaluations": 97200,
+    "segmented_backward_reconstruction_gap": 6.540545882671722e-12,
     "success": true,
-    "terminal_deviation_norm": 2.888639342232856
+    "terminal_deviation_norm": 0.004566023531583288
   },
   "solver_configuration": {
     "boundary_tolerance": 1e-11,
@@ -137,10 +144,35 @@
       300.0,
       400.0,
       500.0,
-      600.0
+      600.0,
+      700.0,
+      800.0,
+      900.0,
+      1000.0,
+      1100.0,
+      1200.0,
+      1300.0,
+      1400.0,
+      1500.0,
+      1600.0,
+      1700.0,
+      1800.0,
+      1900.0,
+      2000.0,
+      2100.0,
+      2200.0,
+      2300.0,
+      2400.0,
+      2500.0,
+      2600.0,
+      2700.0,
+      2800.0,
+      2900.0,
+      3000.0
     ],
     "initial_nodes": 181,
     "maximum_nodes": 75000,
+    "saved_path_horizon": 600.0,
     "tolerance": 1e-09
   }
 }

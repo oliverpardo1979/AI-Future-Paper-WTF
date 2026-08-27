@@ -51,6 +51,18 @@ class AIAdoptionExperimentTests(unittest.TestCase):
             manifest = json.load(handle)
         self.assertTrue(manifest["accepted"])
         self.assertTrue(all(manifest["gates"].values()))
+        self.assertTrue(manifest["gates"]["terminal_bgp_convergence"])
+        self.assertLess(
+            manifest["solver_audit"]["terminal_deviation_norm"], 1.0e-2
+        )
+        self.assertLess(
+            manifest["additional_audit"]["terminal_output_pc_growth_gap"],
+            5.0e-6,
+        )
+        self.assertLess(
+            manifest["additional_audit"]["terminal_net_interest_gap"],
+            5.0e-6,
+        )
 
         with PATH_FILE.open("r", newline="", encoding="utf-8") as handle:
             rows = list(csv.DictReader(handle))

@@ -1380,23 +1380,34 @@ balanced-growth reference, the predetermined initial deviations are
  \xi_K(0)=1.0750551,\qquad \xi_B(0)=4.2444517.
 \]
 I move the stocks from the reference path to these targets in 32 log-linear
-continuation steps. I then extend the terminal horizon through
-\(T=100,200,300,400,500,600\). The terminal projection selects
+continuation steps. I then extend the terminal horizon from \(T=100\) to
+\(T=3{,}000\) in increments of 100 years. The implementation automatically
+subdivides any requested larger horizon jump: the linear stable tail is a local
+predictor, and extrapolating it too far can overflow the exponential equations
+before the collocation corrector operates. The terminal projection selects
 \[
  C(0^+)=1.3938747,\qquad q(0^+)=0.0282057.
 \]
 
-At \(T=600\), the largest reconstructed equilibrium-equation residual is
-\(3.7\times10^{-9}\), and the boundary residual is
-\(2.2\times10^{-16}\). The largest change in either initial jump variable
-between the last two horizons is \(7.8\times10^{-10}\). A separately coded
-backward reconstruction differs from the collocation path by at most
-\(1.4\times10^{-10}\). Consumption, research compute, and distributed profit
-remain nonnegative, and both finite-date transversality proxies decline over
-the solved interval. The figures display the first 250 years of this accepted
-600-year calculation. As in the preceding exercise, these checks establish
-numerical stability of the finite-horizon approximation; they do not prove
-global existence, uniqueness, or the infinite-horizon transversality limits.
+At \(T=3{,}000\), the largest reconstructed equilibrium-equation residual is
+\(1.0\times10^{-10}\), and the boundary residual is
+\(2.2\times10^{-19}\). A separately coded backward reconstruction differs
+from the collocation path by at most \(6.6\times10^{-12}\). The norm of the
+four terminal log deviations is 0.00457. Per-capita output growth is 1.08637
+percent, compared with its analytical balanced-growth value of 1.08667
+percent; the net interest rate is 5.08637 percent, compared with 5.08667
+percent. Consumption, research compute, and distributed profit remain
+nonnegative, and both finite-date transversality proxies decline over the
+solved interval. The saved path retains half-year observations through year
+600, and the figures display its first 250 years.
+
+These checks show that the apparent lack of stabilization in the displayed
+window is slow convergence, not the absence of a balanced-growth limit or a
+failure of the dated equilibrium equations. They provide strong numerical
+evidence for the computed branch from the stated initial stocks. Because those
+stocks lie far outside the neighborhood covered by Proposition
+\ref{prop:axm-unit-saddle-path}, they remain numerical evidence rather than a
+global proof of existence or uniqueness from arbitrary initial conditions.
 
 \subsection{Numerical representation and the intratemporal equilibrium map}
 

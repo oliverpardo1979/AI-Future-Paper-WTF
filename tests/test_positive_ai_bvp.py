@@ -23,7 +23,11 @@ from define_positive_ai_branch import (  # noqa: E402
     balanced_growth_seed,
     initial_stocks_matching_bgp_capital_output_ratio,
 )
-from solve_positive_ai_bvp import audit_solution, solve_transition  # noqa: E402
+from solve_positive_ai_bvp import (  # noqa: E402
+    audit_solution,
+    solve_transition,
+    subdivide_horizon_schedule,
+)
 
 
 class PositiveAIBVPSolverTests(unittest.TestCase):
@@ -49,6 +53,26 @@ class PositiveAIBVPSolverTests(unittest.TestCase):
         self.assertLess(audit["max_normalized_ode_residual"], 1e-12)
         self.assertLess(audit["max_boundary_residual"], 1e-12)
         self.assertLess(audit["terminal_deviation_norm"], 1e-12)
+
+    def test_large_horizon_jumps_are_subdivided_before_solving(self) -> None:
+        schedule = subdivide_horizon_schedule((100.0, 600.0))
+        self.assertEqual(schedule[0], 100.0)
+        self.assertEqual(schedule[-1], 600.0)
+        self.assertLessEqual(max(np.diff(schedule)), 100.0)
+
+        solution = solve_transition(
+            self.parameters,
+            self.seed.capital,
+            self.seed.capability,
+            horizons=(100.0, 600.0),
+            continuation_steps=2,
+            initial_nodes=41,
+            tolerance=1e-9,
+        )
+        self.assertEqual(solution.horizon_schedule, schedule)
+        self.assertLess(
+            np.linalg.norm(solution.evaluate_deviations(600.0)), 1e-12
+        )
 
     def test_local_off_bgp_transition_passes_independent_audit(self) -> None:
         target = initial_stocks_matching_bgp_capital_output_ratio(

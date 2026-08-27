@@ -114,6 +114,25 @@ class PositiveAIBranchDefinitionTests(unittest.TestCase):
             right_jacobian[2:, :], self.subspace.terminal_matrix
         )
 
+    def test_positive_weight_grid_preserves_seed_and_saddle_structure(
+        self,
+    ) -> None:
+        for omega_x in (0.05, 0.10, 0.20, 0.40, 0.60, 0.70):
+            with self.subTest(omega_x=omega_x):
+                parameters = PositiveAIBenchmarkParameters(omega_x=omega_x)
+                seed = balanced_growth_seed(parameters)
+                audit = canonical_seed_residuals(parameters, seed)
+                subspace = stable_subspace(parameters, seed)
+                self.assertLess(
+                    audit["max_abs_equilibrium_residual"], 1.0e-12
+                )
+                self.assertEqual(
+                    int(np.sum(subspace.eigenvalues.real < 0.0)), 2
+                )
+                self.assertEqual(
+                    int(np.sum(subspace.eigenvalues.real > 0.0)), 2
+                )
+
     def test_zero_is_rejected_as_a_positive_ai_continuation_point(self) -> None:
         with self.assertRaises(ValueError):
             PositiveAIBenchmarkParameters(omega_x=0.0)

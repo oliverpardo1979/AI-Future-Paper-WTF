@@ -356,7 +356,7 @@ def draw_macro(rows: list[dict[str, str]]) -> None:
         boxes[3],
         rows,
         title="D. Net interest rate",
-        subtitle="Annual percent; focused vertical scale",
+        subtitle="Annual percent; focused 0.004-percentage-point range",
         series=common_series("ai_net_interest", "no_ai_net_interest"),
         y_ticks=(0.04999, 0.05000, 0.05001, 0.05002, 0.05003, 0.05004),
         y_formatter=lambda value: f"{100.0 * value:.3f}",
@@ -384,13 +384,13 @@ def draw_mechanism(rows: list[dict[str, str]]) -> None:
         boxes[0],
         rows,
         title="A. Growth of output per person",
-        subtitle="Annual percent; blue AI, gray dashed no AI; focused scale",
+        subtitle="Annual percent; focused 0.004-percentage-point range",
         series=(
             ("ai_output_pc_growth", AI_COLOR, None, 7),
             ("no_ai_output_pc_growth", NO_AI_COLOR, (16.0, 10.0), 5),
         ),
         y_ticks=(0.009995, 0.010000, 0.010010, 0.010020, 0.010030, 0.010040),
-        y_formatter=lambda value: f"{100.0 * value:.3f}",
+        y_formatter=lambda value: f"{100.0 * value:.4f}",
     )
     draw_line_panel(
         draw,
