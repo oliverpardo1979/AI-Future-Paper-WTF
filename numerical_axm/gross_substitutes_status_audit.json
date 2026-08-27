@@ -1,0 +1,41 @@
+{
+  "audit_passed": true,
+  "classification": "no_admitted_infinite_horizon_equilibrium_in_the_audited_regular_continuation_class",
+  "corner_audit": {
+    "reason": "With q>0 and 0<eta<1, the right marginal product of M at zero is infinite. This does not rule out M tending to zero asymptotically.",
+    "zero_research_at_a_finite_date": "ruled_out"
+  },
+  "developer_global_optimality": {
+    "concavity_gate_available": false,
+    "first_failure_ai_share": 0.7386204084579664,
+    "limiting_service_capability_elasticity": 3.0303030303030303,
+    "reason": "At fixed dated K, A, and L, the counterfactual service share approaches one as B grows. The service-capability elasticity then approaches 1/alpha, which exceeds two."
+  },
+  "gates": {
+    "ai_dominated_regular_continuation_is_finite_time": true,
+    "bounded_regular_continuation_rejected": true,
+    "finite_window_branch_rejected": true,
+    "global_concavity_gate_fails": true,
+    "gross_substitutes_case": true,
+    "no_gross_substitutes_trajectory_is_presented": true,
+    "no_regular_infinite_horizon_continuation_found": true,
+    "zero_research_corner_unavailable_at_finite_dates": true
+  },
+  "parameters": {
+    "alpha": 0.33,
+    "effective_labor_growth": 0.013000000000000001,
+    "eta": 0.2,
+    "omega_x": 0.2
+  },
+  "presented_sigma_xl_values": [
+    0.99,
+    1.0
+  ],
+  "regular_continuations_audited": {
+    "bounded_capability": "Rejected under positive limiting K/(AN) and C/(AN), bounded r, and g_B tending to zero.",
+    "unbounded_ai_dominated": "Rejected as an infinite-horizon continuation under positive regular limiting shares because dot(Y/K) is asymptotic to a positive constant times (Y/K)^2."
+  },
+  "remaining_open_class": "Asymptotically irregular paths, paths without convergent resource shares, and terminal regimes outside the two classes above are not ruled out.",
+  "sigma_xl": 1.01,
+  "trajectory_admitted": false
+}

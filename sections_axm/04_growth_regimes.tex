@@ -186,8 +186,9 @@ particular value. I therefore treat \(\omega_X=0.20\) as an AI scenario rather
 than an empirical estimate.
 
 Every reported path passes the equilibrium-admission rule in the Appendix:
-dated equations, admissibility, numerical robustness, a regime-specific tail,
-sufficient optimality conditions, and both transversality conditions. The
+dated equations, admissibility, numerical robustness, a regime-specific
+long-run continuation, sufficient optimality conditions, and both
+transversality conditions. The
 finite computations are numerical approximations to those equilibria; their
 admission is not a global existence or uniqueness theorem.
 
@@ -357,8 +358,8 @@ initial stocks.
 Figure \ref{fig:axm-complement-macro} shows output per person, consumption per
 person, and the wage approaching finite levels, while the interest rate
 approaches \(\rho\). The finite computation approximates the admitted
-infinite-horizon equilibrium by replacing its tail with the analytical
-complementary-input limit.
+infinite-horizon equilibrium by replacing the uncomputed continuation with the
+analytical complementary-input limit.
 
 \begin{figure}[H]
 \centering
@@ -804,11 +805,25 @@ Let
  \theta=\frac{1-\alpha}{\alpha}.
  \label{eq:axm-theta}
 \end{equation}
-Along an interior branch with \(\sigma_{XL}>1\), \(s_X\to1\), and
-\(B\to\infty\), AI production services dominate the labor--AI CES aggregate. Capital
-remains a separate input with elasticity \(\alpha\). Combining the final-good
-firm's AI-demand condition, the monopolist's markup condition,
-market clearing for AI production services with \(X=BU\), and final production then gives
+For \(\sigma_{XL}>1\), the static equilibrium conditions imply the exact
+identity
+\begin{equation}
+ \frac{Y}{K}=B^\theta
+ \left[
+  (1-\alpha)s_X(1-e_X)
+  \left(\frac{\omega_X}{s_X}\right)^{
+   \sigma_{XL}/(\sigma_{XL}-1)}
+ \right]^\theta.
+ \label{eq:axm-high-sigma-exact-z}
+\end{equation}
+The expression in square brackets is continuous and strictly positive for
+\(s_X\in(0,1]\), and it diverges as \(s_X\downarrow0\). It therefore has a
+strictly positive lower bound. Hence \(B\to\infty\) implies
+\(Y/K\to\infty\) even before establishing that AI production services dominate
+the CES aggregate.
+
+Along an interior branch on which \(s_X\to1\), AI production services do
+eventually dominate that aggregate. Combining the same static conditions gives
 \begin{equation}
  \frac{U}{Y}\to(1-\alpha)^2,\qquad
  \frac{Y}{K}\sim \mathcal D B^\theta
@@ -831,12 +846,11 @@ singularity.
 
 \begin{proposition}[No finite-rate balanced growth with gross substitution]
 \label{prop:axm-no-bgp}
-Suppose \(\sigma_{XL}>1\), \(B\to\infty\), and an interior path satisfying the
-necessary equilibrium conditions remains on an
-interior monopoly branch on which \(s_X\to1\). Then there is no balanced-growth
-path with finite constant growth rates. In particular, \(Y/K\to\infty\), so the marginal
-product of capital, the net interest rate, and household consumption growth
-become unbounded.
+Suppose \(\sigma_{XL}>1\), \(B\to\infty\), and an interior path satisfies the
+dated equilibrium conditions. Then there is no balanced-growth path with finite
+constant growth rates. In particular, \(Y/K\to\infty\), so the marginal product
+of capital, the net interest rate, and household consumption growth become
+unbounded.
 \end{proposition}
 
 The proposition is a conditional nonexistence result. It does not prove that every
@@ -846,9 +860,9 @@ infinite-horizon problem may not admit an optimum. The next result characterizes
 the accelerating branch when it exists.
 
 The bounded-capability alternative is also unavailable under a regular
-stationary tail in the automated-research benchmark.
+stationary continuation in the automated-research benchmark.
 
-\begin{proposition}[No regular bounded-capability tail]
+\begin{proposition}[No regular bounded-capability continuation]
 \label{prop:axm-no-bounded-capability-tail}
 Suppose the automated-research benchmark applies,
 \(\sigma_{XL}>1\), and \(n+\gamma_A>0\). There is no regular interior
@@ -879,21 +893,21 @@ positive shadow value \(q\) must cross zero in finite time. This contradicts
 interiority.
 \end{proof}
 
-This proposition rules out the regular bounded-capability tail relevant to the
-near-unit numerical experiment. The conditional result below rules out the
-regular unbounded, AI-dominated tail as an infinite-horizon equilibrium because
-that tail ends in finite time. Together, the two results exhaust the regular
-terminal regimes used by the algorithm. They do not constitute a theorem that
-rules out every irregular path allowed by the primitive model.
+This proposition rules out the regular bounded-capability continuation relevant
+to the near-unit numerical experiment. The next result characterizes the
+unbounded AI-dominated alternative.
 
 \begin{conditionalresult}[AI-dominated singular limit]
 \label{prop:axm-singular-limit}
-Assume \(\sigma_{XL}>1\), \(\sigma_{HM}>1\), \(0<\eta<\alpha<1\), and an
-interior path satisfies all dated technology and service identities, competitive
-price equations, static first- and second-order conditions, market-clearing
-conditions, and canonical differential equations on its maximal time interval.
-Suppose that the path approaches an AI-dominated limit, with \(B\to\infty\), \(s_X\to1\),
-and \(s_M\to1\). Suppose its consumption, investment, and research-compute
+Assume \(\sigma_{XL}>1\), \(0<\eta<\alpha<1\), and either the
+automated-research benchmark or the human-research extension with
+\(\sigma_{HM}>1\). Let an interior path satisfy all dated technology and service
+identities, competitive price equations, static first- and second-order
+conditions, market-clearing conditions, and canonical differential equations
+on its maximal time interval. Suppose that the path approaches an AI-dominated
+limit, with \(B\to\infty\) and \(s_X\to1\). In the human-research extension,
+also suppose \(s_M\to1\); in the benchmark, set \(s_M\equiv1\). Suppose its
+consumption, investment, and research-compute
 shares---respectively \(C/Y\),
 \((\dot K+\delta K)/Y\), and \(M/Y\)---as well as \(g_B/(Y/K)\) and \(qB/K\),
 converge to positive finite limits.
@@ -925,11 +939,15 @@ Because the limiting gross-investment share
 \(\alpha-\theta h=\alpha(1-\eta)/(1-\alpha\eta)\) is positive, capital is
 eventually increasing. Thus \(z\), and consequently output, become unbounded in
 finite time.
-Let
+For the wage result, define
 \[
- \underline\sigma=\min\{\sigma_{XL},\sigma_{HM}\}.
+ \underline\sigma=
+ \begin{cases}
+  \sigma_{XL},&\text{in the automated-research benchmark},\\
+  \min\{\sigma_{XL},\sigma_{HM}\},&\text{in the human-research extension}.
+ \end{cases}
 \]
-The allocation of labor satisfies
+In the human-research extension, the allocation of labor satisfies
 \begin{equation}
  (H/N,L/N)\to
  \begin{cases}
@@ -951,8 +969,9 @@ In the equal-elasticity case, the limiting share is pinned down by
 \end{equation}
 Here \(A_*=\lim_{t\uparrow T^*}A_t\) is finite and positive because labor
 productivity grows exogenously and the singular date is finite.
-Both production labor income, \(wL/Y\), and aggregate labor income, \(wN/Y\),
-vanish as shares of output, while
+In the benchmark, \(L=N\). In both versions, production labor income,
+\(wL/Y\), and aggregate labor income, \(wN/Y\), vanish as shares of output,
+while
 \begin{equation}
  \frac{g_w}{z}\to
  \frac{\alpha-(\underline\sigma-1)h}{\underline\sigma}
@@ -962,10 +981,41 @@ which is positive if and only if
 \(\underline\sigma<1/(\alpha\eta)\).
 \end{conditionalresult}
 
-The result characterizes a postulated asymptotic branch of the model's necessary
+\begin{proposition}[No regular benchmark continuation]
+\label{prop:axm-no-regular-gross-substitutes-continuation}
+Suppose the automated-research benchmark applies, \(\sigma_{XL}>1\),
+\(0<\eta<\alpha<1\), and \(n+\gamma_A>0\). Consider a regular interior
+candidate whose proposed long-run continuation belongs to either of the two
+classes used by the algorithm:
+\begin{enumerate}
+ \item capability is bounded and the normalized variables satisfy the limits in
+ Proposition \ref{prop:axm-no-bounded-capability-tail}; or
+ \item capability is unbounded and the conditions of Conditional Result
+ \ref{prop:axm-singular-limit} hold.
+\end{enumerate}
+Neither continuation can complete the candidate as an admissible
+infinite-horizon equilibrium.
+\end{proposition}
+
+\begin{proof}
+The first continuation contradicts the developer's costate equation by
+Proposition \ref{prop:axm-no-bounded-capability-tail}. Under the second,
+Conditional Result \ref{prop:axm-singular-limit} gives
+\(\dot z\sim\theta h z^2\), where \(z=Y/K\) and \(\theta h>0\). The maximal
+path therefore ends at a finite singular date and is not defined for every
+\(t\geq0\). Proposition \ref{prop:axm-no-zero-research-corner} also shows that
+setting \(M=0\) at a finite date cannot rescue either continuation.
+\end{proof}
+
+Conditional Result \ref{prop:axm-singular-limit} characterizes a postulated
+asymptotic branch of the model's necessary
 conditions. Because the maximal interval ends at the singularity, it does not
 establish existence or global optimality for the infinite-horizon problems, nor
 does it establish that the branch is reached from arbitrary initial conditions.
+Proposition \ref{prop:axm-no-regular-gross-substitutes-continuation} is an
+exhaustion result only within the two regular terminal classes stated there. It
+does not exclude an asymptotically irregular path, a path without convergent
+resource shares, or another terminal regime not used by the algorithm.
 Within that branch, workers move asymptotically toward the sector in which they
 are harder to replace. The model delivers a sharp separation when
 \(1<\underline\sigma<1/(\alpha\eta)\): aggregate labor income as a share of output
@@ -1021,7 +1071,7 @@ the two sides of one: it starts from the exact strictly positive-AI
 unit-elastic equilibrium, changes \(\sigma_{XL}\) on a short horizon, and then
 extends the horizon while preserving the same dated equations and initial
 stocks. The initial consumption and shadow-value jumps stabilize, but this does
-not identify an infinite-horizon tail. At \(T=5{,}000\), the terminal AI share
+not identify an infinite-horizon continuation. At \(T=5{,}000\), the terminal AI share
 is only \(0.2303\), far from the AI-dominated limit. The local separation rate
 \((\sigma_{XL}-1)\eta(n+\gamma_A)/\sigma_{XL}\) is
 \(4.29\times10^{-5}\), whose inverse is about 23,300 model years. Near-unit
@@ -1031,14 +1081,17 @@ regimes differ.
 Proposition \ref{prop:axm-no-bounded-capability-tail} rejects the regular
 bounded-capability terminal regime for this benchmark. The regular
 AI-dominated alternative is the finite-time branch in Conditional Result
-\ref{prop:axm-singular-limit}, not an infinite-horizon allocation. Moreover,
-as \(s_X\to1\), the service-capability elasticity in
-\eqref{eq:axm-service-capability-elasticity} tends to
-\(1/\alpha=3.03>2\) under the calibration. The path-specific concavity
-condition used to establish developer global optimality therefore also fails
-in that limit. Failure of this sufficient condition is not a nonexistence
-proof, but it is another reason the computed branch cannot be admitted as an
-equilibrium.
+\ref{prop:axm-singular-limit}, not an infinite-horizon allocation. Proposition
+\ref{prop:axm-gross-substitutes-concavity-gate} also shows that the sufficient
+global concavity condition fails over the full counterfactual capability
+domain at every date: its limiting service-capability elasticity is
+\(1/\alpha=3.03>2\) under the calibration. For \(\sigma_{XL}=1.01\), optimized
+operating profit first loses concavity at \(s_X=0.7386\), above the terminal
+share in the finite-window calculation. Thus the saved segment remains on the
+locally concave part of the state space, but the sufficient theorem cannot
+compare it with all admissible alternatives. This failure is not a
+nonexistence proof, but it prevents the computed first-order-condition branch
+from being admitted as a globally optimal developer policy.
 
 The older free-boundary calculation for
 \((\sigma_{XL},\sigma_{HM})=(1.5,2)\) likewise solves the dated necessary
@@ -1198,11 +1251,12 @@ elasticity,
 \(h=\varphi\ln[X/(AL)]\) accumulates over time and eventually becomes
 economically important. Thus the limits \(\sigma_{XL}\to1\) and
 \(t\to\infty\) need not commute. The regime propositions, rather than this
-finite-window comparison, characterize the conditional tails. A bilateral
-equilibrium comparison around one remains incomplete until an admissible
-\(\sigma_{XL}>1\) equilibrium is constructed. The current algorithm finds no
-admissible regular terminal regime on that side of one, so it rejects the
-computed finite-window path instead of presenting it as an equilibrium.
+finite-window comparison, characterize the conditional long-run regimes. A
+bilateral equilibrium comparison around one remains incomplete until an
+admissible \(\sigma_{XL}>1\) equilibrium is constructed. Proposition
+\ref{prop:axm-no-regular-gross-substitutes-continuation} rejects both regular
+continuations used by the algorithm, so the admission rule rejects the computed
+finite-window path instead of presenting it as an equilibrium.
 
 Finally, these are functional distribution results, not predictions about
 interpersonal inequality. The representative household supplies all labor and

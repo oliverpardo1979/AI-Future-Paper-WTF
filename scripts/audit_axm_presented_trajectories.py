@@ -111,6 +111,9 @@ def run_audit() -> dict[str, object]:
     upper_near_unit = load_json(
         "numerical_axm/upper_near_unit_equilibrium_audit.json"
     )
+    gross_substitutes = load_json(
+        "numerical_axm/gross_substitutes_status_audit.json"
+    )
 
     rejected_references = {
         path: reason
@@ -141,6 +144,30 @@ def run_audit() -> dict[str, object]:
             )
             is False
         ),
+        "gross_substitutes_status_audit_passed": (
+            gross_substitutes.get("audit_passed") is True
+            and gross_substitutes.get("trajectory_admitted") is False
+        ),
+        "gross_substitutes_regular_continuations_are_not_equilibria": (
+            gross_substitutes.get("gates", {}).get(
+                "bounded_regular_continuation_rejected"
+            )
+            is True
+            and gross_substitutes.get("gates", {}).get(
+                "ai_dominated_regular_continuation_is_finite_time"
+            )
+            is True
+        ),
+        "gross_substitutes_corner_and_optimality_gates_fail": (
+            gross_substitutes.get("gates", {}).get(
+                "zero_research_corner_unavailable_at_finite_dates"
+            )
+            is True
+            and gross_substitutes.get("gates", {}).get(
+                "global_concavity_gate_fails"
+            )
+            is True
+        ),
         "no_rejected_trajectory_figure_is_referenced": not rejected_references,
         "no_rejected_trajectory_table_is_referenced": (
             not rejected_table_references
@@ -153,9 +180,10 @@ def run_audit() -> dict[str, object]:
         "accepted": all(gates.values()),
         "rule": (
             "Every presented model trajectory must satisfy dated equilibrium "
-            "conditions, admissibility, numerical robustness, a terminal regime "
+            "conditions, admissibility, numerical robustness, a long-run "
+            "continuation "
             "derived for the same parameters, sufficient optimality conditions, "
-            "and both transversality conditions."
+            "both transversality conditions, and existence for every t >= 0."
         ),
         "admitted_figures": ADMITTED_FIGURES,
         "rejected_figures": REJECTED_FIGURES,

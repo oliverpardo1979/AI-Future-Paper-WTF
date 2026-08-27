@@ -587,6 +587,33 @@ optimization, final-good production, and market clearing determine \(K,L,\)
 and \(r\), while \(A\) follows its exogenous law, and all of these paths must be
 consistent with the developer's solution.
 
+\begin{proposition}[Research is interior at every finite date]
+\label{prop:axm-no-zero-research-corner}
+Suppose \(0<\eta<1\) and the developer has a differentiable, finite-valued
+optimum with \(B>0\) and positive demand for AI production services. Then
+\(q>0\) and \(M>0\) at every finite date. A zero-research corner cannot be used
+to stop capability accumulation at a finite date.
+\end{proposition}
+
+\begin{proof}
+Proposition \ref{prop:axm-monopoly-existence} gives \(X^*>0\), and the envelope
+theorem gives \(\pi_B=X^*/B^2>0\). A higher capability stock therefore raises
+current optimized operating profit and weakly raises future capability under
+any given research policy. At a differentiable optimum, its current-value
+shadow price is consequently strictly positive: \(q>0\). The part of the
+current-value Hamiltonian that depends on research compute is
+\[
+ -M+q\chi B^\eta M^\eta.
+\]
+Its right derivative tends to infinity as \(M\downarrow0\) because
+\(q,B>0\) and \(0<\eta<1\). Hence \(M=0\) cannot maximize the Hamiltonian.
+\end{proof}
+
+The proposition rules out a zero-research choice at any finite date. It does
+not rule out \(M_t\to0\) asymptotically. Whether such convergence is consistent
+with the costate equation must be examined together with the proposed
+long-run continuation.
+
 \subsection{Benchmark equilibrium}
 
 Capital-market clearing requires the household's capital holdings to equal the
@@ -1088,7 +1115,7 @@ All equilibrium results and numerical exercises maintain
 The restriction is stronger than decreasing returns to current research scale.
 It rules out arbitrarily large research expenditure as optimal on every fixed
 horizon satisfying the proposition's conditions. It does not prove that a
-maximizer exists, establish global concavity, control the infinite-horizon tail,
+maximizer exists, establish global concavity, control the infinite-horizon continuation,
 or prove equilibrium existence. The numerical exercises use
 \(\eta=0.20<\alpha=0.33\), chosen illustratively rather than estimated.
 
@@ -1162,6 +1189,35 @@ unit-elasticity sufficiency result to neighboring elasticities. A nonunit
 numerical path must establish \eqref{eq:axm-path-specific-profit-concavity}
 over its entire reachable capability domain, in addition to satisfying the
 dated equations, its own asymptotic regime, and both transversality conditions.
+
+\begin{proposition}[Failure of the concavity gate under gross substitution]
+\label{prop:axm-gross-substitutes-concavity-gate}
+Suppose \(\sigma_{XL}>1\) and \(\alpha<1/2\). At any date with positive
+\((K,A,L)\), the sufficient condition
+\eqref{eq:axm-path-specific-profit-concavity} fails over the full capability
+domain \(B\geq B_0\).
+\end{proposition}
+
+\begin{proof}
+Hold \((K,A,L)\) fixed. As \(B\to\infty\), marginal service cost \(1/B\)
+converges to zero. Proposition \ref{prop:axm-monopoly-existence} then implies
+that the unique pointwise optimizer has \(X^*(B)\to\infty\). With
+\(\sigma_{XL}>1\), equation \eqref{eq:axm-sx} therefore gives \(s_X\to1\).
+Taking the same limit in
+\eqref{eq:axm-service-capability-elasticity} gives
+\[
+ \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
+ \longrightarrow \frac{1}{\alpha}>2.
+\]
+Thus optimized operating profit is eventually convex in \(B\), so the global
+concavity condition cannot hold on all \(B\geq B_0\).
+\end{proof}
+
+Failure of this sufficient condition does not show that the developer lacks a
+global optimum. It shows that, when \(\sigma_{XL}>1\), satisfying the first-order
+conditions and the two transversality conditions is not enough to establish
+global developer optimality by Proposition
+\ref{prop:axm-path-specific-sufficiency}.
 
 \begin{proposition}[Global sufficiency in the unit-elasticity cases]
 \label{prop:axm-equilibrium-sufficiency}
@@ -1647,7 +1703,7 @@ restrictions have a unique nearby solution. Writing
 
 This is a continuation result for solutions of the dated equilibrium
 conditions. It becomes a statement about equilibrium paths only when the
-continued solution has an admissible infinite-horizon tail satisfying both
+continued solution has an admissible infinite-horizon continuation satisfying both
 transversality conditions. Neither \(\varepsilon_T\) nor \(C_T\) is uniform in
 \(T\), so the proposition does not transfer the unit-elastic asymptotics to
 \(\sigma_{XL}\neq1\).
@@ -1697,4 +1753,4 @@ about 2,300 model years for \(|\varepsilon|=0.10\) and 23,000 for
 \(|\varepsilon|=0.01\). This explains how elasticities on opposite sides of
 one can generate nearly indistinguishable paths for a long time without having
 the same long-run implications. Section \ref{sec:axm-growth-regimes} derives
-those regime-specific tails separately.
+those regime-specific long-run continuations separately.

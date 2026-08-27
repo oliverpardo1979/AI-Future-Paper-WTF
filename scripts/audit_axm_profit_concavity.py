@@ -47,6 +47,64 @@ def service_capability_elasticity(
     return (1.0 - inverse_elasticity) / soc_denominator
 
 
+def first_profit_concavity_failure_share(
+    sigma_xl: float, alpha: float
+) -> float | None:
+    """Return the first CES share at which optimized profit loses concavity.
+
+    The equation ``d log X*(B) / d log B = 2`` is quadratic in the
+    service share.  Solving that polynomial exactly avoids a grid tolerance.
+    ``None`` means that the elasticity never exceeds two on ``[0, 1]``.
+    """
+
+    if sigma_xl <= 1.0:
+        raise ValueError("This threshold is defined for sigma_xl > 1.")
+    if not 0.0 < alpha < 1.0:
+        raise ValueError("alpha must lie strictly between zero and one.")
+
+    inverse_sigma = 1.0 / sigma_xl
+    slope = alpha - inverse_sigma
+    numerator_0 = 1.0 - inverse_sigma
+    numerator_1 = inverse_sigma - alpha
+    denominator_0 = inverse_sigma * (1.0 - inverse_sigma)
+    denominator_1 = slope * (2.0 - 3.0 * inverse_sigma)
+    denominator_2 = -slope * (alpha + 1.0 - 2.0 * inverse_sigma)
+
+    polynomial = (
+        numerator_0 - 2.0 * denominator_0,
+        numerator_1 - 2.0 * denominator_1,
+        -2.0 * denominator_2,
+    )
+    roots: list[float] = []
+    constant, linear, quadratic = polynomial
+    if abs(quadratic) <= 1.0e-15:
+        if abs(linear) > 1.0e-15:
+            roots.append(-constant / linear)
+    else:
+        discriminant = linear * linear - 4.0 * quadratic * constant
+        if discriminant >= 0.0:
+            square_root = math.sqrt(discriminant)
+            roots.extend(
+                [
+                    (-linear - square_root) / (2.0 * quadratic),
+                    (-linear + square_root) / (2.0 * quadratic),
+                ]
+            )
+
+    boundaries = [0.0]
+    boundaries.extend(sorted(root for root in roots if 0.0 < root < 1.0))
+    boundaries.append(1.0)
+    if service_capability_elasticity(0.0, sigma_xl, alpha) > 2.0:
+        return 0.0
+    for left, right in zip(boundaries, boundaries[1:]):
+        midpoint = 0.5 * (left + right)
+        if service_capability_elasticity(midpoint, sigma_xl, alpha) > 2.0:
+            return left
+    if service_capability_elasticity(1.0, sigma_xl, alpha) > 2.0:
+        return 1.0
+    return None
+
+
 def _log_ces_ratio_from_share(
     share: float, sigma_xl: float, omega_x: float
 ) -> tuple[float, float]:

@@ -14,6 +14,9 @@
     "all_admitted_trajectory_figures_are_referenced": true,
     "complement_audit_accepted": true,
     "complement_global_optimality_audit_accepted": true,
+    "gross_substitutes_corner_and_optimality_gates_fail": true,
+    "gross_substitutes_regular_continuations_are_not_equilibria": true,
+    "gross_substitutes_status_audit_passed": true,
     "near_unit_audit_accepted": true,
     "near_unit_exports_only_admitted_sigmas": true,
     "no_rejected_trajectory_figure_is_referenced": true,
@@ -21,13 +24,13 @@
     "upper_near_unit_is_explicitly_rejected": true
   },
   "inputs": {
-    "main_axm.tex": "642abdd518c000865459f021563a3269fa61af013b6bb2d7916e41a42382e29e",
-    "sections_axm/01_introduction.tex": "d42dee4921ced1f51f0b380469776ca82b9b38597c2523f4c967a632fca94b5d",
+    "main_axm.tex": "8bb55d308282f810cd38500ef73f1296b2cdcd805320d3ea476188bd72b315a3",
+    "sections_axm/01_introduction.tex": "5de1a04d5b819b2b420187223b0418430269777f54868015ed3d3f24c9eb9621",
     "sections_axm/02_literature.tex": "a641598e030d34d8a3c59425432a5c980605490af010e4eb60e65d00d9bb54a9",
-    "sections_axm/03_model.tex": "c2b20b6e14b5bd33016831ec9cb948ff05d737d988cc8a0bbb15ea14e0c0893e",
-    "sections_axm/04_growth_regimes.tex": "558f7986a87d91b38c3f1871c646337b141c9bd53adbb6ba58f52290e6f21d0f",
-    "sections_axm/06_conclusion.tex": "5695a8631831e016ce0c52eee9deccb483eef38d7b036a1b431f2f6634c2097a",
-    "sections_axm/appendix.tex": "55a0478c3a23cb992b630d070ef276f8bc665612a85a185948ad85d9f3af9488"
+    "sections_axm/03_model.tex": "f9e3252b40977ac230dd07cb3618e267f042a2305cdf1abbb5079e03b514b5d5",
+    "sections_axm/04_growth_regimes.tex": "a470a74b9ac3cb33a427b57a9fac425488af324ecdcffe2f71bc8e126b8736e6",
+    "sections_axm/06_conclusion.tex": "54a0b60cd2bd9f0f769b9b236b6f2b6e0c13e16ca129db17400fd54a832b6345",
+    "sections_axm/appendix.tex": "6c7a7f00802ea0fe9ee8fdbf11a745a62335f4857e17853ccdcd762cafbe8d46"
   },
   "missing_admitted_references": [],
   "rejected_figures": {
@@ -44,5 +47,5 @@
   },
   "rejected_references_found": {},
   "rejected_table_references_found": {},
-  "rule": "Every presented model trajectory must satisfy dated equilibrium conditions, admissibility, numerical robustness, a terminal regime derived for the same parameters, sufficient optimality conditions, and both transversality conditions."
+  "rule": "Every presented model trajectory must satisfy dated equilibrium conditions, admissibility, numerical robustness, a long-run continuation derived for the same parameters, sufficient optimality conditions, both transversality conditions, and existence for every t >= 0."
 }

@@ -954,7 +954,7 @@ Finally,
 \]
 Thus the fixed-duration family makes the truncated value unbounded when
 \(\eta>\alpha\). If the exogenous paths admit extensions to \([0,\infty)\)
-for which the primitive problem is defined, a zero-control tail is admissible,
+for which the primitive problem is defined, a zero-control continuation is admissible,
 and sales revenue is extended continuously at \(X=0\), setting \(X=H=M=0\)
 after \(T\) leaves each payoff unchanged. Under those additional conditions,
 the same family also makes the corresponding infinite-horizon value unbounded.
@@ -965,29 +965,18 @@ different unbounded sequence.
 
 \subsection{Proof of Proposition \ref{prop:axm-no-bgp}}
 
-Suppose for contradiction that an equilibrium satisfying the hypotheses has
-finite constant growth rates. With \(\sigma_{XL}>1\), AI production services dominate the
-labor--AI CES as their relative quantity becomes large. The limiting final technology is
-proportional to \(K^\alpha X^{1-\alpha}\). The inverse demand elasticity tends
-to \(\alpha\). Combining the final-good firm's AI-demand condition, the
-monopolist's markup condition, and market clearing for AI production services with \(X=BU\)
-implies
+Equation \eqref{eq:axm-high-sigma-exact-z} follows directly from
 \[
- \frac{X}{B}=(1-\alpha)^2Y[1+o(1)].
+ \frac{U}{Y}=(1-\alpha)s_X(1-e_X),\qquad X=BU,
+ \qquad
+ \frac{Z}{X}=\left(\frac{\omega_X}{s_X}\right)^{
+ \sigma_{XL}/(\sigma_{XL}-1)}.
 \]
-Moreover, the final CES satisfies
-\[
- Z=\omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}X[1+o(1)].
-\]
-Substituting \(X=(1-\alpha)^2BY[1+o(1)]\) back into final production gives
-\[
- \frac{Y}{K}=\mathcal D B^{(1-\alpha)/\alpha}[1+o(1)],\qquad
- \mathcal D=
- \left[\omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}
- (1-\alpha)^2\right]^{(1-\alpha)/\alpha},
-\]
-which makes the claimed proportionality explicit. Since \(B\to\infty\),
-\(Y/K\to\infty\). Both \(\alpha Y/K\) and the net interest rate
+For \(\sigma_{XL}>1\), its share-dependent factor tends to infinity as
+\(s_X\downarrow0\) and has a positive finite limit as \(s_X\uparrow1\). By
+continuity, it has a strictly positive minimum on \((0,1]\). Hence
+\(B\to\infty\) implies \(Y/K\to\infty\), without imposing a limit on
+\(s_X\). Both \(\alpha Y/K\) and the net interest rate
 \(r=\alpha Y/K-\delta\) therefore diverge. Equation \eqref{eq:axm-euler} then
 makes consumption growth unbounded, contradicting finite constant growth.
 \(\square\)
@@ -1016,7 +1005,7 @@ Since \(g_Y=g_K+g_z\), \(g_K/z\to i\), and the regular scaling relation gives
  \label{eq:axm-app-resource-growth}
 \end{equation}
 
-Before using the research technology, define
+For the human-research extension, define
 \[
  \varrho_{XL}=\frac{\sigma_{XL}-1}{\sigma_{XL}},\qquad
  \mathcal Q=BY,\qquad
@@ -1104,9 +1093,11 @@ Using the labor-allocation limits above shows that \(g_L/z\to0\) when
 The same two identities imply \(g_H/z\to0\) for \(\psi\leq1\) and
 \(g_H/z\to(1-\psi)(\widehat h+\alpha)\) for \(\psi>1\).
 Thus both sectoral labor growth rates are \(O(z)\), and the wage relation above
-implies that \(g_w/z\) is finite.
+implies that \(g_w/z\) is finite. In the automated-research benchmark this
+sectoral block is absent: \(L=N\), so \(g_L=n=o(z)\), and \(s_M\equiv1\).
 
-The effective-research index has the exact envelope identity
+In the human-research extension, the effective-research index has the exact
+envelope identity
 \[
  g_E=(1-s_M)g_H+s_M(g_B+g_M).
 \]
@@ -1117,7 +1108,9 @@ Regularity of \(M/Y\) gives \(g_M=g_Y+o(z)\). Because \(s_M\to1\) and
 \[
  g_E=(\widehat h+\alpha)z+o(z).
 \]
-Log-differentiating the exact identity \(g_B=\chi E^\eta/B\) gives
+In the automated-research benchmark, regularity of \(M/Y\) and direct log
+differentiation of \(g_B=\chi B^{\eta-1}M^\eta\) give the same next equation.
+Thus, in either version,
 \[
  g_{g_B}=(\eta-1)g_B+\eta g_Y+o(z).
 \]
@@ -1168,21 +1161,24 @@ For the wage, log-differentiating the exact relation for \(Bw\) gives
  \frac{g_w}{z}
  \to\frac{\alpha-(\sigma_{XL}-1)h-g_L/z}{\sigma_{XL}}.
 \]
-If \(\psi\geq1\), \eqref{eq:axm-app-production-labor-growth} is replaced by
-\(g_L/z\to0\), and the denominator is \(\sigma_{XL}\). If \(\psi<1\),
-substituting \eqref{eq:axm-app-production-labor-growth} reduces the expression
-to \([\alpha-(\sigma_{HM}-1)h]/\sigma_{HM}\). Hence, with
-\(\underline\sigma=\min\{\sigma_{XL},\sigma_{HM}\}\),
+In the automated-research benchmark, \(g_L/z\to0\), and the denominator is
+\(\sigma_{XL}\). In the human-research extension, the same conclusion applies
+when \(\psi\geq1\). When \(\psi<1\), substituting
+\eqref{eq:axm-app-production-labor-growth} reduces the expression to
+\([\alpha-(\sigma_{HM}-1)h]/\sigma_{HM}\). Hence, with
+\(\underline\sigma\) defined as in Conditional Result
+\ref{prop:axm-singular-limit},
 \[
  \frac{g_w}{z}\to
  \frac{\alpha-(\underline\sigma-1)h}{\underline\sigma}.
 \]
 This expression is positive when
 \(\underline\sigma<1/(\alpha\eta)\). Finally,
-\(wL/Y=(1-\alpha)(1-s_X)\to0\). The research-expenditure share satisfies
-\(wH/M=(1-s_M)/s_M\to0\), while \(M/Y\to m>0\), so \(wH/Y\to0\).
-Therefore \(wN/Y=wL/Y+wH/Y\to0\), regardless of which sector employs the
-limiting positive share of the population. \(\square\)
+\(wL/Y=(1-\alpha)(1-s_X)\to0\). In the human-research extension, the
+research-expenditure share satisfies \(wH/M=(1-s_M)/s_M\to0\), while
+\(M/Y\to m>0\), so \(wH/Y\to0\). Hence \(wN/Y=wL/Y+wH/Y\to0\), regardless
+of which sector employs the limiting positive share of the population. In the
+benchmark, \(N=L\), so \(wN/Y=wL/Y\to0\) directly. \(\square\)
 
 \section{Numerical solution algorithm and equilibrium-system audit}
 \label{app:axm-numerical-algorithm}
@@ -1302,7 +1298,7 @@ The terminal projection is a finite-horizon approximation to the nonlinear
 stable manifold. A failure at a longer horizon would therefore be a numerical
 diagnostic, not evidence that an equilibrium trajectory does not exist.
 
-\subsection{Finite-window continuation in \(\sigma_{XL}\) around one}
+\subsection{\texorpdfstring{Finite-window continuation in \(\sigma_{XL}\) around one}{Finite-window continuation in sigma XL around one}}
 \label{app:axm-near-unit-algorithm}
 
 I next hold \(\omega_X=0.20\), the initial stocks, and the four dynamic
@@ -1342,8 +1338,9 @@ table or trajectory from that exercise. The calculation remains useful only as
 a continuation guess. For the reported \(\sigma_{XL}=0.99\) equilibrium, I
 replace it with the complementary-input terminal problem described in
 Subsection \ref{app:axm-near-unit-equilibrium-paths}. For
-\(\sigma_{XL}>1\), no admissible infinite-horizon terminal has yet been
-constructed, so the corresponding segments are excluded.
+\(\sigma_{XL}>1\), the two regular long-run continuations used by the algorithm
+fail the equilibrium-admission rule, so the corresponding segments are
+excluded.
 
 \subsection{Adoption experiment from the no-AI balanced-growth path}
 \label{app:axm-ai-adoption-algorithm}
@@ -1377,7 +1374,7 @@ balanced-growth reference, the predetermined initial deviations are
 I move the stocks from the reference path to these targets in 32 log-linear
 continuation steps. I then extend the terminal horizon from \(T=100\) to
 \(T=3{,}000\) in increments of 100 years. The implementation automatically
-subdivides any requested larger horizon jump: the linear stable tail is a local
+subdivides any requested larger horizon jump: the linear stable continuation is a local
 predictor, and extrapolating it too far can overflow the exponential equations
 before the collocation corrector operates. The terminal projection selects
 \[
@@ -1627,9 +1624,9 @@ The preliminary stages use a tolerance of \(3\times10^{-5}\). The four archived
 free-boundary solutions use \(10^{-6}\), an initial mesh of 301 nodes, and a
 12,000-node cap. The full route consists of 38 boundary-value solves. Increasing
 \(z_T\) tests whether the initial jumps, paths on common pre-terminal windows,
-non-imposed ratios, and the tail-corrected singularity-time estimate stabilize.
+non-imposed ratios, and the continuation-corrected singularity-time estimate stabilize.
 
-Equation \eqref{eq:axm-z-law} provides the leading-order tail estimate
+Equation \eqref{eq:axm-z-law} provides the leading-order remaining-time estimate
 \begin{equation}
  \widehat T(z_T)\equiv T(z_T)+\frac{1}{\theta h z_T}.
  \label{eq:axm-singularity-tail-estimate}
@@ -1670,12 +1667,12 @@ previously plotted finite-window segment by at most \(1.8\times10^{-8}\), which
 explains why the visible lower-elasticity curve barely changes even though its
 economic classification does. The log levels of the household and developer
 transversality objects at the terminal are \(-442.6\) and \(-446.1\); their
-analytical tail growth rates are \(n-\rho=-0.037\) and \(-0.0396\), respectively.
+analytical continuation growth rates are \(n-\rho=-0.037\) and \(-0.0396\), respectively.
 The unit-elasticity sufficiency proposition does not apply at \(0.99\). I
 instead use Proposition \ref{prop:axm-path-specific-sufficiency}. For each
 saved date, the audit holds \((K,A,L)\) fixed and computes the largest
 \(s_X\) attainable over the full reachable domain \(B\geq B_0\). Across the
-path and its complementary tail, that upper share is \(0.208704\). The exact
+path and its complementary long-run continuation, that upper share is \(0.208704\). The exact
 maximum of the service-capability elasticity in
 \eqref{eq:axm-service-capability-elasticity} over the resulting share interval
 is \(1.140555\), leaving a concavity margin of \(0.859445\) below the threshold
@@ -1692,11 +1689,18 @@ calculation has not reached the AI-dominated asymptotic regime. The implied
 near-unit separation timescale is about 23,300 model years.
 
 More importantly, Proposition \ref{prop:axm-no-bounded-capability-tail}
-rejects the regular bounded-capability tail, while the regular AI-dominated
-tail reaches a finite-time singularity. Neither is an admissible
-infinite-horizon equilibrium under the benchmark definition. In addition, the
-limiting service-capability elasticity is \(1/\alpha=3.0303>2\), so the
-path-specific concavity condition fails in that limit. The audit therefore
+rejects the regular bounded-capability continuation, while the regular
+AI-dominated continuation reaches a finite-time singularity. Neither is an admissible
+infinite-horizon equilibrium under the benchmark definition. Proposition
+\ref{prop:axm-no-zero-research-corner} rules out setting \(M=0\) at a finite
+date. Proposition \ref{prop:axm-gross-substitutes-concavity-gate} shows that the
+path-specific concavity condition fails over the full counterfactual domain
+\(B\geq B_0\), because its limiting service-capability elasticity is
+\(1/\alpha=3.0303>2\). At \(\sigma_{XL}=1.01\), the exact first-failure share
+is \(s_X=0.738620\). The terminal share of the saved finite-window segment is
+only \(0.230289\), so this is a failure of the global comparison required by
+the sufficiency theorem, not a failure of pointwise concavity on the saved
+segment. The audit therefore
 records \texttt{accepted: false}, writes no plot-ready trajectory, and excludes
 \(1.01\) from every reported trajectory figure. The source and audit files
 remain in the repository to document the rejected calculation.
@@ -1709,7 +1713,7 @@ first- and second-order conditions, and four dynamic equations; remain strictly
 admissible; be stable across numerical refinements and longer horizons; connect
 to a terminal regime derived for the same value of \(\sigma_{XL}\); satisfy the
 sufficient optimality restrictions; and imply that both transversality objects
-converge to zero along that tail. Passing only the dated equations is not
+converge to zero along that continuation. Passing only the dated equations is not
 enough.
 
 For the two displayed \(\sigma_{XL}=0.75\) paths, the separate nonunit
@@ -1725,13 +1729,13 @@ Three groups pass. The first contains the no-AI and positive-AI adoption
 equilibria at \(\sigma_{XL}=1\). The second contains the complementary-input
 equilibria at \(\sigma_{XL}=0.75\). The third contains the near-unit equilibria
 at \(\sigma_{XL}=0.99\) and \(1\). The human-research transitions and all
-gross-substitutes free-boundary paths fail the tail requirement and are not
+gross-substitutes free-boundary paths fail the long-run-continuation requirement and are not
 reported. The global audit also fails if the manuscript references any rejected
 trajectory figure.
 
 Finite-date values of the two transversality expressions remain truncation
 diagnostics. Admission therefore also requires analytically negative growth
-rates for the objects in the imposed tail. Agreement with an imposed terminal
+rates for the objects in the imposed continuation. Agreement with an imposed terminal
 ratio alone is not independent validation; the overidentifying evidence comes
 from dated residuals, non-imposed quantities, and stability across horizons.
 
@@ -1751,6 +1755,10 @@ implemented in \path{scripts/solve_rck_no_ai_bvp.py},
 \path{tests/test_rck_no_ai_bvp.py},
 \path{tests/test_positive_ai_branch.py}, and
 \path{tests/test_positive_ai_bvp.py}.
+The gross-substitutes classification is recorded separately by
+\path{scripts/audit_axm_gross_substitutes_status.py}; it verifies that no upper
+near-unit trajectory is exported and records the regular-continuation, corner,
+and global-concavity failures before the paper-wide guard is run.
 Other scripts without the \texttt{axm} designation that solve or simulate an
 equilibrium implement the earlier research specification and do not generate
 evidence for this analysis.
@@ -1783,7 +1791,7 @@ the current audit and generator scripts by SHA-256 hash.
 \end{sloppypar}
 
 Convergence of a finite discretization alone shows only that its equations and
-boundary conditions hold within tolerance. The additional tail, optimality, and
+boundary conditions hold within tolerance. The additional long-run-continuation, optimality, and
 transversality gates are what distinguish the numerical equilibrium
 trajectories reported in the paper from rejected candidate segments. None of
 these numerical checks is a global existence or uniqueness theorem.

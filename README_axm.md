@@ -22,11 +22,11 @@ coercive in total research expenditure over all nonnegative research controls
 and gives a finite truncated value. When both CES nests permit gross
 substitution, $\eta>\alpha$ admits a fixed-duration research-compute expansion
 that makes the truncated value unbounded; under the stated extension conditions,
-its zero-control tail gives the same conclusion for the infinite-horizon
+its zero-control continuation gives the same conclusion for the infinite-horizon
 developer objective. At equality, the fixed-duration leading term depends on
 coefficients and the boundary is not fully characterized. The coercivity result does
 not provide compactness, prove attainment or global optimality,
-control the infinite-horizon tail, or establish equilibrium existence. The
+control the infinite-horizon continuation, or establish equilibrium existence. The
 boundary $\eta=1$ is not covered by the current propositions.
 At $\sigma_{HM}=1$, the continuous limit is
 $\dot A=\chi H^{\eta\omega_H}(AM)^{\eta\omega_M}$.
@@ -100,7 +100,7 @@ dynamic residuals, checks horizon stability and finite-date TVC proxies, and
 hashes all four canonical inputs. The second audit supplies the nonunit
 global-optimality gate: it verifies concavity of optimized operating profit for
 every capability level reachable from $B_0$ and joint concavity of the research
-technology. Together with the analytical complementary tail and its negative
+technology. Together with the analytical complementary continuation and its negative
 TVC growth rates, these checks admit the two paths as numerical equilibrium
 trajectories. They do not prove existence or uniqueness from arbitrary initial
 stocks.
@@ -149,6 +149,7 @@ stocks on both sides:
 python scripts/simulate_axm_near_unit_bgp_perturbation.py
 python scripts/audit_axm_near_unit_equilibrium_status.py
 python scripts/audit_axm_upper_near_unit_equilibrium.py --nodes 161 --tolerance 0.0001
+python scripts/audit_axm_gross_substitutes_status.py
 python scripts/plot_axm_near_unit_equilibrium.py
 ```
 
@@ -161,9 +162,12 @@ the figure.
 The upper audit preserves the agreed continuation order for
 $\sigma_{XL}=1.01$: unit seed, elasticity change on a short horizon, then
 horizon continuation through 5,000 years. This calculation is deliberately
-rejected. A regular bounded-capability tail contradicts the costate equation;
-the regular AI-dominated tail reaches a finite-time singularity and is not an
-infinite-horizon equilibrium. The audit writes no plot-ready upper trajectory.
+rejected. A regular bounded-capability continuation contradicts the costate equation;
+the regular AI-dominated continuation reaches a finite-time singularity and is not an
+infinite-horizon equilibrium. A zero-research corner is unavailable at finite
+dates, and the sufficient global-concavity condition fails over the full
+counterfactual capability domain. The audit writes no plot-ready upper
+trajectory.
 
 Finally run the paper-wide admission guard:
 
@@ -172,7 +176,7 @@ python scripts/audit_axm_presented_trajectories.py
 ```
 
 The guard requires every referenced trajectory figure to be backed by dated
-equations, a regime-specific infinite-horizon tail, sufficient optimality
+equations, a regime-specific infinite-horizon continuation, sufficient optimality
 conditions, both TVCs, and numerical robustness. It also requires the upper
 near-unit calculation to remain explicitly rejected.
 

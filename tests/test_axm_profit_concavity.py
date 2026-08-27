@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from audit_axm_profit_concavity import (  # noqa: E402
+    first_profit_concavity_failure_share,
     maximum_service_capability_elasticity,
+    service_capability_elasticity,
 )
 
 
@@ -45,6 +47,17 @@ class ProfitConcavityAuditTests(unittest.TestCase):
 
     def test_gross_substitute_limit_fails_concavity_gate(self) -> None:
         self.assertLess(2.0 - 1.0 / 0.33, 0.0)
+
+    def test_near_unit_upper_concavity_threshold_is_exact(self) -> None:
+        threshold = first_profit_concavity_failure_share(1.01, 0.33)
+        self.assertIsNotNone(threshold)
+        assert threshold is not None
+        self.assertAlmostEqual(threshold, 0.7386204084579662, places=12)
+        self.assertAlmostEqual(
+            service_capability_elasticity(threshold, 1.01, 0.33),
+            2.0,
+            places=12,
+        )
 
 
 if __name__ == "__main__":
