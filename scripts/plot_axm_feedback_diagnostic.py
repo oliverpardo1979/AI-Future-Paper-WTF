@@ -8,12 +8,12 @@ plots
 
     G_T(t) = eta * s_M(t),
     G_E(t) = eta * s_M(t) * nu,
-    G(t)   = eta * s_M(t) * (1 + nu),
+    G_T(t) + G_E(t) = eta * s_M(t) * (1 + nu),
 
 where ``nu = omega_X / omega_L``. These formulas are balanced-growth
 accounting evaluated at dated ``s_M`` values, not the transition Jacobian. The
 horizontal line at one is a diagnostic reference for the limiting denominator
-``D = 1 - G``; it is not, by itself, an equilibrium explosion condition.
+``D = 1 - G_T - G_E``; it is not, by itself, an equilibrium explosion condition.
 
 The technological/economic terminology follows Davidson, Halperin, Houlden,
 and Korinek (2026), NBER Working Paper 35155.
@@ -192,7 +192,7 @@ def validate_and_derive(
                 target["total"], target["technology"] + target["economy"],
                 rel_tol=0.0, abs_tol=1.0e-14,
             ):
-                raise ValueError("Feedback components do not add to total G.")
+                raise ValueError("Feedback components do not add to their total.")
 
     audit = {row["object"]: row for row in audit_rows}
     for scenario in SCENARIOS:
@@ -308,7 +308,7 @@ def draw_figure(
         ("Technological: η × sₘ", COLORS["technology"], (20.0, 10.0), 5),
         ("Economic: η × sₘ × ν", COLORS["economy"], (4.0, 8.0), 5),
         ("Total: η × sₘ × (1 + ν)", COLORS["total"], None, 7),
-        ("BGP reference: G = 1", COLORS["reference"], (16.0, 10.0), 4),
+        ("BGP reference: total gain = 1", COLORS["reference"], (16.0, 10.0), 4),
     )
     legend_origins = ((115.0, 177.0), (1210.0, 177.0), (115.0, 226.0), (1210.0, 226.0))
     for (label, color, pattern, line_width), (legend_x, legend_y) in zip(legend_items, legend_origins):
@@ -417,8 +417,8 @@ def main() -> None:
     for scenario in SCENARIOS:
         rows = data[scenario]
         print(
-            f"{scenario}: G(0)={rows[0]['total']:.9f}, "
-            f"G(T)={rows[-1]['total']:.9f}, max G={max(row['total'] for row in rows):.9f}"
+            f"{scenario}: total(0)={rows[0]['total']:.9f}, "
+            f"total(T)={rows[-1]['total']:.9f}, max total={max(row['total'] for row in rows):.9f}"
         )
     print(f"eta={eta:.12f}; nu={nu:.12f}")
     print(f"Wrote {OUTPUT_FILE.relative_to(ROOT)}")

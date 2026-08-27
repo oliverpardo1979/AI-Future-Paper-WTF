@@ -1279,19 +1279,18 @@ construction.
 
 \paragraph{Comparative statics with respect to \(\omega_X\).}
 The closed-form equilibrium makes it possible to study the AI production
-weight without solving a transition. Let \(G=n+\gamma_A\). Since
-\(\omega_L=1-\omega_X\),
+weight without solving a transition. Since \(\omega_L=1-\omega_X\),
 \begin{equation}
  \Delta=(1-\alpha)(1-\eta-\omega_X),
  \qquad
- g_Y^*=G\frac{(1-\eta)(1-\omega_X)}
+ g_Y^*=(n+\gamma_A)\frac{(1-\eta)(1-\omega_X)}
  {1-\eta-\omega_X}.
  \label{eq:axm-bgp-omega-growth}
 \end{equation}
 Therefore,
 \begin{equation}
  \frac{\partial g_Y^*}{\partial\omega_X}
- =G\frac{\eta(1-\eta)}{(1-\eta-\omega_X)^2}>0,
+ =(n+\gamma_A)\frac{\eta(1-\eta)}{(1-\eta-\omega_X)^2}>0,
  \qquad
  g_{Y/N}=g_w=g_Y^*-n,
  \qquad
@@ -1314,9 +1313,9 @@ distributional effects. Equations
 \eqref{eq:axm-bgp-omega-growth}--\eqref{eq:axm-bgp-omega-distribution} imply
 \begin{align}
  g_{Y/N}=g_w
- &=\gamma_A+\frac{\eta G}{1-\eta}\omega_X
+ &=\gamma_A+\frac{\eta(n+\gamma_A)}{1-\eta}\omega_X
    +O(\omega_X^2),\notag\\
- r^*&=\rho+\gamma_A+\frac{\eta G}{1-\eta}\omega_X
+ r^*&=\rho+\gamma_A+\frac{\eta(n+\gamma_A)}{1-\eta}\omega_X
    +O(\omega_X^2),\notag\\
  \frac{wL}{Y}
  &=(1-\alpha)-(1-\alpha)\omega_X,\notag\\
@@ -1401,16 +1400,16 @@ stocks \((K_0,B_0)\).
 \paragraph{When the balanced-growth restrictions fail.}
 The inequalities in Proposition
 \ref{prop:axm-benchmark-equilibrium-existence} perform different jobs. The
-condition \(\Delta>0\) selects the growth regime. Let
-\(G\equiv n+\gamma_A\). Final production and capability accumulation imply,
+condition \(\Delta>0\) selects the growth regime. Final production and
+capability accumulation imply,
 along any positive interior balanced-growth candidate,
 \begin{equation}
- \Delta g_Y^*=\lambda(1-\eta)G,
+ \Delta g_Y^*=\lambda(1-\eta)(n+\gamma_A),
  \qquad
  g_B^*=\frac{\eta}{1-\eta}g_Y^*.
  \label{eq:axm-bgp-feedback-identity}
 \end{equation}
-Because \(G>0\), \(\Delta=0\) is inconsistent with the first identity. If
+Because \(n+\gamma_A>0\), \(\Delta=0\) is inconsistent with the first identity. If
 \(\Delta<0\), it gives \(g_Y^*<0\) and hence \(g_B^*<0\), contradicting
 \(\dot B>0\). Thus \(\Delta\leq0\) rules out the positive finite-rate
 balanced-growth path characterized above. It does not, by itself, rule out
@@ -1434,15 +1433,15 @@ A proportional-allocation calculation clarifies what can replace balanced
 growth, but is not an equilibrium-existence proof. If \(K/Y\), \(U/Y\), and
 \(M/Y\) are held fixed, the two technologies reduce to
 \begin{equation}
- Y\propto e^{Gt}B^{\beta/\lambda},
+ Y\propto e^{(n+\gamma_A)t}B^{\beta/\lambda},
  \qquad
- \dot B=\bar\chi e^{\eta Gt}
+ \dot B=\bar\chi e^{\eta(n+\gamma_A)t}
  B^{\eta(1+\beta/\lambda)},
  \qquad \bar\chi>0.
  \label{eq:axm-proportional-feedback-law}
 \end{equation}
 Below the threshold, this reduced law produces exponential growth. At the
-threshold it produces double-exponential growth when \(G>0\). Above the
+threshold it produces double-exponential growth when \(n+\gamma_A>0\). Above the
 threshold it reaches an infinite value in finite time. These last two cases
 motivate the connection to explosive-growth models, but they do not establish
 an infinite-horizon equilibrium of the decentralized model. The equilibrium
@@ -1598,14 +1597,13 @@ transversality conditions. Neither \(\varepsilon_T\) nor \(C_T\) is uniform in
 \(T\), so the proposition does not transfer the unit-elastic asymptotics to
 \(\sigma_{XL}\neq1\).
 
-The reason is transparent along the unit-elastic balanced path. Recall
-\(G=n+\gamma_A\). Equations
+The reason is transparent along the unit-elastic balanced path. Equations
 \eqref{eq:axm-benchmark-existence-growth} and
 \eqref{eq:axm-benchmark-existence-path} imply
 \begin{equation}
- \dot d=g_X^*-G
+ \dot d=g_X^*-(n+\gamma_A)
  \equiv\nu
- =\frac{\eta G}{\omega_L-\eta}>0.
+ =\frac{\eta(n+\gamma_A)}{\omega_L-\eta}>0.
  \label{eq:axm-relative-ai-input-growth}
 \end{equation}
 For every \(\sigma_{XL}\), meanwhile,
@@ -1621,7 +1619,7 @@ counterpart.
 \label{prop:axm-near-unit-separation-scale}
 Consider a continued benchmark path with bounded \(d(0)\). As long as it
 remains in a regular neighborhood in which
-\(g_X-G\) is bounded above and below by positive constants, the time required
+\(g_X-(n+\gamma_A)\) is bounded above and below by positive constants, the time required
 for \(|h|\) to reach any fixed small threshold is of order
 \(1/|\sigma_{XL}-1|\). The unit-elastic growth rate in
 \eqref{eq:axm-relative-ai-input-growth} gives the local diagnostic

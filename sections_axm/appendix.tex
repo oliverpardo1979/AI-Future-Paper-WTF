@@ -335,7 +335,7 @@ Because \(\varphi\) is constant and \(d=\ln X-\ln A-\ln L\), direct
 differentiation gives \eqref{eq:axm-near-unit-slow-law}. Along the unit-elastic
 balanced path,
 \[
- g_X^*-G=g_Y^*+g_B^*-(n+\gamma_A).
+ g_X^*-(n+\gamma_A)=g_Y^*+g_B^*-(n+\gamma_A).
 \]
 Using \(\beta=(1-\alpha)\omega_X\),
 \(\lambda=(1-\alpha)\omega_L\), and
@@ -347,9 +347,9 @@ Using \(\beta=(1-\alpha)\omega_X\),
 The denominator is positive because \(\Delta>0\).
 
 Now suppose that, until the departure threshold is reached,
-\(0<a_-\leq g_X-G\leq a_+<\infty\). Integrating the exact law gives
+\(0<a_-\leq g_X-(n+\gamma_A)\leq a_+<\infty\). Integrating the exact law gives
 \[
- h(t)=\varphi\left[d(0)+\int_0^t(g_X(s)-G)\dd s\right].
+ h(t)=\varphi\left[d(0)+\int_0^t(g_X(s)-(n+\gamma_A))\dd s\right].
 \]
 For a fixed threshold \(\bar h>0\) and sufficiently small nonzero
 \(\varphi\), the first date at which \(h\) reaches
@@ -430,8 +430,8 @@ resource constraint. Hence
 Because \(Z/\mathcal L\) also converges to a positive constant, final production implies
 that \(K/\mathcal L\) converges to a constant. Since \(L/N\) has a positive
 constant limit, \(\mathcal L,K,Y,X,\) and \(C\) grow at
-\(G=n+\gamma_A\). The labor-payment identity gives
-\(g_w=G-n=\gamma_A\). The household Euler equation then gives
+\(n+\gamma_A\). The labor-payment identity gives
+\(g_w=(n+\gamma_A)-n=\gamma_A\). The household Euler equation then gives
 \(r\to\rho+\gamma_A\), and the final-good firm's capital-demand condition gives
 \(K/Y\to\alpha/(\rho+\gamma_A+\delta)\).
 Finally, the final firm's labor payment satisfies
@@ -441,11 +441,11 @@ Finally, the final firm's labor payment satisfies
 \subsection{Proof of Proposition \ref{prop:axm-complements-research}}
 
 Proposition \ref{prop:axm-complements} implies that
-\(g_w\to\gamma_A\), \(g_X\to G=n+\gamma_A\), and
+\(g_w\to\gamma_A\), \(g_X\to n+\gamma_A\), and
 \(r\to\rho+\gamma_A\). Therefore \(Bw\to\infty\).
 Because \(X=BU\),
 \begin{equation}
- g_U\to G-\bar g_B.
+ g_U\to n+\gamma_A-\bar g_B.
  \label{eq:axm-proof-complement-gu}
 \end{equation}
 The capability law and the regular convergence of \(g_B\) imply
@@ -499,7 +499,7 @@ positive constant makes that limiting rate zero. The identity in
  {1+\eta^{-1}-\omega_M}.
 \]
 The remaining rates in \eqref{eq:axm-complement-cd-research-growth} follow
-directly. In particular, \(g_{BM}=\bar g_B+g_M=G\).
+directly. In particular, \(g_{BM}=\bar g_B+g_M=n+\gamma_A\).
 
 Now let \(\sigma_{HM}>1\). Since \(Bw\to\infty\), Proposition
 \ref{prop:axm-research-automation} implies \(s_M\to1\). The exact share identity
@@ -529,20 +529,21 @@ terminal object grow, contradicting transversality. Therefore
 \eqref{eq:axm-proof-complement-d} again requires \(g_U=g_M\). Equations
 \eqref{eq:axm-proof-complement-gu} and
 \eqref{eq:axm-proof-complement-ces-gm} then give
-\(\bar g_B=\eta G\) and \(g_M=(1-\eta)G\). Finally, log differentiation of
+\(\bar g_B=\eta(n+\gamma_A)\) and
+\(g_M=(1-\eta)(n+\gamma_A)\). Finally, log differentiation of
 \eqref{eq:axm-input-ratio}, using \(g_w\to\gamma_A\), gives
 \[
- g_H=G-\sigma_{HM}(\eta G+\gamma_A).
+ g_H=n+\gamma_A-\sigma_{HM}\bigl(\eta(n+\gamma_A)+\gamma_A\bigr).
 \]
 This proves all rates in \eqref{eq:axm-complement-ces-research-growth}.
 
-In both cases, \(g_M=g_U<G=g_Y\), so \(M/Y\to0\) and \(U/Y\to0\). Also
+In both cases, \(g_M=g_U<n+\gamma_A=g_Y\), so \(M/Y\to0\) and \(U/Y\to0\). Also
 \(g_H<n=g_N\), so \(H/N\to0\), and labor clearing gives \(L/N\to1\).
 Substitution in the resource constraint, together with
 \(K/Y\to\alpha/(\rho+\gamma_A+\delta)\), gives the consumption share in
 \eqref{eq:axm-complement-vanishing-shares}. Given the positive limiting ratios,
 the maintained household TVC requires \(n-\rho<0\). Since the derived rate of
-research compute satisfies \(g_M<G\), the developer's terminal object has
+research compute satisfies \(g_M<n+\gamma_A\), the developer's terminal object has
 limiting log growth \(g_M-(\rho+\gamma_A)<0\). The derived rates therefore reproduce both
 maintained terminal restrictions. This is a consistency check; the developer's
 TVC was used above to select the positive-\(d\) branch. \(\square\)
