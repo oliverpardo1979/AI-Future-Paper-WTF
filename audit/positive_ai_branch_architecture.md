@@ -224,3 +224,37 @@ belongs to the local neighborhood in the stable-manifold theorem, prove global
 existence or uniqueness, or verify the transversality limits at infinity. The
 calculation solves and audits a finite-horizon approximation to the equilibrium
 trajectory.
+
+## Implemented near-unit continuation
+
+`scripts/solve_near_unit_ai_bvp.py` now implements step 4 of the continuation
+order. It first calls the accepted unit-elastic solver and then moves
+\(\varphi=(\sigma_{XL}-1)/\sigma_{XL}\) away from zero at fixed positive
+`omega_x`. The four dynamic variables, initial stock restrictions, and
+finite-horizon terminal projection are unchanged. For each nonunit elasticity,
+the code instead solves the exact dated CES and monopoly first-order condition
+at every collocation node. The laws for resources, capability, consumption,
+and the shadow value are the same canonical equations used at one.
+
+The CES is evaluated in logs with an exact removable limit at
+\(\sigma_{XL}=1\). The implementation therefore avoids division of two small,
+separately rounded quantities and does not use a Taylor approximation as a
+simulation equation. At one, the dated right-hand side and its analytical
+Jacobian reproduce the original autonomous system to machine precision.
+
+`scripts/audit_near_unit_ai_bvp.py` reproduces the bilateral calculation at
+\(\sigma_{XL}=0.99,0.999,0.9999,1,1.0001,1.001,1.01\). On the first 50 years,
+the largest log-path differences from the unit solution are, respectively,
+0.01615, 0.001593, 0.0001591, zero, 0.0001590, 0.001588, and
+0.01566. The difference is approximately linear in
+\(|\sigma_{XL}-1|\), as the finite-window proposition predicts. Every refined
+\(T=250\) solution has equation residuals below \(1.1\times10^{-9}\), a
+monopoly FOC residual below \(3.7\times10^{-15}\), and a segmented backward
+reconstruction gap below \(2.5\times10^{-10}\). The tests also compare a
+tighter tolerance and denser mesh and extend the terminal horizon from 200 to
+250.
+
+This extension is intentionally local. It verifies a continuously continued
+finite-horizon branch, not an infinite-horizon equilibrium for either nonunit
+regime. The complementary and gross-substitutes tails require their own
+regime-specific terminal constructions.

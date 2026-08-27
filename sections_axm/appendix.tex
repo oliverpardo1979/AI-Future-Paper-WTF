@@ -1246,6 +1246,95 @@ The terminal projection is a finite-horizon approximation to the nonlinear
 stable manifold. A failure at a longer horizon would therefore be a numerical
 diagnostic, not evidence that an equilibrium trajectory does not exist.
 
+\subsection{Finite-window continuation in \(\sigma_{XL}\) around one}
+\label{app:axm-near-unit-algorithm}
+
+I next hold \(\omega_X=0.20\), the initial stocks, and the four dynamic
+variables \((K,B,C,q)\) fixed, and continue the accepted unit-elastic
+calculation in
+\[
+ \varphi=\frac{\sigma_{XL}-1}{\sigma_{XL}}.
+\]
+This order matters. The continuation starts from the positive-AI solution at
+\(\sigma_{XL}=1\), not from the no-AI economy. On each fixed horizon, the two
+initial conditions for \(K\) and \(B\) and the terminal projection in
+\eqref{eq:axm-positive-ai-stable-boundary} remain unchanged. The collocation
+solver continues to select \(C(0)\) and \(q(0)\).
+
+For \(\sigma_{XL}\neq1\), the static block is no longer eliminated by a
+constant value of \(U/Y\). At every collocation node, I evaluate the CES in
+logs using \eqref{eq:axm-near-unit-ces} and solve the monopoly condition
+\eqref{eq:axm-monopoly-foc} for \(d=\ln[X/(AL)]\). This determines
+\(s_X,X,Y\), and \(U=X/B\). Research compute continues to be determined by
+\eqref{eq:axm-research-demand-benchmark}. Substituting these quantities in the
+same resource, capability, Euler, and costate equations gives the dated laws
+for \((K,B,C,q)\). Thus the extension changes the CES and monopoly equations;
+it does not add a dynamic equation or change the timing of an existing one.
+
+The numerical expression for the CES uses \(\log1p\) and \(\operatorname{expm1}\)
+when \(\varphi d\) is close to zero and log-sum-exp otherwise. Both branches
+evaluate the exact CES. I do not replace the CES by the expansion in
+\eqref{eq:axm-near-unit-ces-expansion}. At \(\varphi=0\), the code uses the
+analytical Cobb--Douglas limit. The resulting dated system and its analytical
+Jacobian reproduce the unit-elastic normalized system to machine precision.
+
+I solve the refined \(T=250\) calculation at
+\(\sigma_{XL}=0.99,0.999,0.9999,1,1.0001,1.001,\) and \(1.01\). For every
+nonunit value, I use six equal continuation steps in \(\varphi\). Table
+\ref{tab:axm-near-unit-continuity-audit} reports the largest absolute
+difference from the unit-elastic log path over the first 50 years.
+
+\begin{table}[H]
+ \centering
+ \caption{Finite-window continuity around unit elasticity}
+ \label{tab:axm-near-unit-continuity-audit}
+ \begin{tabular}{lc}
+  \toprule
+  \(\sigma_{XL}\) &
+  \(\max_{t\in[0,50]}\|\xi^{\sigma_{XL}}(t)-\xi^1(t)\|_\infty\) \\
+  \midrule
+  0.9900 & \(1.615\times10^{-2}\) \\
+  0.9990 & \(1.593\times10^{-3}\) \\
+  0.9999 & \(1.591\times10^{-4}\) \\
+  1.0000 & \(0\) \\
+  1.0001 & \(1.590\times10^{-4}\) \\
+  1.0010 & \(1.588\times10^{-3}\) \\
+  1.0100 & \(1.566\times10^{-2}\) \\
+  \bottomrule
+ \end{tabular}
+ \begin{minipage}{0.92\textwidth}
+ \vspace{0.4em}
+ \footnotesize\emph{Note:} The initial stocks are \(K_0=2.484538\) and
+ \(B_0=1\). The reference is the accepted positive-AI solution at
+ \(\sigma_{XL}=1\), evaluated on the same dates. The terminal horizon is
+ \(T=250\).
+ \end{minipage}
+\end{table}
+
+The bilateral differences fall by approximately a factor of ten whenever
+\(|\sigma_{XL}-1|\) falls by a factor of ten. This is the numerical pattern
+implied by the finite-window bound in
+\eqref{eq:axm-near-unit-finite-window-bound}. Across the seven solutions, the
+largest collocation residual is below \(1.1\times10^{-9}\), the largest
+monopoly first-order-condition residual is below \(3.7\times10^{-15}\), and
+the largest discrepancy from the segmented backward reconstruction is below
+\(2.5\times10^{-10}\). Consumption, inference compute, and research compute
+remain positive, and the monopoly second-order condition holds at every audit
+point. Tightening the tolerance from \(10^{-8}\) to \(10^{-9}\), increasing
+the initial mesh from 81 to 141 nodes, and increasing both stock and elasticity
+continuation steps leaves the first 50 years unchanged up to
+\(2\times10^{-7}\). Extending the terminal horizon from 200 to 250 changes the
+same window by less than \(2\times10^{-5}\) for \(\sigma_{XL}=0.99\) and
+\(1.01\).
+
+These calculations verify local numerical continuity on the reported finite
+window. They do not show that the nonunit paths converge to the unit-elastic
+balanced-growth path. For \(\sigma_{XL}<1\), the eventual complementary tail
+must be studied with its own terminal conditions. For \(\sigma_{XL}>1\), a
+finite-rate balanced-growth terminal condition is unavailable and the path may
+eventually leave the local neighborhood. The regime-specific algorithms below
+address those tails separately.
+
 \subsection{Adoption experiment from the no-AI balanced-growth path}
 \label{app:axm-ai-adoption-algorithm}
 
