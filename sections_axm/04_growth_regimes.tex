@@ -1188,37 +1188,52 @@ taking each branch's asymptotic limit first:
  \label{eq:axm-noncommuting-distribution-limits}
 \end{equation}
 The table therefore compares distinct conditional regimes rather than tracing a
-smooth comparative-static curve in \(\sigma_{XL}\). The equilibrium paths near
-the unit-elasticity boundary are nevertheless informative. I solve the same
-dated equilibrium system at \(\sigma_{XL}=0.90,1.00,1.10\), holding
-\(\sigma_{HM}=2\), all other parameters, and the predetermined initial stocks
-fixed. Figure \ref{fig:axm-near-unit-equilibrium} reports a common 4,500-year
-window. The \(0.90\) and unit-elasticity paths are finite-horizon equilibrium-path
-approximations. The \(1.10\) path is a conditional finite-boundary equilibrium
-path; its displayed segment is stable when the artificial terminal value of
-\(Y/K\) is changed from 8 to 12 or 16.
+smooth long-run comparative-static curve in \(\sigma_{XL}\). The relevant local
+question is different: if I perturb \(\sigma_{XL}\) slightly, how long does the
+new path remain close to the unit-elastic path?
+
+I answer this question with a controlled experiment. I fix \(\omega_X=0.20\)
+and start all three economies from the predetermined stocks \(K_0=K^*\) and
+\(B_0=B^*\) on the analytical unit-elastic balanced-growth path, with
+\(A_0=N_0=1\). At date zero, I set \(\sigma_{XL}\) permanently to \(0.99\),
+\(1\), or \(1.01\). The states are therefore identical across cases, whereas
+the boundary-value problem selects the jump variables \(C_0\) and \(q_0\).
+I do not rescale initial output or any other flow variable after the
+perturbation.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures_axm/axm_near_unit_equilibrium_paths.png}
-\caption{Numerical equilibrium paths around unit elasticity. Each line solves
-the dated equilibrium conditions under the same calibration and predetermined
-initial stocks. For \(\sigma_{XL}=0.90\), I show the \(T=5{,}600\) path; for
-\(\sigma_{XL}=1\), the \(T=5{,}800\) path; and for \(\sigma_{XL}=1.10\), the
-\(z_T=16\) finite-boundary path. The last is shown only through year 4,500, a
-window over which the independently audited \(z_T=8,12,16\) solutions overlap.
-Annual rates and the labor share are percentages.}
+\caption{Permanent near-unit elasticity perturbations from common
+unit-elastic balanced-growth stocks. In every case \(\omega_X=0.20\). The
+numerical terminal is year 3,000, but I show only years 0--2,500. The output
+and wage panels report 100 times the log difference from the
+\(\sigma_{XL}=1\) path; the other panels report annual percentages. Appendix
+\ref{app:axm-near-unit-equilibrium-paths} describes the equation, horizon, and
+refinement audits.}
 \label{fig:axm-near-unit-equilibrium}
 \end{figure}
 
-The comparison makes the regime boundary concrete. By year 4,500, output per
-person grows at 0.003 percent for \(\sigma_{XL}=0.90\), 0.080 percent at unit
-elasticity, and 4.083 percent for \(\sigma_{XL}=1.10\). The corresponding net
-interest rates are 4.003, 4.080, and 7.920 percent, while labor receives 57.39,
-53.60, and 12.70 percent of output. These differences emerge gradually rather
-than through a discontinuity at any finite date. They show why an elasticity
-slightly above one can look moderate for a long time even though its
-equilibrium path eventually departs sharply from the unit-elasticity path.
+The initial distributional response may look surprising because the common
+starting stocks imply \(X/(AL)<1\). From
+\eqref{eq:axm-near-unit-share-expansion}, a value of \(\sigma_{XL}>1\)
+therefore initially lowers \(s_X\) and raises labor's income share; the signs
+are reversed for \(\sigma_{XL}<1\). Along the unit-elastic path, however,
+\(X/(AL)\) grows and crosses one after roughly 1,225 model years. The
+distributional effects then reverse. By year 2,500, 100 times the log gaps in
+output per person are \(-7.68\) and \(8.15\) for \(\sigma_{XL}=0.99\) and
+\(1.01\), respectively, while labor receives 54.16 and 52.97 percent of
+output, compared with 53.60 percent at unit elasticity. Growth and the interest
+rate remain close to their unit-elastic values over this window even though
+level and distributional gaps have begun to widen.
+
+This experiment establishes continuity on a fixed finite window, not similarity
+of the long-run paths. For any fixed date, the three solutions approach one
+another as \(\sigma_{XL}\to1\). For a fixed nonunit elasticity, however,
+\(h=\varphi\ln[X/(AL)]\) accumulates over time and eventually becomes
+economically important. Thus the limits \(\sigma_{XL}\to1\) and
+\(t\to\infty\) need not commute. The regime propositions, rather than this
+finite-window continuation, characterize the conditional tails.
 
 Finally, these are functional distribution results, not predictions about
 interpersonal inequality. The representative household supplies all labor and

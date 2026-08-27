@@ -1629,35 +1629,51 @@ by the numerical calculation, a terminal condition, or a calendar forecast. The
 alternative shooting routine retained in the source code is experimental and
 does not generate any result I report.
 
-\subsection{Equilibrium paths near unit elasticity}
+\subsection{Permanent near-unit perturbations from balanced-growth stocks}
+\label{app:axm-near-unit-equilibrium-paths}
 
-Figure \ref{fig:axm-near-unit-equilibrium} is based on three solutions of the
-dated equilibrium system. For
-\(\sigma_{XL}=0.90\), I solve independent finite-horizon boundary-value problems
-at \(T=5{,}000,5{,}300,5{,}600\), using a 401-node initial mesh and a tolerance
-of \(10^{-6}\). I display the \(T=5{,}600\) solution. The independent audit
-reconstructs the static equations, differentiates the four saved log paths, and
-checks the terminal conditions and the stability of the two initial jump
-variables across all three horizons.
+Figure \ref{fig:axm-near-unit-equilibrium} applies the continuation algorithm in
+Section \ref{app:axm-near-unit-algorithm} to a single controlled experiment. I
+fix \(\omega_X=0.20\), compute the analytical \(\sigma_{XL}=1\) balanced-growth
+path, and give all three cases its initial predetermined stocks
+\(K_0=2.027734\) and \(B_0=0.443671\). I then solve the same dated equations at
+\(\sigma_{XL}=0.99,1,1.01\). Consumption and the shadow value remain jump
+variables; no initial flow is normalized to match across elasticities.
 
-For \(\sigma_{XL}=1.10\), I begin with the audited
-\(\sigma_{XL}=1.50,z_T=16\) solution and continue the elasticity through
-\(1.45,1.40,1.35,1.30,1.25,1.20,1.175,1.15,1.125,1.10\). At
-\(\sigma_{XL}=1.10\), I then solve the same boundary-value problem at
-\(z_T=16,12,8\), with tolerance \(3\times10^{-5}\). All three boundaries lie
-beyond the displayed interval. On \(t\in[0,4{,}500]\), their maximum spreads
-are below \(1.3\times10^{-4}\) for each log path and below
-\(3.0\times10^{-6}\) for the reported growth rates, return, labor share, and
-AI share. An independent reconstruction also verifies the dated technologies,
-prices, first-order conditions, market clearing, and dynamic equations on that
-window.
+The reported solutions use a terminal horizon of 3,000 years, an initial mesh
+of 181 nodes, a tolerance of \(10^{-9}\), and eight equal continuation steps in
+\(\varphi\) for each nonunit elasticity. The figure ends at year 2,500, leaving
+500 years between the displayed observations and the terminal projection. I
+reconstruct \(Y,X,U,M,w,r\), all five income shares, and both sides of every
+dated dynamic equation from the four saved log paths \((K,B,C,q)\). I also
+verify resource accounting and the monopolist's static first- and second-order
+conditions at each saved date.
 
-The terminal approximation differs across regimes, but the object plotted in
-each case is an equilibrium-system solution. ``Finite boundary'' describes the
-numerical terminal condition for the gross-substitutes path, not a change in the
-economic system being solved. The audit supports the reported common window. It
-does not establish convergence of the uncomputed tail, an infinite-horizon
-equilibrium, transversality at infinity, global optimality, or uniqueness.
+Two separate calculations test whether the displayed window is numerical rather
+than terminal-driven. First, I move the terminal from year 3,000 to year 3,500
+and compare all four dynamic variables over years 0--2,500. Second, I repeat the
+3,000-year calculation with a 121-node initial mesh, tolerance \(10^{-8}\), and
+four continuation steps. The machine-readable audit records both maximum gaps
+and rejects the figure if either exceeds its stated tolerance. It also requires
+successful collocation, positive consumption and compute inputs, a positive
+monopoly second-order-condition margin, and equation residuals below their
+respective thresholds.
+
+All gates pass. The maximum normalized dynamic-equation residual is
+\(5.6\times10^{-10}\), and the segmented backward reconstruction differs from
+the collocation solution by at most \(2.3\times10^{-10}\). Resource accounting
+closes to \(3.4\times10^{-16}\), and the monopoly first-order-condition residual
+is below \(1.6\times10^{-14}\). Moving the terminal to year 3,500 changes the
+displayed four-variable path by at most \(5.1\times10^{-10}\); the numerical
+refinement produces the same maximum discrepancy.
+
+These checks validate a finite segment of the dated equilibrium system. They do
+not show that the nonunit paths share the unit-elastic balanced-growth tail. In
+particular, the terminal projection is constructed from the local stable space
+at unit elasticity. The reported segment remains in that regular neighborhood;
+the conditional asymptotic results for complementarity and gross substitution
+come instead from the separate regime propositions and their own numerical
+methods.
 
 \subsection{Supplementary transition diagnostic}
 

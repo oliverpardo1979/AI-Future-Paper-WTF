@@ -1,0 +1,124 @@
+{
+  "accepted": true,
+  "audits": {
+    "sigma_xl_0.9900": {
+      "developer_log_tvc_change": -111.01751854821674,
+      "elasticity_continuation_stages": 8,
+      "final_nodes": 5508,
+      "household_log_tvc_change": -111.05684233334671,
+      "max_boundary_residual": 7.37257477290143e-18,
+      "max_capability_residual": 4.787459925020832e-12,
+      "max_costate_residual": 3.3915542770046603e-10,
+      "max_euler_residual": 2.774372832164973e-10,
+      "max_monopoly_foc_log_residual": 1.7763568394002505e-14,
+      "max_normalized_ode_residual": 4.37192836729057e-10,
+      "max_research_foc_log_residual": 3.552713678800501e-15,
+      "max_resource_residual": 4.3719283748799853e-10,
+      "maximum_rms_residual": 9.947887983325193e-10,
+      "minimum_consumption_share": 0.7723548680901066,
+      "minimum_inference_share": 0.014905172305205477,
+      "minimum_monopoly_soc_margin": 0.10516992525008936,
+      "minimum_research_share": 0.0002595527742679701,
+      "segmented_backward_function_evaluations": 99510,
+      "segmented_backward_reconstruction_gap": 2.12693999565583e-10,
+      "sigma_xl": 0.99,
+      "success": true
+    },
+    "sigma_xl_1.0000": {
+      "developer_log_tvc_change": -110.99999999999955,
+      "elasticity_continuation_stages": 0,
+      "final_nodes": 5430,
+      "household_log_tvc_change": -111.0,
+      "max_boundary_residual": 3.527278138940629e-26,
+      "max_capability_residual": 1.0408340855860843e-17,
+      "max_costate_residual": 9.454242944073599e-16,
+      "max_euler_residual": 7.546047120499111e-16,
+      "max_monopoly_foc_log_residual": 1.4210854715202004e-14,
+      "max_normalized_ode_residual": 2.649306717923423e-15,
+      "max_research_foc_log_residual": 3.552713678800501e-15,
+      "max_resource_residual": 2.6489227478165844e-15,
+      "maximum_rms_residual": 9.1263591816808e-17,
+      "minimum_consumption_share": 0.7727818812043235,
+      "minimum_inference_share": 0.017955999999999774,
+      "minimum_monopoly_soc_margin": 0.11604399999999992,
+      "minimum_research_share": 0.0003130110626885664,
+      "segmented_backward_function_evaluations": 96015,
+      "segmented_backward_reconstruction_gap": 6.960231245589749e-14,
+      "sigma_xl": 1.0,
+      "success": true
+    },
+    "sigma_xl_1.0100": {
+      "developer_log_tvc_change": -110.98548891310327,
+      "elasticity_continuation_stages": 8,
+      "final_nodes": 5513,
+      "household_log_tvc_change": -110.9386250668226,
+      "max_boundary_residual": 1.734723475976807e-18,
+      "max_capability_residual": 5.795091836957589e-12,
+      "max_costate_residual": 5.512372485555472e-10,
+      "max_euler_residual": 2.9178438831767295e-10,
+      "max_monopoly_foc_log_residual": 1.7763568394002505e-14,
+      "max_normalized_ode_residual": 5.512372476881855e-10,
+      "max_research_foc_log_residual": 3.552713678800501e-15,
+      "max_resource_residual": 4.640507318687259e-10,
+      "maximum_rms_residual": 9.920391088597909e-10,
+      "minimum_consumption_share": 0.7481013722712113,
+      "minimum_inference_share": 0.017524921288627843,
+      "minimum_monopoly_soc_margin": 0.11681407371777419,
+      "minimum_research_share": 0.00028989836472295276,
+      "segmented_backward_function_evaluations": 99540,
+      "segmented_backward_reconstruction_gap": 2.238921010394579e-10,
+      "sigma_xl": 1.01,
+      "success": true
+    }
+  },
+  "common_audit_window": 2500.0,
+  "display_horizon": 2500.0,
+  "files": {
+    "numerical_axm/near_unit_bgp_perturbation_paths.csv": {
+      "rows": 7503,
+      "sha256": "165273635c168ad1a2d26345f26e9f3317c5856259236dca1232c9f0bc533507"
+    },
+    "numerical_axm/near_unit_bgp_perturbation_summary.csv": {
+      "rows": 18,
+      "sha256": "5a4d62966ce0014d86a888318932609c5badea635e8b1157e339c25683512e50"
+    }
+  },
+  "gates": {
+    "accounting_closure": true,
+    "all_solvers_successful": true,
+    "backward_reconstruction": true,
+    "equilibrium_residuals": true,
+    "horizon_stability": true,
+    "monopoly_foc": true,
+    "monopoly_soc": true,
+    "refinement_stability": true
+  },
+  "horizon_audit_terminal_horizon": 3500.0,
+  "horizon_gaps": {
+    "sigma_xl_0.9900": 4.91299161076153e-10,
+    "sigma_xl_1.0100": 5.082129439504257e-10
+  },
+  "interpretation": "Permanent sigma_XL perturbations from common unit-elastic BGP stocks; accepted only on the displayed finite window.",
+  "maximum_accounting_residual": 3.3306690738754696e-16,
+  "maximum_backward_gap": 2.238921010394579e-10,
+  "maximum_horizon_gap": 5.082129439504257e-10,
+  "maximum_refinement_gap": 5.082129370115318e-10,
+  "maximum_solver_residual": 5.512372476881855e-10,
+  "maximum_static_residual": 1.509903313490213e-14,
+  "minimum_monopoly_soc_margin": 0.1068494201476917,
+  "parameters": {
+    "initial_capability": 0.44367093160980464,
+    "initial_capital": 2.027733653970002,
+    "omega_x": 0.2,
+    "sigma_xl_values": [
+      0.99,
+      1.0,
+      1.01
+    ]
+  },
+  "refinement_gaps": {
+    "sigma_xl_0.9900": 4.912991749539408e-10,
+    "sigma_xl_1.0100": 5.082129370115318e-10
+  },
+  "solver_terminal_horizon": 3000.0
+}

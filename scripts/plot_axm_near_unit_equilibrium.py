@@ -1,9 +1,9 @@
-"""Plot audited equilibrium paths on both sides of sigma_XL=1.
+"""Plot audited near-unit perturbations from the positive-AI BGP.
 
-The chart compares the primary sigma_XL=0.90 and sigma_XL=1 paths with the
-sigma_XL=1.10, z=16 finite-boundary path.  All series stop at t=4500, the
-window independently shown to overlap across the z=8,12,16 upper-branch
-solutions.  This script reads accepted CSVs and never invokes a solver.
+The script reads the accepted output of
+``simulate_axm_near_unit_bgp_perturbation.py`` and never invokes a solver.
+Every scenario has ``omega_X=0.20`` and the same predetermined initial stocks
+from the analytical ``sigma_XL=1`` balanced-growth path.
 """
 
 from __future__ import annotations
@@ -11,16 +11,19 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import math
 import sys
 from pathlib import Path
-from typing import Iterable
-
-import numpy as np
-
 
 ROOT = Path(__file__).resolve().parents[1]
+LOCAL_DEPS = ROOT / ".python-packages"
+TMP_DEPS = ROOT / "tmp" / "pydeps"
+if LOCAL_DEPS.exists():
+    sys.path.insert(0, str(LOCAL_DEPS))
+elif TMP_DEPS.exists():
+    sys.path.insert(0, str(TMP_DEPS))
 sys.path.insert(0, str(ROOT / "scripts"))
+
+import numpy as np
 
 import simulate_model as mechanism
 
@@ -28,15 +31,8 @@ import simulate_model as mechanism
 RESULT_DIR = ROOT / "numerical_axm"
 FIGURE_DIR = ROOT / "figures_axm"
 OUTPUT = FIGURE_DIR / "axm_near_unit_equilibrium_paths.png"
-DISPLAY_END = 4500.0
-MANIFESTS = (
-    RESULT_DIR / "near_unit_sigma090_audit_manifest.json",
-    RESULT_DIR / "unit_elasticity_audit_manifest.json",
-    RESULT_DIR / "near_unit_sigma110_window_audit_manifest.json",
-)
-LOWER_PATH = RESULT_DIR / "near_unit_sigma090_horizon_paths.csv"
-UNIT_PATH = RESULT_DIR / "equilibrium_transition_paths.csv"
-UPPER_PATH = RESULT_DIR / "near_unit_sigma110_window_boundary_paths.csv"
+MANIFEST_PATH = RESULT_DIR / "near_unit_bgp_perturbation_audit_manifest.json"
+PATH_FILE = RESULT_DIR / "near_unit_bgp_perturbation_paths.csv"
 
 
 def sha256(path: Path) -> str:
@@ -47,126 +43,88 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def hashed_entries(value: object) -> Iterable[dict[str, object]]:
-    if isinstance(value, dict):
-        if "path" in value and "sha256" in value:
-            yield value
-        for child in value.values():
-            yield from hashed_entries(child)
-    elif isinstance(value, list):
-        for child in value:
-            yield from hashed_entries(child)
+def verify_input() -> tuple[dict[str, object], float]:
+    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    if manifest.get("accepted") is not True:
+        raise ValueError("The near-unit perturbation audit is not accepted.")
+    files = manifest.get("files")
+    if not isinstance(files, dict):
+        raise ValueError("The manifest has no audit-bound files mapping.")
+    relative = str(PATH_FILE.relative_to(ROOT)).replace("\\", "/")
+    metadata = files.get(relative)
+    if not isinstance(metadata, dict) or "sha256" not in metadata:
+        raise ValueError(f"The plotted path is not audit-bound: {relative}")
+    if sha256(PATH_FILE) != str(metadata["sha256"]):
+        raise ValueError(f"Hash mismatch: {PATH_FILE}")
+    return manifest, float(manifest["display_horizon"])
 
 
-def verify_inputs() -> None:
-    declared: set[Path] = set()
-    for manifest_path in MANIFESTS:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        accepted = manifest.get("accepted", manifest.get("overall_accepted"))
-        if accepted is not True:
-            raise ValueError(f"Audit manifest is not accepted: {manifest_path}")
-        files_mapping = manifest.get("files", {})
-        if isinstance(files_mapping, dict):
-            for relative, metadata in files_mapping.items():
-                if not isinstance(metadata, dict) or "sha256" not in metadata:
-                    continue
-                declared_name = metadata.get("path", relative)
-                path = (ROOT / str(declared_name).replace("\\", "/")).resolve()
-                if sha256(path) != str(metadata["sha256"]):
-                    raise ValueError(f"Hash mismatch: {path}")
-                declared.add(path)
-        for entry in hashed_entries(manifest):
-            path = (ROOT / str(entry["path"]).replace("\\", "/")).resolve()
-            if sha256(path) != str(entry["sha256"]):
-                raise ValueError(f"Hash mismatch: {path}")
-            declared.add(path)
-    required = {LOWER_PATH.resolve(), UNIT_PATH.resolve(), UPPER_PATH.resolve()}
-    if not required.issubset(declared):
-        missing = required.difference(declared)
-        raise ValueError(f"Plotted files are not audit-bound: {sorted(missing)}")
-
-
-def read(path: Path) -> list[dict[str, float | str]]:
-    with path.open("r", encoding="utf-8", newline="") as handle:
-        rows: list[dict[str, float | str]] = list(csv.DictReader(handle))
-    return rows
-
-
-def select_rows() -> dict[str, list[dict[str, float | str]]]:
-    lower = [
-        row
-        for row in read(LOWER_PATH)
-        if math.isclose(float(row["horizon"]), 5600.0)
-        and float(row["time"]) <= DISPLAY_END
-    ]
-    unit = [
-        row
-        for row in read(UNIT_PATH)
-        if row["scenario"] == "axm_sigma_xl_1_hm_2"
-        and float(row["time"]) <= DISPLAY_END
-    ]
-    upper = [
-        row
-        for row in read(UPPER_PATH)
-        if math.isclose(float(row["terminal_boundary_z"]), 16.0)
-        and float(row["time"]) <= DISPLAY_END
-    ]
-    result = {"lower": lower, "unit": unit, "upper": upper}
-    for label, rows in result.items():
-        if not rows or float(rows[-1]["time"]) < DISPLAY_END:
-            raise ValueError(f"Incomplete displayed path: {label}")
+def read_paths(display_horizon: float) -> dict[str, list[dict[str, float | str]]]:
+    with PATH_FILE.open("r", encoding="utf-8", newline="") as handle:
+        observations: list[dict[str, float | str]] = list(csv.DictReader(handle))
+    result: dict[str, list[dict[str, float | str]]] = {}
+    for sigma_xl, key in ((0.99, "below"), (1.00, "unit"), (1.01, "above")):
+        rows = [
+            row
+            for row in observations
+            if np.isclose(float(row["sigma_xl"]), sigma_xl)
+            and float(row["time"]) <= display_horizon
+        ]
+        if not rows or float(rows[-1]["time"]) < display_horizon:
+            raise ValueError(f"Incomplete displayed path: {key}")
+        result[key] = rows
     return result
 
 
 def main() -> None:
-    verify_inputs()
-    rows = select_rows()
+    manifest, display_horizon = verify_input()
+    rows = read_paths(display_horizon)
     labels = {
-        "lower": "Final-production elasticity = 0.90",
-        "unit": "Final-production elasticity = 1.00",
-        "upper": "Final-production elasticity = 1.10",
+        "below": "sigma_XL = 0.99",
+        "unit": "sigma_XL = 1.00",
+        "above": "sigma_XL = 1.01",
     }
     palette = {
-        "lower": mechanism.COLORS["blue"],
+        "below": mechanism.COLORS["blue"],
         "unit": mechanism.COLORS["ink"],
-        "upper": mechanism.COLORS["orange"],
+        "above": mechanism.COLORS["orange"],
     }
-    markers = {"lower": "circle", "unit": "diamond", "upper": "square"}
-    percent = lambda observations, values: 100.0 * values
+    markers = {"below": "circle", "unit": "diamond", "above": "square"}
+    times_one_hundred = lambda observations, values: 100.0 * values
+    terminal = float(manifest["solver_terminal_horizon"])
     mechanism.draw_multiplot(
         OUTPUT,
-        "Equilibrium paths around unit elasticity",
+        "Permanent near-unit elasticity perturbations",
         (
-            "Same calibration and initial stocks; annual rates and income "
-            "shares in percent; common audited window through model year 4,500"
+            "Same positive-AI BGP stocks at date 0; paths shown through year "
+            f"{display_horizon:,.0f}; numerical terminal at year {terminal:,.0f}"
         ),
         [
             {
-                "title": "Output growth per capita",
-                "field": "output_per_capita_growth",
-                "transform": percent,
+                "title": "Output per person: log gap x 100",
+                "field": "log_output_relative_to_unit_bgp",
+                "transform": times_one_hundred,
                 "reference_y": 0.0,
-                "adaptive_percent_min_decimals": 1,
+                "adaptive_numeric_min_decimals": 0,
             },
             {
-                "title": "Real-wage growth",
-                "field": "wage_growth",
-                "transform": percent,
+                "title": "Real wage: log gap x 100",
+                "field": "log_wage_relative_to_unit_bgp",
+                "transform": times_one_hundred,
                 "reference_y": 0.0,
-                "adaptive_percent_min_decimals": 1,
+                "adaptive_numeric_min_decimals": 0,
             },
             {
-                "title": "Net return to capital",
-                "field": "net_capital_return",
-                "transform": percent,
-                "adaptive_percent_min_decimals": 1,
+                "title": "Net interest rate",
+                "field": "net_interest",
+                "transform": times_one_hundred,
+                "adaptive_percent_min_decimals": 2,
             },
             {
-                "title": "Aggregate labor income / output",
-                "field": "aggregate_labor_share",
-                "transform": percent,
-                "ylim": (0.0, 65.0),
-                "adaptive_percent_min_decimals": 0,
+                "title": "Labor income / output",
+                "field": "labor_share",
+                "transform": times_one_hundred,
+                "adaptive_percent_min_decimals": 1,
             },
         ],
         rows,
