@@ -117,8 +117,9 @@ the predetermined variables \((\xi_K,\xi_B)\) is nonsingular.
 
 ## Initial stocks and finite-horizon boundary conditions
 
-The paper fixes \(B_0=1\) but leaves \(K_0\) scenario-specific. A transparent
-initialization rule is to choose \(K_0\) so that the initial \(K/Y\) ratio
+The level-normalized off-BGP validation fixes \(B_0=1\) but leaves \(K_0\)
+scenario-specific. A transparent initialization rule is to choose \(K_0\) so
+that the initial \(K/Y\) ratio
 equals \(k^*\), after solving the date-zero production equation at \(B_0=1\).
 This is a calibration rule for the initial stock. It is not an equilibrium
 condition, a theorem, or a claim that \((K_0,B_0)\) lies on the balanced-growth
@@ -196,7 +197,7 @@ moves \((K_0,B_0)\) to the target in log-stock space at fixed
 `omega_x = 0.20`, and repeats the accepted solve at horizons 100, 150, 200,
 and 250. The no-AI solution is never used as a homotopy point.
 
-The target initialization sets \(B_0=1\) and chooses \(K_0\) by the explicit
+That validation's target initialization sets \(B_0=1\) and chooses \(K_0\) by the explicit
 date-zero rule described above. This target is materially off the reference
 BGP: \(B_0^*=0.4436709\), so
 \(\log(B_0/B_0^*)=0.8126721\). The 12-stage stock continuation reaches this

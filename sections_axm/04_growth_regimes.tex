@@ -145,8 +145,8 @@ Parameter & Value & Interpretation & Source\\
 \(\eta\) & 0.20 (AI only) & Elasticity of \(\dot B\) with respect to effective AI research & Model calibration satisfying \(\eta<\alpha\); not estimated\\
 \(\chi\) & 0.01 (AI only) & Productivity scale in the capability law & Time normalization; not estimated\\
 \((A_0,N_0)\) & (1, 1) & Initial labor productivity and population & Normalizations common to all scenarios\\
-\(B_0\) & 1 (AI only) & Initial AI capability & Normalization of initial AI capability\\
-\(K_0\) & Scenario-specific & Initial physical-capital stock & Implied by the initial equilibrium after fixing each scenario\\
+\(B_0\) & 1 in the level-normalized exercises; 30.932 in the adoption experiment & Initial AI capability & Level normalization or adoption-threshold calibration, as stated for each exercise\\
+\(K_0\) & Scenario-specific; the no-AI BGP value in the adoption experiment & Initial physical-capital stock & Predetermined initial stock for each exercise\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -165,11 +165,14 @@ exercises retain \(\omega_X=0.20\), hold the common parameters fixed, and vary
 \(\sigma_{HM}\in\{1,2\}\).
 
 The value \(\eta=0.20\) is illustrative and lies strictly inside the maintained
-region \(\eta<\alpha=0.33\). The normalizations set \(A_0=B_0=N_0=1\) whenever
-the corresponding state is present. The initial capital stock is not a common
-primitive: \(K_0\) must be chosen separately to place each scenario on its
-intended initial equilibrium. The level of \(\chi\) and the initial conditions
-affect model time, so the horizontal axes are not calendar forecasts.
+region \(\eta<\alpha=0.33\). The normalizations set \(A_0=N_0=1\). I set
+\(B_0=1\) in the level-normalized exercises. The adoption experiment below
+instead calibrates \(B_0\) to preserve output at the adoption date. The initial
+capital stock is not a common primitive across all exercises. In the adoption
+experiment it is inherited from the no-AI balanced-growth path; elsewhere it
+is chosen as stated for the corresponding numerical exercise. The level of
+\(\chi\) and the initial conditions affect model time, so the horizontal axes
+are not calendar forecasts.
 
 The weight \(\omega_X\) is also uncertain. It is not an observed AI investment
 or income share. The OECD notes that national accounts do not yet recognize AI
@@ -627,6 +630,84 @@ shares. Here \(D\leq0\) rules out the finite positive
 balanced-growth candidate, but does not by itself prove double-exponential growth
 or a finite-time singularity. Such a conclusion must also determine prices,
 allocations, the developer's costate, and the transversality conditions.
+
+\subsubsection{Adoption from the no-AI balanced-growth path}
+\label{sec:axm-ai-adoption-experiment}
+
+I first compare the automated-research benchmark with its no-AI counterfactual.
+Before date zero, the economy is on the Ramsey--Cass--Koopmans balanced-growth
+path with \(\omega_X=0\). At date zero, \(\omega_X\) increases to 0.20 and
+\(\sigma_{XL}=1\). Physical capital, labor productivity, and population are
+predetermined, so \(K_0\), \(A_0\), and \(N_0\) are inherited from the no-AI
+path.
+
+The no-AI equilibrium does not determine \(B_0\), because capability does not
+affect any allocation when \(\omega_X=0\). I therefore calibrate the capability
+available at adoption by requiring
+\begin{equation}
+ Y(0^+;\omega_X=0.20)=Y(0^-;\omega_X=0).
+ \label{eq:axm-adoption-output-continuity}
+\end{equation}
+At unit elasticity, \eqref{eq:axm-inference-share-cd} and
+\eqref{eq:axm-reduced-cd} imply that this condition is equivalent to
+\(X_0=A_0L_0\). With \(A_0=N_0=L_0=1\), it gives
+\begin{equation}
+ B_0=\frac{1}{\beta^2Y_0^{\mathrm{RCK}}}=30.9316.
+ \label{eq:axm-adoption-initial-capability}
+\end{equation}
+This value is an adoption-threshold calibration. It is not an equilibrium
+condition and does not follow from continuing the positive-AI model through
+\(\omega_X=0\). Given \(K_0\) and \(B_0\), the boundary-value problem selects
+the jump variables \(C(0^+)\) and \(q(0^+)\). The matching rule isolates the
+change in income shares from a mechanical change in initial output, but it does
+not identify \(B_0\) empirically. The timing results below are therefore
+conditional on \eqref{eq:axm-adoption-output-continuity}. At unit elasticity,
+the production-labor, gross-capital, and inference-compute shares are fixed by
+the model and do not depend on this matching rule.
+
+Figure \ref{fig:axm-ai-adoption-macro} compares the two equilibrium paths.
+Output does not jump by construction. Consumption falls by 2.26 percent at
+adoption, while the real wage falls by 20 percent. The wage falls because the
+production-labor share decreases from \(1-\alpha=0.67\) to
+\((1-\alpha)\omega_L=0.536\), even though initial output is unchanged. Output
+per person subsequently remains close to the no-AI path: after 250 years it is
+0.61 percent higher. The net interest rate rises from 5 percent to 5.0035
+percent over the same interval.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures_axm/axm_ai_adoption_macro.png}
+\caption{Macroeconomic effects of adopting AI production and autonomous AI
+research at date zero. The AI path sets \(\omega_X=0.20\) and
+\(\sigma_{XL}=1\); the counterfactual keeps \(\omega_X=0\). Output per person,
+consumption per person, and the real wage use a common date-zero no-AI index
+and logarithmic vertical scales. The interest-rate panel uses a focused linear
+scale. Model time is not a calendar forecast.}
+\label{fig:axm-ai-adoption-macro}
+\end{figure}
+
+Figure \ref{fig:axm-ai-adoption-mechanism} explains why the macroeconomic
+effects accumulate slowly. The annual growth rate of output per person rises
+from 1.0006 percent at adoption to 1.0036 percent after 250 years, and
+capability increases by 2.55 percent. The shadow value \(qB/Y\) changes little.
+The distributional effect is much larger and occurs immediately: labor loses
+13.4 percentage points of output, while gross physical-capital income remains
+at 33 percent. AI profit and the resources used for inference and research
+receive the difference. Thus this experiment generates a large change in the
+distribution of output long before it generates a large change in output.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures_axm/axm_ai_adoption_mechanism_distribution.png}
+\caption{Growth, capability, and the distribution of output after AI adoption.
+Growth and \(qB/Y\) use focused linear scales; \(B/B_0\) uses a logarithmic
+scale. The final panel decomposes output into gross physical-capital income,
+labor income, distributed AI profit, inference compute, and research compute.
+The first two bars report the no-AI allocation and the allocation immediately
+after adoption. The third reports the analytical AI balanced-growth allocation;
+it is not the allocation at year 250.}
+\label{fig:axm-ai-adoption-mechanism}
+\end{figure}
 
 \subsubsection{\texorpdfstring{Case II: human-essential research, \(\sigma_{HM}=1\)}{Case II: human-essential research, sigma HM = 1}}
 \label{sec:axm-case-human-essential}

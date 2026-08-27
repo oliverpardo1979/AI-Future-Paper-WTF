@@ -1350,6 +1350,54 @@ The terminal projection is a finite-horizon approximation to the nonlinear
 stable manifold. A failure at a longer horizon would therefore be a numerical
 diagnostic, not evidence that an equilibrium trajectory does not exist.
 
+\subsection{Adoption experiment from the no-AI balanced-growth path}
+\label{app:axm-ai-adoption-algorithm}
+
+The adoption experiment in Section
+\ref{sec:axm-ai-adoption-experiment} uses the same two numerical problems but
+different initial stocks. The no-AI economy starts exactly on its analytical
+Ramsey--Cass--Koopmans balanced-growth path. With \(A_0=N_0=1\), the initial
+levels are
+\[
+ K_0=5.941573,\qquad Y_0=1.800477,\qquad C_0=1.426157.
+\]
+These values determine the no-AI counterfactual without a numerical shooting
+step.
+
+At date zero, the positive-AI problem inherits \(K_0\), \(A_0\), and \(N_0\).
+Capability is not a state of the no-AI problem, so the no-AI equilibrium does
+not supply an initial value for \(B\). I choose \(B_0\) from
+\eqref{eq:axm-adoption-output-continuity}. Using
+\(U_0/Y_0=\beta^2\) and \(X_0=B_0U_0\), the condition gives
+\(X_0=A_0L_0=1\) and \(B_0=30.931640\). This calibration removes an
+arbitrary date-zero output change when the AI input is introduced. It does not
+make the two dynamic systems one continuation problem.
+
+I solve the positive-AI boundary-value problem at
+\((\omega_X,\sigma_{XL})=(0.20,1)\). Relative to its analytical
+balanced-growth reference, the predetermined initial deviations are
+\[
+ \xi_K(0)=1.0750551,\qquad \xi_B(0)=4.2444517.
+\]
+I move the stocks from the reference path to these targets in 32 log-linear
+continuation steps. I then extend the terminal horizon through
+\(T=100,200,300,400,500,600\). The terminal projection selects
+\[
+ C(0^+)=1.3938747,\qquad q(0^+)=0.0282057.
+\]
+
+At \(T=600\), the largest reconstructed equilibrium-equation residual is
+\(3.7\times10^{-9}\), and the boundary residual is
+\(2.2\times10^{-16}\). The largest change in either initial jump variable
+between the last two horizons is \(7.8\times10^{-10}\). A separately coded
+backward reconstruction differs from the collocation path by at most
+\(1.4\times10^{-10}\). Consumption, research compute, and distributed profit
+remain nonnegative, and both finite-date transversality proxies decline over
+the solved interval. The figures display the first 250 years of this accepted
+600-year calculation. As in the preceding exercise, these checks establish
+numerical stability of the finite-horizon approximation; they do not prove
+global existence, uniqueness, or the infinite-horizon transversality limits.
+
 \subsection{Numerical representation and the intratemporal equilibrium map}
 
 The outer solver uses the four log variables
@@ -1367,17 +1415,20 @@ logit, which keeps \(0<H/N<1\) and implies \(L=N-H>0\).
 The implementation evaluates \(A(t)\) analytically. It uses \(B\) as the
 capability state in every dated equation. Saved paths retain the descriptive
 field name \texttt{log\_capability}; this field means
-\(\log B\), not \(\log A\). All results reported in this version set
-\(\gamma_A=0\) and \(A_0=1\), so labor productivity is constant and the
-migration does not change the earlier numerical experiments. I verify this
-claim with \path{scripts/check_axm_ab_regression.py}: at \(\gamma_A=0\), the
+\(\log B\), not \(\log A\). The earlier complementary-input,
+unit-elasticity, and gross-substitutes transition files set \(\gamma_A=0\) and
+\(A_0=1\), so the migration does not change those numerical experiments. I
+verify this claim with \path{scripts/check_axm_ab_regression.py}: at
+\(\gamma_A=0\), the
 migrated dated map and paths reproduce sampled observations from the
 unit-elasticity, complementary-input, and gross-substitutes files archived at
 commit \texttt{d019192}, with zero numerical difference.
 The same check verifies the exact balanced-growth equations at
 \(\gamma_A=0.01\) for the automated-research benchmark and the
-\(\sigma_{HM}=1\) extension, although I do not report those positive-growth
-experiments in the paper.
+\(\sigma_{HM}=1\) extension. The adoption experiment in Section
+\ref{sec:axm-ai-adoption-experiment} uses \(\gamma_A=0.01\); it is solved and
+audited separately as described in Appendix
+\ref{app:axm-ai-adoption-algorithm}.
 
 For a given date and a trial value of \((K,B,A,N,q)\), the code constructs the
 intratemporal equilibrium as follows.

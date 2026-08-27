@@ -1,0 +1,146 @@
+{
+  "accepted": true,
+  "additional_audit": {
+    "initial_capital_log_gap": 0.0,
+    "initial_output_log_gap": 0.0,
+    "initial_services_log_gap": 2.2204460492503128e-16,
+    "maximum_accounting_error": 2.220446049250313e-16,
+    "minimum_profit_share": 0.11600035779417528
+  },
+  "ai_balanced_growth_seed": {
+    "ai_service_price": 16.820318924403615,
+    "ai_services": 0.004937592111555743,
+    "beta": 0.13399999999999998,
+    "capability": 0.44367093160980464,
+    "capability_growth": 0.003466666666666667,
+    "capital": 2.027733653970002,
+    "capital_output_ratio": 3.271645736946464,
+    "consumption": 0.4789625630918091,
+    "consumption_share": 0.7727818812043306,
+    "distributed_profit": 0.07172892175497068,
+    "feedback_determinant": 0.40199999999999997,
+    "inference_compute": 0.011128951120688268,
+    "inference_share": 0.017955999999999996,
+    "investment_share": 0.20894910773298087,
+    "labor_exponent": 0.5359999999999999,
+    "labor_productivity": 1.0,
+    "net_interest_rate": 0.050866666666666664,
+    "output": 0.6197901047387097,
+    "output_growth": 0.013866666666666668,
+    "population": 1.0,
+    "profit_shadow_ratio": 0.039773333333333334,
+    "research_compute": 0.00019400115932812268,
+    "research_share": 0.0003130110626885685,
+    "service_composite": 0.3457029154282224,
+    "shadow_value": 0.6306686881655919,
+    "shadow_value_growth": 0.010400000000000001,
+    "wage": 0.3322074961399483
+  },
+  "ai_parameters": {
+    "alpha": 0.33,
+    "chi": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0,
+    "labor_productivity_growth": 0.01,
+    "omega_x": 0.2,
+    "population_growth": 0.003
+  },
+  "artifacts": {
+    "paths": {
+      "bytes": 753151,
+      "path": "numerical_axm\\ai_adoption_unit_elasticity_paths.csv",
+      "sha256": "411f9a1059dc06de65622d30601bfb6fcad0db9aa2d2ab630fe0242a2eb39998"
+    },
+    "summary": {
+      "bytes": 1535,
+      "path": "numerical_axm\\ai_adoption_unit_elasticity_summary.csv",
+      "sha256": "b6109f36e33e68e98dec2a4625578608afcb4e5ea1acaea4c18c66f115d0eefd"
+    }
+  },
+  "experiment": "Unexpected adoption of omega_X=0.20 at sigma_XL=1 from the no-AI RCK balanced-growth path",
+  "gates": {
+    "accounting_identity": true,
+    "boundary_residual": true,
+    "declining_developer_tvc_proxy": true,
+    "declining_household_tvc_proxy": true,
+    "equation_residuals": true,
+    "horizon_stability": true,
+    "initial_capital_continuity": true,
+    "initial_output_continuity": true,
+    "initial_service_matching": true,
+    "nonnegative_profit_share": true,
+    "positive_consumption": true,
+    "positive_research": true,
+    "solver_success": true
+  },
+  "initial_condition_rule": "K0, A0, and N0 are inherited from the no-AI BGP; B0 makes Y(0+) equal Y(0-) and therefore X0=A0*L0; C0 and q0 are selected by the positive-AI boundary-value problem",
+  "initial_conditions": {
+    "initial_ai_consumption": 1.3938746702962894,
+    "initial_ai_output": 1.8004765233646332,
+    "initial_ai_services": 1.0000000000000002,
+    "initial_ai_shadow_value": 0.02820565140309344,
+    "initial_capability": 30.93163952821728,
+    "initial_capital": 5.94157252710329,
+    "initial_log_deviations": [
+      1.0750550907714378,
+      4.244451729350565,
+      1.0682202427759822,
+      -3.107258304044328
+    ],
+    "initial_no_ai_output": 1.8004765233646332
+  },
+  "rck_balanced_growth": {
+    "capital": 5.94157252710329,
+    "consumption": 1.426157454157126,
+    "net_interest_rate": 0.05,
+    "output": 1.8004765233646332,
+    "wage_per_efficiency_unit": 1.206319270654304
+  },
+  "rck_parameters": {
+    "alpha": 0.33,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "labor_productivity_growth": 0.01,
+    "population_growth": 0.003
+  },
+  "solver_audit": {
+    "continuation_stages": 37,
+    "developer_log_tvc_change": -22.13579220533077,
+    "final_nodes": 1124,
+    "household_log_tvc_change": -22.197963546897352,
+    "last_horizon_initial_jump_change": 7.70774999381274e-10,
+    "max_boundary_residual": 2.220446049250313e-16,
+    "max_capability_residual": 2.7231591547688394e-13,
+    "max_costate_residual": 6.272976982557013e-10,
+    "max_euler_residual": 4.708746864645619e-10,
+    "max_normalized_ode_residual": 1.1175741959461305e-09,
+    "max_research_foc_log_residual": 2.220446049250313e-16,
+    "max_resource_residual": 3.688135907786716e-09,
+    "maximum_rms_residual": 9.989779057677047e-10,
+    "minimum_consumption_share": 0.7727529918679554,
+    "minimum_research_share": 6.403551908859927e-06,
+    "segmented_backward_function_evaluations": 19020,
+    "segmented_backward_reconstruction_gap": 1.3307854818123133e-10,
+    "success": true,
+    "terminal_deviation_norm": 2.888639342232856
+  },
+  "solver_configuration": {
+    "boundary_tolerance": 1e-11,
+    "continuation_steps": 32,
+    "display_horizon": 250.0,
+    "horizons": [
+      100.0,
+      200.0,
+      300.0,
+      400.0,
+      500.0,
+      600.0
+    ],
+    "initial_nodes": 181,
+    "maximum_nodes": 75000,
+    "tolerance": 1e-09
+  }
+}
