@@ -1163,11 +1163,210 @@ Then for every \(A_0,N_0>0\) there are positive values
 \(\omega_X>0\). Along this equilibrium,
 \begin{equation}
  g_K=g_C=g_U=g_M=g_Y^*,\qquad
+ g_w=g_Y^*-n,\qquad
  g_B=g_B^*,\qquad g_X=g_Y^*+g_B^*,\qquad
  g_q=g_Y^*-g_B^*.
  \label{eq:axm-benchmark-existence-path}
 \end{equation}
 \end{proposition}
+
+\begin{proof}
+Let \(g_Y^*,g_B^*,r^*,u^*,k^*,i^*,m^*,c^*\) be defined by
+\eqref{eq:axm-benchmark-existence-growth}--
+\eqref{eq:axm-benchmark-existence-shares}. The denominators are positive because
+\(\Delta>0\) and
+\[
+ \rho-n+\eta g_Y^*>0.
+\]
+The consumption share is also positive under the stated assumptions rather
+than by a separate restriction. Since \(\rho>n\),
+\[
+ i^*=\frac{\alpha(g_Y^*+\delta)}
+ {\rho-n+g_Y^*+\delta}<\alpha,
+ \qquad
+ m^*<\frac{\beta^2\eta g_B^*}{\eta g_Y^*}
+ =\frac{\beta^2\eta}{1-\eta}.
+\]
+Therefore,
+\[
+ u^*+m^*<\frac{\beta^2}{1-\eta}.
+\]
+Using \(\lambda=1-\alpha-\beta\),
+\[
+ \Delta=(1-\alpha)(1-\eta)-\beta>0.
+\]
+Thus \(\beta<1-\eta\) and \(\beta<1-\alpha\), so
+\[
+ \frac{\beta^2}{1-\eta}<\beta<1-\alpha.
+\]
+Together with \(i^*<\alpha\), this gives
+\[
+ c^*=1-u^*-i^*-m^*>0.
+\]
+
+I now construct the initial levels. Define
+\[
+ d=\frac{1-\eta}{\eta}-\frac{\beta}{\lambda}
+   =\frac{\Delta}{\eta\lambda}>0,
+\]
+and, for given \(A_0,N_0>0\), let
+\[
+ P=A_0N_0(k^*)^{\alpha/\lambda}(u^*)^{\beta/\lambda},
+ \qquad
+ R=\frac{(g_B^*/\chi)^{1/\eta}}{m^*}.
+\]
+Choose
+\begin{equation}
+ B_0=\left(\frac{P}{R}\right)^{1/d},\qquad
+ Y_0=P B_0^{\beta/\lambda},\qquad K_0=k^*Y_0.
+ \label{eq:axm-benchmark-existence-levels}
+\end{equation}
+These choices equate the initial-output levels implied by final production and
+the capability law:
+\[
+ Y_0=P B_0^{\beta/\lambda}
+ =R B_0^{(1-\eta)/\eta}.
+\]
+Set
+\[
+ U_0=u^*Y_0,\quad M_0=m^*Y_0,\quad C_0=c^*Y_0,
+ \quad X_0=B_0U_0,\quad
+ q_0=\frac{M_0}{\eta g_B^*B_0}.
+\]
+All these values are positive. Consider the exponential paths
+\begin{align*}
+ Y_t&=Y_0e^{g_Y^*t},& K_t&=k^*Y_t,&
+ C_t&=c^*Y_t,& U_t&=u^*Y_t,& M_t&=m^*Y_t,\\
+ A_t&=A_0e^{\gamma_At},& N_t&=L_t=N_0e^{nt},&
+ B_t&=B_0e^{g_B^*t},& X_t&=B_tU_t,\\
+ q_t&=q_0e^{(g_Y^*-g_B^*)t}.&&&&&&
+\end{align*}
+
+The definition of \(g_Y^*\) is equivalent to
+\[
+ g_Y^*=n+\gamma_A+\frac{\beta}{\lambda}g_B^*,
+\]
+so the production equation holds at every date once it holds at date zero.
+The wage condition \(w=(1-\alpha)\omega_LY/N\) then gives
+\(g_w=g_Y^*-n\). Similarly, \(g_B^*=\eta(g_B^*+g_Y^*)\), so the
+capability law holds at every date. At unit elasticity, \(s_X=\omega_X\),
+\(p_XX=\beta Y\), and \(u^*=\beta^2\); these identities establish the
+monopoly condition. Since \(\dot B=g_B^*B\), the research first-order condition
+is \(q\eta g_B^*B/M=1\), which follows from the definition of \(q_0\) and the
+growth rates above.
+
+The capital-price condition follows from \(k^*=\alpha/(r^*+\delta)\), and the
+Euler equation follows from \(r^*=\rho+g_Y^*-n\). The definition of \(c^*\)
+establishes the resource constraint. Finally, the costate equation reduces to
+\[
+ g_Y^*-g_B^*
+ =r^*-\frac{u^*\eta g_B^*}{m^*}-\eta g_B^*,
+\]
+which is exactly the definition of \(m^*\). Thus the entire dated equilibrium
+system holds.
+
+Both transversality conditions hold because
+\[
+ e^{-\rho t}\frac{N_tK_t}{C_t}
+ \quad\text{and}\quad
+ \exp(-r^*t)q_tB_t
+\]
+decline at the common exponential rate \(\rho-n>0\). Both objective integrals
+are finite for the same reason. Proposition
+\ref{prop:axm-equilibrium-sufficiency} then completes the equilibrium
+construction.
+\end{proof}
+
+\paragraph{Comparative statics with respect to \(\omega_X\).}
+The closed-form equilibrium makes it possible to study the AI production
+weight without solving a transition. Let \(G=n+\gamma_A\). Since
+\(\omega_L=1-\omega_X\),
+\begin{equation}
+ \Delta=(1-\alpha)(1-\eta-\omega_X),
+ \qquad
+ g_Y^*=G\frac{(1-\eta)(1-\omega_X)}
+ {1-\eta-\omega_X}.
+ \label{eq:axm-bgp-omega-growth}
+\end{equation}
+Therefore,
+\begin{equation}
+ \frac{\partial g_Y^*}{\partial\omega_X}
+ =G\frac{\eta(1-\eta)}{(1-\eta-\omega_X)^2}>0,
+ \qquad
+ g_{Y/N}=g_w=g_Y^*-n,
+ \qquad
+ r^*=\rho+g_Y^*-n.
+ \label{eq:axm-bgp-omega-growth-derivative}
+\end{equation}
+A larger AI weight raises output growth per person, real-wage growth, and the
+interest rate on the balanced-growth path. It also lowers
+\(k^*=K/Y=\alpha/(r^*+\delta)\). The gross physical-capital share remains
+\(\alpha\), while the remaining output shares satisfy
+\begin{equation}
+ \frac{wL}{Y}=(1-\alpha)(1-\omega_X),\qquad
+ \frac{U}{Y}=(1-\alpha)^2\omega_X^2,\qquad
+ \frac{\Pi}{Y}=(1-\alpha)\omega_X-\frac{U}{Y}-\frac{M}{Y}.
+ \label{eq:axm-bgp-omega-distribution}
+\end{equation}
+
+The right-hand limit as \(\omega_X\to0^+\) separates the growth and
+distributional effects. Equations
+\eqref{eq:axm-bgp-omega-growth}--\eqref{eq:axm-bgp-omega-distribution} imply
+\begin{align}
+ g_{Y/N}=g_w
+ &=\gamma_A+\frac{\eta G}{1-\eta}\omega_X
+   +O(\omega_X^2),\notag\\
+ r^*&=\rho+\gamma_A+\frac{\eta G}{1-\eta}\omega_X
+   +O(\omega_X^2),\notag\\
+ \frac{wL}{Y}
+ &=(1-\alpha)-(1-\alpha)\omega_X,\notag\\
+ \frac{\Pi}{Y}&=(1-\alpha)\omega_X+O(\omega_X^2),
+ &\frac{U}{Y},\frac{M}{Y}&=O(\omega_X^2).
+ \label{eq:axm-bgp-near-zero}
+\end{align}
+Thus an infinitesimal AI production weight reallocates output from labor to
+distributed developer profit at first order. Inference and research compute
+absorb output only at second order. Growth and the interest rate also increase
+at first order, while the gross physical-capital share is unchanged.
+
+Table \ref{tab:axm-bgp-omega-comparative-statics} reports the closed-form
+values under the baseline parameters. The row \(\omega_X=0\) is the separate
+Ramsey--Cass--Koopmans equilibrium. For variables common to both models, it
+also equals the right-hand limit of the positive-AI formulas. This continuity
+does not extend to \(B,q,U,\) or \(M\) as economic objects: those variables
+cease to affect allocations at exactly zero.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\(\omega_X\) & \(g_{Y/N}=g_w\) & \(r\) & \(wL/Y\) & \(\Pi/Y\) & \((U+M)/Y\)\\
+ & \multicolumn{2}{c}{percent per year} & \multicolumn{3}{c}{percent of output}\\
+\midrule
+0 (RCK) & 1.0000 & 5.0000 & 67.00 & 0.0000 & 0.0000\\
+0.01 & 1.0033 & 5.0033 & 66.33 & 0.6654 & 0.0046\\
+0.05 & 1.0173 & 5.0173 & 63.65 & 3.2359 & 0.1141\\
+0.10 & 1.0371 & 5.0371 & 60.30 & 6.2435 & 0.4565\\
+0.20 & 1.0867 & 5.0867 & 53.60 & 11.5731 & 1.8269\\
+0.40 & 1.2600 & 5.2600 & 40.20 & 19.4780 & 7.3220\\
+0.60 & 1.7800 & 5.7800 & 26.80 & 23.6313 & 16.5687\\
+0.70 & 2.8200 & 6.8200 & 20.10 & 24.1103 & 22.7897\\
+\bottomrule
+\end{tabular}
+\caption{Comparative statics of the unit-elastic balanced-growth equilibrium.
+The gross physical-capital share is \(\alpha=33\) percent in every row. The
+table changes \(\omega_X\) while holding all other parameters fixed.}
+\label{tab:axm-bgp-omega-comparative-statics}
+\end{table}
+
+Under the baseline calibration, \(\Delta>0\) requires \(\omega_X<0.80\).
+The sufficient condition \(\beta\leq1/2\) in Proposition
+\ref{prop:axm-benchmark-equilibrium-existence} is more restrictive and gives
+\(\omega_X\leq0.7463\). The table therefore stops at \(\omega_X=0.70\).
+The algebraic growth candidate becomes increasingly sensitive to
+\(\omega_X\) near the feedback threshold, but the proposition does not
+establish global optimality beyond its stated parameter region.
 
 Proposition \ref{prop:axm-benchmark-equilibrium-existence} constructs one
 particular equilibrium trajectory: a balanced-growth path. Balanced growth is

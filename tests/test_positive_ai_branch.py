@@ -133,6 +133,61 @@ class PositiveAIBranchDefinitionTests(unittest.TestCase):
                     int(np.sum(subspace.eigenvalues.real > 0.0)), 2
                 )
 
+    def test_ai_weight_comparative_statics_and_zero_limit(self) -> None:
+        weights = (0.01, 0.05, 0.10, 0.20, 0.40, 0.60, 0.70)
+        seeds = [
+            balanced_growth_seed(
+                PositiveAIBenchmarkParameters(omega_x=omega_x)
+            )
+            for omega_x in weights
+        ]
+
+        for earlier, later in zip(seeds, seeds[1:]):
+            self.assertLess(earlier.output_growth, later.output_growth)
+            self.assertLess(
+                earlier.net_interest_rate, later.net_interest_rate
+            )
+            self.assertGreater(
+                earlier.capital_output_ratio, later.capital_output_ratio
+            )
+            self.assertGreater(earlier.labor_exponent, later.labor_exponent)
+
+        for seed in seeds:
+            profit_share = seed.distributed_profit / seed.output
+            self.assertAlmostEqual(
+                self.parameters.alpha
+                + seed.labor_exponent
+                + profit_share
+                + seed.inference_share
+                + seed.research_share,
+                1.0,
+            )
+
+        epsilon = 1.0e-5
+        parameters = PositiveAIBenchmarkParameters(omega_x=epsilon)
+        seed = balanced_growth_seed(parameters)
+        effective_labor_growth = (
+            parameters.population_growth
+            + parameters.labor_productivity_growth
+        )
+        expected_growth_derivative = (
+            parameters.eta
+            * effective_labor_growth
+            / (1.0 - parameters.eta)
+        )
+        self.assertAlmostEqual(
+            (seed.output_growth - effective_labor_growth) / epsilon,
+            expected_growth_derivative,
+            places=6,
+        )
+        self.assertAlmostEqual(
+            (seed.distributed_profit / seed.output) / epsilon,
+            1.0 - parameters.alpha,
+            places=5,
+        )
+        self.assertLess(seed.inference_share / epsilon, 1.0e-4)
+        self.assertLess(seed.research_share / epsilon, 1.0e-5)
+
     def test_zero_is_rejected_as_a_positive_ai_continuation_point(self) -> None:
         with self.assertRaises(ValueError):
             PositiveAIBenchmarkParameters(omega_x=0.0)
