@@ -13,10 +13,11 @@ equilibrium system falls from four dynamic variables to two. The rank and
 dimension change at zero. An implicit-function or homotopy argument that starts
 from the no-AI solution is therefore unavailable.
 
-The new positive-AI branch will instead start at the paper's target value
+The positive-AI branch instead starts at the paper's target value
 \(\omega_X=0.20\), with \(\sigma_{XL}=1\), where an exact interior
 balanced-growth equilibrium is available. The old numerical code remains
-untouched and will later serve as an independent comparison.
+untouched and can serve as an independent comparison once the corresponding
+calibration is aligned.
 
 ### Calibration-consistency finding
 
@@ -185,7 +186,40 @@ stable-manifold neighborhood, a genuine loss of saddle-path structure, or an
 economically inadmissible path. These possibilities must be diagnosed
 separately.
 
-The present implementation in `scripts/define_positive_ai_branch.py` stops at
-this analytic definition. It constructs and audits the seed, normalized system,
-Jacobian, stable terminal projector, and legal continuation schedules. It does
-not yet solve or report a transition.
+## Implemented off-BGP validation
+
+`scripts/define_positive_ai_branch.py` constructs and audits the seed,
+normalized system, Jacobian, stable terminal projector, and legal continuation
+schedules. `scripts/solve_positive_ai_bvp.py` then implements the agreed
+positive-AI collocation problem. It starts from the exact zero-deviation path,
+moves \((K_0,B_0)\) to the target in log-stock space at fixed
+`omega_x = 0.20`, and repeats the accepted solve at horizons 100, 150, 200,
+and 250. The no-AI solution is never used as a homotopy point.
+
+The target initialization sets \(B_0=1\) and chooses \(K_0\) by the explicit
+date-zero rule described above. This target is materially off the reference
+BGP: \(B_0^*=0.4436709\), so
+\(\log(B_0/B_0^*)=0.8126721\). The 12-stage stock continuation reaches this
+target and the subsequent horizon continuation is accepted. At the refined
+solve, the maximum resource residual is \(3.0\times10^{-9}\), the maximum
+boundary residual is \(2.8\times10^{-17}\), and all reconstructed equilibrium
+residuals are below \(3.0\times10^{-9}\). The two finite-date transversality
+expressions decline over the solved interval.
+
+The independent dynamic check reconstructs the four right-hand sides without
+calling the solver function and reintegrates the accepted path backward in
+ten-year segments with a different integrator. Segmentation is necessary
+because a single centuries-long backward integration magnifies roundoff along
+the fast stable mode. Its maximum disagreement with the collocation path is
+\(2.0\times10^{-10}\) in the refined solve. Tightening the collocation
+tolerance from \(10^{-8}\) to \(10^{-9}\), increasing the initial mesh from 121
+to 181 nodes, and increasing stock-continuation stages from 12 to 16 changes
+the two initial jump variables by at most \(5.1\times10^{-13}\) and the first
+50 years of the log path by at most \(7.7\times10^{-10}\).
+
+These checks show that the numerical branch reaches the paper's off-BGP target
+and is stable under the stated refinements. They do not show that \(B_0=1\)
+belongs to the local neighborhood in the stable-manifold theorem, prove global
+existence or uniqueness, or verify the transversality limits at infinity. The
+calculation solves and audits a finite-horizon approximation to the equilibrium
+trajectory.
