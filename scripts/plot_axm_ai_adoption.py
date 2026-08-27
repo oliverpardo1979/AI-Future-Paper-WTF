@@ -26,6 +26,7 @@ SUMMARY_FILE = RESULT_DIR / "ai_adoption_unit_elasticity_summary.csv"
 MANIFEST_FILE = RESULT_DIR / "ai_adoption_unit_elasticity_audit_manifest.json"
 MACRO_FILE = FIGURE_DIR / "axm_ai_adoption_macro.png"
 MECHANISM_FILE = FIGURE_DIR / "axm_ai_adoption_mechanism_distribution.png"
+DISTRIBUTION_FILE = FIGURE_DIR / "axm_ai_adoption_income_shares.png"
 
 AI_COLOR = "#205493"
 NO_AI_COLOR = "#66717E"
@@ -33,15 +34,6 @@ INK = "#22272E"
 MUTED = "#66717E"
 GRID = "#D9DEE5"
 WHITE = "#FFFFFF"
-LIGHT = "#F5F7FA"
-
-SHARE_COMPONENTS = (
-    ("gross_capital", "Gross capital", "#424A55"),
-    ("labor", "Labor", "#205493"),
-    ("profit", "AI profit", "#C69214"),
-    ("inference", "Inference compute", "#D2601A"),
-    ("research", "Research compute", "#667A2C"),
-)
 
 
 def sha256_file(path: Path) -> str:
@@ -373,149 +365,19 @@ def draw_macro(rows: list[dict[str, str]]) -> None:
     image.save(MACRO_FILE, dpi=(220, 220))
 
 
-def draw_distribution_panel(
-    draw: ImageDraw.ImageDraw,
-    box: tuple[int, int, int, int],
-    path_rows: list[dict[str, str]],
-    summary_rows: list[dict[str, str]],
-) -> None:
-    left, top, right, bottom = box
-    draw.text((left, top), "D. Distribution of output", fill=INK, font=font(36, bold=True))
-    draw.text(
-        (left, top + 46),
-        "Percent of output; bars sum to 100%",
-        fill=MUTED,
-        font=font(25),
-    )
-    legend_font = font(22)
-    legend_positions = (
-        (left + 15, top + 85),
-        (left + 340, top + 85),
-        (left + 610, top + 85),
-        (left + 15, top + 119),
-        (left + 390, top + 119),
-    )
-    for (_, label, color), (x, y) in zip(SHARE_COMPONENTS, legend_positions):
-        draw.rectangle((x, y + 3, x + 23, y + 26), fill=color, outline=INK, width=1)
-        draw.text((x + 32, y), label, fill=INK, font=legend_font)
-
-    initial = path_rows[0]
-    bgp = next(row for row in summary_rows if row["point"] == "AI BGP")
-    bars = (
-        (
-            "No AI",
-            {
-                "gross_capital": number(initial, "no_ai_gross_capital_share"),
-                "labor": number(initial, "no_ai_labor_share"),
-                "profit": 0.0,
-                "inference": 0.0,
-                "research": 0.0,
-            },
-        ),
-        (
-            "AI at adoption",
-            {
-                "gross_capital": number(initial, "ai_gross_capital_share"),
-                "labor": number(initial, "ai_labor_share"),
-                "profit": number(initial, "ai_profit_share"),
-                "inference": number(initial, "ai_inference_share"),
-                "research": number(initial, "ai_research_share"),
-            },
-        ),
-        (
-            "AI BGP",
-            {
-                "gross_capital": number(initial, "ai_gross_capital_share"),
-                "labor": number(bgp, "ai_labor_share"),
-                "profit": number(bgp, "ai_profit_share"),
-                "inference": number(bgp, "ai_inference_share"),
-                "research": number(bgp, "ai_research_share"),
-            },
-        ),
-    )
-    plot_left = left + 105
-    plot_right = right - 35
-    plot_top = top + 175
-    plot_bottom = bottom - 126
-    for tick in (0.0, 0.25, 0.50, 0.75, 1.0):
-        y = plot_bottom - tick * (plot_bottom - plot_top)
-        draw.line((plot_left, y, plot_right, y), fill=GRID, width=2)
-        text_right(
-            draw,
-            (plot_left - 14, y - 13),
-            f"{100*tick:.0f}",
-            fill=MUTED,
-            text_font=font(25),
-        )
-    draw.line((plot_left, plot_top, plot_left, plot_bottom), fill=INK, width=3)
-    draw.line((plot_left, plot_bottom, plot_right, plot_bottom), fill=INK, width=3)
-    centers = (
-        plot_left + 0.17 * (plot_right - plot_left),
-        plot_left + 0.50 * (plot_right - plot_left),
-        plot_left + 0.83 * (plot_right - plot_left),
-    )
-    bar_width = 175
-    component_colors = {key: color for key, _, color in SHARE_COMPONENTS}
-    for center, (label, shares) in zip(centers, bars):
-        cumulative = 0.0
-        for key, _, _ in SHARE_COMPONENTS:
-            share = shares[key]
-            lower = plot_bottom - cumulative * (plot_bottom - plot_top)
-            upper = plot_bottom - (cumulative + share) * (plot_bottom - plot_top)
-            if share > 0.0:
-                draw.rectangle(
-                    (center - bar_width / 2, upper, center + bar_width / 2, lower),
-                    fill=component_colors[key],
-                    outline=WHITE,
-                    width=2,
-                )
-            if share >= 0.065:
-                text_center(
-                    draw,
-                    (center, (upper + lower) / 2 - 14),
-                    f"{100*share:.1f}",
-                    fill=WHITE,
-                    text_font=font(25, bold=True),
-                )
-            cumulative += share
-        if abs(cumulative - 1.0) > 1.0e-10:
-            raise ValueError(f"Distribution bar does not sum to one: {label}")
-        text_center(
-            draw,
-            (center, plot_bottom + 18),
-            label,
-            fill=INK,
-            text_font=font(24),
-        )
-    initial_u = 100.0 * bars[1][1]["inference"]
-    initial_m = 100.0 * bars[1][1]["research"]
-    bgp_u = 100.0 * bars[2][1]["inference"]
-    bgp_m = 100.0 * bars[2][1]["research"]
-    draw.text(
-        (left + 40, bottom - 72),
-        f"Small shares — adoption: U/Y={initial_u:.3f}%, M/Y={initial_m:.4f}%; "
-        f"AI BGP: U/Y={bgp_u:.3f}%, M/Y={bgp_m:.4f}%",
-        fill=MUTED,
-        font=font(21),
-    )
-
-
-def draw_mechanism(
-    rows: list[dict[str, str]], summary_rows: list[dict[str, str]]
-) -> None:
-    image = Image.new("RGB", (2400, 1800), WHITE)
+def draw_mechanism(rows: list[dict[str, str]]) -> None:
+    image = Image.new("RGB", (2400, 1700), WHITE)
     draw = ImageDraw.Draw(image)
     draw_header(
         draw,
-        "Growth, AI capability, and the distribution of output",
+        "Growth and the value of AI capability",
         "Audited equilibrium transition after adoption; σₓₗ = 1",
         show_scenario_legend=False,
     )
     boxes = (
-        (105, 250, 1170, 985),
-        (1280, 250, 2345, 985),
-        (105, 1035, 1170, 1770),
-        (1280, 1035, 2345, 1770),
+        (105, 220, 1170, 875),
+        (1280, 220, 2345, 875),
+        (105, 925, 2345, 1670),
     )
     draw_line_panel(
         draw,
@@ -551,15 +413,207 @@ def draw_mechanism(
         y_ticks=(0.4835, 0.4837, 0.4839, 0.4841, 0.4843, 0.4845, 0.4847),
         y_formatter=lambda value: f"{100.0 * value:.2f}",
     )
-    draw_distribution_panel(draw, boxes[3], rows, summary_rows)
     FIGURE_DIR.mkdir(exist_ok=True)
     image.save(MECHANISM_FILE, dpi=(220, 220))
+
+
+def draw_distribution(rows: list[dict[str, str]]) -> None:
+    """Draw all dated output shares and a focused inset for M/Y."""
+
+    for row in rows:
+        total = sum(
+            number(row, field)
+            for field in (
+                "ai_gross_capital_share",
+                "ai_labor_share",
+                "ai_profit_share",
+                "ai_inference_share",
+                "ai_research_share",
+            )
+        )
+        if abs(total - 1.0) > 1.0e-10:
+            raise ValueError(f"Dated output shares do not sum to one at t={row['time']}.")
+
+    image = Image.new("RGB", (2400, 1250), WHITE)
+    draw = ImageDraw.Draw(image)
+    draw.text(
+        (105, 42),
+        "Distribution of output after AI adoption",
+        fill=INK,
+        font=font(50, bold=True),
+    )
+    draw.text(
+        (105, 105),
+        "AI equilibrium path; σₓₗ = 1; every component is divided by Y",
+        fill=MUTED,
+        font=font(29),
+    )
+
+    series = (
+        ("ai_labor_share", "wL/Y", "#205493", None, 7),
+        ("ai_gross_capital_share", "(r + δ)K/Y", "#424A55", (20.0, 8.0), 6),
+        ("ai_profit_share", "Π/Y", "#C69214", None, 6),
+        ("ai_inference_share", "U/Y", "#D2601A", (4.0, 7.0), 6),
+        ("ai_research_share", "M/Y", "#667A2C", None, 6),
+        ("no_ai_labor_share", "No-AI wL/Y", "#7C8794", (16.0, 10.0), 5),
+    )
+    legend_positions = (
+        (110, 166),
+        (430, 166),
+        (840, 166),
+        (1080, 166),
+        (1300, 166),
+        (1530, 166),
+    )
+    for (_, label, color, pattern, width), (x, y) in zip(series, legend_positions):
+        patterned_line(
+            draw,
+            [(x, y + 13), (x + 62, y + 13)],
+            fill=color,
+            width=width,
+            pattern=pattern,
+        )
+        draw.text((x + 75, y), label, fill=INK, font=font(27))
+
+    plot_left, plot_right = 225, 2250
+    plot_top, plot_bottom = 255, 1090
+    y_min, y_max = 0.0, 0.70
+    for tick in (0.0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70):
+        y = plot_bottom - (tick - y_min) / (y_max - y_min) * (
+            plot_bottom - plot_top
+        )
+        draw.line((plot_left, y, plot_right, y), fill=GRID, width=2)
+        text_right(
+            draw,
+            (plot_left - 16, y - 14),
+            f"{100.0 * tick:.0f}",
+            fill=MUTED,
+            text_font=font(27),
+        )
+    draw.line((plot_left, plot_top, plot_left, plot_bottom), fill=INK, width=3)
+    draw.line((plot_left, plot_bottom, plot_right, plot_bottom), fill=INK, width=3)
+    for tick in (0.0, 50.0, 100.0, 150.0, 200.0, 250.0):
+        x = plot_left + tick / 250.0 * (plot_right - plot_left)
+        draw.line((x, plot_bottom, x, plot_bottom + 8), fill=INK, width=2)
+        text_center(
+            draw,
+            (x, plot_bottom + 14),
+            f"{tick:.0f}",
+            fill=MUTED,
+            text_font=font(27),
+        )
+    text_center(
+        draw,
+        ((plot_left + plot_right) / 2, plot_bottom + 49),
+        "Years since adoption",
+        fill=MUTED,
+        text_font=font(27),
+    )
+    draw.text((105, 210), "Percent of output", fill=MUTED, font=font(24))
+
+    def main_point(row: dict[str, str], field: str) -> tuple[float, float]:
+        time = number(row, "time")
+        share = number(row, field)
+        x = plot_left + time / 250.0 * (plot_right - plot_left)
+        y = plot_bottom - (share - y_min) / (y_max - y_min) * (
+            plot_bottom - plot_top
+        )
+        return x, y
+
+    for field, _, color, pattern, width in series:
+        points = [main_point(row, field) for row in rows]
+        patterned_line(
+            draw,
+            points,
+            fill=color,
+            width=width,
+            pattern=pattern,
+        )
+
+    endpoint_labels = (
+        ("no_ai_labor_share", "67.0", "#7C8794", -27),
+        ("ai_labor_share", "53.6", "#205493", -27),
+        ("ai_gross_capital_share", "33.0", "#424A55", -27),
+        ("ai_profit_share", "11.60", "#C69214", -27),
+        ("ai_inference_share", "1.796", "#D2601A", -32),
+    )
+    for field, label, color, offset in endpoint_labels:
+        x, y = main_point(rows[-1], field)
+        text_right(
+            draw,
+            (x - 10, y + offset),
+            label,
+            fill=color,
+            text_font=font(24, bold=True),
+        )
+
+    # M/Y is too small to read on the common percentage-point scale.  Keep it
+    # in the main panel and also show the same dated series in basis points.
+    inset_left, inset_top, inset_right, inset_bottom = 1320, 470, 2150, 790
+    draw.rectangle(
+        (inset_left, inset_top, inset_right, inset_bottom),
+        fill=WHITE,
+        outline="#AEB7C2",
+        width=3,
+    )
+    draw.text(
+        (inset_left + 24, inset_top + 18),
+        "Research compute, M/Y",
+        fill=INK,
+        font=font(26, bold=True),
+    )
+    draw.text(
+        (inset_left + 24, inset_top + 52),
+        "Basis points of output; focused scale",
+        fill=MUTED,
+        font=font(21),
+    )
+    inner_left = inset_left + 105
+    inner_right = inset_right - 30
+    inner_top = inset_top + 98
+    inner_bottom = inset_bottom - 55
+    inset_y_min, inset_y_max = 0.05, 0.15
+    for tick in (0.06, 0.08, 0.10, 0.12, 0.14):
+        y = inner_bottom - (tick - inset_y_min) / (inset_y_max - inset_y_min) * (
+            inner_bottom - inner_top
+        )
+        draw.line((inner_left, y, inner_right, y), fill=GRID, width=1)
+        text_right(
+            draw,
+            (inner_left - 12, y - 10),
+            f"{tick:.2f}",
+            fill=MUTED,
+            text_font=font(19),
+        )
+    draw.line((inner_left, inner_top, inner_left, inner_bottom), fill=INK, width=2)
+    draw.line((inner_left, inner_bottom, inner_right, inner_bottom), fill=INK, width=2)
+    for tick in (0.0, 125.0, 250.0):
+        x = inner_left + tick / 250.0 * (inner_right - inner_left)
+        text_center(
+            draw,
+            (x, inner_bottom + 12),
+            f"{tick:.0f}",
+            fill=MUTED,
+            text_font=font(19),
+        )
+    inset_points: list[tuple[float, float]] = []
+    for row in rows:
+        time = number(row, "time")
+        basis_points = 10_000.0 * number(row, "ai_research_share")
+        x = inner_left + time / 250.0 * (inner_right - inner_left)
+        y = inner_bottom - (
+            basis_points - inset_y_min
+        ) / (inset_y_max - inset_y_min) * (inner_bottom - inner_top)
+        inset_points.append((x, y))
+    patterned_line(draw, inset_points, fill="#667A2C", width=5)
+
+    FIGURE_DIR.mkdir(exist_ok=True)
+    image.save(DISTRIBUTION_FILE, dpi=(220, 220))
 
 
 def main() -> None:
     verify_manifest()
     rows = read_rows(PATH_FILE)
-    summary_rows = read_rows(SUMMARY_FILE)
     display_rows = [row for row in rows if number(row, "display_window") == 1.0]
     if len(display_rows) < 100:
         raise ValueError("The display window is too sparse for the figures.")
@@ -567,9 +621,11 @@ def main() -> None:
     if any(right <= left for left, right in zip(times, times[1:])):
         raise ValueError("Display times are not strictly increasing.")
     draw_macro(display_rows)
-    draw_mechanism(display_rows, summary_rows)
+    draw_mechanism(display_rows)
+    draw_distribution(display_rows)
     print(f"Wrote {MACRO_FILE.relative_to(ROOT)}")
     print(f"Wrote {MECHANISM_FILE.relative_to(ROOT)}")
+    print(f"Wrote {DISTRIBUTION_FILE.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
