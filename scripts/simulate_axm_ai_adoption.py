@@ -58,9 +58,9 @@ SUMMARY_FILE = RESULT_DIR / "ai_adoption_unit_elasticity_summary.csv"
 MANIFEST_FILE = RESULT_DIR / "ai_adoption_unit_elasticity_audit_manifest.json"
 
 DISPLAY_HORIZON = 250.0
-SAVED_PATH_HORIZON = 600.0
 SOLVER_HORIZONS = tuple(float(year) for year in range(100, 3001, 100))
-PATH_POINTS = 1201
+SAVED_PATH_HORIZON = SOLVER_HORIZONS[-1]
+PATH_POINTS = 6001
 TOLERANCE = 1.0e-9
 BOUNDARY_TOLERANCE = 1.0e-11
 CONTINUATION_STEPS = 32
@@ -149,9 +149,9 @@ def solve_experiment() -> tuple[
     )
     solver_audit = audit_solution(solution, sample_points=6001)
 
-    # The published figures use only the first 250 years.  Preserve the
-    # half-year resolution of the saved path while solving much farther out
-    # to verify convergence to the analytical positive-AI BGP.
+    # The transition panels use the first 250 years, while the interest-rate
+    # panel also shows the full convergence audit. Preserve half-year
+    # resolution over the complete 3,000-year solution.
     times = np.linspace(0.0, SAVED_PATH_HORIZON, PATH_POINTS)
     deviations = np.asarray(solution.raw.sol(times), dtype=float)
     derivatives = np.asarray(solution.raw.sol(times, 1), dtype=float)
@@ -253,6 +253,7 @@ def solve_experiment() -> tuple[
                 "ai_output_pc_growth": float(ai_output_pc_growth[index]),
                 "no_ai_net_interest": float(rck.net_interest_rate),
                 "ai_net_interest": float(ai_net_interest[index]),
+                "ai_bgp_net_interest": float(seed.net_interest_rate),
                 "ai_capability_index": float(
                     ai_capability[index] / initial_capability
                 ),
@@ -279,7 +280,7 @@ def solve_experiment() -> tuple[
         return path_rows[position]
 
     summary_rows: list[dict[str, float | str]] = []
-    for target_time in (0.0, 25.0, 50.0, 100.0, 250.0):
+    for target_time in (0.0, 25.0, 50.0, 100.0, 250.0, 3000.0):
         row = nearest_row(target_time)
         summary_rows.append(
             {

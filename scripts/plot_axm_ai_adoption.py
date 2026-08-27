@@ -30,6 +30,7 @@ DISTRIBUTION_FILE = FIGURE_DIR / "axm_ai_adoption_income_shares.png"
 
 AI_COLOR = "#205493"
 NO_AI_COLOR = "#66717E"
+BGP_COLOR = "#C69214"
 INK = "#22272E"
 MUTED = "#66717E"
 GRID = "#D9DEE5"
@@ -209,6 +210,7 @@ def draw_line_panel(
     y_formatter: Callable[[float], str],
     log_scale: bool = False,
     x_max: float = 250.0,
+    x_ticks: tuple[float, ...] | None = None,
 ) -> None:
     left, top, right, bottom = box
     panel_title_font = font(36, bold=True)
@@ -252,7 +254,11 @@ def draw_line_panel(
     draw.line((plot_left, plot_top, plot_left, plot_bottom), fill=INK, width=3)
     draw.line((plot_left, plot_bottom, plot_right, plot_bottom), fill=INK, width=3)
 
-    for tick in (0.0, 50.0, 100.0, 150.0, 200.0, 250.0):
+    if x_ticks is None:
+        x_ticks = (0.0, 50.0, 100.0, 150.0, 200.0, 250.0)
+    if any(tick < 0.0 or tick > x_max for tick in x_ticks):
+        raise ValueError("Every x-axis tick must lie within the plotted range.")
+    for tick in x_ticks:
         x = plot_left + tick / x_max * (plot_right - plot_left)
         draw.line((x, plot_bottom, x, plot_bottom + 8), fill=INK, width=2)
         text_center(
@@ -356,10 +362,16 @@ def draw_macro(rows: list[dict[str, str]]) -> None:
         boxes[3],
         rows,
         title="D. Net interest rate",
-        subtitle="Annual percent; focused 0.004-percentage-point range",
-        series=common_series("ai_net_interest", "no_ai_net_interest"),
-        y_ticks=(0.04999, 0.05000, 0.05001, 0.05002, 0.05003, 0.05004),
+        subtitle="Annual percent; 3,000-year audit; dotted line: analytical BGP",
+        series=(
+            ("ai_net_interest", AI_COLOR, None, 7),
+            ("no_ai_net_interest", NO_AI_COLOR, (16.0, 10.0), 5),
+            ("ai_bgp_net_interest", BGP_COLOR, (4.0, 7.0), 5),
+        ),
+        y_ticks=(0.0500, 0.0502, 0.0504, 0.0506, 0.0508, 0.0510),
         y_formatter=lambda value: f"{100.0 * value:.3f}",
+        x_max=3000.0,
+        x_ticks=(0.0, 1000.0, 2000.0, 3000.0),
     )
     FIGURE_DIR.mkdir(exist_ok=True)
     image.save(MACRO_FILE, dpi=(220, 220))
@@ -620,7 +632,7 @@ def main() -> None:
     times = [number(row, "time") for row in display_rows]
     if any(right <= left for left, right in zip(times, times[1:])):
         raise ValueError("Display times are not strictly increasing.")
-    draw_macro(display_rows)
+    draw_macro(rows)
     draw_mechanism(display_rows)
     draw_distribution(display_rows)
     print(f"Wrote {MACRO_FILE.relative_to(ROOT)}")

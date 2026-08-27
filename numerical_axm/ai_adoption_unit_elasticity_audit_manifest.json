@@ -7,7 +7,7 @@
     "initial_output_log_gap": 0.0,
     "initial_services_log_gap": 2.2204460492503128e-16,
     "maximum_accounting_error": 2.220446049250313e-16,
-    "minimum_profit_share": 0.11600404069217801,
+    "minimum_profit_share": 0.11573195963617586,
     "terminal_net_interest": 0.050863715983849964,
     "terminal_net_interest_gap": 2.9506828167005783e-06,
     "terminal_output_pc_growth": 0.010863736605085033,
@@ -56,14 +56,14 @@
   },
   "artifacts": {
     "paths": {
-      "bytes": 753185,
+      "bytes": 3909866,
       "path": "numerical_axm\\ai_adoption_unit_elasticity_paths.csv",
-      "sha256": "edc328294cb6306b108f1b346b38798020456db9ed8bdddd40f87deb09fb76b5"
+      "sha256": "0d07c56f38b1d4abd576c9124ed615291e58d13a1f37d428849593a3deff348b"
     },
     "summary": {
-      "bytes": 1536,
+      "bytes": 1767,
       "path": "numerical_axm\\ai_adoption_unit_elasticity_summary.csv",
-      "sha256": "812edb2ce356860f69f77f2a61cb97c44fc8da10afc594908ff5f3b9ffa753d2"
+      "sha256": "d012b6cae63c5e3333566973c4db901c0e36e3ce238b46047bd6dc5c7eb95ec2"
     }
   },
   "experiment": "Unexpected adoption of omega_X=0.20 at sigma_XL=1 from the no-AI RCK balanced-growth path",
@@ -172,7 +172,7 @@
     ],
     "initial_nodes": 181,
     "maximum_nodes": 75000,
-    "saved_path_horizon": 600.0,
+    "saved_path_horizon": 3000.0,
     "tolerance": 1e-09
   }
 }

@@ -67,6 +67,10 @@ class AIAdoptionExperimentTests(unittest.TestCase):
         with PATH_FILE.open("r", newline="", encoding="utf-8") as handle:
             rows = list(csv.DictReader(handle))
         self.assertGreaterEqual(len(rows), 1000)
+        self.assertAlmostEqual(float(rows[-1]["time"]), 3000.0, places=10)
+        terminal_interest = float(rows[-1]["ai_net_interest"])
+        analytical_interest = float(rows[-1]["ai_bgp_net_interest"])
+        self.assertLess(abs(terminal_interest - analytical_interest), 5.0e-6)
         for row in (rows[0], rows[len(rows) // 2], rows[-1]):
             total = sum(
                 float(row[field])
