@@ -1,0 +1,46 @@
+{
+  "accepted": true,
+  "admitted_figures": {
+    "figures_axm/axm_ai_adoption_income_shares.png": "unit_adoption_equilibrium",
+    "figures_axm/axm_ai_adoption_macro.png": "unit_adoption_equilibrium",
+    "figures_axm/axm_ai_adoption_mechanism_distribution.png": "unit_adoption_equilibrium",
+    "figures_axm/axm_complements_factor_shares_automation.png": "complement_equilibrium",
+    "figures_axm/axm_complements_macro_prices.png": "complement_equilibrium",
+    "figures_axm/axm_complements_research_resources.png": "complement_equilibrium",
+    "figures_axm/axm_near_unit_equilibrium_paths.png": "near_unit_admitted_equilibria"
+  },
+  "gates": {
+    "adoption_audit_accepted": true,
+    "all_admitted_trajectory_figures_are_referenced": true,
+    "complement_audit_accepted": true,
+    "near_unit_audit_accepted": true,
+    "near_unit_exports_only_admitted_sigmas": true,
+    "no_rejected_trajectory_figure_is_referenced": true,
+    "no_rejected_trajectory_table_is_referenced": true
+  },
+  "inputs": {
+    "main_axm.tex": "642abdd518c000865459f021563a3269fa61af013b6bb2d7916e41a42382e29e",
+    "sections_axm/01_introduction.tex": "d42dee4921ced1f51f0b380469776ca82b9b38597c2523f4c967a632fca94b5d",
+    "sections_axm/02_literature.tex": "a641598e030d34d8a3c59425432a5c980605490af010e4eb60e65d00d9bb54a9",
+    "sections_axm/03_model.tex": "14419253c4737001e234338fe9cc252831f9bcfe8988dffb0ace0620b5b94edf",
+    "sections_axm/04_growth_regimes.tex": "752908a02920aa074640552a2a68f04974f5ae06d381ed93cc32efaa319b63ad",
+    "sections_axm/06_conclusion.tex": "5695a8631831e016ce0c52eee9deccb483eef38d7b036a1b431f2f6634c2097a",
+    "sections_axm/appendix.tex": "49782f1b4b6fb280facf8d5573803cd1e943ac8677c49aedbebb53b80875990f"
+  },
+  "missing_admitted_references": [],
+  "rejected_figures": {
+    "figures_axm/axm_distributional_decomposition_paths.png": "mixed equilibrium and non-equilibrium paths",
+    "figures_axm/axm_equilibrium_factor_shares.png": "finite-horizon human-research candidate",
+    "figures_axm/axm_equilibrium_growth_rates.png": "finite-horizon human-research candidate",
+    "figures_axm/axm_research_technology_comparison.png": "finite-horizon human-research candidate",
+    "figures_axm/axm_unit_elasticity_feedback_diagnostic.png": "transformation of rejected candidate paths",
+    "figures_axm/high_sigma_validated_asymptotic_ratios.png": "finite-boundary pre-singular diagnostic",
+    "figures_axm/high_sigma_validated_boundary_convergence.png": "finite-boundary pre-singular diagnostic",
+    "figures_axm/high_sigma_validated_production_allocation.png": "finite-boundary pre-singular candidate",
+    "figures_axm/high_sigma_validated_research_allocation.png": "finite-boundary pre-singular candidate",
+    "figures_axm/high_sigma_validated_transition_rates.png": "finite-boundary pre-singular candidate"
+  },
+  "rejected_references_found": {},
+  "rejected_table_references_found": {},
+  "rule": "Every presented model trajectory must satisfy dated equilibrium conditions, admissibility, numerical robustness, a terminal regime derived for the same parameters, sufficient optimality conditions, and both transversality conditions."
+}

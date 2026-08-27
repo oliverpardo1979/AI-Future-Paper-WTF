@@ -13,7 +13,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RESULT_DIR = ROOT / "numerical_axm"
 MANIFEST_PATH = RESULT_DIR / "near_unit_bgp_perturbation_audit_manifest.json"
+STATUS_AUDIT_PATH = RESULT_DIR / "near_unit_equilibrium_status_audit.json"
 PATH_FILE = RESULT_DIR / "near_unit_bgp_perturbation_paths.csv"
+EQUILIBRIUM_PATH = RESULT_DIR / "near_unit_equilibrium_paths.csv"
 
 
 def sha256(path: Path) -> str:
@@ -28,6 +30,9 @@ class NearUnitBGPPerturbationOutputTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        cls.status_audit = json.loads(
+            STATUS_AUDIT_PATH.read_text(encoding="utf-8")
+        )
         with PATH_FILE.open("r", encoding="utf-8", newline="") as handle:
             cls.rows = list(csv.DictReader(handle))
 
@@ -38,6 +43,47 @@ class NearUnitBGPPerturbationOutputTests(unittest.TestCase):
         self.assertEqual(
             sha256(PATH_FILE), self.manifest["files"][relative]["sha256"]
         )
+
+    def test_manifest_does_not_misclassify_nonunit_segments_as_equilibria(self) -> None:
+        statuses = self.manifest["equilibrium_status"]
+        self.assertEqual(
+            statuses["sigma_xl_1.0000"],
+            "analytical_infinite_horizon_equilibrium",
+        )
+        self.assertEqual(
+            statuses["sigma_xl_0.9900"], "finite_window_candidate_segment"
+        )
+        self.assertEqual(
+            statuses["sigma_xl_1.0100"], "finite_window_candidate_segment"
+        )
+
+    def test_regime_specific_status_audit_passes_without_overclaiming(self) -> None:
+        self.assertTrue(self.status_audit["accepted"])
+        self.assertTrue(all(self.status_audit["gates"].values()))
+        statuses = self.status_audit["status"]
+        self.assertEqual(
+            statuses["sigma_xl_0.99"]["classification"],
+            "numerically_admitted_equilibrium_trajectory",
+        )
+        self.assertEqual(
+            statuses["sigma_xl_1.00"]["classification"],
+            "analytical_infinite_horizon_equilibrium",
+        )
+        self.assertEqual(
+            statuses["sigma_xl_1.01"]["classification"],
+            "excluded_from_presented_trajectories",
+        )
+        self.assertLess(
+            float(
+                self.status_audit["lower_tail"][
+                    "plotted_to_regime_connection_gap"
+                ]
+            ),
+            2.0e-6,
+        )
+        exported = self.status_audit["exported_path"]
+        self.assertEqual(exported["sigma_xl_values"], [0.99, 1.0])
+        self.assertEqual(sha256(EQUILIBRIUM_PATH), exported["sha256"])
 
     def test_scenarios_share_unit_bgp_predetermined_stocks(self) -> None:
         initial = [row for row in self.rows if float(row["time"]) == 0.0]

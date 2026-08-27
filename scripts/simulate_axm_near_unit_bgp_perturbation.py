@@ -6,8 +6,11 @@ zero, ``sigma_XL`` is set permanently to 0.99, 1.00, or 1.01.  Consumption and
 the shadow value of capability are jump variables selected by the same
 finite-window boundary-value problem in every scenario.
 
-The calculation is a controlled comparison on a common finite window.  It
-does not impose or infer a common long-run limit for nonunit elasticities.
+The calculation is a controlled comparison of solutions to the dated
+equilibrium conditions on a common finite window.  Only the unit-elastic path
+is an analytical infinite-horizon equilibrium.  The nonunit solutions are
+candidate path segments until they are connected to admissible tails that
+satisfy the regime-specific transversality conditions.
 """
 
 from __future__ import annotations
@@ -481,7 +484,7 @@ def solve_experiment() -> tuple[
         "all_solvers_successful": all(
             bool(audit["success"]) for audit in audits.values()
         ),
-        "equilibrium_residuals": maximum_solver_residual < 2.0e-8,
+        "dated_equation_residuals": maximum_solver_residual < 2.0e-8,
         "backward_reconstruction": maximum_backward_gap < 2.0e-8,
         "accounting_closure": maximum_accounting_residual < 1.0e-12,
         "monopoly_foc": maximum_static_residual < 2.0e-11,
@@ -493,8 +496,15 @@ def solve_experiment() -> tuple[
         "accepted": all(gates.values()),
         "interpretation": (
             "Permanent sigma_XL perturbations from common unit-elastic BGP "
-            "stocks; accepted only on the displayed finite window."
+            "stocks. The unit path is an analytical equilibrium; the "
+            "nonunit paths are accepted only as solutions of the dated "
+            "conditions on the displayed finite window."
         ),
+        "equilibrium_status": {
+            "sigma_xl_0.9900": "finite_window_candidate_segment",
+            "sigma_xl_1.0000": "analytical_infinite_horizon_equilibrium",
+            "sigma_xl_1.0100": "finite_window_candidate_segment",
+        },
         "parameters": {
             "omega_x": parameters.omega_x,
             "sigma_xl_values": SIGMA_VALUES,

@@ -73,6 +73,11 @@
   },
   "common_audit_window": 2500.0,
   "display_horizon": 2500.0,
+  "equilibrium_status": {
+    "sigma_xl_0.9900": "finite_window_candidate_segment",
+    "sigma_xl_1.0000": "analytical_infinite_horizon_equilibrium",
+    "sigma_xl_1.0100": "finite_window_candidate_segment"
+  },
   "files": {
     "numerical_axm/near_unit_bgp_perturbation_paths.csv": {
       "rows": 7503,
@@ -87,7 +92,7 @@
     "accounting_closure": true,
     "all_solvers_successful": true,
     "backward_reconstruction": true,
-    "equilibrium_residuals": true,
+    "dated_equation_residuals": true,
     "horizon_stability": true,
     "monopoly_foc": true,
     "monopoly_soc": true,
@@ -98,7 +103,7 @@
     "sigma_xl_0.9900": 4.91299161076153e-10,
     "sigma_xl_1.0100": 5.082129439504257e-10
   },
-  "interpretation": "Permanent sigma_XL perturbations from common unit-elastic BGP stocks; accepted only on the displayed finite window.",
+  "interpretation": "Permanent sigma_XL perturbations from common unit-elastic BGP stocks. The unit path is an analytical equilibrium; the nonunit paths are accepted only as solutions of the dated conditions on the displayed finite window.",
   "maximum_accounting_residual": 3.3306690738754696e-16,
   "maximum_backward_gap": 2.238921010394579e-10,
   "maximum_horizon_gap": 5.082129439504257e-10,

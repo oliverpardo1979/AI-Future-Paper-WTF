@@ -185,9 +185,11 @@ justify treating \(\omega_X\) as a scenario parameter; they do not identify a
 particular value. I therefore treat \(\omega_X=0.20\) as an AI scenario rather
 than an empirical estimate.
 
-All reported paths pass the equation and robustness checks described in the
-Appendix. They remain finite-horizon or finite-boundary approximations; the
-audits do not prove that an infinite-horizon equilibrium exists.
+Every reported path passes the equilibrium-admission rule in the Appendix:
+dated equations, admissibility, numerical robustness, a regime-specific tail,
+sufficient optimality conditions, and both transversality conditions. The
+finite computations are numerical approximations to those equilibria; their
+admission is not a global existence or uniqueness theorem.
 
 \subsection{\texorpdfstring{Case I: production complementarity, \(\sigma_{XL}<1\)}{Case I: production complementarity, sigma XL < 1}}
 \label{sec:axm-case-complements}
@@ -335,7 +337,7 @@ The resulting rates are therefore consistent with the two maintained
 transversality conditions.
 \end{proposition}
 
-\subsubsection{Numerical transitions and independent audit}
+\subsubsection{Numerical equilibrium transitions and independent audit}
 
 The complementarity experiment sets \(\gamma_A=0\),
 \(\sigma_{XL}=0.75\), and compares
@@ -343,12 +345,19 @@ The complementarity experiment sets \(\gamma_A=0\),
 shorter horizons are used for robustness. The boundary conditions impose the
 analytical limits of \(C/Y\) and \(X/(qB^2)\), but not the remaining growth
 rates, prices, or shares. Appendix \ref{app:axm-numerical-algorithm} reports the
-full specification and audit.
+full specification and audit. I admit these paths as numerical equilibrium
+trajectories because they satisfy the dated equilibrium equations, the
+sufficiency restrictions in Proposition \ref{prop:axm-equilibrium-sufficiency},
+convergence to the complementary-input terminal regime, horizon stability, and
+negative asymptotic growth rates for both transversality objects. This is a
+numerical classification, not a theorem establishing existence from arbitrary
+initial stocks.
 
 Figure \ref{fig:axm-complement-macro} shows output per person, consumption per
 person, and the wage approaching finite levels, while the interest rate
-approaches \(\rho\). These finite-horizon paths are consistent with, but do not
-prove convergence to, the analytical limit.
+approaches \(\rho\). The finite computation approximates the admitted
+infinite-horizon equilibrium by replacing its tail with the analytical
+complementary-input limit.
 
 \begin{figure}[H]
 \centering
@@ -774,58 +783,15 @@ feedback denominator is \(D(1)\). A balanced-growth candidate therefore requires
 from capability to research. Human research grows more slowly than population and
 \(H/N\) tends to zero on the candidate path.
 
-\subsubsection{Numerical transitions: macro outcomes, allocation, and research}
+\subsubsection{Numerical status}
 
-I hold \(\gamma_A=0\) and \(\sigma_{XL}=1\) fixed and compare \(\sigma_{HM}=1\) with
-\(\sigma_{HM}=2\). The displayed paths are finite-horizon approximations; only
-an admissible infinite-horizon continuation satisfying both transversality
-conditions would fall under Proposition
-\ref{prop:axm-equilibrium-sufficiency}.
-
-Figure \ref{fig:axm-growth-returns} shows that the two research technologies
-produce similar macroeconomic rates initially and separate as AI research
-services become important. The Euler equation implies
-\(r=\rho+g_{C/N}\) on every path.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/axm_equilibrium_growth_rates.png}
-\caption{Growth rates and the net return to capital with \(\sigma_{XL}=1\).
-Every panel uses an annual percentage rate on a linear scale.}
-\label{fig:axm-growth-returns}
-\end{figure}
-
-Figure \ref{fig:axm-unit-factor-shares} separates production and research labor
-income. Cobb--Douglas final production fixes \(wL/Y\); movements in aggregate
-labor income therefore come from research wages.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/axm_equilibrium_factor_shares.png}
-\caption{Labor allocation and income shares with \(\sigma_{XL}=1\). All panels
-show linear percentages; the vertical ranges are panel-specific and deliberately
-focused on the simulated variation.}
-\label{fig:axm-unit-factor-shares}
-\end{figure}
-
-Figure \ref{fig:axm-research-comparison} shows the source of that difference.
-With Cobb--Douglas research, \(s_M=0.35\), capability growth approaches 0.26
-percent, and \(H/N\) remains positive. With \(\sigma_{HM}=2\), \(s_M\) approaches
-one, capability growth approaches 0.32 percent, and \(H/N\) approaches zero.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/axm_research_technology_comparison.png}
-\caption{Research adjustment with \(\sigma_{XL}=1\). Capability growth is an
-annual percentage rate; \(s_M\) and \(H/N\) are linear percentages; and the
-relative quantity \(BM/H\) is shown as a natural-log change from date zero.}
-\label{fig:axm-research-comparison}
-\end{figure}
-
-Appendix Figure \ref{fig:axm-feedback-diagnostic} evaluates the Davidson-style
-balanced-growth accounting at the dated value of \(s_M(t)\). The limiting
-plug-in gain rises from 0.0875 to 0.2500 but remains below one. This is a
-deterministic diagnostic, not an additional simulated outcome or explosion test.
+The existing finite-horizon calculations comparing \(\sigma_{HM}=1\) and
+\(\sigma_{HM}=2\) satisfy the dated equations, but their audit does not
+establish an admissible infinite-horizon continuation satisfying both
+transversality conditions. I therefore do not report their trajectories. The
+analytical balanced-growth equilibria and local saddle-path results above remain
+valid. A transition figure will be added only after the algorithm passes the
+same equilibrium-admission test used for the benchmark paths.
 
 \subsection{\texorpdfstring{Case IV: gross substitution in final production, \(\sigma_{XL}>1\)}{Case IV: gross substitution in final production, sigma XL > 1}}
 \label{sec:axm-case-gross-substitution}
@@ -1006,65 +972,17 @@ the matrix counterpart of \(\dot z\sim\theta h z^2\) on the postulated branch;
 it does not establish global optimality, reachability, or an admissible
 continuation beyond the finite-time boundary.
 
-\subsubsection{Audited finite-boundary candidate paths}
+\subsubsection{Why no gross-substitutes trajectory is reported}
 
-I approximate the branch with \((\sigma_{XL},\sigma_{HM})=(1.5,2)\) using a
-free-boundary algorithm. It imposes the conditional limits of \(C/Y\) and
-\(qB/K\) at progressively larger terminal values of \(Y/K\). The initial jumps,
-non-imposed ratios, common path segments, and tail-corrected boundary estimate
-converge across \(Y/K=16,32,64,128\). Appendix
-\ref{app:axm-numerical-algorithm} reports the algorithm and audit.
-
-These paths solve the dated necessary conditions only up to an artificial finite
-boundary. They are not established infinite-horizon equilibria, and the
-conditional singular form has not been derived for \(\sigma_{HM}=1\).
-
-Figure \ref{fig:axm-high-sigma-rates} shows the delayed acceleration. After the
-initial adjustment, output-per-capita growth remains below 0.5 percent from about
-\(t=10\) to \(t=1330\), below 2 percent until \(t=1521\), and exceeds 10 percent
-only near \(t=1619\). The tail-corrected boundary estimate is about \(t=1669\).
-These are benchmark model years, not calendar forecasts.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_transition_rates.png}
-\caption{Finite-boundary approximation to the conditional pre-singular branch
-for \(\sigma_{XL}=1.5\) and \(\sigma_{HM}=2\). The approximation satisfies the
-audited dated necessary conditions within the reported numerical tolerances
-through \(z_T=128\). Annual growth and the net return are displayed through
-\(Y/K\leq5\), reached near \(t=1664.5\) in benchmark model time.}
-\label{fig:axm-high-sigma-rates}
-\end{figure}
-
-Figure \ref{fig:axm-high-sigma-production} shows that distribution changes before
-the visible takeoff. At \(t=1000\), per-capita growth is only 0.15 percent, but
-labor's share has already fallen from 63.24 to 52.05 percent. When growth reaches
-2 percent near \(t=1521\), labor's share is about 20 percent; it falls below 5
-percent near \(t=1614\). Wage growth nevertheless remains positive along the
-displayed path.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_production_allocation.png}
-\caption{Production and income allocation along the finite-boundary
-approximation with \(\sigma_{XL}=1.5\) and \(\sigma_{HM}=2\). All panels use
-linear percentages and stop at \(Y/K\leq5\), reached near \(t=1664.5\). Here \(s_X\) is AI production services'
-technological share within the labor--AI composite, not an output-income share.}
-\label{fig:axm-high-sigma-production}
-\end{figure}
-
-Figure \ref{fig:axm-high-sigma-research} reports the research block. Because
-\(\sigma_{HM}>\sigma_{XL}\), \(H/N\) eventually tends to zero; \(s_M\) approaches
-one and research compute absorbs a positive share of output.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_research_allocation.png}
-\caption{AI-research allocation along the same finite-boundary approximation.
-All panels use linear percentages and stop at \(Y/K\leq5\). The ratio
-\(g_B/(Y/K)\) is shown in percent.}
-\label{fig:axm-high-sigma-research}
-\end{figure}
+The free-boundary algorithm for \((\sigma_{XL},\sigma_{HM})=(1.5,2)\) solves
+the dated necessary conditions up to a finite artificial boundary and converges
+toward the conditional ratios above. It does not construct an admissible path
+for all \(t\geq0\), verify the two infinite-horizon transversality conditions,
+or establish global optimality. Under the equilibrium definition in Section
+\ref{sec:axm-model}, a branch ending at a finite-time singularity is not an
+infinite-horizon equilibrium. I therefore report no simulated trajectory for
+\(\sigma_{XL}>1\). The free-boundary code is retained as a diagnostic for the
+conditional analytical result, not as a generator of paper figures.
 
 \subsection{Factor payments and resource uses across regimes}
 \label{sec:axm-distributional-accounting}
@@ -1137,31 +1055,12 @@ last is the conditional pre-singular limit, not a proved infinite-horizon
 equilibrium.}
 \end{table}
 
-Figure \ref{fig:axm-distributional-paths} applies the same decomposition at each
-simulated date. Because the panels have different horizons, the figure compares
-composition rather than transition speed.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/axm_distributional_decomposition_paths.png}
-\caption{Consolidated decomposition of final output along the three benchmark
-numerical paths. Each panel stacks the six components in Equation
-\eqref{eq:axm-consolidated-distribution} on a linear 0--100 percent scale; by
-construction, they sum to 100 percent at each date. Panels A and B report the
-candidate-path approximations over their full simulated horizons. Panel C
-reports the conditional \(z_T=128\) finite-boundary approximation only through
-\(Y/K\leq5\); this branch is not a proved infinite-horizon equilibrium. Because
-the horizons differ, horizontal distances are not comparable across panels.}
-\label{fig:axm-distributional-paths}
-\end{figure}
-
-The gross-capital-payment share remains 33 percent in every panel. Under
-complementarity, production wages rise as inference compute vanishes relative to
-output. At unit elasticity, the main shares are nearly constant. On the
-conditional gross-substitutes branch, production wages fall from 63.22 percent
-to 0.02 percent by the display cutoff, while inference and research compute rise
-to 44.87 and 2.95 percent. Distributed profit peaks at 19.93 percent and then
-declines toward its conditional limit of 18.94 percent.
+The equilibrium transition figures above report this decomposition only for
+paths that pass the equilibrium-admission audit. I do not combine them with the
+gross-substitutes free-boundary calculation, because that calculation is not an
+infinite-horizon equilibrium trajectory. The conditional last row of Table
+\ref{tab:axm-distributional-synthesis} is therefore an analytical benchmark,
+not a simulated income-distribution path.
 
 The net interest rate and the capital-income share are also different objects.
 The gross capital-payment share remains \(\alpha\) in every regime, but
@@ -1192,48 +1091,48 @@ smooth long-run comparative-static curve in \(\sigma_{XL}\). The relevant local
 question is different: if I perturb \(\sigma_{XL}\) slightly, how long does the
 new path remain close to the unit-elastic path?
 
-I answer this question with a controlled experiment. I fix \(\omega_X=0.20\)
-and start all three economies from the predetermined stocks \(K_0=K^*\) and
-\(B_0=B^*\) on the analytical unit-elastic balanced-growth path, with
-\(A_0=N_0=1\). At date zero, I set \(\sigma_{XL}\) permanently to \(0.99\),
-\(1\), or \(1.01\). The states are therefore identical across cases, whereas
-the boundary-value problem selects the jump variables \(C_0\) and \(q_0\).
-I do not rescale initial output or any other flow variable after the
-perturbation.
+For a one-sided comparison of admitted paths, I set \(\omega_X=0.20\) and give
+both economies the unit-elastic balanced-growth stocks \(K_0=K^*\) and
+\(B_0=B^*\), with \(A_0=N_0=1\). At date zero, \(\sigma_{XL}\) is permanently
+\(0.99\) or \(1\). The states are identical; \(C_0\) and \(q_0\) jump, and no
+flow is rescaled. The \(0.99\) algorithm uses the complementary-input terminal
+regime and verifies both transversality conditions; the unit path is the
+analytical balanced-growth equilibrium. I exclude \(1.01\) because its
+unit-elastic terminal projection does not establish an admissible
+infinite-horizon equilibrium.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures_axm/axm_near_unit_equilibrium_paths.png}
-\caption{Permanent near-unit elasticity perturbations from common
-unit-elastic balanced-growth stocks. In every case \(\omega_X=0.20\). The
-numerical terminal is year 3,000, but I show only years 0--2,500. The output
-and wage panels report 100 times the log difference from the
-\(\sigma_{XL}=1\) path; the other panels report annual percentages. Appendix
-\ref{app:axm-near-unit-equilibrium-paths} describes the equation, horizon, and
-refinement audits.}
+\caption{Admitted near-unit equilibrium trajectories from common unit-elastic
+balanced-growth stocks. In both cases \(\omega_X=0.20\). The
+\(\sigma_{XL}=0.99\) terminal audit extends through year 12,000, but I show only
+years 0--2,500. The output and wage panels report 100 times the log difference
+from the \(\sigma_{XL}=1\) equilibrium; the other panels report annual
+percentages. Appendix \ref{app:axm-near-unit-equilibrium-paths} describes the
+regime-specific terminal and admission tests.}
 \label{fig:axm-near-unit-equilibrium}
 \end{figure}
 
-The initial distributional response may look surprising because the common
-starting stocks imply \(X/(AL)<1\). From
-\eqref{eq:axm-near-unit-share-expansion}, a value of \(\sigma_{XL}>1\)
-therefore initially lowers \(s_X\) and raises labor's income share; the signs
-are reversed for \(\sigma_{XL}<1\). Along the unit-elastic path, however,
-\(X/(AL)\) grows and crosses one after roughly 1,225 model years. The
-distributional effects then reverse. By year 2,500, 100 times the log gaps in
-output per person are \(-7.68\) and \(8.15\) for \(\sigma_{XL}=0.99\) and
-\(1.01\), respectively, while labor receives 54.16 and 52.97 percent of
-output, compared with 53.60 percent at unit elasticity. Growth and the interest
-rate remain close to their unit-elastic values over this window even though
-level and distributional gaps have begun to widen.
+The initial distributional response reflects the fact that the common starting
+stocks imply \(X/(AL)<1\). Equation
+\eqref{eq:axm-near-unit-share-expansion} implies that lowering
+\(\sigma_{XL}\) initially raises \(s_X\) and lowers labor's income share. As
+\(X/(AL)\) grows, this ordering reverses. By year 2,500, 100 times the log gaps
+in output per person and the real wage are \(-7.68\) and \(-6.64\),
+respectively. Labor receives 54.16 percent of output, compared with 53.60
+percent at unit elasticity, while the net interest rate remains close to its
+unit-elastic value.
 
-This experiment establishes continuity on a fixed finite window, not similarity
-of the long-run paths. For any fixed date, the three solutions approach one
-another as \(\sigma_{XL}\to1\). For a fixed nonunit elasticity, however,
+This experiment documents one-sided finite-date continuity between two admitted
+equilibria, not similarity of their long-run paths. For a fixed nonunit
+elasticity,
 \(h=\varphi\ln[X/(AL)]\) accumulates over time and eventually becomes
 economically important. Thus the limits \(\sigma_{XL}\to1\) and
 \(t\to\infty\) need not commute. The regime propositions, rather than this
-finite-window continuation, characterize the conditional tails.
+finite-window comparison, characterize the conditional tails. A bilateral
+equilibrium comparison around one remains incomplete until an admissible
+\(\sigma_{XL}>1\) equilibrium is constructed.
 
 Finally, these are functional distribution results, not predictions about
 interpersonal inequality. The representative household supplies all labor and
@@ -1252,8 +1151,9 @@ summarized by \(\Omega_\infty\). These are distinct economic regimes rather than
 small perturbations around Cobb--Douglas.
 
 The propositions characterize limits under their stated hypotheses. The
-finite-horizon simulations support the complementarity and unit-elasticity
-candidate paths but do not prove an infinite continuation. The free-boundary
-calculation supports a pre-singular solution of the necessary conditions, not an
-infinite-horizon equilibrium, global optimality, or selection of that branch from
-arbitrary initial states.
+reported simulations are restricted to the complementary-input and
+unit-elasticity trajectories that pass the equilibrium-admission rule. The
+gross-substitutes free-boundary calculation remains a diagnostic of a
+conditional pre-singular solution of the necessary conditions; it is not
+reported as an equilibrium trajectory and does not establish global optimality
+or selection of that branch from arbitrary initial states.

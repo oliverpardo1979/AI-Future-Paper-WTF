@@ -1,7 +1,7 @@
-"""Plot audited near-unit perturbations from the positive-AI BGP.
+"""Plot admitted near-unit equilibrium trajectories from the positive-AI BGP.
 
 The script reads the accepted output of
-``simulate_axm_near_unit_bgp_perturbation.py`` and never invokes a solver.
+``audit_axm_near_unit_equilibrium_status.py`` and never invokes a solver.
 Every scenario has ``omega_X=0.20`` and the same predetermined initial stocks
 from the analytical ``sigma_XL=1`` balanced-growth path.
 """
@@ -31,8 +31,8 @@ import simulate_model as mechanism
 RESULT_DIR = ROOT / "numerical_axm"
 FIGURE_DIR = ROOT / "figures_axm"
 OUTPUT = FIGURE_DIR / "axm_near_unit_equilibrium_paths.png"
-MANIFEST_PATH = RESULT_DIR / "near_unit_bgp_perturbation_audit_manifest.json"
-PATH_FILE = RESULT_DIR / "near_unit_bgp_perturbation_paths.csv"
+MANIFEST_PATH = RESULT_DIR / "near_unit_equilibrium_status_audit.json"
+PATH_FILE = RESULT_DIR / "near_unit_equilibrium_paths.csv"
 
 
 def sha256(path: Path) -> str:
@@ -47,23 +47,19 @@ def verify_input() -> tuple[dict[str, object], float]:
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     if manifest.get("accepted") is not True:
         raise ValueError("The near-unit perturbation audit is not accepted.")
-    files = manifest.get("files")
-    if not isinstance(files, dict):
-        raise ValueError("The manifest has no audit-bound files mapping.")
-    relative = str(PATH_FILE.relative_to(ROOT)).replace("\\", "/")
-    metadata = files.get(relative)
+    metadata = manifest.get("exported_path")
     if not isinstance(metadata, dict) or "sha256" not in metadata:
-        raise ValueError(f"The plotted path is not audit-bound: {relative}")
+        raise ValueError("The manifest has no audit-bound equilibrium path.")
     if sha256(PATH_FILE) != str(metadata["sha256"]):
         raise ValueError(f"Hash mismatch: {PATH_FILE}")
-    return manifest, float(manifest["display_horizon"])
+    return manifest, 2_500.0
 
 
 def read_paths(display_horizon: float) -> dict[str, list[dict[str, float | str]]]:
     with PATH_FILE.open("r", encoding="utf-8", newline="") as handle:
         observations: list[dict[str, float | str]] = list(csv.DictReader(handle))
     result: dict[str, list[dict[str, float | str]]] = {}
-    for sigma_xl, key in ((0.99, "below"), (1.00, "unit"), (1.01, "above")):
+    for sigma_xl, key in ((0.99, "below"), (1.00, "unit")):
         rows = [
             row
             for row in observations
@@ -82,22 +78,20 @@ def main() -> None:
     labels = {
         "below": "sigma_XL = 0.99",
         "unit": "sigma_XL = 1.00",
-        "above": "sigma_XL = 1.01",
     }
     palette = {
         "below": mechanism.COLORS["blue"],
         "unit": mechanism.COLORS["ink"],
-        "above": mechanism.COLORS["orange"],
     }
-    markers = {"below": "circle", "unit": "diamond", "above": "square"}
+    markers = {"below": "circle", "unit": "diamond"}
     times_one_hundred = lambda observations, values: 100.0 * values
-    terminal = float(manifest["solver_terminal_horizon"])
+    terminal = max(float(value) for value in manifest["lower_tail"]["terminal_horizons"])
     mechanism.draw_multiplot(
         OUTPUT,
-        "Permanent near-unit elasticity perturbations",
+        "Near-unit equilibrium trajectories",
         (
             "Same positive-AI BGP stocks at date 0; paths shown through year "
-            f"{display_horizon:,.0f}; numerical terminal at year {terminal:,.0f}"
+            f"{display_horizon:,.0f}; lower-tail audit through year {terminal:,.0f}"
         ),
         [
             {

@@ -57,26 +57,22 @@ economy and to separate physical-capital payments, production and research
 wages, inference and research compute, and distributed developer profit along
 the transition.
 
-The numerical transition under gross substitution adds an important timing
-result. In the reported normalization, output-per-capita growth remains modest
-for most of the conditional path and accelerates only near its estimated finite
-boundary. Structural change begins much earlier: labor's income share declines
-and AI production services become more important while aggregate growth still appears
-nearly stable. Analytically, paths near unit elasticity separate from the
-unit-elastic benchmark on a time scale of order
-\(1/|\sigma_{XL}-1|\); the numerical delay is therefore a structural feature,
-not just a solver artifact. This delayed acceleration is closest to the weak-link mechanism
-in \citet{jonestonetti2026}; the feedback threshold is closest to
-\citet{davidsonetal2026}. The simulated dates are model time, not calendar
-forecasts.
+The timing result that survives the equilibrium-admission requirement is
+one-sided. An equilibrium with \(\sigma_{XL}=0.99\), started from the same
+predetermined stocks as the unit-elastic balanced-growth equilibrium, remains
+close to it for a long time before level and distributional differences become
+material. Analytically, nearby dated solutions separate on a time scale of
+order \(1/|\sigma_{XL}-1|\). I do not report the corresponding
+\(\sigma_{XL}>1\) trajectory because the current algorithm has not connected it
+to an admissible infinite-horizon equilibrium.
 
-The numerical evidence has a precise but limited interpretation. The
-complementarity and unit-elasticity calculations are audited finite-horizon
-approximations to the conditional paths characterized analytically. The
-gross-substitutes calculations are convergent finite-boundary approximations to
-a pre-singular branch of the necessary conditions. They satisfy the reported
-equations and numerical acceptance tests, but they do not establish an
-infinite-horizon equilibrium, global optimality, or arrival at the singularity.
+The numerical evidence has a precise but limited interpretation. Every
+reported trajectory is a numerical approximation to an equilibrium admitted by
+the dated equations, a regime-specific tail, sufficient optimality conditions,
+and both transversality conditions. These checks do not constitute global
+existence or uniqueness theorems. Gross-substitutes free-boundary calculations
+satisfy the dated necessary conditions but fail the equilibrium-admission rule;
+they therefore generate no reported trajectory.
 
 Three extensions would be especially useful. An upstream compute sector would
 determine how compute expenditure is divided among hardware, datacenters,

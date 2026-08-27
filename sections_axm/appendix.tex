@@ -1278,62 +1278,16 @@ evaluate the exact CES. I do not replace the CES by the expansion in
 analytical Cobb--Douglas limit. The resulting dated system and its analytical
 Jacobian reproduce the unit-elastic normalized system to machine precision.
 
-I solve the refined \(T=250\) calculation at
-\(\sigma_{XL}=0.99,0.999,0.9999,1,1.0001,1.001,\) and \(1.01\). For every
-nonunit value, I use six equal continuation steps in \(\varphi\). Table
-\ref{tab:axm-near-unit-continuity-audit} reports the largest absolute
-difference from the unit-elastic log path over the first 50 years.
-
-\begin{table}[H]
- \centering
- \caption{Finite-window continuity around unit elasticity}
- \label{tab:axm-near-unit-continuity-audit}
- \begin{tabular}{lc}
-  \toprule
-  \(\sigma_{XL}\) &
-  \(\max_{t\in[0,50]}\|\xi^{\sigma_{XL}}(t)-\xi^1(t)\|_\infty\) \\
-  \midrule
-  0.9900 & \(1.615\times10^{-2}\) \\
-  0.9990 & \(1.593\times10^{-3}\) \\
-  0.9999 & \(1.591\times10^{-4}\) \\
-  1.0000 & \(0\) \\
-  1.0001 & \(1.590\times10^{-4}\) \\
-  1.0010 & \(1.588\times10^{-3}\) \\
-  1.0100 & \(1.566\times10^{-2}\) \\
-  \bottomrule
- \end{tabular}
- \begin{minipage}{0.92\textwidth}
- \vspace{0.4em}
- \footnotesize\emph{Note:} The initial stocks are \(K_0=2.484538\) and
- \(B_0=1\). The reference is the accepted positive-AI solution at
- \(\sigma_{XL}=1\), evaluated on the same dates. The terminal horizon is
- \(T=250\).
- \end{minipage}
-\end{table}
-
-The bilateral differences fall by approximately a factor of ten whenever
-\(|\sigma_{XL}-1|\) falls by a factor of ten. This is the numerical pattern
-implied by the finite-window bound in
-\eqref{eq:axm-near-unit-finite-window-bound}. Across the seven solutions, the
-largest collocation residual is below \(1.1\times10^{-9}\), the largest
-monopoly first-order-condition residual is below \(3.7\times10^{-15}\), and
-the largest discrepancy from the segmented backward reconstruction is below
-\(2.5\times10^{-10}\). Consumption, inference compute, and research compute
-remain positive, and the monopoly second-order condition holds at every audit
-point. Tightening the tolerance from \(10^{-8}\) to \(10^{-9}\), increasing
-the initial mesh from 81 to 141 nodes, and increasing both stock and elasticity
-continuation steps leaves the first 50 years unchanged up to
-\(2\times10^{-7}\). Extending the terminal horizon from 200 to 250 changes the
-same window by less than \(2\times10^{-5}\) for \(\sigma_{XL}=0.99\) and
-\(1.01\).
-
-These calculations verify local numerical continuity on the reported finite
-window. They do not show that the nonunit paths converge to the unit-elastic
-balanced-growth path. For \(\sigma_{XL}<1\), the eventual complementary tail
-must be studied with its own terminal conditions. For \(\sigma_{XL}>1\), a
-finite-rate balanced-growth terminal condition is unavailable and the path may
-eventually leave the local neighborhood. The regime-specific algorithms below
-address those tails separately.
+During algorithm development, I used this common terminal projection to verify
+the finite-window continuation result on both sides of one. Those outputs solve
+the dated equations but do not pass the equilibrium-admission rule because the
+terminal restriction belongs to the unit-elastic model. I therefore report no
+table or trajectory from that exercise. The calculation remains useful only as
+a continuation guess. For the reported \(\sigma_{XL}=0.99\) equilibrium, I
+replace it with the complementary-input terminal problem described in
+Subsection \ref{app:axm-near-unit-equilibrium-paths}. For
+\(\sigma_{XL}>1\), no admissible infinite-horizon terminal has yet been
+constructed, so the corresponding segments are excluded.
 
 \subsection{Adoption experiment from the no-AI balanced-growth path}
 \label{app:axm-ai-adoption-algorithm}
@@ -1633,98 +1587,69 @@ does not generate any result I report.
 \label{app:axm-near-unit-equilibrium-paths}
 
 Figure \ref{fig:axm-near-unit-equilibrium} applies the continuation algorithm in
-Section \ref{app:axm-near-unit-algorithm} to a single controlled experiment. I
+Section \ref{app:axm-near-unit-algorithm} only where the result passes the
+equilibrium-admission rule. I
 fix \(\omega_X=0.20\), compute the analytical \(\sigma_{XL}=1\) balanced-growth
-path, and give all three cases its initial predetermined stocks
-\(K_0=2.027734\) and \(B_0=0.443671\). I then solve the same dated equations at
-\(\sigma_{XL}=0.99,1,1.01\). Consumption and the shadow value remain jump
-variables; no initial flow is normalized to match across elasticities.
+path, and give both reported cases its initial predetermined stocks
+\(K_0=2.027734\) and \(B_0=0.443671\). Consumption and the shadow value remain
+jump variables; no initial flow is normalized to match across elasticities.
 
-The reported solutions use a terminal horizon of 3,000 years, an initial mesh
-of 181 nodes, a tolerance of \(10^{-9}\), and eight equal continuation steps in
-\(\varphi\) for each nonunit elasticity. The figure ends at year 2,500, leaving
-500 years between the displayed observations and the terminal projection. I
-reconstruct \(Y,X,U,M,w,r\), all five income shares, and both sides of every
-dated dynamic equation from the four saved log paths \((K,B,C,q)\). I also
-verify resource accounting and the monopolist's static first- and second-order
-conditions at each saved date.
+At \(\sigma_{XL}=1\), the path is the exact balanced-growth equilibrium in
+Proposition \ref{prop:axm-benchmark-equilibrium-existence}. At
+\(\sigma_{XL}=0.99\), I replace the earlier unit-elastic terminal projection by
+the complementary-input terminal restrictions derived in Propositions
+\ref{prop:axm-complements} and \ref{prop:axm-complements-research}. I continue
+the terminal horizon from 2,500 to 12,000 years in 500-year increments. At each
+step, the preceding solution supplies the initial collocation guess, extended
+with the limiting regime's growth rates.
 
-Two separate calculations test whether the displayed window is numerical rather
-than terminal-driven. First, I move the terminal from year 3,000 to year 3,500
-and compare all four dynamic variables over years 0--2,500. Second, I repeat the
-3,000-year calculation with a 121-node initial mesh, tolerance \(10^{-8}\), and
-four continuation steps. The machine-readable audit records both maximum gaps
-and rejects the figure if either exceeds its stated tolerance. It also requires
-successful collocation, positive consumption and compute inputs, a positive
-monopoly second-order-condition margin, and equation residuals below their
-respective thresholds.
+All 20 boundary-value problems converge. A final refinement at the 12,000-year
+terminal has a maximum collocation root-mean-square residual below \(10^{-8}\).
+Increasing
+the terminal from 11,500 to 12,000 changes the four log variables over years
+0--2,500 by at most \(9.1\times10^{-7}\), and the final refinement changes that
+window by at most \(1.4\times10^{-6}\). The corrected path differs from the
+previously plotted finite-window segment by at most \(1.8\times10^{-8}\), which
+explains why the visible lower-elasticity curve barely changes even though its
+economic classification does. The log levels of the household and developer
+transversality objects at the terminal are \(-442.6\) and \(-446.1\); their
+analytical tail growth rates are \(n-\rho=-0.037\) and \(-0.0396\), respectively.
+The sufficiency restrictions in Proposition
+\ref{prop:axm-equilibrium-sufficiency} also hold. I therefore admit the
+\(\sigma_{XL}=0.99\) result as a numerical equilibrium trajectory.
 
-All gates pass. The maximum normalized dynamic-equation residual is
-\(5.6\times10^{-10}\), and the segmented backward reconstruction differs from
-the collocation solution by at most \(2.3\times10^{-10}\). Resource accounting
-closes to \(3.4\times10^{-16}\), and the monopoly first-order-condition residual
-is below \(1.6\times10^{-14}\). Moving the terminal to year 3,500 changes the
-displayed four-variable path by at most \(5.1\times10^{-10}\); the numerical
-refinement produces the same maximum discrepancy.
-
-These checks validate a finite segment of the dated equilibrium system. They do
-not show that the nonunit paths share the unit-elastic balanced-growth tail. In
-particular, the terminal projection is constructed from the local stable space
-at unit elasticity. The reported segment remains in that regular neighborhood;
-the conditional asymptotic results for complementarity and gross substitution
-come instead from the separate regime propositions and their own numerical
-methods.
-
-\subsection{Supplementary transition diagnostic}
-
-Figure \ref{fig:axm-feedback-diagnostic} evaluates the scalar feedback accounting
-in equation~\eqref{eq:axm-feedback-matrix} at the dated research share
-\(s_M(t)\). It is a deterministic transformation of an accepted path, not an
-additional equilibrium calculation or an independently estimated transition
-Jacobian. The figure is therefore reported with the numerical diagnostics rather
-than in the sequence of simulated macroeconomic outcomes and allocations.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/axm_unit_elasticity_feedback_diagnostic.png}
-\caption{Plug-in balanced-growth feedback accounting evaluated at \(s_M(t)\)
-along the two unit-elasticity finite-horizon candidate paths. The construction is
-a scalar adaptation of \citet{davidsonetal2026}, not the dated feedback Jacobian.
-The horizontal line at one is the critical value for the balanced-growth
-accounting in equation~\eqref{eq:axm-feedback-matrix}, not a sufficient condition
-for explosive equilibrium dynamics.}
-\label{fig:axm-feedback-diagnostic}
-\end{figure}
+The earlier \(\sigma_{XL}=1.01\) calculation used the unit-elastic stable
+projection and established only a finite-window solution of the dated
+conditions. A finite-boundary continuation toward a singularity is not an
+admissible infinite-horizon equilibrium under the benchmark equilibrium
+definition in Section \ref{sec:axm-model}. I therefore exclude that curve
+from every reported trajectory figure. The source and audit files remain in the
+repository to document the rejected calculation.
 
 \subsection{Acceptance tests, independent audits, and limits of the evidence}
 
-Each audit reconstructs the dated technologies, prices, market-clearing
-conditions, first-order conditions, and four dynamic equations. It also checks
-positivity, the monopoly second-order condition, terminal restrictions, and the
-stability of the initial jump variables. The complementary-input and
-gross-substitutes auditors do not import the solver's static-equilibrium routine
-and differentiate the saved log paths independently. The unit-elasticity audit
-for the previously reported paths uses the collocation derivative for its
-dynamic residuals. The off-BGP benchmark audit in Subsection
-\ref{app:axm-off-bgp-validation} instead reconstructs the normalized
-right-hand side separately and checks it with backward integrations over short
-segments.
+Every reported simulation must pass an equilibrium-admission rule. The
+calculation must satisfy the dated technologies, prices, market clearing,
+first- and second-order conditions, and four dynamic equations; remain strictly
+admissible; be stable across numerical refinements and longer horizons; connect
+to a terminal regime derived for the same value of \(\sigma_{XL}\); satisfy the
+sufficient optimality restrictions; and imply that both transversality objects
+converge to zero along that tail. Passing only the dated equations is not
+enough.
 
-All prespecified gates pass. For unit elasticity, the largest errors are
-\(4.9\times10^{-11}\) for static equations and \(6.6\times10^{-6}\) for
-dynamics. For complementary inputs, the corresponding maxima are
-\(5.32\times10^{-11}\) and \(8.35\times10^{-7}\). The gross-substitutes audit
-accepts all four reported
-boundaries, \(z_T=16,32,64,128\), including the common-window and event-time
-comparisons and stabilization of \eqref{eq:axm-singularity-tail-estimate}.
-Complete thresholds and diagnostic values are reported in the audit files named
-below.
+Three groups pass. The first contains the no-AI and positive-AI adoption
+equilibria at \(\sigma_{XL}=1\). The second contains the complementary-input
+equilibria at \(\sigma_{XL}=0.75\). The third contains the near-unit equilibria
+at \(\sigma_{XL}=0.99\) and \(1\). The human-research transitions and all
+gross-substitutes free-boundary paths fail the tail requirement and are not
+reported. The global audit also fails if the manuscript references any rejected
+trajectory figure.
 
-Finite-date values of the two transversality expressions are only truncation
-diagnostics. They do not verify limits as \(t\to\infty\). Likewise, agreement
-with an imposed terminal ratio is not independent validation; the overidentifying
-evidence comes from dated residuals, non-imposed quantities, and stability across
-horizons or boundaries.
+Finite-date values of the two transversality expressions remain truncation
+diagnostics. Admission therefore also requires analytically negative growth
+rates for the objects in the imposed tail. Agreement with an imposed terminal
+ratio alone is not independent validation; the overidentifying evidence comes
+from dated residuals, non-imposed quantities, and stability across horizons.
 
 \begin{sloppypar}
 The simulation files and residual summaries are stored in
@@ -1746,12 +1671,11 @@ Other scripts without the \texttt{axm} designation that solve or simulate an
 equilibrium implement the earlier research specification and do not generate
 evidence for this analysis.
 Plotting scripts read accepted paths and do not solve an additional equilibrium
-system. In particular,
-\path{scripts/plot_axm_distribution_decomposition.py} verifies the hashes in
-all three accepted audit manifests, reconstructs the six components of
-\eqref{eq:axm-consolidated-distribution} from dated prices and quantities, and
-checks nonnegativity and accounting closure before drawing the cross-regime
-figure.
+system. The paper-wide guard
+\path{scripts/audit_axm_presented_trajectories.py} verifies the accepted
+manifests and scans the manuscript for every rejected trajectory figure. Its
+machine-readable result is
+\path{numerical_axm/presented_trajectory_admission_manifest.json}.
 The reported reruns used Python 3.12.13, NumPy 2.5.2, SciPy 1.18.0, and Pillow
 12.3.0. These versions are pinned in \path{requirements-numerical.txt}.
 Floating-point arithmetic and platform-specific rendering can still prevent
@@ -1760,74 +1684,21 @@ reported numerical tolerances and equation audits rather than file identity
 alone.
 Within \path{numerical_axm}, diagnostic values and pass/fail status are stored in
 \path{audit_report.csv}, \path{complements_acceptance_report.csv}, and
-\path{high_sigma_sigma150_validated_acceptance_report.csv}. The last two reports
-also state their numerical thresholds, and their manifests record the audited
-inputs. Unit-elasticity thresholds are defined in
+\path{near_unit_equilibrium_status_audit.json}. The separate high-sigma report
+audits a finite-boundary calculation but does not grant equilibrium admission.
+Unit-elasticity thresholds are defined in
 \path{scripts/audit_axm_model.py};
 \path{unit_elasticity_audit_manifest.json} binds its four numerical inputs to
 the current audit and generator scripts by SHA-256 hash.
 \end{sloppypar}
 
-Convergence shows only that the finite discretization satisfies the equations
-and boundary conditions within tolerance. The unit-elasticity sufficiency result
-requires an admissible exact continuation and both transversality conditions.
-The complementary-input calculations approximate candidate paths. The
-gross-substitutes calculations approximate a conditional pre-singular branch of
-the necessary conditions; they do not establish an infinite-horizon equilibrium,
-global optimality, uniqueness, or reachability from arbitrary initial states.
+Convergence of a finite discretization alone shows only that its equations and
+boundary conditions hold within tolerance. The additional tail, optimality, and
+transversality gates are what distinguish the numerical equilibrium
+trajectories reported in the paper from rejected candidate segments. None of
+these numerical checks is a global existence or uniqueness theorem.
 
-Table \ref{tab:axm-high-sigma-convergence} and Figure
-\ref{fig:axm-high-sigma-ratios} report the free-boundary diagnostics removed from
-the sequence of economic outcomes in the main text. Only \(C/Y\), \(qB/K\), and
-terminal \(Y/K\) are imposed at each boundary. The other terminal quantities and
-the agreement of overlapping path segments are overidentifying checks on the
-conditional asymptotic characterization.
-
-\begin{table}[H]
-\centering
-\small
-\caption{Free-boundary convergence and terminal ratios,
-\(\sigma_{XL}=1.5,\ \sigma_{HM}=2\)}
-\label{tab:axm-high-sigma-convergence}
-\begin{tabular}{lccccc}
-\toprule
-Terminal \(Y/K\) & 16 & 32 & 64 & 128 & Limit\\
-\midrule
-Estimated \(T^*\) & 1669.005 & 1669.021 & 1669.025 & 1669.026 & ---\\
-\(g_B/(Y/K)\) & 0.02265 & 0.02296 & 0.02313 & 0.02322 & 0.02332\\
-\(U/Y\) & 0.44889 & 0.44890 & 0.44890 & 0.44890 & 0.44890\\
-\(M/Y\) & 0.03081 & 0.03123 & 0.03146 & 0.03159 & 0.03172\\
-\((\dot K+\delta K)/Y\) & 0.28357 & 0.28315 & 0.28291 & 0.28279 & 0.28266\\
-\(s_X\) & 0.999986 & 0.999998 & 1.000000 & 1.000000 & 1\\
-\(wN/Y\) & \(9.37\times10^{-6}\) & \(1.65\times10^{-6}\) & \(2.91\times10^{-7}\) & \(5.16\times10^{-8}\) & 0\\
-\bottomrule
-\end{tabular}
-
-\medskip
-\parbox{0.94\textwidth}{\footnotesize \emph{Notes:} The estimated \(T^*\) is
-measured in model time. All remaining entries are ratios expressed as fractions,
-so, for example, 0.02265 corresponds to 2.265 percent. The final column reports
-the conditional analytical limit.}
-\end{table}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_asymptotic_ratios.png}
-\caption{Selected non-imposed ratios along the rising branch of \(Y/K\). The
-horizontal axis is \(\ln(Y/K)\); dashed lines are the conditional analytical
-limits in Conditional Result \ref{prop:axm-singular-limit}. Vertical axes use
-linear percentages with panel-specific ranges.}
-\label{fig:axm-high-sigma-ratios}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures_axm/high_sigma_validated_boundary_convergence.png}
-\caption{Free-boundary convergence diagnostic, where
-\(z_T\equiv(Y/K)(T)\). \(T(z_T)\) is the date at which the approximation reaches
-its artificial terminal boundary. The graphic writes \(T^*(z_T)\) for the tail
-estimate \(\widehat T(z_T)\) in
-\eqref{eq:axm-singularity-tail-estimate}. The residual column reports the maximum
-collocation root-mean-square error.}
-\label{fig:axm-high-sigma-boundary-convergence}
-\end{figure}
+The free-boundary files remain in the repository as diagnostics of the
+conditional asymptotic calculation. They are deliberately absent from the
+paper's figures and tables because they do not pass the equilibrium-admission
+rule.

@@ -1025,6 +1025,7 @@ def solve_equilibrium(
     horizon: float,
     nodes: int = 201,
     tolerance: float = 2e-5,
+    previous_solution: object | None = None,
 ) -> tuple[object, dict[str, float]]:
     targets = asymptotic_targets(parameters)
     log_initial_population = math.log(initial_state[2])
@@ -1037,8 +1038,19 @@ def solve_equilibrium(
             targets["shadow_growth"],
         ]
     )
-    raw_guess = fixed_share_guess(parameters, initial_state, horizon, mesh)
-    guess = raw_guess - growth_scales[:, None] * mesh[None, :]
+    if previous_solution is None:
+        raw_guess = fixed_share_guess(parameters, initial_state, horizon, mesh)
+        guess = raw_guess - growth_scales[:, None] * mesh[None, :]
+    else:
+        previous_horizon = float(previous_solution.x[-1])
+        clipped_mesh = np.minimum(mesh, previous_horizon)
+        previous_raw = np.asarray(previous_solution.sol(clipped_mesh))
+        # Beyond the preceding terminal date, extend the limiting growth
+        # rates.  In detrended variables this holds the terminal guess fixed.
+        raw_guess = previous_raw + growth_scales[:, None] * (
+            mesh - clipped_mesh
+        )[None, :]
+        guess = raw_guess - growth_scales[:, None] * mesh[None, :]
 
     def ode(times: np.ndarray, states: np.ndarray) -> np.ndarray:
         values = np.empty_like(states)
@@ -1054,16 +1066,17 @@ def solve_equilibrium(
         _, terminal_block = equilibrium_rates(
             horizon, terminal_raw, parameters, log_initial_population
         )
-        terminal_consumption_share = math.exp(
+        log_terminal_consumption_share = (
             terminal_raw[2] - terminal_block["log_output"]
         )
         if targets["terminal_shadow_object"] == "profit_shadow_ratio":
-            terminal_shadow_object = (
-                terminal_block["capability_profit_derivative"]
-                * bounded_exp(-terminal_raw[3])
+            log_terminal_shadow_object = (
+                terminal_block["log_ai_services"]
+                - 2.0 * terminal_raw[1]
+                - terminal_raw[3]
             )
         else:
-            terminal_shadow_object = math.exp(
+            log_terminal_shadow_object = (
                 terminal_raw[3]
                 + terminal_raw[1]
                 - terminal_block["log_output"]
@@ -1072,9 +1085,9 @@ def solve_equilibrium(
             [
                 left[0] - math.log(initial_state[0]),
                 left[1] - math.log(initial_state[1]),
-                math.log(terminal_consumption_share)
+                log_terminal_consumption_share
                 - math.log(targets["consumption_share"]),
-                math.log(terminal_shadow_object)
+                log_terminal_shadow_object
                 - math.log(targets["terminal_shadow_target"]),
             ]
         )
@@ -1108,6 +1121,7 @@ def solve_equilibrium(
     solution.sol = raw_solution
     solution.calendar_derivative = raw_derivative
     solution.y = solution.y + growth_scales[:, None] * solution.x[None, :]
+    solution.growth_scales = growth_scales
     return solution, targets
 
 

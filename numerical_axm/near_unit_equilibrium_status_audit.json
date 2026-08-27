@@ -1,0 +1,272 @@
+{
+  "accepted": true,
+  "exported_path": {
+    "path": "numerical_axm/near_unit_equilibrium_paths.csv",
+    "rows": 5002,
+    "sha256": "42b10bfa3f001e9fdca9d3d0d5d1985cbe582df1fa82f680e32e5a0c08bb4cd8",
+    "sigma_xl_values": [
+      0.99,
+      1.0
+    ]
+  },
+  "gates": {
+    "all_lower_tail_solves_successful": true,
+    "lower_segment_matches_regime_terminal_solution": true,
+    "lower_tail_final_refinement": true,
+    "lower_tail_horizon_stability": true,
+    "lower_tail_residuals": true,
+    "lower_tail_tvc_rates_negative": true,
+    "only_admitted_trajectories_are_exported": true
+  },
+  "lower_tail": {
+    "expected_developer_tvc_log_rate": -0.0396,
+    "expected_household_tvc_log_rate": -0.037,
+    "final_refinement": {
+      "display_window_gap": 1.3915457399704678e-06,
+      "maximum_rms_residual": 9.983084746104666e-09,
+      "nodes": 768
+    },
+    "last_successive_display_window_gap": 9.078469322965077e-07,
+    "maximum_successive_display_window_gap": 0.054495962761585304,
+    "plotted_to_regime_connection_gap": 1.7098808147153477e-08,
+    "records": [
+      {
+        "horizon": 2500.0,
+        "log_initial_consumption": -0.7448021849158126,
+        "log_initial_shadow_value": -0.44611335224397236,
+        "maximum_rms_residual": 9.76116329991637e-07,
+        "nodes": 883,
+        "success": true,
+        "successive_display_window_gap": 0.0
+      },
+      {
+        "horizon": 3000.0,
+        "log_initial_consumption": -0.744802183414034,
+        "log_initial_shadow_value": -0.4461133508879597,
+        "maximum_rms_residual": 8.724611722264617e-07,
+        "nodes": 235,
+        "success": true,
+        "successive_display_window_gap": 0.054495962761585304
+      },
+      {
+        "horizon": 3500.0,
+        "log_initial_consumption": -0.7448021852509622,
+        "log_initial_shadow_value": -0.44611335255234413,
+        "maximum_rms_residual": 8.594619163358132e-07,
+        "nodes": 230,
+        "success": true,
+        "successive_display_window_gap": 1.7607130908814383e-06
+      },
+      {
+        "horizon": 4000.0,
+        "log_initial_consumption": -0.7448021858381477,
+        "log_initial_shadow_value": -0.4461133528333129,
+        "maximum_rms_residual": 7.027279714795208e-07,
+        "nodes": 226,
+        "success": true,
+        "successive_display_window_gap": 1.9609381869400977e-06
+      },
+      {
+        "horizon": 4500.0,
+        "log_initial_consumption": -0.7448021854482154,
+        "log_initial_shadow_value": -0.44611335260211904,
+        "maximum_rms_residual": 8.405541256633418e-07,
+        "nodes": 222,
+        "success": true,
+        "successive_display_window_gap": 3.345606396809586e-06
+      },
+      {
+        "horizon": 5000.0,
+        "log_initial_consumption": -0.7448021854332973,
+        "log_initial_shadow_value": -0.4461133526081682,
+        "maximum_rms_residual": 7.659289885054603e-07,
+        "nodes": 221,
+        "success": true,
+        "successive_display_window_gap": 3.669310481679844e-06
+      },
+      {
+        "horizon": 5500.0,
+        "log_initial_consumption": -0.7448021850610915,
+        "log_initial_shadow_value": -0.44611335245786166,
+        "maximum_rms_residual": 9.578352454795274e-07,
+        "nodes": 219,
+        "success": true,
+        "successive_display_window_gap": 2.6360885039267146e-06
+      },
+      {
+        "horizon": 6000.0,
+        "log_initial_consumption": -0.7448021858390126,
+        "log_initial_shadow_value": -0.4461133528191644,
+        "maximum_rms_residual": 7.04744291429848e-07,
+        "nodes": 219,
+        "success": true,
+        "successive_display_window_gap": 1.8536910997291045e-06
+      },
+      {
+        "horizon": 6500.0,
+        "log_initial_consumption": -0.7448021855926126,
+        "log_initial_shadow_value": -0.44611335267234753,
+        "maximum_rms_residual": 9.566711405659012e-07,
+        "nodes": 238,
+        "success": true,
+        "successive_display_window_gap": 1.4273603694547887e-06
+      },
+      {
+        "horizon": 7000.0,
+        "log_initial_consumption": -0.7448021852883794,
+        "log_initial_shadow_value": -0.446113352481995,
+        "maximum_rms_residual": 9.901611814424794e-07,
+        "nodes": 263,
+        "success": true,
+        "successive_display_window_gap": 1.161625157619639e-06
+      },
+      {
+        "horizon": 7500.0,
+        "log_initial_consumption": -0.7448021849159592,
+        "log_initial_shadow_value": -0.4461133522385889,
+        "maximum_rms_residual": 9.76116329933972e-07,
+        "nodes": 319,
+        "success": true,
+        "successive_display_window_gap": 1.2235465192134143e-06
+      },
+      {
+        "horizon": 8000.0,
+        "log_initial_consumption": -0.7448021846248325,
+        "log_initial_shadow_value": -0.44611335178503675,
+        "maximum_rms_residual": 9.12746288126533e-07,
+        "nodes": 318,
+        "success": true,
+        "successive_display_window_gap": 4.466850717088633e-06
+      },
+      {
+        "horizon": 8500.0,
+        "log_initial_consumption": -0.7448021840707887,
+        "log_initial_shadow_value": -0.4461133513752395,
+        "maximum_rms_residual": 9.89987382082619e-07,
+        "nodes": 302,
+        "success": true,
+        "successive_display_window_gap": 2.974229805330353e-06
+      },
+      {
+        "horizon": 9000.0,
+        "log_initial_consumption": -0.7448021834139449,
+        "log_initial_shadow_value": -0.44611335089555104,
+        "maximum_rms_residual": 9.734138162000563e-07,
+        "nodes": 319,
+        "success": true,
+        "successive_display_window_gap": 2.5555436247159946e-06
+      },
+      {
+        "horizon": 9500.0,
+        "log_initial_consumption": -0.7448021855967951,
+        "log_initial_shadow_value": -0.44611335270576513,
+        "maximum_rms_residual": 9.480942009897454e-07,
+        "nodes": 307,
+        "success": true,
+        "successive_display_window_gap": 2.1743541671614963e-06
+      },
+      {
+        "horizon": 10000.0,
+        "log_initial_consumption": -0.7448021854301156,
+        "log_initial_shadow_value": -0.44611335263087004,
+        "maximum_rms_residual": 9.964299006930753e-07,
+        "nodes": 305,
+        "success": true,
+        "successive_display_window_gap": 1.8452303078841936e-06
+      },
+      {
+        "horizon": 10500.0,
+        "log_initial_consumption": -0.7448021852509035,
+        "log_initial_shadow_value": -0.44611335255458073,
+        "maximum_rms_residual": 9.892110957223926e-07,
+        "nodes": 348,
+        "success": true,
+        "successive_display_window_gap": 1.5554081855828628e-06
+      },
+      {
+        "horizon": 11000.0,
+        "log_initial_consumption": -0.7448021850593006,
+        "log_initial_shadow_value": -0.4461133524769668,
+        "maximum_rms_residual": 9.952448098123006e-07,
+        "nodes": 335,
+        "success": true,
+        "successive_display_window_gap": 1.3013241744186388e-06
+      },
+      {
+        "horizon": 11500.0,
+        "log_initial_consumption": -0.7448021859422711,
+        "log_initial_shadow_value": -0.44611335289549886,
+        "maximum_rms_residual": 8.818062627215643e-07,
+        "nodes": 304,
+        "success": true,
+        "successive_display_window_gap": 1.3808176382301696e-06
+      },
+      {
+        "horizon": 12000.0,
+        "log_initial_consumption": -0.7448021858380378,
+        "log_initial_shadow_value": -0.4461133528340452,
+        "maximum_rms_residual": 9.88901289964245e-07,
+        "nodes": 314,
+        "success": true,
+        "successive_display_window_gap": 9.078469322965077e-07
+      }
+    ],
+    "sigma_xl": 0.99,
+    "terminal_developer_tvc_log_object": -446.14045545223587,
+    "terminal_horizons": [
+      2500.0,
+      3000.0,
+      3500.0,
+      4000.0,
+      4500.0,
+      5000.0,
+      5500.0,
+      6000.0,
+      6500.0,
+      7000.0,
+      7500.0,
+      8000.0,
+      8500.0,
+      9000.0,
+      9500.0,
+      10000.0,
+      10500.0,
+      11000.0,
+      11500.0,
+      12000.0
+    ],
+    "terminal_household_tvc_log_object": -442.61138391713826,
+    "terminal_targets": {
+      "aggregate_growth": 0.013000000000000001,
+      "capability_growth": 0.0026000000000000003,
+      "capital_output_ratio": 3.3,
+      "consumption_share": 0.7921,
+      "investment_share": 0.2079,
+      "limiting_ai_labor_ratio": 5.563532009346566e+120,
+      "limiting_ai_share": 0.014852220406950853,
+      "limiting_net_interest_rate": 0.05,
+      "limiting_research_weight": 1.0,
+      "research_share": 0.0,
+      "shadow_growth": 0.0078000000000000005,
+      "terminal_shadow_object": "profit_shadow_ratio",
+      "terminal_shadow_target": 0.04168
+    }
+  },
+  "purpose": "Classify the three near-unit paths without treating finite-window equation closure as an infinite-horizon equilibrium proof.",
+  "status": {
+    "sigma_xl_0.99": {
+      "classification": "numerically_admitted_equilibrium_trajectory",
+      "qualification": "Numerical equilibrium, not an existence proof.",
+      "verified": "The plotted segment matches a complementary-tail BVP from the same stocks; the asymptotic tail makes both TVC objects decay."
+    },
+    "sigma_xl_1.00": {
+      "classification": "analytical_infinite_horizon_equilibrium",
+      "verified": "The exact balanced-growth construction satisfies the dated conditions, optimality, and both TVCs."
+    },
+    "sigma_xl_1.01": {
+      "classification": "excluded_from_presented_trajectories",
+      "not_proved": "An admissible infinite-horizon tail; a finite-time singular continuation is not an equilibrium under the paper's infinite-horizon definition.",
+      "verified": "The plotted segment satisfies the dated equilibrium conditions and numerical robustness gates."
+    }
+  }
+}
