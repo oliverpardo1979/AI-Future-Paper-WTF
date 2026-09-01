@@ -1,8 +1,230 @@
 \section{Proofs}
 \label{app:rewrite-proofs}
 
-% Follow the order of propositions in the main text. Each proof must use only
-% definitions and results that precede the proposition in the paper.
+\subsection{Proof of Proposition \ref{prop:rewrite-ai-labor}}
+
+The CES share in \eqref{eq:rewrite-sx} implies
+\[
+ \left.\frac{\partial\ln(1-s_X)}{\partial\ln X}\right|_{A,L}
+ =-\left(1-\frac{1}{\sigma_{XL}}\right)s_X.
+\]
+Equation \eqref{eq:rewrite-output-x-elasticity} follows by differentiating
+\eqref{eq:rewrite-output} and \eqref{eq:rewrite-ces}. Combining these two
+elasticities with the wage equation in \eqref{eq:rewrite-factor-prices} gives
+\eqref{eq:rewrite-wage-x-elasticity}. Combining the share derivative with
+\eqref{eq:rewrite-labor-share} gives \eqref{eq:rewrite-share-x-elasticity}.
+Finally,
+\[
+ \left.\frac{\partial\ln w}{\partial\ln L}\right|_{K,A,X}
+ =-\left[\alpha(1-s_X)+\frac{s_X}{\sigma_{XL}}\right]<0.
+\]
+Implicit differentiation of the labor-demand condition at a fixed wage gives
+\eqref{eq:rewrite-labor-demand-x-elasticity}. Its denominator is positive, so
+the sign statements follow from the two thresholds \(1\) and \(1/\alpha\).
+\hfill\(\square\)
+
+\subsection{Proof of Proposition \ref{prop:rewrite-cap-invariance}}
+
+Let \(D=\overline B-B\). The finite-frontier state equation gives
+\[
+ \frac{\dot D}{D}=-\frac{\chi}{\overline B}(BM)^\eta.
+\]
+Integration gives \eqref{eq:rewrite-cap-gap}. Local integrability makes the
+exponent finite at every finite date, so \(D_t>0\).
+\hfill\(\square\)
+
+\subsection{Proof of Proposition \ref{prop:rewrite-monopoly-choice}}
+
+Fix \(K,A,L,B>0\), let \(R(X)=p_X(X;K,A,L)X\), and write
+\[
+ u=\frac{1}{\sigma_{XL}},\qquad s=s_X,\qquad
+ e=u(1-s)+\alpha s.
+\]
+The demand elasticity in \eqref{eq:rewrite-inverse-demand-elasticity} and the
+CES-share derivative imply
+\[
+ R'(X)=p_X(1-e),\qquad
+ \frac{\dd s}{\dd\ln X}=(1-u)s(1-s).
+\]
+Let \(m(X)=R'(X)\). Wherever marginal revenue is positive, direct
+differentiation gives
+\begin{equation}
+ -\frac{Xm'(X)}{p_X}
+ =e(1-e)+(\alpha-u)(1-u)s(1-s)\equiv D(s).
+ \label{eq:rewrite-monopoly-proof-curvature}
+\end{equation}
+If \((\alpha-u)(1-u)\geq0\), then \(D(s)>0\) immediately. If this product is
+negative, the parameter restrictions imply \(0<\alpha<u<1\), and
+\[
+ D(s)=u(1-u)(1-s)^2
+ +[u^2+2\alpha-3\alpha u]s(1-s)
+ +\alpha(1-\alpha)s^2.
+\]
+The middle coefficient is positive. For \(u\leq2/3\), this follows from
+\(u^2+\alpha(2-3u)>0\). For \(u>2/3\), use \(\alpha<u\) and \(2-3u<0\) to
+obtain
+\[
+ u^2+\alpha(2-3u)>u^2+u(2-3u)=2u(1-u)>0.
+\]
+Thus marginal revenue decreases strictly whenever it is positive.
+
+As \(X\downarrow0\), revenue is proportional to \(X^{1-u}\) when
+\(\sigma_{XL}>1\), to \(X^\beta\) when \(\sigma_{XL}=1\), and to
+\(X^{1-\alpha}\) when \(\sigma_{XL}<1\). Every exponent lies between zero and
+one, so \(m(X)\to\infty\). As \(X\to\infty\), marginal revenue converges to
+zero from above if \(\sigma_{XL}\geq1\); if \(\sigma_{XL}<1\), it eventually
+becomes negative. Hence \(m(X)=1/B\) has exactly one solution. Operating profit
+increases before this solution and decreases after it. The linear cost \(X/B\)
+dominates revenue as \(X\to\infty\), so this solution is the unique global
+maximum. Equation \eqref{eq:rewrite-monopoly-proof-curvature} also proves the
+strict second-order condition.
+\hfill\(\square\)
+
+\subsection{Proof of Proposition \ref{prop:rewrite-research-interior}}
+
+Proposition \ref{prop:rewrite-monopoly-choice} gives \(X^*>0\), and the
+envelope condition \eqref{eq:rewrite-profit-envelope} gives
+\(\pi_B=X^*/B^2>0\). A marginal increase in capability therefore raises
+current optimized profit and weakly raises future capability under a fixed
+research policy. At a differentiable optimum its current-value shadow price is
+strictly positive: \(q>0\). The part of the Hamiltonian that depends on \(M\)
+is
+\[
+ -M+q\chi B^\eta M^\eta\psi_{\overline B}(B).
+\]
+Its right derivative diverges as \(M\downarrow0\) because
+\(q,B,\psi_{\overline B}(B)>0\) and \(0<\eta<1\). Therefore \(M=0\) cannot
+maximize the Hamiltonian at a finite date.
+\hfill\(\square\)
+
+\subsection{Proof of Proposition \ref{prop:rewrite-research-scale}}
+
+I first consider the uncapped economy. Write
+\[
+ \theta=\frac{1-\alpha}{\alpha},\qquad
+ S=\int_0^T M_t\dd t.
+\]
+For every admissible policy, \(B\) is nondecreasing. The capability law implies
+\[
+ \frac{\dd}{\dd t}B_t^{1-\eta}
+ =(1-\eta)\chi M_t^\eta.
+\]
+H\"older's inequality then gives, for every \(t\leq T\),
+\begin{equation}
+ \max_{0\leq t\leq T}B_t
+ \leq C_B\left(1+S^{\eta/(1-\eta)}\right),
+ \label{eq:rewrite-capability-expenditure-bound}
+\end{equation}
+where \(C_B\) does not depend on the research policy. The same bound covers
+arbitrarily concentrated controls because, on a support of length \(d\leq T\),
+\(\int M_t^\eta\dd t\leq d^{1-\eta}S^\eta\).
+
+Let \(\overline K=\max_{t\leq T}K_t\) and
+\(\overline{\mathcal L}=\max_{t\leq T}A_tL_t\). The weighted power-mean
+inequality gives \(Z\leq AL+X\). The final-good firm's demand condition therefore
+implies
+\[
+ p_XX\leq(1-\alpha)\overline K^\alpha
+ \left(\overline{\mathcal L}^{1-\alpha}+X^{1-\alpha}\right).
+\]
+Maximizing this upper bound net of \(X/B\) gives
+\begin{equation}
+ \pi(B;K,A,L)\leq C_\pi(1+B^\theta).
+ \label{eq:rewrite-profit-upper-bound}
+\end{equation}
+On a finite horizon, integrability of \(r\) bounds the discount factor above
+and away from zero. Combining
+\eqref{eq:rewrite-capability-expenditure-bound} and
+\eqref{eq:rewrite-profit-upper-bound} yields
+\begin{equation}
+ J_T(M)\leq C_0+C_1S^p-\underline D S,
+ \qquad
+ p=\frac{\eta(1-\alpha)}{\alpha(1-\eta)}.
+ \label{eq:rewrite-truncated-value-bound}
+\end{equation}
+If \(\eta<\alpha\), then \(p<1\). The bound tends to minus infinity as
+\(S\to\infty\), so the value is finite and the objective is coercive.
+
+For the converse, suppose \(\sigma_{XL}>1\). As \(B\to\infty\), optimized
+operating profit satisfies
+\[
+ \pi(B;K,A,L)\sim\kappa_XKB^\theta
+\]
+for a constant \(\kappa_X>0\), uniformly when \(K,A,\) and \(L\) remain in
+compact subsets of the positive orthant. Fix \(\Delta\in(0,T)\), choose
+\(M=\mathcal B\) on \([0,\Delta]\), and choose \(M=0\) afterward. Then
+\[
+ B_{\mathcal B}(t)^{1-\eta}=B_0^{1-\eta}
+ +(1-\eta)\chi\mathcal B^\eta\min\{t,\Delta\}.
+\]
+Choosing \(X\) optimally at every date gives
+\begin{equation}
+ J_T(\mathcal B)=c_\pi\mathcal B^{
+ \eta(1-\alpha)/[\alpha(1-\eta)]}
+ -c_M\mathcal B
+ +o\!\left(\mathcal B^{
+ \eta(1-\alpha)/[\alpha(1-\eta)]}\right),
+ \label{eq:rewrite-research-burst-payoff}
+\end{equation}
+with \(c_\pi,c_M>0\). The exponent exceeds one when \(\eta>\alpha\), so this
+family makes the truncated value unbounded above. At equality, the exponent is
+one and the sign of the leading coefficient determines this family's result.
+
+For a finite frontier, Proposition \ref{prop:rewrite-cap-invariance} confines
+\(B\) to the compact interval \([B_0,\overline B]\). Optimized operating profit
+is continuous in \(B\) and uniformly bounded on the fixed horizon. Hence
+\(J_T(M)\leq C_0-\underline D S\), so every maximizing sequence has bounded
+total expenditure. Set \(v=M^\eta\) and \(p=1/\eta>1\). The control cost is
+\(v^p\), while the state equation is affine in \(v\):
+\[
+ \dot B=\chi B^\eta\left(1-\frac{B}{\overline B}\right)v.
+\]
+A maximizing sequence is bounded in the reflexive space \(L^p[0,T]\). A weakly
+convergent subsequence and the associated uniformly convergent state paths
+preserve feasibility. The operating-profit integral is continuous under
+uniform state convergence, while \(\int v^p\) is weakly lower semicontinuous.
+The objective is therefore weakly upper semicontinuous and attains its maximum.
+\hfill\(\square\)
+
+\subsection{Proof of Proposition \ref{prop:rewrite-developer-sufficiency}}
+
+The transformation \eqref{eq:rewrite-research-depth} satisfies
+\[
+ B'(R_B)=\psi_{\overline B}(B)>0,
+ \qquad
+ B''(R_B)=-\frac{\psi_{\overline B}(B)}{\overline B}<0.
+\]
+Using \(\pi_B=X/B^2\) and \eqref{eq:rewrite-profit-curvature} gives
+\eqref{eq:rewrite-capped-profit-curvature}. Condition
+\eqref{eq:rewrite-capped-concavity-gate} therefore makes optimized operating
+profit concave in \(R_B\) throughout the reachable state domain.
+
+When \(2\eta\leq1\), the monomial \((BM)^\eta\) is jointly concave and
+increasing in \((B,M)\). Because \(B(R_B)\) is increasing and concave,
+\(\chi[B(R_B)M]^\eta\) is jointly concave in \((R_B,M)\). Research cost is
+linear. The present-value Hamiltonian written in research depth is therefore
+jointly concave, and the transformed first-order and costate conditions
+maximize it globally.
+
+The shadow value of research depth is
+\(q_R=qB'(R_B)=q\psi_{\overline B}(B)\). Moreover,
+\[
+ \psi_{\overline B}(B)R_B
+ =-(\overline B-B)\log\left(1-\frac{B}{\overline B}\right)\leq B.
+\]
+The developer's transversality condition therefore implies the terminal
+condition required by the concavity argument in \(R_B\). For any admissible
+alternative with the same initial stock, the standard finite-horizon
+concavity inequality gives
+\[
+ J_T^*-\widetilde J_T
+ \geq\mu_T(\widetilde R_{B,T}-R_{B,T}^*)
+ \geq-\mu_TR_{B,T}^*,
+\]
+where \(\mu_T\) is the present-value shadow price of research depth. The final
+term converges to zero. Taking the lower limit as \(T\to\infty\) establishes
+global optimality.
+\hfill\(\square\)
 
 \clearpage
 \section{Numerical algorithm and equilibrium audit}

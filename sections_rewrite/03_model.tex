@@ -1,32 +1,205 @@
 \section{Model}
 \label{sec:rewrite-model}
 
-% Do not introduce H, omega_H, or sigma_HM in this benchmark.
+Time is continuous. I omit time subscripts when no confusion can arise. The
+economy contains a representative household, competitive final-good firms, and
+an integrated AI developer. Labor productivity $A$ grows exogenously. AI
+capability $B$ grows through autonomous AI research: the only current input
+used to improve $B$ is research compute. The model therefore describes an
+economy in which the replacement of human researchers at the technological
+frontier has already occurred.
+
+I derive the model in the order in which its agents solve their problems. I
+first present the household and final-good firms. I then state the developer's
+intertemporal problem before deriving its within-date service choice and its
+dynamic research conditions. Only after every agent has been characterized do
+I combine their conditions in the definition of equilibrium.
+
+\tikzset{
+ rewrite-input/.style={draw, rounded corners=2pt, minimum width=2.7cm,
+  minimum height=1.0cm, align=center, fill=gray!8},
+ rewrite-state/.style={draw, rounded corners=2pt, minimum width=2.7cm,
+  minimum height=1.0cm, align=center, fill=blue!8},
+ rewrite-technology/.style={draw, rounded corners=2pt, minimum width=3.5cm,
+  minimum height=1.0cm, align=center, fill=orange!9},
+ rewrite-flow/.style={->, semithick},
+ rewrite-dynamics/.style={->, semithick, dashed}
+}
 
 \subsection{Population and labor productivity}
 \label{subsec:rewrite-population}
 
-% Define N, A, n, gamma_A, the labor endowment, initial values, and timing.
+Population grows at the exogenous rate $n\geq0$:
+\begin{equation}
+ \dot N=nN,
+ \qquad N(0)=N_0>0.
+ \label{eq:rewrite-population}
+\end{equation}
+Each person supplies one unit of homogeneous labor inelastically. The aggregate
+labor endowment is therefore $N$. Because autonomous research uses no human
+labor, all labor is employed in final production and equilibrium will impose
+$L=N$.
+
+The variable $A$ measures labor-augmenting productivity. One unit of labor
+supplies $A$ efficiency units, so effective labor is $AL$. Labor
+productivity follows
+\begin{equation}
+ \dot A=\gamma_A A,
+ \qquad A(0)=A_0>0,
+ \qquad \gamma_A\geq0.
+ \label{eq:rewrite-labor-productivity}
+\end{equation}
+For any positive variable $V$, I write $g_V\equiv\dot V/V$. Thus
+$g_A=\gamma_A$.
 
 \subsection{Household}
 \label{subsec:rewrite-household}
 
-% State preferences, the budget constraint, capital accumulation, and the
-% household transversality condition. Derive the Euler equation here and do not
-% use developer conditions in this subsection.
+The representative household owns physical capital and the AI developer. Let
+\(\Pi\) denote the net distribution the household receives from the developer;
+its formula is derived when I present that agent's problem. The household takes
+the paths of the net interest rate \(r\), the wage \(w\), \(\Pi\), and
+population \(N\) as given. For a predetermined
+capital stock $K(0)=K_0>0$, it chooses aggregate consumption $C$ to solve
+\begin{equation}
+ \max_{\{C_t\}_{t\geq0}}
+ \int_0^\infty e^{-\rho t}N_t\log(C_t/N_t)\dd t,
+ \qquad \rho>n,
+ \label{eq:rewrite-household-problem}
+\end{equation}
+subject to
+\begin{equation}
+ \dot K=rK+wN+\Pi-C.
+ \label{eq:rewrite-household-budget}
+\end{equation}
+The variable $r$ is the net real interest rate: depreciation has already been
+deducted from the rental return to capital. The household's interior Euler
+equation is
+\begin{equation}
+ \frac{\dot C}{C}=n+r-\rho.
+ \label{eq:rewrite-euler}
+\end{equation}
+Its transversality condition is
+\begin{equation}
+ \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0.
+ \label{eq:rewrite-household-tvc}
+\end{equation}
+These conditions use only objects in the household's problem. Production-side
+conditions determining $r,w,$ and \(\Pi\) are introduced below.
 
 \subsection{Final-good production}
 \label{subsec:rewrite-final-production}
 
-% Define K, AL, X, sigma_XL, and all production parameters before writing the
-% final-good firm's problem. Derive factor prices and AI-service demand.
+Competitive firms produce the final good from physical capital $K$, effective
+labor $AL$, and AI production services $X$. Let $0<\alpha<1$ be the
+physical-capital elasticity, $\delta\geq0$ the depreciation rate, and
+$\sigma_{XL}>0$ the elasticity of substitution between effective labor and AI
+production services. The CES weights satisfy
+$\omega_L,\omega_X\in(0,1)$ and $\omega_L+\omega_X=1$. Production is
+\begin{align}
+ Y&=K^\alpha Z^{1-\alpha},
+ \label{eq:rewrite-output}\\
+ Z&=\left[\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
+ +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}\right]^{
+ \sigma_{XL}/(\sigma_{XL}-1)}.
+ \label{eq:rewrite-ces}
+\end{align}
+At the continuous unit-elasticity limit,
+$Z=(AL)^{\omega_L}X^{\omega_X}$.
+
+Define
+\begin{equation}
+ s_X=\frac{\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}}
+ {\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
+ +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}}.
+ \label{eq:rewrite-sx}
+\end{equation}
+The variable $s_X$ is the elasticity of $Z$ with respect to $X$, not an
+income share. AI's gross revenue share in final production will instead be
+$(1-\alpha)s_X$.
+
+Let \(p_X\) denote the price of one unit of AI production services. Taking the
+input prices \(r+\delta,w,\) and \(p_X\) as given, a final-good firm solves
+\begin{equation}
+ \max_{K,L,X\geq0}
+ \left\{K^\alpha Z(AL,X)^{1-\alpha}-(r+\delta)K-wL-p_XX\right\}.
+ \label{eq:rewrite-final-firm-problem}
+\end{equation}
+The interior first-order conditions are
+\begin{equation}
+ r=\alpha\frac{Y}{K}-\delta,
+ \qquad
+ w=(1-\alpha)(1-s_X)\frac{Y}{L},
+ \qquad
+ p_X=(1-\alpha)s_X\frac{Y}{X}.
+ \label{eq:rewrite-factor-prices}
+\end{equation}
+Constant returns and these conditions imply
+\begin{equation}
+ Y=(r+\delta)K+wL+p_XX.
+ \label{eq:rewrite-final-zero-profit}
+\end{equation}
 
 \subsubsection{AI services and production labor}
 \label{subsubsec:rewrite-static-substitution}
 
-% Present the static proposition that identifies how sigma_XL governs the
-% response of labor demand, the wage, and labor's income share to AI services.
-% This result must precede the developer problem.
+The elasticity \(\sigma_{XL}\) governs two different margins. The first is
+whether more AI services raise or lower labor's marginal product. The second is
+whether labor receives a larger or smaller fraction of output. These margins
+have different thresholds. Define production labor's share of output as
+\begin{equation}
+ \ell^Y\equiv\frac{wL}{Y}=(1-\alpha)(1-s_X).
+ \label{eq:rewrite-labor-share}
+\end{equation}
+
+\begin{proposition}[AI services and production labor]
+\label{prop:rewrite-ai-labor}
+For an interior final-good firm, an increase in $X$, holding $K,A,$ and
+$L$ fixed, satisfies
+\begin{align}
+ \left.\frac{\partial\ln Y}{\partial\ln X}\right|_{K,A,L}
+ &=(1-\alpha)s_X,
+ \label{eq:rewrite-output-x-elasticity}\\
+ \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,A,L}
+ &=\left(\frac{1}{\sigma_{XL}}-\alpha\right)s_X,
+ \label{eq:rewrite-wage-x-elasticity}\\
+ \left.\frac{\partial\ln\ell^Y}{\partial\ln X}\right|_{K,A,L}
+ &=-\left(1-\frac{1}{\sigma_{XL}}\right)s_X.
+ \label{eq:rewrite-share-x-elasticity}
+\end{align}
+Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
+\begin{equation}
+ \left.\frac{\partial\ln L}{\partial\ln X}\right|_{K,A,w}
+ =\frac{s_X(\sigma_{XL}^{-1}-\alpha)}
+ {\alpha(1-s_X)+s_X/\sigma_{XL}}.
+ \label{eq:rewrite-labor-demand-x-elasticity}
+\end{equation}
+Thus more AI services lower labor's income share if and only if
+\(\sigma_{XL}>1\), but lower the wage at a fixed $L$, or conditional labor
+demand at a fixed $w$, only if \(\sigma_{XL}>1/\alpha\). In the nonempty
+interval
+\begin{equation}
+ 1<\sigma_{XL}<\frac{1}{\alpha},
+ \label{eq:rewrite-decoupling-region}
+\end{equation}
+the wage rises while labor receives a smaller share of output.
+\end{proposition}
+
+The distinction between the wage and labor-share effects follows the general
+result in \citet{autorkausik2026}. The two thresholds for this nested
+Cobb--Douglas--CES technology are also derived by \citet{yango2026}. Proposition
+\ref{prop:rewrite-ai-labor} is static: it holds the specified variables fixed
+and does not yet describe an equilibrium transition.
+
+Solving the final-good firm's AI condition for its price yields the inverse
+demand schedule $p_X(X;K,A,L)$. Its inverse absolute elasticity is
+\begin{equation}
+ e_X\equiv-
+ \left.\frac{\partial\ln p_X(X;K,A,L)}{\partial\ln X}\right|_{K,A,L}
+ =\frac{1-s_X}{\sigma_{XL}}+\alpha s_X.
+ \label{eq:rewrite-inverse-demand-elasticity}
+\end{equation}
+This demand schedule is an input to the developer's problem.
 
 \subsection{The AI developer}
 \label{subsec:rewrite-developer}
@@ -34,34 +207,500 @@
 \subsubsection{AI production and research services}
 \label{subsubsec:rewrite-ai-services}
 
-% Define U, M, X, B, p_X, and the resource costs of AI services. Explain the
-% nonrival nature of capability and why the benchmark assigns the integrated
-% developer market power over AI services.
+The model distinguishes two uses of compute. Inference compute $U$ operates
+existing AI systems and supplies AI production services. Research compute $M$
+improves AI capability. Both $U$ and $M$ are flows, and I choose units so
+that one unit of either flow costs one unit of the final good.
+
+The stock $B$ measures AI capability: what one unit of compute can
+accomplish. Inference compute produces AI production services according to
+\begin{equation}
+ X=BU.
+ \label{eq:rewrite-ai-service}
+\end{equation}
+Research compute analogously produces AI research services $BM$. Thus $U$
+and $M$ are rival resource inputs, while $X$ and $BM$ are the resulting
+service flows. This capability--compute distinction follows the accounting
+architecture in \citet{davidsonetal2026}.
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.94\textwidth}{!}{%
+ \begin{tikzpicture}[>=Latex,font=\small]
+  \node[rewrite-state] (A) at (-8.0,2.8) {\(A\)\\labor productivity};
+  \node[rewrite-input] (L) at (-8.0,1.3) {\(L\)\\production labor};
+  \node[rewrite-technology] (AL) at (-4.5,2.05) {\(AL\)\\effective labor};
+  \node[rewrite-state] (B) at (-8.0,-0.4) {\(B\)\\AI capability};
+  \node[rewrite-input] (U) at (-8.0,-1.9) {\(U\)\\inference compute};
+  \node[rewrite-technology] (X) at (-4.5,-1.15) {\(X=BU\)\\AI production services};
+  \node[rewrite-technology] (Z) at (0.0,0.55)
+   {\(Z=\operatorname{CES}(AL,X)\)\\elasticity \(\sigma_{XL}\)};
+  \node[rewrite-state] (K) at (0.0,3.65) {\(K\)\\physical capital};
+  \node[rewrite-technology] (Y) at (4.0,2.35)
+   {\(Y=K^\alpha Z^{1-\alpha}\)\\final output};
+  \node[rewrite-input] (M) at (-1.7,-2.7) {\(M\)\\research compute};
+  \node[rewrite-technology] (BM) at (1.6,-2.7) {\(BM\)\\AI research services};
+  \node[rewrite-technology] (Bd) at (5.1,-1.25)
+   {\(\dot B\)\\new capability};
+
+  \draw[rewrite-flow] (A) -- (AL);
+  \draw[rewrite-flow] (L) -- (AL);
+  \draw[rewrite-flow] (B) -- (X);
+  \draw[rewrite-flow] (U) -- (X);
+  \draw[rewrite-flow] (AL) -- (Z);
+  \draw[rewrite-flow] (X) -- (Z);
+  \draw[rewrite-flow] (Z) -- (Y);
+  \draw[rewrite-flow] (K) -- (Y);
+  \draw[rewrite-flow] (B) -- (BM);
+  \draw[rewrite-flow] (M) -- (BM);
+  \draw[rewrite-flow] (BM) -- (Bd);
+  \draw[rewrite-dynamics] (Bd.east) -- (6.7,-1.25) -- (6.7,-3.8) --
+    (-8.0,-3.8) -- (B.south);
+ \end{tikzpicture}%
+ }
+ \caption{Production and autonomous AI research. Capability augments both
+ inference compute and research compute. The resulting feedback runs from
+ $B$ to $BM$, from $BM$ to \(\dot B\), and back to $B$.}
+ \label{fig:rewrite-model-flow}
+\end{figure}
 
 \subsubsection{Autonomous capability accumulation}
 \label{subsubsec:rewrite-capability}
 
-% State the capability law with omega_H=0. Introduce the finite frontier and
-% explain its economic and analytical role before using it in any condition.
+Given initial capability \(B(0)=B_0>0\), I study a family of economies indexed
+by a capability frontier
+\(\overline B\in(B_0,\infty]\):
+\begin{equation}
+ \dot B=\chi(BM)^\eta\psi_{\overline B}(B),
+ \qquad
+ \psi_{\overline B}(B)=
+ \begin{cases}
+  1-B/\overline B,&\overline B<\infty,\\
+  1,&\overline B=\infty,
+ \end{cases}
+ \qquad \chi>0,\quad0<\eta<1.
+ \label{eq:rewrite-capability-law}
+\end{equation}
+The parameter \(\chi\) shifts research productivity. The parameter \(\eta\)
+governs returns to current research scale. Better capability raises the
+productivity of research compute through $BM$, which creates recursive
+improvement. When the frontier is finite, the term
+\(\psi_{\overline B}(B)\) reduces the remaining room for improvement as
+capability approaches \(\overline B\). The uncapped specification is recovered
+at \(\overline B=\infty\).
+
+The finite frontier is an analytical device, not a robustness calibration. It
+allows me to establish and compute an equilibrium for a fixed bounded state
+space and then ask whether those equilibria have a meaningful limit as
+\(\overline B\to\infty\). This order does not assume that the uncapped economy
+has an equilibrium.
+
+\begin{proposition}[Finite-frontier invariance]
+\label{prop:rewrite-cap-invariance}
+Suppose $0<B_0<\overline B<\infty$, $0<\eta<1$, and $BM$ is locally
+integrable. Then
+\begin{equation}
+ \overline B-B_t=(\overline B-B_0)
+ \exp\left\{-\frac{\chi}{\overline B}
+ \int_0^t(B_sM_s)^\eta\dd s\right\}>0
+ \label{eq:rewrite-cap-gap}
+\end{equation}
+at every finite date. Capability may approach the frontier asymptotically but
+cannot cross it in finite time.
+\end{proposition}
+
+\subsubsection{Market structure and research finance}
+\label{subsubsec:rewrite-market-structure}
+
+Capability is nonrival: once $B$ has been developed, it can augment every
+unit of inference and research compute. The compute used to create and operate
+AI remains rival and costly. If competitive service providers had free access
+to the common capability stock, free entry would imply
+\begin{equation}
+ p_X=\frac{1}{B},
+ \qquad p_XX-\frac{X}{B}=0.
+ \label{eq:rewrite-competitive-ai}
+\end{equation}
+The service market would generate no operating surplus from which a private
+developer could finance $M$.
+
+I therefore use an integrated developer that owns $B$, sells AI production
+services, and pays for research. Its market power connects the cost of creating
+a nonrival capability stock to an appropriable return, as in the standard
+endogenous-growth treatment of ideas \citep{romer1990}. This is not a claim that
+nonrivalry technologically requires monopoly. Licensing, oligopoly, public
+funding, or open-source provision with research subsidies could also finance
+capability creation, but each would require an additional institution and
+would change prices and rents. Recent work studies these alternatives in more
+detail \citep{korinekvipra2025,gans2024,demireretal2025}.
+
+\subsubsection{The primitive dynamic problem}
+\label{subsubsec:rewrite-dynamic-developer}
+
+The developer sells $X$, purchases the $U=X/B$ units of inference compute
+needed to supply those services, uses $M$ for research, and owns the resulting
+capability stock. Taking the paths of $r,K,A,$ and $L$ as given, it solves
+\begin{equation}
+ \max_{\{X_t,M_t\}_{t\geq0}}
+ \int_0^\infty
+ \exp\left\{-\int_0^t r_s\dd s\right\}
+ \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-M_t\right]\dd t,
+ \label{eq:rewrite-developer-problem}
+\end{equation}
+subject to \eqref{eq:rewrite-capability-law} and $B(0)=B_0$. Its distributed
+profit is
+\begin{equation}
+ \Pi=p_XX-\frac{X}{B}-M=p_XX-U-M.
+ \label{eq:rewrite-developer-profit}
+\end{equation}
+Profit can be negative at a date because the model imposes no separate
+cash-flow constraint. A negative \(\Pi\) represents an equity injection from
+the household that owns the developer.
 
 \subsubsection{Pointwise service choice}
 \label{subsubsec:rewrite-static-monopoly}
 
-% Solve the dated monopoly service decision and state its existence, uniqueness,
-% and curvature conditions before substituting it into the dynamic problem.
+Sales $X$ do not enter the capability law or any other intertemporal
+constraint. Conditional on $B,K,A,$ and $L$, the developer can therefore
+choose $X$ within each date. Define optimized operating profit before
+research expenditure as
+\begin{equation}
+ \pi(B;K,A,L)=\max_{X\geq0}
+ \left\{p_X(X;K,A,L)X-\frac{X}{B}\right\}.
+ \label{eq:rewrite-service-choice}
+\end{equation}
+The first-order condition equates marginal revenue to the compute cost of one
+additional service unit:
+\begin{equation}
+ p_X(1-e_X)=\frac{1}{B}.
+ \label{eq:rewrite-monopoly-foc}
+\end{equation}
 
-\subsubsection{Dynamic problem}
-\label{subsubsec:rewrite-dynamic-developer}
+\begin{proposition}[Pointwise monopoly choice]
+\label{prop:rewrite-monopoly-choice}
+Suppose $K,A,L,B>0$, $0<\alpha<1$, $\sigma_{XL}>0$, and
+\(\omega_L,\omega_X\in(0,1)\). Problem \eqref{eq:rewrite-service-choice} has a
+unique global maximizer $X^*>0$. It is the unique solution to
+\eqref{eq:rewrite-monopoly-foc} and satisfies
+\begin{equation}
+ e_X(1-e_X)
+ +(\alpha-\sigma_{XL}^{-1})(1-\sigma_{XL}^{-1})s_X(1-s_X)>0.
+ \label{eq:rewrite-monopoly-soc}
+\end{equation}
+\end{proposition}
 
-% State the developer's objective, controls, state law, costate equation,
-% research condition, and transversality condition. Keep necessary conditions
-% separate from the sufficient conditions that make the policy globally
-% optimal.
+The monopoly price is therefore
+\begin{equation}
+ p_X=\frac{1/B}{1-e_X}.
+ \label{eq:rewrite-markup}
+\end{equation}
+At \(\sigma_{XL}=1\), define
+\(\beta=(1-\alpha)\omega_X\). The solution is explicit:
+\begin{equation}
+ X^*=\left[\beta^2BK^\alpha
+ (AL)^{(1-\alpha)\omega_L}\right]^{1/(1-\beta)}.
+ \label{eq:rewrite-monopoly-cd-solution}
+\end{equation}
+The envelope theorem gives
+\begin{equation}
+ \pi_B=\frac{X}{B^2}=\frac{U}{B}.
+ \label{eq:rewrite-profit-envelope}
+\end{equation}
+The $B^2$ term does not represent quadratic returns to capability. It results
+from differentiating the inference cost $X/B$: at a fixed $X$, a marginal
+increase in capability saves $X/B^2$ units of compute.
+
+Substituting the pointwise optimum into the primitive problem yields the
+equivalent reduced problem
+\begin{equation}
+ \max_{\{M_t\}_{t\geq0}}
+ \int_0^\infty
+ \exp\left\{-\int_0^t r_s\dd s\right\}
+ [\pi(B_t;K_t,A_t,L_t)-M_t]\dd t,
+ \label{eq:rewrite-developer-reduced}
+\end{equation}
+subject to the same state law and initial condition. This reduction does not
+replace the dynamic problem with a static problem. It solves the within-date
+choice $X$ inside the original intertemporal problem and leaves $M$ as the
+dynamic control.
+
+\subsubsection{Dynamic research choice}
+\label{subsubsec:rewrite-research-choice}
+
+Let $q$ be the current-value shadow price of capability. An interior research
+choice satisfies
+\begin{equation}
+ q\chi\eta B(BM)^{\eta-1}\psi_{\overline B}(B)=1,
+ \label{eq:rewrite-research-foc}
+\end{equation}
+or, equivalently,
+\begin{equation}
+ M=\left[q\chi\eta B^\eta\psi_{\overline B}(B)
+ \right]^{1/(1-\eta)}.
+ \label{eq:rewrite-research-demand}
+\end{equation}
+The current-value costate equation is
+\begin{equation}
+ \frac{\dot q}{q}=r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{\psi_{\overline B}(B)}.
+ \label{eq:rewrite-costate}
+\end{equation}
+For a finite frontier,
+\(\psi_{\overline B}'/\psi_{\overline B}=-1/(\overline B-B)\); for the
+uncapped economy, the derivative is zero. Rearranging gives the return equation
+\begin{equation}
+ rq=\frac{X}{B^2}+q\eta\frac{\dot B}{B}
+ +q\dot B\frac{\psi_{\overline B}'(B)}{\psi_{\overline B}(B)}+\dot q.
+ \label{eq:rewrite-capability-return}
+\end{equation}
+The first term is the inference-compute saving from better capability. The
+second is the gain in research productivity. With a finite frontier, the third
+term is negative because a higher $B$ leaves less room for further
+improvement. The final term is the capital gain on capability. Together these
+returns must equal the market return $rq$.
+
+The developer's transversality condition is
+\begin{equation}
+ \lim_{t\to\infty}
+ \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
+ \label{eq:rewrite-developer-tvc}
+\end{equation}
+It rules out a path that leaves positive discounted value in unused capability.
+It does not require $q$, $B$, or their undiscounted product to converge to
+zero.
+
+\begin{proposition}[Research is interior]
+\label{prop:rewrite-research-interior}
+Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued
+optimum with $B>0$ and positive demand for AI production services. Then
+$q>0$ and $M>0$ at every finite date. Research may converge to zero
+asymptotically, but the developer cannot stop capability accumulation by
+choosing $M=0$ at a finite date.
+\end{proposition}
+
+The first-order and transversality conditions are necessary, but in a nonlinear
+infinite-horizon problem they need not establish that the developer has a
+finite value or that its candidate policy is globally optimal. The next two
+restrictions address these distinct issues.
+
+\begin{proposition}[Large-scale research expenditure]
+\label{prop:rewrite-research-scale}
+Fix a finite horizon, an initial capability stock, positive continuous paths
+for $K,A,L$, and an integrable path for $r$. In the uncapped economy, if
+$0<\eta<\alpha<1$, the developer's truncated value is finite and its
+objective tends to minus infinity as total research expenditure diverges. If
+\(\sigma_{XL}>1\) and \(\eta>\alpha\), fixed-duration expansions of research
+compute make the truncated value unbounded above. At \(\eta=\alpha\), the
+leading benefit and cost terms have the same order, so their coefficients
+determine the result.
+
+For a fixed finite frontier, the truncated problem instead has a finite value
+and attains its maximum for every $0<\eta<1$.
+\end{proposition}
+
+The uncapped restriction has a direct interpretation. If $S$ is total
+research expenditure over a fixed horizon, the resulting profit benefit grows
+no faster than
+\begin{equation}
+ S^{\eta(1-\alpha)/[\alpha(1-\eta)]},
+ \label{eq:rewrite-research-benefit-order}
+\end{equation}
+whereas the cost of research is linear in $S$. The exponent is smaller than
+one exactly when \(\eta<\alpha\). I therefore maintain
+\begin{assumption}[Large-scale research curvature]
+\label{ass:rewrite-research-curvature}
+\begin{equation}
+ 0<\eta<\alpha<1.
+ \label{eq:rewrite-eta-alpha}
+\end{equation}
+\end{assumption}
+This assumption prevents arbitrarily large research expenditure from being
+optimal on a fixed horizon. It does not by itself prove an infinite-horizon
+equilibrium. The quantitative analysis uses $\eta=0.20<\alpha=0.33$; the
+value of \(\eta\) is illustrative rather than estimated.
+
+To state a sufficient condition for global optimality, define the
+service--capability elasticity
+\begin{equation}
+ \varepsilon_B\equiv
+ \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
+ =\frac{1-e_X}{e_X(1-e_X)
+ +(\alpha-\sigma_{XL}^{-1})(1-\sigma_{XL}^{-1})s_X(1-s_X)}.
+ \label{eq:rewrite-service-capability-elasticity}
+\end{equation}
+Because \(\pi_B=X^*/B^2\),
+\begin{equation}
+ \pi_{BB}=\frac{X^*}{B^3}(\varepsilon_B-2).
+ \label{eq:rewrite-profit-curvature}
+\end{equation}
+For a finite frontier, define research depth
+\begin{equation}
+ R_B=-\overline B\log\left(1-\frac{B}{\overline B}\right).
+ \label{eq:rewrite-research-depth}
+\end{equation}
+Then
+\(B(R_B)=\overline B[1-e^{-R_B/\overline B}]\) and
+\begin{equation}
+ \dot R_B=\chi[B(R_B)M]^\eta.
+ \label{eq:rewrite-research-depth-law}
+\end{equation}
+A direct differentiation gives
+\begin{equation}
+ \frac{\partial^2\pi(B(R_B))}{\partial R_B^2}
+ =\frac{X\psi_{\overline B}(B)}{B^3}
+ \left[\psi_{\overline B}(B)(\varepsilon_B-2)
+ -\frac{B}{\overline B}\right].
+ \label{eq:rewrite-capped-profit-curvature}
+\end{equation}
+
+\begin{proposition}[Developer sufficiency with a finite frontier]
+\label{prop:rewrite-developer-sufficiency}
+Consider a feasible finite-frontier developer policy with a finite objective.
+Suppose it satisfies the pointwise monopoly choice, research first-order
+condition, capability law, costate equation, and developer transversality
+condition derived above. If \(2\eta\leq1\) and
+\begin{equation}
+ \psi_{\overline B}(B)(\varepsilon_B-2)
+ \leq\frac{B}{\overline B}
+ \label{eq:rewrite-capped-concavity-gate}
+\end{equation}
+for every date and every capability in the reachable interval
+\([B_0,\overline B)\), then the policy is a global solution to the developer's
+problem.
+\end{proposition}
+
+Condition \eqref{eq:rewrite-capped-concavity-gate} is sufficient, not
+necessary. It holds strictly near the frontier because its left-hand side
+converges to zero while its right-hand side converges to one. It can fail at
+lower capability levels, which is why the numerical equilibrium audit checks
+it along the entire reachable path.
 
 \subsection{Equilibrium}
 \label{subsec:rewrite-equilibrium}
 
-% Give one self-contained definition. List exogenous paths and parameters,
-% predetermined initial states, endogenous trajectories, agent optimality,
-% technologies, market clearing, feasibility, nonnegativity, and both
-% transversality conditions. Do not impose balanced growth.
+I can now combine the conditions of the three agents. Capital-market clearing
+identifies household capital with the capital rented by final-good firms.
+Labor-market clearing gives $L=N$. AI-service market clearing identifies the
+developer's sales with the final sector's purchases. Combining the household
+budget, final-good zero profit, developer profit, and market clearing yields
+the aggregate resource constraint
+\begin{equation}
+ C+\dot K+\delta K+U+M=Y.
+ \label{eq:rewrite-resource}
+\end{equation}
+
+\begin{definition}[Regular interior equilibrium]
+\label{def:rewrite-equilibrium}
+Fix the model's parameters, a frontier
+\(\overline B\in(B_0,\infty]\), exogenous initial values $A_0,N_0>0$, and
+predetermined stocks $K_0,B_0>0$. If the frontier is finite, require
+$B_0<\overline B$. A regular interior equilibrium is an
+infinite-horizon trajectory
+\begin{equation}
+ \left\{K_t,B_t,C_t,q_t,L_t,U_t,M_t,X_t,Z_t,Y_t,r_t,w_t,p_{X,t},
+ s_{X,t},e_{X,t},\Pi_t\right\}_{t\geq0}
+ \label{eq:rewrite-equilibrium-trajectory}
+\end{equation}
+with strictly positive quantities and prices \(w,p_X,q\), and with \(r\) and
+\(\Pi\) allowed to have either sign. The paths \(K,B,C,\) and \(q\) are
+absolutely continuous. The controls are measurable and nonnegative, the state
+and flow constraints below hold, and the household's and developer's improper
+objective integrals converge to finite real values. For every date, the
+following conditions hold, with the differential equations understood almost
+everywhere.
+
+The exogenous paths and predetermined initial conditions are
+\begin{subequations}
+\label{eq:rewrite-equilibrium-exogenous}
+\begin{align}
+ A_t&=A_0e^{\gamma_At}, & N_t&=N_0e^{nt},\\
+ K(0)&=K_0, & B(0)&=B_0.
+\end{align}
+\end{subequations}
+The intratemporal allocation and prices satisfy
+\begin{subequations}
+\label{eq:rewrite-equilibrium-static}
+\begin{align}
+ L&=N,
+ \label{eq:rewrite-eq-labor}\\
+ Z&=\left[\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
+ +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}\right]^{
+ \sigma_{XL}/(\sigma_{XL}-1)},
+ \label{eq:rewrite-eq-z}\\
+ Y&=K^\alpha Z^{1-\alpha},
+ \label{eq:rewrite-eq-y}\\
+ s_X&=\frac{\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}}
+ {\omega_L(AL)^{(\sigma_{XL}-1)/\sigma_{XL}}
+ +\omega_XX^{(\sigma_{XL}-1)/\sigma_{XL}}},
+ \label{eq:rewrite-eq-sx}\\
+ e_X&=\frac{1-s_X}{\sigma_{XL}}+\alpha s_X,
+ \label{eq:rewrite-eq-ex}\\
+ r&=\alpha\frac{Y}{K}-\delta,
+ \label{eq:rewrite-eq-r}\\
+ w&=(1-\alpha)(1-s_X)\frac{Y}{L},
+ \label{eq:rewrite-eq-w}\\
+ p_X&=(1-\alpha)s_X\frac{Y}{X},
+ \label{eq:rewrite-eq-px}\\
+ p_X(1-e_X)&=\frac{1}{B},
+ \label{eq:rewrite-eq-monopoly}\\
+ X&=BU,
+ \label{eq:rewrite-eq-service}\\
+ q\chi\eta B(BM)^{\eta-1}\psi_{\overline B}(B)&=1,
+ \label{eq:rewrite-eq-research}\\
+ \Pi&=p_XX-U-M.
+ \label{eq:rewrite-eq-profit}
+\end{align}
+\end{subequations}
+The four dynamic equations are
+\begin{subequations}
+\label{eq:rewrite-equilibrium-dynamics}
+\begin{align}
+ \dot K&=Y-C-U-M-\delta K,
+ \label{eq:rewrite-eq-kdot}\\
+ \dot B&=\chi(BM)^\eta\psi_{\overline B}(B),
+ \label{eq:rewrite-eq-bdot}\\
+ \frac{\dot C}{C}&=n+r-\rho,
+ \label{eq:rewrite-eq-cdot}\\
+ \frac{\dot q}{q}&=r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{\psi_{\overline B}(B)}.
+ \label{eq:rewrite-eq-qdot}
+\end{align}
+\end{subequations}
+The two transversality conditions are
+\begin{subequations}
+\label{eq:rewrite-equilibrium-tvcs}
+\begin{align}
+ \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}&=0,
+ \label{eq:rewrite-eq-household-tvc}\\
+ \lim_{t\to\infty}
+ \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t&=0.
+ \label{eq:rewrite-eq-developer-tvc}
+\end{align}
+\end{subequations}
+At \(\sigma_{XL}=1\), equations \eqref{eq:rewrite-eq-z} and
+\eqref{eq:rewrite-eq-sx} are understood at their continuous limits:
+$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$. If
+\(\overline B<\infty\), the path satisfies $B_t<\overline B$ at every finite
+date. Finally, the household and developer solve their stated optimization
+problems, final-good firms maximize profit, and all markets clear. The initial
+values \(C(0)\) and \(q(0)\) are endogenous jump variables selected to satisfy
+the two transversality conditions.
+\end{definition}
+
+The definition does not impose balanced growth. A balanced-growth path is one
+possible equilibrium trajectory, not the meaning of equilibrium. Nor are the
+dated equations alone enough: a numerical path is admitted as an equilibrium
+only if it also satisfies both transversality conditions and the global
+optimality requirements in Definition \ref{def:rewrite-equilibrium}.
+
+The system contains no separate household budget or final-good zero-profit
+equation because these are redundant after market clearing. The consolidated
+income decomposition follows from the equations in the definition:
+\begin{equation}
+ 1=\frac{(r+\delta)K}{Y}+\frac{wL}{Y}
+ +\frac{\Pi}{Y}+\frac{U}{Y}+\frac{M}{Y}.
+ \label{eq:rewrite-income-decomposition}
+\end{equation}
+It records how final output is divided among gross capital income, labor income,
+developer profit, inference compute, and research compute. It is an accounting
+consequence of equilibrium, not an additional equilibrium condition.
