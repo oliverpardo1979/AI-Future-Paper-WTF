@@ -927,6 +927,46 @@ production services dominate and capability is fixed at the frontier. Recall
  \left(\frac{\mathcal R}{\mathcal D_\sigma}\right)^{1/\theta}.
  \label{eq:axm-critical-capability-frontier}
 \end{equation}
+Keeping this expression as the definition, an equivalent form is
+\begin{equation}
+ \overline B_c=
+ \frac{\mathcal R^{1/\theta}}
+ {(1-\alpha)^2
+  \omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}}.
+ \label{eq:axm-critical-capability-frontier-equivalent}
+\end{equation}
+Because \(0<\omega_X<1\), the critical frontier diverges as
+\(\sigma_{XL}\downarrow1\). The divergence is extremely fast: the exponent on
+\(\omega_X\) is of order \(1/(\sigma_{XL}-1)\). Gross substitution can
+therefore imply an AI-dominated terminal regime and still require an enormous
+capability range before that regime becomes relevant when the elasticity is
+only slightly above one.
+
+\begin{table}[H]
+ \centering
+ \caption{Critical capability frontier above unit elasticity}
+ \label{tab:axm-critical-capability-frontier}
+ \begin{tabular}{@{}lr@{}}
+  \toprule
+  \(\sigma_{XL}\) & \(\overline B_c\) \\
+  \midrule
+  1.01 & \(4.88\times10^{70}\) \\
+  1.05 & \(5.90\times10^{14}\) \\
+  1.10 & \(6.04\times10^{7}\) \\
+  1.25 & \(3.87\times10^{3}\) \\
+  1.50 & \(1.55\times10^{2}\) \\
+  2.00 & \(3.09\times10^{1}\) \\
+  \bottomrule
+ \end{tabular}
+ \begin{minipage}{0.84\textwidth}
+  \footnotesize
+  \emph{Note:} Author's calculations from
+  \eqref{eq:axm-critical-capability-frontier} using the benchmark parameters
+  in Table \ref{tab:axm-parameters}. The levels inherit the paper's existing
+  normalization of (B); they are analytical thresholds, not empirical
+  estimates of AI capability.
+ \end{minipage}
+\end{table}
 
 To state the result, let
 \begin{equation}
@@ -1019,6 +1059,90 @@ consolidated decomposition in the AI-dominated regime:
  \alpha(1-\alpha)+\frac{\rho-n}{z_A(\overline B)}.
  \label{eq:axm-capped-ai-consolidated-shares}
 \end{equation}
+
+The terminal restrictions can close an equilibrium BVP only if each terminal
+regime has the right saddle-path dimension. The normalization must differ
+across the two regimes because their growing scales differ. Let
+\(G=n+\gamma_A\),
+\(\mu=\eta/(1-\eta)\), and
+\(\varphi=(\sigma_{XL}-1)/\sigma_{XL}>0\). Below the threshold, I use
+\begin{equation}
+ k=\frac{K}{AN},\qquad c=\frac{C}{AN},\qquad
+ d=(\overline B-B)AN,\qquad
+ \widetilde q=\frac{q}{AN},\qquad
+ \tau=(AN)^{-1}.
+ \label{eq:axm-capped-labor-normalization}
+\end{equation}
+Above the threshold, I use
+\begin{equation}
+ h=\left(\frac{AN}{K}\right)^\varphi,\qquad
+ d=(\overline B-B)K,\qquad c=\frac{C}{K},\qquad
+ v=\frac{q}{K},\qquad \tau=(AN)^{-1}.
+ \label{eq:axm-capped-ai-normalization}
+\end{equation}
+These are changes of coordinates for the terminal analysis. They do not alter
+the definition, timing, or economic meaning of any model variable.
+
+\begin{proposition}[Local finite-cap equilibrium paths]
+\label{prop:axm-capped-local-equilibrium}
+Suppose \(\sigma_{XL}>1\), \(G>0\), \(\rho>n\), \(2\eta\leq1\), and
+\(\overline B\neq\overline B_c\). Maintain the positive-consumption and
+regularity conditions in Propositions
+\ref{prop:axm-capped-terminal-regimes} and
+\ref{prop:axm-capped-frontier-research}. Suppose also that the terminal roots
+described below are distinct.
+
+If \(\overline B<\overline B_c\), the Jacobian in
+\eqref{eq:axm-capped-labor-normalization} is block triangular. Its Ramsey block
+and research-gap block are
+\begin{equation}
+ J_R^-=
+ \begin{pmatrix}
+  a_k&-\overline c/\overline k\\
+  r_k&0
+ \end{pmatrix},
+ \qquad
+ J_B^-=
+ \begin{pmatrix}
+  -G\mu&-G\mu\\
+  G\mu&\overline r+G\mu
+ \end{pmatrix},
+ \label{eq:axm-capped-labor-jacobian-blocks}
+\end{equation}
+where \(r_k<0\), and the remaining root is \(-G\). Each displayed block has
+negative determinant. The terminal point therefore has three stable and two
+unstable roots.
+
+If \(\overline B>\overline B_c\), the root associated with \(h\) is
+\(\varphi(G-\overline g)<0\), the consumption--capital root is
+\(\overline c>0\), the root associated with \(\tau\) is \(-G\), and the
+research-gap block is
+\begin{equation}
+ J_B^+=
+ \begin{pmatrix}
+  -\overline g\mu&-\overline g\mu\\
+  \overline g\mu&\overline r+\overline g\mu
+ \end{pmatrix}.
+ \label{eq:axm-capped-ai-jacobian-block}
+\end{equation}
+This block also has negative determinant, so the terminal point again has
+three stable and two unstable roots.
+
+In either regime, the stable manifold projects nonsingularly onto the three
+predetermined normalized variables. Hence, for predetermined values
+sufficiently close to the terminal point, there is a unique local choice of
+the two jump variables that generates a regular interior path converging to
+the relevant terminal regime. The path satisfies both transversality
+conditions. Because the finite-cap developer sufficiency condition holds
+strictly in a sufficiently small neighborhood of the frontier, this path is a
+local finite-cap equilibrium, not merely a solution of the dated first-order
+conditions.
+\end{proposition}
+
+The proposition establishes equilibrium paths for initial normalized states
+near a terminal regime. It does not yet establish that the stable manifold can
+be continued backward to the paper's original initial stocks. That is a global
+continuation problem, not a local-existence condition.
 
 These propositions characterize terminal restrictions for a finite-cap
 equilibrium; they do not turn a solution of the capped dated equations into an

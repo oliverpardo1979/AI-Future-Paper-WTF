@@ -1,0 +1,324 @@
+{
+  "parameters": {
+    "alpha": 0.33,
+    "chi": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0,
+    "labor_productivity_growth": 0.01,
+    "omega_x": 0.2,
+    "population_growth": 0.003
+  },
+  "scope": "Local finite-cap BVP diagnostics near the terminal regimes; not transitions from the paper's date-zero stocks.",
+  "terminal_diagnostics": [
+    {
+      "ai_ces_share": 0.926969243798196,
+      "auxiliary": {
+        "ai_services_effective_labor_ratio": 5.778494493486735e+18,
+        "capital_effective_labor_ratio": 1619300634913.9702,
+        "consumption_effective_labor_ratio": 197382653652.96216,
+        "effective_labor_growth": 0.013000000000000001,
+        "gap_scale": 9.38677950378925e+27,
+        "inference_effective_labor_ratio": 191298568442.60022,
+        "output_effective_labor_ratio": 490697162095.1425,
+        "shadow_effective_labor_ratio": 126659.78077659027
+      },
+      "consumption_output_share": 0.40224942979126327,
+      "coordinate_names": [
+        "log_k",
+        "log_c",
+        "log_d",
+        "log_q_tilde",
+        "scaled_tau"
+      ],
+      "coordinates": [
+        28.113015465117385,
+        26.008410085986167,
+        64.40909977438899,
+        11.749259879266699,
+        0.0
+      ],
+      "critical_frontier": 60413358.45354841,
+      "frontier": 30206679.226774205,
+      "frontier_ratio": 0.5,
+      "inference_output_share": 0.3898505702087367,
+      "jump_indices": [
+        1,
+        3
+      ],
+      "labor_income_share": 0.04893060665520867,
+      "linearization": {
+        "eigenvalues": [
+          0.11213056766594931,
+          0.053062430400804585,
+          -0.012061798068172943,
+          -0.0030624304008045598,
+          -0.013000000000000001
+        ],
+        "jacobian": [
+          [
+            0.10006876959777639,
+            -0.12189376660341299,
+            0.0,
+            0.0,
+            -0.3153971199507141
+          ],
+          [
+            -0.011095696704956958,
+            0.0,
+            0.0,
+            0.0,
+            -0.16940697968194823
+          ],
+          [
+            0.0,
+            0.0,
+            -0.0032500000000000003,
+            -0.0032500000000000003,
+            0.0032500000000000003
+          ],
+          [
+            -0.05610218381742632,
+            0.0,
+            0.0032500000000000003,
+            0.053250000000000006,
+            -0.13887368540173803
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.013000000000000001
+          ]
+        ],
+        "stable_eigenvalues": [
+          -0.013000000000000001,
+          -0.012061798068172943,
+          -0.0030624304008045598
+        ],
+        "state_projection_condition_number": 454.9427421970027,
+        "state_projection_determinant": -0.004362097111549288,
+        "terminal_matrix": [
+          [
+            -0.4482510331649525,
+            -0.2942935399112955,
+            0.04816753296736565,
+            0.8345941070163841,
+            0.11659712232466705
+          ],
+          [
+            -0.4947538545304247,
+            0.6470099427006669,
+            -0.006728514971785775,
+            -0.1165843172459867,
+            0.5682953295007175
+          ]
+        ],
+        "unstable_eigenvalues": [
+          0.053062430400804585,
+          0.11213056766594931
+        ]
+      },
+      "local_bvp": {
+        "initial_predetermined_deviations": [
+          0.01,
+          -0.01,
+          1e-05
+        ],
+        "iterations": 1,
+        "maximum_boundary_residual": 1.077303403458751e-15,
+        "maximum_rms_residual": 3.22354969390211e-11,
+        "nodes": 161,
+        "success": true
+      },
+      "net_interest_rate": 0.05,
+      "predetermined_indices": [
+        0,
+        2,
+        4
+      ],
+      "regime": "labor_supported",
+      "research_compute": 3.0912113287851474e+30,
+      "sigma_xl": 1.1,
+      "terminal_growth": 0.013000000000000001,
+      "terminal_residual": [
+        -3.226585665316861e-16,
+        -2.0643209364124004e-16,
+        -3.9898639947466563e-17,
+        -1.8214596497756474e-16,
+        -0.0
+      ]
+    },
+    {
+      "ai_ces_share": 1.0,
+      "auxiliary": {
+        "ai_services_capital_ratio": 67139909.72460905,
+        "consumption_capital_ratio": 0.31068873049251705,
+        "effective_labor_growth": 0.013000000000000001,
+        "gap_scale": 8.873976456511085e+48,
+        "inference_capital_ratio": 0.5556710588787467,
+        "output_capital_ratio": 1.2378504318974088,
+        "shadow_capital_ratio": 1.2828532503233203e-08
+      },
+      "consumption_output_share": 0.2509905255809342,
+      "coordinate_names": [
+        "h",
+        "log_d",
+        "log_c",
+        "log_v",
+        "scaled_tau"
+      ],
+      "coordinates": [
+        0.0,
+        112.70720746358097,
+        -1.16896373458786,
+        -18.1715940449673,
+        0.0
+      ],
+      "critical_frontier": 60413358.45354841,
+      "frontier": 120826716.90709682,
+      "frontier_ratio": 2.0,
+      "inference_output_share": 0.4488999999999999,
+      "jump_indices": [
+        2,
+        3
+      ],
+      "labor_income_share": 0.0,
+      "linearization": {
+        "eigenvalues": [
+          0.4261091135576034,
+          -0.0676184710314584,
+          0.31068873049251705,
+          -0.0280446038660132,
+          -0.013000000000000001
+        ],
+        "jacobian": [
+          [
+            -0.0280446038660132,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            10.638804294125498,
+            -0.08037266063153624,
+            -0.31068873049251705,
+            -0.08037266063153624,
+            0.0
+          ],
+          [
+            -4.750362475028837,
+            0.0,
+            0.31068873049251705,
+            0.0,
+            0.0
+          ],
+          [
+            -9.39863462485775,
+            0.08037266063153624,
+            0.31068873049251705,
+            0.4388633031576812,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.013000000000000001
+          ]
+        ],
+        "stable_eigenvalues": [
+          -0.0676184710314584,
+          -0.0280446038660132,
+          -0.013000000000000001
+        ],
+        "state_projection_condition_number": 281.296819469107,
+        "state_projection_determinant": -0.007109837674522199,
+        "terminal_matrix": [
+          [
+            0.6398698827172865,
+            0.09868491356427156,
+            -0.44056067340414984,
+            0.621879501250733,
+            0.0
+          ],
+          [
+            -0.766114022047209,
+            0.08896557932090077,
+            -0.3014079689431175,
+            0.5606314896403252,
+            0.0
+          ]
+        ],
+        "unstable_eigenvalues": [
+          0.31068873049251705,
+          0.4261091135576034
+        ]
+      },
+      "local_bvp": {
+        "initial_predetermined_deviations": [
+          1e-05,
+          -0.01,
+          1e-05
+        ],
+        "iterations": 2,
+        "maximum_boundary_residual": 4.450591829294479e-16,
+        "maximum_rms_residual": 8.473711817205326e-09,
+        "nodes": 166,
+        "success": true
+      },
+      "net_interest_rate": 0.35849064252614493,
+      "predetermined_indices": [
+        0,
+        1,
+        4
+      ],
+      "regime": "ai_dominated",
+      "research_compute": 7.319705083416105e+39,
+      "sigma_xl": 1.1,
+      "terminal_growth": 0.32149064252614495,
+      "terminal_residual": [
+        -0.0,
+        -2.4424906541753444e-15,
+        1.1102230246251565e-15,
+        1.8318679906315083e-15,
+        -0.0
+      ]
+    }
+  ],
+  "thresholds": [
+    {
+      "critical_frontier": 4.880152231639214e+70,
+      "sigma_xl": 1.01
+    },
+    {
+      "critical_frontier": 5.4945629429807404e+35,
+      "sigma_xl": 1.02
+    },
+    {
+      "critical_frontier": 589974203647920.9,
+      "sigma_xl": 1.05
+    },
+    {
+      "critical_frontier": 60413358.45354841,
+      "sigma_xl": 1.1
+    },
+    {
+      "critical_frontier": 3866.454941027157,
+      "sigma_xl": 1.25
+    },
+    {
+      "critical_frontier": 154.6581976410861,
+      "sigma_xl": 1.5
+    },
+    {
+      "critical_frontier": 30.93163952821727,
+      "sigma_xl": 2.0
+    }
+  ]
+}

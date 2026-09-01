@@ -1333,6 +1333,150 @@ transversality object, terminal log growth is
 \(-\bar r+\bar g+0=n-\rho\), using the Euler equation in either terminal
 regime. Both are negative because \(\rho>n\). \(\square\)
 
+\subsection{Proof of Proposition \ref{prop:axm-capped-local-equilibrium}}
+
+Let \(G=n+\gamma_A\), \(D=\overline B-B\), and
+\(a=\dot B/D\). Consider first
+\(\overline B<\overline B_c\). Define the normalized static allocations
+\(y=Y/(AN)\), \(x=X/(AN)\), and \(u=U/(AN)\). The variables in
+\eqref{eq:axm-capped-labor-normalization} imply
+\[
+ B=\overline B-d\tau,
+ \qquad
+ M=\left[
+  \widetilde qd\chi\eta\frac{B^\eta}{\overline B}
+ \right]^{1/(1-\eta)},
+ \qquad
+ a=\chi\frac{B^\eta M^\eta}{\overline B}.
+\]
+After solving the dated static block for \((y,x,u)\) conditional on
+\((k,B)\), the normalized dynamic system is
+\begin{subequations}
+\label{eq:axm-capped-labor-normalized-system}
+\begin{align}
+ \frac{\dot k}{k}
+ &=\frac{y-c-u-M\tau}{k}-\delta-G,\\
+ \frac{\dot c}{c}&=r-\rho-\gamma_A,\\
+ \frac{\dot d}{d}&=G-a,\\
+ \frac{\dot{\widetilde q}}{\widetilde q}
+ &=r-\frac{x}{\widetilde qB^2}
+ -\eta\frac{ad\tau}{B}+a-G,\\
+ \dot\tau&=-G\tau,
+ \qquad r=\alpha\frac{y}{k}-\delta.
+\end{align}
+\end{subequations}
+The system uses the same dated equilibrium equations as Definition
+\ref{def:axm-benchmark-equilibrium}; only the coordinates have changed.
+
+Let \(\overline e_X=(1-\overline s_X)/\sigma_{XL}
++\alpha\overline s_X\). The terminal point is obtained sequentially from
+\begin{align*}
+ \overline x
+ &=\left[
+  \frac{\overline s_X\omega_L}
+  {(1-\overline s_X)\omega_X}
+ \right]^{1/\varphi},&
+ \overline u&=\frac{\overline x}{\overline B},\\
+ \overline y
+ &=\frac{\overline u}
+ {(1-\alpha)\overline s_X(1-\overline e_X)},&
+ \overline k&=\frac{\overline y}{\mathcal R},\\
+ \overline c
+ &=\overline y-\overline u-(\delta+G)\overline k,&
+ \overline{\widetilde q}
+ &=\frac{\overline x}{\overline r\,\overline B^2},\\
+ \overline M
+ &=\left(\frac{G\overline B^{1-\eta}}{\chi}\right)^{1/\eta},&
+ \overline d
+ &=\frac{\overline M^{1-\eta}}
+ {\overline{\widetilde q}\chi\eta\overline B^{\eta-1}}.
+\end{align*}
+Equation \eqref{eq:axm-capped-labor-supported-share} determines
+\(\overline s_X\) before any of these expressions is used.
+
+Linearize in
+\((\ln k,\ln c,\ln d,\ln\widetilde q,\tau)\). At \(\tau=0\), the Ramsey
+variables do not depend to first order on \((d,\widetilde q)\), while the
+research-gap variables can depend on the Ramsey block. The Jacobian is
+therefore block triangular. Let
+\(r_k=\partial r/\partial\ln k\) at the terminal point. Along the interior
+static branch, an increase in \(k\) raises output less than proportionally
+because effective labor remains essential. Hence \(r_k<0\). Direct
+differentiation of the static monopoly condition gives the same inequality.
+The Ramsey block is the first matrix in
+\eqref{eq:axm-capped-labor-jacobian-blocks}; its determinant is
+\((\overline c/\overline k)r_k<0\).
+
+The research first-order condition implies
+\(\partial\ln a/\partial\ln d
+=\partial\ln a/\partial\ln\widetilde q=\mu\). Moreover,
+\(a=G\) and
+\(x/(\widetilde qB^2)=\overline r\) at the terminal point. These identities
+give the second matrix in
+\eqref{eq:axm-capped-labor-jacobian-blocks}, whose determinant is
+\(-G\mu\overline r<0\). The final root is the root \(-G\) of the
+\(\tau\) equation. Thus there are three stable and two unstable roots.
+
+Now consider \(\overline B>\overline B_c\). Under
+\eqref{eq:axm-capped-ai-normalization},
+\[
+ K^{-1}=\tau h^{1/\varphi},
+ \qquad
+ B=\overline B-d\tau h^{1/\varphi},
+ \qquad
+ M=\left[vd\chi\eta\frac{B^\eta}{\overline B}
+ \right]^{1/(1-\eta)}.
+\]
+Let \(y=Y/K\), \(x=X/K\), \(u=U/K\), and
+\(g_K=\dot K/K\). The exact normalized system is
+\begin{subequations}
+\label{eq:axm-capped-ai-normalized-system}
+\begin{align}
+ \dot h&=h\varphi(G-g_K),\\
+ \frac{\dot d}{d}&=g_K-a,\\
+ \frac{\dot c}{c}&=n+r-\rho-g_K,\\
+ \frac{\dot v}{v}
+ &=r-\frac{x}{vB^2}
+ -\eta\frac{ad\tau h^{1/\varphi}}{B}+a-g_K,\\
+ \dot\tau&=-G\tau,\\
+ g_K&=y-c-u-M\tau h^{1/\varphi}-\delta,
+ \qquad r=\alpha y-\delta.
+\end{align}
+\end{subequations}
+The coordinate \(h\), rather than \(AN/K\), keeps the CES block differentiable
+at the AI-dominated terminal point.
+
+At \((h,\tau)=(0,0)\), the static allocation is AI dominated,
+\(a=\overline g\), and
+\(x/(vB^2)=\overline r\). Linearization gives the root
+\(\varphi(G-\overline g)<0\) from the \(h\) equation, the root
+\(\overline c>0\) from the consumption--capital equation, and the root
+\(-G<0\) from the \(\tau\) equation. The two remaining roots are those of
+\eqref{eq:axm-capped-ai-jacobian-block}. Its determinant is
+\(-\overline g\mu\overline r<0\), so one is negative and one is positive.
+The AI-dominated terminal point also has three stable and two unstable roots.
+
+With distinct roots, the stable direction from the Ramsey block below the
+threshold has a nonzero \(k\) component, and the stable research-gap direction
+has a nonzero \(d\) component. Above the threshold, the stable \(h\) direction
+has a nonzero \(h\) component, and the stable research-gap direction again has
+a nonzero \(d\) component. The \(\tau\) direction has a nonzero \(\tau\)
+component in both regimes. The projection of the three-dimensional stable
+manifold onto the three predetermined normalized variables is therefore
+nonsingular.
+
+The stable-manifold theorem now makes the stable manifold locally a graph of
+the two jump variables over the three predetermined variables. It selects a
+unique local path converging to the terminal point. Proposition
+\ref{prop:axm-capped-frontier-research} establishes both transversality
+conditions. Finally, condition \eqref{eq:axm-capped-concavity-gate} holds
+strictly when \(B\) is sufficiently close to \(\overline B\). A small enough
+neighborhood therefore gives developer optimality by Proposition
+\ref{prop:axm-capped-developer-sufficiency}; household and final-good-firm
+optimality follow from the conditions in Definition
+\ref{def:axm-benchmark-equilibrium}. The selected path is consequently a local
+finite-cap equilibrium. \(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-infinite-frontier-limit}}
 
 On a compact subset bounded away from zero,
@@ -1744,36 +1888,57 @@ excluded.
 \label{app:axm-finite-cap-algorithm}
 
 The finite frontier in Section
-\ref{sec:axm-finite-cap-gross-substitutes} provides the appropriate next
-boundary-value problem for \(\sigma_{XL}>1\). For a fixed
-\(\overline B>B_0\), I retain the four dynamic variables
-\((K,B,C,q)\), replace only the capability law, research condition, and
-costate equation by their finite-cap counterparts, and continue from a nearby
-accepted solution. The terminal restriction depends on the analytically
-determined side of \(\overline B_c\): equation
-\eqref{eq:axm-capped-labor-supported-share} supplies the labor-supported
-terminal ratios below the threshold, while
-\eqref{eq:axm-capped-ai-growth} and
-\eqref{eq:axm-capped-terminal-research} supply the AI-dominated ratios above
-it. The knife-edge is not used as a numerical terminal condition.
+\ref{sec:axm-finite-cap-gross-substitutes} provides the appropriate BVP for
+\(\sigma_{XL}>1\). For each fixed \(\overline B>B_0\), I first compare the
+frontier with \(\overline B_c\). Below the threshold, I use the five-dimensional
+system \eqref{eq:axm-capped-labor-normalized-system}. Above it, I use
+\eqref{eq:axm-capped-ai-normalized-system}. The fifth equation tracks the
+exogenous scale \((AN)^{-1}\); the economy still has only the two jump variables
+\(C\) and \(q\). The knife-edge is not used as a numerical terminal condition.
 
-For each fixed frontier, horizon continuation must stabilize the selected
-values of \(C_0\) and \(q_0\), dated residuals must converge under mesh
-refinement, the two transversality objects must have the negative terminal
-growth rate in Proposition \ref{prop:axm-capped-frontier-research}, and the
-developer sufficiency condition
-\eqref{eq:axm-capped-concavity-gate} must hold on the complete reachable
-capability interval. Only then is the result admitted as a finite-cap
-equilibrium. Frontier continuation subsequently raises \(\overline B\) and
-compares accepted equilibria on common finite windows. It never extrapolates a
-rejected uncapped free-boundary segment or treats convergence of dated
-equations alone as equilibrium evidence.
+Let \(z^*\) denote the terminal point in the relevant normalization and let
+\(V_S\) be the \(5\times3\) matrix of stable right eigenvectors. I construct a
+\(2\times5\) matrix \(Q_U\) whose rows span the orthogonal complement of
+\(V_S\), so \(Q_UV_S=0\). If \(P_S\) selects the three predetermined
+normalized variables, the finite-horizon collocation problem uses
+\begin{equation}
+ P_Sz(0)=z_{S,0},
+ \qquad
+ Q_U[z(T)-z^*]=0.
+ \label{eq:axm-capped-bvp-boundary-conditions}
+\end{equation}
+The first three restrictions impose the initial states. The last two remove
+the unstable terminal components and select the initial values of the two jump
+variables. In the code, I multiply \((AN)^{-1}\) by the fixed terminal constant
+\(\overline d/\overline B\). This diagonal rescaling improves conditioning but
+does not change the roots, the stable manifold, or any model variable.
 
-This sequence implements the order of limits in Proposition
-\ref{prop:axm-infinite-frontier-limit}: first solve and audit equilibrium for
-each finite frontier, then take \(\overline B\to\infty\) on a fixed window.
-No finite-cap trajectory is reported until that complete admission test has
-been implemented and passed.
+The implementation evaluates the exact CES and monopoly condition at every
+collocation node. It does not use a Taylor approximation around
+\(\sigma_{XL}=1\). Automated tests compare both analytic Jacobians with finite
+differences, verify three stable and two unstable roots, and verify that the
+stable subspace projects nonsingularly onto the predetermined variables. As a
+local diagnostic, I solved the nonlinear BVP at \(\sigma_{XL}=1.10\) with
+\(\overline B/\overline B_c=0.5\) and \(2\). Both calculations converged; the
+largest normalized collocation residual was \(8.5\times10^{-9}\), and the
+largest boundary residual was \(1.1\times10^{-15}\).
+
+These calculations implement Proposition
+\ref{prop:axm-capped-local-equilibrium}; they verify local equilibrium
+selection near each terminal regime. They do not establish a transition from
+the paper's original stocks. That requires continuing the stable manifold
+backward while checking that \(C_0\) and \(q_0\) stabilize with the horizon,
+that dated residuals converge under mesh refinement, that both transversality
+objects have the terminal decay rate in Proposition
+\ref{prop:axm-capped-frontier-research}, and that
+\eqref{eq:axm-capped-concavity-gate} holds on the complete reachable capability
+interval. Only a path passing all those tests is admitted as a finite-cap
+equilibrium and eligible for frontier continuation.
+
+This order implements Proposition \ref{prop:axm-infinite-frontier-limit}:
+first solve and audit equilibrium for each finite frontier, then take
+\(\overline B\to\infty\) on a fixed window. I do not report the local diagnostic
+paths as economic transition results.
 
 \subsection{Adoption experiment from the no-AI balanced-growth path}
 \label{app:axm-ai-adoption-algorithm}
