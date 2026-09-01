@@ -338,6 +338,75 @@ The resulting rates are therefore consistent with the two maintained
 transversality conditions.
 \end{proposition}
 
+The preceding propositions characterize a possible limiting regime. They do
+not by themselves show that a trajectory satisfying the equilibrium definition
+reaches it. The automated-research benchmark permits a local existence result
+without imposing balanced growth along the transition.
+
+Let \(\mathcal L=AN\) and introduce the normalized variables
+\begin{equation}
+ k=\frac{K}{\mathcal L},\qquad
+ b=\frac{B}{\mathcal L^\eta},\qquad
+ c=\frac{C}{\mathcal L},\qquad
+ \widetilde q=\frac{q}{\mathcal L^{1-2\eta}},\qquad
+ \tau=\mathcal L^{-\eta}.
+ \label{eq:axm-complement-stationary-variables}
+\end{equation}
+The variable \(\tau\) is not an additional economic state. It makes the
+exogenous trend autonomous and satisfies
+\(\dot\tau=-\eta(n+\gamma_A)\tau\). Let
+\begin{equation}
+ \mathcal R=\frac{\rho+\gamma_A+\delta}{\alpha},\qquad
+ \mathcal D_q=\rho-n+(2\eta-\eta^2)(n+\gamma_A).
+ \label{eq:axm-complement-local-definitions}
+\end{equation}
+Using \(\bar x\) and \(\bar z\) from
+\eqref{eq:axm-complement-ratios}, define
+\begin{align}
+ \bar k&=\bar z\,\mathcal R^{-1/(1-\alpha)},
+ &\bar y&=\mathcal R\bar k,
+ &\bar c&=[\mathcal R-\delta-n-\gamma_A]\bar k,\notag\\
+ \bar b&=\frac{\chi}{\eta(n+\gamma_A)}
+ \left[
+  \frac{\eta^2(n+\gamma_A)\bar x}{\mathcal D_q}
+ \right]^\eta,
+ &\overline{\widetilde q}
+ &=\frac{\bar x}{\bar b^2\mathcal D_q}.
+ \label{eq:axm-complement-local-fixed-point}
+\end{align}
+All five limiting objects are positive except \(\bar\tau=0\).
+
+\begin{proposition}[Local existence near the complementary-input limit]
+\label{prop:axm-complement-local-existence}
+Suppose the automated-research benchmark applies,
+\(0<\sigma_{XL}<1\), \(n+\gamma_A>0\), \(\rho>n\),
+\(0<\eta<\alpha<1\), and \(2\eta\leq1\). Let the two negative roots of the
+capital--consumption and capability--shadow-value blocks derived in the
+Appendix be \(\mu_K\) and \(\mu_B\). Suppose the three stable roots
+\(\mu_K\), \(\mu_B\), and \(-\eta(n+\gamma_A)\) are pairwise distinct.
+There is a neighborhood \(\mathcal N\) of \((\bar k,\bar b,0)\). For every
+state triple \((k_0,b_0,\tau_0)\in\mathcal N\) with \(\tau_0>0\), a unique nearby pair
+\((c_0,\widetilde q_0)>0\) generates an admissible regular interior benchmark
+equilibrium that remains near the complementary regime and satisfies
+\begin{equation}
+ (k_t,b_t,c_t,\widetilde q_t,\tau_t)\longrightarrow
+ (\bar k,\bar b,\bar c,\overline{\widetilde q},0).
+ \label{eq:axm-complement-local-convergence}
+\end{equation}
+Uniqueness is among nearby trajectories with this limiting behavior. The
+neighborhood can be chosen so that the path-specific operating-profit
+concavity condition holds over the complete reachable capability domain.
+\end{proposition}
+
+This is an existence theorem for equilibrium trajectories, not for a balanced
+growth path. At every finite date, \(\tau_t>0\), research is interior, and the
+resource shares \(U/Y\) and \(M/Y\) are positive and changing. They converge
+to zero only as \(t\to\infty\). The theorem is local around the complementary
+limit; it does not establish existence from arbitrary predetermined stocks or
+prove that the particular initial stocks used below lie in \(\mathcal N\).
+The numerical continuation provides evidence about that additional global
+connection.
+
 \subsubsection{Numerical equilibrium transitions and independent audit}
 
 The complementarity experiment sets \(\gamma_A=0\),
@@ -859,43 +928,113 @@ remain bounded, a globally admissible continuation may fail, or the
 infinite-horizon problem may not admit an optimum. The next result characterizes
 the accelerating branch when it exists.
 
-The bounded-capability alternative is also unavailable under a regular
-stationary continuation in the automated-research benchmark.
+The bounded-capability alternative can be restricted without assuming that
+normalized quantities or growth rates converge.
 
-\begin{proposition}[No regular bounded-capability continuation]
+\begin{proposition}[No bounded capability with a bounded return]
 \label{prop:axm-no-bounded-capability-tail}
 Suppose the automated-research benchmark applies,
-\(\sigma_{XL}>1\), and \(n+\gamma_A>0\). There is no regular interior
-infinite-horizon candidate path satisfying
-\[
- B\to\bar B\in(0,\infty),\qquad
- \frac{K}{AN}\to\bar k\in(0,\infty),\qquad
- \frac{C}{AN}\to\bar c\in(0,\infty),
-\]
-with bounded \(r\), \(g_B\to0\), and the dated conditions in the benchmark
-equilibrium definition in Section \ref{sec:axm-model}.
+\(\sigma_{XL}>1\), \(n+\gamma_A>0\), and \(0<\eta<1\). There is no regular
+interior infinite-horizon candidate satisfying the dated benchmark conditions
+with both \(\sup_{t\geq0}B_t<\infty\) and
+\(\sup_{t\geq0}r_t<\infty\).
 \end{proposition}
 
 \begin{proof}
-The pointwise monopoly problem is homogeneous in effective labor. Given the
-positive limits of \(K/(AN)\) and \(B\), its unique solution therefore has
-\(X/(AN)\to\bar x\in(0,\infty)\). Since \(n+\gamma_A>0\), this implies
-\(X\to\infty\). The capability law and \(g_B\to0\) imply \(M\to0\).
-The research condition \eqref{eq:axm-research-demand-benchmark} then implies
-\(q\to0\).
-In levels, the costate equation is
+Let \(\mathcal L=AN\) and \(G=n+\gamma_A>0\). Because capability is
+nondecreasing, bounded capability implies
+\(B_t\in[B_0,\bar B]\). Integrating its law gives
+\begin{equation}
+ B_t^{1-\eta}=B_0^{1-\eta}
+ +(1-\eta)\chi\int_0^t M_s^\eta\dd s.
+ \label{eq:axm-bounded-capability-integral}
+\end{equation}
+Hence \(\int_0^\infty M_t^\eta\dd t<\infty\). The research first-order
+condition gives
 \[
- \dot q=(r-\eta g_B)q-\frac{X}{B^2}.
+ M_t^\eta=(\chi\eta B_t^\eta)^{\eta/(1-\eta)}
+ q_t^{\eta/(1-\eta)},
 \]
-The first term converges to zero, while the second tends to minus infinity.
-Hence \(\dot q\) is eventually bounded above by a negative constant, so the
-positive shadow value \(q\) must cross zero in finite time. This contradicts
-interiority.
+so, because \(B_t\geq B_0>0\),
+\begin{equation}
+ \int_0^\infty q_t^{\eta/(1-\eta)}\dd t<\infty.
+ \label{eq:axm-bounded-capability-q-integral}
+\end{equation}
+
+Now suppose \(r_t\leq\bar r\). The CES aggregate is bounded below by a
+positive multiple of \(\mathcal L\). The capital-demand condition therefore
+implies that \(K/\mathcal L\) is bounded away from zero. Homogeneity and the
+unique static monopoly solution then give a uniform constant
+\(\underline x>0\) such that
+\(X_t/\mathcal L_t\geq\underline x\). In levels, the costate equation is
+\[
+ \dot q=a_tq-\frac{X}{B^2},\qquad
+ a_t=r_t-\eta g_{B,t}\leq\bar r.
+\]
+Solving this linear equation backward from \(t+1\) to \(t\), using
+\(q_{t+1}>0\), yields
+\[
+ q_t\geq\int_t^{t+1}
+ e^{-\int_t^s a_v\dd v}\frac{X_s}{B_s^2}\dd s
+ \geq c e^{Gt}
+\]
+for a constant \(c>0\). This contradicts
+\eqref{eq:axm-bounded-capability-q-integral}. Therefore bounded capability and
+a bounded return cannot coexist on such a candidate.
 \end{proof}
 
-This proposition rules out the regular bounded-capability continuation relevant
-to the near-unit numerical experiment. The next result characterizes the
-unbounded AI-dominated alternative.
+The result is stronger than a stationary-limit argument, but it deliberately
+leaves open a bounded-capability path with unbounded interest-rate spikes. The
+next proposition records restrictions that every remaining irregular
+continuation must satisfy.
+
+\begin{proposition}[Necessary restrictions on an irregular gross-substitutes continuation]
+\label{prop:axm-gross-substitutes-irregular-necessity}
+Suppose the automated-research benchmark applies,
+\(\sigma_{XL}>1\), \(n+\gamma_A>0\), and \(0<\eta<1\). Any regular interior
+infinite-horizon equilibrium, if one exists, must satisfy one of the following:
+\begin{enumerate}
+ \item \(B\) is bounded and \(\sup_{t\geq0}r_t=\infty\); or
+ \item \(B\to\infty\), and, writing \(z=Y/K\) and
+ \(\theta=(1-\alpha)/\alpha\),
+ \begin{equation}
+  \liminf_{t\to\infty}\frac{g_{B,t}}{z_t}=0,
+  \qquad
+  \int_0^\infty e^{-(\rho-n)t}B_t^\theta\dd t<\infty.
+  \label{eq:axm-irregular-necessary-restrictions}
+ \end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The first alternative follows from Proposition
+\ref{prop:axm-no-bounded-capability-tail}. Suppose instead that \(B\to\infty\).
+Equation \eqref{eq:axm-high-sigma-exact-z} gives
+\(z_t\geq dB_t^\theta\) for some \(d>0\). If
+\(\liminf g_B/z>0\), then eventually
+\(\dot B=B g_B\geq\varepsilon dB^{1+\theta}\) for some
+\(\varepsilon>0\), which makes \(B\) unbounded in finite time. An
+infinite-horizon equilibrium must therefore satisfy the first restriction in
+\eqref{eq:axm-irregular-necessary-restrictions}.
+
+For the second, let \(c_h=C/N\). The household Euler equation gives
+\[
+ \log c_{h,t}=\log c_{h,0}-(\rho+\delta)t
+ +\int_0^t(r_s+\delta)\dd s.
+\]
+Because \(r+\delta=\alpha z>0\), Tonelli's theorem shows that finiteness of the
+household's improper utility integral requires
+\[
+ \int_0^\infty e^{-(\rho-n)t}(r_t+\delta)\dd t<\infty.
+\]
+Combining this condition with \(z_t\geq dB_t^\theta\) proves the second
+restriction in \eqref{eq:axm-irregular-necessary-restrictions}.
+\end{proof}
+
+These restrictions do not assert that either irregular alternative exists.
+They identify what a general nonexistence proof would still have to eliminate.
+The next result characterizes the more regular unbounded AI-dominated
+alternative.
 
 \begin{conditionalresult}[AI-dominated singular limit]
 \label{prop:axm-singular-limit}
@@ -988,8 +1127,7 @@ Suppose the automated-research benchmark applies, \(\sigma_{XL}>1\),
 candidate whose proposed long-run continuation belongs to either of the two
 classes used by the algorithm:
 \begin{enumerate}
- \item capability is bounded and the normalized variables satisfy the limits in
- Proposition \ref{prop:axm-no-bounded-capability-tail}; or
+ \item capability and the interest rate are bounded; or
  \item capability is unbounded and the conditions of Conditional Result
  \ref{prop:axm-singular-limit} hold.
 \end{enumerate}
@@ -1014,8 +1152,11 @@ establish existence or global optimality for the infinite-horizon problems, nor
 does it establish that the branch is reached from arbitrary initial conditions.
 Proposition \ref{prop:axm-no-regular-gross-substitutes-continuation} is an
 exhaustion result only within the two regular terminal classes stated there. It
-does not exclude an asymptotically irregular path, a path without convergent
-resource shares, or another terminal regime not used by the algorithm.
+does not exclude either irregular alternative in Proposition
+\ref{prop:axm-gross-substitutes-irregular-necessity}: bounded capability with
+unbounded interest-rate spikes, or unbounded capability with
+\(\liminf g_B/(Y/K)=0\) and sufficiently slow discounted growth. Nor does it
+exclude another terminal regime not used by the algorithm.
 Within that branch, workers move asymptotically toward the sector in which they
 are harder to replace. The model delivers a sharp separation when
 \(1<\underline\sigma<1/(\alpha\eta)\): aggregate labor income as a share of output
@@ -1078,8 +1219,8 @@ is only \(0.2303\), far from the AI-dominated limit. The local separation rate
 finite-window similarity is therefore expected even though the long-run
 regimes differ.
 
-Proposition \ref{prop:axm-no-bounded-capability-tail} rejects the regular
-bounded-capability terminal regime for this benchmark. The regular
+Proposition \ref{prop:axm-no-bounded-capability-tail} rejects bounded
+capability whenever the interest rate is bounded. The regular
 AI-dominated alternative is the finite-time branch in Conditional Result
 \ref{prop:axm-singular-limit}, not an infinite-horizon allocation. Proposition
 \ref{prop:axm-gross-substitutes-concavity-gate} also shows that the sufficient

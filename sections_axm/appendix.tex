@@ -604,6 +604,125 @@ limiting log growth \(g_M-(\rho+\gamma_A)<0\). The derived rates therefore repro
 maintained terminal restrictions. This is a consistency check; the developer's
 TVC was used above to select the positive-\(d\) branch. \(\square\)
 
+\subsection{Proof of Proposition \ref{prop:axm-complement-local-existence}}
+
+Write \(\mathcal L=AN\), \(G=n+\gamma_A\), and
+\(x=X/\mathcal L\). For a given \((k,b,\tau)\), the static monopoly condition is
+\begin{equation}
+ (1-\alpha)s_X(x)[1-e_X(x)]\frac{y(k,x)}{x}
+ =\frac{\tau}{b},
+ \qquad
+ y(k,x)=k^\alpha
+ \left[\omega_L+\omega_Xx^{(\sigma_{XL}-1)/\sigma_{XL}}
+ \right]^{(1-\alpha)\sigma_{XL}/(\sigma_{XL}-1)}.
+ \label{eq:axm-app-complement-static-map}
+\end{equation}
+At \(\tau=0\), its unique positive solution is \(x=\bar x\), where
+\(e_X=1\) and
+\(s_X=(1-\sigma_{XL})/(1-\alpha\sigma_{XL})\). Moreover,
+\(\partial e_X/\partial x>0\) when \(\sigma_{XL}<1\). The derivative of the
+left-hand side of \eqref{eq:axm-app-complement-static-map} at
+\((\bar x,0)\) is therefore strictly negative. The implicit-function theorem
+gives a unique continuously differentiable map
+\(x=x(k,b,\tau)\) in a neighborhood of the limiting point.
+
+Define
+\[
+ \widetilde u=\frac{x}{b},\qquad
+ \widetilde m=
+ \left(\widetilde q\chi\eta b^\eta\right)^{1/(1-\eta)}.
+\]
+The levels of inference and research compute satisfy
+\(U/\mathcal L=\tau\widetilde u\) and
+\(M/\mathcal L=\tau\widetilde m\). Substitution in the dated equilibrium
+conditions gives the autonomous system
+\begin{align}
+ \dot k&=y-c-\tau(\widetilde u+\widetilde m)
+ -(\delta+G)k,\notag\\
+ \frac{\dot b}{b}&=\chi b^{\eta-1}\widetilde m^\eta-\eta G,\notag\\
+ \frac{\dot c}{c}&=\alpha\frac{y}{k}-\delta-\rho-G,\notag\\
+ \frac{\dot{\widetilde q}}{\widetilde q}
+ &=\alpha\frac{y}{k}-\delta
+ -\frac{x}{\widetilde q b^2}
+ -\eta\chi b^{\eta-1}\widetilde m^\eta-(1-2\eta)G,\notag\\
+ \dot\tau&=-\eta G\tau.
+ \label{eq:axm-app-complement-autonomous-system}
+\end{align}
+Direct substitution verifies that
+\eqref{eq:axm-complement-local-fixed-point}, together with \(\bar\tau=0\),
+is a stationary point of this system. Positivity of \(\bar c\) follows from
+\(\rho>n\), and \(\mathcal D_q>0\) follows immediately from the same
+restriction.
+
+Use log deviations for the four positive variables. At the stationary point,
+the Jacobian block for capital and consumption is
+\begin{equation}
+ J_K=
+ \begin{pmatrix}
+  \rho-n&-[\mathcal R-\delta-G]\\
+  -(1-\alpha)(\rho+\gamma_A+\delta)&0
+ \end{pmatrix}.
+ \label{eq:axm-app-complement-capital-block}
+\end{equation}
+Its determinant is strictly negative. To write the
+capability--shadow-value block, let
+\[
+ a_\eta=\frac{2\eta-1}{1-\eta},\qquad
+ h_\eta=\frac{\eta}{1-\eta}.
+\]
+Then
+\begin{equation}
+ J_B=
+ \begin{pmatrix}
+  \eta G a_\eta&\eta G h_\eta\\
+  2\mathcal D_q-\eta^2G a_\eta&
+  \mathcal D_q-\eta^2G h_\eta
+ \end{pmatrix},
+ \qquad
+ \det J_B=-\frac{\eta G\mathcal D_q}{1-\eta}<0.
+ \label{eq:axm-app-complement-capability-block}
+\end{equation}
+Each two-dimensional block therefore has one negative and one positive root.
+The remaining root, associated with \(\tau\), is \(-\eta G<0\). The full
+Jacobian is block triangular up to terms running from the capital block and
+\(\tau\) into the other equations. It consequently has three stable roots and
+two unstable roots. Under the stated pairwise-distinctness condition, the projection of
+the stable eigenspace onto the three predetermined variables
+\((k,b,\tau)\) is nonsingular: the negative root of \(J_K\) has a nonzero
+\(k\) component, the negative root of \(J_B\) has a nonzero \(b\) component,
+and the \(-\eta G\) eigenvector has a nonzero \(\tau\) component.
+
+The stable-manifold theorem now gives a three-dimensional local stable
+manifold. The nonsingular projection and the inverse-function theorem express
+that manifold uniquely as positive initial jumps
+\((c_0,\widetilde q_0)\) for each nearby predetermined triple
+\((k_0,b_0,\tau_0)\). The resulting path is defined for every finite date,
+remains interior, and converges as stated in
+\eqref{eq:axm-complement-local-convergence}. This constructs a transition; it
+does not impose balanced growth away from the limiting point.
+
+It remains to verify equilibrium rather than only the canonical equations.
+For \(\sigma_{XL}<1\), the service--capability elasticity in
+\eqref{eq:axm-service-capability-elasticity} converges to zero as capability
+increases. Shrinking the neighborhood makes \(k\) uniformly bounded away from
+zero and, because \(B=b/\tau\), makes initial capability sufficiently large.
+Continuity then makes the elasticity no larger than two for every date and
+every alternative capability \(B\geq B_0\). Together with \(2\eta\leq1\),
+Proposition \ref{prop:axm-path-specific-sufficiency} establishes global
+developer optimality.
+
+Finally, the household terminal object has asymptotic log growth \(n-\rho<0\).
+The developer's terminal object has asymptotic log growth
+\[
+ (1-\eta)G-(\rho+\gamma_A)
+ =-[\rho-n+\eta G]<0.
+\]
+Operating profit grows at rate \(G\), research expenditure grows at rate
+\((1-\eta)G\), and the discount rate converges to \(\rho+\gamma_A\), so both
+improper objectives are finite. The dated conditions, the two transversality
+conditions, agent optimality, and market clearing therefore satisfy the
+benchmark equilibrium definition. \(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-cd-bgp}}
 
 With \(\sigma_{XL}=1\), the final technology is
@@ -961,6 +1080,80 @@ the same family also makes the corresponding infinite-horizon value unbounded.
 At equality, the sign of \(c_\pi-c_M\) determines this family's leading
 behavior; a nonpositive coefficient for this family does not rule out a
 different unbounded sequence.
+\(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-unit-research-threshold}}
+
+At \(\sigma_{XL}=1\), let
+\(\beta=(1-\alpha)\omega_X\) and
+\(\lambda=(1-\alpha)\omega_L\). The exact pointwise monopoly solution in
+\eqref{eq:axm-monopoly-cd-solution}, together with
+\(U=\beta^2Y\), gives
+\begin{equation}
+ \pi(B;K,A,L)
+ =\beta(1-\beta)
+ (\beta^2B)^{\beta/(1-\beta)}
+ \left[K^\alpha(AL)^\lambda\right]^{1/(1-\beta)}.
+ \label{eq:axm-unit-profit-power}
+\end{equation}
+Thus optimized operating profit is a positive dated coefficient times
+\(B^a\), where
+\[
+ a=\frac{\beta}{1-\beta}.
+\]
+
+For a nonnegative research-compute policy on \([0,T]\), write
+\(S=\int_0^TM_t\dd t\). The transformed capability law is exact:
+\[
+ B_t^{1-\eta}
+ =B_0^{1-\eta}+(1-\eta)\chi\int_0^tM_s^\eta\dd s.
+\]
+H\"older's inequality therefore implies
+\[
+ \max_{t\leq T}B_t
+ \leq C_B\left(1+S^{\eta/(1-\eta)}\right).
+\]
+Because the dated coefficient in \eqref{eq:axm-unit-profit-power} and the
+discount factor have finite positive bounds on the fixed horizon, the truncated
+payoff satisfies
+\begin{equation}
+ J_T(M)\leq C_0+C_1S^{p_1}-\underline D S,
+ \qquad
+ p_1=\frac{\beta\eta}{(1-\beta)(1-\eta)}.
+ \label{eq:axm-unit-research-payoff-bound}
+\end{equation}
+If \(\eta<1-\beta\), then \(p_1<1\), so the right-hand side tends to minus
+infinity. The zero-research policy has a finite payoff, which proves finiteness
+and coercivity.
+
+For the converse, fix \(0<\Delta<T\), set
+\(M=\mathcal B\) on \([0,\Delta]\), and set \(M=0\) afterward. Then
+\[
+ B_{\mathcal B}(t)^{1-\eta}
+ =B_0^{1-\eta}+(1-\eta)\chi\mathcal B^\eta
+ \min\{t,\Delta\}.
+\]
+Substitution into \eqref{eq:axm-unit-profit-power} and dominated convergence
+give
+\[
+ J_T(\mathcal B)
+ =c_\pi\mathcal B^{p_1}-c_M\mathcal B
+ +o(\mathcal B^{p_1}),
+ \qquad c_\pi,c_M>0.
+\]
+The exponent satisfies
+\[
+ p_1
+ \begin{cases}
+  >1,&\eta>1-\beta,\\
+  =1,&\eta=1-\beta,\\
+  <1,&\eta<1-\beta.
+ \end{cases}
+\]
+The truncated value is therefore unbounded when \(\eta>1-\beta\). At
+equality, the sign of \(c_\pi-c_M\) determines the leading behavior of this
+family. Since an infinite-horizon equilibrium requires the developer's
+objective to have a finite real value, \(\eta\leq1-\beta\) is necessary.
 \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-no-bgp}}
@@ -1689,7 +1882,7 @@ calculation has not reached the AI-dominated asymptotic regime. The implied
 near-unit separation timescale is about 23,300 model years.
 
 More importantly, Proposition \ref{prop:axm-no-bounded-capability-tail}
-rejects the regular bounded-capability continuation, while the regular
+rejects bounded capability with a bounded interest rate, while the regular
 AI-dominated continuation reaches a finite-time singularity. Neither is an admissible
 infinite-horizon equilibrium under the benchmark definition. Proposition
 \ref{prop:axm-no-zero-research-corner} rules out setting \(M=0\) at a finite

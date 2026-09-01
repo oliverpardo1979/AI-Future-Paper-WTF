@@ -1103,6 +1103,46 @@ and cost terms have the same order, so their coefficients determine the result
 for this family of policies.
 \end{proposition}
 
+The general bound in Proposition \ref{prop:axm-research-burst} is deliberately
+uniform across production elasticities. At unit elasticity, the exact monopoly
+solution gives a sharper threshold and separates a necessary condition for the
+developer's problem to be well defined from the stronger concavity conditions
+used below.
+
+\begin{proposition}[Unit-elastic research threshold]
+\label{prop:axm-unit-research-threshold}
+Suppose the automated-research benchmark applies, \(\sigma_{XL}=1\),
+\(0<\eta<1\), and
+\[
+ \beta=(1-\alpha)\omega_X\in(0,1).
+\]
+Fix a finite horizon, an initial capability stock, positive continuous paths
+for \(K,A,L\), and an integrable path for \(r\). Then:
+\begin{enumerate}
+ \item if \(\eta<1-\beta\), the truncated developer value is finite and the
+ objective is coercive in total research expenditure;
+ \item if \(\eta>1-\beta\), fixed-duration research-compute expansions make
+ the truncated value unbounded above;
+ \item if \(\eta=1-\beta\), the leading benefit and cost terms are both linear
+ in total expenditure, so their coefficients determine the result for this
+ family of policies.
+\end{enumerate}
+Consequently,
+\begin{equation}
+ \eta\leq1-\beta
+ \label{eq:axm-unit-necessary-research-threshold}
+\end{equation}
+is necessary for a regular interior equilibrium with a finite-valued developer
+problem. Equality is not sufficient without the coefficient comparison.
+\end{proposition}
+
+The restrictions \(\beta\leq1/2\) and \(2\eta\leq1\) used for global
+concavity below remain sufficient rather than necessary conditions. Likewise,
+the balanced-growth feedback condition \(\eta+\omega_X<1\) is necessary for
+the positive finite-rate balanced-growth path derived below, but Proposition
+\ref{prop:axm-unit-research-threshold} does not make that condition necessary
+for every non-balanced equilibrium trajectory.
+
 \begin{assumption}[Baseline large-scale research curvature]
 \label{ass:axm-large-scale-curvature}
 All equilibrium results and numerical exercises maintain
