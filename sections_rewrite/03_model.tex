@@ -156,10 +156,12 @@ therefore follow from the thresholds $1$ and $1/\alpha$.
 \end{proof}
 
 Solving the final-good firm's AI condition for its price yields the inverse
-demand schedule $p_X(X;K,A,L)$. Its inverse absolute elasticity is
+demand schedule $p_X(X)$. This notation conditions on the current values of
+$K,A,$ and $L$; I display those arguments only when the time dependence matters.
+The inverse absolute elasticity is
 \begin{equation}
  e_X\equiv-
- \left.\frac{\partial\ln p_X(X;K,A,L)}{\partial\ln X}\right|_{K,A,L}
+ \frac{\partial\ln p_X(X)}{\partial\ln X}
  =\frac{1-s_X}{\sigma}+\alpha s_X.
  \label{eq:rewrite-inverse-demand-elasticity}
 \end{equation}
@@ -330,7 +332,7 @@ choose $X$ within each date. Define optimized operating profit before
 research expenditure as
 \begin{equation}
  \pi(B;K,A,L)=\max_{X\geq0}
- \left\{p_X(X;K,A,L)X-\frac{X}{B}\right\}.
+ \left\{p_X(X)X-\frac{X}{B}\right\}.
  \label{eq:rewrite-service-choice}
 \end{equation}
 The first-order condition equates marginal revenue to the compute cost of one
