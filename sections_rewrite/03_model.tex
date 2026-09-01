@@ -171,24 +171,29 @@ This demand schedule is an input to the developer's problem.
 \subsubsection{AI production and research services}
 \label{subsubsec:rewrite-ai-services}
 
-The model distinguishes two uses of compute. Inference compute $U$ operates
-existing AI systems and supplies AI production services. Research compute $M$
-improves AI capability. Both $U$ and $M$ are flows, and I choose units so
-that one unit of either flow costs one unit of the final good.
+The model distinguishes two uses of compute. The variables $U$ and $M$ are
+flows of computing resources allocated to inference and research,
+respectively. In a concrete application, their empirical counterparts could
+be accelerator-hours or real compute expenditure per unit of time. They are
+not measures of AI capability. I choose units so that one unit of either flow
+costs one unit of the final good.
 
-The stock $B$ is a scalar index of compute-augmenting AI capability: it
-measures the amount of AI service that one unit of compute can produce. This
-terminology follows the distinction between compute and AI capabilities in
-\citet{sastryetal2024}. Inference compute produces AI production services
-according to
+The stock $B$ is a scalar index of compute-augmenting AI capability. It
+summarizes improvements that allow a given amount of compute to accomplish
+more. Thus $B$ is not a quantity of FLOPs; it is an effective-compute
+multiplier. This terminology follows the distinction between compute and AI
+capabilities in \citet{sastryetal2024}. Inference compute produces AI
+production services according to
 \begin{equation}
  X=BU.
  \label{eq:rewrite-ai-service}
 \end{equation}
-Research compute analogously produces AI research services $BM$. Thus $U$
-and $M$ are rival resource inputs, while $X$ and $BM$ are the resulting
-service flows. This capability--compute distinction follows the accounting
-architecture in \citet{davidsonetal2026}.
+Equation~\eqref{eq:rewrite-ai-service} distinguishes the raw computing input
+$U$ from the resulting flow $X$ of effective AI production services. Research
+compute analogously produces the flow $BM$ of effective AI research services.
+Thus $U$ and $M$ are rival resource inputs, while $BU$ and $BM$ are the
+corresponding effective service flows. This capability--compute distinction
+follows the accounting architecture in \citet{davidsonetal2026}.
 
 \begin{figure}[H]
  \centering
@@ -249,9 +254,12 @@ by a capability frontier
  \label{eq:rewrite-capability-law}
 \end{equation}
 The parameter \(\chi\) shifts research productivity. The parameter \(\eta\)
-governs returns to current research scale. Better capability raises the
-productivity of research compute through $BM$, which creates recursive
-improvement. When the frontier is finite, the term
+governs returns to current research scale. The same capability stock $B$
+augments both inference and research compute. This common-productivity
+assumption is parsimonious but substantive. Because $BM$ enters the capability
+accumulation technology, a higher $B$ makes each unit of research compute $M$
+more productive and creates recursive improvement. When the frontier is
+finite, the term
 \(\psi(B)\) reduces the remaining room for improvement as
 capability approaches \(\overline B\). The uncapped specification is recovered
 at \(\overline B=\infty\).
