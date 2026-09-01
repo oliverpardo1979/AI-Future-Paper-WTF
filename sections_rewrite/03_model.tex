@@ -122,7 +122,7 @@ The elasticity \(\sigma\) governs two different margins. The first is whether mo
 \end{equation}
 
 \Needspace{7\baselineskip}
-\begin{remark}[AI services, wages, and labor's income share;
+\begin{remark}[Effect of AI on employment, wages, and labor's income share;
 \citealp{autorkausik2026}; \citealp{yango2026}]
 \label{rem:rewrite-ai-labor}
 Consider an increase in $X$. To evaluate its effects on $w$ and $\ell^Y$,
@@ -135,7 +135,7 @@ are unchanged.
 \end{remark}
 
 \begin{proof}
-The final-good firm's first-order conditions and the CES share imply
+The remark follows from the final-good firm's first-order conditions:
 \begin{align}
  \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,A,L}
  &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
@@ -151,13 +151,11 @@ Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
  {\alpha(1-s_X)+s_X/\sigma}.
  \label{eq:rewrite-labor-demand-x-elasticity}
 \end{equation}
-The denominator in the last expression is strictly positive. The signs
-therefore follow from the thresholds $1$ and $1/\alpha$.
+%The denominator in the last expression is strictly positive. The signs therefore follow from the thresholds $1$ and $1/\alpha$.
 \end{proof}
 
 Solving the final-good firm's AI condition for its price yields the inverse
-demand schedule $p_X(X)$. This notation conditions on the current values of
-$K,A,$ and $L$; I display those arguments only when the time dependence matters.
+demand schedule $p_X(X)$. %This notation conditions on the current values of $K,A,$ and $L$; I display those arguments only when the time dependence matters.
 The inverse absolute elasticity is
 \begin{equation}
  e_X\equiv-
@@ -178,8 +176,11 @@ existing AI systems and supplies AI production services. Research compute $M$
 improves AI capability. Both $U$ and $M$ are flows, and I choose units so
 that one unit of either flow costs one unit of the final good.
 
-The stock $B$ measures AI capability: what one unit of compute can
-accomplish. Inference compute produces AI production services according to
+The stock $B$ is a scalar index of compute-augmenting AI capability: it
+measures the amount of AI service that one unit of compute can produce. This
+terminology follows the distinction between compute and AI capabilities in
+\citet{sastryetal2024}. Inference compute produces AI production services
+according to
 \begin{equation}
  X=BU.
  \label{eq:rewrite-ai-service}
