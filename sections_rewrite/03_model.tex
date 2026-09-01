@@ -25,10 +25,7 @@ Population grows at the exogenous rate $n\geq0$:
  \qquad N(0)=N_0>0.
  \label{eq:rewrite-population}
 \end{equation}
-Each person supplies one unit of homogeneous labor inelastically. The aggregate
-labor endowment is therefore $N$. Because autonomous research uses no human
-labor, all labor is employed in final production and equilibrium will impose
-$L=N$.
+Each person supplies one unit of homogeneous labor inelastically. The aggregate labor endowment is therefore $N$. Because autonomous research uses no human labor, all labor is employed in final production and equilibrium will impose $L=N$.
 
 The variable $A$ measures labor-augmenting productivity. One unit of labor
 supplies $A$ efficiency units, so effective labor is $AL$. Labor
@@ -39,18 +36,12 @@ productivity follows
  \qquad \gamma\geq0.
  \label{eq:rewrite-labor-productivity}
 \end{equation}
-For any positive variable $V$, I write $g_V\equiv\dot V/V$. Thus
-$g_A=\gamma$.
+%For any positive variable $V$, I write $g_V\equiv\dot V/V$. Thus $g_A=\gamma$.
 
 \subsection{Household}
 \label{subsec:rewrite-household}
 
-The representative household owns physical capital and the AI developer. Let
-\(\Pi\) denote the net distribution the household receives from the developer;
-its formula is derived when I present that agent's problem. The household takes
-the paths of the net interest rate \(r\), the wage \(w\), \(\Pi\), and
-population \(N\) as given. For a predetermined
-capital stock $K(0)=K_0>0$, it chooses aggregate consumption $C$ to solve
+The representative household owns physical capital and the AI developer. Let \(\Pi\) denote the net distribution the household receives from the AI developer. The household takes the paths of the net interest rate \(r\), the wage \(w\) and \(\Pi\) as given. For a predetermined capital stock $K_0>0$, it chooses aggregate consumption $C$ to solve
 \begin{equation}
  \max_{\{C_t\}_{t\geq0}}
  \int_0^\infty e^{-\rho t}N_t\log(C_t/N_t)\dd t,
@@ -62,9 +53,7 @@ subject to
  \dot K=rK+wN+\Pi-C.
  \label{eq:rewrite-household-budget}
 \end{equation}
-The variable $r$ is the net real interest rate: depreciation has already been
-deducted from the rental return to capital. The household's interior Euler
-equation is
+The variable $r$ is the net real interest rate: depreciation has already been deducted from the rental return to capital. The household's Euler condition is
 \begin{equation}
  \frac{\dot C}{C}=n+r-\rho.
  \label{eq:rewrite-euler}
@@ -74,15 +63,12 @@ Its transversality condition is
  \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}=0.
  \label{eq:rewrite-household-tvc}
 \end{equation}
-These conditions use only objects in the household's problem. Production-side
-conditions determining $r,w,$ and \(\Pi\) are introduced below.
+%These conditions use only objects in the household's problem. Production-side conditions determining $r,w,$ and \(\Pi\) are introduced below.
 
 \subsection{Final-good production}
 \label{subsec:rewrite-final-production}
 
-Competitive firms produce the final good from physical capital $K$, effective
-labor $AL$, and AI production services $X$. Let $0<\alpha<1$ be the
-physical-capital elasticity, $\delta\geq0$ the depreciation rate, and
+Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and AI production services $X$. Let $0<\alpha<1$ be the physical-capital elasticity, $\delta\geq0$ the depreciation rate, and
 $\sigma>0$ the elasticity of substitution between effective labor and AI
 production services. The CES weights satisfy
 $\omega_L,\omega_X\in(0,1)$ and $\omega_L+\omega_X=1$. Production is
@@ -94,26 +80,21 @@ $\omega_L,\omega_X\in(0,1)$ and $\omega_L+\omega_X=1$. Production is
  \sigma/(\sigma-1)}.
  \label{eq:rewrite-ces}
 \end{align}
-At the continuous unit-elasticity limit,
-$Z=(AL)^{\omega_L}X^{\omega_X}$.
+%At the continuous unit-elasticity limit,
+%$Z=(AL)^{\omega_L}X^{\omega_X}$.
 
-Define
+Let \(p_X\) denote the price of one unit of AI production services. Taking the input prices \(r+\delta,w,\) and \(p_X\) as given, a final-good firm solves
+\begin{equation}
+ \max_{K,L,X\geq0}
+ \left\{K^\alpha Z(AL,X)^{1-\alpha}-(r+\delta)K-wL-p_XX\right\}.
+ \label{eq:rewrite-final-firm-problem}
+\end{equation}
+Define $s_X$ as the elasticity of $Z$ with respect to $X$:
 \begin{equation}
  s_X=\frac{\omega_XX^{(\sigma-1)/\sigma}}
  {\omega_L(AL)^{(\sigma-1)/\sigma}
  +\omega_XX^{(\sigma-1)/\sigma}}.
  \label{eq:rewrite-sx}
-\end{equation}
-The variable $s_X$ is the elasticity of $Z$ with respect to $X$, not an
-income share. AI's gross revenue share in final production will instead be
-$(1-\alpha)s_X$.
-
-Let \(p_X\) denote the price of one unit of AI production services. Taking the
-input prices \(r+\delta,w,\) and \(p_X\) as given, a final-good firm solves
-\begin{equation}
- \max_{K,L,X\geq0}
- \left\{K^\alpha Z(AL,X)^{1-\alpha}-(r+\delta)K-wL-p_XX\right\}.
- \label{eq:rewrite-final-firm-problem}
 \end{equation}
 The interior first-order conditions are
 \begin{equation}
@@ -124,6 +105,7 @@ The interior first-order conditions are
  p_X=(1-\alpha)s_X\frac{Y}{X}.
  \label{eq:rewrite-factor-prices}
 \end{equation}
+
 Constant returns and these conditions imply
 \begin{equation}
  Y=(r+\delta)K+wL+p_XX.
