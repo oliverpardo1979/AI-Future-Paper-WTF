@@ -687,6 +687,7 @@ its improper objective integrals converge to finite real values.
 \subsubsection{Benchmark equilibrium}
 
 \begin{definition}[Regular interior benchmark equilibrium]
+\label{def:axm-benchmark-equilibrium}
 Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
 the predetermined stocks \(K_0,B_0>0\). A regular interior benchmark
 equilibrium is an admissible infinite-horizon trajectory
@@ -800,6 +801,106 @@ about a candidate path, not a proof of infinite-horizon equilibrium existence.
 If the maximal path becomes unbounded at a finite date, it is a pre-singular
 candidate path rather than an infinite-horizon equilibrium under the definition
 above.
+
+\subsection{A finite-capability regularization}
+\label{sec:axm-finite-cap-regularization}
+
+The gross-substitutes case studied below may fail to have an admissible
+infinite-horizon continuation even though its dated equations have a regular
+solution on every sufficiently short interval. To separate those two issues, I
+introduce a family of economies indexed by a finite capability frontier
+\(\overline B>B_0\). This is an analytical regularization, not an alternative
+calibration or a robustness exercise. I first characterize equilibrium for a
+fixed \(\overline B\) and only then study what happens as
+\(\overline B\to\infty\).
+
+For finite \(\overline B\), define
+\begin{equation}
+ \psi_{\overline B}(B)=1-\frac{B}{\overline B}
+ \label{eq:axm-cap-gap-factor}
+\end{equation}
+and replace the benchmark capability law by
+\begin{equation}
+ \dot B=\chi(BM)^\eta\psi_{\overline B}(B),
+ \qquad 0<B_0<\overline B.
+ \label{eq:axm-capability-law-capped}
+\end{equation}
+For every finite date, research raises capability whenever \(M>0\) and
+\(B<\overline B\). The remaining distance to the frontier reduces the
+productivity of research. Setting
+\(\psi_\infty(B)\equiv 1\) makes
+\eqref{eq:axm-capability-law-capped} coincide with the original law
+\eqref{eq:axm-capability-law-benchmark}.
+
+The developer's objective and pointwise choice of \(X\) are unchanged. Its
+research first-order condition becomes
+\begin{equation}
+ q\chi\eta B(BM)^{\eta-1}\psi_{\overline B}(B)=1,
+ \label{eq:axm-research-foc-capped}
+\end{equation}
+or, equivalently,
+\begin{equation}
+ M=\left[q\chi\eta B^\eta\psi_{\overline B}(B)
+ \right]^{1/(1-\eta)}.
+ \label{eq:axm-research-demand-capped}
+\end{equation}
+Holding \(M\) fixed,
+\[
+ \frac{\partial\dot B}{\partial B}
+ =\eta\frac{\dot B}{B}-\frac{\dot B}{\overline B-B}.
+\]
+The costate equation is therefore
+\begin{equation}
+ \frac{\dot q}{q}
+ =r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}
+ +\frac{\dot B}{\overline B-B}.
+ \label{eq:axm-costate-capped}
+\end{equation}
+The last term is new. As capability approaches the frontier, a marginally
+higher \(B\) leaves less room for subsequent improvements. This offsets part
+of the recursive research return in the uncapped costate equation.
+
+\begin{definition}[Finite-cap benchmark equilibrium]
+\label{def:axm-finite-cap-equilibrium}
+Fix \(\overline B>B_0\). A regular interior finite-cap benchmark equilibrium
+is an admissible infinite-horizon path for the same endogenous variables and
+the same initial values as in Definition
+\ref{def:axm-benchmark-equilibrium}. It satisfies every equation in
+\eqref{eq:axm-canonical-system-benchmark}, except that
+\eqref{eq:axm-research-foc-capped},
+\eqref{eq:axm-capability-law-capped}, and
+\eqref{eq:axm-costate-capped} replace the benchmark research condition, state
+law, and costate equation. It satisfies the same two transversality conditions,
+all markets clear, and every agent solves its problem subject to the finite-cap
+law. The path obeys \(B_t<\overline B\) at every finite date; convergence to
+\(\overline B\) is allowed only asymptotically.
+\end{definition}
+
+This definition changes the technology, not the meaning or timing of any
+existing variable. In particular, \(B\) remains the capability state, \(M\)
+remains research compute, and \(q\) remains the current-value shadow price of
+capability.
+
+\begin{proposition}[Finite-cap invariance and finite-horizon developer existence]
+\label{prop:axm-finite-cap-invariance}
+Suppose \(0<\eta<1\), \(0<B_0<\overline B<\infty\), and research services are
+locally integrable. Then the solution of
+\eqref{eq:axm-capability-law-capped} satisfies
+\begin{equation}
+ \overline B-B_t=(\overline B-B_0)
+ \exp\left\{-\frac{\chi}{\overline B}
+ \int_0^t(B_sM_s)^\eta\dd s\right\}>0
+ \label{eq:axm-cap-gap-solution}
+\end{equation}
+at every finite date. Hence capability never crosses the frontier.
+
+On any fixed finite horizon, fix positive continuous paths for \(K,A,L\) and an
+integrable path for \(r\). Conditional on those paths, the finite-cap reduced
+developer problem has a finite value and attains its maximum over nonnegative
+measurable research policies. Its objective is coercive in total research
+expenditure for every \(0<\eta<1\); no comparison between \(\eta\) and
+\(\alpha\) is needed for this finite-horizon conclusion.
+\end{proposition}
 
 \subsection{Extension: human research in capability production}
 \label{sec:axm-human-research-extension}
@@ -1258,6 +1359,53 @@ global optimum. It shows that, when \(\sigma_{XL}>1\), satisfying the first-orde
 conditions and the two transversality conditions is not enough to establish
 global developer optimality by Proposition
 \ref{prop:axm-path-specific-sufficiency}.
+
+The finite-cap economy introduced in Section
+\ref{sec:axm-finite-cap-regularization} changes this comparison near its
+frontier. Define research depth by
+\begin{equation}
+ R_B=-\overline B\log\left(1-\frac{B}{\overline B}\right).
+ \label{eq:axm-research-depth}
+\end{equation}
+Then \(B(R_B)=\overline B[1-e^{-R_B/\overline B}]\) is increasing and concave,
+and the finite-cap state equation becomes
+\begin{equation}
+ \dot R_B=\chi[B(R_B)M]^\eta.
+ \label{eq:axm-research-depth-law}
+\end{equation}
+Let \(\varepsilon_B\) denote the service--capability elasticity in
+\eqref{eq:axm-service-capability-elasticity}. A direct differentiation gives
+\begin{equation}
+ \frac{\partial^2\pi(B(R_B))}{\partial R_B^2}
+ =\frac{X\psi_{\overline B}(B)}{B^3}
+ \left\{
+  \psi_{\overline B}(B)(\varepsilon_B-2)
+  -\frac{B}{\overline B}
+ \right\}.
+ \label{eq:axm-capped-profit-curvature}
+\end{equation}
+
+\begin{proposition}[Developer sufficiency in the finite-cap economy]
+\label{prop:axm-capped-developer-sufficiency}
+Consider an admissible finite-cap candidate satisfying the dated equations and
+the developer's transversality condition. Suppose \(2\eta\leq1\) and
+\begin{equation}
+ \psi_{\overline B}(B)(\varepsilon_B-2)
+ \leq\frac{B}{\overline B}
+ \label{eq:axm-capped-concavity-gate}
+\end{equation}
+for every date and every capability level in the reachable interval
+\([B_0,\overline B)\). Then the developer's policy is globally optimal. If the
+remaining agent-optimality and market-clearing conditions hold, the candidate
+is a finite-cap equilibrium.
+\end{proposition}
+
+Unlike the corresponding condition in the uncapped gross-substitutes economy,
+\eqref{eq:axm-capped-concavity-gate} holds strictly for capability sufficiently
+close to \(\overline B\). Its left-hand side converges to zero, whereas its
+right-hand side converges to one. The cap therefore permits a local equilibrium
+analysis near its terminal regime without asserting that the same sufficiency
+condition holds from arbitrary initial capability.
 
 \begin{proposition}[Global sufficiency in the unit-elasticity cases]
 \label{prop:axm-equilibrium-sufficiency}

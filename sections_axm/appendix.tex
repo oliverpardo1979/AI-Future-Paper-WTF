@@ -76,6 +76,44 @@ extends this solution uniquely until it reaches the boundary of the positive
 domain or becomes unbounded. Neither theorem selects \((C_0,q_0)\) or proves
 the transversality conditions.
 
+\subsection{Proof of Proposition \ref{prop:axm-finite-cap-invariance}}
+
+Let \(D=\overline B-B\). Equation
+\eqref{eq:axm-capability-law-capped} gives
+\[
+ \frac{\dot D}{D}=-\frac{\chi}{\overline B}(BM)^\eta.
+\]
+Integration gives \eqref{eq:axm-cap-gap-solution}. Local integrability of
+research services makes the exponent finite at every finite date, so
+\(D_t>0\) and the state cannot cross the frontier.
+
+For the finite-horizon existence result, first optimize pointwise over \(X\).
+Operating profit is continuous in \(B\). Compactness of
+\([B_0,\overline B]\) and regularity of the exogenous paths therefore give a
+finite uniform profit bound on \([0,T]\). The discount factor is also bounded
+above and away from zero. Hence, for constants \(C_0<\infty\) and
+\(d_0>0\),
+\[
+ J_T(M)\leq C_0-d_0\int_0^T M_t\dd t.
+\]
+The truncated value is finite, and every maximizing sequence has bounded total
+research expenditure.
+
+Set \(v=M^\eta\) and \(p=1/\eta>1\). The control cost is
+\(M=v^p\), while the state equation is affine in \(v\):
+\[
+ \dot B=\chi B^\eta\left(1-\frac{B}{\overline B}\right)v.
+\]
+A maximizing sequence is bounded in the reflexive space \(L^p[0,T]\), so it
+has a weakly convergent subsequence. The associated state paths are uniformly
+bounded and equicontinuous; H\"older's inequality supplies a common modulus of
+continuity. A further subsequence converges uniformly. Weak convergence of
+\(v\), uniform convergence of \(B\), and the integral form of the state
+equation show that the limit pair is feasible. The operating-profit integral
+is continuous under uniform state convergence, while \(\int v^p\) is weakly
+lower semicontinuous. The objective is therefore weakly upper semicontinuous
+and attains its maximum. \(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-path-specific-sufficiency}}
 
 Fix a date and the paths that the developer takes as given. Differentiating
@@ -131,6 +169,41 @@ Competitive final-good firms face a concave constant-returns technology, and
 Proposition \ref{prop:axm-monopoly-existence} establishes the pointwise global
 choice of \(X\). The remaining dated conditions and market clearing therefore
 establish the relevant equilibrium. \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-capped-developer-sufficiency}}
+
+The transformation in \eqref{eq:axm-research-depth} has
+\[
+ B'(R_B)=\psi_{\overline B}(B)>0,
+ \qquad
+ B''(R_B)=-\frac{\psi_{\overline B}(B)}{\overline B}<0.
+\]
+Using \(\pi_B=X/B^2\) and
+\eqref{eq:axm-operating-profit-curvature} gives
+\eqref{eq:axm-capped-profit-curvature}. Condition
+\eqref{eq:axm-capped-concavity-gate} therefore makes optimized operating profit
+concave in research depth over the complete reachable state domain.
+
+When \(2\eta\leq1\), the monomial \((BM)^\eta\) is jointly concave and
+increasing in \((B,M)\). Because \(B(R_B)\) is increasing and concave,
+\(\chi[B(R_B)M]^\eta\) is jointly concave in \((R_B,M)\). Research cost remains
+linear. The present-value Hamiltonian written in research depth is therefore
+jointly concave, and the transformed first-order and costate equations maximize
+it globally.
+
+The shadow value of research depth is
+\(q_R=qB'(R_B)=q\psi_{\overline B}(B)\). Moreover,
+\[
+ \psi_{\overline B}(B)R_B
+ =-(\overline B-B)\log\left(1-\frac{B}{\overline B}\right)
+ \leq B.
+\]
+Thus the maintained developer transversality condition implies the terminal
+condition required by the concavity argument in \(R_B\). Applying the same
+finite-horizon inequality and limiting argument as in the proof of Proposition
+\ref{prop:axm-path-specific-sufficiency} establishes global developer
+optimality. The remaining conditions in Definition
+\ref{def:axm-finite-cap-equilibrium} then establish equilibrium. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-equilibrium-sufficiency}}
 
@@ -1156,6 +1229,138 @@ family. Since an infinite-horizon equilibrium requires the developer's
 objective to have a finite real value, \(\eta\leq1-\beta\) is necessary.
 \(\square\)
 
+\subsection{Proof of Proposition \ref{prop:axm-capped-terminal-regimes}}
+
+Write \(\sigma=\sigma_{XL}\),
+\(\phi=(\sigma-1)/\sigma\), and
+\(a=\sigma^{-1}-\alpha\). Since
+\(1-e_X=\phi+as_X\), equation
+\eqref{eq:axm-high-sigma-exact-z} gives
+\[
+ \mathcal H_\sigma(s)^{1/\theta}
+ =(1-\alpha)\omega_X^{\sigma/(\sigma-1)}
+ (\phi+as)s^{-1/(\sigma-1)}.
+\]
+The logarithmic derivative of the last two factors has the sign of
+\[
+ a(\sigma-2)s-\phi.
+\]
+This expression is negative on \((0,1]\). If
+\(a(\sigma-2)\leq0\), the claim is immediate. If \(\sigma>2\) and
+\(a>0\), then
+\[
+ a(\sigma-2)<\frac{\sigma-2}{\sigma}
+ <\frac{\sigma-1}{\sigma}=\phi.
+\]
+If \(1<\sigma<2\) and \(a<0\), then
+\[
+ a(\sigma-2)
+ =\left(\alpha-\frac1\sigma\right)(2-\sigma)
+ <\left(1-\frac1\sigma\right)(2-\sigma)<\phi.
+\]
+Thus \(\mathcal H_\sigma\) is strictly decreasing. Its endpoint limits
+follow directly from its definition. Its range is therefore
+\([\mathcal D_\sigma,\infty)\).
+
+Consider first a terminal regime with \(\bar s_X\in(0,1)\). The CES demand
+system then keeps \(X/(AL)\) finite and positive. Since
+\[
+ \frac{U}{Y}=(1-\alpha)s_X(1-e_X),\qquad X=BU,
+\]
+and \(B\to\overline B\), output, AI production services, effective labor,
+capital, and consumption have the common terminal growth rate
+\(n+\gamma_A\). The household Euler equation implies
+\(\bar r=\rho+\gamma_A\), so
+\[
+ \frac{Y}{K}\to\frac{\rho+\gamma_A+\delta}{\alpha}
+ =\mathcal R.
+\]
+Equation \eqref{eq:axm-high-sigma-exact-z} now gives
+\eqref{eq:axm-capped-labor-supported-share}. A unique interior solution exists
+if and only if
+\(\mathcal R>\overline B^\theta\mathcal D_\sigma\), equivalently
+\(\overline B<\overline B_c\). The labor-share formula follows from the
+competitive wage equation.
+
+A terminal regime cannot have \(s_X\to0\), because then
+\(Y/K=\overline B^\theta\mathcal H_\sigma(s_X)\to\infty\), contrary to the
+maintained convergence of the return. If \(s_X\to1\), the static system gives
+\[
+ \frac{Y}{K}\to z_A(\overline B),\qquad
+ \bar r=\alpha z_A(\overline B)-\delta.
+\]
+A positive limiting consumption share and the Euler equation then imply
+\(\bar g=n+\bar r-\rho\). This regime is consistent with
+\(X/(AL)\to\infty\) precisely when
+\(\bar g>n+\gamma_A\), or
+\(\overline B>\overline B_c\). This proves the stated regime division away
+from equality.
+
+Finally, as \(s_X\to1\), \(e_X\to\alpha\). The static pricing and markup
+conditions give
+\[
+ \frac{U}{Y}\to(1-\alpha)^2,\qquad
+ \frac{p_XX}{Y}\to1-\alpha.
+\]
+This proves the remaining claims. \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-capped-frontier-research}}
+
+Let \(D=\overline B-B\). The capability law implies
+\[
+ \frac{\dot B}{D}=\frac{\chi B^\eta M^\eta}{\overline B}.
+\]
+The maintained positive finite limit of \(M\) makes the right-hand side
+converge to a positive finite constant, denoted by \(a\). The research
+first-order condition can be written
+\[
+ 1=qD\frac{\chi\eta B^\eta M^{\eta-1}}{\overline B}.
+\]
+Therefore \(qD\) converges to a positive finite constant. Since \(q/Y\) has
+a positive finite limit and \(g_Y\to\bar g\), it follows that
+\(g_q\to\bar g\) and \(\dot D/D\to-\bar g\). But
+\(\dot D/D=-\dot B/D\), so \(a=\bar g\). Substitution in the capability law
+gives \eqref{eq:axm-capped-terminal-research}.
+
+Because \(g_B=\dot B/B\to0\), the capped costate equation becomes
+\[
+ \bar g=\bar r-\lim_{t\to\infty}\frac{X}{qB^2}+\bar g,
+\]
+which proves \eqref{eq:axm-capped-terminal-shadow-value}. Since
+\(\bar g>0\) and \(M\) has a finite limit, \(M/Y\to0\). For the household
+transversality object, terminal log growth is
+\(-\rho+n+\bar g-\bar g=n-\rho\). For the developer object it is
+\(-\bar r+\bar g+0=n-\rho\), using the Euler equation in either terminal
+regime. Both are negative because \(\rho>n\). \(\square\)
+
+\subsection{Proof of Proposition \ref{prop:axm-infinite-frontier-limit}}
+
+On a compact subset bounded away from zero,
+\[
+ \psi_{\overline B}(B)=1+O(\overline B^{-1}),
+ \qquad
+ \frac{\dot B}{\overline B-B}
+ =\frac{\chi(BM)^\eta}{\overline B}=O(\overline B^{-1}),
+\]
+uniformly together with their first derivatives. The algebraic research
+condition is smooth and interior on this set. After substituting the
+intratemporal equations, the capped canonical vector field therefore converges
+in \(C^1\) to the uncapped vector field. Standard continuous dependence of
+ordinary differential equations, applied to the convergent initial state and
+jump variables in the proposition, gives uniform convergence on \([0,T]\).
+
+For every frontier above \(\overline B_c\), Proposition
+\ref{prop:axm-capped-terminal-regimes} gives
+\[
+ \bar r=\alpha\mathcal D_\sigma\overline B^\theta-\delta,
+ \qquad
+ \bar g=n-\rho-\delta
+ +\alpha\mathcal D_\sigma\overline B^\theta.
+\]
+Because \(\theta>0\), both expressions diverge with \(\overline B\). Thus
+finite-window convergence cannot be extended uniformly to the terminal regimes,
+which proves the noncommutation statement. \(\square\)
+
 \subsection{Proof of Proposition \ref{prop:axm-no-bgp}}
 
 Equation \eqref{eq:axm-high-sigma-exact-z} follows directly from
@@ -1534,6 +1739,41 @@ Subsection \ref{app:axm-near-unit-equilibrium-paths}. For
 \(\sigma_{XL}>1\), the two regular long-run continuations used by the algorithm
 fail the equilibrium-admission rule, so the corresponding segments are
 excluded.
+
+\subsection{Finite-cap continuation strategy for gross substitutes}
+\label{app:axm-finite-cap-algorithm}
+
+The finite frontier in Section
+\ref{sec:axm-finite-cap-gross-substitutes} provides the appropriate next
+boundary-value problem for \(\sigma_{XL}>1\). For a fixed
+\(\overline B>B_0\), I retain the four dynamic variables
+\((K,B,C,q)\), replace only the capability law, research condition, and
+costate equation by their finite-cap counterparts, and continue from a nearby
+accepted solution. The terminal restriction depends on the analytically
+determined side of \(\overline B_c\): equation
+\eqref{eq:axm-capped-labor-supported-share} supplies the labor-supported
+terminal ratios below the threshold, while
+\eqref{eq:axm-capped-ai-growth} and
+\eqref{eq:axm-capped-terminal-research} supply the AI-dominated ratios above
+it. The knife-edge is not used as a numerical terminal condition.
+
+For each fixed frontier, horizon continuation must stabilize the selected
+values of \(C_0\) and \(q_0\), dated residuals must converge under mesh
+refinement, the two transversality objects must have the negative terminal
+growth rate in Proposition \ref{prop:axm-capped-frontier-research}, and the
+developer sufficiency condition
+\eqref{eq:axm-capped-concavity-gate} must hold on the complete reachable
+capability interval. Only then is the result admitted as a finite-cap
+equilibrium. Frontier continuation subsequently raises \(\overline B\) and
+compares accepted equilibria on common finite windows. It never extrapolates a
+rejected uncapped free-boundary segment or treats convergence of dated
+equations alone as equilibrium evidence.
+
+This sequence implements the order of limits in Proposition
+\ref{prop:axm-infinite-frontier-limit}: first solve and audit equilibrium for
+each finite frontier, then take \(\overline B\to\infty\) on a fixed window.
+No finite-cap trajectory is reported until that complete admission test has
+been implemented and passed.
 
 \subsection{Adoption experiment from the no-AI balanced-growth path}
 \label{app:axm-ai-adoption-algorithm}

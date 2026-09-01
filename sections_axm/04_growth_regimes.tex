@@ -900,6 +900,170 @@ eventually dominate that aggregate. Combining the same static conditions gives
 \end{equation}
 for a positive constant \(\mathcal D\).
 
+\subsubsection{Finite-cap equilibrium regularization}
+\label{sec:axm-finite-cap-gross-substitutes}
+
+I now apply the finite-cap construction in Section
+\ref{sec:axm-finite-cap-regularization}. The purpose is to replace the
+finite-time boundary by an infinite-horizon economy for each
+\(\overline B<\infty\), characterize that economy's terminal regime, and then
+examine whether those equilibria have a meaningful limit as
+\(\overline B\to\infty\).
+
+For \(\sigma_{XL}>1\), define
+\begin{equation}
+ \mathcal D_\sigma=
+ \left[(1-\alpha)^2
+ \omega_X^{\sigma_{XL}/(\sigma_{XL}-1)}\right]^\theta,
+ \qquad
+ z_A(\overline B)=\mathcal D_\sigma\overline B^\theta,
+ \label{eq:axm-capped-ai-only-productivity}
+\end{equation}
+where \(z_A(\overline B)\) is the limiting output--capital ratio when AI
+production services dominate and capability is fixed at the frontier. Recall
+\(\mathcal R=(\rho+\gamma_A+\delta)/\alpha\). The critical frontier is
+\begin{equation}
+ \overline B_c=
+ \left(\frac{\mathcal R}{\mathcal D_\sigma}\right)^{1/\theta}.
+ \label{eq:axm-critical-capability-frontier}
+\end{equation}
+
+To state the result, let
+\begin{equation}
+ \mathcal H_\sigma(s)=
+ \left[
+  (1-\alpha)s
+  \left(1-\frac{1-s}{\sigma_{XL}}-\alpha s\right)
+  \left(\frac{\omega_X}{s}\right)^{
+   \sigma_{XL}/(\sigma_{XL}-1)}
+ \right]^\theta.
+ \label{eq:axm-capped-share-map}
+\end{equation}
+Equation \eqref{eq:axm-high-sigma-exact-z} is
+\(Y/K=B^\theta\mathcal H_\sigma(s_X)\). The function
+\(\mathcal H_\sigma\) is strictly decreasing on \((0,1]\), diverges as
+\(s\downarrow0\), and satisfies
+\(\mathcal H_\sigma(1)=\mathcal D_\sigma\).
+
+\begin{proposition}[Terminal regimes of the finite-cap economy]
+\label{prop:axm-capped-terminal-regimes}
+Suppose \(\sigma_{XL}>1\), \(n+\gamma_A>0\), and \(\rho>n\). Consider a
+regular finite-cap benchmark equilibrium that approaches
+\(B=\overline B\), has convergent terminal ratios and growth rates, and has a
+positive limiting consumption--output ratio.
+
+If \(\overline B<\overline B_c\), the terminal regime is labor supported.
+There is a unique \(\bar s_X\in(0,1)\) satisfying
+\begin{equation}
+ \mathcal R=\overline B^\theta\mathcal H_\sigma(\bar s_X).
+ \label{eq:axm-capped-labor-supported-share}
+\end{equation}
+The limiting net interest rate and aggregate growth rate are
+\begin{equation}
+ \bar r=\rho+\gamma_A,\qquad
+ \bar g=n+\gamma_A,\qquad
+ \frac{wL}{Y}\to(1-\alpha)(1-\bar s_X)>0.
+ \label{eq:axm-capped-labor-supported-rates}
+\end{equation}
+
+If \(\overline B>\overline B_c\), capital and AI production services outgrow
+effective labor. The terminal regime is AI dominated and
+\begin{align}
+ \frac{Y}{K}&\to z_A(\overline B),&
+ \bar r&=\alpha z_A(\overline B)-\delta,&
+ \bar g&=n+\bar r-\rho>n+\gamma_A,
+ \label{eq:axm-capped-ai-growth}\\
+ \frac{wL}{Y}&\to0,&
+ \frac{U}{Y}&\to(1-\alpha)^2,&
+ \frac{p_XX}{Y}&\to1-\alpha.
+ \label{eq:axm-capped-ai-shares}
+\end{align}
+The knife-edge \(\overline B=\overline B_c\) separates the two normalizations
+and is not covered by the local terminal characterization.
+\end{proposition}
+
+The finite frontier therefore does not necessarily restore a positive labor
+income share. It removes finite-time divergence, but a sufficiently high
+frontier produces a finite-rate \(AK\)-type terminal regime in which labor
+becomes asymptotically negligible. The rate is finite for every fixed
+\(\overline B\), rather than uniformly bounded across frontiers.
+
+\begin{proposition}[Research along a regular frontier approach]
+\label{prop:axm-capped-frontier-research}
+Maintain the conditions of Proposition
+\ref{prop:axm-capped-terminal-regimes}. Suppose also that research compute and
+the shadow value relative to output have positive finite limits and that the
+frontier approach is regular. Let \(\bar g\) denote the terminal aggregate
+growth rate in the relevant regime. Then
+\begin{align}
+ \frac{\dot B}{\overline B-B}&\to\bar g,&
+ M&\to\overline M(\overline B)
+ =\left[
+  \frac{\bar g\,\overline B^{1-\eta}}{\chi}
+ \right]^{1/\eta},
+ \label{eq:axm-capped-terminal-research}\\
+ g_q&\to\bar g,&
+ \frac{X}{qB^2}&\to\bar r,&
+ \frac{M}{Y}&\to0.
+ \label{eq:axm-capped-terminal-shadow-value}
+\end{align}
+Both transversality objects have asymptotic log growth \(n-\rho<0\).
+\end{proposition}
+
+Combining Proposition \ref{prop:axm-capped-frontier-research} with the
+developer's profit identity and the resource constraint completes the
+consolidated decomposition in the AI-dominated regime:
+\begin{equation}
+ \frac{\Pi}{Y}\to\alpha(1-\alpha),\qquad
+ \frac{C}{Y}\to
+ \alpha(1-\alpha)+\frac{\rho-n}{z_A(\overline B)}.
+ \label{eq:axm-capped-ai-consolidated-shares}
+\end{equation}
+
+These propositions characterize terminal restrictions for a finite-cap
+equilibrium; they do not turn a solution of the capped dated equations into an
+equilibrium automatically. A reported transition must still satisfy Definition
+\ref{def:axm-finite-cap-equilibrium}, including agent optimality and both
+transversality conditions. Proposition
+\ref{prop:axm-capped-developer-sufficiency} supplies a checkable developer
+sufficiency condition near the frontier.
+
+\begin{proposition}[The infinite-frontier limit]
+\label{prop:axm-infinite-frontier-limit}
+Suppose \(\sigma_{XL}>1\). On every compact subset of the positive state
+space, the finite-cap state law, research condition, and costate equation
+converge in \(C^1\) to their uncapped counterparts as
+\(\overline B\to\infty\). Consequently, consider a sequence of finite-cap
+equilibria for which \(\overline B_j\to\infty\), the selected initial jump
+variables \((C_{0,j},q_{0,j})\) converge to a positive finite pair, and the
+paths remain in a common compact subset on \([0,T]\). Their restrictions to
+\([0,T]\) converge to the uncapped canonical path with the limiting initial
+values. This finite-window statement does not establish that the sequence of
+finite-cap equilibria exists or that its limit satisfies the uncapped
+infinite-horizon transversality conditions.
+
+The terminal regimes do not have a finite-rate limit. Once
+\(\overline B>\overline B_c\),
+\begin{equation}
+ \bar r(\overline B)
+ =\alpha\mathcal D_\sigma\overline B^\theta-\delta,\qquad
+ \bar g(\overline B)
+ =n-\rho-\delta+\alpha\mathcal D_\sigma\overline B^\theta,
+ \label{eq:axm-capped-diverging-rates}
+\end{equation}
+so both rates diverge as \(\overline B\to\infty\). Hence taking the frontier
+to infinity on a fixed pre-singular window is not the same operation as first
+following each finite-cap equilibrium to its long run and then taking
+\(\overline B\to\infty\).
+\end{proposition}
+
+The finite cap is therefore an equilibrium regularization of the pre-singular
+branch, not a proof that the uncapped economy has an infinite-horizon
+equilibrium. If capped equilibria can be constructed from the paper's initial
+stocks, their limit can justify uncapped allocations on every compact interval
+strictly before the singular date. It cannot supply an allocation at or beyond
+that date.
+
 Proposition \ref{prop:axm-research-burst} explains why the baseline uses the
 stronger curvature restriction \(\eta<\alpha\). For all positive CES
 elasticities and on each fixed regular horizon, the restriction makes the

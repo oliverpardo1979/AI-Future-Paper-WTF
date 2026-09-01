@@ -25,12 +25,12 @@
   },
   "inputs": {
     "main_axm.tex": "8bb55d308282f810cd38500ef73f1296b2cdcd805320d3ea476188bd72b315a3",
-    "sections_axm/01_introduction.tex": "5de1a04d5b819b2b420187223b0418430269777f54868015ed3d3f24c9eb9621",
+    "sections_axm/01_introduction.tex": "f9e0e0fa17449f54db84273aee9355e50aad906b0fe37ace2f24e0e0129eeef7",
     "sections_axm/02_literature.tex": "a641598e030d34d8a3c59425432a5c980605490af010e4eb60e65d00d9bb54a9",
-    "sections_axm/03_model.tex": "f9e3252b40977ac230dd07cb3618e267f042a2305cdf1abbb5079e03b514b5d5",
-    "sections_axm/04_growth_regimes.tex": "a470a74b9ac3cb33a427b57a9fac425488af324ecdcffe2f71bc8e126b8736e6",
-    "sections_axm/06_conclusion.tex": "54a0b60cd2bd9f0f769b9b236b6f2b6e0c13e16ca129db17400fd54a832b6345",
-    "sections_axm/appendix.tex": "6c7a7f00802ea0fe9ee8fdbf11a745a62335f4857e17853ccdcd762cafbe8d46"
+    "sections_axm/03_model.tex": "be4938eac75d35de76a9b6854fb06c3dd4c23d5349ce3a81b1de9548a9867112",
+    "sections_axm/04_growth_regimes.tex": "f62994e192bf62c94c0f08566dc8f1188f2a06d62a506ae292d07189fdf2dbc0",
+    "sections_axm/06_conclusion.tex": "2f7651357c38bbf01e4fc5334ef53d77f34eaf2480f0b500d0f0881391f86064",
+    "sections_axm/appendix.tex": "659f66d75e7f7cf67521ea4e5eba2980e7fa51d9f105ad1c6a50774bf7e0ef08"
   },
   "missing_admitted_references": [],
   "rejected_figures": {
