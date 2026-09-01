@@ -125,12 +125,18 @@ The elasticity \(\sigma\) governs two different margins. The first is whether mo
 \begin{remark}[AI services, wages, and labor's income share;
 \citealp{autorkausik2026}; \citealp{yango2026}]
 \label{rem:rewrite-ai-labor}
-For an interior final-good firm, an increase in $X$, holding $K,A,$ and
-$L$ fixed, satisfies
+Holding $K,A,$ and $L$ fixed, an increase in $X$ raises both $w$ and
+$\ell^Y$ when $\sigma<1$; raises $w$ but lowers $\ell^Y$ when
+$1<\sigma<1/\alpha$; and lowers both variables when $\sigma>1/\alpha$.
+Holding $K,A,$ and $w$ fixed, conditional labor demand $L$ rises in the first
+two regimes and falls in the third. At $\sigma=1$, $\ell^Y$ is unchanged. At
+$\sigma=1/\alpha$, $w$ and conditional labor demand are unchanged. These are
+static effects and do not describe an equilibrium transition.
+\end{remark}
+
+\begin{proof}
+The final-good firm's first-order conditions and the CES share imply
 \begin{align}
- \left.\frac{\partial\ln Y}{\partial\ln X}\right|_{K,A,L}
- &=(1-\alpha)s_X,
- \label{eq:rewrite-output-x-elasticity}\\
  \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,A,L}
  &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
  \label{eq:rewrite-wage-x-elasticity}\\
@@ -145,23 +151,9 @@ Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
  {\alpha(1-s_X)+s_X/\sigma}.
  \label{eq:rewrite-labor-demand-x-elasticity}
 \end{equation}
-Thus more AI services lower labor's income share if and only if
-\(\sigma>1\), but lower the wage at a fixed $L$, or conditional labor
-demand at a fixed $w$, only if \(\sigma>1/\alpha\). In the nonempty
-interval
-\begin{equation}
- 1<\sigma<\frac{1}{\alpha},
- \label{eq:rewrite-decoupling-region}
-\end{equation}
-the wage rises while labor receives a smaller share of output.
-\end{remark}
-
-Autor and Kausik establish the distinction between the wage and labor-share
-effects. Yango derives the two thresholds for a nested Cobb--Douglas--CES
-technology. Remark \ref{rem:rewrite-ai-labor} applies these results to the
-production technology used here. It is a static comparative-statics result: it
-holds the specified variables fixed and does not describe an equilibrium
-transition.
+The denominator in the last expression is strictly positive. The signs
+therefore follow from the thresholds $1$ and $1/\alpha$.
+\end{proof}
 
 Solving the final-good firm's AI condition for its price yields the inverse
 demand schedule $p_X(X;K,A,L)$. Its inverse absolute elasticity is
