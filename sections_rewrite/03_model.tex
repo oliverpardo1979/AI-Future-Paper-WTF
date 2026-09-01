@@ -226,13 +226,13 @@ capability-accumulation mechanism.
  \centering
  \resizebox{0.72\textwidth}{!}{%
  \begin{tikzpicture}[>=Latex,font=\small]
-  \node[rewrite-state] (B) at (-5.2,0.8) {\(B\)\\AI capability};
-  \node[rewrite-input] (M) at (-5.2,-1.0) {\(M\)\\research compute};
-  \node[rewrite-technology] (BM) at (-1.9,-0.1)
+  \node[rewrite-input] (M) at (-5.9,0.9) {\(M\)\\research compute};
+  \node[rewrite-state] (B) at (-5.9,-0.9) {\(B\)\\AI capability};
+  \node[rewrite-technology] (BM) at (-1.9,0.9)
    {\(BM\)\\AI research services};
-  \node[rewrite-technology] (psi) at (-1.9,1.5)
+  \node[rewrite-technology] (psi) at (-1.9,-0.9)
    {\(\psi(B)\)\\remaining room};
-  \node[rewrite-technology] (Bd) at (2.2,0.6)
+  \node[rewrite-technology] (Bd) at (2.2,0.0)
    {\(\dot B=\chi(BM)^\eta\psi(B)\)\\new capability};
 
   \draw[rewrite-flow] (B) -- (BM);
@@ -240,8 +240,8 @@ capability-accumulation mechanism.
   \draw[rewrite-flow] (B) -- (psi);
   \draw[rewrite-flow] (BM) -- (Bd);
   \draw[rewrite-flow] (psi) -- (Bd);
-  \draw[rewrite-dynamics] (Bd.east) -- (4.4,0.6) -- (4.4,-2.0) --
-    (-7.0,-2.0) -- (-7.0,0.8) -- (B.west);
+  \draw[rewrite-dynamics] (Bd.east) -- (4.4,0.0) -- (4.4,-2.0) --
+    (-5.9,-2.0) -- (B.south);
  \end{tikzpicture}%
  }
  \caption{Autonomous capability accumulation. Capability $B$ augments
