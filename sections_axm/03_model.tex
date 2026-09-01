@@ -306,18 +306,33 @@ not a numerical result.
 \subsubsection{Capability accumulation}
 
 In the benchmark, AI research services are the only input used to improve
-capability:
+capability. I study a family of economies indexed by an analytical capability
+frontier \(\overline B\in(B_0,\infty]\):
 \begin{equation}
- \dot B=\chi(BM)^\eta,
+ \dot B=\chi(BM)^\eta\psi_{\overline B}(B),
+ \qquad
+ \psi_{\overline B}(B)=
+ \begin{cases}
+  1-B/\overline B,&\overline B<\infty,\\
+  1,&\overline B=\infty,
+ \end{cases}
  \qquad \chi>0,\quad 0<\eta<1.
  \label{eq:axm-capability-law-benchmark}
 \end{equation}
+For a finite frontier, research raises capability at every finite date with
+\(M>0\) and \(B<\overline B\), but its productivity falls as capability
+approaches the frontier. The case \(\overline B=\infty\) is the original
+unbounded-capability specification. I use finite \(\overline B\) as an
+analytical device: I first study equilibrium for a fixed frontier and then ask
+whether the resulting equilibria have a meaningful limit as
+\(\overline B\to\infty\). It is not an alternative calibration or a robustness
+exercise.
+
 The scalar \(\chi\) shifts research productivity. The exponent \(\eta\) governs
-returns to current research scale: for a fixed \(B\), multiplying \(M\) by
-\(\lambda\) multiplies \(\dot B\) by \(\lambda^\eta\). Capability enters only
-through \(BM\), so the benchmark has no separate \(B^\phi\) term. Better
-capability makes each unit of research compute more productive, while \(\eta\)
-governs decreasing returns to the current flow of research compute.
+returns to current research scale: for fixed \(B\), multiplying \(M\) by
+\(\lambda\) multiplies \(\dot B\) by \(\lambda^\eta\). Better capability makes
+each unit of research compute more productive through \(BM\), while
+\(\psi_{\overline B}(B)\) measures the remaining room for improvement.
 
 \begin{figure}[H]
  \centering
@@ -330,7 +345,7 @@ governs decreasing returns to the current flow of research compute.
   \node[axm-model-technology] (BM) at (-1.7, 0.0)
    {\(BM\)\\AI research services};
   \node[axm-model-technology] (Bd) at ( 3.2, 0.0)
-   {\(\dot B=\chi(BM)^\eta\)\\new capability};
+   {\(\dot B=\chi(BM)^\eta\psi_{\overline B}(B)\)\\new capability};
 
   \draw[axm-model-flow] (B) -- (BM);
   \draw[axm-model-flow] (M) -- (BM);
@@ -340,8 +355,9 @@ governs decreasing returns to the current flow of research compute.
  \end{tikzpicture}%
  }
  \caption{AI research in the benchmark. Capability and research compute produce
- AI research services \(BM\). Those services improve capability, and the new
- capability stock raises the productivity of subsequent research compute.}
+ AI research services \(BM\). Those services improve capability, the new stock
+ raises the productivity of subsequent research compute, and a finite frontier
+ reduces the remaining room for further improvement.}
  \label{fig:axm-research-flow}
 \end{figure}
 
@@ -530,12 +546,13 @@ system.
 Let \(q\) be the current-value shadow price of AI capability. The interior
 first-order condition for research compute is
 \begin{equation}
- q\chi\eta B(BM)^{\eta-1}=1.
+ q\chi\eta B(BM)^{\eta-1}\psi_{\overline B}(B)=1.
  \label{eq:axm-research-foc-benchmark}
 \end{equation}
 Equivalently,
 \begin{equation}
- M=\left(q\chi\eta B^\eta\right)^{1/(1-\eta)}.
+ M=\left[q\chi\eta B^\eta\psi_{\overline B}(B)
+ \right]^{1/(1-\eta)}.
  \label{eq:axm-research-demand-benchmark}
 \end{equation}
 This expression determines current research compute after \(B\) and \(q\) are
@@ -544,25 +561,37 @@ resource constraint.
 
 The envelope theorem applied to \eqref{eq:axm-service-supply} gives
 \(\pi_B=X/B^2\). Holding \(M\) fixed, the capability law gives
-\(\partial\dot B/\partial B=\eta\dot B/B\). The current-value costate equation is
-therefore
+\[
+ \frac{\partial\dot B}{\partial B}
+ =\eta\frac{\dot B}{B}
+ +\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
+\]
+The current-value costate equation is therefore
 \begin{equation}
- \frac{\dot q}{q}=r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}.
+ \frac{\dot q}{q}=r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
  \label{eq:axm-costate-benchmark}
 \end{equation}
+For a finite frontier,
+\(\psi_{\overline B}'/\psi_{\overline B}=-1/(\overline B-B)\); for
+\(\overline B=\infty\), the derivative is zero.
 The costate equation has an asset-pricing interpretation. Rearranging it gives
 \begin{equation}
- rq=\frac{X}{B^2}+q\eta\frac{\dot B}{B}+\dot q.
+ rq=\frac{X}{B^2}+q\eta\frac{\dot B}{B}
+ +q\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}+\dot q.
  \label{eq:axm-capability-return-decomposition}
 \end{equation}
-An additional unit of capability pays two current returns. First, it reduces
-the inference compute required to supply a given quantity of AI production
-services, saving \(X/B^2\) units of final output. Second, holding current
-research compute fixed, it raises the productivity of AI research. That second
-return is worth \(q\eta\dot B/B\). Together with the capital gain \(\dot q\),
-these two returns must equal the market return \(rq\). A larger current return
-therefore allows the shadow value of capability to grow more slowly while still
-delivering the return available to the developer's owner.
+An additional unit of capability reduces the inference compute required to
+supply a given quantity of AI production services, saving \(X/B^2\) units of
+final output. Holding current research compute fixed, it also raises the
+productivity of AI research through \(BM\), a return worth
+\(q\eta\dot B/B\). With a finite frontier, however, a higher current stock
+reduces the remaining room for improvement. The term involving
+\(\psi_{\overline B}'\) subtracts that effect. These current returns and the
+capital gain \(\dot q\) must equal the market return \(rq\).
 
 The infinite-horizon terminal restriction maintained for the developer is
 \begin{equation}
@@ -603,10 +632,11 @@ any given research policy. At a differentiable optimum, its current-value
 shadow price is consequently strictly positive: \(q>0\). The part of the
 current-value Hamiltonian that depends on research compute is
 \[
- -M+q\chi B^\eta M^\eta.
+ -M+q\chi B^\eta M^\eta\psi_{\overline B}(B).
 \]
-Its right derivative tends to infinity as \(M\downarrow0\) because
-\(q,B>0\) and \(0<\eta<1\). Hence \(M=0\) cannot maximize the Hamiltonian.
+ Its right derivative tends to infinity as \(M\downarrow0\) because
+ \(q,B,\psi_{\overline B}(B)>0\) and \(0<\eta<1\). Hence \(M=0\) cannot
+ maximize the Hamiltonian.
 \end{proof}
 
 The proposition rules out a zero-research choice at any finite date. It does
@@ -658,7 +688,9 @@ Substituting the same capital-price condition into the developer's costate
 equation gives
 \begin{equation}
  \frac{\dot q}{q}=\alpha\frac{Y}{K}-\delta-
- \frac{X}{qB^2}-\eta\frac{\dot B}{B}.
+ \frac{X}{qB^2}-\eta\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
  \label{eq:axm-costate-reduced-benchmark}
 \end{equation}
 
@@ -688,9 +720,10 @@ its improper objective integrals converge to finite real values.
 
 \begin{definition}[Regular interior benchmark equilibrium]
 \label{def:axm-benchmark-equilibrium}
-Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
-the predetermined stocks \(K_0,B_0>0\). A regular interior benchmark
-equilibrium is an admissible infinite-horizon trajectory
+Fix the model's parameters, a frontier
+\(\overline B\in(B_0,\infty]\), the exogenous initial values
+\(A_0,N_0>0\), and the predetermined stocks \(K_0,B_0>0\). A regular interior
+benchmark equilibrium is an admissible infinite-horizon trajectory
 \begin{equation}
  \left\{K_t,B_t,C_t,q_t,L_t,U_t,M_t,X_t,Z_t,Y_t,r_t,w_t,p_{X,t},
  s_{X,t},e_{X,t},\Pi_t\right\}_{t\geq0}
@@ -729,17 +762,19 @@ At each date, the intratemporal allocation and prices satisfy
  p_X&=(1-\alpha)s_X\frac{Y}{X},\\
  p_X(1-e_X)&=\frac{1}{B},\\
  X&=BU,\\
- q\chi\eta B(BM)^{\eta-1}&=1,\\
+ q\chi\eta B(BM)^{\eta-1}\psi_{\overline B}(B)&=1,\\
  \Pi&=p_XX-U-M.
 \end{align}
 \par\medskip\noindent
 The four dynamic equations are
 \begin{align}
  \dot K&=Y-C-U-M-\delta K,\\
- \dot B&=\chi(BM)^\eta,\\
+ \dot B&=\chi(BM)^\eta\psi_{\overline B}(B),\\
  \frac{\dot C}{C}&=n+r-\rho,\\
  \frac{\dot q}{q}&=r-\frac{X}{qB^2}
- -\eta\frac{\dot B}{B}.
+ -\eta\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
 \end{align}
 \end{subequations}
 \par\medskip\noindent
@@ -754,7 +789,9 @@ The two transversality conditions are
 \end{subequations}
 At \(\sigma_{XL}=1\), the production relations in the system are understood
 at their continuous limits: \(Z=(AL)^{\omega_L}X^{\omega_X}\) and
-\(s_X=\omega_X\). The initial values \(C(0)\) and \(q(0)\) are not data; they
+\(s_X=\omega_X\). If \(\overline B<\infty\), the path also satisfies
+\(B_t<\overline B\) at every finite date; convergence to the frontier is
+allowed only asymptotically. The initial values \(C(0)\) and \(q(0)\) are not data; they
 are selected so that the trajectory satisfies the two transversality
 conditions. Finally, the household and developer solve their respective
 optimization problems, final-good firms maximize profits, and all markets
@@ -802,90 +839,24 @@ If the maximal path becomes unbounded at a finite date, it is a pre-singular
 candidate path rather than an infinite-horizon equilibrium under the definition
 above.
 
-\subsection{A finite-capability regularization}
+\subsection{Properties of a finite capability frontier}
 \label{sec:axm-finite-cap-regularization}
 
 The gross-substitutes case studied below may fail to have an admissible
 infinite-horizon continuation even though its dated equations have a regular
-solution on every sufficiently short interval. To separate those two issues, I
-introduce a family of economies indexed by a finite capability frontier
-\(\overline B>B_0\). This is an analytical regularization, not an alternative
-calibration or a robustness exercise. I first characterize equilibrium for a
-fixed \(\overline B\) and only then study what happens as
-\(\overline B\to\infty\).
-
-For finite \(\overline B\), define
-\begin{equation}
- \psi_{\overline B}(B)=1-\frac{B}{\overline B}
- \label{eq:axm-cap-gap-factor}
-\end{equation}
-and replace the benchmark capability law by
-\begin{equation}
- \dot B=\chi(BM)^\eta\psi_{\overline B}(B),
- \qquad 0<B_0<\overline B.
- \label{eq:axm-capability-law-capped}
-\end{equation}
-For every finite date, research raises capability whenever \(M>0\) and
-\(B<\overline B\). The remaining distance to the frontier reduces the
-productivity of research. Setting
-\(\psi_\infty(B)\equiv 1\) makes
-\eqref{eq:axm-capability-law-capped} coincide with the original law
-\eqref{eq:axm-capability-law-benchmark}.
-
-The developer's objective and pointwise choice of \(X\) are unchanged. Its
-research first-order condition becomes
-\begin{equation}
- q\chi\eta B(BM)^{\eta-1}\psi_{\overline B}(B)=1,
- \label{eq:axm-research-foc-capped}
-\end{equation}
-or, equivalently,
-\begin{equation}
- M=\left[q\chi\eta B^\eta\psi_{\overline B}(B)
- \right]^{1/(1-\eta)}.
- \label{eq:axm-research-demand-capped}
-\end{equation}
-Holding \(M\) fixed,
-\[
- \frac{\partial\dot B}{\partial B}
- =\eta\frac{\dot B}{B}-\frac{\dot B}{\overline B-B}.
-\]
-The costate equation is therefore
-\begin{equation}
- \frac{\dot q}{q}
- =r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}
- +\frac{\dot B}{\overline B-B}.
- \label{eq:axm-costate-capped}
-\end{equation}
-The last term is new. As capability approaches the frontier, a marginally
-higher \(B\) leaves less room for subsequent improvements. This offsets part
-of the recursive research return in the uncapped costate equation.
-
-\begin{definition}[Finite-cap benchmark equilibrium]
-\label{def:axm-finite-cap-equilibrium}
-Fix \(\overline B>B_0\). A regular interior finite-cap benchmark equilibrium
-is an admissible infinite-horizon path for the same endogenous variables and
-the same initial values as in Definition
-\ref{def:axm-benchmark-equilibrium}. It satisfies every equation in
-\eqref{eq:axm-canonical-system-benchmark}, except that
-\eqref{eq:axm-research-foc-capped},
-\eqref{eq:axm-capability-law-capped}, and
-\eqref{eq:axm-costate-capped} replace the benchmark research condition, state
-law, and costate equation. It satisfies the same two transversality conditions,
-all markets clear, and every agent solves its problem subject to the finite-cap
-law. The path obeys \(B_t<\overline B\) at every finite date; convergence to
-\(\overline B\) is allowed only asymptotically.
-\end{definition}
-
-This definition changes the technology, not the meaning or timing of any
-existing variable. In particular, \(B\) remains the capability state, \(M\)
-remains research compute, and \(q\) remains the current-value shadow price of
-capability.
+solution on every sufficiently short interval. The finite member of the family
+in \eqref{eq:axm-capability-law-benchmark} separates local solvability from an
+unbounded state. It does not change the meaning or timing of any existing
+variable: \(B\) remains capability, \(M\) remains research compute, and \(q\)
+remains the current-value shadow price of capability. The following result
+records the two properties that make the finite frontier useful for equilibrium
+analysis.
 
 \begin{proposition}[Finite-cap invariance and finite-horizon developer existence]
 \label{prop:axm-finite-cap-invariance}
 Suppose \(0<\eta<1\), \(0<B_0<\overline B<\infty\), and research services are
 locally integrable. Then the solution of
-\eqref{eq:axm-capability-law-capped} satisfies
+\eqref{eq:axm-capability-law-benchmark} satisfies
 \begin{equation}
  \overline B-B_t=(\overline B-B_0)
  \exp\left\{-\frac{\chi}{\overline B}
@@ -921,7 +892,8 @@ and AI research services. The CES weights satisfy
 \begin{equation}
  \dot B=\chi
  \left[\omega_H H^{\varrho_{HM}}
- +\omega_M(BM)^{\varrho_{HM}}\right]^{\eta/\varrho_{HM}},
+ +\omega_M(BM)^{\varrho_{HM}}\right]^{\eta/\varrho_{HM}}
+ \psi_{\overline B}(B),
  \qquad
  \varrho_{HM}=\frac{\sigma_{HM}-1}{\sigma_{HM}}.
  \label{eq:axm-capability-law}
@@ -932,9 +904,10 @@ Define the constant-returns effective-research index
  +\omega_M(BM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}}.
  \label{eq:axm-effective-research}
 \end{equation}
-Then \(\dot B=\chi E^\eta\). At the unit-elasticity limit,
+Then \(\dot B=\chi E^\eta\psi_{\overline B}(B)\). At the unit-elasticity limit,
 \begin{equation}
- \dot B=\chi H^{\eta\omega_H}(BM)^{\eta\omega_M},
+ \dot B=\chi H^{\eta\omega_H}(BM)^{\eta\omega_M}
+ \psi_{\overline B}(B),
  \qquad E=H^{\omega_H}(BM)^{\omega_M}.
  \label{eq:axm-capability-law-cd}
 \end{equation}
@@ -994,7 +967,9 @@ At the unit-elasticity limit,
 \end{equation}
 The minimum expenditure required to produce a target \(\dot B\) is
 \begin{equation}
- P_E\left(\frac{\dot B}{\chi}\right)^{1/\eta}.
+ P_E\left[
+  \frac{\dot B}{\chi\psi_{\overline B}(B)}
+ \right]^{1/\eta}.
  \label{eq:axm-research-expenditure-function}
 \end{equation}
 Thus \(P_E\) is the unit cost of \(E\), not the unit cost of \(\dot B\) when
@@ -1013,10 +988,11 @@ The share of research expenditure allocated to AI research services is
 \end{equation}
 Along an interior cost-minimizing allocation, \(s_M\) is also the elasticity of
 \(E\) with respect to \(BM\). The elasticity of \(\dot B\) with respect to
-\(BM\) is therefore \(\eta s_M\). Holding \(H\) and \(M\) fixed, \(\eta s_M\)
-is also the local elasticity of \(\dot B\) with respect to \(B\). The variable
-\(s_M\) is an expenditure share and a local feedback weight, not a physical
-fraction of research tasks performed by AI.
+\(BM\), holding \(B\) fixed, is therefore \(\eta s_M\). Holding \(H\) and
+\(M\) fixed, the elasticity with respect to \(B\) also includes the frontier
+term \(B\psi_{\overline B}'(B)/\psi_{\overline B}(B)\). The variable \(s_M\)
+is an expenditure share and a local feedback weight, not a physical fraction
+of research tasks performed by AI.
 
 \subsubsection{Dynamic optimality and equilibrium changes}
 \label{sec:axm-dated-equilibrium-system}
@@ -1029,17 +1005,21 @@ The direct first-order conditions for the two research inputs are
 \end{equation}
 Equivalently, conditional cost minimization and the optimal research scale give
 \begin{equation}
- q\chi\eta E^{\eta-1}=P_E.
+ q\chi\eta E^{\eta-1}\psi_{\overline B}(B)=P_E.
  \label{eq:axm-research-scale-foc}
 \end{equation}
 The current-value costate equation becomes
 \begin{equation}
  \frac{\dot q}{q}=r-\frac{X}{qB^2}
- -\eta s_M\frac{\dot B}{B}.
+ -\eta s_M\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
  \label{eq:axm-costate}
 \end{equation}
-Relative to the benchmark, human research changes the last term because only
-the AI-research component \(BM\) is directly augmented by current capability.
+Relative to the benchmark, human research changes the coefficient on
+\(\dot B/B\) because only the AI-research component \(BM\) is directly
+augmented by current capability. The frontier term is common to the benchmark
+and the extension.
 
 The resource constraint \eqref{eq:axm-resource} is unchanged: human research
 uses labor from the fixed labor endowment, while research compute \(M\) uses the
@@ -1056,11 +1036,13 @@ The benchmark identity follows by setting \(H=0\).
 After imposing market clearing, the reduced costate equation is
 \begin{equation}
  \frac{\dot q}{q}=\alpha\frac{Y}{K}-\delta-\frac{X}{qB^2}
- -\eta s_M\frac{\dot B}{B}.
+ -\eta s_M\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
  \label{eq:axm-costate-reduced}
 \end{equation}
-The extension replaces the benchmark's research elasticity \(\eta\) with the
-endogenous feedback weight \(\eta s_M\):
+The extension replaces the benchmark's service-feedback elasticity \(\eta\)
+with the endogenous weight \(\eta s_M\):
 \begin{equation}
  \left.\frac{\partial\ln X}{\partial\ln B}\right|_U=1,\qquad
  \left.\frac{\partial\ln Y}{\partial\ln X}\right|_{K,A,L}
@@ -1073,9 +1055,10 @@ AI research services eventually dominate research expenditure, then
 \(s_M\to1\) and the extension approaches the benchmark feedback.
 
 \begin{definition}[Regular interior equilibrium with human research]
-Fix the model's parameters, the exogenous initial values \(A_0,N_0>0\), and
-the predetermined stocks \(K_0,B_0>0\). A regular interior equilibrium with
-human research is an admissible infinite-horizon trajectory
+Fix the model's parameters, a frontier
+\(\overline B\in(B_0,\infty]\), the exogenous initial values
+\(A_0,N_0>0\), and the predetermined stocks \(K_0,B_0>0\). A regular interior
+equilibrium with human research is an admissible infinite-horizon trajectory
 \begin{equation}
  \left\{K_t,B_t,C_t,q_t,L_t,H_t,U_t,M_t,X_t,E_t,Z_t,Y_t,
  r_t,w_t,p_{X,t},P_{E,t},s_{X,t},s_{M,t},e_{X,t},\Pi_t\right\}_{t\geq0}
@@ -1120,10 +1103,10 @@ The research allocation and developer payout satisfy
  E&=\left[\omega_HH^{\varrho_{HM}}
  +\omega_M(BM)^{\varrho_{HM}}\right]^{1/\varrho_{HM}},\\
  q\chi\eta\omega_HE^{\eta-\varrho_{HM}}
- H^{\varrho_{HM}-1}&=w,\\
+ H^{\varrho_{HM}-1}\psi_{\overline B}(B)&=w,\\
  q\chi\eta\omega_ME^{\eta-\varrho_{HM}}
- (BM)^{\varrho_{HM}-1}B&=1,\\
- P_E&=q\chi\eta E^{\eta-1},\\
+ (BM)^{\varrho_{HM}-1}B\psi_{\overline B}(B)&=1,\\
+ P_E&=q\chi\eta E^{\eta-1}\psi_{\overline B}(B),\\
  s_M&=\frac{M}{wH+M},\\
  \Pi&=p_XX-U-wH-M.
 \end{align}
@@ -1131,10 +1114,12 @@ The research allocation and developer payout satisfy
 The four dynamic equations are
 \begin{align}
  \dot K&=Y-C-U-M-\delta K,\\
- \dot B&=\chi E^\eta,\\
+ \dot B&=\chi E^\eta\psi_{\overline B}(B),\\
  \frac{\dot C}{C}&=n+r-\rho,\\
  \frac{\dot q}{q}&=r-\frac{X}{qB^2}
- -\eta s_M\frac{\dot B}{B}.
+ -\eta s_M\frac{\dot B}{B}
+ -\dot B\frac{\psi_{\overline B}'(B)}{
+ \psi_{\overline B}(B)}.
 \end{align}
 \end{subequations}
 \par\medskip\noindent
@@ -1151,7 +1136,9 @@ At \(\sigma_{XL}=1\), the production relations use
 \(Z=(AL)^{\omega_L}X^{\omega_X}\) and \(s_X=\omega_X\). At
 \(\sigma_{HM}=1\), \(\varrho_{HM}=0\) and the research relation uses
 \(E=H^{\omega_H}(BM)^{\omega_M}\); the two displayed research-input
-conditions are evaluated at \(\varrho_{HM}=0\). The initial values \(C(0)\)
+conditions are evaluated at \(\varrho_{HM}=0\). If
+\(\overline B<\infty\), the path also satisfies \(B_t<\overline B\) at every
+finite date. The initial values \(C(0)\)
 and \(q(0)\) are selected so that both transversality conditions hold.
 Finally, the household and developer solve their respective optimization
 problems, final-good firms maximize profits, and all markets clear. Regularity
