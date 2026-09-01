@@ -679,7 +679,7 @@ TVC was used above to select the positive-\(d\) branch. \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-complement-local-existence}}
 
-Write \(\mathcal L=AN\), \(G=n+\gamma_A\), and
+Write \(\mathcal L=AN\) and
 \(x=X/\mathcal L\). For a given \((k,b,\tau)\), the static monopoly condition is
 \begin{equation}
  (1-\alpha)s_X(x)[1-e_X(x)]\frac{y(k,x)}{x}
@@ -711,14 +711,15 @@ The levels of inference and research compute satisfy
 conditions gives the autonomous system
 \begin{align}
  \dot k&=y-c-\tau(\widetilde u+\widetilde m)
- -(\delta+G)k,\notag\\
- \frac{\dot b}{b}&=\chi b^{\eta-1}\widetilde m^\eta-\eta G,\notag\\
- \frac{\dot c}{c}&=\alpha\frac{y}{k}-\delta-\rho-G,\notag\\
+ -(\delta+n+\gamma_A)k,\notag\\
+ \frac{\dot b}{b}&=\chi b^{\eta-1}\widetilde m^\eta-\eta(n+\gamma_A),\notag\\
+ \frac{\dot c}{c}&=\alpha\frac{y}{k}-\delta-\rho-n-\gamma_A,\notag\\
  \frac{\dot{\widetilde q}}{\widetilde q}
  &=\alpha\frac{y}{k}-\delta
  -\frac{x}{\widetilde q b^2}
- -\eta\chi b^{\eta-1}\widetilde m^\eta-(1-2\eta)G,\notag\\
- \dot\tau&=-\eta G\tau.
+ -\eta\chi b^{\eta-1}\widetilde m^\eta
+ -(1-2\eta)(n+\gamma_A),\notag\\
+ \dot\tau&=-\eta(n+\gamma_A)\tau.
  \label{eq:axm-app-complement-autonomous-system}
 \end{align}
 Direct substitution verifies that
@@ -732,7 +733,7 @@ the Jacobian block for capital and consumption is
 \begin{equation}
  J_K=
  \begin{pmatrix}
-  \rho-n&-[\mathcal R-\delta-G]\\
+  \rho-n&-[\mathcal R-\delta-n-\gamma_A]\\
   -(1-\alpha)(\rho+\gamma_A+\delta)&0
  \end{pmatrix}.
  \label{eq:axm-app-complement-capital-block}
@@ -747,23 +748,24 @@ Then
 \begin{equation}
  J_B=
  \begin{pmatrix}
-  \eta G a_\eta&\eta G h_\eta\\
-  2\mathcal D_q-\eta^2G a_\eta&
-  \mathcal D_q-\eta^2G h_\eta
+  \eta(n+\gamma_A) a_\eta&\eta(n+\gamma_A) h_\eta\\
+  2\mathcal D_q-\eta^2(n+\gamma_A) a_\eta&
+  \mathcal D_q-\eta^2(n+\gamma_A) h_\eta
  \end{pmatrix},
  \qquad
- \det J_B=-\frac{\eta G\mathcal D_q}{1-\eta}<0.
+ \det J_B=-\frac{\eta(n+\gamma_A)\mathcal D_q}{1-\eta}<0.
  \label{eq:axm-app-complement-capability-block}
 \end{equation}
 Each two-dimensional block therefore has one negative and one positive root.
-The remaining root, associated with \(\tau\), is \(-\eta G<0\). The full
+The remaining root, associated with \(\tau\), is
+\(-\eta(n+\gamma_A)<0\). The full
 Jacobian is block triangular up to terms running from the capital block and
 \(\tau\) into the other equations. It consequently has three stable roots and
 two unstable roots. Under the stated pairwise-distinctness condition, the projection of
 the stable eigenspace onto the three predetermined variables
 \((k,b,\tau)\) is nonsingular: the negative root of \(J_K\) has a nonzero
 \(k\) component, the negative root of \(J_B\) has a nonzero \(b\) component,
-and the \(-\eta G\) eigenvector has a nonzero \(\tau\) component.
+and the \(-\eta(n+\gamma_A)\) eigenvector has a nonzero \(\tau\) component.
 
 The stable-manifold theorem now gives a three-dimensional local stable
 manifold. The nonsingular projection and the inverse-function theorem express
@@ -787,11 +789,12 @@ developer optimality.
 Finally, the household terminal object has asymptotic log growth \(n-\rho<0\).
 The developer's terminal object has asymptotic log growth
 \[
- (1-\eta)G-(\rho+\gamma_A)
- =-[\rho-n+\eta G]<0.
+ (1-\eta)(n+\gamma_A)-(\rho+\gamma_A)
+ =-[\rho-n+\eta(n+\gamma_A)]<0.
 \]
-Operating profit grows at rate \(G\), research expenditure grows at rate
-\((1-\eta)G\), and the discount rate converges to \(\rho+\gamma_A\), so both
+Operating profit grows at rate \(n+\gamma_A\), research expenditure grows at
+rate \((1-\eta)(n+\gamma_A)\), and the discount rate converges to
+\(\rho+\gamma_A\), so both
 improper objectives are finite. The dated conditions, the two transversality
 conditions, agent optimality, and market clearing therefore satisfy the
 benchmark equilibrium definition. \(\square\)
@@ -1335,7 +1338,7 @@ regime. Both are negative because \(\rho>n\). \(\square\)
 
 \subsection{Proof of Proposition \ref{prop:axm-capped-local-equilibrium}}
 
-Let \(G=n+\gamma_A\), \(D=\overline B-B\), and
+Let \(D=\overline B-B\) and
 \(a=\dot B/D\). Consider first
 \(\overline B<\overline B_c\). Define the normalized static allocations
 \(y=Y/(AN)\), \(x=X/(AN)\), and \(u=U/(AN)\). The variables in
@@ -1355,13 +1358,13 @@ After solving the dated static block for \((y,x,u)\) conditional on
 \label{eq:axm-capped-labor-normalized-system}
 \begin{align}
  \frac{\dot k}{k}
- &=\frac{y-c-u-M\tau}{k}-\delta-G,\\
+ &=\frac{y-c-u-M\tau}{k}-\delta-n-\gamma_A,\\
  \frac{\dot c}{c}&=r-\rho-\gamma_A,\\
- \frac{\dot d}{d}&=G-a,\\
+ \frac{\dot d}{d}&=n+\gamma_A-a,\\
  \frac{\dot{\widetilde q}}{\widetilde q}
  &=r-\frac{x}{\widetilde qB^2}
- -\eta\frac{ad\tau}{B}+a-G,\\
- \dot\tau&=-G\tau,
+ -\eta\frac{ad\tau}{B}+a-n-\gamma_A,\\
+ \dot\tau&=-(n+\gamma_A)\tau,
  \qquad r=\alpha\frac{y}{k}-\delta.
 \end{align}
 \end{subequations}
@@ -1382,11 +1385,11 @@ Let \(\overline e_X=(1-\overline s_X)/\sigma_{XL}
  {(1-\alpha)\overline s_X(1-\overline e_X)},&
  \overline k&=\frac{\overline y}{\mathcal R},\\
  \overline c
- &=\overline y-\overline u-(\delta+G)\overline k,&
+ &=\overline y-\overline u-(\delta+n+\gamma_A)\overline k,&
  \overline{\widetilde q}
  &=\frac{\overline x}{\overline r\,\overline B^2},\\
  \overline M
- &=\left(\frac{G\overline B^{1-\eta}}{\chi}\right)^{1/\eta},&
+ &=\left(\frac{(n+\gamma_A)\overline B^{1-\eta}}{\chi}\right)^{1/\eta},&
  \overline d
  &=\frac{\overline M^{1-\eta}}
  {\overline{\widetilde q}\chi\eta\overline B^{\eta-1}}.
@@ -1410,11 +1413,12 @@ The Ramsey block is the first matrix in
 The research first-order condition implies
 \(\partial\ln a/\partial\ln d
 =\partial\ln a/\partial\ln\widetilde q=\mu\). Moreover,
-\(a=G\) and
+\(a=n+\gamma_A\) and
 \(x/(\widetilde qB^2)=\overline r\) at the terminal point. These identities
 give the second matrix in
 \eqref{eq:axm-capped-labor-jacobian-blocks}, whose determinant is
-\(-G\mu\overline r<0\). The final root is the root \(-G\) of the
+\(-(n+\gamma_A)\mu\overline r<0\). The final root is
+\(-(n+\gamma_A)\) from the
 \(\tau\) equation. Thus there are three stable and two unstable roots.
 
 Now consider \(\overline B>\overline B_c\). Under
@@ -1432,13 +1436,13 @@ Let \(y=Y/K\), \(x=X/K\), \(u=U/K\), and
 \begin{subequations}
 \label{eq:axm-capped-ai-normalized-system}
 \begin{align}
- \dot h&=h\varphi(G-g_K),\\
+ \dot h&=h\varphi(n+\gamma_A-g_K),\\
  \frac{\dot d}{d}&=g_K-a,\\
  \frac{\dot c}{c}&=n+r-\rho-g_K,\\
  \frac{\dot v}{v}
  &=r-\frac{x}{vB^2}
  -\eta\frac{ad\tau h^{1/\varphi}}{B}+a-g_K,\\
- \dot\tau&=-G\tau,\\
+ \dot\tau&=-(n+\gamma_A)\tau,\\
  g_K&=y-c-u-M\tau h^{1/\varphi}-\delta,
  \qquad r=\alpha y-\delta.
 \end{align}
@@ -1449,9 +1453,9 @@ at the AI-dominated terminal point.
 At \((h,\tau)=(0,0)\), the static allocation is AI dominated,
 \(a=\overline g\), and
 \(x/(vB^2)=\overline r\). Linearization gives the root
-\(\varphi(G-\overline g)<0\) from the \(h\) equation, the root
+\(\varphi(n+\gamma_A-\overline g)<0\) from the \(h\) equation, the root
 \(\overline c>0\) from the consumption--capital equation, and the root
-\(-G<0\) from the \(\tau\) equation. The two remaining roots are those of
+\(-(n+\gamma_A)<0\) from the \(\tau\) equation. The two remaining roots are those of
 \eqref{eq:axm-capped-ai-jacobian-block}. Its determinant is
 \(-\overline g\mu\overline r<0\), so one is negative and one is positive.
 The AI-dominated terminal point also has three stable and two unstable roots.
@@ -1925,20 +1929,84 @@ largest boundary residual was \(1.1\times10^{-15}\).
 
 These calculations implement Proposition
 \ref{prop:axm-capped-local-equilibrium}; they verify local equilibrium
-selection near each terminal regime. They do not establish a transition from
-the paper's original stocks. That requires continuing the stable manifold
-backward while checking that \(C_0\) and \(q_0\) stabilize with the horizon,
-that dated residuals converge under mesh refinement, that both transversality
-objects have the terminal decay rate in Proposition
-\ref{prop:axm-capped-frontier-research}, and that
-\eqref{eq:axm-capped-concavity-gate} holds on the complete reachable capability
-interval. Only a path passing all those tests is admitted as a finite-cap
-equilibrium and eligible for frontier continuation.
+selection near each terminal regime. To continue the stable manifold to the
+paper's initial stocks, I use the fact that the fifth normalized coordinate is
+exogenous. Define
+\begin{equation}
+ b=\log\left(\frac{B}{\overline B-B}\right).
+ \label{eq:axm-capped-capability-logit}
+\end{equation}
+This unrestricted coordinate enforces \(0<B<\overline B\) exactly through
+\(B=\overline B e^b/(1+e^b)\). Let \(\bar g\) denote the terminal common growth
+rate: \(n+\gamma_A\) below the threshold and the rate in
+\eqref{eq:axm-capped-ai-growth} above it. The global collocation solver uses
+the four bounded coordinates
+\begin{equation}
+ \mathbf y(t)=
+ \left(\log K_t-\bar g t,\;
+ b_t-\bar g t,\;
+ \log C_t-\bar g t,\;
+ \log q_t-\bar g t\right)'.
+ \label{eq:axm-capped-global-coordinates}
+\end{equation}
+At every date, I recover
+\(A_tN_t=A_0N_0e^{(n+\gamma_A)t}\), transform
+\(\mathbf y(t)\) back into the relevant five terminal coordinates, and
+evaluate the exact CES, monopoly condition, research condition, and four dated
+equations. Thus neither the capability law nor any equilibrium equation is
+approximated.
 
-This order implements Proposition \ref{prop:axm-infinite-frontier-limit}:
-first solve and audit equilibrium for each finite frontier, then take
-\(\overline B\to\infty\) on a fixed window. I do not report the local diagnostic
-paths as economic transition results.
+The global BVP has four restrictions. The initial boundary fixes the two
+predetermined stocks,
+\begin{equation}
+ y_1(0)=\log K_0,\qquad
+ y_2(0)=\log\left(\frac{B_0}{\overline B-B_0}\right),
+ \label{eq:axm-capped-global-initial-boundary}
+\end{equation}
+while the terminal boundary retains the two conditions
+\(Q_U[z(T)-z^*]=0\) from
+\eqref{eq:axm-capped-bvp-boundary-conditions}. Consumption and the shadow
+value remain the two jump variables. The algorithm begins with the verified
+local solution at a large initial effective-labor scale. It then moves the log
+of that scale and the two initial-state coordinates to
+\(A_0N_0=1\), \(K_0=2.027734\), and \(B_0=0.443671\). If a requested
+continuation step fails, the algorithm divides that step and restarts from the
+last converged solution. Bounds used to prevent overflow apply only to rejected
+Newton trial values; the final paths are reevaluated with the exact
+exponentials, and the bounds are not active on either converged path.
+
+At \(\sigma_{XL}=1.10\), I apply this procedure to the two subcritical
+frontiers in Table \ref{tab:axm-capped-global-continuation}. For
+\(\overline B=60.413\), the refined horizon is \(T=5{,}871.94\). The largest
+collocation residual is \(9.9\times10^{-9}\), the largest independently
+reconstructed equation residual is \(5.9\times10^{-15}\), and the boundary
+residual is \(3.5\times10^{-15}\). Extending the horizon by 500 years changes
+the initial jumps by \(1.3\times10^{-8}\) and the common 2,500-year window by
+at most \(2.9\times10^{-6}\). A counterfactual audit minimizes
+\eqref{eq:axm-capped-concavity-gate} over the full reachable capability
+interval at each audit date; its minimum margin is \(0.7202\). The two
+transversality objects have terminal logs \(-215.8\) and \(-218.1\), followed
+by the analytical decay rate \(n-\rho=-0.037\). This path passes the admission
+rule.
+
+For the larger subcritical frontier
+\(\overline B=3.021\times10^7=0.5\overline B_c\), the refined horizon is
+\(T=7{,}721.57\). The equation and boundary residuals remain below
+\(2.9\times10^{-14}\), and the horizon-extension checks also pass. However,
+the minimum of the developer concavity margin on the path is \(-0.00631\).
+Since the actual capability is included in the counterfactual interval of
+Proposition \ref{prop:axm-capped-developer-sufficiency}, this single violation
+is enough to reject the candidate; a wider counterfactual search cannot repair
+it. The reproducible output is
+\path{numerical_axm/global_finite_cap_bvp_analysis.json}.
+
+The global calculation therefore completes the first finite-frontier step but
+not the limit in Proposition \ref{prop:axm-infinite-frontier-limit}. The
+moderate frontier produces an admitted equilibrium from the paper's initial
+stocks. The large-frontier candidate shows that the local sufficiency result
+need not survive along the whole transition. I consequently do not continue
+these results mechanically to \(\overline B=\infty\), and I do not report the
+local or rejected paths as economic transition figures.
 
 \subsection{Adoption experiment from the no-AI balanced-growth path}
 \label{app:axm-ai-adoption-algorithm}

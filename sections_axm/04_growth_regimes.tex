@@ -1063,7 +1063,6 @@ consolidated decomposition in the AI-dominated regime:
 The terminal restrictions can close an equilibrium BVP only if each terminal
 regime has the right saddle-path dimension. The normalization must differ
 across the two regimes because their growing scales differ. Let
-\(G=n+\gamma_A\),
 \(\mu=\eta/(1-\eta)\), and
 \(\varphi=(\sigma_{XL}-1)/\sigma_{XL}>0\). Below the threshold, I use
 \begin{equation}
@@ -1085,7 +1084,8 @@ the definition, timing, or economic meaning of any model variable.
 
 \begin{proposition}[Local finite-cap equilibrium paths]
 \label{prop:axm-capped-local-equilibrium}
-Suppose \(\sigma_{XL}>1\), \(G>0\), \(\rho>n\), \(2\eta\leq1\), and
+Suppose \(\sigma_{XL}>1\), \(n+\gamma_A>0\), \(\rho>n\),
+\(2\eta\leq1\), and
 \(\overline B\neq\overline B_c\). Maintain the positive-consumption and
 regularity conditions in Propositions
 \ref{prop:axm-capped-terminal-regimes} and
@@ -1104,18 +1104,19 @@ and research-gap block are
  \qquad
  J_B^-=
  \begin{pmatrix}
-  -G\mu&-G\mu\\
-  G\mu&\overline r+G\mu
+  -(n+\gamma_A)\mu&-(n+\gamma_A)\mu\\
+  (n+\gamma_A)\mu&\overline r+(n+\gamma_A)\mu
  \end{pmatrix},
  \label{eq:axm-capped-labor-jacobian-blocks}
 \end{equation}
-where \(r_k<0\), and the remaining root is \(-G\). Each displayed block has
+where \(r_k<0\), and the remaining root is \(-(n+\gamma_A)\). Each displayed block has
 negative determinant. The terminal point therefore has three stable and two
 unstable roots.
 
 If \(\overline B>\overline B_c\), the root associated with \(h\) is
-\(\varphi(G-\overline g)<0\), the consumption--capital root is
-\(\overline c>0\), the root associated with \(\tau\) is \(-G\), and the
+\(\varphi(n+\gamma_A-\overline g)<0\), the consumption--capital root is
+\(\overline c>0\), the root associated with \(\tau\) is
+\(-(n+\gamma_A)\), and the
 research-gap block is
 \begin{equation}
  J_B^+=
@@ -1140,9 +1141,55 @@ conditions.
 \end{proposition}
 
 The proposition establishes equilibrium paths for initial normalized states
-near a terminal regime. It does not yet establish that the stable manifold can
-be continued backward to the paper's original initial stocks. That is a global
-continuation problem, not a local-existence condition.
+near a terminal regime. It does not by itself establish that the stable
+manifold reaches the paper's original initial stocks. I therefore continue the
+manifold backward to the common unit-elastic stocks
+\(K_0=2.027734\) and \(B_0=0.443671\), with \(A_0=N_0=1\), and apply the full
+equilibrium-admission rule. Table
+\ref{tab:axm-capped-global-continuation} reports two points from this exercise
+at \(\sigma_{XL}=1.10\).
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrl}
+\toprule
+Case & \(\overline B\) & \(\overline B/\overline B_c\) &
+Max. residual & Min. margin & Status\\
+\midrule
+Moderate & \(60.413\) & \(10^{-6}\) &
+\(5.9\times10^{-15}\) & \(0.7202\) & Admitted equilibrium\\
+Large subcritical & \(3.021\times10^7\) & \(0.5\) &
+\(2.8\times10^{-14}\) & \(-0.00631\) & Rejected candidate\\
+\bottomrule
+\end{tabular}
+\caption{Global finite-cap continuation from the common initial stocks. The
+moderate-frontier margin is the minimum from the counterfactual developer
+audit over the reachable capability interval. For the large frontier, the
+reported negative margin occurs on the candidate path itself, so a broader
+counterfactual search is unnecessary. Numerical details are in Appendix
+\ref{app:axm-finite-cap-algorithm}.}
+\label{tab:axm-capped-global-continuation}
+\end{table}
+
+The moderate-frontier calculation connects the initial stocks to the
+labor-supported terminal regime. Extending its terminal horizon by 500 years
+changes the two initial jump variables by at most \(1.3\times10^{-8}\) and the
+four solver coordinates over years 0--2,500 by at most
+\(2.9\times10^{-6}\). Both transversality objects have terminal log values
+below \(-215\) and then decay at rate \(n-\rho=-0.037\). The finite-cap
+developer condition also holds with a large positive margin. I therefore admit
+this numerical path as a finite-cap equilibrium.
+
+The large-frontier calculation is equally accurate as a solution of the
+canonical equations, and its initial jumps are stable when the horizon is
+extended. It nevertheless fails the developer condition on the path itself:
+the minimum occurs when \(B/\overline B\) is about \(0.137\) and \(s_X\) is
+about \(0.739\). The path is therefore not admitted as an equilibrium. This
+distinction is substantive. A finite frontier guarantees local sufficiency
+near its endpoint, but it need not preserve that sufficiency along the entire
+transition from a distant initial capability.
 
 These propositions characterize terminal restrictions for a finite-cap
 equilibrium; they do not turn a solution of the capped dated equations into an
@@ -1151,6 +1198,15 @@ equilibrium automatically. A reported transition must still satisfy Definition
 transversality conditions. Proposition
 \ref{prop:axm-capped-developer-sufficiency} supplies a checkable developer
 sufficiency condition near the frontier.
+
+The calculation establishes that the finite-cap construction can produce an
+equilibrium from the paper's initial stocks for at least one fixed frontier. It
+does not yet construct the sequence of equilibria with
+\(\overline B\to\infty\) required by the next proposition. The current
+sufficiency argument stops before that limit because the concavity gate fails
+for the large-frontier candidate. I therefore do not use either calculation as
+a gross-substitutes transition figure and do not infer existence or
+nonexistence of an equilibrium above \(\overline B_c\).
 
 \begin{proposition}[The infinite-frontier limit]
 \label{prop:axm-infinite-frontier-limit}
@@ -1229,7 +1285,7 @@ with both \(\sup_{t\geq0}B_t<\infty\) and
 \end{proposition}
 
 \begin{proof}
-Let \(\mathcal L=AN\) and \(G=n+\gamma_A>0\). Because capability is
+Let \(\mathcal L=AN\). Because \(n+\gamma_A>0\) and capability is
 nondecreasing, bounded capability implies
 \(B_t\in[B_0,\bar B]\). Integrating its law gives
 \begin{equation}
@@ -1264,7 +1320,7 @@ Solving this linear equation backward from \(t+1\) to \(t\), using
 \[
  q_t\geq\int_t^{t+1}
  e^{-\int_t^s a_v\dd v}\frac{X_s}{B_s^2}\dd s
- \geq c e^{Gt}
+ \geq c e^{(n+\gamma_A)t}
 \]
 for a constant \(c>0\). This contradicts
 \eqref{eq:axm-bounded-capability-q-integral}. Therefore bounded capability and
