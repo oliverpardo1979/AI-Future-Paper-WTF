@@ -6,7 +6,7 @@
 The CES share in \eqref{eq:rewrite-sx} implies
 \[
  \left.\frac{\partial\ln(1-s_X)}{\partial\ln X}\right|_{A,L}
- =-\left(1-\frac{1}{\sigma_{XL}}\right)s_X.
+ =-\left(1-\frac{1}{\sigma}\right)s_X.
 \]
 Equation \eqref{eq:rewrite-output-x-elasticity} follows by differentiating
 \eqref{eq:rewrite-output} and \eqref{eq:rewrite-ces}. Combining these two
@@ -16,7 +16,7 @@ elasticities with the wage equation in \eqref{eq:rewrite-factor-prices} gives
 Finally,
 \[
  \left.\frac{\partial\ln w}{\partial\ln L}\right|_{K,A,X}
- =-\left[\alpha(1-s_X)+\frac{s_X}{\sigma_{XL}}\right]<0.
+ =-\left[\alpha(1-s_X)+\frac{s_X}{\sigma}\right]<0.
 \]
 Implicit differentiation of the labor-demand condition at a fixed wage gives
 \eqref{eq:rewrite-labor-demand-x-elasticity}. Its denominator is positive, so
@@ -37,7 +37,7 @@ exponent finite at every finite date, so \(D_t>0\).
 
 Fix \(K,A,L,B>0\), let \(R(X)=p_X(X;K,A,L)X\), and write
 \[
- u=\frac{1}{\sigma_{XL}},\qquad s=s_X,\qquad
+ u=\frac{1}{\sigma},\qquad s=s_X,\qquad
  e=u(1-s)+\alpha s.
 \]
 The demand elasticity in \eqref{eq:rewrite-inverse-demand-elasticity} and the
@@ -69,10 +69,10 @@ obtain
 Thus marginal revenue decreases strictly whenever it is positive.
 
 As \(X\downarrow0\), revenue is proportional to \(X^{1-u}\) when
-\(\sigma_{XL}>1\), to \(X^\beta\) when \(\sigma_{XL}=1\), and to
-\(X^{1-\alpha}\) when \(\sigma_{XL}<1\). Every exponent lies between zero and
+\(\sigma>1\), to \(X^\beta\) when \(\sigma=1\), and to
+\(X^{1-\alpha}\) when \(\sigma<1\). Every exponent lies between zero and
 one, so \(m(X)\to\infty\). As \(X\to\infty\), marginal revenue converges to
-zero from above if \(\sigma_{XL}\geq1\); if \(\sigma_{XL}<1\), it eventually
+zero from above if \(\sigma\geq1\); if \(\sigma<1\), it eventually
 becomes negative. Hence \(m(X)=1/B\) has exactly one solution. Operating profit
 increases before this solution and decreases after it. The linear cost \(X/B\)
 dominates revenue as \(X\to\infty\), so this solution is the unique global
@@ -90,10 +90,10 @@ research policy. At a differentiable optimum its current-value shadow price is
 strictly positive: \(q>0\). The part of the Hamiltonian that depends on \(M\)
 is
 \[
- -M+q\chi B^\eta M^\eta\psi_{\overline B}(B).
+ -M+q\chi B^\eta M^\eta\psi(B).
 \]
 Its right derivative diverges as \(M\downarrow0\) because
-\(q,B,\psi_{\overline B}(B)>0\) and \(0<\eta<1\). Therefore \(M=0\) cannot
+\(q,B,\psi(B)>0\) and \(0<\eta<1\). Therefore \(M=0\) cannot
 maximize the Hamiltonian at a finite date.
 \hfill\(\square\)
 
@@ -145,7 +145,7 @@ and away from zero. Combining
 If \(\eta<\alpha\), then \(p<1\). The bound tends to minus infinity as
 \(S\to\infty\), so the value is finite and the objective is coercive.
 
-For the converse, suppose \(\sigma_{XL}>1\). As \(B\to\infty\), optimized
+For the converse, suppose \(\sigma>1\). As \(B\to\infty\), optimized
 operating profit satisfies
 \[
  \pi(B;K,A,L)\sim\kappa_XKB^\theta
@@ -190,9 +190,9 @@ The objective is therefore weakly upper semicontinuous and attains its maximum.
 
 The transformation \eqref{eq:rewrite-research-depth} satisfies
 \[
- B'(R_B)=\psi_{\overline B}(B)>0,
+ B'(R_B)=\psi(B)>0,
  \qquad
- B''(R_B)=-\frac{\psi_{\overline B}(B)}{\overline B}<0.
+ B''(R_B)=-\frac{\psi(B)}{\overline B}<0.
 \]
 Using \(\pi_B=X/B^2\) and \eqref{eq:rewrite-profit-curvature} gives
 \eqref{eq:rewrite-capped-profit-curvature}. Condition
@@ -207,9 +207,9 @@ jointly concave, and the transformed first-order and costate conditions
 maximize it globally.
 
 The shadow value of research depth is
-\(q_R=qB'(R_B)=q\psi_{\overline B}(B)\). Moreover,
+\(q_R=qB'(R_B)=q\psi(B)\). Moreover,
 \[
- \psi_{\overline B}(B)R_B
+ \psi(B)R_B
  =-(\overline B-B)\log\left(1-\frac{B}{\overline B}\right)\leq B.
 \]
 The developer's transversality condition therefore implies the terminal
@@ -230,9 +230,24 @@ global optimality.
 \section{Numerical algorithm and equilibrium audit}
 \label{app:rewrite-algorithm}
 
+\subsection{Notation in the paper and code}
+
+The numerical code retains its existing variable names. To make the
+implementation auditable, the notation used in the paper maps into the code as
+follows:
+\begin{equation}
+ \gamma=\texttt{labor\_productivity\_growth},\qquad
+ \sigma=\texttt{sigma\_xl},\qquad
+ \psi(B)=\exp\!\bigl(\texttt{log\_psi}\bigr).
+ \label{eq:rewrite-code-notation-map}
+\end{equation}
+This map changes only the notation in the exposition. It does not redefine a
+variable or parameter, alter its timing, or modify any equation used by the
+simulations.
+
 % 1. Regime-specific normalization.
 % 2. Boundary conditions and jump-variable selection.
-% 3. Continuation in initial states, sigma_XL, and the finite frontier.
+% 3. Continuation in initial states, sigma, and the finite frontier.
 % 4. Exact reconstruction of equilibrium equations.
 % 5. Horizon stability and both transversality conditions.
 % 6. Developer optimality and the equilibrium-admission decision.

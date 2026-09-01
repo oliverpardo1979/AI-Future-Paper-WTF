@@ -37,8 +37,8 @@ separate extension, or the current archival manuscript.
    conditions.
 7. State the resource constraint, initial conditions, transversality
    conditions, and a self-contained equilibrium definition.
-8. Derive results for \(\sigma_{XL}<1\), \(\sigma_{XL}=1\), and
-   \(\sigma_{XL}>1\), in that order.
+8. Derive results for \(\sigma<1\), \(\sigma=1\), and
+   \(\sigma>1\), in that order.
 9. Present only numerical trajectories that satisfy the equilibrium-admission
    rule.
 
@@ -54,13 +54,13 @@ equilibrium trajectory.
 | 2 | Existence and uniqueness of the pointwise monopoly service choice | `prop:axm-monopoly-existence` | Proven under stated curvature conditions | Model; technical proof in appendix |
 | 3 | Invariance of the finite capability domain and finite-horizon developer existence | `prop:axm-finite-cap-invariance` | Proven | Model |
 | 4 | Checkable sufficient condition for global developer optimality with a finite frontier | `prop:axm-capped-developer-sufficiency` | Proven | Model; proof in appendix |
-| 5 | Labor bottleneck when \(\sigma_{XL}<1\) | `prop:axm-complements` | Proven under regular limiting conditions | Equilibrium regimes |
+| 5 | Labor bottleneck when \(\sigma<1\) | `prop:axm-complements` | Proven under regular limiting conditions | Equilibrium regimes |
 | 6 | Local equilibrium existence near the complementary-input limit | `prop:axm-complement-local-existence` | Proven | Equilibrium regimes |
-| 7 | Existence and analytical characterization of a positive-AI balanced-growth equilibrium when \(\sigma_{XL}=1\) | `prop:axm-benchmark-equilibrium-existence` | Proven for the autonomous benchmark | Equilibrium regimes |
+| 7 | Existence and analytical characterization of a positive-AI balanced-growth equilibrium when \(\sigma=1\) | `prop:axm-benchmark-equilibrium-existence` | Proven for the autonomous benchmark | Equilibrium regimes |
 | 8 | Local equilibrium trajectories around the unit-elastic balanced-growth path | `prop:axm-unit-saddle-path` | Proven | Equilibrium regimes |
-| 9 | Two finite-frontier terminal regimes separated by \(\overline B_c\) when \(\sigma_{XL}>1\) | `prop:axm-capped-terminal-regimes` | Proven conditional on a regular frontier approach | Equilibrium regimes; central proposition |
+| 9 | Two finite-frontier terminal regimes separated by \(\overline B_c\) when \(\sigma>1\) | `prop:axm-capped-terminal-regimes` | Proven conditional on a regular frontier approach | Equilibrium regimes; central proposition |
 | 10 | Local finite-cap equilibrium paths on both sides of \(\overline B_c\) | `prop:axm-capped-local-equilibrium` | Proven | Equilibrium regimes |
-| 11 | No finite-rate balanced-growth path with unbounded capability when \(\sigma_{XL}>1\) | `prop:axm-no-bgp` | Proven conditional on \(B\to\infty\) | Equilibrium regimes |
+| 11 | No finite-rate balanced-growth path with unbounded capability when \(\sigma>1\) | `prop:axm-no-bgp` | Proven conditional on \(B\to\infty\) | Equilibrium regimes |
 | 12 | Finite-window limit as \(\overline B\to\infty\) and noncommuting long-run limit | `prop:axm-infinite-frontier-limit` | Proven; does not establish uncapped equilibrium | Equilibrium regimes |
 | 13 | Global finite-cap equilibrium from the common initial stocks for a moderate frontier | `global_finite_cap_bvp_analysis.json` | Numerically admitted under the documented equilibrium rule | Quantitative equilibria |
 
@@ -70,7 +70,7 @@ equilibrium trajectory.
 - Research-curvature and coercivity arguments supporting \(\eta<\alpha\).
 - The costate derivations and sufficiency proofs.
 - Necessary restrictions on irregular gross-substitutes continuations.
-- Finite-window continuation around \(\sigma_{XL}=1\).
+- Finite-window continuation around \(\sigma=1\).
 - The complete BVP algorithm, residual reconstruction, horizon tests, and
   trajectory-admission audit.
 - The conditional AI-dominated singular scaling, clearly labeled as a
@@ -96,7 +96,7 @@ equilibrium-admission rule:
 1. A diagram of the benchmark model and the feedback from capability to AI
    research services.
 2. A figure illustrating the static substitution mechanism governed by
-   \(\sigma_{XL}\).
+   \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.
 4. One figure comparing admitted equilibrium paths around unit elasticity.
 5. One figure for the admitted finite-frontier gross-substitutes equilibrium,
