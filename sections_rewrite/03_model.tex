@@ -245,46 +245,22 @@ capability-accumulation mechanism.
  room for improvement $\psi(B)$ determine \(\dot B\), which increases $B$.}
  \label{fig:rewrite-capability-flow}
 \end{figure}
-The parameter \(\chi\) shifts research productivity. The parameter \(\eta\)
-governs returns to current research scale. The same capability stock $B$
-augments both inference and research compute. This common-productivity
-assumption is parsimonious but substantive. Because $BM$ enters the capability
-accumulation technology, a higher $B$ makes each unit of research compute $M$
-more productive and creates recursive improvement. When the frontier is
-finite, the term
-\(\psi(B)\) reduces the remaining room for improvement as
-capability approaches \(\overline B\). The uncapped specification is recovered
-at \(\overline B=\infty\).
+The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same capability stock $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Because $BM$ enters the AI capability accumulation technology, a higher $B$ makes each unit of research compute $M$ more productive and creates recursive improvement. The term \(\psi(B)\) reduces the remaining room for improvement as capability approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
-The finite frontier is an analytical device, not a robustness calibration. It
-allows me to establish and compute an equilibrium for a fixed bounded state
-space and then ask whether those equilibria have a meaningful limit as
-\(\overline B\to\infty\). This order does not assume that the uncapped economy
-has an equilibrium.
-
-\begin{proposition}[Finite-frontier invariance]
-\label{prop:rewrite-cap-invariance}
-Suppose $0<B_0<\overline B<\infty$, $0<\eta<1$, and $BM$ is locally
-integrable. Then
-\begin{equation}
- \overline B-B_t=(\overline B-B_0)
- \exp\left\{-\frac{\chi}{\overline B}
- \int_0^t(B_sM_s)^\eta\dd s\right\}>0
- \label{eq:rewrite-cap-gap}
-\end{equation}
-at every finite date. Capability may approach the frontier asymptotically but
-cannot cross it in finite time.
-\end{proposition}
+The frontier \(\overline B\) is an analytical device that allows me to establish
+and compute an equilibrium for each finite frontier and then ask whether these
+equilibria have a meaningful limit as \(\overline B\to\infty\). Without the
+frontier, recursive improvement may instead produce a finite-time singularity,
+as discussed below. Given \(0<B_0<\overline B\) and a locally integrable
+research path, the capability law keeps \(B_t<\overline B\) at every finite
+date. Capability may approach the frontier asymptotically but cannot cross it
+in finite time. Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
 \subsubsection{Market structure and research incentives}
 \label{subsubsec:rewrite-market-structure}
 
 Capability is nonrival in use. Once $B$ has been developed, using it to
-augment one unit of inference or research compute does not reduce its ability
-to augment other units. This does not make the production of AI services
-costless: $X$ and $BM$ require the rival and costly compute inputs $U$ and $M$.
-Nonrivalry also does not rule out excludability. An owner can restrict access
-to model weights, software, or AI services.
+augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make the production of AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
 
 To see the resulting appropriability problem, suppose that competitive
 service providers had free access to $B$. Free entry would imply
@@ -295,22 +271,12 @@ service providers had free access to $B$. Free entry would imply
 \end{equation}
 The service market would generate no operating rent. A developer that paid
 for $M$ would increase a common capability stock that competing providers
-could use without compensating it. The developer would bear the research cost
-but could not appropriate the resulting benefits. The problem is therefore
-one of research incentives, not the physical availability of compute.
+could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. The problem is therefor one of research incentives, not the physical availability of compute.
 
-I therefore assign exclusive ownership of $B$ to an integrated developer that
-conducts research and sells AI production services. Exclusive ownership allows
-the developer to capture part of the value created by a higher $B$ and makes
-the return to research appropriable, as in the standard endogenous-growth
-treatment of nonrival ideas \citep{romer1990}.
+I therefore assign exclusive ownership of $B$ to an integrated developer that conducts research and sells AI production services. Exclusive ownership allows the developer to capture part of the value created by a higher $B$ and makes the return to research appropriable, as in the standard endogenous-growth treatment of nonrival ideas \citep{romer1990}.
 
 Monopoly is an institutional assumption, not a technological implication of
-nonrivalry. Licensing, oligopoly, public funding, or open-source provision with
-research subsidies could also support investment in $B$. Each alternative
-would require an additional institution and would change prices, profits, and
-the distribution of rents. Recent work studies these alternatives in more
-detail \citep{korinekvipra2025,gans2024,demireretal2025}.
+nonrivalry. Licensing, oligopoly, public funding, or open-source provision with research subsidies could also support investment in $B$. Each alternative would require an additional institution and would change prices, profits, and the distribution of rents. Recent work studies these alternatives in more detail \citep{korinekvipra2025,gans2024,demireretal2025}.
 
 \subsubsection{The primitive dynamic problem}
 \label{subsubsec:rewrite-dynamic-developer}

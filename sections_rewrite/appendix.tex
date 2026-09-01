@@ -1,15 +1,22 @@
 \section{Proofs}
 \label{app:rewrite-proofs}
 
-\subsection{Proof of Proposition \ref{prop:rewrite-cap-invariance}}
+\subsection{Finite-frontier invariance}
+\label{app:rewrite-cap-invariance}
 
 Let \(D=\overline B-B\). The finite-frontier state equation gives
 \[
  \frac{\dot D}{D}=-\frac{\chi}{\overline B}(BM)^\eta.
 \]
-Integration gives \eqref{eq:rewrite-cap-gap}. Local integrability makes the
-exponent finite at every finite date, so \(D_t>0\).
-\hfill\(\square\)
+Integration gives
+\begin{equation}
+ \overline B-B_t=(\overline B-B_0)
+ \exp\left\{-\frac{\chi}{\overline B}
+ \int_0^t(B_sM_s)^\eta\dd s\right\}>0.
+ \label{eq:rewrite-cap-gap}
+\end{equation}
+Local integrability makes the exponent finite at every finite date, so
+\(D_t>0\).
 
 \subsection{Proof of Proposition \ref{prop:rewrite-monopoly-choice}}
 
@@ -148,8 +155,8 @@ with \(c_\pi,c_M>0\). The exponent exceeds one when \(\eta>\alpha\), so this
 family makes the truncated value unbounded above. At equality, the exponent is
 one and the sign of the leading coefficient determines this family's result.
 
-For a finite frontier, Proposition \ref{prop:rewrite-cap-invariance} confines
-\(B\) to the compact interval \([B_0,\overline B]\). Optimized operating profit
+For a finite frontier, the invariance result above confines \(B\) to the compact
+interval \([B_0,\overline B]\). Optimized operating profit
 is continuous in \(B\) and uniformly bounded on the fixed horizon. Hence
 \(J_T(M)\leq C_0-\underline D S\), so every maximizing sequence has bounded
 total expenditure. Set \(v=M^\eta\) and \(p=1/\eta>1\). The control cost is
