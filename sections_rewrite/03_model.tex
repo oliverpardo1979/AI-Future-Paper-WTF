@@ -161,7 +161,8 @@ This demand schedule is an input to the developer's problem.
 \subsubsection{AI production and research services}
 \label{subsubsec:rewrite-ai-services}
 
-The model distinguishes two uses of compute. The variables $U$ and $M$ are flows of computing resources allocated to inference and research, respectively. In a concrete application, their empirical counterparts could be accelerator-hours or real compute expenditure per unit of time. They are not measures of AI capability. I choose units so that one unit of either flow costs one unit of the final good.
+The model distinguishes two uses of compute. The variables $U$ and $M$ are flows of computing resources allocated to inference and research, respectively. In a concrete application, their empirical counterparts would be compute expenditure per unit of time. %They are not measures of AI capability.
+I choose to measure compute in units such that one unit of compute costs one unit of the final good.
 
 The stock $B$ is a scalar index of compute-augmenting AI capability. It summarizes improvements that allow a given amount of compute to accomplish more. Thus $B$ is an effective-compute multiplier. This terminology follows the distinction between compute and AI capabilities in \citet{sastryetal2024}. Inference compute produces AI production services according to
 \begin{equation}
@@ -198,25 +199,20 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
   \draw[rewrite-flow] (K) -- (Y);
  \end{tikzpicture}%
  }
- \caption{Production of final output and AI services. Capability $B$ augments
- inference compute $U$ to produce $X=BU$. AI services combine with effective
- labor $AL$ to produce $Z$, which combines with capital $K$ to produce $Y$.}
+ \caption{Production of final output and AI services. Capability $B$ augments inference compute $U$ to produce $X=BU$. AI services combine with effective labor $AL$ to produce $Z$, which combines with capital $K$ to produce $Y$.}
  \label{fig:rewrite-model-flow}
 \end{figure}
 
 \subsubsection{Autonomous capability accumulation}
 \label{subsubsec:rewrite-capability}
 
-Given initial capability \(B(0)=B_0>0\), I study a family of economies indexed by a capability frontier
-\(\overline B\in(B_0,\infty]\):
+Given initial capability \(B_0>0\) and a capability frontier
+\(\overline B\in(B_0,\infty]\), AI capability evolves according to
 \begin{equation}
  \dot B=\chi(BM)^\eta\psi(B),
  \qquad
  \psi(B)=
- \begin{cases}
-  1-B/\overline B,&\overline B<\infty,\\
-  1,&\overline B=\infty,
- \end{cases}
+  1-\frac{B}{\overline B},
  \qquad \chi>0,\quad0<\eta<1.
  \label{eq:rewrite-capability-law}
 \end{equation}
