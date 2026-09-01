@@ -1,0 +1,74 @@
+% CENTRAL QUESTION:
+% How does the elasticity of substitution between AI services and human labor
+% shape economic growth, wages, interest rates, and the functional distribution
+% of income when frontier AI research is autonomous?
+%
+% BENCHMARK SCOPE:
+% Autonomous AI research. The benchmark contains no H, omega_H, or sigma_HM.
+% See REWRITE_AXM_PLAN.md before adding any result, equation, table, or figure.
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{needspace}
+\usepackage{enumitem}
+\usepackage[round,authoryear]{natbib}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{conditionalresult}{Conditional result}
+
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\gA}{g_A}
+\newcommand{\gY}{g_Y}
+\newcommand{\gw}{g_w}
+\newcommand{\sX}{s_X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{The Future of Growth and Human Labor\\
+Under Autonomous AI Research}
+\author{Oliver Pardo}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+% Write last. State what the paper does and what it finds. Do not introduce
+% notation, literature, qualifications that belong in the text, or any result
+% that has not passed the proof or equilibrium-admission standard.
+
+\onehalfspacing
+
+\input{sections_rewrite/01_introduction}
+\clearpage
+\input{sections_rewrite/02_literature}
+\clearpage
+\input{sections_rewrite/03_model}
+\clearpage
+\input{sections_rewrite/04_equilibrium_regimes}
+\clearpage
+\input{sections_rewrite/05_quantitative_equilibria}
+\clearpage
+\input{sections_rewrite/06_conclusion}
+\clearpage
+
+\appendix
+\input{sections_rewrite/appendix}
+
+% Activate the bibliography commands once the rewrite contains citations.
+% \bibliographystyle{apalike}
+% \bibliography{references}
+
+\end{document}
