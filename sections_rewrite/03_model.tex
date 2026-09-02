@@ -108,6 +108,17 @@ Constant returns and these conditions imply
  \label{eq:rewrite-final-zero-profit}
 \end{equation}
 
+Solving the final-good firm's AI condition for its price yields the inverse
+demand schedule $p_X(X)$. %This notation conditions on the current values of $K,A,$ and $L$; I display those arguments only when the time dependence matters.
+The inverse absolute elasticity is
+\begin{equation}
+ e_X\equiv-
+ \frac{\partial\ln p_X(X)}{\partial\ln X}
+ =\frac{1-s_X}{\sigma}+\alpha s_X.
+ \label{eq:rewrite-inverse-demand-elasticity}
+\end{equation}
+This demand schedule is an input to the developer's problem.
+
 \subsubsection{AI services and production labor}
 \label{subsubsec:rewrite-static-substitution}
 
@@ -119,24 +130,24 @@ The elasticity \(\sigma\) governs two different margins. The first is whether mo
 
 \Needspace{7\baselineskip}
 \begin{remark}[Effect of AI on employment, wages, and labor's income share;
-\citealp{autorkausik2026}; \citealp{yango2026}]
+\citealp{autorkausik2026}; \citealp{yango2026}]\label{rem:effect}
 \label{rem:rewrite-ai-labor}
-Consider an increase in $X$. To evaluate its effects on $w$ and $\ell^Y$, hold $K,A,$ and $L$ fixed; to evaluate its effect on conditional labor demand $L$, hold $K,A,$ and $w$ fixed. If $\sigma<1$, $w$, $\ell^Y$, and $L$ all rise. If $1<\sigma<1/\alpha$, $w$ and $L$ rise while $\ell^Y$ falls. If $\sigma>1/\alpha$, all three fall. At $\sigma=1$, $w$ and $L$ rise while $\ell^Y$ is unchanged. At $\sigma=1/\alpha$, $\ell^Y$ falls while $w$ and $L$ are unchanged.
+Consider an increase in $X$. To evaluate its effects on $w$ and $\ell^Y$, hold $K$ and $L$ fixed; to evaluate its effect on conditional labor demand $L$, hold $K$ and $w$ fixed. If $\sigma<1$, $w$, $\ell^Y$, and $L$ all rise with $X$. If $1<\sigma<1/\alpha$, $w$ and $L$ rise while $\ell^Y$ falls. If $\sigma>1/\alpha$, all three fall. %At $\sigma=1$, $w$ and $L$ rise while $\ell^Y$ is unchanged. At $\sigma=1/\alpha$, $\ell^Y$ falls while $w$ and $L$ are unchanged.
 \end{remark}
 
 \begin{proof}
 The remark follows from the final-good firm's first-order conditions:
 \begin{align}
- \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,A,L}
+ \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,L}
  &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
  \label{eq:rewrite-wage-x-elasticity}\\
- \left.\frac{\partial\ln\ell^Y}{\partial\ln X}\right|_{K,A,L}
+ \left.\frac{\partial\ln\ell^Y}{\partial\ln X}\right|_{K,L}
  &=-\left(1-\frac{1}{\sigma}\right)s_X.
  \label{eq:rewrite-share-x-elasticity}
 \end{align}
-Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
+%Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
 \begin{equation}
- \left.\frac{\partial\ln L}{\partial\ln X}\right|_{K,A,w}
+ \left.\frac{\partial\ln L}{\partial\ln X}\right|_{K,w}
  =\frac{s_X(\sigma^{-1}-\alpha)}
  {\alpha(1-s_X)+s_X/\sigma}.
  \label{eq:rewrite-labor-demand-x-elasticity}
@@ -144,16 +155,8 @@ Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
 %The denominator in the last expression is strictly positive. The signs therefore follow from the thresholds $1$ and $1/\alpha$.
 \end{proof}
 
-Solving the final-good firm's AI condition for its price yields the inverse
-demand schedule $p_X(X)$. %This notation conditions on the current values of $K,A,$ and $L$; I display those arguments only when the time dependence matters.
-The inverse absolute elasticity is
-\begin{equation}
- e_X\equiv-
- \frac{\partial\ln p_X(X)}{\partial\ln X}
- =\frac{1-s_X}{\sigma}+\alpha s_X.
- \label{eq:rewrite-inverse-demand-elasticity}
-\end{equation}
-This demand schedule is an input to the developer's problem.
+Note, however, that Remark \ref{rem:effect} is not a general equilibrium effect. Still, it hints at the elasticity of substitution as pivotal in defining the effect of expanding AI capabilities in the demand for labor, wages and labor's income share.
+
 
 \subsection{The AI developer}
 \label{subsec:rewrite-developer}
