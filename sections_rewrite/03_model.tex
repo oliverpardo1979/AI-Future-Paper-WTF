@@ -390,7 +390,8 @@ subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction do
 
 Profit can be negative at a date because the model imposes no separatecash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
-Let $q$ be the current-value shadow price of capability. An interior research choice satisfies
+Let $q$ be the current-value shadow price of capability, measured in units of
+the current final good per unit of $B$. An interior research choice satisfies
 \begin{equation}
  q\chi\eta B(BM)^{\eta-1}\psi(B)=1,
  \label{eq:rewrite-research-foc}
@@ -401,6 +402,16 @@ or, equivalently,
  \right]^{1/(1-\eta)}.
  \label{eq:rewrite-research-demand}
 \end{equation}
+Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research
+compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$
+raises capability accumulation by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
+The factor $B$ appears because raw compute $M$ produces $BM$ effective research
+services. Multiplication by $q$ values the resulting capability gain,
+accounting for future profit gains and further capability improvement. The
+right-hand side is one because one unit of compute costs one unit of the final
+good. At an interior optimum, an additional unit of research therefore creates
+exactly enough value to cover its cost.
+
 The current-value costate equation is
 \begin{equation}
  \frac{\dot q}{q}=r-\frac{X}{qB^2}-\eta\frac{\dot B}{B}
