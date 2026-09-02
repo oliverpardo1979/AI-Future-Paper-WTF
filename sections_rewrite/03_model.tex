@@ -263,28 +263,20 @@ and sells AI production services. Because $X$ does not enter the capability law
 directly, its within-date choice can be solved conditional on $B,K,$ and $L$.
 Define optimized operating profit before research expenditure as
 \begin{equation}
- \pi(B;K,A,L)=\max_{X\geq0}
+ \pi(B)=\max_{X\geq0}
  \left\{p_X(X)X-\frac{X}{B}\right\}.
  \label{eq:rewrite-service-choice}
 \end{equation}
+The notation \(\pi(B)\) leaves its dependence on current \(K,A,\) and \(L\) implicit.
 The first-order condition equates marginal revenue to the compute cost of one additional service unit:
 \begin{equation}
  p_X(1-e_X)=\frac{1}{B}.
  \label{eq:rewrite-monopoly-foc}
 \end{equation}
 
-\begin{proposition}[Pointwise monopoly choice]
-\label{prop:rewrite-monopoly-choice}
-Suppose $K,A,L,B>0$, $0<\alpha<1$, $\sigma>0$, and
-\(\omega_L,\omega_X\in(0,1)\). Problem \eqref{eq:rewrite-service-choice} has a
-unique global maximizer $X^*>0$. It is the unique solution to
-\eqref{eq:rewrite-monopoly-foc} and satisfies
-\begin{equation}
- e_X(1-e_X)
- +(\alpha-\sigma^{-1})(1-\sigma^{-1})s_X(1-s_X)>0.
- \label{eq:rewrite-monopoly-soc}
-\end{equation}
-\end{proposition}
+For \(K,A,L,B>0\), condition \eqref{eq:rewrite-monopoly-foc} selects the unique
+global maximizer \(X^*>0\). Appendix~\ref{app:rewrite-monopoly-choice} gives
+the proof.
 
 The monopoly price is therefore
 \begin{equation}

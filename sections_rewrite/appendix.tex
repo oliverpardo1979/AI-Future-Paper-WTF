@@ -18,7 +18,8 @@ Integration gives
 Local integrability makes the exponent finite at every finite date, so
 \(D_t>0\).
 
-\subsection{Proof of Proposition \ref{prop:rewrite-monopoly-choice}}
+\subsection{Existence and uniqueness of the static service choice}
+\label{app:rewrite-monopoly-choice}
 
 Fix \(K,A,L,B>0\), let \(R(X)=p_X(X)X\), and write
 \[
@@ -63,12 +64,17 @@ becomes negative. Hence \(m(X)=1/B\) has exactly one solution. Operating profit
 increases before this solution and decreases after it. The linear cost \(X/B\)
 dominates revenue as \(X\to\infty\), so this solution is the unique global
 maximum. Equation \eqref{eq:rewrite-monopoly-proof-curvature} also proves the
-strict second-order condition.
+strict second-order condition:
+\begin{equation}
+ e_X(1-e_X)
+ +(\alpha-\sigma^{-1})(1-\sigma^{-1})s_X(1-s_X)>0.
+ \label{eq:rewrite-monopoly-soc}
+\end{equation}
 \hfill\(\square\)
 
 \subsection{Proof of Proposition \ref{prop:rewrite-research-interior}}
 
-Proposition \ref{prop:rewrite-monopoly-choice} gives \(X^*>0\), and the
+Appendix~\ref{app:rewrite-monopoly-choice} establishes \(X^*>0\), and the
 envelope condition \eqref{eq:rewrite-profit-envelope} gives
 \(\pi_B=X^*/B^2>0\). A marginal increase in capability therefore raises
 current optimized profit and weakly raises future capability under a fixed
@@ -115,7 +121,7 @@ implies
 \]
 Maximizing this upper bound net of \(X/B\) gives
 \begin{equation}
- \pi(B;K,A,L)\leq C_\pi(1+B^\theta).
+ \pi(B)\leq C_\pi(1+B^\theta).
  \label{eq:rewrite-profit-upper-bound}
 \end{equation}
 On a finite horizon, integrability of \(r\) bounds the discount factor above
@@ -134,7 +140,7 @@ If \(\eta<\alpha\), then \(p<1\). The bound tends to minus infinity as
 For the converse, suppose \(\sigma>1\). As \(B\to\infty\), optimized
 operating profit satisfies
 \[
- \pi(B;K,A,L)\sim\kappa_XKB^\theta
+ \pi(B)\sim\kappa_XKB^\theta
 \]
 for a constant \(\kappa_X>0\), uniformly when \(K,A,\) and \(L\) remain in
 compact subsets of the positive orthant. Fix \(\Delta\in(0,T)\), choose
