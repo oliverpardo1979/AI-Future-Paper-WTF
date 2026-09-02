@@ -396,21 +396,15 @@ the current final good per unit of $B$. An interior research choice satisfies
  q\chi\eta B(BM)^{\eta-1}\psi(B)=1,
  \label{eq:rewrite-research-foc}
 \end{equation}
-or, equivalently,
-\begin{equation}
- M=\left[q\chi\eta B^\eta\psi(B)
- \right]^{1/(1-\eta)}.
- \label{eq:rewrite-research-demand}
-\end{equation}
-Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research
-compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$
-raises capability accumulation by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
-The factor $B$ appears because raw compute $M$ produces $BM$ effective research
-services. Multiplication by $q$ values the resulting capability gain,
-accounting for future profit gains and further capability improvement. The
-right-hand side is one because one unit of compute costs one unit of the final
-good. At an interior optimum, an additional unit of research therefore creates
-exactly enough value to cover its cost.
+%or, equivalently,
+%\begin{equation}
+% M=\left[q\chi\eta B^\eta\psi(B)
+% \right]^{1/(1-\eta)}.
+% \label{eq:rewrite-research-demand}
+%\end{equation}
+Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$ raises capability accumulation by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
+%The factor $B$ appears because raw compute $M$ produces $BM$ effective research services.
+Multiplication by $q$ values the resulting capability gain, accounting for future profit gains and further capability improvement. %The right-hand side is one because one unit of compute costs one unit of the final good. At an interior optimum, an additional unit of research therefore creates exactly enough value to cover its cost.
 
 The current-value costate equation is
 \begin{equation}
@@ -418,18 +412,16 @@ The current-value costate equation is
  -\dot B\frac{\psi'(B)}{\psi(B)}.
  \label{eq:rewrite-costate}
 \end{equation}
-For a finite frontier,
-\(\psi'/\psi=-1/(\overline B-B)\); for the
-uncapped economy, the derivative is zero. Rearranging gives the return equation
+%For a finite frontier,\(\psi'/\psi=-1/(\overline B-B)\); for the uncapped economy, the derivative is zero. 
+Rearranging gives the return equation
 \begin{equation}
- rq=\frac{X}{B^2}+q\eta\frac{\dot B}{B}
+ rq=\frac{U}{B}+q\eta\frac{\dot B}{B}
  +q\dot B\frac{\psi'(B)}{\psi(B)}+\dot q.
  \label{eq:rewrite-capability-return}
 \end{equation}
-The first term is the inference-compute saving from better capability. The
+The first term on the right-hand side of Equation (\ref{eq:rewrite-costate}) is the inference-compute saving from better capability. The
 second is the gain in research productivity. With a finite frontier, the third
-term is negative because a higher $B$ leaves less room for further
-improvement. The final term is the capital gain on capability. Together these
+term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on capability. Together these
 returns must equal the market return $rq$.
 
 The developer's transversality condition is
@@ -438,35 +430,22 @@ The developer's transversality condition is
  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
  \label{eq:rewrite-developer-tvc}
 \end{equation}
-It rules out a path that leaves positive discounted value in unused capability.
-It does not require $q$, $B$, or their undiscounted product to converge to
-zero.
+It rules out a path that leaves positive discounted value in unused capability.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
 
-\begin{proposition}[Research is interior]
-\label{prop:rewrite-research-interior}
-Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued
-optimum with $B>0$ and positive demand for AI production services. Then
-$q>0$ and $M>0$ at every finite date. Research may converge to zero
-asymptotically, but the developer cannot stop capability accumulation by
-choosing $M=0$ at a finite date.
-\end{proposition}
+%\begin{proposition}[Research is interior]
+%\label{prop:rewrite-research-interior}
+%Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued optimum with $B>0$ and positive demand for AI production services. Then $q>0$ and $M>0$ at every finite date. Research may converge to zero asymptotically, but the developer cannot stop capability accumulation by choosing $M=0$ at a finite date.
+%\end{proposition}
 
 The first-order and transversality conditions are necessary, but in a nonlinear
 infinite-horizon problem they need not establish that the developer has a
-finite value or that its candidate policy is globally optimal. The next two
+finite profit or that its candidate policy is globally optimal. The next two
 restrictions address these distinct issues.
 
 \begin{proposition}[Large-scale research expenditure]
 \label{prop:rewrite-research-scale}
-Fix a finite horizon, an initial capability stock, positive continuous paths
-for $K,A,L$, and an integrable path for $r$. In the uncapped economy, if
-$0<\eta<\alpha<1$, the developer's truncated value is finite and its
-objective tends to minus infinity as total research expenditure diverges. If
-\(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research
-compute make the truncated value unbounded above. At \(\eta=\alpha\), the
-leading benefit and cost terms have the same order, so their coefficients
-determine the result.
-
+Fix a finite horizon, an initial capability stock, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
+\(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
 For a fixed finite frontier, the truncated problem instead has a finite value
 and attains its maximum for every $0<\eta<1$.
 \end{proposition}
