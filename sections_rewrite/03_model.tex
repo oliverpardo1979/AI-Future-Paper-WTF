@@ -259,7 +259,7 @@ The frontier \(\overline B\) allows to establish and compute an equilibrium for 
 \label{subsubsec:rewrite-market-structure}
 
 An integrated AI developer has exclusive ownership of $B$. It conducts research
-and sells AI production services. Because $X$ does not enter the capability law
+and sells AI production services. The developer sells $X$ and purchases the $U=X/B$ units of inference compute needed to supply those services. Because $X$ does not enter the capability law defined by Equation (\ref{eq:rewrite-capability-law})
 directly, its within-date choice can be solved conditional on $B,K,$ and $L$.
 Define optimized operating profit before research expenditure as
 \begin{equation}
@@ -317,28 +317,23 @@ That being said, monopoly is an institutional assumption, not a technological im
 \subsubsection{The dynamic problem}
 \label{subsubsec:rewrite-dynamic-developer}
 
-The developer sells $X$, purchases the $U=X/B$ units of inference compute
-needed to supply those services, uses $M$ for research, and owns the resulting capability stock. Taking the paths of $r,K,A,$ and $L$ as given, it solves
-\begin{equation}
- \max_{\{X_t,M_t\}_{t\geq0}}
- \int_0^\infty
- \exp\left\{-\int_0^t r_s\dd s\right\}
- \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-M_t\right]\dd t,
- \label{eq:rewrite-developer-problem}
-\end{equation}
-subject to \eqref{eq:rewrite-capability-law} and $B(0)=B_0$. Its distributed
-profit is
-\begin{equation}
- \Pi=p_XX-\frac{X}{B}-M=p_XX-U-M.
- \label{eq:rewrite-developer-profit}
-\end{equation}
-Profit can be negative at a date because the model imposes no separate
-cash-flow constraint. A negative \(\Pi\) represents an equity injection from
-the household that owns the developer.
-
+The AI developer uses $M$ for research, and owns the resulting capability stock. %Taking the paths of $r,K,A,$ and $L$ as given, it solves
+%\begin{equation}
+% \max_{\{X_t,M_t\}_{t\geq0}}
+% \int_0^\infty
+% \exp\left\{-\int_0^t r_s\dd s\right\}
+% \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-M_t\right]\dd t,
+% \label{eq:rewrite-developer-problem}
+%\end{equation}
+%subject to \eqref{eq:rewrite-capability-law} and $B(0)=B_0$. Its distributed
+%profit is
+%\begin{equation}
+% \Pi=p_XX-\frac{X}{B}-M=p_XX-U-M.
+% \label{eq:rewrite-developer-profit}
+%\end{equation}
+%Profit can be negative at a date because the model imposes no separatecash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 %\subsubsection{Pointwise service choice}
 %\label{subsubsec:rewrite-static-monopoly}
-
 %Sales $X$ do not enter the capability law or any other intertemporal
 %constraint. Conditional on $B,K,A,$ and $L$, the developer can therefore
 %choose $X$ within each date. Define optimized operating profit before
@@ -353,7 +348,6 @@ the household that owns the developer.
 % p_X(1-e_X)=\frac{1}{B}.
 % \label{eq:rewrite-monopoly-foc}
 %\end{equation}
-
 %\begin{proposition}[Pointwise monopoly choice]
 %\label{prop:rewrite-monopoly-choice}
 %Suppose $K,A,L,B>0$, $0<\alpha<1$, $\sigma>0$, and
@@ -366,7 +360,6 @@ the household that owns the developer.
 % \label{eq:rewrite-monopoly-soc}
 %\end{equation}
 %\end{proposition}
-
 %The monopoly price is therefore
 %\begin{equation}
 % p_X=\frac{1/B}{1-e_X}.
@@ -385,10 +378,9 @@ the household that owns the developer.
 % \label{eq:rewrite-profit-envelope}
 %\end{equation}
 %The $B^2$ term does not represent quadratic returns to capability. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in capability saves $X/B^2$ units of compute.
-
-Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist chooses how much research comput to rent in order to solve the following problem:
+Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist chooses how much research compute $M$ to rent to increase AI capabilities $B$ and solve the following problem:
 \begin{equation}
- \max_{\{M_t\}_{t\geq0}}
+\Pi = \max_{\{M_t\}_{t\geq0}}
  \int_0^\infty
  \exp\left\{-\int_0^t r_s\dd s\right\}
  [\pi(B_t)-M_t]\dd t,
@@ -396,8 +388,7 @@ Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist ch
 \end{equation}
 subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
 
-%\subsubsection{Dynamic research choice}
-%\label{subsubsec:rewrite-research-choice}
+Profit can be negative at a date because the model imposes no separatecash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
 Let $q$ be the current-value shadow price of capability. An interior research choice satisfies
 \begin{equation}
@@ -440,10 +431,14 @@ It rules out a path that leaves positive discounted value in unused capability.
 It does not require $q$, $B$, or their undiscounted product to converge to
 zero.
 
-At a differentiable, finite-valued optimum with $0<\eta<1$, $B>0$, and
-positive demand for AI production services, $q>0$ and $M>0$ at every finite
-date. Research may approach zero asymptotically but cannot stop at a finite
-date. Appendix~\ref{app:rewrite-research-interior} gives the argument.
+\begin{proposition}[Research is interior]
+\label{prop:rewrite-research-interior}
+Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued
+optimum with $B>0$ and positive demand for AI production services. Then
+$q>0$ and $M>0$ at every finite date. Research may converge to zero
+asymptotically, but the developer cannot stop capability accumulation by
+choosing $M=0$ at a finite date.
+\end{proposition}
 
 The first-order and transversality conditions are necessary, but in a nonlinear
 infinite-horizon problem they need not establish that the developer has a
