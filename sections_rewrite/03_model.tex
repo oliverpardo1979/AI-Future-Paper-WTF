@@ -462,32 +462,24 @@ the aggregate resource constraint
  \label{eq:rewrite-resource}
 \end{equation}
 
-\begin{definition}[Regular interior equilibrium]
+\begin{definition}[Equilibrium]
 \label{def:rewrite-equilibrium}
-Fix the model's parameters, a frontier
-\(\overline B\in(B_0,\infty]\), exogenous initial values $A_0,N_0>0$, and
-predetermined stocks $K_0,B_0>0$. If the frontier is finite, require
-$B_0<\overline B$. A regular interior equilibrium is an
+For exogenous initial values $A_0,N_0,K_0,B_0>0$, an equilibrium is an
 infinite-horizon trajectory
 \begin{equation}
  \left\{K_t,B_t,C_t,q_t,L_t,U_t,M_t,X_t,Z_t,Y_t,r_t,w_t,p_{X,t},
  s_{X,t},e_{X,t},\Pi_t\right\}_{t\geq0}
  \label{eq:rewrite-equilibrium-trajectory}
-\end{equation}
-with strictly positive quantities and prices \(w,p_X,q\), and with \(r\) and
-\(\Pi\) allowed to have either sign. The paths \(K,B,C,\) and \(q\) are
-absolutely continuous. The controls are measurable and nonnegative, the state
-and flow constraints below hold, and the household's and developer's improper
-objective integrals converge to finite real values. For every date, the
-following conditions hold, with the differential equations understood almost
-everywhere.
+\end{equation} such that for every date, the
+following conditions hold:
 
 The exogenous paths and predetermined initial conditions are
 \begin{subequations}
 \label{eq:rewrite-equilibrium-exogenous}
 \begin{align}
- A_t&=A_0e^{\gamma t}, & N_t&=N_0e^{nt},\\
- K(0)&=K_0, & B(0)&=B_0.
+ A_t&=A_0e^{\gamma t},\\
+ N_t&=N_0e^{nt},%\\
+ %K(0)&=K_0, & B(0)&=B_0.
 \end{align}
 \end{subequations}
 The intratemporal allocation and prices satisfy
@@ -514,11 +506,11 @@ The intratemporal allocation and prices satisfy
  \label{eq:rewrite-eq-w}\\
  p_X&=(1-\alpha)s_X\frac{Y}{X},
  \label{eq:rewrite-eq-px}\\
- p_X(1-e_X)&=\frac{1}{B},
+ \frac{1}{B}&=p_X(1-e_X),
  \label{eq:rewrite-eq-monopoly}\\
  X&=BU,
  \label{eq:rewrite-eq-service}\\
- q\chi\eta B(BM)^{\eta-1}\psi(B)&=1,
+ 1&=q\chi\eta B(BM)^{\eta-1}\psi(B),
  \label{eq:rewrite-eq-research}\\
  \Pi&=p_XX-U-M.
  \label{eq:rewrite-eq-profit}
@@ -550,24 +542,13 @@ The two transversality conditions are
  \label{eq:rewrite-eq-developer-tvc}
 \end{align}
 \end{subequations}
-At \(\sigma=1\), equations \eqref{eq:rewrite-eq-z} and
-\eqref{eq:rewrite-eq-sx} are understood at their continuous limits:
-$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$. If
-\(\overline B<\infty\), the path satisfies $B_t<\overline B$ at every finite
-date. Finally, the household and developer solve their stated optimization
-problems, final-good firms maximize profit, and all markets clear. The initial
-values \(C(0)\) and \(q(0)\) are endogenous jump variables selected to satisfy
-the two transversality conditions.
+%At \(\sigma=1\), equations \eqref{eq:rewrite-eq-z} and \eqref{eq:rewrite-eq-sx} are understood at their continuous limits:
+%$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$. If \(\overline B<\infty\), the path satisfies $B_t<\overline B$ at every finite date. Finally, t
+%The household and developer solve their stated optimization problems, final-good firms maximize profit, and all markets clear. The initial values \(C_t\) and \(q_t\) are endogenous jump variables selected to satisfy the two transversality conditions.
 \end{definition}
 
-The definition does not impose balanced growth. A balanced-growth path is one
-possible equilibrium trajectory, not the meaning of equilibrium. Nor are the
-dated equations alone enough: a numerical path is admitted as an equilibrium
-only if it also satisfies both transversality conditions and the global
-optimality requirements in Definition \ref{def:rewrite-equilibrium}.
-For a finite capability frontier,
-Proposition~\ref{prop:rewrite-developer-sufficiency} in
-Appendix~\ref{app:rewrite-developer-sufficiency} provides a sufficient test
+%The definition does not impose balanced growth. A balanced-growth path is one possible equilibrium trajectory, not the meaning of equilibrium. Nor are the dated equations alone enough: a numerical path is admitted as an equilibrium only if it also satisfies both transversality conditions and the global optimality requirements in Definition \ref{def:rewrite-equilibrium}. 
+For a finite capability frontier, Proposition~\ref{prop:rewrite-developer-sufficiency} in Appendix~\ref{app:rewrite-developer-sufficiency} provides a sufficient test
 for the developer's global optimality.
 
 The system contains no separate household budget or final-good zero-profit
