@@ -90,25 +90,68 @@ Its right derivative diverges as \(M\downarrow0\) because
 maximize the Hamiltonian at a finite date.
 \hfill\(\square\)
 
-\subsection{Proof of Proposition \ref{prop:rewrite-research-scale}}
+\subsection{Research expenditure and finite-horizon value}
+\label{app:rewrite-research-scale}
 
-I first consider the uncapped economy. Write
+The first-order and transversality conditions do not by themselves establish
+that the developer's objective has a finite value or that a candidate policy
+is globally optimal. The result below addresses the value on a fixed finite
+horizon, taking the paths of $K,A,L,$ and $r$ as given. To explain the role of
+Assumption~\ref{ass:rewrite-research-curvature}, I also consider values of
+$\eta$ outside its maintained range, retaining $0<\eta<1$ from the capability
+law. Global optimality is addressed separately in
+Proposition~\ref{prop:rewrite-developer-sufficiency}.
+
+\begin{proposition}[Large-scale research expenditure]
+\label{prop:rewrite-research-scale}
+Fix a finite horizon, an initial capability stock, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
+\(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
+For a fixed finite frontier, the truncated problem instead has a finite value
+and attains its maximum for every $0<\eta<1$.
+\end{proposition}
+
+The uncapped result compares the cost of research with its effect on future
+operating profit. Expenditure first raises capability; higher capability then
+raises the profit from supplying AI services. The proof bounds these two
+effects in turn and compares their combined growth with the linear cost of
+research.
+
+\Needspace{6\baselineskip}
+\begin{proof}
+I first consider the uncapped economy. Define
 \[
  \theta=\frac{1-\alpha}{\alpha},\qquad
  S=\int_0^T M_t\dd t.
+\]
+Here $S$ is total research expenditure over the fixed horizon $[0,T]$.
+For an admissible research policy, let its discounted net payoff be
+\[
+ J_T(M)=\int_0^T
+ \exp\left\{-\int_0^t r_s\dd s\right\}
+ [\pi(B_t)-M_t]\dd t.
 \]
 For every admissible policy, \(B\) is nondecreasing. The capability law implies
 \[
  \frac{\dd}{\dd t}B_t^{1-\eta}
  =(1-\eta)\chi M_t^\eta.
 \]
-H\"older's inequality then gives, for every \(t\leq T\),
+Integration and H\"older's inequality give
+\begin{align*}
+ B_t^{1-\eta}
+ &=B_0^{1-\eta}+(1-\eta)\chi\int_0^t M_s^\eta\dd s,\\
+ \int_0^T M_t^\eta\dd t
+ &\leq T^{1-\eta}S^\eta.
+\end{align*}
+Because $0<\eta<1$, spreading a given expenditure evenly over $[0,T]$
+maximizes the integral of $M^\eta$. Hence there is a constant $C_B>0$,
+independent of the research policy,
+such that
 \begin{equation}
  \max_{0\leq t\leq T}B_t
  \leq C_B\left(1+S^{\eta/(1-\eta)}\right),
  \label{eq:rewrite-capability-expenditure-bound}
 \end{equation}
-where \(C_B\) does not depend on the research policy. The same bound covers
+The same bound covers
 arbitrarily concentrated controls because, on a support of length \(d\leq T\),
 \(\int M_t^\eta\dd t\leq d^{1-\eta}S^\eta\).
 
@@ -120,25 +163,50 @@ implies
  p_XX\leq(1-\alpha)\overline K^\alpha
  \left(\overline{\mathcal L}^{1-\alpha}+X^{1-\alpha}\right).
 \]
-Maximizing this upper bound net of \(X/B\) gives
+Write the right-hand side as $a+bX^{1-\alpha}$, with $a,b>0$ determined by
+the given paths and production parameters. The first-order condition for
+maximizing this revenue bound net of $X/B$ is
+$b(1-\alpha)X^{-\alpha}=1/B$, and its maximized value is
+\[
+ \max_{X\geq0}\left\{a+bX^{1-\alpha}-\frac{X}{B}\right\}
+ =a+\alpha b[b(1-\alpha)B]^\theta.
+\]
+There is therefore a constant $C_\pi>0$, independent of the research policy,
+such that
 \begin{equation}
  \pi(B)\leq C_\pi(1+B^\theta).
  \label{eq:rewrite-profit-upper-bound}
 \end{equation}
-On a finite horizon, integrability of \(r\) bounds the discount factor above
-and away from zero. Combining
+Combining the capability and profit bounds shows that operating profit grows
+no faster than a constant plus a term proportional to
+\begin{equation}
+ S^{\eta(1-\alpha)/[\alpha(1-\eta)]},
+ \label{eq:rewrite-research-benefit-order}
+\end{equation}
+where the exponent is the product of $\eta/(1-\eta)$, from expenditure to
+capability, and $(1-\alpha)/\alpha$, from capability to profit. This is an
+upper bound on the order of growth, not an exact profit function.
+
+On a finite horizon, integrability of $r$ bounds the discount factor above
+and away from zero. Let $\underline D>0$ be its minimum on $[0,T]$.
+Combining
 \eqref{eq:rewrite-capability-expenditure-bound} and
-\eqref{eq:rewrite-profit-upper-bound} yields
+\eqref{eq:rewrite-profit-upper-bound} yields, for constants $C_0,C_1>0$
+independent of the research policy,
 \begin{equation}
  J_T(M)\leq C_0+C_1S^p-\underline D S,
  \qquad
  p=\frac{\eta(1-\alpha)}{\alpha(1-\eta)}.
  \label{eq:rewrite-truncated-value-bound}
 \end{equation}
-If \(\eta<\alpha\), then \(p<1\). The bound tends to minus infinity as
-\(S\to\infty\), so the value is finite and the objective is coercive.
+The exponent satisfies $p<1$ exactly when $\eta<\alpha$. In this case, the
+benefit grows at most sublinearly in expenditure while its cost grows linearly.
+The bound tends to minus infinity as $S\to\infty$, so the value is finite and
+the objective is coercive.
 
-For the converse, suppose \(\sigma>1\). As \(B\to\infty\), optimized
+An upper bound with $p>1$ does not by itself prove unboundedness. For the
+converse, I construct research policies with unbounded payoffs. Suppose
+\(\sigma>1\). As \(B\to\infty\), optimized
 operating profit satisfies
 \[
  \pi(B)\sim\kappa_XKB^\theta
@@ -177,7 +245,20 @@ convergent subsequence and the associated uniformly convergent state paths
 preserve feasibility. The operating-profit integral is continuous under
 uniform state convergence, while \(\int v^p\) is weakly lower semicontinuous.
 The objective is therefore weakly upper semicontinuous and attains its maximum.
-\hfill\(\square\)
+\end{proof}
+
+\Needspace{4\baselineskip}
+Assumption~\ref{ass:rewrite-research-curvature} prevents arbitrarily large
+research expenditure from being optimal on a fixed horizon in the uncapped
+economy. It is a sufficient restriction, not a necessary one for every value
+of $\sigma$, and finite-horizon existence with a finite frontier does not
+require $\eta<\alpha$. The restriction supplies a common parameter range that
+also covers the uncapped research technology. Neither the bound nor
+finite-horizon developer existence establishes an infinite-horizon equilibrium:
+the paths of $K,A,L,$ and $r$ were taken as given throughout this argument.
+The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
+expenditure exponent is approximately $0.508$; the value of $\eta$ is
+illustrative rather than estimated.
 
 \subsection{Proof of Proposition \ref{prop:rewrite-developer-sufficiency}}
 

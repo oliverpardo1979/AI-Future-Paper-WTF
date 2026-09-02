@@ -437,28 +437,7 @@ It rules out a path that leaves positive discounted value in unused capability.%
 %Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued optimum with $B>0$ and positive demand for AI production services. Then $q>0$ and $M>0$ at every finite date. Research may converge to zero asymptotically, but the developer cannot stop capability accumulation by choosing $M=0$ at a finite date.
 %\end{proposition}
 
-The first-order and transversality conditions are necessary, but in a nonlinear
-infinite-horizon problem they need not establish that the developer has a
-finite profit or that its candidate policy is globally optimal. The next two
-restrictions address these distinct issues.
-
-\begin{proposition}[Large-scale research expenditure]
-\label{prop:rewrite-research-scale}
-Fix a finite horizon, an initial capability stock, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
-\(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
-For a fixed finite frontier, the truncated problem instead has a finite value
-and attains its maximum for every $0<\eta<1$.
-\end{proposition}
-
-The uncapped restriction has a direct interpretation. If $S$ is total
-research expenditure over a fixed horizon, the resulting profit benefit grows
-no faster than
-\begin{equation}
- S^{\eta(1-\alpha)/[\alpha(1-\eta)]},
- \label{eq:rewrite-research-benefit-order}
-\end{equation}
-whereas the cost of research is linear in $S$. The exponent is smaller than
-one exactly when \(\eta<\alpha\). I therefore maintain
+I maintain the following restriction.
 \begin{assumption}[Large-scale research curvature]
 \label{ass:rewrite-research-curvature}
 \begin{equation}
@@ -466,10 +445,8 @@ one exactly when \(\eta<\alpha\). I therefore maintain
  \label{eq:rewrite-eta-alpha}
 \end{equation}
 \end{assumption}
-This assumption prevents arbitrarily large research expenditure from being
-optimal on a fixed horizon. It does not by itself prove an infinite-horizon
-equilibrium. The quantitative analysis uses $\eta=0.20<\alpha=0.33$; the
-value of \(\eta\) is illustrative rather than estimated.
+Appendix~\ref{app:rewrite-research-scale} gives the supporting result,
+economic interpretation, and proof.
 
 To state a sufficient condition for global optimality, define the
 service--capability elasticity
