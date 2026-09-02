@@ -129,14 +129,14 @@ The elasticity \(\sigma\) governs two different margins. The first is whether mo
 \end{equation}
 
 \Needspace{7\baselineskip}
-\begin{remark}[Effect of AI on employment, wages, and labor's income share;
+\begin{proposition}[AI services, wages, labor's income share, and conditional labor demand;
 \citealp{autorkausik2026}; \citealp{yango2026}]\label{rem:effect}
 \label{rem:rewrite-ai-labor}
 Consider an increase in $X$. To evaluate its effects on $w$ and $\ell^Y$, hold $K$ and $L$ fixed; to evaluate its effect on conditional labor demand $L$, hold $K$ and $w$ fixed. If $\sigma<1$, $w$, $\ell^Y$, and $L$ all rise with $X$. If $1<\sigma<1/\alpha$, $w$ and $L$ rise while $\ell^Y$ falls. If $\sigma>1/\alpha$, all three fall. %At $\sigma=1$, $w$ and $L$ rise while $\ell^Y$ is unchanged. At $\sigma=1/\alpha$, $\ell^Y$ falls while $w$ and $L$ are unchanged.
-\end{remark}
+\end{proposition}
 
 \begin{proof}
-The remark follows from the final-good firm's first-order conditions:
+The proposition follows from the final-good firm's first-order conditions:
 \begin{align}
  \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,L}
  &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
@@ -155,7 +155,10 @@ The remark follows from the final-good firm's first-order conditions:
 %The denominator in the last expression is strictly positive. The signs therefore follow from the thresholds $1$ and $1/\alpha$.
 \end{proof}
 
-Note, however, that Remark \ref{rem:effect} is not a general equilibrium effect. Still, it hints at the elasticity of substitution as pivotal in defining the effect of expanding AI capabilities in the demand for labor, wages and labor's income share.
+Proposition~\ref{rem:effect} describes conditional responses to an increase in
+AI production services $X$, not the general-equilibrium effects of greater AI
+capability. The latter depend on how the developer adjusts service supply and
+how capital and prices respond.
 
 
 \subsection{The AI developer}
@@ -255,9 +258,10 @@ The frontier \(\overline B\) allows to establish and compute an equilibrium for 
 \subsubsection{Supply of production AI services}
 \label{subsubsec:rewrite-market-structure}
 
-An integrated AI developer has exclusive ownership of $B$. It conducts research and sells AI production services. Conditional on $B,K$ and $L$, the AI developer can 
-choose $X$ within each date. Define optimized operating profit before
-research expenditure as
+An integrated AI developer has exclusive ownership of $B$. It conducts research
+and sells AI production services. Because $X$ does not enter the capability law
+directly, its within-date choice can be solved conditional on $B,K,$ and $L$.
+Define optimized operating profit before research expenditure as
 \begin{equation}
  \pi(B;K,A,L)=\max_{X\geq0}
  \left\{p_X(X)X-\frac{X}{B}\right\}.
