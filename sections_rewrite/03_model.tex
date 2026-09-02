@@ -247,65 +247,12 @@ capability-accumulation mechanism.
 \end{figure}
 The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same capability stock $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Because $BM$ enters the AI capability accumulation technology, a higher $B$ makes each unit of research compute $M$ more productive and creates recursive improvement. The term \(\psi(B)\) reduces the remaining room for improvement as capability approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
-The frontier \(\overline B\) is an analytical device that allows me to establish
-and compute an equilibrium for each finite frontier and then ask whether these
-equilibria have a meaningful limit as \(\overline B\to\infty\). Without the
-frontier, recursive improvement may instead produce a finite-time singularity,
-as discussed below. Given \(0<B_0<\overline B\) and a locally integrable
-research path, the capability law keeps \(B_t<\overline B\) at every finite
-date. Capability may approach the frontier asymptotically but cannot cross it
-in finite time. Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
+The frontier \(\overline B\) allows to establish and compute an equilibrium for each finite frontier and then ask whether these equilibria have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity, as discussed below. Capability may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
-\subsubsection{Market structure and research incentives}
+\subsubsection{Supply of production AI services}
 \label{subsubsec:rewrite-market-structure}
 
-Capability is nonrival in use. Once $B$ has been developed, using it to
-augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make the production of AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
-
-To see the resulting appropriability problem, suppose that competitive
-service providers had free access to $B$. Free entry would imply
-\begin{equation}
- p_X=\frac{1}{B},
- \qquad p_XX-\frac{X}{B}=0.
- \label{eq:rewrite-competitive-ai}
-\end{equation}
-The service market would generate no operating rent. A developer that paid
-for $M$ would increase a common capability stock that competing providers
-could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. The problem is therefor one of research incentives, not the physical availability of compute.
-
-I therefore assign exclusive ownership of $B$ to an integrated developer that conducts research and sells AI production services. Exclusive ownership allows the developer to capture part of the value created by a higher $B$ and makes the return to research appropriable, as in the standard endogenous-growth treatment of nonrival ideas \citep{romer1990}.
-
-Monopoly is an institutional assumption, not a technological implication of
-nonrivalry. Licensing, oligopoly, public funding, or open-source provision with research subsidies could also support investment in $B$. Each alternative would require an additional institution and would change prices, profits, and the distribution of rents. Recent work studies these alternatives in more detail \citep{korinekvipra2025,gans2024,demireretal2025}.
-
-\subsubsection{The primitive dynamic problem}
-\label{subsubsec:rewrite-dynamic-developer}
-
-The developer sells $X$, purchases the $U=X/B$ units of inference compute
-needed to supply those services, uses $M$ for research, and owns the resulting
-capability stock. Taking the paths of $r,K,A,$ and $L$ as given, it solves
-\begin{equation}
- \max_{\{X_t,M_t\}_{t\geq0}}
- \int_0^\infty
- \exp\left\{-\int_0^t r_s\dd s\right\}
- \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-M_t\right]\dd t,
- \label{eq:rewrite-developer-problem}
-\end{equation}
-subject to \eqref{eq:rewrite-capability-law} and $B(0)=B_0$. Its distributed
-profit is
-\begin{equation}
- \Pi=p_XX-\frac{X}{B}-M=p_XX-U-M.
- \label{eq:rewrite-developer-profit}
-\end{equation}
-Profit can be negative at a date because the model imposes no separate
-cash-flow constraint. A negative \(\Pi\) represents an equity injection from
-the household that owns the developer.
-
-\subsubsection{Pointwise service choice}
-\label{subsubsec:rewrite-static-monopoly}
-
-Sales $X$ do not enter the capability law or any other intertemporal
-constraint. Conditional on $B,K,A,$ and $L$, the developer can therefore
+Conditional on $B,K,A,$ and $L$, the AI developer can 
 choose $X$ within each date. Define optimized operating profit before
 research expenditure as
 \begin{equation}
@@ -313,8 +260,7 @@ research expenditure as
  \left\{p_X(X)X-\frac{X}{B}\right\}.
  \label{eq:rewrite-service-choice}
 \end{equation}
-The first-order condition equates marginal revenue to the compute cost of one
-additional service unit:
+The first-order condition equates marginal revenue to the compute cost of one additional service unit:
 \begin{equation}
  p_X(1-e_X)=\frac{1}{B}.
  \label{eq:rewrite-monopoly-foc}
@@ -338,41 +284,123 @@ The monopoly price is therefore
  p_X=\frac{1/B}{1-e_X}.
  \label{eq:rewrite-markup}
 \end{equation}
-At \(\sigma=1\), define
-\(\beta=(1-\alpha)\omega_X\). The solution is explicit:
-\begin{equation}
- X^*=\left[\beta^2BK^\alpha
- (AL)^{(1-\alpha)\omega_L}\right]^{1/(1-\beta)}.
- \label{eq:rewrite-monopoly-cd-solution}
-\end{equation}
+%At \(\sigma=1\), define
+%\(\beta=(1-\alpha)\omega_X\). The solution is explicit:
+%\begin{equation}
+% X^*=\left[\beta^2BK^\alpha
+% (AL)^{(1-\alpha)\omega_L}\right]^{1/(1-\beta)}.
+% \label{eq:rewrite-monopoly-cd-solution}
+%\end{equation}
 The envelope theorem gives
 \begin{equation}
  \pi_B=\frac{X}{B^2}=\frac{U}{B}.
  \label{eq:rewrite-profit-envelope}
 \end{equation}
-The $B^2$ term does not represent quadratic returns to capability. It results
-from differentiating the inference cost $X/B$: at a fixed $X$, a marginal
-increase in capability saves $X/B^2$ units of compute.
+%The $B^2$ term does not represent quadratic returns to capability. It results from differentiating the inference cost $X/B$: 
+At a fixed $X$, a marginal increase in AI capability saves $U/B$ units of the consumption good.
 
-Substituting the pointwise optimum into the primitive problem yields the
-equivalent reduced problem
+Capability is nonrival in use. Once $B$ has been developed, using it to
+augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make the production of AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
+
+To see the resulting appropriability problem, suppose that competitive
+service providers had free access to $B$. Free entry would imply
+\begin{equation*}
+ p_X=\frac{1}{B},
+ \qquad p_XX-\frac{X}{B}=0.
+ \label{eq:rewrite-competitive-ai}
+\end{equation*}
+The service market would generate no operating rent. A developer that paid for $M$ would increase a common AI capability stock $B$ that competing providers could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. %The problem is therefor one of research incentives, not the physical availability of compute.
+%I therefore assign exclusive ownership of $B$ to an integrated developer that conducts research and sells AI production services. 
+Exclusive ownership allows the developer to capture part of the value created by a higher $B$ and makes the return to research appropriable, as in the standard endogenous-growth treatment of nonrival ideas \citep{romer1990}.
+
+That being said, monopoly is an institutional assumption, not a technological implication of nonrivalry. Licensing, oligopoly, public funding, or open-source provision with research subsidies could also support investment in $B$. Each alternative would require an additional institution and would change prices, profits, and the distribution of rents. Recent work studies these alternatives in more detail \citep{korinekvipra2025,gans2024,demireretal2025}.
+
+\subsubsection{The dynamic problem}
+\label{subsubsec:rewrite-dynamic-developer}
+
+The developer sells $X$, purchases the $U=X/B$ units of inference compute
+needed to supply those services, uses $M$ for research, and owns the resulting capability stock. Taking the paths of $r,K,A,$ and $L$ as given, it solves
+\begin{equation}
+ \max_{\{X_t,M_t\}_{t\geq0}}
+ \int_0^\infty
+ \exp\left\{-\int_0^t r_s\dd s\right\}
+ \left[p_X(X_t;K_t,A_t,L_t)X_t-\frac{X_t}{B_t}-M_t\right]\dd t,
+ \label{eq:rewrite-developer-problem}
+\end{equation}
+subject to \eqref{eq:rewrite-capability-law} and $B(0)=B_0$. Its distributed
+profit is
+\begin{equation}
+ \Pi=p_XX-\frac{X}{B}-M=p_XX-U-M.
+ \label{eq:rewrite-developer-profit}
+\end{equation}
+Profit can be negative at a date because the model imposes no separate
+cash-flow constraint. A negative \(\Pi\) represents an equity injection from
+the household that owns the developer.
+
+%\subsubsection{Pointwise service choice}
+%\label{subsubsec:rewrite-static-monopoly}
+
+%Sales $X$ do not enter the capability law or any other intertemporal
+%constraint. Conditional on $B,K,A,$ and $L$, the developer can therefore
+%choose $X$ within each date. Define optimized operating profit before
+%research expenditure as
+%\begin{equation}
+% \pi(B;K,A,L)=\max_{X\geq0}
+% \left\{p_X(X)X-\frac{X}{B}\right\}.
+% \label{eq:rewrite-service-choice}
+%\end{equation}
+%The first-order condition equates marginal revenue to the compute cost of one additional service unit:
+%\begin{equation}
+% p_X(1-e_X)=\frac{1}{B}.
+% \label{eq:rewrite-monopoly-foc}
+%\end{equation}
+
+%\begin{proposition}[Pointwise monopoly choice]
+%\label{prop:rewrite-monopoly-choice}
+%Suppose $K,A,L,B>0$, $0<\alpha<1$, $\sigma>0$, and
+%\(\omega_L,\omega_X\in(0,1)\). Problem \eqref{eq:rewrite-service-choice} has a
+%unique global maximizer $X^*>0$. It is the unique solution to
+%\eqref{eq:rewrite-monopoly-foc} and satisfies
+%\begin{equation}
+% e_X(1-e_X)
+% +(\alpha-\sigma^{-1})(1-\sigma^{-1})s_X(1-s_X)>0.
+% \label{eq:rewrite-monopoly-soc}
+%\end{equation}
+%\end{proposition}
+
+%The monopoly price is therefore
+%\begin{equation}
+% p_X=\frac{1/B}{1-e_X}.
+% \label{eq:rewrite-markup}
+%\end{equation}
+%At \(\sigma=1\), define
+%\(\beta=(1-\alpha)\omega_X\). The solution is explicit:
+%\begin{equation}
+% X^*=\left[\beta^2BK^\alpha
+% (AL)^{(1-\alpha)\omega_L}\right]^{1/(1-\beta)}.
+% \label{eq:rewrite-monopoly-cd-solution}
+%\end{equation}
+%The envelope theorem gives
+%\begin{equation}
+% \pi_B=\frac{X}{B^2}=\frac{U}{B}.
+% \label{eq:rewrite-profit-envelope}
+%\end{equation}
+%The $B^2$ term does not represent quadratic returns to capability. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in capability saves $X/B^2$ units of compute.
+
+Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist chooses how much research comput to rent in order to solve the following problem:
 \begin{equation}
  \max_{\{M_t\}_{t\geq0}}
  \int_0^\infty
  \exp\left\{-\int_0^t r_s\dd s\right\}
- [\pi(B_t;K_t,A_t,L_t)-M_t]\dd t,
+ [\pi(B_t)-M_t]\dd t,
  \label{eq:rewrite-developer-reduced}
 \end{equation}
-subject to the same state law and initial condition. This reduction does not
-replace the dynamic problem with a static problem. It solves the within-date
-choice $X$ inside the original intertemporal problem and leaves $M$ as the
-dynamic control.
+subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
 
-\subsubsection{Dynamic research choice}
-\label{subsubsec:rewrite-research-choice}
+%\subsubsection{Dynamic research choice}
+%\label{subsubsec:rewrite-research-choice}
 
-Let $q$ be the current-value shadow price of capability. An interior research
-choice satisfies
+Let $q$ be the current-value shadow price of capability. An interior research choice satisfies
 \begin{equation}
  q\chi\eta B(BM)^{\eta-1}\psi(B)=1,
  \label{eq:rewrite-research-foc}
