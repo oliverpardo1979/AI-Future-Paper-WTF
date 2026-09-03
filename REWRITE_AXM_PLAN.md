@@ -98,11 +98,20 @@ equilibrium-admission rule:
 2. A figure illustrating the static substitution mechanism governed by
    \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.
-4. One figure comparing admitted equilibrium paths around unit elasticity.
-5. One figure for the admitted finite-frontier gross-substitutes equilibrium,
-   only if its trajectories add information beyond the propositions.
+4. One six-panel figure, in row-major order: `Y/(AL)`, `g_Y-n`, `w/A`,
+   `r`, `wL/Y`, and `p_X X/Y`.
+5. One six-panel figure, in row-major order: `B/Bbar`, `C/(AL)`, `K/(AL)`,
+   `U/(p_X X)`, `M/(p_X X)`, and `Pi/(p_X X)`.
 6. One compact table summarizing the three analytical regimes and their labor
    income-share implications.
+
+The four agreed candidate elasticities are 0.90, 1.00, 1.10, and 1.50, with
+common parameters and frontier. They are not yet four admitted numerical
+equilibria. The exact initial-state interpretation must be resolved before
+launching their transitions: the finite-frontier stationary boundary is not
+the uncapped unit-elastic BGP used for the historical initial stocks. See
+`audit/rewrite_simulation_design.md` for the agreed values, scales, panel
+denominators, unresolved initialization, and equilibrium-admission requirements.
 
 ## Writing sequence
 
