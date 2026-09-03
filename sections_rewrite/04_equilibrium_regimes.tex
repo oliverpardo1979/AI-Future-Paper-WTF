@@ -1,39 +1,275 @@
-\section{Equilibrium regimes}
+\section{Equilibrium existence with a finite capability frontier}
 \label{sec:rewrite-regimes}
 
-% Open with the mechanism that is common to all three regimes. Then change only
-% sigma. Do not use a terminal condition from one regime to solve another.
+I now give sufficient conditions for an infinite-horizon equilibrium in each
+substitution regime. Throughout this section, $0<B_0<\overline B<\infty$,
+$\chi>0$, $n+\gamma>0$, $\rho>n$, $0<\eta<\alpha<1$, and $2\eta\leq1$;
+the remaining parameters satisfy Section~\ref{sec:rewrite-model}. These
+results do not concern the uncapped economy. They are local in initial
+stocks, not in time: each constructs a trajectory defined for every
+$t\geq0$, including both transversality conditions and agent optimality.
+The initial stocks need not lie on a balanced-growth path.
+
+A finite capability frontier does not necessarily make long-run growth of
+output per person equal to $\gamma$. It bounds capability, but not the
+compute used to supply AI services. If AI and labor are substitutes, capital
+and compute can sustain growth faster than effective labor even when
+capability converges to a finite limit.
+
+For any positive variable $V$, write $g_V=\dot V/V$. Define the
+output--capital ratio required for growth at the effective-labor rate as
+\begin{equation}
+ \mathcal R=\frac{\rho+\gamma+\delta}{\alpha}.
+ \label{eq:rewrite-required-output-capital}
+\end{equation}
+Indeed, if $K$ and $C$ grow at $n+\gamma$, the Euler equation requires
+$r=\rho+\gamma$. For $\sigma\ne1$, define
+\begin{align}
+ z_A(\overline B;\sigma)
+ &=\left[(1-\alpha)^2\overline B\,
+ \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha},
+ \label{eq:rewrite-ai-terminal-ratio}\\
+ \overline B_c(\sigma)
+ &=\frac{\mathcal R^{\alpha/(1-\alpha)}}
+ {(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}}.
+ \label{eq:rewrite-critical-frontier}
+\end{align}
+The first expression is the limiting $Y/K$ implied by the static equations
+when $s_X\to1$ and $B\to\overline B$; the second solves
+$z_A(\overline B_c;\sigma)=\mathcal R$. Appendix~\ref{app:rewrite-finite-existence}
+derives these expressions and proves the following propositions.
 
 \subsection{Complementarity: \texorpdfstring{\(\sigma<1\)}{sigma < 1}}
 \label{subsec:rewrite-complements}
 
-% 1. Labor bottleneck proposition.
-% 2. Implications for output per person, wages, and labor's income share.
-% 3. Local existence of an equilibrium trajectory near the complementary-input
-%    terminal regime.
+\begin{proposition}[Equilibrium trajectories with complementary inputs]
+\label{prop:rewrite-capped-complements-existence}
+Maintain the common conditions of this section. If $0<\sigma<1$ and
+$\overline B>\overline B_c(\sigma)$, there exist constants
+$\overline k,\overline d>0$ and a neighborhood $\mathcal U_L$ of
+$(\overline k,\overline d,0)$ such that every positive initial configuration
+satisfying
+\begin{equation}
+ \left(\frac{K_0}{A_0N_0},\; (\overline B-B_0)A_0N_0,\;
+ \frac{1}{A_0N_0}\right)\in\mathcal U_L
+ \label{eq:rewrite-labor-local-initial}
+\end{equation}
+admits an interior infinite-horizon equilibrium. The initial values $C_0$
+and $q_0$ are uniquely selected among nearby trajectories converging to this
+terminal regime. Along the equilibrium,
+\begin{equation}
+ B\to\overline B,\qquad
+ g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
+ r\to\rho+\gamma,\qquad
+ \frac{wL}{Y}\to(1-\alpha)(1-\overline s_X)>0,
+ \label{eq:rewrite-complements-terminal}
+\end{equation}
+where $\overline s_X\in(0,1)$ is the limiting CES share.
+\end{proposition}
+
+\Needspace{3\baselineskip}
+With complementarity, both effective labor and AI services remain relevant
+in this terminal regime. AI services expand through compute even as
+$g_B\to0$, and output per person eventually grows at $\gamma$. The frontier
+condition ensures that AI capability is high enough to support this regime.
+If it fails, the proposition does not establish nonexistence of equilibrium;
+it only excludes the positive-ratio terminal construction used in its proof.
 
 \subsection{Unit elasticity: \texorpdfstring{\(\sigma=1\)}{sigma = 1}}
 \label{subsec:rewrite-unit}
 
-% 1. Analytical balanced-growth equilibrium for autonomous research.
-% 2. Growth rates and income/resource shares, including g_w.
-% 3. Conditions for developer optimality and both TVCs.
-% 4. Local equilibrium trajectories away from the balanced-growth path.
+At unit elasticity I use the continuous CES limit
+$Z=(AL)^{\omega_L}X^{\omega_X}$, so $s_X=\omega_X$. Define
+$\beta=(1-\alpha)\omega_X$. The monopoly condition gives $U=\beta^2Y$.
+
+\begin{proposition}[Equilibrium trajectories at unit elasticity]
+\label{prop:rewrite-capped-unit-existence}
+Maintain the common conditions of this section and let $\sigma=1$.
+For every finite $\overline B>0$, there is an interior infinite-horizon
+equilibrium for initial configurations satisfying
+\eqref{eq:rewrite-labor-local-initial} in a sufficiently small neighborhood,
+with
+\begin{equation}
+ \overline k=
+ \left[(\beta^2\overline B)^\beta
+ \mathcal R^{\beta-1}\right]^{1/(1-\alpha-\beta)}.
+ \label{eq:rewrite-unit-terminal-capital}
+\end{equation}
+The positive constant $\overline d$ is constructed in the proof. The nearby
+convergent choice of $C_0,q_0$ is unique, and
+\begin{equation}
+ B\to\overline B,\qquad
+ g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
+ r\to\rho+\gamma,\qquad
+ \frac{wL}{Y}=(1-\alpha)\omega_L>0.
+ \label{eq:rewrite-unit-terminal}
+\end{equation}
+\end{proposition}
+
+The denominator in \eqref{eq:rewrite-unit-terminal-capital} is positive
+because $1-\alpha-\beta=(1-\alpha)\omega_L>0$. No additional lower or
+upper bound on the finite frontier is needed for this local construction.
+The result describes transitions toward balanced growth, not an assumption
+that the economy starts on a balanced-growth path.
 
 \subsection{Gross substitution: \texorpdfstring{\(\sigma>1\)}{sigma > 1}}
 \label{subsec:rewrite-substitutes}
 
-% 1. No finite-rate BGP when capability is unbounded.
-% 2. Finite capability frontier and derivation of Bbar_c.
-% 3. Labor-supported terminal regime below Bbar_c.
-% 4. AI-dominated AK-type terminal regime above Bbar_c.
-% 5. Local finite-cap equilibrium paths in both regimes.
-% 6. Finite-window limit as Bbar tends to infinity and why this does not prove
-%    an uncapped infinite-horizon equilibrium.
+\begin{proposition}[Equilibrium trajectories with substitute inputs]
+\label{prop:rewrite-capped-substitutes-existence}
+Maintain the common conditions of this section and let $\sigma>1$.
 
-\subsection{What the three regimes establish}
+If $\overline B<\overline B_c(\sigma)$, initial configurations satisfying
+\eqref{eq:rewrite-labor-local-initial} in a sufficiently small neighborhood
+admit an interior infinite-horizon equilibrium with the limits in
+\eqref{eq:rewrite-complements-terminal}, for a limiting share
+$\overline s_X\in(0,1)$.
+
+If $\overline B>\overline B_c(\sigma)$, let
+$\varphi=(\sigma-1)/\sigma$ and define
+\begin{equation}
+ \overline r=\alpha z_A(\overline B;\sigma)-\delta,
+ \qquad \overline g=n+\overline r-\rho>n+\gamma.
+ \label{eq:rewrite-substitutes-terminal-growth}
+\end{equation}
+There exist a constant $\overline d>0$ and a neighborhood $\mathcal U_A$ of
+$(0,\overline d,0)$ such that every positive initial configuration satisfying
+\begin{equation}
+ \left[\left(\frac{A_0N_0}{K_0}\right)^\varphi,\;
+ (\overline B-B_0)K_0,\; \frac{1}{A_0N_0}\right]\in\mathcal U_A
+ \label{eq:rewrite-ai-local-initial}
+\end{equation}
+admits an interior infinite-horizon equilibrium with
+\begin{align}
+ B&\to\overline B,& g_Y-n&\to\overline r-\rho>\gamma,&
+ \frac{wL}{Y}&\to0,
+ \label{eq:rewrite-substitutes-ai-limits}\\
+ g_w&\to\gamma+
+ \frac{\overline r-\rho-\gamma}{\sigma}>\gamma.
+ \label{eq:rewrite-substitutes-wage-growth}
+\end{align}
+In both cases the nearby convergent choice of $C_0,q_0$ is unique.
+The equality $\overline B=\overline B_c(\sigma)$ is not covered.
+\end{proposition}
+
+Above the threshold, a fixed capability level allows output, capital, and
+inference compute to grow faster than effective labor. Production becomes
+asymptotically linear in capital, as in an $AK$ model. Growth is finite for
+every fixed frontier, but need not equal $\gamma$. Real wages rise even as
+labor's income share vanishes. Below the threshold, labor retains a positive
+income share and long-run growth per person equals $\gamma$.
+
+\subsection{Deriving long-run growth and the effect of the frontier}
+\label{subsec:rewrite-growth-frontier}
+
+The constructed trajectories have convergent growth rates and a positive
+limiting consumption--output ratio. Write $\overline r=\lim_{t\to\infty}r_t$.
+Consumption and output therefore have the same limiting growth rate.
+The household Euler equation then gives
+\begin{equation}
+ \lim_{t\to\infty}\frac{\mathrm d\log(Y_t/N_t)}{\mathrm dt}
+ =\lim_{t\to\infty}(g_C-n)=\overline r-\rho.
+ \label{eq:rewrite-long-run-growth-return}
+\end{equation}
+In the positive labor-share regimes, $Y/(AN)$ converges to a positive
+constant and its growth rate converges to zero. Consequently,
+\begin{equation}
+ g_Y\to n+\gamma,\qquad g_Y-n\to\gamma,
+ \qquad \overline r=\rho+\gamma.
+ \label{eq:rewrite-labor-growth-derivation}
+\end{equation}
+These are limits of the constructed transitions, not restrictions imposed
+on their growth rates at every date.
+
+In the AI-dominated regime, $s_X\to1$ and $e_X\to\alpha$. The CES function
+and the monopoly condition imply
+\begin{equation}
+ \frac ZX\to\omega_X^{\sigma/(\sigma-1)},\qquad
+ \frac UY\to(1-\alpha)^2,\qquad
+ \frac XY\to\overline B(1-\alpha)^2.
+ \label{eq:rewrite-ai-growth-static-limits}
+\end{equation}
+Production gives the identity $Y/K=(Z/Y)^{(1-\alpha)/\alpha}$.
+Substitution of these limits therefore yields
+\begin{equation}
+ \frac YK\to z_A(\overline B;\sigma),\qquad
+ \overline r=\alpha z_A(\overline B;\sigma)-\delta,\qquad
+ \lim(g_Y-n)=\alpha z_A(\overline B;\sigma)-\delta-\rho.
+ \label{eq:rewrite-ai-growth-derivation}
+\end{equation}
+The last expression exceeds $\gamma$ exactly when
+$\overline B>\overline B_c(\sigma)$. A finite capability stock can thus
+support sustained growth above $\gamma$: inference compute expands with
+output, and effective labor ceases to constrain production asymptotically.
+
+\Needspace{4\baselineskip}
+Holding $\sigma>1$ and all other parameters fixed, the constructed families
+give the following comparative statics across finite frontiers:
+\begin{equation}
+ \overline r(\overline B;\sigma)=
+ \begin{cases}
+  \rho+\gamma,&0<\overline B<\overline B_c(\sigma),\\[2pt]
+  \alpha z_A(\overline B;\sigma)-\delta,
+  &\overline B>\overline B_c(\sigma).
+ \end{cases}
+ \label{eq:rewrite-interest-frontier}
+\end{equation}
+Below the threshold, a larger frontier does not change the limiting
+interest or growth rate. Above it,
+\begin{equation}
+ \frac{\partial\overline r}{\partial\overline B}
+ =\frac{1-\alpha}{\overline B}z_A(\overline B;\sigma)>0,
+ \qquad
+ \lim_{\overline B\to\infty}\overline r(\overline B;\sigma)=\infty.
+ \label{eq:rewrite-interest-frontier-derivative}
+\end{equation}
+The limiting growth rate per person has the same derivative because it
+equals $\overline r-\rho$. The two interest-rate formulas approach
+$\rho+\gamma$ at the threshold, although the existence proof does not cover
+equality. For $\sigma=1$, and for the constructed complementary-input
+family, $\overline r=\rho+\gamma$ instead remains independent of the frontier.
+
+The unbounded limit in \eqref{eq:rewrite-interest-frontier-derivative}
+compares different economies after taking each economy's long-run limit.
+Every fixed finite frontier yields finite limiting interest and growth
+rates. The result establishes neither a finite-time singularity nor an
+equilibrium in the uncapped economy. The permitted initial-stock
+neighborhood also depends on the frontier; the comparison does not prove
+that every frontier admits equilibrium from the same initial stocks.
+
+\subsection{Scope of the existence results}
 \label{subsec:rewrite-regime-synthesis}
 
-% Summarize only propositions already derived. Separate growth in levels and
-% wages from labor's relative claim on output. State explicitly where the
-% available result is local, conditional, or numerical.
+Table~\ref{tab:rewrite-finite-existence} collects the sufficient frontier
+conditions. Every row also requires the common parameter restrictions and
+the corresponding initial-stock neighborhood. These are not necessary
+conditions for all possible equilibria, nor a claim of global uniqueness.
+
+\begin{table}[htbp]
+\centering
+\caption{Constructed finite-frontier equilibria}
+\label{tab:rewrite-finite-existence}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Elasticity & Frontier condition & $\lim(g_Y-n)$ & $\lim wL/Y$ \\
+\midrule
+$0<\sigma<1$ & $\overline B>\overline B_c(\sigma)$ & $\gamma$ & Positive \\
+$\sigma=1$ & Any finite $\overline B>0$ & $\gamma$ & $(1-\alpha)\omega_L$ \\
+$\sigma>1$ & $\overline B<\overline B_c(\sigma)$ & $\gamma$ & Positive \\
+$\sigma>1$ & $\overline B>\overline B_c(\sigma)$ & $\overline r-\rho>\gamma$ & Zero \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The proof constructs convergent trajectories from nearby predetermined
+stocks and then verifies both agents' optimality and both transversality
+conditions. Research remains positive at every finite date. The constants
+and neighborhoods depend on the parameters; the result does not establish
+equilibrium from arbitrary $K_0,B_0,A_0,N_0$, at the threshold, or after
+taking $\overline B\to\infty$. Those are separate questions.
+
+The analytical limits do not require simulations. They do not, however,
+determine transition duration or the paths of wages, interest rates, and
+income shares. Claims about a prolonged moderate-growth phase require
+additional analysis of equilibrium transitions.
