@@ -1,8 +1,11 @@
 # Agreed simulation design for the finite-frontier rewrite
 
-Status: design agreed on 2026-09-03; initial-state interpretation awaiting
-confirmation. This document contains no newly simulated equilibrium paths.
-The manuscript, numerical trajectory files, and existing figures are unchanged.
+Status: design and interior initial-state reference confirmed on 2026-09-03.
+All four BVPs have now passed the final numerical equilibrium audit. See
+`audit/rewrite_equilibrium_simulations.md` and `numerical_rewrite/*_audit.json`
+for execution evidence and remaining publication steps. The original design
+and the distinction between a capped stationary boundary and the historical
+uncapped BGP are preserved below.
 
 ## Economic question and comparison
 
@@ -33,8 +36,9 @@ Thus the comparison includes two distinct substitute-input regimes.
 | 1.10 | Positive labor income share, frontier below threshold | 0.01 | 0.05 |
 | 1.50 | AI-dominated, frontier above threshold | 0.0313499758138466 | 0.0713499758138466 |
 
-These numbers evaluate the Section 4 formulas. They neither establish
-equilibrium from common initial stocks nor report simulated transitions.
+These numbers evaluate the Section 4 formulas. The transition calculations
+are separately documented and audited; these formulas alone do not establish
+equilibrium from common initial stocks.
 
 ## Inherited parameters
 
@@ -61,7 +65,7 @@ Likewise, with the other annual rates fixed, chi is not merely a free time-unit
 normalization: changing it changes research speed relative to the other
 processes. None of the AI-specific values is an empirical estimate.
 
-## Initial condition: material distinction to resolve
+## Initial condition: confirmed interior reference
 
 The user suggested starting at the stationary state for sigma=1. In the
 finite-frontier model, an exact stationary normalized macro allocation with
@@ -79,17 +83,16 @@ The historical uncapped unit-elastic BGP instead supplied
  B_0=0.44367093160980464.
 \]
 
-These are a possible common initial-state reference for the finite-frontier
+These are the confirmed common initial stocks for the finite-frontier
 comparison, but they are not an exact BGP of the new capped model. The old
 consumption and shadow-value choices must not be imported: C_0 and q_0 must be
 selected anew by the equilibrium BVP for each sigma. Using terminal normalized
 capital with B_0<Bbar would be another initialization, also not an exact
 stationary state; no arbitrary frontier gap has been selected.
 
-The two alternatives (the boundary economy versus the historical BGP stocks
-as an interior reference) were put to the user before launching simulations.
-Preserve this distinction when recording the eventual choice. Do not silently
-change the requested initial stocks to obtain a convergent numerical path.
+The user approved the recommended interior reference after the distinction
+was explained. Every final BVP uses exactly these stocks; none was moved to
+obtain convergence. Initial consumption and the shadow price are endogenous.
 
 ## Two figures, six panels each
 
@@ -142,10 +145,10 @@ four-dimensional dated BVP, two initial stock conditions, and two terminal
 stable-manifold projection conditions. The terminal regime, not the
 unit-elastic BGP of the uncapped model, determines the long-run closure.
 
-The production finite-cap terminal dispatcher currently handles sigma>1;
-the rewrite's sigma<=1 terminal formulas have separate algebraic tests. A full
-four-scenario implementation must connect those formulas to the existing
-dispatcher and BVP and test them; it is not already completed.
+The production terminal dispatcher now also implements the rewrite's
+sigma<=1 formulas. All four cases retain the existing static block,
+four-dimensional BVP, initial-state continuation, and terminal projections.
+The exact unit limit and near-unit evaluations have separate tests.
 
 Before exporting any figure, require dated equation residuals, feasibility,
 stability to horizon and tolerance changes, a justified infinite-horizon
@@ -155,12 +158,15 @@ alone do not establish the common-initial-state comparison. Keep failed
 candidates out of plot-ready files, the paper, and summaries of equilibrium
 results; do not quietly omit a requested scenario from a figure.
 
-The archived global audit admits sigma=1.10 at frontier 60.4133584535484
-from the historical stocks. It does not admit all four scenarios at the newly
-selected frontier. Its rejected large-frontier candidate must not be reused
-as equilibrium evidence.
+The archived global audit at a different frontier is not evidence for this
+comparison. Each new scenario has its own solved checkpoints, two horizon
+extensions, independent equation residuals, and optimality audit. For sigma
+1.50, global profit concavity fails; the new appendix proves a weaker
+sufficient global-Hamiltonian-support criterion, which passes the numerical
+transition audit and has an analytical eventual bound. The old failed
+curvature verdict remains in the report rather than being overwritten.
 
-## Verification in this preparation turn
+## Historical preparation check
 
 Executed the existing five tests in `tests/test_rewrite_finite_frontier.py`:
 all passed. These check terminal algebra, linearizations, consumption,
@@ -168,4 +174,6 @@ near-unit static continuity, and interest comparative statics. They are not
 four transition simulations. The default sandbox could not read the local
 NumPy installation; the same test command passed with approved access to the
 existing project dependencies. No dependency, parameter, trajectory, figure,
-or manuscript file was changed by this verification.
+or manuscript file was changed by that preparation-stage verification.
+Subsequent simulation execution is recorded in the separate implementation
+report, not retroactively attributed to this initial algebra check.

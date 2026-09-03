@@ -557,6 +557,26 @@ The two transversality conditions are
 \end{definition}
 
 %The definition does not impose balanced growth. A balanced-growth path is one possible equilibrium trajectory, not the meaning of equilibrium. Nor are the dated equations alone enough: a numerical path is admitted as an equilibrium only if it also satisfies both transversality conditions and the global optimality requirements in Definition \ref{def:rewrite-equilibrium}. 
+\begin{remark}[The economy without AI]
+\label{rem:rewrite-no-ai}
+As a separate boundary case, set $\omega_X=0$ and $\omega_L=1$, so that
+$Z=AL$. AI services have no productive use, and the developer has no revenue
+with which to reward capability improvements. Thus $X=U=M=\Pi=0$; capability
+remains constant and does not affect allocations. With $L=N$, the model reduces
+to the Ramsey--Cass--Koopmans economy with logarithmic utility and exogenous
+labor-augmenting productivity growth:
+\begin{align*}
+ Y&=K^\alpha(AN)^{1-\alpha},&
+ \dot K&=Y-C-\delta K,\\
+ r&=\alpha Y/K-\delta,&
+ \dot C/C&=n+r-\rho.
+\end{align*}
+The household transversality condition remains unchanged. The elasticity
+$\sigma$ and the AI research parameters are irrelevant in this reduced economy;
+the interior AI price and costate conditions must not be imposed at
+$\omega_X=0$. In particular, $wN/Y=1-\alpha$ and $(r+\delta)K/Y=\alpha$.
+\end{remark}
+
 For a finite capability frontier, Proposition~\ref{prop:rewrite-developer-sufficiency} in Appendix~\ref{app:rewrite-developer-sufficiency} provides a sufficient test
 for the developer's global optimality.
 

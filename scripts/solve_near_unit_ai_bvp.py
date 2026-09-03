@@ -275,6 +275,15 @@ def solve_monopoly_static_block(
     )
 
     def residual(log_ratio: float) -> float:
+        if varphi < 0:
+            # With complementary inputs, large X makes marginal revenue
+            # nonpositive. This is outside the root's domain, not a missing
+            # monopoly optimum. Its limiting log-FOC residual is -infinity.
+            # Keep this analytical boundary while expanding the root bracket.
+            share = _logistic(math.log(parameters.omega_x/parameters.omega_l)
+                              + varphi*log_ratio)
+            if varphi + (1/sigma_xl-parameters.alpha)*share <= 0:
+                return -math.inf
         return _static_quantities_from_ratio(
             log_capital,
             log_capability,

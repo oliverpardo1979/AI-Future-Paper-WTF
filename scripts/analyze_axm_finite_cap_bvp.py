@@ -3,9 +3,9 @@
 The finite capability frontier does not turn a dated solution into an
 equilibrium by itself.  It does, however, create finite terminal regimes that
 can close an infinite-horizon boundary-value problem.  This module implements
-the two normalizations derived in the paper for ``sigma_XL > 1``:
+the two normalizations derived in the paper for all positive ``sigma_XL``:
 
-* below the critical frontier, quantities are scaled by effective labor
+* in a positive-labor-share regime, quantities are scaled by effective labor
   ``AN`` and the capability gap is represented by ``d=(Bbar-B)AN``;
 * above the critical frontier, capital is the growing scale and the regular
   CES coordinate is ``h=(AN/K)**varphi`` together with
@@ -41,11 +41,14 @@ elif TMP_DEPS.exists():
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from scipy.integrate import solve_bvp  # noqa: E402
+from scipy.optimize import brentq  # noqa: E402
 
 from define_positive_ai_branch import (  # noqa: E402
     PositiveAIBenchmarkParameters,
 )
-from solve_near_unit_ai_bvp import solve_monopoly_static_block  # noqa: E402
+from solve_near_unit_ai_bvp import (  # noqa: E402
+    _log_ces_adjustment, _logistic, solve_monopoly_static_block,
+)
 
 
 @dataclass(frozen=True)
@@ -54,8 +57,8 @@ class FiniteCapTerminalPoint:
 
     sigma_xl: float
     frontier: float
-    critical_frontier: float
-    frontier_ratio: float
+    critical_frontier: float | None
+    frontier_ratio: float | None
     regime: str
     terminal_growth: float
     net_interest_rate: float
@@ -100,8 +103,8 @@ class LocalFiniteCapBVP:
 def elasticity_coordinate(sigma_xl: float) -> float:
     """Return the regular CES coordinate varphi=(sigma-1)/sigma."""
 
-    if not math.isfinite(sigma_xl) or sigma_xl <= 1.0:
-        raise ValueError("The finite-cap regime analysis requires sigma_XL > 1.")
+    if not math.isfinite(sigma_xl) or sigma_xl <= 0.0:
+        raise ValueError("sigma_XL must be finite and strictly positive.")
     return (sigma_xl - 1.0) / sigma_xl
 
 
@@ -123,6 +126,8 @@ def ai_only_scale(
 ) -> float:
     """Return D_sigma in the AI-dominated output-capital ratio."""
 
+    if sigma_xl <= 1.0:
+        raise ValueError("The AI-dominated terminal regime requires sigma_XL > 1.")
     theta = capability_exponent(parameters)
     exponent = sigma_xl / (sigma_xl - 1.0)
     return (
@@ -131,13 +136,15 @@ def ai_only_scale(
     ) ** theta
 
 
-def critical_capability_frontier(
+def log_critical_capability_frontier(
     sigma_xl: float,
     parameters: PositiveAIBenchmarkParameters,
 ) -> float:
-    """Return the exact critical frontier separating the terminal regimes."""
+    """Return log Bbar_c; the threshold is not defined at unit elasticity."""
 
     elasticity_coordinate(sigma_xl)
+    if sigma_xl == 1.0:
+        raise ValueError("No critical frontier is defined at sigma_XL=1.")
     theta = capability_exponent(parameters)
     required_output_capital = (
         parameters.discount
@@ -148,9 +155,60 @@ def critical_capability_frontier(
         2.0 * math.log1p(-parameters.alpha)
         + sigma_xl / (sigma_xl - 1.0) * math.log(parameters.omega_x)
     )
-    return math.exp(
-        (math.log(required_output_capital) - log_scale) / theta
-    )
+    return (math.log(required_output_capital) - log_scale) / theta
+
+
+def critical_capability_frontier(sigma_xl, parameters):
+    """Report the threshold; overflow/underflow is metadata only.
+
+    Regime decisions use logarithms, so neither infinity nor a rounded zero
+    here is substituted into the model's equations.
+    """
+    value = log_critical_capability_frontier(sigma_xl, parameters)
+    return math.exp(value) if value <= math.log(sys.float_info.max) else math.inf
+
+
+def _labor_log_ai_labor_ratio(sigma_xl, frontier, parameters, iterations=160):
+    """Solve the terminal service ratio without dividing by sigma-1.
+
+    At Y/K=R, K=Z*R**(-1/(1-alpha)). Substitution in the monopoly
+    condition determines X/(AL). The CES evaluator uses exact log1p/expm1
+    identities, including its analytical Cobb-Douglas value at sigma=1.
+    """
+    phi = elasticity_coordinate(sigma_xl)
+    if not math.isfinite(frontier) or frontier <= 0:
+        raise ValueError("The frontier must be positive and finite.")
+    if sigma_xl != 1:
+        distance = math.log(frontier) - log_critical_capability_frontier(sigma_xl, parameters)
+        if distance * (1 - sigma_xl) <= 0:
+            raise ValueError("The frontier does not support a positive labor-share terminal point.")
+    p = parameters
+    required = (p.discount + p.labor_productivity_growth + p.depreciation) / p.alpha
+    beta = (1-p.alpha)*p.omega_x
+    log_k_unit = (beta*math.log(beta*beta*frontier)
+                  + (beta-1)*math.log(required))/(1-p.alpha-beta)
+    center = math.log(frontier*beta*beta*required) + log_k_unit
+    if sigma_xl == 1:
+        return center
+
+    def residual(log_x):
+        share = _logistic(math.log(p.omega_x/p.omega_l) + phi*log_x)
+        margin = phi + (1/sigma_xl-p.alpha)*share
+        if margin <= 0 or share == 0:
+            return math.inf
+        log_z = _log_ces_adjustment(phi, log_x, p.omega_x)
+        return (log_x-log_z + p.alpha/(1-p.alpha)*math.log(required)
+                - math.log((1-p.alpha)*share*margin) - math.log(frontier))
+
+    width = 1.0
+    for _ in range(iterations):
+        lower, upper = center-width, center+width
+        if residual(lower) < 0 < residual(upper):
+            # Roundoff-level root tolerance, unrelated to economic admission.
+            return brentq(residual, lower, upper, xtol=2e-13,
+                          rtol=4*np.finfo(float).eps, maxiter=iterations)
+        width *= 2
+    raise RuntimeError("Failed to bracket the positive-labor-share terminal ratio.")
 
 
 def _inverse_demand_elasticity(
@@ -191,27 +249,10 @@ def labor_supported_share(
     *,
     iterations: int = 160,
 ) -> float:
-    """Solve the strictly decreasing terminal share equation by bisection."""
-
-    critical = critical_capability_frontier(sigma_xl, parameters)
-    if not 0.0 < frontier < critical:
-        raise ValueError("A labor-supported terminal point requires Bbar < Bbar_c.")
-    theta = capability_exponent(parameters)
-    required_output_capital = (
-        parameters.discount
-        + parameters.labor_productivity_growth
-        + parameters.depreciation
-    ) / parameters.alpha
-    target = math.log(required_output_capital) - theta * math.log(frontier)
-    lower = np.nextafter(0.0, 1.0)
-    upper = np.nextafter(1.0, 0.0)
-    for _ in range(iterations):
-        midpoint = 0.5 * (lower + upper)
-        if log_share_map(midpoint, sigma_xl, parameters) > target:
-            lower = midpoint
-        else:
-            upper = midpoint
-    return 0.5 * (lower + upper)
+    """Solve the terminal share in any positive-labor-share regime."""
+    log_x = _labor_log_ai_labor_ratio(sigma_xl, frontier, parameters, iterations)
+    return _logistic(math.log(parameters.omega_x/parameters.omega_l)
+                     + elasticity_coordinate(sigma_xl)*log_x)
 
 
 def _terminal_research_compute(
@@ -231,21 +272,17 @@ def labor_supported_terminal(
     frontier: float,
     parameters: PositiveAIBenchmarkParameters,
 ) -> FiniteCapTerminalPoint:
-    """Construct the effective-labor-normalized terminal point below Bbar_c."""
+    """Construct the effective-labor-normalized point in all three regimes."""
 
-    critical = critical_capability_frontier(sigma_xl, parameters)
-    share = labor_supported_share(sigma_xl, frontier, parameters)
+    critical = (critical_capability_frontier(sigma_xl, parameters)
+                if sigma_xl != 1 else None)
+    log_ai_labor_ratio = _labor_log_ai_labor_ratio(sigma_xl, frontier, parameters)
     varphi = elasticity_coordinate(sigma_xl)
     omega_l = 1.0 - parameters.omega_x
+    share = _logistic(math.log(parameters.omega_x/omega_l) + varphi*log_ai_labor_ratio)
     inverse_elasticity = _inverse_demand_elasticity(
         share, sigma_xl, parameters
     )
-    log_ai_labor_ratio = (
-        math.log(share)
-        + math.log(omega_l)
-        - math.log1p(-share)
-        - math.log(parameters.omega_x)
-    ) / varphi
     ai_services = math.exp(log_ai_labor_ratio)
     inference_compute = ai_services / frontier
     inference_share = (
@@ -283,7 +320,8 @@ def labor_supported_terminal(
         sigma_xl=sigma_xl,
         frontier=frontier,
         critical_frontier=critical,
-        frontier_ratio=frontier / critical,
+        frontier_ratio=(None if critical is None else
+                        frontier/critical if critical > 0 else math.inf),
         regime="labor_supported",
         terminal_growth=growth,
         net_interest_rate=net_interest,
@@ -404,10 +442,15 @@ def terminal_point(
 ) -> FiniteCapTerminalPoint:
     """Dispatch to the normalization selected by the exact threshold."""
 
-    critical = critical_capability_frontier(sigma_xl, parameters)
-    if frontier < critical:
+    elasticity_coordinate(sigma_xl)
+    if not math.isfinite(frontier) or frontier <= 0:
+        raise ValueError("The frontier must be positive and finite.")
+    if sigma_xl <= 1:
         return labor_supported_terminal(sigma_xl, frontier, parameters)
-    if frontier > critical:
+    distance = math.log(frontier) - log_critical_capability_frontier(sigma_xl, parameters)
+    if distance < 0:
+        return labor_supported_terminal(sigma_xl, frontier, parameters)
+    if distance > 0:
         return ai_dominated_terminal(sigma_xl, frontier, parameters)
     raise ValueError("The knife-edge Bbar=Bbar_c requires a separate normalization.")
 

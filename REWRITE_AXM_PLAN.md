@@ -105,13 +105,15 @@ equilibrium-admission rule:
 6. One compact table summarizing the three analytical regimes and their labor
    income-share implications.
 
-The four agreed candidate elasticities are 0.90, 1.00, 1.10, and 1.50, with
-common parameters and frontier. They are not yet four admitted numerical
-equilibria. The exact initial-state interpretation must be resolved before
-launching their transitions: the finite-frontier stationary boundary is not
-the uncapped unit-elastic BGP used for the historical initial stocks. See
-`audit/rewrite_simulation_design.md` for the agreed values, scales, panel
-denominators, unresolved initialization, and equilibrium-admission requirements.
+The four agreed elasticities are 0.90, 1.00, 1.10, and 1.50, with common
+parameters, frontier, and initial stocks. All four now pass the numerical
+equilibrium audit. The confirmed initial stocks come from the historical
+uncapped unit-elastic BGP, not the finite-frontier stationary boundary;
+consumption and the shadow price are selected anew for every case. See
+`audit/rewrite_simulation_design.md` for the design and
+`audit/rewrite_equilibrium_simulations.md` for execution evidence,
+optimality checks, and publication status. Numerical admission is not a
+formal existence certificate for arbitrary initial stocks.
 
 ## Writing sequence
 

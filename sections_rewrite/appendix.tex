@@ -360,6 +360,105 @@ term converges to zero. Taking the lower limit as \(T\to\infty\) establishes
 global optimality.
 \end{proof}
 
+\paragraph{A sufficient condition without global concavity.}
+The preceding curvature condition can fail at counterfactual capability levels
+even when the candidate is globally optimal. An alternative is to check that
+the maximized Hamiltonian lies below its tangent at the candidate state.
+This changes the optimality test, not the developer's problem.
+
+Fix a date, its capital and effective labor, and the candidate shadow price
+$q_{R,t}=q_t\psi(B_t)>0$. Maximizing the research-depth Hamiltonian over
+research expenditure gives
+\begin{equation}
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ =\pi(B(\widetilde R_B))+
+ \frac{1-\eta}{\eta}M_t
+ \left[\frac{B(\widetilde R_B)}{B_t}\right]^{\eta/(1-\eta)}.
+ \label{eq:rewrite-maximized-depth-hamiltonian}
+\end{equation}
+Here $M_t$ is the candidate's research expenditure. The formula follows by
+maximizing $-M+q_{R,t}\chi[B(\widetilde R_B)M]^\eta$ over $M\geq0$ and
+using the candidate's research first-order condition. Its derivative at the
+candidate state is
+\begin{equation}
+ \widehat{\mathcal H}'_t(R_{B,t})
+ =\frac{\psi(B_t)}{B_t}(U_t+M_t).
+ \label{eq:rewrite-depth-hamiltonian-slope}
+\end{equation}
+
+\begin{proposition}[Global Hamiltonian support]
+\label{prop:rewrite-hamiltonian-support}
+Consider a feasible finite-frontier developer policy with a finite objective,
+positive shadow price, and $0<\eta<1$. Suppose it satisfies the monopoly
+choice, research first-order condition, capability law, costate equation,
+and developer transversality condition. It is globally optimal if, at every
+date and for every $\widetilde R_B\geq R_{B,0}$,
+\begin{equation}
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ \leq\widehat{\mathcal H}_t(R_{B,t})
+ +\widehat{\mathcal H}'_t(R_{B,t})(\widetilde R_B-R_{B,t}).
+ \label{eq:rewrite-hamiltonian-support}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Write $D_t=\exp(-\int_0^t r_s\dd s)$ and $\mu_t=D_tq_{R,t}$.
+The transformed costate equation is
+$\dot\mu_t=-D_t\widehat{\mathcal H}'_t(R_{B,t})$.
+For any admissible alternative research policy and its state
+$\widetilde R_{B,t}$, maximizing over its control first bounds its Hamiltonian
+by \eqref{eq:rewrite-maximized-depth-hamiltonian}. Apply
+\eqref{eq:rewrite-hamiltonian-support}, subtract the candidate payoff, and
+integrate by parts. Equal initial states imply
+\[
+ \widetilde J_T-J_T
+ \leq-\mu_T(\widetilde R_{B,T}-R_{B,T})
+ \leq\mu_TR_{B,T}.
+\]
+Because $\psi(B_t)R_{B,t}\leq B_t$, the last expression converges to zero by
+the developer's transversality condition. Taking the upper limit establishes
+global optimality. The argument requires a global upper tangent at the
+candidate state, not concavity at every counterfactual state.
+\end{proof}
+
+The AI-dominated continuation supplies an analytical long-run check on the
+support inequality. For $1<\sigma\leq1/\alpha$, the service elasticity satisfies
+$\varepsilon_B\leq1/\alpha$. Indeed, subtracting
+$\alpha(1-e_X)$ from the denominator in
+\eqref{eq:rewrite-service-capability-elasticity} gives
+\[
+ (\sigma^{-1}-\alpha)(1-s_X)
+ \left[(1-\sigma^{-1})(1-s_X)+(\sigma^{-1}-\alpha)s_X\right]\geq0.
+\]
+Choose $B_*\in(B_0,\overline B)$ with
+$B_*/\overline B>\max\{0,(1-2\alpha)/(1-\alpha)\}$.
+Operating profit is then concave in research depth for $B\geq B_*$.
+When $2\eta\leq1$, the research term in
+\eqref{eq:rewrite-maximized-depth-hamiltonian} is concave there as well.
+For a candidate with $B_t\geq B_*$, it consequently suffices to check
+\begin{equation}
+ \widehat{\mathcal H}_t(R_{B,t})
+ -\widehat{\mathcal H}'_t(R_{B,t})(R_{B,t}-R_{B,0})
+ \geq\widehat{\mathcal H}_t(R_B(B_*)).
+ \label{eq:rewrite-support-terminal-bound}
+\end{equation}
+Above $B_*$ the tangent bound follows from concavity. Below $B_*$ the
+Hamiltonian is increasing in $B$, so its value is at most the right-hand
+side, whereas the tangent is minimized at $R_{B,0}$.
+
+Along an AI-dominated continuation, the difference between the two sides of
+\eqref{eq:rewrite-support-terminal-bound}, divided by $Y_t$, converges to
+\[
+ \alpha(1-\alpha)
+ \left[1-\left(\frac{B_*}{\overline B}\right)^{(1-\alpha)/\alpha}\right]>0.
+\]
+To obtain this limit, use $M/Y\to0$, $\psi(B)R_B\to0$, and
+$\pi(B_*)/Y\to\alpha(1-\alpha)(B_*/\overline B)^{(1-\alpha)/\alpha}$.
+Thus the global support condition holds sufficiently late on this
+continuation even when the stronger curvature condition fails at low
+counterfactual capabilities. The finite transition still requires its own
+support check.
+
 \clearpage
 \input{sections_rewrite/appendix_finite_frontier}
 
@@ -382,13 +481,163 @@ This map changes only the notation in the exposition. It does not redefine a
 variable or parameter, alter its timing, or modify any equation used by the
 simulations.
 
-% 1. Regime-specific normalization.
-% 2. Boundary conditions and jump-variable selection.
-% 3. Continuation in initial states, sigma, and the finite frontier.
-% 4. Exact reconstruction of equilibrium equations.
-% 5. Horizon stability and both transversality conditions.
-% 6. Developer optimality and the equilibrium-admission decision.
-% 7. Reproducible file and code map.
+\subsection{Boundary-value formulation}
+
+A boundary-value problem (BVP) selects the initial consumption and shadow
+price jointly with the subsequent path. I use the existing collocation
+solver, \texttt{scipy.integrate.solve\_bvp}, for the four dynamic equations
+in the equilibrium definition. At every evaluation, I solve the static
+monopoly condition and recover research expenditure from its first-order
+condition. Effective labor is exogenous, $AL=A_0N_0e^{(n+\gamma)t}$, and
+therefore is not an additional unknown path in this dated BVP.
+
+The computational coordinates are
+\[
+ \left(\log K,\ \log\frac{B}{\overline B-B},\ \log C,\ \log q\right).
+\]
+They enforce positivity and $0<B<\overline B$ without clipping a computed
+equilibrium. I subtract the analytical terminal aggregate growth rate
+times $t$ from each coordinate to remove its linear trend. This is a
+numerical transformation, not a change in the model's variables. In
+particular, the code stores $\log\psi(B)$ separately: a displayed ratio
+$B/\overline B$ can round to one even though the remaining frontier gap
+is strictly positive.
+
+The left boundary fixes only $K_0$ and $B_0$ from
+\eqref{eq:rewrite-simulation-initial-stocks}. At the right boundary, the
+solution is mapped into the regime-specific normalized coordinates of
+Appendix~\ref{app:rewrite-finite-existence}. Two projection conditions remove
+the unstable components of the linearized terminal system. Its third stable
+direction is associated with the exogenous scale. The two stock conditions
+and two terminal projections thus close a four-dimensional problem;
+neither $C_0$ nor $q_0$ is predetermined. A finite terminal projection
+approximates the stable continuation, which is why increasing the horizon
+is a necessary numerical check.
+
+For $\sigma\leq1$, I use the positive-labor-share terminal formulas.
+For $\sigma>1$, the frontier's position relative to $\overline B_c$ selects
+the terminal regime. At $\sigma=1$, the CES block uses its exact
+Cobb--Douglas limit. Near one, \texttt{log1p} and \texttt{expm1} evaluate
+the CES expression without cancellation, and the frontier comparison is
+performed in logarithms. I solve the labor-supported terminal static
+condition directly for $\log[X/(AL)]$, rather than invert a share formula
+by dividing by $\sigma-1$. A trial quantity with nonpositive marginal
+revenue can bracket the monopoly optimum, but is never accepted as that
+optimum.
+
+\subsection{Continuation and numerical accuracy}
+
+For each elasticity, I first solve a local BVP near its analytical terminal
+point. I then move the initial stocks and effective-labor scale continuously
+to their common prescribed values, retaining the preceding solution as the
+next guess. The requested design uses 32 continuation stages. There is no
+continuation through the degenerate no-AI economy, and the uncapped
+unit-elastic reference supplies initial stocks only.
+
+The initial horizon combines the time needed to reach the terminal scale
+with eleven decay times of the slowest stable eigenvalue. This gives an
+initial truncation criterion, not an equilibrium assumption. I extend that
+horizon twice by 500 years, tightening the collocation tolerance from
+$2\times10^{-6}$ to $10^{-8}$ and then $10^{-9}$. The final boundary tolerance
+is $10^{-11}$. Initial meshes of 221, 401, and 601 points are refined
+adaptively by the solver. The final horizons exceed the common 4,000-year
+display window; the figures contain no extrapolated spline values.
+
+\begin{table}[H]
+ \centering
+ \caption{Numerical accuracy of the four displayed equilibria}
+ \label{tab:rewrite-numerical-audit}
+ \small
+ \begin{tabular}{rrrrr}
+ \toprule
+ $\sigma$ & Final horizon & Mesh points & Dynamic residual & Horizon change\\
+ \midrule
+ 0.90 & 6,857.1 & 809  & $8.53\times10^{-10}$ & $2.44\times10^{-8}$\\
+ 1.00 & 6,731.9 & 607  & $8.88\times10^{-10}$ & $5.73\times10^{-9}$\\
+ 1.10 & 6,647.9 & 831  & $9.37\times10^{-10}$ & $1.68\times10^{-8}$\\
+ 1.50 & 4,919.4 & 1,255 & $1.06\times10^{-9}$ & $2.73\times10^{-8}$\\
+ \bottomrule
+ \end{tabular}
+ \par\smallskip
+ \begin{minipage}{0.95\textwidth}\footnotesize
+ Dynamic residuals reconstruct the four original equations using five-point
+ differences of spline values at 1,001 dates, with steps of 0.003 and 0.001
+ years; the table reports the larger maximum. Horizon change is the largest
+ change in the detrended logarithmic coordinates over years 0--4,000 between
+ the last two solves. Values are rounded upward.
+ \end{minipage}
+\end{table}
+
+The maximum research and static monopoly first-order residuals are below
+$2.3\times10^{-13}$. Initial jump choices change by less than
+$2.4\times10^{-11}$ in logs in the final horizon comparison. The normalized
+terminal coordinates differ from their analytical limits by less than
+$3.2\times10^{-6}$. The acceptance thresholds are deliberately looser than
+these observed errors: $10^{-6}$ for independently reconstructed dynamic
+residuals, $10^{-9}$ for static first-order conditions, $2\times10^{-5}$ for
+horizon sensitivity, and $10^{-4}$ for terminal-coordinate gaps. Tightening
+the solver and extending its horizon provide the evidence of stability;
+the thresholds do not replace any economic condition.
+
+\subsection{Optimality and the infinite-horizon continuation}
+
+The equation audit also checks feasibility, the monopoly second-order
+condition, and that numerical safeguards used for off-path Newton trials do
+not bind on the solution. Both transversality expressions converge to zero
+on each selected continuation: their asymptotic log growth rate is
+$n-\rho=-0.037$. This analytical rate, rather than a small terminal value
+alone, establishes the transversality check.
+
+For $\sigma=0.90,1,1.10$, the developer's operating profit is concave in
+research depth over the counterfactual capability domain checked at each
+date. The final audit uses 161 dates and 161 capability points per date,
+with scalar minimization between grid points. For $\sigma=1.50$, this
+stronger curvature test fails at low counterfactual capabilities; checking
+concavity only along the realized path would miss that failure.
+
+I instead apply Proposition~\ref{prop:rewrite-hamiltonian-support}. At each
+date, I minimize its tangent gap, divided by the candidate's $Y$, over
+counterfactual capabilities $B\geq B_0$, refining every local minimum found
+on the grid. An analytical upper bound on the Hamiltonian's derivative
+covers the unbounded research-depth domain beyond the numerical grid.
+The check is repeated with 81 dates and 101 capability points, then with
+321 dates and 241 points. The smallest normalized gap is
+$-2.6\times10^{-14}$, consistent with floating-point error at the tangent
+point. The numerical gap tolerance is $10^{-10}$; the economic support
+inequality remains exact.
+
+For the infinite-horizon continuation, I use
+\eqref{eq:rewrite-support-terminal-bound} with $B_*=0.75\overline B$.
+Its limiting margin divided by output is approximately $0.09781>0$;
+the computed terminal margin differs from that limit by less than
+$4\times10^{-13}$. Thus the analytical continuation satisfies the
+sufficient support condition eventually, while the dated audit checks the
+computed transition. These are numerically verified equilibrium
+approximations supported by analytical terminal and optimality results,
+not interval-arithmetic existence certificates for the common initial
+stocks. Nor do they establish existence for every initial condition or
+every parameter vector.
+
+\subsection{Reproduction and export safeguards}
+
+The implementation preserves the earlier solver. The entry point is
+\texttt{scripts/simulate\_rewrite\_finite\_frontier.py}; the final audit is
+\texttt{scripts/audit\_rewrite\_equilibria.py}. The reproducible sequence is:
+solve each of the four elasticities with \texttt{--sigma}; run
+\texttt{--verify-long-horizon}; run
+\texttt{audit\_rewrite\_hamiltonian\_support.py} for $\sigma=1.50$ at both
+grid resolutions; run the final audit; export with
+\texttt{--export-horizon 4000}; and render with
+\texttt{plot\_rewrite\_equilibria.py}.
+The repository report \texttt{audit/rewrite\_equilibrium\_simulations.md}
+provides the complete commands and test results.
+
+The exported data and figures require all four scenarios to pass admission.
+Checkpoint hashes link each audit to its solved spline; a second manifest
+links the plotted CSV to those checkpoints. Failed or stale candidates
+cannot silently enter a partial comparison. The data retain the original
+model variables and use only the normalizations stated in the figure
+captions.
 
 \clearpage
 \section{Conditional and excluded limits}

@@ -4,36 +4,164 @@
 \subsection{Parameters and initial conditions}
 \label{subsec:rewrite-calibration}
 
-% Report each parameter once, with interpretation, value, and source or stated
-% calibration rationale. The benchmark has omega_H=0 and does not report
-% sigma_HM.
+I compare four economies with the same parameters and predetermined initial
+stocks, varying only $\sigma$. Table~\ref{tab:rewrite-parameters} retains the
+macroeconomic benchmarks used in the earlier specification. The AI parameters
+are illustrative, not estimated. All four economies have autonomous research
+and a positive AI weight; the no-AI economy in Remark~\ref{rem:rewrite-no-ai}
+is not one of these four scenarios.
+
+\begin{table}[H]
+\centering
+\caption{Parameters and scenario choices}
+\label{tab:rewrite-parameters}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.10}
+\begin{tabular}{P{0.08\textwidth}P{0.19\textwidth}P{0.27\textwidth}P{0.35\textwidth}}
+\toprule
+Parameter & Value & Interpretation & Source or rationale\\
+\midrule
+$\alpha$ & 0.33 & Capital elasticity & Standard one-third macro benchmark\\
+$\delta$ & 0.05 & Annual capital depreciation & Annual benchmark; PWT comparison \citep{pwt110}\\
+$\rho$ & 0.04 & Annual household discount rate & Preference calibration\\
+$n$ & 0.003 & Annual population growth & Constant-rate approximation to the UN 2024--2100 world projection \citep{unwpp2024}\\
+$\gamma$ & 0.01 & Annual labor-productivity growth & Illustrative long-run trend; see \citet{oecdlongrun2025}\\
+$\omega_X$ & 0.20 & Weight on AI services & Scenario choice, not an observed industry share\\
+$\omega_L$ & 0.80 & Weight on effective labor & $1-\omega_X$\\
+$\eta$ & 0.20 & Research exponent & $\eta<\alpha$ and $2\eta\leq1$\\
+$\chi$ & 0.01 & Research productivity & Illustrative research-speed parameter\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Four scenarios spanning the analytical regimes\\
+$\overline B$ & $1.10\,\overline B_c(1.50)$ $\simeq170.124$ & Common capability frontier & Ten percent above the threshold for $\sigma=1.50$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The constant $n$ extrapolates a finite-period demographic approximation; it
+is not a claim that the UN projects constant population growth forever.
+The parameter $\chi$ determines research speed relative to the other annual
+rates, so it is not merely a free time-unit normalization. The horizontal
+axes below measure model years, not calendar forecasts. Likewise, the OECD's
+discussion of AI-investment measurement supports treating $\omega_X$ as a
+scenario parameter, but does not identify its value
+\citep{oecdaiinvestment2025,oecdproductivity2026}.
+
+The common frontier is below $\overline B_c(1.10)\simeq60.4$ million but above
+$\overline B_c(1.50)\simeq154.658$. Thus $\sigma=1.10$ retains a positive
+long-run labor share, whereas $\sigma=1.50$ enters the AI-dominated regime.
+Changing the frontier separately across scenarios would confound this
+comparison of elasticities.
+
+I set
+\begin{equation}
+ A_0=N_0=1,\qquad K_0=2.027733654,\qquad B_0=0.443670932.
+ \label{eq:rewrite-simulation-initial-stocks}
+\end{equation}
+These stocks come from the unit-elastic balanced-growth reference of the
+uncapped specification with the same parameters. They are not a balanced-growth
+state of the capped economy. An exact constant-capability reference at
+$B_0=\overline B$ would eliminate further capability improvements and would
+lie outside the interior problem studied here. In each capped economy, the
+BVP selects $C_0$ and $q_0$ anew; neither jump variable is fixed at its
+uncapped reference value.
 
 \subsection{Numerical method and equilibrium admission}
 \label{subsec:rewrite-method}
 
-% Explain the BVP at the level needed to interpret the results. State the
-% equilibrium-admission rule before presenting any trajectory. Put equations,
-% continuation details, residual reconstruction, and tests in the appendix.
+I retain the four-dimensional boundary-value architecture: two initial stock
+conditions and two terminal conditions selecting the stable equilibrium
+continuation. The appropriate finite-frontier regime from
+Section~\ref{sec:rewrite-regimes}, not the uncapped unit-elastic BGP, determines
+the terminal conditions. Appendix~\ref{app:rewrite-algorithm} documents the
+continuation, equation reconstruction, and numerical checks.
 
-\subsection{Equilibria around unit elasticity}
-\label{subsec:rewrite-near-unit}
+A converged BVP is not sufficient for admission. I also check feasibility,
+independently reconstructed dynamic residuals, stability to longer horizons
+and tighter tolerances, both transversality conditions, and sufficient global
+developer optimality. The first three scenarios satisfy the global concavity
+test. For $\sigma=1.50$, that stronger test fails at low counterfactual
+capabilities, but the Hamiltonian support test in
+Proposition~\ref{prop:rewrite-hamiltonian-support} passes. Its analytical
+long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 
-% Compare only elasticities with admitted infinite-horizon continuations. Use
-% common predetermined initial stocks and explain why near-unit paths need not
-% remain close over long horizons.
-
-\subsection{A finite-frontier equilibrium with gross substitution}
-\label{subsec:rewrite-finite-cap-quantitative}
-
-% Present the admitted moderate-frontier equilibrium only if its path adds a
-% result that is not already transparent from the analytical propositions.
-% Do not graph or tabulate rejected large-frontier candidates as equilibria.
-
-\subsection{Growth, prices, and functional income distribution}
+\subsection{Growth, wages, and the distribution of output}
 \label{subsec:rewrite-distribution}
 
-% Coordinate the panels rather than repeating separate simulation exercises:
-% output per person and capability; growth and the interest rate; the real wage;
-% and shares of output accruing to labor, capital, AI services, research, and
-% distributed profit. Use logarithmic scales only when they clarify orders of
-% magnitude and label them explicitly.
+Figure~\ref{fig:rewrite-growth-distribution} presents the six main outcomes.
+Dividing output by $AL$ removes population growth and exogenous productivity
+growth; it does not force the AI-dominated trajectory to become stationary.
+Similarly, a constant $w/A$ means that real wages grow at $\gamma$, not that
+they stop growing. AI-industry revenue $p_XX/Y$ is distinct from profit and
+from value added. Gross capital income remains $\alpha Y$ throughout, so the
+labor and AI-revenue shares sum to $1-\alpha$.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_distribution.pdf}
+ \caption{Growth, wages, and the distribution of final output. Each panel
+ compares the same four admitted numerical equilibrium trajectories over
+ 4,000 model years. Output per unit of effective labor and the wage relative
+ to productivity use logarithmic vertical scales. Growth, net interest, and
+ output shares use linear percentage scales. All scenarios have the same
+ initial stocks, frontier, and parameters except $\sigma$.}
+ \label{fig:rewrite-growth-distribution}
+\end{figure}
+
+The first three scenarios approach per-person growth of $1\%$ and a net
+interest rate of $5\%$. For $\sigma=1.50$, their analytical limits are
+$3.135\%$ and $7.135\%$, respectively. Real wages then grow asymptotically
+at $2.423\%$, although the labor income share vanishes and AI revenue
+approaches $67\%$ of output. These limiting rates describe the equilibrium
+continuations; they are not imposed as constant rates during the transition.
+
+The transition matters. At $\sigma=1.50$, the initial adjustment raises
+growth and interest temporarily; both then fall close to the labor-supported
+rates. At model year 500, per-person growth is still only $1.062\%$ and
+labor receives $60.5\%$ of output. By year 1,500, growth reaches $2.797\%$
+and the labor share falls to $14.5\%$. Growth and interest briefly exceed
+their eventual limits before converging. Thus a long interval of moderate
+growth can precede a sharp change in both prosperity and income shares.
+Its duration depends on the illustrative research calibration, not on an
+estimated date for an AI transition.
+
+Substitution alone does not produce this outcome. With the same frontier
+and $\sigma=1.10$, the labor share instead approaches $50.2\%$, compared
+with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
+The frontier's position relative to the elasticity-specific threshold is
+essential to interpreting the comparison.
+
+\clearpage
+\subsection{Technology, accumulation, and AI-revenue composition}
+\label{subsec:rewrite-technology-revenue}
+
+Figure~\ref{fig:rewrite-technology-revenue} reports capability relative to its
+frontier, consumption and capital per unit of effective labor, and the use of
+AI-industry revenue. The last three panels deliberately divide by $p_XX$,
+not by $Y$:
+\begin{equation}
+ \frac{U}{p_XX}+\frac{M}{p_XX}+\frac{\Pi}{p_XX}=1.
+ \label{eq:rewrite-revenue-composition}
+\end{equation}
+The first figure measures the industry's size relative to final output;
+the second separates its inference costs, research expenditure, and net
+distribution to its owner.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_technology_revenue.pdf}
+ \caption{Technology, accumulation, and the composition of AI revenue.
+ The scenarios and time window match Figure~\ref{fig:rewrite-growth-distribution}.
+ Consumption and capital per unit of effective labor use logarithmic scales.
+ Capability relative to the frontier and the three revenue shares use linear
+ scales. The revenue shares sum to one; negative net distributions, if any,
+ represent household equity injections rather than negative gross revenue.}
+ \label{fig:rewrite-technology-revenue}
+\end{figure}
+
+In the AI-dominated limit, inference absorbs $67\%$ of AI revenue, research's
+revenue share vanishes, and the developer retains $33\%$. Its net distribution
+therefore approaches $22.11\%$ of final output. By contrast, at $\sigma=1$
+AI revenue is always $13.4\%$ of output and inference absorbs $13.4\%$ of
+that revenue. A vanishing research share does not mean that research stops:
+the constructed finite-frontier equilibria have a positive limiting level of
+research compute, while industry revenue continues to grow.
