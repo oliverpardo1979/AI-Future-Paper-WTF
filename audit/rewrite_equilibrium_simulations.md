@@ -6,14 +6,12 @@ completed calculations from the remaining figure/PDF publication steps.
 
 ## Publication status
 
-The final 4,804-row CSV exists. Figure rendering, the newly added export
-manifest, the final three additional regression tests, and PDF compilation
-are **pending**. After the numerical audits completed, the execution service
-stopped authorizing access to the existing NumPy installation: the sandbox
-raises `PermissionError`, while its approval service returns HTTP 404.
-No figures or updated PDF are claimed to have been produced by this turn.
-The new quantitative LaTeX section references the planned figure files and
-must not be treated as a compiled or visually verified deliverable yet.
+Complete. The final 4,804-row CSV, its provenance manifest, both six-panel
+figures, and the 40-page PDF were regenerated on 2026-09-03. All 31 relevant
+regression tests passed. Tectonic reported no overfull boxes, underfull boxes,
+undefined references, or undefined citations. The final PDF was rendered to
+PNG for visual inspection: Figure 3 is on page 19, Figure 4 is on page 21,
+and the numerical-audit table is on page 37.
 
 ## Scope and initial conditions
 
@@ -51,7 +49,8 @@ continuation step through omega_X=0.
   sufficient optimality condition proved in the appendix. The stronger failed
   concavity verdict remains visible in the sigma=1.50 JSON report.
 - `scripts/plot_rewrite_equilibria.py`: render the two agreed six-panel
-  figures, with checkpoint/data provenance checks. Execution is still pending.
+  figures, with checkpoint/data provenance checks. Both figures passed
+  inspection as standalone PNGs and in the compiled paper.
 
 The saved vector spline must retain `PPoly.axis=1`. An independent residual
 check exposed an incorrect reload orientation during development; the loader
@@ -106,11 +105,12 @@ Completed before the execution-service failure:
   plotted levels and wL/Y+p_X X/Y=0.67. The maximum error in
   U/(p_X X)+M/(p_X X)+Pi/(p_X X)=1 was 1.111e-16.
 
-Three additional regression tests have been written but not yet executed:
+The seven tests in `test_rewrite_simulation_design.py` all pass, including
 saved vector-spline orientation, the maximized-Hamiltonian identity and
-slope, and the uniform service-capability elasticity bound. The broader
-near-unit regression suite should also be rerun because its shared static
-bracketing function changed. Do not report these pending tests as passed.
+slope, and the uniform service-capability elasticity bound. The eight-test
+near-unit regression suite also passes after the change to its shared static
+bracketing function. Together with the sixteen finite-frontier and global-BVP
+tests listed above, the final regression count is 31.
 
 ## Reproduction commands
 
@@ -156,10 +156,9 @@ converging. The speed is calibration dependent; model years are not calendar
 forecasts. These statements are based on the exported computed data, not on
 an extrapolation of the analytical limiting rates.
 
-## Next step
+## Final delivery
 
-Restore authorized access to the scientific dependencies, run the pending
-export/render commands and regression tests, compile `main_rewrite.tex`,
-visually inspect both figures in the PDF, and only then mark publication
-complete. Keep the Section 3 no-AI boundary case separate from the positive-AI
-four-scenario comparison.
+The stable output is `output/pdf/main_rewrite.pdf`. The Section 3 no-AI
+boundary case remains separate from the positive-AI four-scenario comparison.
+The numerical admission evidence supports the four displayed trajectories;
+it is not presented as a formal existence proof for arbitrary initial stocks.

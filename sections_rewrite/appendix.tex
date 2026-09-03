@@ -621,15 +621,15 @@ every parameter vector.
 \subsection{Reproduction and export safeguards}
 
 The implementation preserves the earlier solver. The entry point is
-\texttt{scripts/simulate\_rewrite\_finite\_frontier.py}; the final audit is
-\texttt{scripts/audit\_rewrite\_equilibria.py}. The reproducible sequence is:
+\path{scripts/simulate_rewrite_finite_frontier.py}; the final audit is
+\path{scripts/audit_rewrite_equilibria.py}. The reproducible sequence is:
 solve each of the four elasticities with \texttt{--sigma}; run
 \texttt{--verify-long-horizon}; run
-\texttt{audit\_rewrite\_hamiltonian\_support.py} for $\sigma=1.50$ at both
+\path{audit_rewrite_hamiltonian_support.py} for $\sigma=1.50$ at both
 grid resolutions; run the final audit; export with
 \texttt{--export-horizon 4000}; and render with
-\texttt{plot\_rewrite\_equilibria.py}.
-The repository report \texttt{audit/rewrite\_equilibrium\_simulations.md}
+\path{plot_rewrite_equilibria.py}.
+The repository report \path{audit/rewrite_equilibrium_simulations.md}
 provides the complete commands and test results.
 
 The exported data and figures require all four scenarios to pass admission.

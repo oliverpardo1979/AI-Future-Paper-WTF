@@ -24,7 +24,7 @@ PANELS_1=(
  ('ai_revenue_output_share', 'F. AI-industry revenue\n$p_X X/Y$', 'share'),
 )
 PANELS_2=(
- ('capability_frontier_ratio', 'A. Capability / frontier\n$B/\\overline B$', 'fraction'),
+ ('capability_frontier_ratio', 'A. Capability / frontier\n$B/\\bar{B}$', 'fraction'),
  ('consumption_effective_labor', 'B. Consumption\n$C/(AL)$', 'log'),
  ('capital_effective_labor', 'C. Capital\n$K/(AL)$', 'log'),
  ('inference_revenue_share', 'D. Inference / AI revenue\n$U/(p_X X)$', 'share'),
@@ -69,11 +69,15 @@ def render():
                 color,linestyle=STYLES[sigma]
                 axis.plot([r['time'] for r in series],values,color=color,linestyle=linestyle,
                           linewidth=1.5,label=fr'$\sigma={sigma:.2f}$')
-            axis.set_title(title,loc='left',pad=7)
+            # An explicit title coordinate prevents Matplotlib from moving the
+            # top-row titles into the shared legend when log-axis offset text
+            # differs across panels.
+            axis.set_title(title,loc='left',pad=7,y=1.02)
             if scale=='log':
                 axis.set_yscale('log')
             elif scale in ('rate','share'):
-                axis.yaxis.set_major_formatter(PercentFormatter(1,decimals=1 if scale=='rate' else 0))
+                decimals = 1 if scale=='rate' or field=='research_revenue_share' else 0
+                axis.yaxis.set_major_formatter(PercentFormatter(1,decimals=decimals))
                 axis.yaxis.set_major_locator(MaxNLocator(5))
             if scale=='fraction':
                 axis.set_ylim(0,1.02)
@@ -95,7 +99,7 @@ def render():
         handles,labels=axes.flat[0].get_legend_handles_labels()
         fig.legend(handles,labels,ncol=4,loc='upper center',frameon=False,
                    bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
-        fig.subplots_adjust(left=.095,right=.985,bottom=.10,top=.865,hspace=.43,wspace=.48)
+        fig.subplots_adjust(left=.095,right=.970,bottom=.10,top=.82,hspace=.46,wspace=.48)
         fig.savefig(figdir/f'{filename}.pdf',metadata={'Title':filename})
         fig.savefig(figdir/f'{filename}.png',dpi=190)
         plt.close(fig)

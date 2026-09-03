@@ -1,0 +1,4 @@
+# Reproducible numerical and static-figure environment (Python 3.12).
+numpy==2.5.2
+scipy==1.18.0
+matplotlib==3.11.1
