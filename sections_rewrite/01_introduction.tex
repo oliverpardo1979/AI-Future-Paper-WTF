@@ -1,23 +1,78 @@
 \section{Introduction}
 \label{sec:rewrite-introduction}
 
-% Write this section after the model, analytical results, and admitted
-% quantitative results are fixed.
-%
-% Paragraph 1: prosperity from increasingly capable AI and the concern that
-% workers may lose economic power as labor's income share falls.
-%
-% Paragraph 2: central question. State that the paper studies how sigma
-% shapes growth, wages, interest rates, and functional income distribution when
-% AI research is autonomous.
-%
-% Paragraph 3: model. Ramsey--Cass--Koopmans economy, competitive final-good
-% producers, integrated monopolistic AI developer, improvements in AI efficiency,
-% and a finite AI-efficiency frontier as an equilibrium regularization.
-%
-% Paragraphs 4--6: only the main results that survive the proposition ledger and
-% equilibrium-admission rule.
-%
-% Final paragraph: contribution and a precise limitation. Do not claim that the
-% uncapped gross-substitutes economy has an infinite-horizon equilibrium or an
-% equilibrium singularity unless a later theorem establishes it.
+Advances in artificial intelligence raise both hopes and fears. One hope is
+that increasingly capable AI could generate unprecedented economic prosperity.
+One fear is that workers who depend on labor income could lose economic power
+relative to the owners of capital and AI as labor's income share falls. This
+fear does not require real wages to decline: workers may receive a smaller
+share of a much larger economy even as their wages rise. Can unprecedented
+prosperity coexist with a vanishing labor income share?
+
+I study this question by extending the Ramsey--Cass--Koopmans model. Competitive
+firms produce the final good with capital, effective labor, and effective AI
+production services. A monopolistic AI developer supplies those services and
+uses effective AI research services to improve AI efficiency, creating
+recursive self-improvement. AI efficiency improves endogenously but approaches
+a finite frontier. I ask how the substitutability between AI and labor shapes
+economic growth, real wages, interest rates, and the distribution of output.
+
+The mechanism combines two feedback loops. A technological loop runs from AI
+efficiency to AI research: greater efficiency produces more effective research
+services from a given amount of research compute and thereby helps create still
+better AI. An economic loop runs from AI efficiency to output and back to
+research: better AI raises current production and expands the resources that
+can finance further improvements. This distinction follows
+\citet{davidsonetal2026}. In my model, household saving, capital accumulation,
+inference compute, research compute, and the developer's investment decision
+are determined jointly. Whether these feedbacks raise long-run growth depends
+on whether effective labor continues to constrain production.
+
+I first characterize the labor-bottleneck regime. When AI and labor are
+complements, or when they are substitutes but attainable AI efficiency is not
+high enough, effective labor remains essential. Along the equilibria I
+construct, output per person and the real wage then grow at the exogenous rate
+of labor-augmenting technological progress. The net interest rate converges to
+its Ramsey value, and labor retains a positive share of output. Unit elasticity
+also belongs to this labor-supported class. Greater AI efficiency can change
+levels and transition dynamics without permanently raising growth above the
+exogenous rate.
+
+The outcome changes when AI and labor are sufficiently substitutable and AI
+efficiency can reach a sufficiently high level. Gross substitution is therefore
+necessary but not sufficient for the economy to become AI-dominated. Above an
+explicit threshold, capital and effective AI production services can grow
+faster than effective labor. The growth rates of output per person and the real
+wage then exceed their labor-bottleneck benchmarks, as does the level of the
+interest rate. The real wage still grows, but output per person grows faster,
+so labor's income share converges to zero. Moreover, the long-run growth rate
+and the interest rate increase with the level of AI efficiency that the economy
+can attain.
+
+The transition need not reveal this long-run regime quickly. I compute four
+equilibrium paths that share the same parameters, AI-efficiency frontier, and
+predetermined initial stocks, varying only the elasticity between AI and labor.
+In the illustrative AI-dominated case, output per person is still growing at
+only $1.062\%$ and labor receives $60.5\%$ of output after 500 model years. By
+year 1,500, growth has risen to $2.797\%$ and labor's share has fallen to
+$14.5\%$. A long period of apparently moderate growth can therefore precede a
+sharp acceleration and a large redistribution of output. These model years are
+not calendar forecasts: the duration of the transition depends on an
+illustrative research calibration.
+
+The paper's contribution is to characterize these growth and distributional
+outcomes jointly in a decentralized economy with endogenous saving, prices,
+compute allocation, AI investment, and a profit-maximizing developer. I give
+sufficient conditions for nearby infinite-horizon equilibrium trajectories,
+rather than only balanced-growth candidates, and report only numerical paths
+that satisfy the equilibrium-admission conditions. Because the representative
+household owns both capital and the AI developer, the model characterizes the
+functional distribution of output, not household inequality or political
+power. The existence results are local in the initial stocks and apply to each
+fixed finite AI-efficiency frontier; they do not establish equilibrium from
+arbitrary initial conditions or for an unbounded frontier.
+Section~\ref{sec:rewrite-literature} relates the paper to the literature,
+Section~\ref{sec:rewrite-model} presents the model,
+Section~\ref{sec:rewrite-regimes} characterizes the equilibrium regimes,
+Section~\ref{sec:rewrite-quantitative} presents the numerical paths, and
+Section~\ref{sec:rewrite-conclusion} concludes.
