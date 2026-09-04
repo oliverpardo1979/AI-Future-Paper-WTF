@@ -1,4 +1,4 @@
-"""Render the two agreed six-panel figures from admitted equilibrium data."""
+"""Render the agreed figures from admitted equilibrium data."""
 import csv
 import hashlib
 import json
@@ -15,21 +15,22 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
 from simulate_rewrite_finite_frontier import SIGMAS, OUT, CACHE, key
 
-PANELS_1=(
- ('output_effective_labor', 'A. Output\n$Y/(AL)$', 'log'),
- ('output_per_person_growth', 'B. Growth per person\n$g_Y-n$', 'rate'),
- ('wage_growth', 'C. Real-wage growth\n$g_w$', 'rate'),
- ('net_interest', 'D. Net interest rate\n$r$', 'rate'),
- ('labor_income_share', 'E. Labor income share\n$wL/Y$', 'share'),
- ('ai_revenue_output_share', 'F. AI-industry revenue\n$p_X X/Y$', 'share'),
+PANELS_GROWTH_RETURNS=(
+ ('output_per_person_growth', 'A. Output per capita growth\n$g_Y-n$', 'rate'),
+ ('wage_growth', 'B. Real-wage growth\n$g_w$', 'rate'),
+ ('net_interest', 'C. Net interest rate\n$r$', 'rate'),
 )
-PANELS_2=(
- ('capability_frontier_ratio', 'A. AI efficiency / frontier\n$B/\\bar{B}$', 'fraction'),
- ('consumption_effective_labor', 'B. Consumption\n$C/(AL)$', 'log'),
- ('capital_effective_labor', 'C. Capital\n$K/(AL)$', 'log'),
- ('inference_revenue_share', 'D. Inference / AI revenue\n$U/(p_X X)$', 'share'),
- ('research_revenue_share', 'E. Research / AI revenue\n$M/(p_X X)$', 'share'),
- ('profit_revenue_share', 'F. Profit / AI revenue\n$\\Pi/(p_X X)$', 'share'),
+PANELS_AI_DISTRIBUTION=(
+ ('capability_frontier_ratio', 'A. AI efficiency\n$B/\\bar{B}$', 'fraction'),
+ ('labor_income_share', 'B. Labor income share\n$wL/Y$', 'share'),
+ ('ai_revenue_output_share', 'C. AI revenue share\n$p_X X/Y$', 'share'),
+)
+PANELS_TECHNOLOGY_REVENUE=(
+ ('consumption_effective_labor', 'A. Consumption\n$C/(AL)$', 'log'),
+ ('capital_effective_labor', 'B. Capital\n$K/(AL)$', 'log'),
+ ('inference_revenue_share', 'C. Inference / AI revenue\n$U/(p_X X)$', 'share'),
+ ('research_revenue_share', 'D. Research / AI revenue\n$M/(p_X X)$', 'share'),
+ ('profit_revenue_share', 'E. Profit / AI revenue\n$\\Pi/(p_X X)$', 'share'),
 )
 STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
         1.1:('#bd8620',(0,(1,1.8))),1.5:('#24618c',(0,(5,1.8,1,1.8)))}
@@ -57,10 +58,24 @@ def render():
                          'axes.titlesize':9,'axes.labelsize':9,
                          'xtick.labelsize':8,'ytick.labelsize':8,
                          'legend.fontsize':9,'pdf.fonttype':42})
-    for filename, panels in (('equilibrium_growth_distribution',PANELS_1),
-                             ('equilibrium_technology_revenue',PANELS_2)):
-        fig,axes=plt.subplots(2,3,figsize=(7,5.85),sharex=True)
-        for axis,(field,title,scale) in zip(axes.flat,panels):
+    figures=(
+        ('equilibrium_growth_returns',PANELS_GROWTH_RETURNS,'three'),
+        ('equilibrium_ai_distribution',PANELS_AI_DISTRIBUTION,'three'),
+        ('equilibrium_technology_revenue',PANELS_TECHNOLOGY_REVENUE,'five'),
+    )
+    for filename,panels,layout in figures:
+        if layout=='three':
+            fig,axis_array=plt.subplots(1,3,figsize=(7,3.15),sharex=True)
+            axes=list(axis_array)
+            bottom_axes=axes
+        else:
+            fig=plt.figure(figsize=(7,5.85))
+            grid=fig.add_gridspec(2,6)
+            axes=[fig.add_subplot(grid[0,0:3]),fig.add_subplot(grid[0,3:6]),
+                  fig.add_subplot(grid[1,0:2]),fig.add_subplot(grid[1,2:4]),
+                  fig.add_subplot(grid[1,4:6])]
+            bottom_axes=axes[2:]
+        for axis,(field,title,scale) in zip(axes,panels):
             for sigma in SIGMAS:
                 series=data[sigma]
                 values=np.array([r[field] for r in series])
@@ -94,18 +109,28 @@ def render():
             axis.spines[['top','right']].set_visible(False)
             axis.spines[['left','bottom']].set_color('#888888')
             axis.tick_params(length=3,color='#888888')
-        for axis in axes[-1,:]:
+        if filename=='equilibrium_growth_returns':
+            common_lower=min(axis.get_ylim()[0] for axis in axes[:2])
+            common_upper=max(axis.get_ylim()[1] for axis in axes[:2])
+            for axis in axes[:2]:
+                axis.set_ylim(common_lower,common_upper)
+        for axis in bottom_axes:
             axis.set_xlabel('Years')
-        handles,labels=axes.flat[0].get_legend_handles_labels()
+        handles,labels=axes[0].get_legend_handles_labels()
         fig.legend(handles,labels,ncol=4,loc='upper center',frameon=False,
                    bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
-        fig.subplots_adjust(left=.095,right=.970,bottom=.10,top=.82,hspace=.46,wspace=.48)
+        if layout=='three':
+            fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.48)
+        else:
+            fig.subplots_adjust(left=.095,right=.970,bottom=.10,top=.82,hspace=.46,wspace=.72)
         fig.savefig(figdir/f'{filename}.pdf',metadata={'Title':filename})
         fig.savefig(figdir/f'{filename}.png',dpi=190)
         plt.close(fig)
     manifest=dict(data_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest(),
                   sigmas=list(SIGMAS),horizon=data[1.][-1]['time'],
-                  panels={'figure_1':[p[0] for p in PANELS_1], 'figure_2':[p[0] for p in PANELS_2]},
+                  panels={'growth_returns':[p[0] for p in PANELS_GROWTH_RETURNS],
+                          'ai_distribution':[p[0] for p in PANELS_AI_DISTRIBUTION],
+                          'technology_revenue':[p[0] for p in PANELS_TECHNOLOGY_REVENUE]},
                   all_scenarios_admitted=True)
     (OUT/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(manifest,indent=2))

@@ -87,25 +87,39 @@ long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 \subsection{Growth, wages, and the distribution of output}
 \label{subsec:rewrite-distribution}
 
-Figure~\ref{fig:rewrite-growth-distribution} presents the six main outcomes.
-Dividing output by $AL$ removes population growth and exogenous productivity
-growth; it does not force the AI-dominated trajectory to become stationary.
-Panels B and C report the annual growth rates of output per person and the
-real wage. Their vertical distance therefore measures the growth wedge in
-Proposition~\ref{prop:rewrite-output-wage-wedge}. AI-industry revenue $p_XX/Y$
-is distinct from profit and from value added. Gross capital income remains
-$\alpha Y$ throughout, so the labor and AI-revenue shares sum to $1-\alpha$.
+Figures~\ref{fig:rewrite-growth-returns} and
+\ref{fig:rewrite-ai-distribution} present the six main outcomes in two groups.
+Panels A and B of Figure~\ref{fig:rewrite-growth-returns} report the annual
+growth rates of output per person and the real wage on the same vertical
+scale. Their vertical distance therefore measures the growth wedge in
+Proposition~\ref{prop:rewrite-output-wage-wedge}. Panel C reports the net
+interest rate. Figure~\ref{fig:rewrite-ai-distribution} connects these outcomes
+to the approach of AI efficiency toward its frontier and to the distribution
+of final output. AI-industry revenue $p_XX/Y$ is distinct from profit and from
+value added. Gross capital income remains $\alpha Y$ throughout, so the labor
+and AI-revenue shares sum to $1-\alpha$.
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_distribution.pdf}
- \caption{Growth, wages, and the distribution of final output. Each panel
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_returns.pdf}
+ \caption{Growth and returns. Each panel
  compares the same four admitted numerical equilibrium trajectories over
- 4,000 model years. Output per unit of effective labor uses a logarithmic
- vertical scale. Growth rates, net interest, and output shares use linear
- percentage scales. All scenarios have the same
+ 4,000 model years. Output-per-capita growth and real-wage growth use the same
+ linear percentage scale; net interest uses a separate linear percentage
+ scale. All scenarios have the same
  initial stocks, frontier, and parameters except $\sigma$.}
- \label{fig:rewrite-growth-distribution}
+ \label{fig:rewrite-growth-returns}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_distribution.pdf}
+ \caption{AI transition and the distribution of final output. Each panel
+ compares the same four admitted numerical equilibrium trajectories over
+ 4,000 model years. Panel A reports AI efficiency relative to its frontier.
+ Panels B and C report labor income and AI-industry revenue as shares of final
+ output. All three panels use linear scales.}
+ \label{fig:rewrite-ai-distribution}
 \end{figure}
 
 The first three scenarios approach per-person growth of $1\%$ and a net
@@ -139,26 +153,24 @@ essential to interpreting the comparison.
 \subsection{Technology, accumulation, and AI-revenue composition}
 \label{subsec:rewrite-technology-revenue}
 
-Figure~\ref{fig:rewrite-technology-revenue} reports AI efficiency relative to its
-frontier, consumption and capital per unit of effective labor, and the use of
-AI-industry revenue. The last three panels deliberately divide by $p_XX$,
-not by $Y$:
+Figure~\ref{fig:rewrite-technology-revenue} reports consumption and capital per
+unit of effective labor and the use of AI-industry revenue. The last three
+panels deliberately divide by $p_XX$, not by $Y$:
 \begin{equation}
  \frac{U}{p_XX}+\frac{M}{p_XX}+\frac{\Pi}{p_XX}=1.
  \label{eq:rewrite-revenue-composition}
 \end{equation}
-The first figure measures the industry's size relative to final output;
-the second separates its inference costs, research expenditure, and net
-distribution to its owner.
+Figure~\ref{fig:rewrite-ai-distribution} measures the industry's size relative
+to final output; Figure~\ref{fig:rewrite-technology-revenue} separates its
+inference costs, research expenditure, and net distribution to its owner.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_technology_revenue.pdf}
- \caption{Technology, accumulation, and the composition of AI revenue.
- The scenarios and time window match Figure~\ref{fig:rewrite-growth-distribution}.
+ \caption{Accumulation and the composition of AI revenue.
+ The scenarios and time window match Figure~\ref{fig:rewrite-growth-returns}.
  Consumption and capital per unit of effective labor use logarithmic scales.
- AI efficiency relative to the frontier and the three revenue shares use linear
- scales. The revenue shares sum to one; negative net distributions, if any,
+ The three revenue shares use linear scales and sum to one; negative net distributions, if any,
  represent household equity injections rather than negative gross revenue.}
  \label{fig:rewrite-technology-revenue}
 \end{figure}

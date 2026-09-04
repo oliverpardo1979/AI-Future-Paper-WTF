@@ -98,11 +98,12 @@ equilibrium-admission rule:
 2. A figure illustrating the static substitution mechanism governed by
    \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.
-4. One six-panel figure, in row-major order: `Y/(AL)`, `g_Y-n`, `g_w`,
-   `r`, `wL/Y`, and `p_X X/Y`.
-5. One six-panel figure, in row-major order: `B/Bbar`, `C/(AL)`, `K/(AL)`,
-   `U/(p_X X)`, `M/(p_X X)`, and `Pi/(p_X X)`.
-6. One compact table summarizing the three analytical regimes and their labor
+4. One three-panel figure: `g_Y-n`, `g_w`, and `r`, with a common vertical
+   scale for the two growth rates.
+5. One three-panel figure: `B/Bbar`, `wL/Y`, and `p_X X/Y`.
+6. One five-panel figure: `C/(AL)`, `K/(AL)`, `U/(p_X X)`, `M/(p_X X)`,
+   and `Pi/(p_X X)`.
+7. One compact table summarizing the three analytical regimes and their labor
    income-share implications.
 
 The four agreed elasticities are 0.90, 1.00, 1.10, and 1.50, with common
