@@ -28,8 +28,8 @@ map, and interpretation of the diagnostics.
 
 - `scripts/`: analytical, boundary-value, auditing, export, and plotting code.
 - `tests/`: algebraic and numerical regression tests.
-- `numerical_rewrite/`: committed audit reports, plot-ready data, and
-  provenance manifests.
+- `numerical_rewrite/`: committed audit reports, plot-ready data, provenance
+  manifests, and a README linking the numerical files back to the paper.
 - `figures_rewrite/`: figures generated from admitted paths.
 - `audit/rewrite_equilibrium_simulations.md`: execution record for the
   published numerical results.

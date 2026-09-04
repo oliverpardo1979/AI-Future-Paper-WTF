@@ -1,9 +1,9 @@
 # Replicating the equilibrium simulations
 
-This guide reproduces the numerical results in *The Future of Growth and
-Human Labor Under Recursive AI Self-Improvement*. It is written for readers
-who want to run the published comparison without first learning the internal
-structure of every solver module.
+This guide accompanies the paper [*The Future of Growth and Human Labor Under
+Recursive AI Self-Improvement*](main_rewrite.tex) and reproduces its numerical
+results. It is written for readers who want to run the published comparison
+without first learning the internal structure of every solver module.
 
 ## What the computation does
 
