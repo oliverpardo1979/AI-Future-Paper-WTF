@@ -159,6 +159,42 @@ every fixed frontier, but need not equal $\gamma$. Real wages rise even as
 labor's income share vanishes. Below the threshold, labor retains a positive
 income share and long-run growth per person equals $\gamma$.
 
+\begin{proposition}[The output--wage growth wedge]
+\label{prop:rewrite-output-wage-wedge}
+Along an AI-dominated equilibrium from
+Proposition~\ref{prop:rewrite-capped-substitutes-existence}, output per person
+grows asymptotically faster than the real wage:
+\begin{equation}
+ \lim_{t\to\infty}\bigl[(g_Y-n)-g_w\bigr]
+ =\left(1-\frac{1}{\sigma}\right)
+  (\overline r-\rho-\gamma)>0.
+ \label{eq:rewrite-output-wage-wedge}
+\end{equation}
+Because $L=N$, the same wedge is the asymptotic rate at which labor's income
+share falls:
+\begin{equation}
+ \lim_{t\to\infty}\frac{\mathrm d}{\mathrm dt}
+ \log\left(\frac{wL}{Y}\right)
+ =-\left(1-\frac{1}{\sigma}\right)
+  (\overline r-\rho-\gamma)<0.
+ \label{eq:rewrite-labor-share-decline-rate}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Subtract the wage-growth limit in
+\eqref{eq:rewrite-substitutes-wage-growth} from the per-person output-growth
+limit in \eqref{eq:rewrite-substitutes-ai-limits}. Moreover,
+$\mathrm d\log(wL/Y)/\mathrm dt=g_w+n-g_Y$ because $L=N$.
+\end{proof}
+
+The result is not that workers must become poorer. Their real wage grows,
+but total output per person grows faster. Labor therefore receives a
+vanishing share of an expanding economy. The wedge is zero in the
+positive-labor-share regimes, where both growth rates converge to $\gamma$.
+Thus $\sigma>1$ alone is insufficient: the frontier must also place the
+economy in the AI-dominated regime.
+
 \subsection{Deriving long-run growth and the effect of the frontier}
 \label{subsec:rewrite-growth-frontier}
 
