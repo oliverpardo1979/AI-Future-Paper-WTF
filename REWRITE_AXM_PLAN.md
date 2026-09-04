@@ -98,10 +98,10 @@ equilibrium-admission rule:
 2. A figure illustrating the static substitution mechanism governed by
    \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.
-4. One six-panel figure for the labor-bottleneck scenarios, in row-major
-   order: `g_Y-n`, `g_w`, `r`, `B/Bbar`, `wL/Y`, and `p_X X/Y`.
-5. One six-panel figure for the AI-dominated scenario, with the same outcomes,
-   the unit-elastic path as a reference, and the analytical limits shown.
+4. One three-panel figure: `g_Y-n`, `g_w`, and `r`, with a common vertical
+   scale for the two growth rates and all four scenarios shown together.
+5. One three-panel figure: `B/Bbar`, `wL/Y`, and `p_X X/Y`, again with all four
+   scenarios shown together.
 6. One five-panel figure: `C/(AL)`, `K/(AL)`, `U/(p_X X)`, `M/(p_X X)`,
    and `Pi/(p_X X)`.
 7. One compact table reporting initial and long-run values of the central

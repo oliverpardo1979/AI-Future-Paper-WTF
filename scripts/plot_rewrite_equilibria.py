@@ -16,13 +16,15 @@ from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
 from simulate_rewrite_finite_frontier import SIGMAS, PARAMETERS, FRONTIER, OUT, CACHE, key
 from analyze_axm_finite_cap_bvp import terminal_point
 
-PANELS_MAIN=(
+PANELS_GROWTH_RETURNS=(
  ('output_per_person_growth', 'A. Output per capita growth\n$g_Y-n$', 'rate'),
  ('wage_growth', 'B. Real-wage growth\n$g_w$', 'rate'),
  ('net_interest', 'C. Net interest rate\n$r$', 'rate'),
- ('capability_frontier_ratio', 'D. AI efficiency\n$B/\\bar{B}$', 'fraction'),
- ('labor_income_share', 'E. Labor income share\n$wL/Y$', 'share'),
- ('ai_revenue_output_share', 'F. AI revenue share\n$p_X X/Y$', 'share'),
+)
+PANELS_AI_DISTRIBUTION=(
+ ('capability_frontier_ratio', 'A. AI efficiency\n$B/\\bar{B}$', 'fraction'),
+ ('labor_income_share', 'B. Labor income share\n$wL/Y$', 'share'),
+ ('ai_revenue_output_share', 'C. AI revenue share\n$p_X X/Y$', 'share'),
 )
 PANELS_TECHNOLOGY_REVENUE=(
  ('consumption_effective_labor', 'A. Consumption\n$C/(AL)$', 'log'),
@@ -33,7 +35,6 @@ PANELS_TECHNOLOGY_REVENUE=(
 )
 STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
         1.1:('#bd8620',(0,(1,1.8))),1.5:('#24618c',(0,(5,1.8,1,1.8)))}
-REFERENCE_STYLE=('#777777',(0,(5,2)))
 LIMIT_STYLE=('#222222',(0,(1,2)))
 
 
@@ -71,15 +72,15 @@ def render():
         'ai_revenue_output_share': (1-PARAMETERS.alpha)*ai_terminal.ai_ces_share,
     }
     figures=(
-        ('equilibrium_labor_bottleneck',PANELS_MAIN,'six',(0.9,1.0,1.1),None),
-        ('equilibrium_ai_dominated',PANELS_MAIN,'six',(1.0,1.5),ai_limits),
-        ('equilibrium_technology_revenue',PANELS_TECHNOLOGY_REVENUE,'five',SIGMAS,None),
+        ('equilibrium_growth_returns',PANELS_GROWTH_RETURNS,'three',ai_limits),
+        ('equilibrium_ai_distribution',PANELS_AI_DISTRIBUTION,'three',ai_limits),
+        ('equilibrium_technology_revenue',PANELS_TECHNOLOGY_REVENUE,'five',None),
     )
-    for filename,panels,layout,scenarios,limits in figures:
-        if layout=='six':
-            fig,axis_array=plt.subplots(2,3,figsize=(7,5.85),sharex=True)
-            axes=list(axis_array.flat)
-            bottom_axes=axes[3:]
+    for filename,panels,layout,limits in figures:
+        if layout=='three':
+            fig,axis_array=plt.subplots(1,3,figsize=(7,3.15),sharex=True)
+            axes=list(axis_array)
+            bottom_axes=axes
         else:
             fig=plt.figure(figsize=(7,5.85))
             grid=fig.add_gridspec(2,6)
@@ -88,21 +89,17 @@ def render():
                   fig.add_subplot(grid[1,4:6])]
             bottom_axes=axes[2:]
         for axis,(field,title,scale) in zip(axes,panels):
-            for sigma in scenarios:
+            for sigma in SIGMAS:
                 series=data[sigma]
                 values=np.array([r[field] for r in series])
                 if not np.all(np.isfinite(values)) or (scale=='log' and np.any(values<=0)):
                     raise ValueError(f'Invalid plotted values in {field}, sigma={sigma}.')
-                color,linestyle=(REFERENCE_STYLE if filename=='equilibrium_ai_dominated'
-                                 and sigma==1.0 else STYLES[sigma])
-                label=(fr'$\sigma={sigma:.2f}$ reference'
-                       if filename=='equilibrium_ai_dominated' and sigma==1.0
-                       else fr'$\sigma={sigma:.2f}$')
+                color,linestyle=STYLES[sigma]
                 axis.plot([r['time'] for r in series],values,color=color,linestyle=linestyle,
-                          linewidth=1.5,label=label)
+                          linewidth=1.5,label=fr'$\sigma={sigma:.2f}$')
             if limits is not None:
                 axis.axhline(limits[field],color=LIMIT_STYLE[0],linestyle=LIMIT_STYLE[1],
-                             linewidth=1.0,label='Analytical limit')
+                             linewidth=.9)
             # An explicit title coordinate prevents Matplotlib from moving the
             # top-row titles into the shared legend when log-axis offset text
             # differs across panels.
@@ -128,7 +125,7 @@ def render():
             axis.spines[['top','right']].set_visible(False)
             axis.spines[['left','bottom']].set_color('#888888')
             axis.tick_params(length=3,color='#888888')
-        if layout=='six':
+        if filename=='equilibrium_growth_returns':
             common_lower=min(axis.get_ylim()[0] for axis in axes[:2])
             common_upper=max(axis.get_ylim()[1] for axis in axes[:2])
             for axis in axes[:2]:
@@ -136,21 +133,21 @@ def render():
         for axis in bottom_axes:
             axis.set_xlabel('Years')
         handles,labels=axes[0].get_legend_handles_labels()
-        fig.legend(handles,labels,ncol=len(labels),loc='upper center',frameon=False,
+        fig.legend(handles,labels,ncol=4,loc='upper center',frameon=False,
                    bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
-        fig.subplots_adjust(left=.095,right=.970,bottom=.10,top=.82,hspace=.46,
-                            wspace=.48 if layout=='six' else .72)
+        if layout=='three':
+            fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.48)
+        else:
+            fig.subplots_adjust(left=.095,right=.970,bottom=.10,top=.82,hspace=.46,wspace=.72)
         fig.savefig(figdir/f'{filename}.pdf',metadata={'Title':filename})
         fig.savefig(figdir/f'{filename}.png',dpi=190)
         plt.close(fig)
     manifest=dict(data_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest(),
                   sigmas=list(SIGMAS),horizon=data[1.][-1]['time'],
-                  panels={'labor_bottleneck':[p[0] for p in PANELS_MAIN],
-                          'ai_dominated':[p[0] for p in PANELS_MAIN],
+                  panels={'growth_returns':[p[0] for p in PANELS_GROWTH_RETURNS],
+                          'ai_distribution':[p[0] for p in PANELS_AI_DISTRIBUTION],
                           'technology_revenue':[p[0] for p in PANELS_TECHNOLOGY_REVENUE]},
-                  scenario_groups={'labor_bottleneck':[0.9,1.0,1.1],
-                                   'ai_dominated':[1.0,1.5]},
-                  analytical_limits={'ai_dominated':ai_limits},
+                  analytical_limits={'sigma_1_50':ai_limits},
                   all_scenarios_admitted=True)
     (OUT/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(manifest,indent=2))
