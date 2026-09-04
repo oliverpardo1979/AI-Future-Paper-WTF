@@ -26,7 +26,7 @@ separate extension, or the current archival manuscript.
 
 ## Logical order
 
-1. Define population, labor productivity, preferences, and predetermined
+1. Define population, labor-augmenting technology, preferences, and predetermined
    stocks.
 2. Present final production and solve the competitive final-good firm.
 3. Derive the static relationship between AI services and labor.
