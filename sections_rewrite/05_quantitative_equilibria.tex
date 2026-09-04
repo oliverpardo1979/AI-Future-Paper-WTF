@@ -87,40 +87,71 @@ long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 \subsection{Growth, wages, and the distribution of output}
 \label{subsec:rewrite-distribution}
 
-Figures~\ref{fig:rewrite-growth-returns} and
-\ref{fig:rewrite-ai-distribution} present the six main outcomes in two groups.
-Panels A and B of Figure~\ref{fig:rewrite-growth-returns} report the annual
-growth rates of output per person and the real wage on the same vertical
-scale. Their vertical distance therefore measures the growth wedge in
+Figures~\ref{fig:rewrite-labor-bottleneck} and
+\ref{fig:rewrite-ai-dominated} report the same six outcomes but separate the
+two long-run regimes. This separation prevents the large movements in the
+AI-dominated economy from concealing the differences among the three
+labor-bottleneck economies. The vertical scales therefore differ across the
+two figures and should not be compared by visual distance. Within each figure,
+Panels A and B report the annual growth rates of output per person and the real
+wage on a common vertical scale. Their distance measures the growth wedge in
 Proposition~\ref{prop:rewrite-output-wage-wedge}. Panel C reports the net
-interest rate. Figure~\ref{fig:rewrite-ai-distribution} connects these outcomes
-to the approach of AI efficiency toward its frontier and to the distribution
-of final output. AI-industry revenue $p_XX/Y$ is distinct from profit and from
-value added. Gross capital income remains $\alpha Y$ throughout, so the labor
-and AI-revenue shares sum to $1-\alpha$.
+interest rate, Panel D the approach of AI efficiency to its frontier, and
+Panels E and F the labor-income and AI-revenue shares. AI-industry revenue
+$p_XX/Y$ is distinct from profit and from value added. Gross capital income
+remains $\alpha Y$ throughout, so the labor and AI-revenue shares sum to
+$1-\alpha$.
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_returns.pdf}
- \caption{Growth and returns. Each panel
- compares the same four admitted numerical equilibrium trajectories over
- 4,000 model years. Output-per-capita growth and real-wage growth use the same
- linear percentage scale; net interest uses a separate linear percentage
- scale. All scenarios have the same
- initial stocks, frontier, and parameters except $\sigma$.}
- \label{fig:rewrite-growth-returns}
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_labor_bottleneck.pdf}
+ \caption{Equilibrium transitions in the labor-bottleneck regime. The panels
+ compare the admitted trajectories for $\sigma=0.90$, $1$, and $1.10$ over
+ 4,000 model years. The focused scales reveal differences that are obscured
+ when the AI-dominated trajectory is included. Panels A and B use the same
+ linear percentage scale. Rates and shares use linear scales, and all
+ scenarios have the same initial stocks, frontier, and remaining parameters.}
+ \label{fig:rewrite-labor-bottleneck}
 \end{figure}
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_distribution.pdf}
- \caption{AI transition and the distribution of final output. Each panel
- compares the same four admitted numerical equilibrium trajectories over
- 4,000 model years. Panel A reports AI efficiency relative to its frontier.
- Panels B and C report labor income and AI-industry revenue as shares of final
- output. All three panels use linear scales.}
- \label{fig:rewrite-ai-distribution}
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_dominated.pdf}
+ \caption{Equilibrium transition in the AI-dominated regime. The admitted
+ trajectory for $\sigma=1.50$ is compared with the unit-elastic trajectory,
+ shown as a gray reference, over 4,000 model years. Horizontal dotted lines
+ mark the analytical limits for $\sigma=1.50$. Panels A and B use the same
+ linear percentage scale. The vertical scales differ from those in
+ Figure~\ref{fig:rewrite-labor-bottleneck}.}
+ \label{fig:rewrite-ai-dominated}
 \end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Initial and long-run values of the central outcomes}
+\label{tab:rewrite-central-path-values}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{ccrrrrr}
+\toprule
+$\sigma$ & Date & $g_Y-n$ & $g_w$ & $r$ & $wL/Y$ & $p_XX/Y$\\
+\midrule
+0.90 & $0$      & 0.297 & 0.288 & 3.773 & 46.5 & 20.5\\
+     & $\infty$ & 1.000 & 1.000 & 5.000 & 54.2 & 12.8\\
+1.00 & $0$      & 1.087 & 1.087 & 5.087 & 53.6 & 13.4\\
+     & $\infty$ & 1.000 & 1.000 & 5.000 & 53.6 & 13.4\\
+1.10 & $0$      & 1.831 & 1.815 & 6.358 & 58.1 & 8.9\\
+     & $\infty$ & 1.000 & 1.000 & 5.000 & 50.2 & 16.8\\
+1.50 & $0$      & 3.373 & 3.326 & 9.107 & 64.6 & 2.4\\
+     & $\infty$ & 3.135 & 2.423 & 7.135 & 0.0 & 67.0\\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+\parbox{0.94\textwidth}{\footnotesize\emph{Note:} All entries are percentages.
+Date-zero entries come from the numerical equilibrium paths. Infinite-date
+entries are the analytical limits characterized in Section~\ref{sec:rewrite-regimes}.}
+\end{table}
 
 The first three scenarios approach per-person growth of $1\%$ and a net
 interest rate of $5\%$. For $\sigma=1.50$, their analytical limits are
@@ -160,15 +191,17 @@ panels deliberately divide by $p_XX$, not by $Y$:
  \frac{U}{p_XX}+\frac{M}{p_XX}+\frac{\Pi}{p_XX}=1.
  \label{eq:rewrite-revenue-composition}
 \end{equation}
-Figure~\ref{fig:rewrite-ai-distribution} measures the industry's size relative
-to final output; Figure~\ref{fig:rewrite-technology-revenue} separates its
-inference costs, research expenditure, and net distribution to its owner.
+Panels F of Figures~\ref{fig:rewrite-labor-bottleneck} and
+\ref{fig:rewrite-ai-dominated} measure the industry's size relative to final
+output; Figure~\ref{fig:rewrite-technology-revenue} separates its inference
+costs, research expenditure, and net distribution to its owner.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_technology_revenue.pdf}
  \caption{Accumulation and the composition of AI revenue.
- The scenarios and time window match Figure~\ref{fig:rewrite-growth-returns}.
+ The scenarios and time window match Figures~\ref{fig:rewrite-labor-bottleneck}
+ and~\ref{fig:rewrite-ai-dominated}.
  Consumption and capital per unit of effective labor use logarithmic scales.
  The three revenue shares use linear scales and sum to one; negative net distributions, if any,
  represent household equity injections rather than negative gross revenue.}

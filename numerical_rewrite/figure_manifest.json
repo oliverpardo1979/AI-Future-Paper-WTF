@@ -8,12 +8,18 @@
   ],
   "horizon": 4000.0,
   "panels": {
-    "growth_returns": [
+    "labor_bottleneck": [
       "output_per_person_growth",
       "wage_growth",
-      "net_interest"
+      "net_interest",
+      "capability_frontier_ratio",
+      "labor_income_share",
+      "ai_revenue_output_share"
     ],
-    "ai_distribution": [
+    "ai_dominated": [
+      "output_per_person_growth",
+      "wage_growth",
+      "net_interest",
       "capability_frontier_ratio",
       "labor_income_share",
       "ai_revenue_output_share"
@@ -25,6 +31,27 @@
       "research_revenue_share",
       "profit_revenue_share"
     ]
+  },
+  "scenario_groups": {
+    "labor_bottleneck": [
+      0.9,
+      1.0,
+      1.1
+    ],
+    "ai_dominated": [
+      1.0,
+      1.5
+    ]
+  },
+  "analytical_limits": {
+    "ai_dominated": {
+      "output_per_person_growth": 0.03134997581384626,
+      "wage_growth": 0.02423331720923084,
+      "net_interest": 0.07134997581384626,
+      "capability_frontier_ratio": 1.0,
+      "labor_income_share": 0.0,
+      "ai_revenue_output_share": 0.6699999999999999
+    }
   },
   "all_scenarios_admitted": true
 }
