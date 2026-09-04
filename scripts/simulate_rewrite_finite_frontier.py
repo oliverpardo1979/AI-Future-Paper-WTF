@@ -23,6 +23,7 @@ from analyze_axm_finite_cap_bvp import (
     critical_capability_frontier, terminal_point, terminal_linearization,
 )
 from define_positive_ai_branch import PositiveAIBenchmarkParameters, balanced_growth_seed
+from solve_near_unit_ai_bvp import elasticity_coordinate, solve_monopoly_static_block
 from solve_axm_global_finite_cap_bvp import (
     GlobalFiniteCapBVP, GlobalContinuationStage, solve_global_finite_cap_bvp,
     refine_global_horizon, audit_global_solution, compare_global_solutions,
@@ -39,6 +40,29 @@ CACHE = ROOT / 'tmp' / 'rewrite_bvp'
 
 def key(sigma):
     return f'sigma_{sigma:.2f}'.replace('.', '_')
+
+
+def real_wage_growth(static, sigma, capital_growth, capability_growth,
+                     effective_labor_growth, output_growth, population_growth):
+    """Recover ``g_w`` exactly from the static equilibrium block.
+
+    Since ``w=(1-alpha)(1-s_X)Y/L`` and ``L=N``, wage growth equals
+    per-person output growth plus the growth of ``1-s_X``.  The CES share
+    identity supplies the latter without numerically differentiating a
+    plotted series.
+    """
+    xk, xb = static.ai_services_log_gradient[:2]
+    ai_services_growth = (
+        xk * capital_growth
+        + xb * capability_growth
+        + (1.0 - xk) * effective_labor_growth
+    )
+    labor_share_growth = (
+        -elasticity_coordinate(sigma)
+        * static.ai_ces_share
+        * (ai_services_growth - effective_labor_growth)
+    )
+    return output_growth - population_growth + labor_share_growth
 
 
 def save_solution(solution, filename):
@@ -150,7 +174,6 @@ def export_paths(horizon, points):
         rates = dated_raw_dynamics(times, raw, sol.terminal, p, sol.initial_effective_labor_scale)
         for j, time in enumerate(times):
             # Differentiate the static FOC to obtain the actual output growth.
-            from solve_near_unit_ai_bvp import solve_monopoly_static_block
             al = math.log(sol.initial_effective_labor_scale)+(p.population_growth+p.labor_productivity_growth)*time
             static = solve_monopoly_static_block(v['log_capital'][j], v['log_capability'][j], al, sigma, p)
             psi = math.exp(v['log_remaining_frontier_share'][j])
@@ -160,6 +183,11 @@ def export_paths(horizon, points):
             # log q). Homogeneity gives the missing log(AL) derivative 1-yk.
             gy = float(yk*rates[0,j] + yb*gb + (1-yk)*(
                                         p.population_growth+p.labor_productivity_growth))
+            gw = real_wage_growth(
+                static, sigma, rates[0,j], gb,
+                p.population_growth+p.labor_productivity_growth,
+                gy, p.population_growth,
+            )
             sx = v['ai_ces_share'][j]
             revenue = (1-p.alpha)*sx
             u = math.exp(v['log_inference_compute'][j]-v['log_output'][j])
@@ -167,6 +195,7 @@ def export_paths(horizon, points):
             rows.append(dict(sigma=sigma, time=time,
                 output_effective_labor=math.exp(v['log_output'][j]-al),
                 output_per_person_growth=gy-p.population_growth,
+                wage_growth=gw,
                 wage_productivity=(1-p.alpha)*(1-sx)*math.exp(v['log_output'][j]-al),
                 net_interest=v['net_interest_rate'][j], labor_income_share=(1-p.alpha)*(1-sx),
                 ai_revenue_output_share=revenue, capability_frontier_ratio=1-psi,

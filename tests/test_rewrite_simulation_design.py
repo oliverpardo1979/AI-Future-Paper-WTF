@@ -15,7 +15,9 @@ from analyze_axm_finite_cap_bvp import (
     solve_local_terminal_bvp, log_critical_capability_frontier,
 )
 from define_positive_ai_branch import PositiveAIBenchmarkParameters
-from simulate_rewrite_finite_frontier import SIGMAS, FRONTIER, save_solution, load_solution
+from simulate_rewrite_finite_frontier import (
+    SIGMAS, FRONTIER, save_solution, load_solution, real_wage_growth,
+)
 from scipy.interpolate import PPoly
 from solve_near_unit_ai_bvp import solve_monopoly_static_block
 
@@ -62,6 +64,37 @@ class RewriteSimulationDesign(unittest.TestCase):
                 np.testing.assert_allclose(terminal_residual(t, self.p), 0, atol=2e-11)
             self.assertTrue(all(b < a for a, b in zip(errors, errors[1:])))
             self.assertLess(errors[-1], 1e-6)
+
+    def test_real_wage_growth_matches_the_differentiated_static_wage(self):
+        p = self.p
+        capital_growth = .031
+        capability_growth = .004
+        effective_labor_growth = p.population_growth+p.labor_productivity_growth
+        for sigma in (.9, 1., 1.1, 1.5):
+            log_capital, log_capability, log_effective_labor = math.log(2.), math.log(1.2), .1
+            static = solve_monopoly_static_block(
+                log_capital, log_capability, log_effective_labor, sigma, p)
+            yk, yb = static.output_log_gradient[:2]
+            output_growth = (
+                yk*capital_growth + yb*capability_growth
+                + (1-yk)*effective_labor_growth
+            )
+            exact = real_wage_growth(
+                static, sigma, capital_growth, capability_growth,
+                effective_labor_growth, output_growth, p.population_growth)
+            step = 1e-5
+            wages = []
+            for sign in (-1, 1):
+                trial = solve_monopoly_static_block(
+                    log_capital+sign*step*capital_growth,
+                    log_capability+sign*step*capability_growth,
+                    log_effective_labor+sign*step*effective_labor_growth,
+                    sigma, p)
+                wages.append(
+                    math.log1p(-trial.ai_ces_share)+trial.log_output
+                    - sign*step*p.population_growth)
+            numerical = (wages[1]-wages[0])/(2*step)
+            self.assertAlmostEqual(exact, numerical, places=8)
 
     def test_local_nonlinear_bvps_below_and_at_one(self):
         for sigma in (.9, 1):

@@ -18,7 +18,7 @@ from simulate_rewrite_finite_frontier import SIGMAS, OUT, CACHE, key
 PANELS_1=(
  ('output_effective_labor', 'A. Output\n$Y/(AL)$', 'log'),
  ('output_per_person_growth', 'B. Growth per person\n$g_Y-n$', 'rate'),
- ('wage_productivity', 'C. Wage / productivity\n$w/A$', 'log'),
+ ('wage_growth', 'C. Real-wage growth\n$g_w$', 'rate'),
  ('net_interest', 'D. Net interest rate\n$r$', 'rate'),
  ('labor_income_share', 'E. Labor income share\n$wL/Y$', 'share'),
  ('ai_revenue_output_share', 'F. AI-industry revenue\n$p_X X/Y$', 'share'),

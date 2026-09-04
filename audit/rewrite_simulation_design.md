@@ -106,7 +106,7 @@ The comparison uses line charts, not stacked bars or stacked areas.
 |---|---|---|
 | A | Y/(AL) | Logarithmic |
 | B | g_Y-n | Linear, percent per year |
-| C | w/A | Logarithmic |
+| C | g_w | Linear, percent per year |
 | D | r | Linear, percent per year |
 | E | wL/Y | Linear, percent |
 | F | p_X X/Y | Linear, percent |
@@ -134,7 +134,8 @@ Use identical scenario colors and distinguishable line styles in both figures,
 linear time axes, and common plotted horizons. Use the same physical unit and
 normalization across scenarios. Do not divide each scenario by its own
 initial or terminal value, which would conceal impact differences. A constant
-w/A means real wages grow at gamma. Y/(AL) need not converge in the AI-dominated
+The vertical distance between g_Y-n and g_w is the growth wedge that governs
+the decline of labor's income share. Y/(AL) need not converge in the AI-dominated
 regime. Growth and interest limits can be shown as analytical reference lines,
 not imposed observations or fabricated extensions of a finite numerical path.
 

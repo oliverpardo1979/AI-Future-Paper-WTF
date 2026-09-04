@@ -98,7 +98,7 @@ equilibrium-admission rule:
 2. A figure illustrating the static substitution mechanism governed by
    \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.
-4. One six-panel figure, in row-major order: `Y/(AL)`, `g_Y-n`, `w/A`,
+4. One six-panel figure, in row-major order: `Y/(AL)`, `g_Y-n`, `g_w`,
    `r`, `wL/Y`, and `p_X X/Y`.
 5. One six-panel figure, in row-major order: `B/Bbar`, `C/(AL)`, `K/(AL)`,
    `U/(p_X X)`, `M/(p_X X)`, and `Pi/(p_X X)`.
