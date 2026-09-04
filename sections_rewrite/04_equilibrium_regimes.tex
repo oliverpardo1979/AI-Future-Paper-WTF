@@ -37,7 +37,10 @@ $r=\rho+\gamma$. For $\sigma\ne1$, define
 The first expression is the limiting $Y/K$ implied by the static equations
 when $s_X\to1$ and $B\to\overline B$; the second solves
 $z_A(\overline B_c;\sigma)=\mathcal R$. Appendix~\ref{app:rewrite-finite-existence}
-derives these expressions and proves the following propositions.
+derives these expressions and proves the following propositions. I use
+$\overline B_c(\sigma)$ as an economic regime threshold only when $\sigma>1$.
+For $\sigma<1$, it appears only as a sufficient condition for the particular
+local finite-frontier construction below.
 
 \subsection{Complementarity: \texorpdfstring{\(\sigma<1\)}{sigma < 1}}
 \label{subsec:rewrite-complements}
@@ -273,8 +276,58 @@ equilibrium in the uncapped economy. The permitted initial-stock
 neighborhood also depends on the frontier; the comparison does not prove
 that every frontier admits equilibrium from the same initial stocks.
 
+\begin{figure}[H]
+\centering
+\resizebox{0.82\textwidth}{!}{%
+\begin{tikzpicture}[
+ x=1.25cm,y=1.00cm,
+ every node/.style={font=\small},
+ regime/.style={align=center,inner sep=3pt,fill=white}
+]
+ \draw[->] (0,0) -- (8.35,0) node[right] {$\sigma$};
+ \draw[->] (0,0) -- (0,6.25) node[above] {$\overline B$};
+ \draw[semithick] (1,0) -- (1,6.00);
+ \node[below] at (1,0) {$1$};
+ \node[below] at (4.65,-0.12) {$\sigma>1$};
+
+ \draw[semithick,dashed,->]
+  plot[smooth] coordinates
+  {(8.00,2.35) (6.80,2.55) (5.55,2.95) (4.35,3.55)
+   (3.25,4.35) (2.35,5.35) (1.85,6.45)};
+
+ \node[regime] at (5.55,4.85)
+  {AI-dominated regime\\
+   $g_{Y/N}\to\overline r-\rho>\gamma$, $wL/Y\to0$};
+ \node[regime] at (5.55,1.35)
+  {Labor-bottleneck regime\\
+   $g_{Y/N}\to\gamma$, $wL/Y>0$};
+ \node[regime] at (6.85,3.02) {$\overline B_c(\sigma)$};
+ \node[align=left,anchor=west] at (1.95,5.88)
+  {$\overline B_c(\sigma)\to\infty$\\as $\sigma\downarrow1$};
+\end{tikzpicture}%
+}
+\caption{Finite-frontier regimes under gross substitution. The vertical axis
+is linear and the curve is schematic rather than calibrated. For $\sigma>1$,
+$\overline B_c(\sigma)$ separates the labor-bottleneck and AI-dominated
+equilibria constructed in Proposition~\ref{prop:rewrite-capped-substitutes-existence}.
+The dashed boundary itself is not covered by the existence proof. The curve
+leaves the plotted range because
+$\overline B_c(\sigma)\to\infty$ as $\sigma\downarrow1$.}
+\label{fig:rewrite-frontier-regimes}
+\end{figure}
+
 \subsection{Scope of the existence results}
 \label{subsec:rewrite-regime-synthesis}
+
+Figure~\ref{fig:rewrite-frontier-regimes} summarizes the central comparison
+for $\sigma>1$. Here the finite frontier is an analytical device that bounds
+recursive AI improvement. A frontier below $\overline B_c(\sigma)$ supports the
+labor-bottleneck equilibrium: output per person and the real wage grow at
+$\gamma$, and labor retains a positive income share. Above the threshold,
+capital and effective AI production services grow faster than effective labor.
+Output per person then grows faster than $\gamma$ and labor's income share
+converges to zero. The figure omits $\sigma<1$ because I do not interpret
+$\overline B_c(\sigma)$ as a regime boundary under complementarity.
 
 Table~\ref{tab:rewrite-finite-existence} collects the sufficient frontier
 conditions. Every row also requires the common parameter restrictions and
