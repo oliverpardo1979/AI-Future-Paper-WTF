@@ -466,6 +466,53 @@ support check.
 \section{Numerical algorithm and equilibrium audit}
 \label{app:rewrite-algorithm}
 
+\subsection{Economic intuition and algorithm in words}
+
+The numerical problem is to select an equilibrium path, not merely to
+integrate the laws of motion from four arbitrary initial values. Capital and
+AI efficiency are predetermined at date zero, whereas consumption and the
+developer's shadow value can jump. For given $K_0$ and $B_0$, almost every
+choice of $C_0$ and $q_0$ sends the economy away from the terminal equilibrium
+regime or violates feasibility. The algorithm therefore chooses $C_0$ and
+$q_0$ jointly with the entire path so that the economy starts from the
+prescribed stocks and approaches the appropriate stable continuation.
+
+The calculation proceeds in six steps:
+\begin{enumerate}[leftmargin=*,itemsep=0.25em]
+ \item For each value of $\sigma$, I use the analytical results in
+ Section~\ref{sec:rewrite-regimes} to identify the relevant terminal regime
+ and its normalized limiting point.
+ \item Near that point, I construct a local boundary-value solution. The
+ terminal restrictions eliminate the two unstable directions rather than
+ fixing arbitrary terminal levels for the jump variables.
+ \item Conditional on every trial value of the dynamic variables, I solve the
+ static monopoly condition for AI production services and recover research
+ expenditure from the developer's first-order condition. Thus the numerical
+ system uses the static choices already derived in Section~\ref{sec:rewrite-model};
+ it does not add behavioral equations.
+ \item I use continuation to move the local solution gradually to the common
+ prescribed values of $K_0$, $B_0$, and $A_0N_0$. Each successful solution is
+ the initial guess for the next continuation stage. This step selects the two
+ date-zero jump variables without treating the no-AI economy as a mechanical
+ starting point.
+ \item I lengthen the terminal horizon and tighten the solver tolerances. A
+ valid approximation should leave the date-zero jumps and the entire displayed
+ path essentially unchanged.
+ \item I admit the path only after separate checks of feasibility, the original
+ equilibrium equations, static optimality, global developer optimality, both
+ transversality conditions, and consistency with the analytical terminal
+ continuation. A converged boundary-value calculation that fails any of these
+ checks is not reported as an equilibrium.
+\end{enumerate}
+
+This procedure can be viewed as finding the stable saddle path from both ends.
+The initial boundary supplies the predetermined stocks, while the terminal
+boundary rules out explosive components. Collocation chooses the whole path at
+once and, with it, the initial consumption and shadow value that reconcile the
+two boundaries. The terminal date is a computational truncation; the
+infinite-horizon interpretation comes from the analytical continuation and
+the transversality checks described below.
+
 \subsection{Notation in the paper and code}
 
 The numerical code retains its existing variable names. To make the
@@ -628,9 +675,12 @@ solve each of the four elasticities with \texttt{--sigma}; run
 \path{audit_rewrite_hamiltonian_support.py} for $\sigma=1.50$ at both
 grid resolutions; run the final audit; export with
 \texttt{--export-horizon 4000}; and render with
-\path{plot_rewrite_equilibria.py}.
-The repository report \path{audit/rewrite_equilibrium_simulations.md}
-provides the complete commands and test results.
+ \path{plot_rewrite_equilibria.py}.
+The repository guide \path{REPLICATION.md} provides a one-command workflow,
+installation instructions, an output map, and the criteria used to interpret
+the diagnostics. The execution record
+\path{audit/rewrite_equilibrium_simulations.md} reports the commands and test
+results for the version used in the paper.
 
 The exported data and figures require all four scenarios to pass admission.
 Checkpoint hashes link each audit to its solved spline; a second manifest

@@ -1,17 +1,17 @@
 # Finite-frontier equilibrium simulations: execution record
 
-Date: 2026-09-03. All four requested trajectories were computed and passed the
-final numerical equilibrium admission gate. This report distinguishes those
-completed calculations from the remaining figure/PDF publication steps.
+Originally completed on 2026-09-03 and revalidated through the public entry
+point on 2026-09-04. All four requested trajectories passed the final numerical
+equilibrium admission gate. The public reproduction workflow and installation
+instructions are in `REPLICATION.md`; this file records the execution
+underlying the paper's reported numerical results.
 
 ## Publication status
 
-Complete. The final 4,804-row CSV, its provenance manifest, both six-panel
-figures, and the 41-page PDF were regenerated on 2026-09-03. All 32 relevant
-regression tests passed. Tectonic reported no overfull boxes, underfull boxes,
-undefined references, or undefined citations. The final PDF was rendered to
-PNG for visual inspection: Figure 3 is on page 20, Figure 4 is on page 22,
-and the numerical-audit table is on page 38.
+Complete. The final 4,804-row CSV, its provenance manifest, and the three
+published figures were regenerated on 2026-09-04. All 32 relevant regression
+tests passed. The PDF was compiled and visually inspected after the numerical
+outputs were incorporated.
 
 ## Scope and initial conditions
 
@@ -48,8 +48,8 @@ continuation step through omega_X=0.
 - `scripts/audit_rewrite_hamiltonian_support.py`: check the alternative
   sufficient optimality condition proved in the appendix. The stronger failed
   concavity verdict remains visible in the sigma=1.50 JSON report.
-- `scripts/plot_rewrite_equilibria.py`: render the two agreed six-panel
-  figures, with checkpoint/data provenance checks. Real-wage growth is
+- `scripts/plot_rewrite_equilibria.py`: render the three published figures,
+  with checkpoint/data provenance checks. Real-wage growth is
   recovered from the exact static share identity rather than by numerical
   differentiation. Both figures passed inspection as standalone PNGs and in
   the compiled paper.
@@ -116,6 +116,15 @@ bracketing function. Together with the sixteen finite-frontier and global-BVP
 tests listed above, the final regression count is 32.
 
 ## Reproduction commands
+
+For a new user, the supported entry point is:
+
+```text
+python scripts/reproduce_rewrite_results.py
+```
+
+It executes the following underlying commands in fail-fast order. The
+expanded list is retained here as an auditable execution record.
 
 From the repository root, using a Python environment with the existing
 NumPy, SciPy, and Matplotlib dependencies:

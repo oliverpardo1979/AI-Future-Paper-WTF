@@ -78,6 +78,14 @@ Section~\ref{sec:rewrite-regimes}, not the uncapped unit-elastic BGP, determines
 the terminal conditions. Appendix~\ref{app:rewrite-algorithm} documents the
 continuation, equation reconstruction, and numerical checks.
 
+In economic terms, the algorithm takes $K_0$ and $B_0$ as given and selects
+the initial consumption and shadow value that place the economy on the stable
+equilibrium path. It first constructs that path near the analytically
+characterized terminal regime and then moves it gradually to the prescribed
+initial stocks. Solving the boundary-value problem is only the construction
+step; the separate admission tests determine whether the resulting candidate
+is reported as an equilibrium.
+
 A converged BVP is not sufficient for admission. I also check feasibility,
 independently reconstructed dynamic residuals, stability to longer horizons
 and tighter tolerances, both transversality conditions, and sufficient global

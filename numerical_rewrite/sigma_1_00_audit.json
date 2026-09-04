@@ -370,6 +370,11 @@
     "horizon_extension": 500,
     "continuation_steps": 32
   },
+  "first_horizon_comparison": {
+    "common_window": 2500.0,
+    "maximum_common_window_coordinate_change": 1.307934764938068e-07,
+    "maximum_initial_jump_change": 2.3232027412944944e-11
+  },
   "independent_dated_checks": [
     {
       "difference_step": 0.003,
@@ -389,11 +394,6 @@
   "optimality_method": "global_profit_concavity_in_research_depth",
   "maximum_terminal_coordinate_gap": 3.0423032484350188e-06,
   "checkpoint_sha256": "7cc2f169c3c472a4794fd8c728389866dac0c4de8e34e24d1dbc4a34e583595a",
-  "long_run_scope": "Regime-specific stable continuation, both TVCs, and sufficient developer optimality.",
-  "first_horizon_comparison": {
-    "common_window": 2500.0,
-    "maximum_common_window_coordinate_change": 1.307934764938068e-07,
-    "maximum_initial_jump_change": 2.3232027412944944e-11
-  },
-  "checkpoint_filename": "sigma_1_00_long.npz"
+  "checkpoint_filename": "sigma_1_00_long.npz",
+  "long_run_scope": "Regime-specific stable continuation, both TVCs, and sufficient developer optimality."
 }

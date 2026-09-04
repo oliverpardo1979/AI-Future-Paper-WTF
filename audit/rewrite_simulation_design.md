@@ -94,47 +94,54 @@ The user approved the recommended interior reference after the distinction
 was explained. Every final BVP uses exactly these stocks; none was moved to
 obtain convergence. Initial consumption and the shadow price are endogenous.
 
-## Two figures, six panels each
+## Published figure layout
 
 Use one economic variable per panel and one line per admitted scenario.
 Preserve the following row-major order, notation, denominators, and scales.
 The comparison uses line charts, not stacked bars or stacked areas.
 
-### Figure 1: growth, wages, and the distribution of final output
+### Growth and returns
 
 | Panel | Variable | Vertical scale |
 |---|---|---|
-| A | Y/(AL) | Logarithmic |
-| B | g_Y-n | Linear, percent per year |
-| C | g_w | Linear, percent per year |
-| D | r | Linear, percent per year |
-| E | wL/Y | Linear, percent |
-| F | p_X X/Y | Linear, percent |
+| A | g_Y-n | Linear, percent per year |
+| B | g_w | Linear, percent per year |
+| C | r | Linear, percent per year |
 
-The last panel shows AI-industry sales relative to final output. Do not
-replace it by Pi/Y or label sales as industry value added.
+The first two panels use the same vertical scale, so their distance shows the
+growth wedge governing the labor-income share.
 
-### Figure 2: technology, accumulation, and AI-revenue composition
+### AI transition and distribution
 
 | Panel | Variable | Vertical scale |
 |---|---|---|
 | A | B/Bbar | Linear, fraction between zero and one |
-| B | C/(AL) | Logarithmic |
-| C | K/(AL) | Logarithmic |
-| D | U/(p_X X) | Linear, percent |
-| E | M/(p_X X) | Linear, percent |
-| F | Pi/(p_X X) | Linear, percent, allowing negative values |
+| B | wL/Y | Linear, percent |
+| C | p_X X/Y | Linear, percent |
+
+The last panel shows AI-industry sales relative to final output. Do not
+replace it by Pi/Y or label sales as industry value added.
+
+### Accumulation and AI-revenue composition
+
+| Panel | Variable | Vertical scale |
+|---|---|---|
+| A | C/(AL) | Logarithmic |
+| B | K/(AL) | Logarithmic |
+| C | U/(p_X X) | Linear, percent |
+| D | M/(p_X X) | Linear, percent |
+| E | Pi/(p_X X) | Linear, percent, allowing negative values |
 
 The second-row denominator is deliberately AI revenue, not final output:
 U/(p_X X)+M/(p_X X)+Pi/(p_X X)=1. This is a display normalization, not a
 redefinition of any model variable. Preserve negative profits where they
 occur instead of truncating the axis or applying a logarithmic scale.
 
-Use identical scenario colors and distinguishable line styles in both figures,
+Use identical scenario colors and distinguishable line styles in all figures,
 linear time axes, and common plotted horizons. Use the same physical unit and
 normalization across scenarios. Do not divide each scenario by its own
-initial or terminal value, which would conceal impact differences. A constant
-The vertical distance between g_Y-n and g_w is the growth wedge that governs
+initial or terminal value, which would conceal impact differences. The
+vertical distance between g_Y-n and g_w is the growth wedge that governs
 the decline of labor's income share. Y/(AL) need not converge in the AI-dominated
 regime. Growth and interest limits can be shown as analytical reference lines,
 not imposed observations or fabricated extensions of a finite numerical path.
