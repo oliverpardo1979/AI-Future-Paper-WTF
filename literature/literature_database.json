@@ -1,7 +1,7 @@
 {
-  "generated_on": "2026-08-27",
-  "source_fingerprint": "115486060b1960ee70b5db224212f2de914a90bc7c019c860673c39bac8b0c0a",
-  "record_count": 67,
+  "generated_on": "2026-09-04",
+  "source_fingerprint": "730cd66aca5502c7e1082110fa6052c65260a0666dba23a9cb859f82ed19f324",
+  "record_count": 74,
   "records": [
     {
       "citation_key": "anthropiceconomicindex2026",
@@ -35,13 +35,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "autorkausik2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:63; sections/02_literature.tex:122; sections/03_toy_model.tex:871; sections/03_toy_model.tex:974; sections_axm/02_literature.tex:85; sections_axm/03_model.tex:144",
+      "citation_locations": "sections/02_literature.tex:63; sections/02_literature.tex:122; sections/03_toy_model.tex:871; sections/03_toy_model.tex:974; sections_axm/02_literature.tex:85; sections_axm/03_model.tex:144; sections_rewrite/02_literature.tex:54; sections_rewrite/03_model.tex:142",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:85; sections_axm/03_model.tex:144",
       "cited_in_legacy": "yes",
@@ -69,7 +69,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "buenodemesquitaetal2026",
@@ -103,15 +103,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "chowhalperinmazlish2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/02_literature.tex:41; sections_axm/03_model.tex:1364",
+      "citation_locations": "sections_axm/02_literature.tex:41; sections_axm/03_model.tex:1649; sections_rewrite/02_literature.tex:67",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:41; sections_axm/03_model.tex:1364",
+      "citation_locations_axm": "sections_axm/02_literature.tex:41; sections_axm/03_model.tex:1649",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "unpublished",
@@ -137,15 +137,15 @@
       "use_in_axm": "Provides a direct precedent for the positive relation between AI-driven growth and the equilibrium real interest rate.",
       "limits_for_axm": "It studies expectations and long-maturity safe rates rather than the dated net marginal product of physical capital in the A×M equilibrium.",
       "notes": "Working paper; first posted January 2023",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "davidsonetal2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/01_introduction.tex:16; sections_axm/01_introduction.tex:39; sections_axm/01_introduction.tex:100; sections_axm/02_literature.tex:11; sections_axm/03_model.tex:260; sections_axm/03_model.tex:1431; sections_axm/04_growth_regimes.tex:257; sections_axm/04_growth_regimes.tex:552; sections_axm/04_growth_regimes.tex:620; sections_axm/04_growth_regimes.tex:970; sections_axm/06_conclusion.tex:8; sections_axm/06_conclusion.tex:31; sections_axm/06_conclusion.tex:70; sections_axm/06_conclusion.tex:84; sections_axm/appendix.tex:1586",
+      "citation_locations": "sections_axm/01_introduction.tex:19; sections_axm/01_introduction.tex:42; sections_axm/01_introduction.tex:103; sections_axm/02_literature.tex:11; sections_axm/03_model.tex:260; sections_axm/03_model.tex:1716; sections_axm/04_growth_regimes.tex:260; sections_axm/04_growth_regimes.tex:632; sections_axm/04_growth_regimes.tex:700; sections_axm/04_growth_regimes.tex:1515; sections_axm/06_conclusion.tex:8; sections_axm/06_conclusion.tex:31; sections_axm/06_conclusion.tex:98; sections_rewrite/02_literature.tex:15; sections_rewrite/03_model.tex:187; sections_rewrite/06_conclusion.tex:46; sections_rewrite/06_conclusion.tex:54",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:16; sections_axm/01_introduction.tex:39; sections_axm/01_introduction.tex:100; sections_axm/02_literature.tex:11; sections_axm/03_model.tex:260; sections_axm/03_model.tex:1431; sections_axm/04_growth_regimes.tex:257; sections_axm/04_growth_regimes.tex:552; sections_axm/04_growth_regimes.tex:620; sections_axm/04_growth_regimes.tex:970; sections_axm/06_conclusion.tex:8; sections_axm/06_conclusion.tex:31; sections_axm/06_conclusion.tex:70; sections_axm/06_conclusion.tex:84; sections_axm/appendix.tex:1586",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:19; sections_axm/01_introduction.tex:42; sections_axm/01_introduction.tex:103; sections_axm/02_literature.tex:11; sections_axm/03_model.tex:260; sections_axm/03_model.tex:1716; sections_axm/04_growth_regimes.tex:260; sections_axm/04_growth_regimes.tex:632; sections_axm/04_growth_regimes.tex:700; sections_axm/04_growth_regimes.tex:1515; sections_axm/06_conclusion.tex:8; sections_axm/06_conclusion.tex:31; sections_axm/06_conclusion.tex:98",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "techreport",
@@ -171,15 +171,15 @@
       "use_in_axm": "Closest antecedent for the capability--compute feedback architecture, local feedback weights, scalar denominator, and explosive-growth threshold.",
       "limits_for_axm": "Its automation shares and research allocations are exogenous in the economic application. Its network theorem is not the A×M equilibrium theorem, and its simulated dates are not transferable.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "iea2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:65; sections_axm/01_introduction.tex:71",
+      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:68; sections_axm/01_introduction.tex:74",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:65; sections_axm/01_introduction.tex:71",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:68; sections_axm/01_introduction.tex:74",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:126; sections/01_introduction.tex:145",
       "entry_type": "techreport",
@@ -205,15 +205,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "jonestonetti2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/01_introduction.tex:123; sections_axm/02_literature.tex:71; sections_axm/06_conclusion.tex:69",
+      "citation_locations": "sections_axm/02_literature.tex:71; sections_rewrite/02_literature.tex:33",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:123; sections_axm/02_literature.tex:71; sections_axm/06_conclusion.tex:69",
+      "citation_locations_axm": "sections_axm/02_literature.tex:71",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "unpublished",
@@ -239,15 +239,15 @@
       "use_in_axm": "Closest dynamic precedent for the long apparent plateau followed by a steep takeoff and for the fact that automation alone does not determine limiting factor shares.",
       "limits_for_axm": "Its elasticity aggregates tasks and its automation margin changes task assignment. That mechanism is not the A×M labor--AI CES, and its calendar dates cannot be imported.",
       "notes": "Working paper, Version 0.5, May 2026",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "korinekmckelvey2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:95; sections/01_introduction.tex:126; sections/02_literature.tex:85; sections/03_toy_model.tex:168; sections/03_toy_model.tex:338; sections/03_toy_model.tex:358; sections_axm/01_introduction.tex:40; sections_axm/01_introduction.tex:50; sections_axm/01_introduction.tex:64; sections_axm/02_literature.tex:55",
+      "citation_locations": "sections/01_introduction.tex:95; sections/01_introduction.tex:126; sections/02_literature.tex:85; sections/03_toy_model.tex:168; sections/03_toy_model.tex:338; sections/03_toy_model.tex:358; sections_axm/01_introduction.tex:43; sections_axm/01_introduction.tex:53; sections_axm/01_introduction.tex:67; sections_axm/02_literature.tex:55; sections_rewrite/02_literature.tex:78; sections_rewrite/03_model.tex:182; sections_rewrite/03_model.tex:187; sections_rewrite/06_conclusion.tex:48",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:40; sections_axm/01_introduction.tex:50; sections_axm/01_introduction.tex:64; sections_axm/02_literature.tex:55",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:43; sections_axm/01_introduction.tex:53; sections_axm/01_introduction.tex:67; sections_axm/02_literature.tex:55",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:95; sections/01_introduction.tex:126; sections/02_literature.tex:85; sections/03_toy_model.tex:168; sections/03_toy_model.tex:338; sections/03_toy_model.tex:358",
       "entry_type": "techreport",
@@ -273,7 +273,7 @@
       "use_in_axm": "Provides the measurement vocabulary used to distinguish inference compute, research or training compute, algorithms, and model capital.",
       "limits_for_axm": "It does not identify the model's substitution elasticities, derive equilibrium prices or rents, or validate the simulated transition timing.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "metrtimehorizon2026",
@@ -307,7 +307,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "Updated May 8, 2026",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "nvidia2026",
@@ -341,13 +341,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "oecdproductivity2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/04_growth_regimes.tex:143; sections_axm/04_growth_regimes.tex:183",
+      "citation_locations": "sections_axm/04_growth_regimes.tex:143; sections_axm/04_growth_regimes.tex:183; sections_rewrite/05_quantitative_equilibria.tex:50",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/04_growth_regimes.tex:143; sections_axm/04_growth_regimes.tex:183",
       "cited_in_legacy": "no",
@@ -375,7 +375,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "stanfordaiindex2026",
@@ -409,13 +409,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "yango2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:65; sections/02_literature.tex:122; sections/03_toy_model.tex:871; sections/03_toy_model.tex:976; sections_axm/03_model.tex:145",
+      "citation_locations": "sections/02_literature.tex:65; sections/02_literature.tex:122; sections/03_toy_model.tex:871; sections/03_toy_model.tex:976; sections_axm/03_model.tex:145; sections_rewrite/02_literature.tex:54; sections_rewrite/03_model.tex:142",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/03_model.tex:145",
       "cited_in_legacy": "yes",
@@ -443,15 +443,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "acemoglu2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:36; sections/02_literature.tex:92; sections/04_task_extension.tex:14; sections_axm/03_model.tex:1381",
+      "citation_locations": "sections/02_literature.tex:36; sections/02_literature.tex:92; sections/04_task_extension.tex:14; sections_axm/03_model.tex:1666",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/03_model.tex:1381",
+      "citation_locations_axm": "sections_axm/03_model.tex:1666",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/02_literature.tex:36; sections/02_literature.tex:92; sections/04_task_extension.tex:14",
       "entry_type": "article",
@@ -477,15 +477,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "andrewsfarboodi2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/02_literature.tex:49; sections_axm/03_model.tex:1370",
+      "citation_locations": "sections_axm/02_literature.tex:49; sections_axm/03_model.tex:1655",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:49; sections_axm/03_model.tex:1370",
+      "citation_locations_axm": "sections_axm/02_literature.tex:49; sections_axm/03_model.tex:1655",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "techreport",
@@ -511,7 +511,7 @@
       "use_in_axm": "Provides a direct empirical counterpoint to the model's positive balanced-growth interest-rate response.",
       "limits_for_axm": "Event-study yield movements combine expectations, term premia, risk, and policy channels and do not identify the net marginal product of capital.",
       "notes": "Revised July 2026",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "anthropiceconomicindex2025",
@@ -545,7 +545,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "cloudflareradar2025",
@@ -579,15 +579,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "demireretal2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:87; sections/02_literature.tex:101; sections/03_toy_model.tex:170; sections_axm/02_literature.tex:100; sections_axm/03_model.tex:395",
+      "citation_locations": "sections/02_literature.tex:87; sections/02_literature.tex:101; sections/03_toy_model.tex:170; sections_axm/02_literature.tex:100; sections_axm/03_model.tex:411; sections_rewrite/02_literature.tex:85; sections_rewrite/03_model.tex:324",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:100; sections_axm/03_model.tex:395",
+      "citation_locations_axm": "sections_axm/02_literature.tex:100; sections_axm/03_model.tex:411",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/02_literature.tex:87; sections/02_literature.tex:101; sections/03_toy_model.tex:170",
       "entry_type": "techreport",
@@ -613,15 +613,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "erdiletal2025gate",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/01_introduction.tex:141; sections_axm/02_literature.tex:34",
+      "citation_locations": "sections_axm/01_introduction.tex:157; sections_axm/02_literature.tex:34; sections_rewrite/02_literature.tex:20",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:141; sections_axm/02_literature.tex:34",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:157; sections_axm/02_literature.tex:34",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "misc",
@@ -647,13 +647,13 @@
       "use_in_axm": "Main quantitative comparator for models that integrate compute, automation, investment, and growth.",
       "limits_for_axm": "It abstracts from the decentralized price system and market structure central to the A×M paper and does not supply its analytical regime classification.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "pwt110",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/04_growth_regimes.tex:139",
+      "citation_locations": "sections_axm/04_growth_regimes.tex:139; sections_rewrite/05_quantitative_equilibria.tex:26",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/04_growth_regimes.tex:139",
       "cited_in_legacy": "no",
@@ -681,13 +681,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "oecdaiinvestment2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/04_growth_regimes.tex:143; sections_axm/04_growth_regimes.tex:183",
+      "citation_locations": "sections_axm/04_growth_regimes.tex:143; sections_axm/04_growth_regimes.tex:183; sections_rewrite/05_quantitative_equilibria.tex:50",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/04_growth_regimes.tex:143; sections_axm/04_growth_regimes.tex:183",
       "cited_in_legacy": "no",
@@ -715,7 +715,41 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "gans2025aiknowledge",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/02_literature.tex:41",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "techreport",
+      "authors": "Gans, Joshua S.",
+      "title": "Growth in AI Knowledge",
+      "year": "2025",
+      "venue": "National Bureau of Economic Research",
+      "volume": "",
+      "number": "33907",
+      "pages": "",
+      "doi": "10.3386/w33907",
+      "document_url": "https://www.nber.org/system/files/working_papers/w33907/w33907.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w33907",
+      "abstract": "How does artificial intelligence affect the creation of new knowledge and long-run economic growth? This paper develops a general equilibrium model where AI enhances decision-making by interpolating between existing knowledge points. AI's impact on growth depends on a critical threshold in its capabilities: a modest interpolation range encourages incremental research and raises growth, whereas an extensive range promotes exploratory research that can reduce knowledge density and slow growth.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://www.nber.org/papers/w33907",
+      "metadata_source": "NBER",
+      "verification_status": "official_landing_page",
+      "topics": "AI knowledge; research direction; capability threshold; market structure; economic growth",
+      "evidence_type": "theory",
+      "method": "General equilibrium model in which AI interpolates between knowledge points and changes incentives for incremental and exploratory research.",
+      "key_results": "AI capabilities generate a threshold between research regimes, and market structure changes the associated growth and welfare effects.",
+      "use_in_axm": "Provides a precedent for capability thresholds while clarifying that the current paper's threshold concerns production substitution and AI efficiency rather than research direction.",
+      "limits_for_axm": "Its threshold does not separate labor-bottleneck from AI-dominated production and does not deliver the current paper's output-wage growth wedge.",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "idetalamas2025",
@@ -749,15 +783,15 @@
       "use_in_axm": "Closest precedent for treating compute as a rival input that produces scalable AI agents while preserving an explicit market price.",
       "limits_for_axm": "The model is static, has exogenous compute and zero economic profit, and does not include training or research feedback.",
       "notes": "Concise editorial synopsis of the official abstract; it is not author-written text.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "iea2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:64; sections_axm/01_introduction.tex:71",
+      "citation_locations": "sections/01_introduction.tex:126; sections/01_introduction.tex:145; sections_axm/01_introduction.tex:67; sections_axm/01_introduction.tex:74",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:64; sections_axm/01_introduction.tex:71",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:67; sections_axm/01_introduction.tex:74",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:126; sections/01_introduction.tex:145",
       "entry_type": "techreport",
@@ -783,13 +817,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "jones2025rd",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:42; sections/02_literature.tex:127; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:33",
+      "citation_locations": "sections/02_literature.tex:42; sections/02_literature.tex:127; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:33; sections_rewrite/02_literature.tex:12",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:33",
       "cited_in_legacy": "yes",
@@ -817,7 +851,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "kokotajlo2025",
@@ -851,15 +885,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "Scenario forecast published April 3, 2025",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "melinavilla2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/02_literature.tex:45; sections_axm/03_model.tex:1366; sections_axm/03_model.tex:1370",
+      "citation_locations": "sections_axm/02_literature.tex:45; sections_axm/03_model.tex:1651; sections_axm/03_model.tex:1655; sections_rewrite/02_literature.tex:68",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:45; sections_axm/03_model.tex:1366; sections_axm/03_model.tex:1370",
+      "citation_locations_axm": "sections_axm/02_literature.tex:45; sections_axm/03_model.tex:1651; sections_axm/03_model.tex:1655",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "techreport",
@@ -885,15 +919,15 @@
       "use_in_axm": "Supports both the positive interest-rate response and the claim that its sign depends on the labor--AI substitution margin.",
       "limits_for_axm": "ICT capital is a stock distinct from the A×M model's AI service flow, and the paper studies short-run natural-rate dynamics with nominal rigidities.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "metrclaude2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:186; sections_axm/01_introduction.tex:79",
+      "citation_locations": "sections/01_introduction.tex:186; sections_axm/01_introduction.tex:82",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:79",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:82",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:186",
       "entry_type": "misc",
@@ -919,13 +953,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "oecdlongrun2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/04_growth_regimes.tex:141",
+      "citation_locations": "sections_axm/04_growth_regimes.tex:141; sections_rewrite/05_quantitative_equilibria.tex:29",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/04_growth_regimes.tex:141",
       "cited_in_legacy": "no",
@@ -953,15 +987,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "rachel2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/02_literature.tex:43; sections_axm/03_model.tex:1365",
+      "citation_locations": "sections_axm/02_literature.tex:43; sections_axm/03_model.tex:1650; sections_rewrite/02_literature.tex:67",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:43; sections_axm/03_model.tex:1365",
+      "citation_locations_axm": "sections_axm/02_literature.tex:43; sections_axm/03_model.tex:1650",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "article",
@@ -987,15 +1021,15 @@
       "use_in_axm": "Shows through a different macroeconomic mechanism that an AI productivity boom can raise the equilibrium real rate.",
       "limits_for_axm": "Its AI scenario is an imposed productivity process and combines several saving and investment channels absent from the A×M benchmark.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "restrepo2025agi",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/01_introduction.tex:133; sections_axm/02_literature.tex:86; sections_axm/06_conclusion.tex:53",
+      "citation_locations": "sections_axm/01_introduction.tex:149; sections_axm/02_literature.tex:86; sections_axm/06_conclusion.tex:69; sections_rewrite/02_literature.tex:35; sections_rewrite/02_literature.tex:56",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:133; sections_axm/02_literature.tex:86; sections_axm/06_conclusion.tex:53",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:149; sections_axm/02_literature.tex:86; sections_axm/06_conclusion.tex:69",
       "cited_in_legacy": "no",
       "citation_locations_legacy": "",
       "entry_type": "techreport",
@@ -1021,7 +1055,7 @@
       "use_in_axm": "Closest antecedent for the conditional limiting distribution in which the human bottleneck disappears and labor's share vanishes.",
       "limits_for_axm": "It characterizes the endpoint, not the endogenous delayed takeoff, monopoly rents, or the split between inference and research compute.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "stanfordaiindex2025",
@@ -1055,7 +1089,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "aumshin2024",
@@ -1089,15 +1123,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "gans2024",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:99; sections/02_literature.tex:174; sections_axm/02_literature.tex:100; sections_axm/03_model.tex:395",
+      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:99; sections/02_literature.tex:174; sections_axm/02_literature.tex:100; sections_axm/03_model.tex:411; sections_rewrite/02_literature.tex:84; sections_rewrite/03_model.tex:324",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:100; sections_axm/03_model.tex:395",
+      "citation_locations_axm": "sections_axm/02_literature.tex:100; sections_axm/03_model.tex:411",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:307; sections/02_literature.tex:99; sections/02_literature.tex:174",
       "entry_type": "techreport",
@@ -1123,7 +1157,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "jones2024",
@@ -1157,15 +1191,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "korinekvipra2025",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:98; sections/02_literature.tex:174; sections_axm/02_literature.tex:100; sections_axm/03_model.tex:395",
+      "citation_locations": "sections/01_introduction.tex:307; sections/02_literature.tex:98; sections/02_literature.tex:174; sections_axm/02_literature.tex:100; sections_axm/03_model.tex:411; sections_rewrite/02_literature.tex:83; sections_rewrite/03_model.tex:324; sections_rewrite/06_conclusion.tex:48",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:100; sections_axm/03_model.tex:395",
+      "citation_locations_axm": "sections_axm/02_literature.tex:100; sections_axm/03_model.tex:411",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:307; sections/02_literature.tex:98; sections/02_literature.tex:174",
       "entry_type": "techreport",
@@ -1191,15 +1225,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "Published in Economic Policy, 2025",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "metrrebench2024",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:184; sections_axm/01_introduction.tex:77",
+      "citation_locations": "sections/01_introduction.tex:184; sections_axm/01_introduction.tex:80",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:77",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:80",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:184",
       "entry_type": "misc",
@@ -1225,7 +1259,41 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "sastryetal2024",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/03_model.tex:182",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "article",
+      "authors": "Sastry, Girish and Heim, Lennart and Belfield, Haydn and others",
+      "title": "Computing Power and the Governance of Artificial Intelligence",
+      "year": "2024",
+      "venue": "arXiv preprint arXiv:2402.08797",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "doi": "10.48550/arXiv.2402.08797",
+      "document_url": "https://arxiv.org/abs/2402.08797",
+      "landing_page_url": "https://doi.org/10.48550/arXiv.2402.08797",
+      "abstract": "",
+      "abstract_type": "unavailable",
+      "abstract_source_url": "",
+      "metadata_source": "manual",
+      "verification_status": "manual_doi",
+      "topics": "",
+      "evidence_type": "",
+      "method": "",
+      "key_results": "",
+      "use_in_axm": "",
+      "limits_for_axm": "",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "sevillaroldan2024",
@@ -1259,13 +1327,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "unwpp2024",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/04_growth_regimes.tex:138",
+      "citation_locations": "sections_axm/04_growth_regimes.tex:138; sections_rewrite/05_quantitative_equilibria.tex:28",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/04_growth_regimes.tex:138",
       "cited_in_legacy": "no",
@@ -1293,7 +1361,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "guerreiroetal2023",
@@ -1327,15 +1395,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "Revised May 2026",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "trammellkorinek2023",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:40; sections/02_literature.tex:69; sections/02_literature.tex:120; sections/02_literature.tex:165; sections_axm/01_introduction.tex:133; sections_axm/02_literature.tex:33; sections_axm/02_literature.tex:85",
+      "citation_locations": "sections/02_literature.tex:40; sections/02_literature.tex:69; sections/02_literature.tex:120; sections/02_literature.tex:165; sections_axm/01_introduction.tex:149; sections_axm/02_literature.tex:33; sections_axm/02_literature.tex:85; sections_rewrite/02_literature.tex:11",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:133; sections_axm/02_literature.tex:33; sections_axm/02_literature.tex:85",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:149; sections_axm/02_literature.tex:33; sections_axm/02_literature.tex:85",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/02_literature.tex:40; sections/02_literature.tex:69; sections/02_literature.tex:120; sections/02_literature.tex:165",
       "entry_type": "techreport",
@@ -1361,7 +1429,41 @@
       "use_in_axm": "Supports separating the production and research automation margins and distinguishing wage levels from labor's income share.",
       "limits_for_axm": "It does not use the A×M market structure or provide the paper's exact distributional decomposition.",
       "notes": "Revised April 2026",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "erdilbesiroglu2022",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/03_model.tex:182",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "article",
+      "authors": "Erdil, Ege and Besiroglu, Tamay",
+      "title": "Algorithmic Progress in Computer Vision",
+      "year": "2022",
+      "venue": "arXiv preprint arXiv:2212.05153",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "doi": "10.48550/arXiv.2212.05153",
+      "document_url": "https://arxiv.org/abs/2212.05153",
+      "landing_page_url": "https://doi.org/10.48550/arXiv.2212.05153",
+      "abstract": "",
+      "abstract_type": "unavailable",
+      "abstract_source_url": "",
+      "metadata_source": "manual",
+      "verification_status": "manual_doi",
+      "topics": "",
+      "evidence_type": "",
+      "method": "",
+      "key_results": "",
+      "use_in_axm": "",
+      "limits_for_axm": "",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "jones2022semiendogenous",
@@ -1395,7 +1497,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "mollrachelrestrepo2022",
@@ -1429,13 +1531,47 @@
       "use_in_axm": "Clarifies why a functional decomposition of output is not enough to infer interpersonal inequality: ownership of capital and developer profit matters.",
       "limits_for_axm": "The A×M paper has a representative household and therefore does not reproduce this personal-distribution mechanism.",
       "notes": "Concise editorial synopsis of the official abstract; it is not author-written text.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "raymookherjee2022",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/02_literature.tex:55",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "article",
+      "authors": "Ray, Debraj and Mookherjee, Dilip",
+      "title": "Growth, Automation, and the Long-Run Share of Labor",
+      "year": "2022",
+      "venue": "Review of Economic Dynamics",
+      "volume": "46",
+      "number": "",
+      "pages": "1--26",
+      "doi": "10.1016/j.red.2021.09.003",
+      "document_url": "https://www.nber.org/system/files/working_papers/w26658/w26658.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w26658",
+      "abstract": "We study the long run implications of workplace automation induced by capital accumulation. We describe a minimal set of sufficient conditions for sustained growth, along with a declining labor share of income in the long run. The displacement of human labor is gradual, and absolute real wages could rise indefinitely. The results obtain in the absence of any technical progress and extend to endogenous technical progress.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://www.nber.org/papers/w26658",
+      "metadata_source": "NBER",
+      "verification_status": "official_landing_page",
+      "topics": "automation; capital accumulation; labor share; wages; endogenous growth",
+      "evidence_type": "theory",
+      "method": "Long-run growth model with replicable physical capital, nonreplicable human capital, occupational mobility, and endogenous automation.",
+      "key_results": "Capital accumulation can progressively automate production, drive labor's income share to zero, and sustain indefinitely rising real wages.",
+      "use_in_axm": "Establishes that rising real wages can coexist with a vanishing labor share, a result the current paper does not claim as new.",
+      "limits_for_axm": "It does not model autonomous AI research, a monopolistic supplier of AI services, or the current paper's threshold between labor-bottleneck and AI-dominated equilibria.",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "nordhaus2021",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:39; sections/02_literature.tex:119; sections/02_literature.tex:165; sections_axm/02_literature.tex:33",
+      "citation_locations": "sections/02_literature.tex:39; sections/02_literature.tex:119; sections/02_literature.tex:165; sections_axm/02_literature.tex:33; sections_rewrite/02_literature.tex:31; sections_rewrite/06_conclusion.tex:54",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:33",
       "cited_in_legacy": "yes",
@@ -1463,7 +1599,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "autoretal2020superstar",
@@ -1497,7 +1633,7 @@
       "use_in_axm": "Provides an empirical market-structure counterpart to the model's separation of labor payments and monopoly profit.",
       "limits_for_axm": "It does not identify advanced AI, inference or research compute, or a feedback-driven growth transition.",
       "notes": "Concise editorial synopsis of the official abstract; it is not author-written text.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "barkai2020",
@@ -1531,15 +1667,49 @@
       "use_in_axm": "Supports separating the fixed gross capital payment from developer profit when interpreting the fall in labor's share.",
       "limits_for_axm": "The evidence concerns historical U.S. accounts and concentration, not the allocation of AI compute or the asymptotic regimes of the model.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "hernandezbrown2020",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/03_model.tex:182",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "article",
+      "authors": "Hernandez, Danny and Brown, Tom B.",
+      "title": "Measuring the Algorithmic Efficiency of Neural Networks",
+      "year": "2020",
+      "venue": "arXiv preprint arXiv:2005.04305",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "doi": "10.48550/arXiv.2005.04305",
+      "document_url": "https://arxiv.org/abs/2005.04305",
+      "landing_page_url": "https://doi.org/10.48550/arXiv.2005.04305",
+      "abstract": "",
+      "abstract_type": "unavailable",
+      "abstract_source_url": "",
+      "metadata_source": "manual",
+      "verification_status": "manual_doi",
+      "topics": "",
+      "evidence_type": "",
+      "method": "",
+      "key_results": "",
+      "use_in_axm": "",
+      "limits_for_axm": "",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "acemoglurestrepo2019",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:51; sections/03_toy_model.tex:971; sections_axm/01_introduction.tex:133; sections_axm/02_literature.tex:83; sections_axm/06_conclusion.tex:52",
+      "citation_locations": "sections/02_literature.tex:51; sections/03_toy_model.tex:971; sections_axm/01_introduction.tex:149; sections_axm/02_literature.tex:83; sections_axm/06_conclusion.tex:68; sections_rewrite/02_literature.tex:48; sections_rewrite/03_model.tex:83; sections_rewrite/06_conclusion.tex:45",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/01_introduction.tex:133; sections_axm/02_literature.tex:83; sections_axm/06_conclusion.tex:52",
+      "citation_locations_axm": "sections_axm/01_introduction.tex:149; sections_axm/02_literature.tex:83; sections_axm/06_conclusion.tex:68",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/02_literature.tex:51; sections/03_toy_model.tex:971",
       "entry_type": "article",
@@ -1565,13 +1735,13 @@
       "use_in_axm": "Establishes the general distributional mechanism that the A×M paper takes as known rather than claiming as new.",
       "limits_for_axm": "It does not model AI-research feedback, rival inference and research compute, monopoly pricing, or delayed explosive growth.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "aghionjonesjones2019",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:34; sections/02_literature.tex:92; sections/02_literature.tex:119; sections/02_literature.tex:150; sections/03_toy_model.tex:1792; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:30; sections_axm/02_literature.tex:74; sections_axm/04_growth_regimes.tex:24",
+      "citation_locations": "sections/02_literature.tex:34; sections/02_literature.tex:92; sections/02_literature.tex:119; sections/02_literature.tex:150; sections/03_toy_model.tex:1792; sections/04_task_extension.tex:14; sections_axm/02_literature.tex:30; sections_axm/02_literature.tex:74; sections_axm/04_growth_regimes.tex:24; sections_rewrite/02_literature.tex:9",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:30; sections_axm/02_literature.tex:74; sections_axm/04_growth_regimes.tex:24",
       "cited_in_legacy": "yes",
@@ -1599,7 +1769,7 @@
       "use_in_axm": "Early antecedent for the claim that bottlenecks can keep aggregate growth modest even while automation advances.",
       "limits_for_axm": "The numerical automation path is exogenous, so it is not the closest precedent for the endogenous timing of the A×M takeoff.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "acemoglurestrepo2018",
@@ -1633,7 +1803,41 @@
       "use_in_axm": "Canonical antecedent for the displacement--reinstatement mechanism and for the possibility that wages and labor's share move differently.",
       "limits_for_axm": "It does not separate inference from research compute, model monopoly rents, or characterize the delayed feedback-driven takeoff studied in the A×M paper.",
       "notes": "Excerpt from the official author abstract; the omitted closing sentences discuss stability and inequality with heterogeneous skills.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "dyatlov2018",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/appendix_finite_frontier.tex:219",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "misc",
+      "authors": "Dyatlov, Semyon",
+      "title": "Notes on Hyperbolic Dynamics",
+      "year": "2018",
+      "venue": "",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "doi": "10.48550/arXiv.1805.11660",
+      "document_url": "https://arxiv.org/abs/1805.11660",
+      "landing_page_url": "https://doi.org/10.48550/arXiv.1805.11660",
+      "abstract": "",
+      "abstract_type": "unavailable",
+      "abstract_source_url": "",
+      "metadata_source": "manual",
+      "verification_status": "manual_doi",
+      "topics": "",
+      "evidence_type": "",
+      "method": "",
+      "key_results": "",
+      "use_in_axm": "",
+      "limits_for_axm": "",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "karabarbounisneiman2018factorless",
@@ -1667,7 +1871,7 @@
       "use_in_axm": "Motivates explicit accounting of capital payments, compute resource uses, wages, and developer profit instead of assigning the residual mechanically to capital or rents.",
       "limits_for_axm": "It is an accounting exercise, not a model of AI services, research feedback, or endogenous takeoff.",
       "notes": "Concise editorial synopsis of the official abstract; it is not author-written text.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "korinekstiglitz2017",
@@ -1701,13 +1905,13 @@
       "use_in_axm": "Supports the distinction between redistribution through factor prices and surplus captured by the innovator.",
       "limits_for_axm": "It does not provide the A×M technology, the two substitution thresholds, or the numerical delayed-takeoff transition.",
       "notes": "Concise editorial synopsis of the official abstract; it is not author-written text.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "karabarbounisneiman2014",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:55",
+      "citation_locations": "sections/02_literature.tex:55; sections_rewrite/02_literature.tex:52",
       "cited_in_axm": "no",
       "citation_locations_axm": "",
       "cited_in_legacy": "yes",
@@ -1735,13 +1939,47 @@
       "use_in_axm": "Provides the classic CES benchmark for why the location of an elasticity relative to one can change factor-share dynamics.",
       "limits_for_axm": "Its elasticity is between aggregate capital and labor, not between labor and quality-adjusted AI services; the two parameters are not empirically interchangeable.",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
+    },
+    {
+      "citation_key": "autor2013",
+      "source_group": "manuscript_bibliography",
+      "cited_in_manuscript": "yes",
+      "citation_locations": "sections_rewrite/03_model.tex:83",
+      "cited_in_axm": "no",
+      "citation_locations_axm": "",
+      "cited_in_legacy": "no",
+      "citation_locations_legacy": "",
+      "entry_type": "article",
+      "authors": "Autor, David H.",
+      "title": "The ``Task Approach'' to Labor Markets: An Overview",
+      "year": "2013",
+      "venue": "Journal for Labour Market Research",
+      "volume": "46",
+      "number": "3",
+      "pages": "185--199",
+      "doi": "10.1007/s12651-013-0128-z",
+      "document_url": "https://doi.org/10.1007/s12651-013-0128-z",
+      "landing_page_url": "https://doi.org/10.1007/s12651-013-0128-z",
+      "abstract": "",
+      "abstract_type": "unavailable",
+      "abstract_source_url": "",
+      "metadata_source": "manual",
+      "verification_status": "manual_doi",
+      "topics": "",
+      "evidence_type": "",
+      "method": "",
+      "key_results": "",
+      "use_in_axm": "",
+      "limits_for_axm": "",
+      "notes": "",
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "duffypapageorgiou2000",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:23; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:67",
+      "citation_locations": "sections/02_literature.tex:23; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:67; sections_rewrite/02_literature.tex:29",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:67",
       "cited_in_legacy": "yes",
@@ -1769,7 +2007,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "kruselletral2000",
@@ -1803,13 +2041,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "This editorial synopsis emphasizes the production structure relevant for the capital-deepening benchmark.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "jones1995",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:10; sections_axm/02_literature.tex:5",
+      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:10; sections_axm/02_literature.tex:5; sections_rewrite/02_literature.tex:7",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:5",
       "cited_in_legacy": "yes",
@@ -1837,7 +2075,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "kremer1993",
@@ -1871,7 +2109,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "vinge1993",
@@ -1905,13 +2143,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "aghionhowitt1992",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:9; sections_axm/02_literature.tex:5",
+      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:9; sections_axm/02_literature.tex:5; sections_rewrite/02_literature.tex:7",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:5",
       "cited_in_legacy": "yes",
@@ -1939,13 +2177,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "rebelo1991",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:21; sections_axm/02_literature.tex:63",
+      "citation_locations": "sections/02_literature.tex:21; sections_axm/02_literature.tex:63; sections_rewrite/02_literature.tex:28",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:63",
       "cited_in_legacy": "yes",
@@ -1973,13 +2211,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "jonesmanuelli1990",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:20; sections_axm/02_literature.tex:63",
+      "citation_locations": "sections/02_literature.tex:20; sections_axm/02_literature.tex:63; sections_rewrite/02_literature.tex:28",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:63",
       "cited_in_legacy": "yes",
@@ -2007,15 +2245,15 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "romer1990",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:8; sections_axm/02_literature.tex:5; sections_axm/03_model.tex:378",
+      "citation_locations": "sections/01_introduction.tex:234; sections/02_literature.tex:8; sections_axm/02_literature.tex:5; sections_axm/03_model.tex:394; sections_rewrite/02_literature.tex:7; sections_rewrite/03_model.tex:322",
       "cited_in_axm": "yes",
-      "citation_locations_axm": "sections_axm/02_literature.tex:5; sections_axm/03_model.tex:378",
+      "citation_locations_axm": "sections_axm/02_literature.tex:5; sections_axm/03_model.tex:394",
       "cited_in_legacy": "yes",
       "citation_locations_legacy": "sections/01_introduction.tex:234; sections/02_literature.tex:8",
       "entry_type": "article",
@@ -2041,7 +2279,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "holmstrom1979",
@@ -2075,7 +2313,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "No conventional abstract was available in the metadata consulted; this is an editorial synopsis.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "revankar1971",
@@ -2109,7 +2347,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "No conventional abstract was available in the metadata consulted; this is an editorial synopsis.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "satohofmann1968",
@@ -2143,7 +2381,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "No conventional abstract was available in the metadata consulted; this is an editorial synopsis.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "good1965",
@@ -2177,13 +2415,13 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "No conventional abstract was available in the metadata consulted. This is an editorial synopsis. Some databases date the volume 1966; the chapter is conventionally cited as 1965.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "pitchford1960",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:18; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:63",
+      "citation_locations": "sections/02_literature.tex:18; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:63; sections_rewrite/02_literature.tex:28",
       "cited_in_axm": "yes",
       "citation_locations_axm": "sections_axm/02_literature.tex:63",
       "cited_in_legacy": "yes",
@@ -2211,7 +2449,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "No conventional abstract was available on the publisher page; this is an editorial synopsis.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "vonfoerster1960",
@@ -2245,7 +2483,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "PubMed explicitly reports that no abstract is available; this is an editorial synopsis.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     },
     {
       "citation_key": "solow1956",
@@ -2279,7 +2517,7 @@
       "use_in_axm": "",
       "limits_for_axm": "",
       "notes": "The publisher page provides an article outline rather than a conventional abstract; this is an editorial synopsis.",
-      "last_verified": "2026-08-27"
+      "last_verified": "2026-09-04"
     }
   ]
 }

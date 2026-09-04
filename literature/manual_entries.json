@@ -652,6 +652,36 @@
       "metadata_source": "Econometrica/Wiley",
       "verification_status": "official_landing_page",
       "notes": "This editorial synopsis emphasizes the production structure relevant for the capital-deepening benchmark."
+    },
+    "raymookherjee2022": {
+      "abstract": "We study the long run implications of workplace automation induced by capital accumulation. We describe a minimal set of sufficient conditions for sustained growth, along with a declining labor share of income in the long run. The displacement of human labor is gradual, and absolute real wages could rise indefinitely. The results obtain in the absence of any technical progress and extend to endogenous technical progress.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://www.nber.org/papers/w26658",
+      "document_url": "https://www.nber.org/system/files/working_papers/w26658/w26658.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w26658",
+      "metadata_source": "NBER",
+      "verification_status": "official_landing_page",
+      "topics": "automation; capital accumulation; labor share; wages; endogenous growth",
+      "evidence_type": "theory",
+      "method": "Long-run growth model with replicable physical capital, nonreplicable human capital, occupational mobility, and endogenous automation.",
+      "key_results": "Capital accumulation can progressively automate production, drive labor's income share to zero, and sustain indefinitely rising real wages.",
+      "use_in_axm": "Establishes that rising real wages can coexist with a vanishing labor share, a result the current paper does not claim as new.",
+      "limits_for_axm": "It does not model autonomous AI research, a monopolistic supplier of AI services, or the current paper's threshold between labor-bottleneck and AI-dominated equilibria."
+    },
+    "gans2025aiknowledge": {
+      "abstract": "How does artificial intelligence affect the creation of new knowledge and long-run economic growth? This paper develops a general equilibrium model where AI enhances decision-making by interpolating between existing knowledge points. AI's impact on growth depends on a critical threshold in its capabilities: a modest interpolation range encourages incremental research and raises growth, whereas an extensive range promotes exploratory research that can reduce knowledge density and slow growth.",
+      "abstract_type": "source_abstract",
+      "abstract_source_url": "https://www.nber.org/papers/w33907",
+      "document_url": "https://www.nber.org/system/files/working_papers/w33907/w33907.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w33907",
+      "metadata_source": "NBER",
+      "verification_status": "official_landing_page",
+      "topics": "AI knowledge; research direction; capability threshold; market structure; economic growth",
+      "evidence_type": "theory",
+      "method": "General equilibrium model in which AI interpolates between knowledge points and changes incentives for incremental and exploratory research.",
+      "key_results": "AI capabilities generate a threshold between research regimes, and market structure changes the associated growth and welfare effects.",
+      "use_in_axm": "Provides a precedent for capability thresholds while clarifying that the current paper's threshold concerns production substitution and AI efficiency rather than research direction.",
+      "limits_for_axm": "Its threshold does not separate labor-bottleneck from AI-dominated production and does not deliver the current paper's output-wage growth wedge."
     }
   }
 }

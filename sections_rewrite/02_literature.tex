@@ -1,14 +1,103 @@
 \section{Related literature}
 \label{sec:rewrite-literature}
 
-% Organize the section around the paper's contribution rather than around a
-% chronology of references:
-%
-% 1. AI, automation, wages, and the labor income share.
-% 2. Endogenous growth and automation of research.
-% 3. Substitution between effective AI production services and human labor.
-% 4. Accelerating growth, singular limits, and the distinction between a
-%    canonical path and an infinite-horizon equilibrium.
-%
-% For every group, state the closest result in the literature and then identify
-% the specific result added by this paper.
+\paragraph{AI, growth, and automated research.}
+The research technology builds on the endogenous- and semi-endogenous-growth
+tradition, in which nonrival knowledge and resources devoted to ideas determine
+long-run growth \citep{romer1990,aghionhowitt1992,jones1995}. Recent work asks
+how the conclusion changes when AI can automate production, research, or both.
+\citet{aghionjonesjones2019} show that automating idea production can accelerate
+growth but that tasks that remain difficult to automate can become binding
+bottlenecks. \citet{trammellkorinek2023} distinguish the automation of ordinary
+production from the automation of R\&D, while \citet{jones2025rd} emphasizes the
+share of research tasks that AI can perform, its productivity in those tasks,
+and the remaining bottlenecks. The closest feedback architecture is
+\citet{davidsonetal2026}: more capable AI makes subsequent AI research more
+productive, while higher output expands the resources that can finance that
+research. I place these technological and economic feedbacks
+inside a decentralized Ramsey economy in which saving, inference compute,
+research compute, prices, and payments are equilibrium outcomes. This differs
+from quantitative scenario models such as \citet{erdiletal2025gate}, which
+combine AI development, automation, investment, and growth but abstract from
+the decentralized price system and market structure studied here.
+
+\paragraph{Substitution, bottlenecks, and long-run growth.}
+The production side connects this literature to the classic result that
+sufficient substitution toward accumulable inputs can prevent their marginal
+product from vanishing and produce an asymptotically linear technology
+\citep{pitchford1960,jonesmanuelli1990,rebelo1991}.
+\citet{duffypapageorgiou2000} emphasize that a high elasticity is not by itself
+sufficient: the productivity of the accumulable input must also be high enough.
+In the AI literature, \citet{nordhaus2021} identifies substitutability
+between information and conventional inputs as central to an economic
+singularity. \citet{jonestonetti2026} show instead how a small number of weak
+links can delay growth acceleration even when automation advances, and
+\citet{restrepo2025agi} distinguishes work that remains a bottleneck from work
+that is no longer essential for growth. I obtain a related distinction without
+assuming that all work can be performed by AI. Gross substitution between AI
+services and labor is necessary but not sufficient for labor to cease being a
+bottleneck: attainable AI efficiency must also be high enough. I derive the
+threshold separating the labor-bottleneck and AI-dominated equilibria. The
+capability threshold in \citet{gans2025aiknowledge} concerns a different
+mechanism---whether AI directs research toward dense or exploratory regions of
+the knowledge space---rather than whether effective AI services can replace
+labor in final production.
+
+\paragraph{Wages and the labor income share.}
+The distributional results build on the task approach to automation.
+\citet{acemoglurestrepo2019} distinguish the displacement effect of automating
+existing tasks from the productivity and reinstatement effects that can raise
+labor demand. In CES models, the unit-elasticity threshold determines whether
+greater use of an input reduces the income share of the other input, a mechanism
+used by \citet{karabarbounisneiman2014} to study the declining labor share.
+Recent work shows that greater automation can therefore raise wages while
+reducing labor's income share \citep{autorkausik2026,yango2026}. In the long run,
+\citet{raymookherjee2022} show that capital accumulation can drive labor's share
+to zero while real wages rise indefinitely, and \citet{restrepo2025agi} obtains
+a vanishing labor share when compute can perform all bottleneck work. I do not
+claim either coexistence result as new. I show instead when it arises in the
+equilibrium with autonomous AI research: above the regime threshold, output per
+person and real wages both grow faster, but output grows faster than wages. The
+result yields an exact expression linking the output--wage growth wedge to the
+rate at which labor's income share declines.
+
+\paragraph{Interest rates.}
+AI-driven growth can also affect equilibrium returns. Faster expected
+consumption growth raises long-term real rates through consumption smoothing in
+\citet{chowhalperinmazlish2026}, and the AI scenarios in \citet{rachel2025}
+and \citet{melinavilla2025} can raise the natural rate through different saving
+and investment channels. The sign is not universal in richer models. I study a
+narrower object: the net return on physical capital in a closed-economy Ramsey
+equilibrium. The return remains tied to labor-augmenting technological progress
+when labor is the bottleneck, but rises with attainable AI efficiency in the
+AI-dominated regime. This is a regime-specific comparative static, not a
+forecast of market interest rates.
+
+\paragraph{AI services and market structure.}
+The distinction between raw compute and the effective services it produces is
+informed by \citet{korinekmckelvey2026}, who separately measure physical
+compute, inference, training and R\&D, algorithms, and model capital. I retain
+separate compute flows for inference and research but summarize the technology
+that augments both in one AI-efficiency stock. The integrated developer is a
+tractable limiting case of the concentration forces studied by
+\citet{korinekvipra2025} and the AI market-power questions surveyed by
+\citet{gans2024}. Evidence on model pricing, entry, and differentiation in
+\citet{demireretal2025} also cautions against treating current AI markets as a
+literal monopoly. I hold market structure fixed to isolate the dynamic
+mechanism. This accounting distinguishes the AI industry's gross revenue from
+monopoly profit: inference and research expenditure are paid before the
+developer distributes the residual to its owner.
+
+\paragraph{Contribution.}
+The individual ingredients---research automation, production bottlenecks,
+declining labor shares, rising wages, and higher returns under faster
+growth---are established in the literature. My contribution is their joint
+equilibrium characterization in a model with recursive AI improvement and a
+profit-maximizing AI developer. I derive an explicit condition separating the
+labor-bottleneck and AI-dominated regimes, characterize the associated growth,
+wage, interest-rate, and income-share limits, and establish sufficient
+conditions for nearby infinite-horizon equilibrium trajectories rather than
+only balanced-growth candidates. The existence results are local in initial
+stocks and apply to each fixed finite AI-efficiency frontier; they do not claim
+global existence from arbitrary initial conditions or establish an equilibrium
+for an unbounded frontier.
