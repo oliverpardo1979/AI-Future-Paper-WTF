@@ -20,7 +20,7 @@ separate extension, or the current archival manuscript.
   if it changes or establishes the robustness of a central result.
 - The notation, timing, and parameter meanings inherited from the current
   benchmark remain unchanged.
-- A finite capability frontier is an equilibrium regularization and an
+- A finite AI-efficiency frontier is an equilibrium regularization and an
   analytical device, not a robustness exercise. The uncapped economy is studied
   only through an explicitly stated limiting argument.
 
@@ -31,7 +31,7 @@ separate extension, or the current archival manuscript.
 2. Present final production and solve the competitive final-good firm.
 3. Derive the static relationship between AI services and labor.
 4. Present the integrated AI developer and explain the market structure.
-5. Define AI production services, AI research services, and capability
+5. Define effective AI production services, effective AI research services, and AI efficiency
    accumulation.
 6. Solve the developer's pointwise service decision before deriving its dynamic
    conditions.
@@ -52,7 +52,7 @@ equilibrium trajectory.
 |---|---|---|---|---|
 | 1 | Static effect of AI services on production labor and the wage | `prop:axm-ai-labor-comparative-static` | Proven | Model |
 | 2 | Existence and uniqueness of the pointwise monopoly service choice | `prop:axm-monopoly-existence` | Proven under stated curvature conditions | Model; technical proof in appendix |
-| 3 | Invariance of the finite capability domain and finite-horizon developer existence | `prop:axm-finite-cap-invariance` | Proven | Model |
+| 3 | Invariance of the finite AI-efficiency domain and finite-horizon developer existence | `prop:axm-finite-cap-invariance` | Proven | Model |
 | 4 | Checkable sufficient condition for global developer optimality with a finite frontier | `prop:axm-capped-developer-sufficiency` | Proven | Model; proof in appendix |
 | 5 | Labor bottleneck when \(\sigma<1\) | `prop:axm-complements` | Proven under regular limiting conditions | Equilibrium regimes |
 | 6 | Local equilibrium existence near the complementary-input limit | `prop:axm-complement-local-existence` | Proven | Equilibrium regimes |
@@ -60,7 +60,7 @@ equilibrium trajectory.
 | 8 | Local equilibrium trajectories around the unit-elastic balanced-growth path | `prop:axm-unit-saddle-path` | Proven | Equilibrium regimes |
 | 9 | Two finite-frontier terminal regimes separated by \(\overline B_c\) when \(\sigma>1\) | `prop:axm-capped-terminal-regimes` | Proven conditional on a regular frontier approach | Equilibrium regimes; central proposition |
 | 10 | Local finite-cap equilibrium paths on both sides of \(\overline B_c\) | `prop:axm-capped-local-equilibrium` | Proven | Equilibrium regimes |
-| 11 | No finite-rate balanced-growth path with unbounded capability when \(\sigma>1\) | `prop:axm-no-bgp` | Proven conditional on \(B\to\infty\) | Equilibrium regimes |
+| 11 | No finite-rate balanced-growth path with unbounded AI efficiency when \(\sigma>1\) | `prop:axm-no-bgp` | Proven conditional on \(B\to\infty\) | Equilibrium regimes |
 | 12 | Finite-window limit as \(\overline B\to\infty\) and noncommuting long-run limit | `prop:axm-infinite-frontier-limit` | Proven; does not establish uncapped equilibrium | Equilibrium regimes |
 | 13 | Global finite-cap equilibrium from the common initial stocks for a moderate frontier | `global_finite_cap_bvp_analysis.json` | Numerically admitted under the documented equilibrium rule | Quantitative equilibria |
 
@@ -93,8 +93,8 @@ equilibrium trajectory.
 The main text should contain at most the following items, subject to the
 equilibrium-admission rule:
 
-1. A diagram of the benchmark model and the feedback from capability to AI
-   research services.
+1. A diagram of the benchmark model and the feedback from AI efficiency to
+   effective AI research services.
 2. A figure illustrating the static substitution mechanism governed by
    \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.

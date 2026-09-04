@@ -24,7 +24,7 @@ PANELS_1=(
  ('ai_revenue_output_share', 'F. AI-industry revenue\n$p_X X/Y$', 'share'),
 )
 PANELS_2=(
- ('capability_frontier_ratio', 'A. Capability / frontier\n$B/\\bar{B}$', 'fraction'),
+ ('capability_frontier_ratio', 'A. AI efficiency / frontier\n$B/\\bar{B}$', 'fraction'),
  ('consumption_effective_labor', 'B. Consumption\n$C/(AL)$', 'log'),
  ('capital_effective_labor', 'C. Capital\n$K/(AL)$', 'log'),
  ('inference_revenue_share', 'D. Inference / AI revenue\n$U/(p_X X)$', 'share'),

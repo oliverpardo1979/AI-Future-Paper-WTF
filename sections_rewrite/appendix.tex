@@ -77,8 +77,8 @@ strict second-order condition:
 
 Appendix~\ref{app:rewrite-monopoly-choice} establishes \(X^*>0\), and the
 envelope condition \eqref{eq:rewrite-profit-envelope} gives
-\(\pi_B=X^*/B^2>0\). A marginal increase in capability therefore raises
-current optimized profit and weakly raises future capability under a fixed
+\(\pi_B=X^*/B^2>0\). A marginal increase in AI efficiency therefore raises
+current optimized profit and weakly raises future AI efficiency under a fixed
 research policy. At a differentiable optimum its current-value shadow price is
 strictly positive: \(q>0\). The part of the Hamiltonian that depends on \(M\)
 is
@@ -98,21 +98,21 @@ that the developer's objective has a finite value or that a candidate policy
 is globally optimal. The result below addresses the value on a fixed finite
 horizon, taking the paths of $K,A,L,$ and $r$ as given. To explain the role of
 Assumption~\ref{ass:rewrite-research-curvature}, I also consider values of
-$\eta$ outside its maintained range, retaining $0<\eta<1$ from the capability
+$\eta$ outside its maintained range, retaining $0<\eta<1$ from the AI-efficiency
 law. Global optimality is addressed separately in
 Proposition~\ref{prop:rewrite-developer-sufficiency}.
 
 \begin{proposition}[Large-scale research expenditure]
 \label{prop:rewrite-research-scale}
-Fix a finite horizon, an initial capability stock, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
+Fix a finite horizon, an initial AI-efficiency level, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
 \(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
 For a fixed finite frontier, the truncated problem instead has a finite value
 and attains its maximum for every $0<\eta<1$.
 \end{proposition}
 
 The uncapped result compares the cost of research with its effect on future
-operating profit. Expenditure first raises capability; higher capability then
-raises the profit from supplying AI services. The proof bounds these two
+operating profit. Expenditure first raises AI efficiency; higher AI efficiency then
+raises the profit from supplying effective AI production services. The proof bounds these two
 effects in turn and compares their combined growth with the linear cost of
 research.
 
@@ -130,7 +130,7 @@ For an admissible research policy, let its discounted net payoff be
  \exp\left\{-\int_0^t r_s\dd s\right\}
  [\pi(B_t)-M_t]\dd t.
 \]
-For every admissible policy, \(B\) is nondecreasing. The capability law implies
+For every admissible policy, \(B\) is nondecreasing. The AI-efficiency law implies
 \[
  \frac{\dd}{\dd t}B_t^{1-\eta}
  =(1-\eta)\chi M_t^\eta.
@@ -177,14 +177,14 @@ such that
  \pi(B)\leq C_\pi(1+B^\theta).
  \label{eq:rewrite-profit-upper-bound}
 \end{equation}
-Combining the capability and profit bounds shows that operating profit grows
+Combining the AI-efficiency and profit bounds shows that operating profit grows
 no faster than a constant plus a term proportional to
 \begin{equation}
  S^{\eta(1-\alpha)/[\alpha(1-\eta)]},
  \label{eq:rewrite-research-benefit-order}
 \end{equation}
 where the exponent is the product of $\eta/(1-\eta)$, from expenditure to
-capability, and $(1-\alpha)/\alpha$, from capability to profit. This is an
+AI efficiency, and $(1-\alpha)/\alpha$, from AI efficiency to profit. This is an
 upper bound on the order of growth, not an exact profit function.
 
 On a finite horizon, integrability of $r$ bounds the discount factor above
@@ -264,7 +264,7 @@ illustrative rather than estimated.
 \label{app:rewrite-developer-sufficiency}
 
 To state a sufficient condition for global optimality, define the
-service--capability elasticity
+service--efficiency elasticity
 \begin{equation}
  \varepsilon_B\equiv
  \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
@@ -301,14 +301,14 @@ A direct differentiation gives
 \label{prop:rewrite-developer-sufficiency}
 Consider a feasible finite-frontier developer policy with a finite objective.
 Suppose it satisfies the pointwise monopoly choice, research first-order
-condition, capability law, costate equation, and developer transversality
+condition, AI-efficiency law, costate equation, and developer transversality
 condition derived above. If \(2\eta\leq1\) and
 \begin{equation}
  \psi(B)(\varepsilon_B-2)
  \leq\frac{B}{\overline B}
  \label{eq:rewrite-capped-concavity-gate}
 \end{equation}
-for every date and every capability in the reachable interval
+for every date and every AI-efficiency level in the reachable interval
 \([B_0,\overline B)\), then the policy is a global solution to the developer's
 problem.
 \end{proposition}
@@ -316,7 +316,7 @@ problem.
 Condition \eqref{eq:rewrite-capped-concavity-gate} is sufficient, not
 necessary. It holds strictly near the frontier because its left-hand side
 converges to zero while its right-hand side converges to one. It can fail at
-lower capability levels, which is why the numerical equilibrium audit checks
+lower AI-efficiency levels, which is why the numerical equilibrium audit checks
 it along the entire reachable path.
 
 \Needspace{6\baselineskip}
@@ -361,7 +361,7 @@ global optimality.
 \end{proof}
 
 \paragraph{A sufficient condition without global concavity.}
-The preceding curvature condition can fail at counterfactual capability levels
+The preceding curvature condition can fail at counterfactual AI-efficiency levels
 even when the candidate is globally optimal. An alternative is to check that
 the maximized Hamiltonian lies below its tangent at the candidate state.
 This changes the optimality test, not the developer's problem.
@@ -390,7 +390,7 @@ candidate state is
 \label{prop:rewrite-hamiltonian-support}
 Consider a feasible finite-frontier developer policy with a finite objective,
 positive shadow price, and $0<\eta<1$. Suppose it satisfies the monopoly
-choice, research first-order condition, capability law, costate equation,
+choice, research first-order condition, AI-efficiency law, costate equation,
 and developer transversality condition. It is globally optimal if, at every
 date and for every $\widetilde R_B\geq R_{B,0}$,
 \begin{equation}
@@ -456,7 +456,7 @@ To obtain this limit, use $M/Y\to0$, $\psi(B)R_B\to0$, and
 $\pi(B_*)/Y\to\alpha(1-\alpha)(B_*/\overline B)^{(1-\alpha)/\alpha}$.
 Thus the global support condition holds sufficiently late on this
 continuation even when the stronger curvature condition fails at low
-counterfactual capabilities. The finite transition still requires its own
+counterfactual AI-efficiency levels. The finite transition still requires its own
 support check.
 
 \clearpage
@@ -589,18 +589,18 @@ $n-\rho=-0.037$. This analytical rate, rather than a small terminal value
 alone, establishes the transversality check.
 
 For $\sigma=0.90,1,1.10$, the developer's operating profit is concave in
-research depth over the counterfactual capability domain checked at each
-date. The final audit uses 161 dates and 161 capability points per date,
+research depth over the counterfactual AI-efficiency domain checked at each
+date. The final audit uses 161 dates and 161 AI-efficiency points per date,
 with scalar minimization between grid points. For $\sigma=1.50$, this
-stronger curvature test fails at low counterfactual capabilities; checking
+stronger curvature test fails at low counterfactual AI-efficiency levels; checking
 concavity only along the realized path would miss that failure.
 
 I instead apply Proposition~\ref{prop:rewrite-hamiltonian-support}. At each
 date, I minimize its tangent gap, divided by the candidate's $Y$, over
-counterfactual capabilities $B\geq B_0$, refining every local minimum found
+counterfactual AI-efficiency levels $B\geq B_0$, refining every local minimum found
 on the grid. An analytical upper bound on the Hamiltonian's derivative
 covers the unbounded research-depth domain beyond the numerical grid.
-The check is repeated with 81 dates and 101 capability points, then with
+The check is repeated with 81 dates and 101 AI-efficiency points, then with
 321 dates and 241 points. The smallest normalized gap is
 $-2.6\times10^{-14}$, consistent with floating-point error at the tangent
 point. The numerical gap tolerance is $10^{-10}$; the economic support

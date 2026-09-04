@@ -27,12 +27,12 @@ $\delta$ & 0.05 & Annual capital depreciation & Annual benchmark; PWT comparison
 $\rho$ & 0.04 & Annual household discount rate & Preference calibration\\
 $n$ & 0.003 & Annual population growth & Constant-rate approximation to the UN 2024--2100 world projection \citep{unwpp2024}\\
 $\gamma$ & 0.01 & Annual labor-productivity growth & Illustrative long-run trend; see \citet{oecdlongrun2025}\\
-$\omega_X$ & 0.20 & Weight on AI services & Scenario choice, not an observed industry share\\
+$\omega_X$ & 0.20 & Weight on effective AI production services & Scenario choice, not an observed industry share\\
 $\omega_L$ & 0.80 & Weight on effective labor & $1-\omega_X$\\
 $\eta$ & 0.20 & Research exponent & $\eta<\alpha$ and $2\eta\leq1$\\
 $\chi$ & 0.01 & Research productivity & Illustrative research-speed parameter\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Four scenarios spanning the analytical regimes\\
-$\overline B$ & $1.10\,\overline B_c(1.50)$ $\simeq170.124$ & Common capability frontier & Ten percent above the threshold for $\sigma=1.50$\\
+$\overline B$ & $1.10\,\overline B_c(1.50)$ $\simeq170.124$ & Common AI-efficiency frontier & Ten percent above the threshold for $\sigma=1.50$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -59,8 +59,8 @@ I set
 \end{equation}
 These stocks come from the unit-elastic balanced-growth reference of the
 uncapped specification with the same parameters. They are not a balanced-growth
-state of the capped economy. An exact constant-capability reference at
-$B_0=\overline B$ would eliminate further capability improvements and would
+state of the capped economy. An exact constant-efficiency reference at
+$B_0=\overline B$ would eliminate further improvements in AI efficiency and would
 lie outside the interior problem studied here. In each capped economy, the
 BVP selects $C_0$ and $q_0$ anew; neither jump variable is fixed at its
 uncapped reference value.
@@ -80,7 +80,7 @@ independently reconstructed dynamic residuals, stability to longer horizons
 and tighter tolerances, both transversality conditions, and sufficient global
 developer optimality. The first three scenarios satisfy the global concavity
 test. For $\sigma=1.50$, that stronger test fails at low counterfactual
-capabilities, but the Hamiltonian support test in
+AI-efficiency levels, but the Hamiltonian support test in
 Proposition~\ref{prop:rewrite-hamiltonian-support} passes. Its analytical
 long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 
@@ -139,7 +139,7 @@ essential to interpreting the comparison.
 \subsection{Technology, accumulation, and AI-revenue composition}
 \label{subsec:rewrite-technology-revenue}
 
-Figure~\ref{fig:rewrite-technology-revenue} reports capability relative to its
+Figure~\ref{fig:rewrite-technology-revenue} reports AI efficiency relative to its
 frontier, consumption and capital per unit of effective labor, and the use of
 AI-industry revenue. The last three panels deliberately divide by $p_XX$,
 not by $Y$:
@@ -157,7 +157,7 @@ distribution to its owner.
  \caption{Technology, accumulation, and the composition of AI revenue.
  The scenarios and time window match Figure~\ref{fig:rewrite-growth-distribution}.
  Consumption and capital per unit of effective labor use logarithmic scales.
- Capability relative to the frontier and the three revenue shares use linear
+ AI efficiency relative to the frontier and the three revenue shares use linear
  scales. The revenue shares sum to one; negative net distributions, if any,
  represent household equity injections rather than negative gross revenue.}
  \label{fig:rewrite-technology-revenue}

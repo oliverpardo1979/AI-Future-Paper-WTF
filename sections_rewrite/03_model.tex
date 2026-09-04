@@ -1,7 +1,7 @@
 \section{Model}
 \label{sec:rewrite-model}
 
-Time is continuous.  The economy contains a representative household, competitive final-good firms, and an integrated AI developer. Labor productivity $A$ grows exogenously. AI capability $B$ grows through autonomous AI research: the only current input used to improve $B$ is research compute. The model therefore describes an economy in which the replacement of human researchers at the technological frontier has already occurred.
+Time is continuous.  The economy contains a representative household, competitive final-good firms, and an integrated AI developer. Labor productivity $A$ grows exogenously. AI efficiency $B$ improves through autonomous AI research: the only current input used to raise $B$ is research compute. The model therefore describes an economy in which the replacement of human researchers at the technological frontier has already occurred.
 
 %I derive the model in the order in which its agents solve their problems. I first present the household and final-good firms. I then state the developer's intertemporal problem before deriving its within-date service choice and its dynamic research conditions. Only after every agent has been characterized do I combine their conditions in the definition of equilibrium.
 
@@ -66,7 +66,7 @@ Its transversality condition is
 \subsection{Final-good production}
 \label{subsec:rewrite-final-production}
 
-Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and AI production services $X$. Let $0<\alpha<1$ be the physical-capital elasticity, $\delta\geq0$ the depreciation rate, and $\sigma>0$ the elasticity of substitution between effective labor and AI production services. The CES weights satisfy
+Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and effective AI production services $X$. Let $0<\alpha<1$ be the physical-capital elasticity, $\delta\geq0$ the depreciation rate, and $\sigma>0$ the elasticity of substitution between effective labor and effective AI production services. The CES weights satisfy
 $\omega_L,\omega_X\in(0,1)$ and $\omega_L+\omega_X=1$. Production is
 \begin{align}
  Y&=K^\alpha Z^{1-\alpha},
@@ -82,13 +82,13 @@ $\omega_L,\omega_X\in(0,1)$ and $\omega_L+\omega_X=1$. Production is
 Jobs comprise multiple tasks, and AI may substitute for human input in some
 tasks while complementing it in others \citep{autor2013,acemoglurestrepo2019}.
 I abstract from differences across workers, occupations, and tasks by modeling
-homogeneous labor and aggregate AI production services. The elasticity of
+homogeneous labor and aggregate effective AI production services. The elasticity of
 substitution governs the relationship between these aggregate inputs, rather
 than the allocation of individual tasks to humans or AI. This simplification
 focuses the analysis on aggregate wages and labor's income share, leaving
 differences in exposure and earnings across workers outside the model.
 
-Let \(p_X\) denote the price of one unit of AI production services. Taking the input prices \(r+\delta,w,\) and \(p_X\) as given, a final-good firm solves
+Let \(p_X\) denote the price of one unit of effective AI production services. Taking the input prices \(r+\delta,w,\) and \(p_X\) as given, a final-good firm solves
 \begin{equation}
  \max_{K,L,X\geq0}
  \left\{K^\alpha Z(AL,X)^{1-\alpha}-(r+\delta)K-wL-p_XX\right\}.
@@ -128,17 +128,17 @@ The inverse absolute elasticity is
 \end{equation}
 This demand schedule is an input to the developer's problem.
 
-\subsubsection{AI services and production labor}
+\subsubsection{Effective AI production services and labor}
 \label{subsubsec:rewrite-static-substitution}
 
-The elasticity \(\sigma\) governs two different margins. The first is whether more AI services raise or lower labor's marginal product. The second is whether labor receives a larger or smaller fraction of output. These margins have different thresholds. Define production labor's share of output as
+The elasticity \(\sigma\) governs two different margins. The first is whether more effective AI production services raise or lower labor's marginal product. The second is whether labor receives a larger or smaller fraction of output. These margins have different thresholds. Define production labor's share of output as
 \begin{equation}
  \ell^Y\equiv\frac{wL}{Y}=(1-\alpha)(1-s_X).
  \label{eq:rewrite-labor-share}
 \end{equation}
 
 \Needspace{7\baselineskip}
-\begin{proposition}[AI services, wages, labor's income share, and conditional labor demand;
+\begin{proposition}[Effective AI production services, wages, labor's income share, and conditional labor demand;
 \citealp{autorkausik2026}; \citealp{yango2026}]\label{rem:effect}
 \label{rem:rewrite-ai-labor}
 Consider an increase in $X$. To evaluate its effects on $w$ and $\ell^Y$, hold $K$ and $L$ fixed; to evaluate its effect on conditional labor demand $L$, hold $K$ and $w$ fixed. If $\sigma<1$, $w$, $\ell^Y$, and $L$ all rise with $X$. If $1<\sigma<1/\alpha$, $w$ and $L$ rise while $\ell^Y$ falls. If $\sigma>1/\alpha$, all three fall. %At $\sigma=1$, $w$ and $L$ rise while $\ell^Y$ is unchanged. At $\sigma=1/\alpha$, $\ell^Y$ falls while $w$ and $L$ are unchanged.
@@ -165,26 +165,26 @@ The proposition follows from the final-good firm's first-order conditions:
 \end{proof}
 
 Proposition~\ref{rem:effect} describes conditional responses to an increase in
-AI production services $X$, not the general-equilibrium effects of greater AI
-capability. The latter depend on how the developer adjusts service supply and
+effective AI production services $X$, not the general-equilibrium effects of greater
+AI efficiency. The latter depend on how the developer adjusts service supply and
 how capital and prices respond.
 
 
 \subsection{The AI developer}
 \label{subsec:rewrite-developer}
 
-\subsubsection{AI production and research services}
+\subsubsection{Effective AI production and research services}
 \label{subsubsec:rewrite-ai-services}
 
-The model distinguishes two uses of compute. The variables $U$ and $M$ are flows of computing resources allocated to inference and research, respectively. In a concrete application, their empirical counterparts would be compute expenditure per unit of time. %They are not measures of AI capability.
+The model distinguishes two uses of compute. The variables $U$ and $M$ are flows of computing resources allocated to inference and research, respectively. In a concrete application, their empirical counterparts would be compute expenditure per unit of time. %They are not measures of AI efficiency.
 I choose to measure compute in units such that one unit of compute costs one unit of the final good.
 
-The stock $B$ is a scalar index of compute-augmenting AI capability. It summarizes improvements that allow a given amount of compute to accomplish more. Thus $B$ is an effective-compute multiplier. This terminology follows the distinction between compute and AI capabilities in \citet{sastryetal2024}. Inference compute produces AI production services according to
+The variable $B$ measures AI efficiency. It is a nonrival scalar index of how effectively computing resources produce AI services. A higher $B$ allows a given amount of compute to produce more effective services; equivalently, $B$ is an effective-compute multiplier. The computer-science literature calls closely related improvements \emph{algorithmic efficiency} or \emph{compute-augmenting algorithmic progress} \citep{hernandezbrown2020,erdilbesiroglu2022}. In AI measurement work, inference and R\&D/training output are instead quality-adjusted for algorithmic progress \citep{korinekmckelvey2026}. I use the broader term \emph{AI efficiency} because the same $B$ augments compute used in both activities. This distinction between compute and the AI technology that augments it is also consistent with \citet{sastryetal2024}. Inference compute produces effective AI production services according to
 \begin{equation}
  X=BU.
  \label{eq:rewrite-ai-service}
 \end{equation}
-Equation~\eqref{eq:rewrite-ai-service} distinguishes the raw computing input $U$ from the resulting flow $X$ of effective AI production services. Research compute analogously produces the flow $BM$ of effective AI research services. Thus $U$ and $M$ are rival resource inputs, while $BU$ and $BM$ are the corresponding effective service flows. This capability--compute distinction follows the accounting architecture in \citet{davidsonetal2026}.
+Equation~\eqref{eq:rewrite-ai-service} distinguishes the raw computing input $U$ from the resulting flow $X=BU$ of effective AI production services. Research compute analogously produces the flow $BM$ of effective AI research services. Thus $U$ and $M$ are rival resource inputs, while $BU$ and $BM$ are the corresponding effective service flows. In the terminology of \citet{korinekmckelvey2026}, their closest empirical counterparts are quality-adjusted inference output and quality-adjusted R\&D/training output. The research use also corresponds to the AI-research feedback studied by \citet{davidsonetal2026}.
 
 Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
 
@@ -195,9 +195,9 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
   \node[rewrite-state] (A) at (-7.5,2.0) {\(A\)\\labor productivity};
   \node[rewrite-input] (L) at (-7.5,0.7) {\(L\)\\production labor};
   \node[rewrite-technology] (AL) at (-4.0,1.35) {\(AL\)\\effective labor};
-  \node[rewrite-state] (B) at (-7.5,-0.8) {\(B\)\\AI capability};
+  \node[rewrite-state] (B) at (-7.5,-0.8) {\(B\)\\AI efficiency};
   \node[rewrite-input] (U) at (-7.5,-2.1) {\(U\)\\inference compute};
-  \node[rewrite-technology] (X) at (-4.0,-1.45) {\(X=BU\)\\AI production services};
+  \node[rewrite-technology] (X) at (-4.0,-1.45) {\(X=BU\)\\effective AI production services};
   \node[rewrite-technology] (Z) at (-0.2,0.0)
    {\(Z=\operatorname{CES}(AL,X)\)\\elasticity \(\sigma\)};
   \node[rewrite-state] (K) at (-0.2,2.2) {\(K\)\\physical capital};
@@ -214,15 +214,15 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
   \draw[rewrite-flow] (K) -- (Y);
  \end{tikzpicture}%
  }
- \caption{Production of final output and AI services. Capability $B$ augments inference compute $U$ to produce $X=BU$. AI services combine with effective labor $AL$ to produce $Z$, which combines with capital $K$ to produce $Y$.}
+ \caption{Production of final output and effective AI production services. AI efficiency $B$ augments inference compute $U$ to produce $X=BU$, the flow of effective AI production services. These services combine with effective labor $AL$ to produce $Z$, which combines with capital $K$ to produce $Y$.}
  \label{fig:rewrite-model-flow}
 \end{figure}
 
-\subsubsection{Autonomous capability accumulation}
+\subsubsection{Autonomous improvement in AI efficiency}
 \label{subsubsec:rewrite-capability}
 
-Given initial capability \(B_0>0\) and a capability frontier
-\(\overline B\in(B_0,\infty]\), AI capability evolves according to
+Given initial AI efficiency \(B_0>0\) and an efficiency frontier
+\(\overline B\in(B_0,\infty]\), AI efficiency evolves according to
 \begin{equation}
  \dot B=\chi(BM)^\eta\psi(B),
  \qquad
@@ -232,19 +232,19 @@ Given initial capability \(B_0>0\) and a capability frontier
  \label{eq:rewrite-capability-law}
 \end{equation}
 Figure~\ref{fig:rewrite-capability-flow} summarizes the
-capability-accumulation mechanism.
+AI-efficiency improvement mechanism.
 \begin{figure}[H]
  \centering
  \resizebox{0.72\textwidth}{!}{%
  \begin{tikzpicture}[>=Latex,font=\small]
   \node[rewrite-input] (M) at (-5.9,0.9) {\(M\)\\research compute};
-  \node[rewrite-state] (B) at (-5.9,-0.9) {\(B\)\\AI capability};
+  \node[rewrite-state] (B) at (-5.9,-0.9) {\(B\)\\AI efficiency};
   \node[rewrite-technology] (BM) at (-1.9,0.9)
-   {\(BM\)\\AI research services};
+   {\(BM\)\\effective AI research services};
   \node[rewrite-technology] (psi) at (-1.9,-0.9)
    {\(\psi(B)\)\\remaining room};
   \node[rewrite-technology] (Bd) at (2.2,0.0)
-   {\(\dot B=\chi(BM)^\eta\psi(B)\)\\new capability};
+   {\(\dot B=\chi(BM)^\eta\psi(B)\)\\efficiency improvement};
 
   \draw[rewrite-flow] (B) -- (BM);
   \draw[rewrite-flow] (M) -- (BM);
@@ -255,20 +255,20 @@ capability-accumulation mechanism.
     (-5.9,-2.0) -- (B.south);
  \end{tikzpicture}%
  }
- \caption{Autonomous capability accumulation. Capability $B$ augments
- research compute $M$ to produce $BM$. Research services and the remaining
+ \caption{Autonomous improvement in AI efficiency. AI efficiency $B$ augments
+ research compute $M$ to produce $BM$, the flow of effective AI research services. These services and the remaining
  room for improvement $\psi(B)$ determine \(\dot B\), which increases $B$.}
  \label{fig:rewrite-capability-flow}
 \end{figure}
-The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same capability stock $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Because $BM$ enters the AI capability accumulation technology, a higher $B$ makes each unit of research compute $M$ more productive and creates recursive improvement. The term \(\psi(B)\) reduces the remaining room for improvement as capability approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
+The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-efficiency index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Because $BM$ enters the law of motion for AI efficiency, a higher $B$ makes each unit of research compute $M$ more productive and creates recursive improvement. The term \(\psi(B)\) reduces the remaining room for improvement as AI efficiency approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
-The frontier \(\overline B\) allows to establish and compute an equilibrium for each finite frontier and then ask whether these equilibria have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity, as discussed below. Capability may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
+The efficiency frontier \(\overline B\) allows me to establish and compute an equilibrium for each finite frontier and then ask whether these equilibria have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity, as discussed below. AI efficiency may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
-\subsubsection{Supply of production AI services}
+\subsubsection{Supply of effective AI production services}
 \label{subsubsec:rewrite-market-structure}
 
 An integrated AI developer has exclusive ownership of $B$. It conducts research
-and sells AI production services. The developer sells $X$ and purchases the $U=X/B$ units of inference compute needed to supply those services. Because $X$ does not enter the capability law defined by Equation (\ref{eq:rewrite-capability-law})
+and sells effective AI production services. The developer sells $X$ and purchases the $U=X/B$ units of inference compute needed to supply those services. Because $X$ does not enter the law of motion for AI efficiency defined by Equation (\ref{eq:rewrite-capability-law})
 directly, its within-date choice can be solved conditional on $B,K,$ and $L$.
 Define optimized operating profit before research expenditure as
 \begin{equation}
@@ -304,11 +304,11 @@ The envelope theorem gives
  \pi_B=\frac{X}{B^2}=\frac{U}{B}.
  \label{eq:rewrite-profit-envelope}
 \end{equation}
-%The $B^2$ term does not represent quadratic returns to capability. It results from differentiating the inference cost $X/B$: 
-At a fixed $X$, a marginal increase in AI capability saves $U/B$ units of the consumption good.
+%The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$:
+At a fixed $X$, a marginal increase in AI efficiency saves $U/B$ units of the consumption good.
 
-Capability is nonrival in use. Once $B$ has been developed, using it to
-augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make the production of AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
+AI efficiency is nonrival in use. Once $B$ has been developed, using it to
+augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make effective AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
 
 To see the resulting appropriability problem, suppose that competitive
 service providers had free access to $B$. Free entry would imply
@@ -317,8 +317,8 @@ service providers had free access to $B$. Free entry would imply
  \qquad p_XX-\frac{X}{B}=0.
  \label{eq:rewrite-competitive-ai}
 \end{equation*}
-The service market would generate no operating rent. A developer that paid for $M$ would increase a common AI capability stock $B$ that competing providers could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. %The problem is therefor one of research incentives, not the physical availability of compute.
-%I therefore assign exclusive ownership of $B$ to an integrated developer that conducts research and sells AI production services. 
+The service market would generate no operating rent. A developer that paid for $M$ would improve a common AI-efficiency index $B$ that competing providers could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. %The problem is therefor one of research incentives, not the physical availability of compute.
+%I therefore assign exclusive ownership of $B$ to an integrated developer that conducts research and sells effective AI production services.
 Exclusive ownership allows the developer to capture part of the value created by a higher $B$ and makes the return to research appropriable, as in the standard endogenous-growth treatment of nonrival ideas \citep{romer1990}.
 
 That being said, monopoly is an institutional assumption, not a technological implication of nonrivalry. Licensing, oligopoly, public funding, or open-source provision with research subsidies could also support investment in $B$. Each alternative would require an additional institution and would change prices, profits, and the distribution of rents. Recent work studies these alternatives in more detail \citep{korinekvipra2025,gans2024,demireretal2025}.
@@ -326,7 +326,7 @@ That being said, monopoly is an institutional assumption, not a technological im
 \subsubsection{The dynamic problem}
 \label{subsubsec:rewrite-dynamic-developer}
 
-The AI developer uses $M$ for research, and owns the resulting capability stock. %Taking the paths of $r,K,A,$ and $L$ as given, it solves
+The AI developer uses $M$ for research and owns $B$ and any resulting improvements in AI efficiency. %Taking the paths of $r,K,A,$ and $L$ as given, it solves
 %\begin{equation}
 % \max_{\{X_t,M_t\}_{t\geq0}}
 % \int_0^\infty
@@ -386,8 +386,8 @@ The AI developer uses $M$ for research, and owns the resulting capability stock.
 % \pi_B=\frac{X}{B^2}=\frac{U}{B}.
 % \label{eq:rewrite-profit-envelope}
 %\end{equation}
-%The $B^2$ term does not represent quadratic returns to capability. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in capability saves $X/B^2$ units of compute.
-Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist chooses how much research compute $M$ to rent to increase AI capabilities $B$ and solve the following problem:
+%The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in AI efficiency saves $X/B^2$ units of compute.
+Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist chooses how much research compute $M$ to rent to increase AI efficiency $B$ and solves the following problem:
 \begin{equation}
 \Pi = \max_{\{M_t\}_{t\geq0}}
  \int_0^\infty
@@ -399,7 +399,7 @@ subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction do
 
 Profit can be negative at a date because the model imposes no separatecash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
-Let $q$ be the current-value shadow price of capability, measured in units of
+Let $q$ be the current-value shadow price of AI efficiency, measured in units of
 the current final good per unit of $B$. An interior research choice satisfies
 \begin{equation}
  q\chi\eta B(BM)^{\eta-1}\psi(B)=1,
@@ -411,9 +411,9 @@ the current final good per unit of $B$. An interior research choice satisfies
 % \right]^{1/(1-\eta)}.
 % \label{eq:rewrite-research-demand}
 %\end{equation}
-Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$ raises capability accumulation by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
-%The factor $B$ appears because raw compute $M$ produces $BM$ effective research services.
-Multiplication by $q$ values the resulting capability gain, accounting for future profit gains and further capability improvement. %The right-hand side is one because one unit of compute costs one unit of the final good. At an interior optimum, an additional unit of research therefore creates exactly enough value to cover its cost.
+Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$ raises the rate of improvement in AI efficiency by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
+%The factor $B$ appears because raw compute $M$ produces $BM$ effective AI research services.
+Multiplication by $q$ values the resulting efficiency gain, accounting for future profit gains and further improvements in AI efficiency. %The right-hand side is one because one unit of compute costs one unit of the final good. At an interior optimum, an additional unit of research therefore creates exactly enough value to cover its cost.
 
 The current-value costate equation is
 \begin{equation}
@@ -428,9 +428,9 @@ Rearranging gives the return equation
  +q\dot B\frac{\psi'(B)}{\psi(B)}+\dot q.
  \label{eq:rewrite-capability-return}
 \end{equation}
-The first term on the right-hand side of Equation (\ref{eq:rewrite-costate}) is the inference-compute saving from better capability. The
+The first term on the right-hand side of Equation (\ref{eq:rewrite-costate}) is the inference-compute saving from greater AI efficiency. The
 second is the gain in research productivity. With a finite frontier, the third
-term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on capability. Together these
+term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on AI efficiency. Together these
 returns must equal the market return $rq$.
 
 The developer's transversality condition is
@@ -439,11 +439,11 @@ The developer's transversality condition is
  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
  \label{eq:rewrite-developer-tvc}
 \end{equation}
-It rules out a path that leaves positive discounted value in unused capability.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
+It rules out a path that leaves positive discounted value in the AI-efficiency state.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
 
 %\begin{proposition}[Research is interior]
 %\label{prop:rewrite-research-interior}
-%Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued optimum with $B>0$ and positive demand for AI production services. Then $q>0$ and $M>0$ at every finite date. Research may converge to zero asymptotically, but the developer cannot stop capability accumulation by choosing $M=0$ at a finite date.
+%Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued optimum with $B>0$ and positive demand for effective AI production services. Then $q>0$ and $M>0$ at every finite date. Research may converge to zero asymptotically, but the developer cannot stop improvements in AI efficiency by choosing $M=0$ at a finite date.
 %\end{proposition}
 
 I maintain the following restriction.
@@ -560,8 +560,8 @@ The two transversality conditions are
 \begin{remark}[The economy without AI]
 \label{rem:rewrite-no-ai}
 As a separate boundary case, set $\omega_X=0$ and $\omega_L=1$, so that
-$Z=AL$. AI services have no productive use, and the developer has no revenue
-with which to reward capability improvements. Thus $X=U=M=\Pi=0$; capability
+$Z=AL$. Effective AI production services have no productive use, and the developer has no revenue
+with which to reward improvements in AI efficiency. Thus $X=U=M=\Pi=0$; $B$
 remains constant and does not affect allocations. With $L=N$, the model reduces
 to the Ramsey--Cass--Koopmans economy with logarithmic utility and exogenous
 labor-augmenting productivity growth:
@@ -577,7 +577,7 @@ the interior AI price and costate conditions must not be imposed at
 $\omega_X=0$. In particular, $wN/Y=1-\alpha$ and $(r+\delta)K/Y=\alpha$.
 \end{remark}
 
-For a finite capability frontier, Proposition~\ref{prop:rewrite-developer-sufficiency} in Appendix~\ref{app:rewrite-developer-sufficiency} provides a sufficient test
+For a finite AI-efficiency frontier, Proposition~\ref{prop:rewrite-developer-sufficiency} in Appendix~\ref{app:rewrite-developer-sufficiency} provides a sufficient test
 for the developer's global optimality.
 
 The system contains no separate household budget or final-good zero-profit
@@ -603,26 +603,26 @@ makes discounting dominate population growth in the household's objective,
 whose effective discount rate is $\rho-n$.
 
 The restriction $\eta<\alpha$ limits the feedback from research expenditure
-to capability and then to operating profit. Without a finite capability
+to AI efficiency and then to operating profit. Without a finite efficiency
 frontier, it ensures that, on a fixed finite horizon and taking $K,A,L,$ and
 $r$ as given, a bound on the operating profits generated by research grows
 less than proportionally with total research expenditure, while its cost
 grows linearly. Arbitrarily large expenditure therefore cannot be optimal.
 Appendix~\ref{app:rewrite-research-scale} establishes this result. A finite
-frontier already bounds capability, so $\eta<\alpha$ is not needed for
+frontier already bounds AI efficiency, so $\eta<\alpha$ is not needed for
 finite-horizon existence of the developer's optimum in that case. I retain
 it as a sufficient restriction on research expenditure that also applies
 when the frontier is removed.
 
 The condition $2\eta\leq1$ serves a different purpose: it makes the research
-term $(BM)^\eta$ jointly concave in $B$ and $M$. Doubling both capability and
+term $(BM)^\eta$ jointly concave in $B$ and $M$. Doubling both AI efficiency and
 research compute increases this term by at most a factor of two. For the
 finite-frontier technology, Appendix~\ref{app:rewrite-developer-sufficiency}
 uses this concavity after a change of state variable. Together with the
 operating-profit curvature condition stated there, it makes the first-order
 and transversality conditions sufficient for global optimality of a feasible
 developer policy with a finite objective.
-It is not, by itself, a concavity condition for the full capability law in
+It is not, by itself, a concavity condition for the full AI-efficiency law in
 the original state variable.
 
 When $\alpha\leq1/2$, the restriction $\eta<\alpha$ already implies
