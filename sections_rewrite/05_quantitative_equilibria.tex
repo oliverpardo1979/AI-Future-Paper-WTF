@@ -26,7 +26,7 @@ $\alpha$ & 0.33 & Capital elasticity & Standard one-third macro benchmark\\
 $\delta$ & 0.05 & Annual capital depreciation & Annual benchmark; PWT comparison \citep{pwt110}\\
 $\rho$ & 0.04 & Annual household discount rate & Preference calibration\\
 $n$ & 0.003 & Annual population growth & Constant-rate approximation to the UN 2024--2100 world projection \citep{unwpp2024}\\
-$\gamma$ & 0.01 & Annual labor-productivity growth & Illustrative long-run trend; see \citet{oecdlongrun2025}\\
+$\gamma$ & 0.01 & Annual growth of labor-augmenting technology & Illustrative long-run trend; see \citet{oecdlongrun2025}\\
 $\omega_X$ & 0.20 & Weight on effective AI production services & Scenario choice, not an observed industry share\\
 $\omega_L$ & 0.80 & Weight on effective labor & $1-\omega_X$\\
 $\eta$ & 0.20 & Research exponent & $\eta<\alpha$ and $2\eta\leq1$\\
@@ -39,6 +39,9 @@ $\overline B$ & $1.10\,\overline B_c(1.50)$ $\simeq170.124$ & Common AI-efficien
 
 The constant $n$ extrapolates a finite-period demographic approximation; it
 is not a claim that the UN projects constant population growth forever.
+The OECD benchmark for $\gamma$ concerns measured labor-productivity growth,
+not $A$ directly. I use it only as an approximate guide to the magnitude of
+long-run labor-augmenting technological progress.
 The parameter $\chi$ determines research speed relative to the other annual
 rates, so it is not merely a free time-unit normalization. The horizontal
 axes below measure model years, not calendar forecasts. Likewise, the OECD's
@@ -75,6 +78,14 @@ Section~\ref{sec:rewrite-regimes}, not the uncapped unit-elastic BGP, determines
 the terminal conditions. Appendix~\ref{app:rewrite-algorithm} documents the
 continuation, equation reconstruction, and numerical checks.
 
+In economic terms, the algorithm takes $K_0$ and $B_0$ as given and selects
+the initial consumption and shadow value that place the economy on the stable
+equilibrium path. It first constructs that path near the analytically
+characterized terminal regime and then moves it gradually to the prescribed
+initial stocks. Solving the boundary-value problem is only the construction
+step; the separate admission tests determine whether the resulting candidate
+is reported as an equilibrium.
+
 A converged BVP is not sufficient for admission. I also check feasibility,
 independently reconstructed dynamic residuals, stability to longer horizons
 and tighter tolerances, both transversality conditions, and sufficient global
@@ -87,26 +98,75 @@ long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 \subsection{Growth, wages, and the distribution of output}
 \label{subsec:rewrite-distribution}
 
-Figure~\ref{fig:rewrite-growth-distribution} presents the six main outcomes.
-Dividing output by $AL$ removes population growth and exogenous productivity
-growth; it does not force the AI-dominated trajectory to become stationary.
-Panels B and C report the annual growth rates of output per person and the
-real wage. Their vertical distance therefore measures the growth wedge in
-Proposition~\ref{prop:rewrite-output-wage-wedge}. AI-industry revenue $p_XX/Y$
-is distinct from profit and from value added. Gross capital income remains
-$\alpha Y$ throughout, so the labor and AI-revenue shares sum to $1-\alpha$.
+Figures~\ref{fig:rewrite-growth-returns} and
+\ref{fig:rewrite-ai-distribution} present the six main outcomes in two thematic
+groups. Each figure includes all four admitted trajectories, so the contrast
+between the labor-bottleneck and AI-dominated regimes remains visible on a
+common scale. The three labor-bottleneck paths consequently appear close to
+one another. This compression reflects their common long-run regime; exact
+initial and limiting values are reported in
+Table~\ref{tab:rewrite-central-path-values}.
+
+Panels A and B of Figure~\ref{fig:rewrite-growth-returns} report the annual
+growth rates of output per person and the real wage on the same vertical
+scale. Their vertical distance measures the growth wedge in
+Proposition~\ref{prop:rewrite-output-wage-wedge}. Panel C reports the net
+interest rate. Figure~\ref{fig:rewrite-ai-distribution} connects these outcomes
+to the approach of AI efficiency toward its frontier and to the distribution
+of final output. AI-industry revenue $p_XX/Y$ is distinct from profit and from
+value added. Gross capital income remains $\alpha Y$ throughout, so the labor
+and AI-revenue shares sum to $1-\alpha$.
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_distribution.pdf}
- \caption{Growth, wages, and the distribution of final output. Each panel
- compares the same four admitted numerical equilibrium trajectories over
- 4,000 model years. Output per unit of effective labor uses a logarithmic
- vertical scale. Growth rates, net interest, and output shares use linear
- percentage scales. All scenarios have the same
- initial stocks, frontier, and parameters except $\sigma$.}
- \label{fig:rewrite-growth-distribution}
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_returns.pdf}
+ \caption{Growth and returns. Each panel compares the same four admitted
+ numerical equilibrium trajectories over 4,000 model years. Output-per-capita
+ growth and real-wage growth use the same linear percentage scale; net interest
+ uses a separate linear percentage scale. Thin horizontal dotted lines mark the
+ analytical limits for $\sigma=1.50$. All scenarios have the same initial
+ stocks, frontier, and parameters except $\sigma$.}
+ \label{fig:rewrite-growth-returns}
 \end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_distribution.pdf}
+ \caption{AI transition and the distribution of final output. Each panel
+ compares the same four admitted numerical equilibrium trajectories over
+ 4,000 model years. Panel A reports AI efficiency relative to its frontier;
+ Panels B and C report labor income and AI-industry revenue as shares of final
+ output. Thin horizontal dotted lines mark the analytical limits for
+ $\sigma=1.50$. All three panels use linear scales.}
+ \label{fig:rewrite-ai-distribution}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Initial and long-run values of the central outcomes}
+\label{tab:rewrite-central-path-values}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{ccrrrrr}
+\toprule
+$\sigma$ & Date & $g_Y-n$ & $g_w$ & $r$ & $wL/Y$ & $p_XX/Y$\\
+\midrule
+0.90 & $0$      & 0.297 & 0.288 & 3.773 & 46.5 & 20.5\\
+     & $\infty$ & 1.000 & 1.000 & 5.000 & 54.2 & 12.8\\
+1.00 & $0$      & 1.087 & 1.087 & 5.087 & 53.6 & 13.4\\
+     & $\infty$ & 1.000 & 1.000 & 5.000 & 53.6 & 13.4\\
+1.10 & $0$      & 1.831 & 1.815 & 6.358 & 58.1 & 8.9\\
+     & $\infty$ & 1.000 & 1.000 & 5.000 & 50.2 & 16.8\\
+1.50 & $0$      & 3.373 & 3.326 & 9.107 & 64.6 & 2.4\\
+     & $\infty$ & 3.135 & 2.423 & 7.135 & 0.0 & 67.0\\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+\parbox{0.94\textwidth}{\footnotesize\emph{Note:} All entries are percentages.
+Date-zero entries come from the numerical equilibrium paths. Infinite-date
+entries are the analytical limits characterized in Section~\ref{sec:rewrite-regimes}.}
+\end{table}
 
 The first three scenarios approach per-person growth of $1\%$ and a net
 interest rate of $5\%$. For $\sigma=1.50$, their analytical limits are
@@ -139,26 +199,24 @@ essential to interpreting the comparison.
 \subsection{Technology, accumulation, and AI-revenue composition}
 \label{subsec:rewrite-technology-revenue}
 
-Figure~\ref{fig:rewrite-technology-revenue} reports AI efficiency relative to its
-frontier, consumption and capital per unit of effective labor, and the use of
-AI-industry revenue. The last three panels deliberately divide by $p_XX$,
-not by $Y$:
+Figure~\ref{fig:rewrite-technology-revenue} reports consumption and capital per
+unit of effective labor and the use of AI-industry revenue. The last three
+panels deliberately divide by $p_XX$, not by $Y$:
 \begin{equation}
  \frac{U}{p_XX}+\frac{M}{p_XX}+\frac{\Pi}{p_XX}=1.
  \label{eq:rewrite-revenue-composition}
 \end{equation}
-The first figure measures the industry's size relative to final output;
-the second separates its inference costs, research expenditure, and net
-distribution to its owner.
+Figure~\ref{fig:rewrite-ai-distribution} measures the industry's size relative
+to final output; Figure~\ref{fig:rewrite-technology-revenue} separates its inference
+costs, research expenditure, and net distribution to its owner.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_technology_revenue.pdf}
- \caption{Technology, accumulation, and the composition of AI revenue.
- The scenarios and time window match Figure~\ref{fig:rewrite-growth-distribution}.
+ \caption{Accumulation and the composition of AI revenue.
+ The scenarios and time window match Figure~\ref{fig:rewrite-growth-returns}.
  Consumption and capital per unit of effective labor use logarithmic scales.
- AI efficiency relative to the frontier and the three revenue shares use linear
- scales. The revenue shares sum to one; negative net distributions, if any,
+ The three revenue shares use linear scales and sum to one; negative net distributions, if any,
  represent household equity injections rather than negative gross revenue.}
  \label{fig:rewrite-technology-revenue}
 \end{figure}

@@ -26,7 +26,7 @@ separate extension, or the current archival manuscript.
 
 ## Logical order
 
-1. Define population, labor productivity, preferences, and predetermined
+1. Define population, labor-augmenting technology, preferences, and predetermined
    stocks.
 2. Present final production and solve the competitive final-good firm.
 3. Derive the static relationship between AI services and labor.
@@ -98,12 +98,14 @@ equilibrium-admission rule:
 2. A figure illustrating the static substitution mechanism governed by
    \(\sigma\).
 3. A table of parameters, interpretations, values, and sources.
-4. One six-panel figure, in row-major order: `Y/(AL)`, `g_Y-n`, `g_w`,
-   `r`, `wL/Y`, and `p_X X/Y`.
-5. One six-panel figure, in row-major order: `B/Bbar`, `C/(AL)`, `K/(AL)`,
-   `U/(p_X X)`, `M/(p_X X)`, and `Pi/(p_X X)`.
-6. One compact table summarizing the three analytical regimes and their labor
-   income-share implications.
+4. One three-panel figure: `g_Y-n`, `g_w`, and `r`, with a common vertical
+   scale for the two growth rates and all four scenarios shown together.
+5. One three-panel figure: `B/Bbar`, `wL/Y`, and `p_X X/Y`, again with all four
+   scenarios shown together.
+6. One five-panel figure: `C/(AL)`, `K/(AL)`, `U/(p_X X)`, `M/(p_X X)`,
+   and `Pi/(p_X X)`.
+7. One compact table reporting initial and long-run values of the central
+   simulated outcomes, in addition to the analytical-regime summary.
 
 The four agreed elasticities are 0.90, 1.00, 1.10, and 1.50, with common
 parameters, frontier, and initial stocks. All four now pass the numerical

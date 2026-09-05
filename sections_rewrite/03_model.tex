@@ -1,7 +1,7 @@
 \section{Model}
 \label{sec:rewrite-model}
 
-Time is continuous.  The economy contains a representative household, competitive final-good firms, and an integrated AI developer. Labor productivity $A$ grows exogenously. AI efficiency $B$ improves through autonomous AI research: the only current input used to raise $B$ is research compute. The model therefore describes an economy in which the replacement of human researchers at the technological frontier has already occurred.
+Time is continuous.  The economy contains a representative household, competitive final-good firms, and an integrated AI developer. Labor-augmenting technology $A$ grows exogenously. AI efficiency $B$ improves through autonomous AI research: the only current input used to raise $B$ is research compute. The model therefore describes an economy in which the replacement of human researchers at the technological frontier has already occurred.
 
 %I derive the model in the order in which its agents solve their problems. I first present the household and final-good firms. I then state the developer's intertemporal problem before deriving its within-date service choice and its dynamic research conditions. Only after every agent has been characterized do I combine their conditions in the definition of equilibrium.
 
@@ -16,7 +16,7 @@ Time is continuous.  The economy contains a representative household, competitiv
  rewrite-dynamics/.style={->, semithick, dashed}
 }
 
-\subsection{Population and labor productivity}
+\subsection{Population and labor-augmenting technology}
 \label{subsec:rewrite-population}
 
 Population grows at the exogenous rate $n\geq0$:
@@ -27,7 +27,7 @@ Population grows at the exogenous rate $n\geq0$:
 \end{equation}
 Each person supplies one unit of homogeneous labor inelastically. The aggregate labor endowment is therefore $N$. Because autonomous research uses no human labor, all labor is employed in final production and equilibrium will impose $L=N$.
 
-The variable $A$ measures labor-augmenting productivity. One unit of labor supplies $A$ efficiency units, so effective labor is $AL$. Labor productivity follows
+The variable $A$ measures the level of labor-augmenting technology. One unit of labor supplies $A$ efficiency units, so effective labor is $AL$. Labor-augmenting technology evolves according to
 \begin{equation}
  \dot A=\gamma A,
  \qquad A(0)=A_0>0,
@@ -192,7 +192,7 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
  \centering
  \resizebox{0.84\textwidth}{!}{%
  \begin{tikzpicture}[>=Latex,font=\small]
-  \node[rewrite-state] (A) at (-7.5,2.0) {\(A\)\\labor productivity};
+  \node[rewrite-state] (A) at (-7.5,2.0) {\(A\)\\labor-augmenting\\technology};
   \node[rewrite-input] (L) at (-7.5,0.7) {\(L\)\\production labor};
   \node[rewrite-technology] (AL) at (-4.0,1.35) {\(AL\)\\effective labor};
   \node[rewrite-state] (B) at (-7.5,-0.8) {\(B\)\\AI efficiency};
@@ -262,7 +262,7 @@ AI-efficiency improvement mechanism.
 \end{figure}
 The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-efficiency index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Because $BM$ enters the law of motion for AI efficiency, a higher $B$ makes each unit of research compute $M$ more productive and creates recursive improvement. The term \(\psi(B)\) reduces the remaining room for improvement as AI efficiency approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
-The efficiency frontier \(\overline B\) allows me to establish and compute an equilibrium for each finite frontier and then ask whether these equilibria have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity, as discussed below. AI efficiency may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
+The efficiency frontier \(\overline B\) allows me to establish and compute an equilibrium for each finite frontier and then ask whether these equilibria have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity. Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. AI efficiency may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
 \subsubsection{Supply of effective AI production services}
 \label{subsubsec:rewrite-market-structure}
@@ -397,7 +397,7 @@ Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist ch
 \end{equation}
 subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
 
-Profit can be negative at a date because the model imposes no separatecash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
+Profit can be negative at a date because the model imposes no separate cash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
 Let $q$ be the current-value shadow price of AI efficiency, measured in units of
 the current final good per unit of $B$. An interior research choice satisfies
@@ -564,7 +564,7 @@ $Z=AL$. Effective AI production services have no productive use, and the develop
 with which to reward improvements in AI efficiency. Thus $X=U=M=\Pi=0$; $B$
 remains constant and does not affect allocations. With $L=N$, the model reduces
 to the Ramsey--Cass--Koopmans economy with logarithmic utility and exogenous
-labor-augmenting productivity growth:
+labor-augmenting technological progress:
 \begin{align*}
  Y&=K^\alpha(AN)^{1-\alpha},&
  \dot K&=Y-C-\delta K,\\

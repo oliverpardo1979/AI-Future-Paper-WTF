@@ -1,5 +1,13 @@
 # AI Growth Lab
 
+The current paper is compiled automatically from `main_rewrite.tex` whenever
+the paper source, bibliography, or figures change on `main`. It is always
+published at the following permanent URL:
+
+https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth-and-human-labor-under-recursive-ai-self-improvement.pdf
+
+The same GitHub Pages deployment also serves the equilibrium simulator.
+
 Static GitHub Pages companion for the equilibrium model in *Automating
 Innovation*. It has two distinct modes:
 
