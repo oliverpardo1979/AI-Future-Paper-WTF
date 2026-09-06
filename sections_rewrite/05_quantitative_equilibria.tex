@@ -180,7 +180,37 @@ vanishes. AI revenue meanwhile approaches $67\%$ of output. These limiting
 rates describe the equilibrium continuations; they are not imposed as
 constant rates during the transition.
 
-The transition matters. At $\sigma=1.50$, the initial adjustment raises
+The slow transition has a direct structural explanation. Rearranging
+\eqref{eq:rewrite-sx} gives
+\begin{equation}
+ \frac{s_X}{1-s_X}
+ =\frac{\omega_X}{\omega_L}
+ \left(\frac{X}{AL}\right)^{(\sigma-1)/\sigma}.
+ \label{eq:rewrite-transition-share-odds}
+\end{equation}
+Thus $\sigma>1$ makes the AI share rise with $X/(AL)$, but it does not make
+AI immediately replace labor. When $\sigma$ is close to one, the exponent
+$(\sigma-1)/\sigma$ is small and the share responds slowly even to large
+increases in relative AI services. At $\sigma=1.50$, for example, the
+exponent is $1/3$: increasing the odds $s_X/(1-s_X)$ by a factor of ten
+requires a thousand-fold increase in $X/(AL)$. For elasticities closer to
+one, the required increase is larger still, conditional on the frontier
+being high enough to support the AI-dominated regime.
+
+The economy must also accumulate the inputs that produce this change.
+Neither $K$ nor $B$ can jump. Expanding $X$ requires inference compute
+$U=X/B$, while improving $B$ requires research compute $M$; both uses compete
+with consumption and physical investment for current output. Moreover,
+$\eta=0.20$ implies strong diminishing returns to a contemporaneous increase
+in research compute. As $B$ rises, however, it reduces the compute required
+to supply a unit of $X$ and makes subsequent research compute more productive.
+The feedback therefore strengthens gradually. Near the finite frontier,
+$\psi(B)$ slows further efficiency improvement. The eventual acceleration in
+the AI-dominated equilibrium is consequently not an explosion of $B$: it is
+sustained by the expansion of capital and effective AI production services
+after labor ceases to be the binding input.
+
+The $\sigma=1.50$ path displays this mechanism. The initial adjustment raises
 growth and interest temporarily; both then fall close to the labor-supported
 rates. At model year 500, per-person growth is still only $1.062\%$ and
 labor receives $60.5\%$ of output. By year 1,500, growth reaches $2.797\%$
