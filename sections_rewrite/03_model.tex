@@ -251,9 +251,7 @@ fallen across several industries, products, and firms. Following this
 interpretation, \citet{davidsonetal2026} use their estimates to discipline
 diminishing returns in idea production. This evidence motivates diminishing
 returns, but it does not establish a literal finite technological ceiling. The
-term $1-B/\overline B$ is a deliberately stronger reduced-form specification,
-and I do not interpret $\overline B$ as an empirical estimate of the maximum
-attainable AI efficiency.
+term $1-B/\overline B$ is a deliberately stronger reduced-form specification to make sure there is an equilibrium when AI and labor are substitutes.
 
 The efficiency frontier \(\overline B\) allows me to establish and compute an equilibrium for each finite frontier and then ask whether these equilibria have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity. Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. AI efficiency may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
@@ -475,16 +473,17 @@ infinite-horizon trajectory
 \end{equation} such that for every date, the
 following conditions hold:
 
-The exogenous paths and predetermined initial conditions are
-\begin{subequations}
-\label{eq:rewrite-equilibrium-exogenous}
-\begin{align}
- A_t&=A_0e^{\gamma t},\\
- N_t&=N_0e^{nt},%\\
- %K(0)&=K_0, & B(0)&=B_0.
-\end{align}
-\end{subequations}
-The intratemporal allocation and prices satisfy
+%The exogenous paths and predetermined initial conditions are
+%\begin{subequations}
+%\label{eq:rewrite-equilibrium-exogenous}
+%\begin{align}
+% A_t&=A_0e^{\gamma t},\\
+% N_t&=N_0e^{nt},%\\
+% %K(0)&=K_0, & B(0)&=B_0.
+%\end{align}
+%\end{subequations}
+\begin{enumerate}
+\item The intratemporal allocation and prices satisfy
 \begin{subequations}
 \label{eq:rewrite-equilibrium-static}
 \begin{align}
@@ -518,7 +517,7 @@ The intratemporal allocation and prices satisfy
  \label{eq:rewrite-eq-profit}
 \end{align}
 \end{subequations}
-The four dynamic equations are
+\item The four dynamic equations are
 \begin{subequations}
 \label{eq:rewrite-equilibrium-dynamics}
 \begin{align}
@@ -533,7 +532,7 @@ The four dynamic equations are
  \label{eq:rewrite-eq-qdot}
 \end{align}
 \end{subequations}
-The two transversality conditions are
+\item The two transversality conditions are
 \begin{subequations}
 \label{eq:rewrite-equilibrium-tvcs}
 \begin{align}
@@ -544,6 +543,7 @@ The two transversality conditions are
  \label{eq:rewrite-eq-developer-tvc}
 \end{align}
 \end{subequations}
+\end{enumerate}
 %At \(\sigma=1\), equations \eqref{eq:rewrite-eq-z} and \eqref{eq:rewrite-eq-sx} are understood at their continuous limits:
 %$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$. If \(\overline B<\infty\), the path satisfies $B_t<\overline B$ at every finite date. Finally, t
 %The household and developer solve their stated optimization problems, final-good firms maximize profit, and all markets clear. The initial values \(C_t\) and \(q_t\) are endogenous jump variables selected to satisfy the two transversality conditions.
