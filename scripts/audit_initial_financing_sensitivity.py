@@ -78,6 +78,14 @@ def solve(fresh=False):
             boundary_tolerance=1e-11,
         )
         save_solution(long, paths["long"])
+    for candidate in (base, refined, long):
+        if (asdict(candidate.parameters) != asdict(PARAMETERS)
+                or candidate.terminal.frontier != FRONTIER
+                or candidate.terminal.sigma_xl != SIGMA):
+            raise ValueError("A financing-sensitivity checkpoint uses a different design.")
+        # Reloading reconstructs an equal terminal object for each checkpoint,
+        # while the horizon comparator deliberately requires common identity.
+        candidate.terminal = terminal
     return base, refined, long, paths
 
 

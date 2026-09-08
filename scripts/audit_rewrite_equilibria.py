@@ -1,4 +1,5 @@
-"""Independent dated residuals and final admission of the four-scenario design."""
+"""Independent dated residuals and final admission of a four-scenario design."""
+import argparse
 import hashlib
 import json
 import math
@@ -12,7 +13,9 @@ import numpy as np
 from solve_axm_global_finite_cap_bvp import (reconstruct_levels, raw_to_terminal_coordinates,
     audit_global_solution, compare_global_solutions, audit_counterfactual_developer_sufficiency)
 from solve_near_unit_ai_bvp import solve_monopoly_static_block
-from simulate_rewrite_finite_frontier import SIGMAS, CACHE, OUT, key, load_solution
+from simulate_rewrite_finite_frontier import (
+    DESIGNS, MAIN_DESIGN, SIGMAS, key, load_solution, validate_solution_design,
+)
 
 
 def independent_residuals(sol, step):
@@ -73,17 +76,20 @@ def terminal_support_bound(sol, fraction=.75):
                 terminal_margin=margin, analytical_limiting_margin=limit)
 
 
-def finalize():
+def finalize(design=MAIN_DESIGN):
     reports=[]
     for sigma in SIGMAS:
         name=key(sigma)
-        report=json.loads((OUT/f'{name}_audit.json').read_text())
-        cache=CACHE/f'{name}_long.npz'
+        report=json.loads((design.output_directory/f'{name}_audit.json').read_text())
+        cache=design.cache_directory/f'{name}_long.npz'
         sol=load_solution(cache)
-        shorter=load_solution(CACHE/f'{name}_refined.npz')
+        shorter=load_solution(design.cache_directory/f'{name}_refined.npz')
+        validate_solution_design(sol, design, sigma)
+        validate_solution_design(shorter, design, sigma)
         shorter.terminal=sol.terminal
         report['first_horizon_comparison']=report.get('first_horizon_comparison',report['horizon_comparison'])
-        report['horizon_comparison']=compare_global_solutions(shorter, sol, common_window=500)
+        report['horizon_comparison']=compare_global_solutions(
+            shorter, sol, common_window=design.display_horizon)
         report['audit']=audit_global_solution(sol)
         report['counterfactual_developer_sufficiency']=audit_counterfactual_developer_sufficiency(
             sol, time_points=161, capability_points=161)
@@ -94,7 +100,7 @@ def finalize():
         if not optimality and sigma==1.5:
             support=[]
             for dates, states in ((81,101),(321,241)):
-                result=json.loads((OUT/f'{name}_support_{dates}_{states}.json').read_text())
+                result=json.loads((design.output_directory/f'{name}_support_{dates}_{states}.json').read_text())
                 if result['checkpoint_sha256'] != hashlib.sha256(cache.read_bytes()).hexdigest():
                     raise ValueError('Support audit does not belong to the final checkpoint.')
                 support.append({k:v for k,v in result.items() if k!='checks'})
@@ -119,12 +125,17 @@ def finalize():
         report['status']='numerically_admitted' if report['equilibrium_certified'] else 'not_admitted'
         report['checkpoint_sha256']=hashlib.sha256(cache.read_bytes()).hexdigest()
         report['checkpoint_filename']=cache.name
+        report['design']=design.name
         report['long_run_scope']='Regime-specific stable continuation, both TVCs, and sufficient developer optimality.'
-        (OUT/f'{name}_audit.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n', encoding='utf-8')
+        (design.output_directory/f'{name}_audit.json').write_text(
+            json.dumps(report, indent=2, allow_nan=False)+'\n', encoding='utf-8')
         print(name, report['status'], 'independent=',checks, 'terminal gap=',report['maximum_terminal_coordinate_gap'], flush=True)
         reports.append(report)
     return reports
 
 
 if __name__=='__main__':
-    finalize()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--design',choices=tuple(DESIGNS),default='main')
+    arguments=parser.parse_args()
+    finalize(DESIGNS[arguments.design])

@@ -18,6 +18,13 @@ model years. The separate financing sensitivity uses the earlier distant
 stocks and `chi=1.4223` to preserve the same midpoint; it is not a fifth line
 in the main figures.
 
+The slower-transition comparison recovers the paper's earlier design:
+`K0=2.027733653970002`, `B0=0.44367093160980464`, and `chi=0.01`. It repeats
+the same four elasticities and the same three-figure layout over 4,000 model
+years. It is a separately solved and admitted comparison, not a rescaling of
+the main paths. Because both the initial stocks and `chi` change, it should
+not be read as a one-parameter estimate of the effect of research productivity.
+
 Capital and AI efficiency are predetermined at date zero. Consumption and the
 developer's shadow value can jump. The algorithm chooses those two initial
 jump variables so that the path beginning at the prescribed stocks approaches
@@ -66,14 +73,16 @@ python3.12 -m venv .venv
 ```
 
 The last command is the public entry point. It runs the regression tests,
-solves and refines all four boundary-value problems, performs the two global
-Hamiltonian-support checks required for the 1.50 case, applies the final
-equilibrium-admission gate, reproduces the distant-initial-stock financing
-sensitivity, exports the data, and regenerates the figures. It
+solves and refines the four main and four slow-transition boundary-value
+problems, performs the two global Hamiltonian-support checks required for each
+1.50 case, applies the final equilibrium-admission gates, reproduces the
+distant-initial-stock financing sensitivity, exports the data, and regenerates
+the figures. It
 stops at the first failure and therefore cannot knowingly create a partial
 published comparison.
 
-The calculation stores resumable spline checkpoints in `tmp/rewrite_bvp/`.
+The calculation stores resumable spline checkpoints in `tmp/rewrite_bvp/`
+and `tmp/rewrite_bvp_slow/`.
 They are generated files and are not committed. Rerunning the command reuses
 valid existing stages. To recompute every boundary-value checkpoint from
 scratch, use:
@@ -83,8 +92,8 @@ python scripts/reproduce_rewrite_results.py --fresh
 ```
 
 `--fresh` removes only the generated `base`, `refined`, and `long`
-checkpoint files belonging to the four main scenarios and the financing
-sensitivity. The committed numerical
+checkpoint files belonging to the four main scenarios, the four slow
+scenarios, and the financing sensitivity. The committed numerical
 reports and figures are then overwritten only as their corresponding stages
 successfully complete.
 
@@ -97,8 +106,9 @@ of the following:
 - small residuals in the four original dynamic equations, reconstructed from
   saved spline values independently of the solver's derivative routine;
 - small residuals in the static monopoly and research first-order conditions;
-- stability of the initial jump variables and the entire 0--500 display
-  window after a longer horizon and tighter tolerances;
+- stability of the initial jump variables and the entire display window
+  (0--500 in the main design and 0--4,000 in the slow design) after a longer
+  horizon and tighter tolerances;
 - convergence toward the regime-specific analytical terminal coordinates;
 - both infinite-horizon transversality conditions;
 - a sufficient global optimality check for the AI developer.
@@ -132,7 +142,12 @@ The full command regenerates:
   data and records the plotted fields;
 - `figures_rewrite/equilibrium_accumulation_growth.{pdf,png}`;
 - `figures_rewrite/equilibrium_growth_returns.{pdf,png}`;
-- `figures_rewrite/equilibrium_ai_distribution.{pdf,png}`.
+- `figures_rewrite/equilibrium_ai_distribution.{pdf,png}`;
+- `numerical_rewrite/slow_transition/`: the four slow-transition audits,
+  two Hamiltonian-support checks, plotted CSV, and provenance manifests;
+- `figures_rewrite/equilibrium_slow_accumulation_growth.{pdf,png}`;
+- `figures_rewrite/equilibrium_slow_growth_returns.{pdf,png}`;
+- `figures_rewrite/equilibrium_slow_ai_distribution.{pdf,png}`.
 
 The renderer checks the manifests before plotting. A changed or stale
 checkpoint, audit, or CSV therefore prevents figure generation instead of
@@ -150,8 +165,8 @@ The paper PDF is written to `output/pdf/main_rewrite.pdf`.
 ## Where to inspect or change the computation
 
 - `scripts/simulate_rewrite_finite_frontier.py` defines the four published
-  elasticities, the common frontier, the common initial stocks, checkpoint
-  handling, and the plot-data export.
+  elasticities, the main and slow designs, checkpoint handling, and the
+  plot-data export.
 - `scripts/define_positive_ai_branch.py` contains the benchmark parameter
   object.
 - `scripts/solve_near_unit_ai_bvp.py` solves the static monopoly block with an

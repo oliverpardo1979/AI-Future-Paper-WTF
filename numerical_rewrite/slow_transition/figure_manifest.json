@@ -1,13 +1,13 @@
 {
-  "design": "main",
-  "data_sha256": "f3afcc486ab925838f9dfce2960e70504e7fca8f2fc661a51e79830be0df1244",
+  "design": "slow",
+  "data_sha256": "90ffd3984fc253507f4253d884da5747e18c059b31c879ac40b534a7737fdc9b",
   "sigmas": [
     0.9,
     1.0,
     1.1,
     1.5
   ],
-  "horizon": 500.0,
+  "horizon": 4000.0,
   "panels": {
     "quantity_growth": [
       "output_effective_labor_growth",

@@ -21,7 +21,9 @@ import numpy as np
 from scipy.optimize import minimize_scalar
 from solve_near_unit_ai_bvp import solve_monopoly_static_block
 from solve_axm_global_finite_cap_bvp import _capability_logs, reconstruct_levels
-from simulate_rewrite_finite_frontier import CACHE, OUT, key, load_solution
+from simulate_rewrite_finite_frontier import (
+    DESIGNS, key, load_solution, validate_solution_design,
+)
 
 
 def dated_support(solution, time, points=121):
@@ -113,16 +115,19 @@ def audit_support(solution, time_points=161, capability_points=121):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--design', choices=tuple(DESIGNS), default='main')
     parser.add_argument('--sigma', type=float, required=True)
     parser.add_argument('--time-points', type=int, default=161)
     parser.add_argument('--capability-points', type=int, default=121)
     args = parser.parse_args()
-    checkpoint = CACHE/f'{key(args.sigma)}_long.npz'
+    design = DESIGNS[args.design]
+    checkpoint = design.cache_directory/f'{key(args.sigma)}_long.npz'
     if not checkpoint.exists():
-        checkpoint = CACHE/f'{key(args.sigma)}_refined.npz'
+        checkpoint = design.cache_directory/f'{key(args.sigma)}_refined.npz'
     sol = load_solution(checkpoint)
+    validate_solution_design(sol, design, args.sigma)
     result = audit_support(sol, args.time_points, args.capability_points)
     result['checkpoint_sha256'] = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
-    target = OUT/f'{key(args.sigma)}_support_{args.time_points}_{args.capability_points}.json'
+    target = design.output_directory/f'{key(args.sigma)}_support_{args.time_points}_{args.capability_points}.json'
     target.write_text(json.dumps(result, indent=2, allow_nan=False)+'\n', encoding='utf-8')
     print(json.dumps({k:v for k,v in result.items() if k != 'checks'}, indent=2), flush=True)

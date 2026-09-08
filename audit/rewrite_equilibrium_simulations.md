@@ -1,15 +1,17 @@
 # Finite-frontier equilibrium simulations: execution record
 
-Originally completed on 2026-09-03 and revalidated under the revised initial
-conditions and transition calibration on 2026-09-07. All four requested trajectories passed the final numerical
-equilibrium admission gate. The public reproduction workflow and installation
+Originally completed on 2026-09-03, revalidated under the revised initial
+conditions and transition calibration on 2026-09-07, and extended with the
+slow-transition comparison on 2026-09-08. All eight displayed trajectories
+passed the final numerical equilibrium admission gate. The public reproduction workflow and installation
 instructions are in `REPLICATION.md`; this file records the execution
 underlying the paper's reported numerical results.
 
 ## Publication status
 
-Complete. The final 4,804-row CSV, its provenance manifest, three published
-figures, and the separate financing-sensitivity audit were regenerated. All 33
+Complete. The main and slow-transition 4,804-row CSV files, their provenance
+manifests, six published figures, and the separate financing-sensitivity audit
+were regenerated. All 33
 relevant regression tests passed. The PDF was compiled and visually inspected
 after the numerical outputs were incorporated.
 
@@ -78,6 +80,22 @@ derivative method or the solver's right-hand side, at 1,001 dates and steps
 comparison covers every plotted year, 0--500; initial jumps change by less
 than 1.8e-10 in logs. Both TVCs have negative asymptotic log growth n-rho=-0.037.
 
+The recovered slow-transition comparison uses the earlier stocks
+K0=2.027733653970002 and B0=0.44367093160980464 with chi=0.01. Its final
+horizons and diagnostics are:
+
+| sigma | Terminal regime | Solved horizon | Final mesh | Independent ODE residual | Full-window horizon change |
+|---|---|---:|---:|---:|---:|
+| 0.90 | Positive labor share | 6857.067 | 809 | 8.525e-10 | 2.433e-8 |
+| 1.00 | Unit elastic / positive labor share | 6731.921 | 607 | 8.876e-10 | 5.727e-9 |
+| 1.10 | Positive labor share | 6647.850 | 831 | 9.360e-10 | 1.671e-8 |
+| 1.50 | AI dominated | 4919.361 | 1255 | 1.055e-9 | 2.725e-8 |
+
+The horizon comparison covers the full 0--4,000 plotted window. The dense
+Hamiltonian-support grid for sigma=1.50 has a minimum normalized gap of
+-2.57e-14, within the 1e-10 floating-point diagnostic tolerance. Both TVCs
+again have asymptotic log growth -0.037.
+
 The original global concavity diagnostic passes for the first three cases.
 For sigma=1.50 its minimum counterfactual margin is -1.0250, so it fails.
 The new appendix proves that a global upper tangent to the maximized
@@ -134,17 +152,20 @@ From the repository root, using a Python environment with the existing
 NumPy, SciPy, and Matplotlib dependencies:
 
 ```powershell
-foreach ($sigma in @(0.9, 1.0, 1.1, 1.5)) {
-    python scripts/simulate_rewrite_finite_frontier.py --sigma $sigma
-    if ($LASTEXITCODE -ne 0) { throw "BVP failed for sigma=$sigma" }
+$horizons = @{ main = 500; slow = 4000 }
+foreach ($design in @('main', 'slow')) {
+    foreach ($sigma in @(0.9, 1.0, 1.1, 1.5)) {
+        python scripts/simulate_rewrite_finite_frontier.py --design $design --sigma $sigma
+        if ($LASTEXITCODE -ne 0) { throw "BVP failed for $design, sigma=$sigma" }
+    }
+    python scripts/simulate_rewrite_finite_frontier.py --design $design --verify-long-horizon
+    python scripts/audit_rewrite_hamiltonian_support.py --design $design --sigma 1.5 --time-points 81 --capability-points 101
+    python scripts/audit_rewrite_hamiltonian_support.py --design $design --sigma 1.5 --time-points 321 --capability-points 241
+    python scripts/audit_rewrite_equilibria.py --design $design
+    python scripts/simulate_rewrite_finite_frontier.py --design $design --export-horizon $horizons[$design]
+    python scripts/plot_rewrite_equilibria.py --design $design
 }
-python scripts/simulate_rewrite_finite_frontier.py --verify-long-horizon
-python scripts/audit_rewrite_hamiltonian_support.py --sigma 1.5 --time-points 81 --capability-points 101
-python scripts/audit_rewrite_hamiltonian_support.py --sigma 1.5 --time-points 321 --capability-points 241
-python scripts/audit_rewrite_equilibria.py
 python scripts/audit_initial_financing_sensitivity.py
-python scripts/simulate_rewrite_finite_frontier.py --export-horizon 500
-python scripts/plot_rewrite_equilibria.py
 python -m unittest discover -s tests -p test_finite_cap_bvp.py -v
 python -m unittest discover -s tests -p test_global_finite_cap_bvp.py -v
 python -m unittest discover -s tests -p test_rewrite_finite_frontier.py -v
@@ -153,7 +174,8 @@ python -m unittest discover -s tests -p test_near_unit_ai_bvp.py -v
 ```
 
 Stop on an error; do not bypass the exporter or chart admission guards.
-Checkpoints in `tmp/rewrite_bvp` are local, reproducible calculation caches.
+Checkpoints in `tmp/rewrite_bvp` and `tmp/rewrite_bvp_slow` are local,
+reproducible calculation caches.
 The final JSON audits record their SHA-256 hashes. Plot-ready CSV provenance
 is generated by the final export command; the renderer requires that manifest.
 
@@ -177,6 +199,11 @@ B0/Bbar=0.2608%, and chi=1.4223. It independently passes the same equilibrium
 admission logic and preserves a 50.001-year midpoint. At date zero, inference
 uses 34.52% of AI revenue, research uses 105.98%, and profit is -40.50%.
 `numerical_rewrite/initial_financing_sensitivity.json` records its diagnostics.
+
+In the slow sigma=1.50 equilibrium, the labor share completes 10%, 50%, and
+90% of its decline after 656.914, 1294.886, and 1605.167 model years. At year
+500, per-person growth is 1.062% and the labor share is 60.53%; at year 1,500,
+the corresponding values are 2.797% and 14.49%.
 
 ## Final delivery
 

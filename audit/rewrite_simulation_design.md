@@ -97,6 +97,18 @@ financing sensitivity retains the earlier distant stocks
 K_0=2.027733653970002 and B_0=0.44367093160980464 and uses chi=1.4223 to keep
 the same 50-year midpoint. It is not one of the four main plotted paths.
 
+## Slow-transition sensitivity
+
+The earlier comparison is retained as a separate sensitivity rather than
+replacing the main design. It uses K_0=2.027733653970002,
+B_0=0.44367093160980464, and chi=0.01, while holding the frontier, all other
+parameters, and the four sigma values fixed. Its display window is 4,000 years.
+The same BVP, horizon extensions, independent equation checks, TVCs, and
+developer-optimality gates are rerun for all four paths. The figures preserve
+the main comparison's variables, normalizations, scenario order, and scale
+types. Because both the initial stocks and chi differ from the main design,
+this is a joint timing sensitivity rather than a one-parameter derivative.
+
 ## Published figure layout
 
 Use one economic variable per panel and one line per admitted scenario.

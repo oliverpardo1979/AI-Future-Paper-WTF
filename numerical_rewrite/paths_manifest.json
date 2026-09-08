@@ -1,4 +1,20 @@
 {
+  "design": "main",
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.2,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 1.4378,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 170.12401740519473,
+  "initial_capital": 4.0,
+  "initial_capability": 17.012401740519476,
   "horizon": 500.0,
   "points_per_scenario": 1201,
   "checkpoint_sha256": {

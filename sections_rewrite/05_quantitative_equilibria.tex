@@ -292,6 +292,80 @@ with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
 The frontier's position relative to the elasticity-specific threshold is
 essential to interpreting the comparison.
 
+\subsection{A slower transition}
+\label{subsec:rewrite-slow-transition}
+
+The 50-year midpoint in the main comparison is a timing calibration rather
+than a prediction. To show how strongly the transition can stretch out, I
+recover the earlier calibration with
+\begin{equation}
+ \chi=0.01,\qquad K_0=2.027733654,\qquad B_0=0.443670932.
+ \label{eq:rewrite-slow-transition-design}
+\end{equation}
+All other parameters, the common frontier, and the four values of $\sigma$
+are unchanged. These initial stocks come from the uncapped unit-elastic BGP,
+but neither the initial consumption nor the initial shadow value is imported
+from it. Both jump variables are solved again for each capped economy. The
+exercise changes both research productivity and the initial distance from the
+frontier, so it should not be interpreted as a one-parameter estimate of the
+effect of $\chi$. Each of the four paths is independently re-solved and passes
+the same equilibrium-admission tests as the main comparison.
+
+Figures~\ref{fig:rewrite-slow-accumulation-growth}--
+\ref{fig:rewrite-slow-ai-distribution} retain the variables, normalizations,
+scenario order, and scale conventions of the main figures. The only
+presentational change is the 4,000-year window needed to display the slower
+adjustment.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_slow_accumulation_growth.pdf}
+ \caption{Growth of output, effective AI production services, and capital per
+ unit of effective labor under the slower-transition calibration. Each panel
+ compares the same four admitted numerical equilibrium trajectories over
+ 4,000 model years. Panels A and C use the same linear percentage scale;
+ Panel B uses a separate linear percentage range. Thin horizontal dotted
+ lines mark the analytical limits for $\sigma=1.50$.}
+ \label{fig:rewrite-slow-accumulation-growth}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_slow_growth_returns.pdf}
+ \caption{Wages, returns, and the AI-service price under the slower-transition
+ calibration. Each panel compares the same four admitted numerical equilibrium
+ trajectories over 4,000 model years. Real-wage growth and the net interest
+ rate use linear percentage scales; the level of $p_X$ uses a logarithmic
+ scale. Thin horizontal dotted lines mark the analytical limits for
+ $\sigma=1.50$.}
+ \label{fig:rewrite-slow-growth-returns}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_slow_ai_distribution.pdf}
+ \caption{Distribution of the noncapital share of output under the
+ slower-transition calibration. Labor income, AI profit, inference expenditure,
+ and research expenditure are divided by final output and sum to $1-\alpha$.
+ The omitted gross capital-income share is the constant $\alpha$. Each panel
+ compares the same four admitted numerical equilibrium trajectories over
+ 4,000 model years. Thin horizontal dotted lines mark the analytical limits
+ for $\sigma=1.50$.}
+ \label{fig:rewrite-slow-ai-distribution}
+\end{figure}
+
+In the slow $\sigma=1.50$ equilibrium, labor's income share completes only
+10 percent of its decline after 657 model years, half after 1,295 years, and
+90 percent after 1,605 years. At year 500, output per person grows at
+$1.062\%$, the real wage at $1.043\%$, and labor still receives $60.5\%$ of
+output. By year 1,500, output-per-person growth has risen to $2.797\%$, while
+labor's share has fallen to $14.5\%$. The analytical limits are the same as in
+the main comparison because $\sigma$ and $\overline B$ are unchanged; what
+changes radically is when the economy approaches them. The model can therefore
+generate a long interval in which little appears to happen before growth and
+the distribution of output change sharply. It does not identify which of the
+two timing calibrations is empirically more plausible.
+
 \subsection{Initial financing sensitivity}
 \label{subsec:rewrite-technology-revenue}
 

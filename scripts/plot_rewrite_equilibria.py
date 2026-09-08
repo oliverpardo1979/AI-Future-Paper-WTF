@@ -1,4 +1,5 @@
 """Render the agreed figures from admitted equilibrium data."""
+import argparse
 import csv
 import hashlib
 import json
@@ -13,7 +14,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
-from simulate_rewrite_finite_frontier import SIGMAS, PARAMETERS, FRONTIER, OUT, CACHE, key
+from simulate_rewrite_finite_frontier import DESIGNS, MAIN_DESIGN, SIGMAS, key
 from analyze_axm_finite_cap_bvp import terminal_point
 
 PANELS_QUANTITY_GROWTH=(
@@ -22,9 +23,9 @@ PANELS_QUANTITY_GROWTH=(
  ('capital_effective_labor_growth', 'C. Capital\n$g_K-(n+\\gamma)$', 'rate'),
 )
 PANELS_PRICES_RETURNS=(
- ('wage_growth', 'A. Real-wage growth\n$g_w$', 'rate'),
- ('net_interest', 'B. Net interest rate\n$r$', 'rate'),
- ('ai_service_price', 'C. AI service price\n$p_X$', 'log_level'),
+ ('wage_growth', 'A. Real-wage\ngrowth, $g_w$', 'rate'),
+ ('net_interest', 'B. Net interest\nrate, $r$', 'rate'),
+ ('ai_service_price', 'C. AI-service\nprice, $p_X$', 'log_level'),
 )
 PANELS_DISTRIBUTION=(
  ('labor_income_share', 'A. Labor income\n$wL/Y$', 'share'),
@@ -37,19 +38,27 @@ STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
 LIMIT_STYLE=('#222222',(0,(1,2)))
 
 
-def render():
-    reports={s:json.loads((OUT/f'{key(s)}_audit.json').read_text()) for s in SIGMAS}
-    provenance=json.loads((OUT/'paths_manifest.json').read_text())
-    if hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest()!=provenance['csv_sha256']:
+def render(design=MAIN_DESIGN):
+    output=design.output_directory
+    cache=design.cache_directory
+    parameters=design.parameters
+    frontier=design.frontier
+    reports={s:json.loads((output/f'{key(s)}_audit.json').read_text()) for s in SIGMAS}
+    provenance=json.loads((output/'paths_manifest.json').read_text())
+    if provenance.get('design') != design.name:
+        raise ValueError('The path manifest belongs to a different simulation design.')
+    if hashlib.sha256((output/'equilibrium_paths.csv').read_bytes()).hexdigest()!=provenance['csv_sha256']:
         raise ValueError('The plotted data have changed since their audited export.')
     for s,r in reports.items():
+        if r.get('design') != design.name:
+            raise ValueError(f'The sigma={s} audit belongs to a different design.')
         if not r['equilibrium_certified']:
             raise ValueError(f'sigma={s} is not admitted; refuse a partial comparison.')
-        if hashlib.sha256((CACHE/r['checkpoint_filename']).read_bytes()).hexdigest()!=r['checkpoint_sha256']:
+        if hashlib.sha256((cache/r['checkpoint_filename']).read_bytes()).hexdigest()!=r['checkpoint_sha256']:
             raise ValueError('An audited checkpoint has changed.')
         if provenance['checkpoint_sha256'][key(s)]!=r['checkpoint_sha256']:
             raise ValueError('The CSV and current audit refer to different checkpoints.')
-    rows=list(csv.DictReader((OUT/'equilibrium_paths.csv').open(encoding='utf-8')))
+    rows=list(csv.DictReader((output/'equilibrium_paths.csv').open(encoding='utf-8')))
     data={s:[{k:float(v) for k,v in r.items()} for r in rows if float(r['sigma'])==s] for s in SIGMAS}
     if any(not v for v in data.values()):
         raise ValueError('The CSV omits a requested scenario.')
@@ -59,32 +68,33 @@ def render():
                          'axes.titlesize':9,'axes.labelsize':9,
                          'xtick.labelsize':8,'ytick.labelsize':8,
                          'legend.fontsize':9,'pdf.fonttype':42})
-    ai_terminal=terminal_point(1.5,FRONTIER,PARAMETERS)
-    ai_revenue_limit=(1-PARAMETERS.alpha)*ai_terminal.ai_ces_share
+    ai_terminal=terminal_point(1.5,frontier,parameters)
+    ai_revenue_limit=(1-parameters.alpha)*ai_terminal.ai_ces_share
     ai_limits={
         'output_effective_labor_growth': (
-            ai_terminal.terminal_growth-PARAMETERS.population_growth
-            -PARAMETERS.labor_productivity_growth),
+            ai_terminal.terminal_growth-parameters.population_growth
+            -parameters.labor_productivity_growth),
         'ai_services_effective_labor_growth': (
-            ai_terminal.terminal_growth-PARAMETERS.population_growth
-            -PARAMETERS.labor_productivity_growth),
+            ai_terminal.terminal_growth-parameters.population_growth
+            -parameters.labor_productivity_growth),
         'capital_effective_labor_growth': (
-            ai_terminal.terminal_growth-PARAMETERS.population_growth
-            -PARAMETERS.labor_productivity_growth),
-        'wage_growth': PARAMETERS.labor_productivity_growth+(
-            ai_terminal.net_interest_rate-PARAMETERS.discount
-            -PARAMETERS.labor_productivity_growth)/ai_terminal.sigma_xl,
+            ai_terminal.terminal_growth-parameters.population_growth
+            -parameters.labor_productivity_growth),
+        'wage_growth': parameters.labor_productivity_growth+(
+            ai_terminal.net_interest_rate-parameters.discount
+            -parameters.labor_productivity_growth)/ai_terminal.sigma_xl,
         'net_interest': ai_terminal.net_interest_rate,
-        'ai_service_price': 1/((1-PARAMETERS.alpha)*FRONTIER),
+        'ai_service_price': 1/((1-parameters.alpha)*frontier),
         'labor_income_share': ai_terminal.labor_income_share,
-        'profit_output_share': ai_revenue_limit*PARAMETERS.alpha,
-        'inference_output_share': ai_revenue_limit*(1-PARAMETERS.alpha),
+        'profit_output_share': ai_revenue_limit*parameters.alpha,
+        'inference_output_share': ai_revenue_limit*(1-parameters.alpha),
         'research_output_share': 0.0,
     }
+    prefix='equilibrium' if design.name=='main' else f'equilibrium_{design.name}'
     figures=(
-        ('equilibrium_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
-        ('equilibrium_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),
-        ('equilibrium_ai_distribution',PANELS_DISTRIBUTION,'four',ai_limits),
+        (f'{prefix}_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
+        (f'{prefix}_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),
+        (f'{prefix}_ai_distribution',PANELS_DISTRIBUTION,'four',ai_limits),
     )
     for filename,panels,layout,limits in figures:
         if layout=='three':
@@ -134,13 +144,14 @@ def render():
                           'ai_services_effective_labor_growth'):
                 axis.axhline(0,color='#999999',linewidth=.6,zorder=0)
             axis.set_xlim(0,data[1.][-1]['time'])
-            axis.set_xticks(np.linspace(0,data[1.][-1]['time'],6))
+            tick_count=5 if data[1.][-1]['time'] >= 1000 else 6
+            axis.set_xticks(np.linspace(0,data[1.][-1]['time'],tick_count))
             axis.xaxis.set_major_formatter(FuncFormatter(lambda x,p:f'{x:,.0f}'))
             axis.grid(axis='y',which='major',color='#dddddd',linewidth=.5)
             axis.spines[['top','right']].set_visible(False)
             axis.spines[['left','bottom']].set_color('#888888')
             axis.tick_params(length=3,color='#888888')
-        if filename=='equilibrium_accumulation_growth':
+        if filename==f'{prefix}_accumulation_growth':
             comparable_axes=(axes[0],axes[2])
             common_lower=min(axis.get_ylim()[0] for axis in comparable_axes)
             common_upper=max(axis.get_ylim()[1] for axis in comparable_axes)
@@ -161,16 +172,20 @@ def render():
         fig.savefig(figdir/f'{filename}.pdf',metadata={'Title':filename})
         fig.savefig(figdir/f'{filename}.png',dpi=190)
         plt.close(fig)
-    manifest=dict(data_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest(),
+    manifest=dict(design=design.name,
+                  data_sha256=hashlib.sha256((output/'equilibrium_paths.csv').read_bytes()).hexdigest(),
                   sigmas=list(SIGMAS),horizon=data[1.][-1]['time'],
                   panels={'quantity_growth':[p[0] for p in PANELS_QUANTITY_GROWTH],
                           'prices_returns':[p[0] for p in PANELS_PRICES_RETURNS],
                           'distribution':[p[0] for p in PANELS_DISTRIBUTION]},
                   analytical_limits={'sigma_1_50':ai_limits},
                   all_scenarios_admitted=True)
-    (OUT/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+    (output/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(manifest,indent=2))
 
 
 if __name__=='__main__':
-    render()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--design',choices=tuple(DESIGNS),default='main')
+    arguments=parser.parse_args()
+    render(DESIGNS[arguments.design])

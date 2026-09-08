@@ -4,7 +4,7 @@ The main comparison uses common interior K0 and B0, never a borrowed C0, q0,
 or terminal restriction. Cached splines are technical candidates, not figures.
 Run each sigma separately to retain reproducible intermediate diagnostics.
 """
-from dataclasses import asdict, replace
+from dataclasses import asdict, dataclass, replace
 import argparse
 import csv
 import hashlib
@@ -38,6 +38,45 @@ INITIAL_CAPITAL = 4.0
 INITIAL_CAPABILITY = 0.10 * FRONTIER
 OUT = ROOT / 'numerical_rewrite'
 CACHE = ROOT / 'tmp' / 'rewrite_bvp'
+
+
+@dataclass(frozen=True)
+class SimulationDesign:
+    """A complete comparison design; no jump variable is supplied here."""
+    name: str
+    parameters: PositiveAIBenchmarkParameters
+    frontier: float
+    initial_capital: float
+    initial_capability: float
+    output_directory: Path
+    cache_directory: Path
+    display_horizon: float
+    initial_stock_reference: str
+
+
+MAIN_DESIGN = SimulationDesign(
+    name='main', parameters=PARAMETERS, frontier=FRONTIER,
+    initial_capital=INITIAL_CAPITAL, initial_capability=INITIAL_CAPABILITY,
+    output_directory=OUT, cache_directory=CACHE,
+    display_horizon=500.0,
+    initial_stock_reference=(
+        'common interior stocks closer to the capped sigma=1 terminal regime; '
+        'K0=4 and B0/Bbar=0.10; jump variables solved by the BVP'),
+)
+SLOW_PARAMETERS = PositiveAIBenchmarkParameters()
+SLOW_FRONTIER = 1.1 * critical_capability_frontier(1.5, SLOW_PARAMETERS)
+SLOW_TRANSITION_DESIGN = SimulationDesign(
+    name='slow', parameters=SLOW_PARAMETERS, frontier=SLOW_FRONTIER,
+    initial_capital=2.027733653970002,
+    initial_capability=0.44367093160980464,
+    output_directory=OUT / 'slow_transition',
+    cache_directory=ROOT / 'tmp' / 'rewrite_bvp_slow',
+    display_horizon=4000.0,
+    initial_stock_reference=(
+        'earlier slow-transition calibration; K0 and B0 from the uncapped '
+        'unit-elastic BGP; chi=0.01; jump variables solved anew by the BVP'),
+)
+DESIGNS = {'main': MAIN_DESIGN, 'slow': SLOW_TRANSITION_DESIGN}
 
 
 def key(sigma):
@@ -76,7 +115,7 @@ def real_wage_growth(static, sigma, capital_growth, capability_growth,
 
 def save_solution(solution, filename):
     """Save numerical arrays without executable/pickled Python objects."""
-    CACHE.mkdir(parents=True, exist_ok=True)
+    filename.parent.mkdir(parents=True, exist_ok=True)
     raw = solution.raw
     metadata = dict(sigma=solution.terminal.sigma_xl, frontier=solution.terminal.frontier,
                     parameters=asdict(solution.parameters), initial_capital=solution.initial_capital,
@@ -108,35 +147,50 @@ def load_solution(filename):
                                  tuple(GlobalContinuationStage(**v) for v in m['stages']))
 
 
-def run(sigma):
+def validate_solution_design(solution, design, sigma):
+    """Reject a stale checkpoint before it can enter a design's audit."""
+    if (asdict(solution.parameters) != asdict(design.parameters)
+            or solution.terminal.frontier != design.frontier
+            or solution.terminal.sigma_xl != sigma
+            or solution.initial_capital != design.initial_capital
+            or solution.initial_capability != design.initial_capability):
+        raise ValueError(f'A cached solution differs from the {design.name} design.')
+
+
+def run(sigma, design=MAIN_DESIGN):
     if sigma not in SIGMAS:
         raise ValueError('Use one of the four agreed elasticities.')
-    p = PARAMETERS
-    terminal = terminal_point(sigma, FRONTIER, p)
-    OUT.mkdir(exist_ok=True)
-    CACHE.mkdir(parents=True, exist_ok=True)
+    p = design.parameters
+    terminal = terminal_point(sigma, design.frontier, p)
+    design.output_directory.mkdir(parents=True, exist_ok=True)
+    design.cache_directory.mkdir(parents=True, exist_ok=True)
     name = key(sigma)
-    base_path, refined_path = CACHE/f'{name}_base.npz', CACHE/f'{name}_refined.npz'
-    print(f'{name}: frontier={FRONTIER:.12g}; regime={terminal.regime}', flush=True)
+    base_path = design.cache_directory/f'{name}_base.npz'
+    refined_path = design.cache_directory/f'{name}_refined.npz'
+    print(f'{design.name}/{name}: frontier={design.frontier:.12g}; '
+          f'regime={terminal.regime}', flush=True)
     if base_path.exists():
         base = load_solution(base_path)
         terminal = base.terminal
-        if asdict(base.parameters) != asdict(p) or terminal.frontier != FRONTIER:
-            raise ValueError('Cached parameters differ from the agreed design.')
     else:
-        base = solve_global_finite_cap_bvp(terminal, p, INITIAL_CAPITAL, INITIAL_CAPABILITY,
+        base = solve_global_finite_cap_bvp(
+                                         terminal, p, design.initial_capital,
+                                         design.initial_capability,
                                          continuation_steps=32, nodes=221,
                                          tolerance=2e-6, maximum_nodes=20000)
         save_solution(base, base_path)
+    validate_solution_design(base, design, sigma)
     print(f'{name}: base solved, T={base.horizon:.2f}; refining', flush=True)
     if refined_path.exists():
         refined = load_solution(refined_path)
+        validate_solution_design(refined, design, sigma)
         refined.terminal = terminal
     else:
         refined = refine_global_horizon(base, base.horizon+500,
                                        nodes=401, tolerance=1e-8,
                                        boundary_tolerance=1e-10, maximum_nodes=40000)
         save_solution(refined, refined_path)
+    validate_solution_design(refined, design, sigma)
     print(f'{name}: refined; auditing equations and developer optimality', flush=True)
     audit = audit_global_solution(refined)
     comparison = compare_global_solutions(base, refined)
@@ -145,32 +199,31 @@ def run(sigma):
     payload = _solution_payload(refined, audit, horizon_comparison=comparison,
                                 counterfactual_sufficiency=sufficiency)
     payload['parameters'] = asdict(p)
-    payload['initial_stock_reference'] = (
-        'common interior stocks closer to the capped sigma=1 terminal regime; '
-        'K0=4 and B0/Bbar=0.10; jump variables solved by the BVP'
-    )
+    payload['design'] = design.name
+    payload['initial_stock_reference'] = design.initial_stock_reference
     payload['status'] = 'numerically_admitted' if payload['equilibrium_certified'] else 'not_admitted'
     payload['settings'] = dict(base_tolerance=2e-6, refined_tolerance=1e-8,
                                horizon_extension=500, continuation_steps=32)
-    (OUT/f'{name}_audit.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n',
-                                         encoding='utf-8')
+    (design.output_directory/f'{name}_audit.json').write_text(
+        json.dumps(payload, indent=2, allow_nan=False)+'\n', encoding='utf-8')
     print(f'{name}: {payload["status"]}; {sufficiency}', flush=True)
     return payload
 
 
-def export_paths(horizon, points):
+def export_paths(horizon, points, design=MAIN_DESIGN):
     """Refuse a partial or uncertified comparison; never extrapolate splines."""
     solutions = []
     checkpoint_hashes = {}
     for sigma in SIGMAS:
-        path = OUT/f'{key(sigma)}_audit.json'
+        path = design.output_directory/f'{key(sigma)}_audit.json'
         if not path.exists() or not json.loads(path.read_text())['equilibrium_certified']:
             raise RuntimeError(f'No admitted equilibrium for sigma={sigma}; no figure export.')
         report = json.loads(path.read_text())
-        checkpoint = CACHE/report['checkpoint_filename']
+        checkpoint = design.cache_directory/report['checkpoint_filename']
         if hashlib.sha256(checkpoint.read_bytes()).hexdigest() != report['checkpoint_sha256']:
             raise RuntimeError('The checkpoint has changed since its equilibrium audit.')
         sol = load_solution(checkpoint)
+        validate_solution_design(sol, design, sigma)
         if horizon > sol.horizon:
             raise ValueError('Display horizon exceeds a solved and audited horizon.')
         solutions.append(sol)
@@ -230,12 +283,14 @@ def export_paths(horizon, points):
                 profit_output_share=revenue-u-m,
                 inference_revenue_share=u/revenue, research_revenue_share=m/revenue,
                 profit_revenue_share=1-(u+m)/revenue))
-    with (OUT/'equilibrium_paths.csv').open('w', newline='', encoding='utf-8') as stream:
+    csv_path = design.output_directory/'equilibrium_paths.csv'
+    with csv_path.open('w', newline='', encoding='utf-8') as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
     ai_rows = [row for row in rows if row['sigma'] == 1.5]
-    terminal_share = terminal_point(1.5, FRONTIER, PARAMETERS).labor_income_share
+    terminal_share = terminal_point(
+        1.5, design.frontier, design.parameters).labor_income_share
     initial_share = ai_rows[0]['labor_income_share']
 
     def transition_date(fraction):
@@ -252,6 +307,11 @@ def export_paths(horizon, points):
     if transition_dates['T50'] is None:
         raise RuntimeError('The export window does not contain the calibrated transition midpoint.')
     manifest = dict(
+        design=design.name,
+        parameters=asdict(design.parameters),
+        frontier=design.frontier,
+        initial_capital=design.initial_capital,
+        initial_capability=design.initial_capability,
         horizon=horizon,
         points_per_scenario=points,
         checkpoint_sha256=checkpoint_hashes,
@@ -259,31 +319,37 @@ def export_paths(horizon, points):
             'fraction of the sigma=1.50 labor-share decline from its date-zero '
             'value to its analytical limit'),
         sigma_1_50_transition_dates=transition_dates,
-        csv_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest(),
+        csv_sha256=hashlib.sha256(csv_path.read_bytes()).hexdigest(),
     )
-    (OUT/'paths_manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
+    (design.output_directory/'paths_manifest.json').write_text(
+        json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--design', choices=tuple(DESIGNS), default='main')
     parser.add_argument('--sigma', type=float)
     parser.add_argument('--export-horizon', type=float)
     parser.add_argument('--points', type=int, default=1201)
     parser.add_argument('--verify-long-horizon', action='store_true')
     args = parser.parse_args()
+    design = DESIGNS[args.design]
     if args.verify_long_horizon:
         for sigma in SIGMAS:
-            source = load_solution(CACHE/f'{key(sigma)}_refined.npz')
-            target = CACHE/f'{key(sigma)}_long.npz'
+            source = load_solution(design.cache_directory/f'{key(sigma)}_refined.npz')
+            validate_solution_design(source, design, sigma)
+            target = design.cache_directory/f'{key(sigma)}_long.npz'
             if not target.exists():
                 longer = refine_global_horizon(source, source.horizon+500,
                                                 nodes=601, tolerance=1e-9,
                                                 boundary_tolerance=1e-11)
                 save_solution(longer, target)
-            print(f'{key(sigma)}: second horizon extension saved', flush=True)
+            else:
+                validate_solution_design(load_solution(target), design, sigma)
+            print(f'{design.name}/{key(sigma)}: second horizon extension saved', flush=True)
     elif args.export_horizon is not None:
-        export_paths(args.export_horizon, args.points)
+        export_paths(args.export_horizon, args.points, design)
     elif args.sigma is not None:
-        run(args.sigma)
+        run(args.sigma, design)
     else:
         parser.error('Choose --sigma or --export-horizon.')

@@ -548,8 +548,10 @@ particular, the code stores $\log\psi(B)$ separately: a displayed ratio
 $B/\overline B$ can round to one even though the remaining frontier gap
 is strictly positive.
 
-The left boundary fixes only $K_0$ and $B_0$ from
-\eqref{eq:rewrite-simulation-initial-stocks}. At the right boundary, the
+The left boundary fixes only $K_0$ and $B_0$: from
+\eqref{eq:rewrite-simulation-initial-stocks} in the main comparison and from
+\eqref{eq:rewrite-slow-transition-design} in the slow-transition exercise. At
+the right boundary, the
 solution is mapped into the regime-specific normalized coordinates of
 Appendix~\ref{app:rewrite-finite-existence}. Two projection conditions remove
 the unstable components of the linearized terminal system. Its third stable
@@ -575,10 +577,11 @@ optimum.
 For each elasticity, I first solve a local BVP near its analytical terminal
 point. I then move the initial stocks and effective-labor scale continuously
 to their common prescribed values, retaining the preceding solution as the
-next guess. The requested design uses 32 continuation stages. There is no
+next guess. Each design uses 32 continuation stages. There is no
 continuation through the degenerate no-AI economy. The common main stocks are
 those in \eqref{eq:rewrite-simulation-initial-stocks}; the uncapped unit-elastic
-reference supplies stocks only for the separate financing sensitivity.
+reference supplies stocks for the slow-transition and financing sensitivities,
+but never supplies their jump variables.
 
 The initial horizon combines the time needed to reach the terminal scale
 with eleven decay times of the slowest stable eigenvalue. This gives an
@@ -586,8 +589,9 @@ initial truncation criterion, not an equilibrium assumption. I extend that
 horizon twice by 500 years, tightening the collocation tolerance from
 $2\times10^{-6}$ to $10^{-8}$ and then $10^{-9}$. The final boundary tolerance
 is $10^{-11}$. Initial meshes of 221, 401, and 601 points are refined
-adaptively by the solver. The final horizons exceed the common 500-year
-display window; the figures contain no extrapolated spline values.
+adaptively by the solver. The final horizons exceed both the main 500-year
+window and the slow exercise's 4,000-year window; the figures contain no
+extrapolated spline values.
 
 \begin{table}[H]
  \centering
@@ -613,6 +617,14 @@ display window; the figures contain no extrapolated spline values.
  the last two solves. Values are rounded upward.
  \end{minipage}
 \end{table}
+
+The slower-transition exercise repeats this entire calculation rather than
+rescaling or extending the main trajectories. Its final horizons are 6,857.1,
+6,731.9, 6,647.9, and 4,919.4 years for
+$\sigma=0.90,1,1.10,1.50$, respectively. The corresponding independently
+reconstructed dynamic residuals are below $1.1\times10^{-9}$, and extending
+the horizon changes the detrended coordinates by at most
+$2.8\times10^{-8}$ over the full 0--4,000 display window.
 
 The maximum research and static monopoly first-order residuals are below
 $1.8\times10^{-13}$. Initial jump choices change by less than
@@ -647,9 +659,10 @@ counterfactual AI-efficiency levels $B\geq B_0$, refining every local minimum fo
 on the grid. An analytical upper bound on the Hamiltonian's derivative
 covers the unbounded research-depth domain beyond the numerical grid.
 The check is repeated with 81 dates and 101 AI-efficiency points, then with
-321 dates and 241 points. The smallest normalized gap is
-$-2.0\times10^{-14}$, consistent with floating-point error at the tangent
-point. The numerical gap tolerance is $10^{-10}$; the economic support
+321 dates and 241 points. In the main and slow-transition comparisons, the
+smallest normalized gaps are of order $-10^{-14}$, consistent with
+floating-point error at the tangent point. The numerical gap tolerance is
+$10^{-10}$; the economic support
 inequality remains exact.
 
 For the infinite-horizon continuation, I use
@@ -672,6 +685,12 @@ calculation repeats both horizon extensions, the independent equation and TVC
 checks, and the two Hamiltonian-support grids. It passes the same admission
 thresholds as the main $\sigma=1.50$ path.
 
+The slow-transition comparison in
+Section~\ref{subsec:rewrite-slow-transition} likewise uses separate BVPs,
+checkpoints, audit files, and manifests. It sets $\chi=0.01$ and uses the
+earlier stocks in \eqref{eq:rewrite-slow-transition-design}; all four paths
+pass the equation, horizon, TVC, and developer-optimality gates before export.
+
 \subsection{Reproduction and export safeguards}
 
 The implementation preserves the earlier solver. The entry point is
@@ -681,9 +700,10 @@ solve each of the four elasticities with \texttt{--sigma}; run
 \texttt{--verify-long-horizon}; run
 \path{audit_rewrite_hamiltonian_support.py} for $\sigma=1.50$ at both
 grid resolutions; run the final audit; run
-\path{audit_initial_financing_sensitivity.py}; export with
-\texttt{--export-horizon 500}; and render with
- \path{plot_rewrite_equilibria.py}.
+\path{audit_initial_financing_sensitivity.py}; export; and render with
+\path{plot_rewrite_equilibria.py}. The public reproduction command performs
+that sequence for both the main design and \texttt{--design slow}, using
+display horizons of 500 and 4,000 years, respectively.
 All code, audit files, plot-ready data, and figures used in these simulations
 are available in the paper's
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF}{public GitHub repository}.

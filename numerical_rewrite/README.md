@@ -19,6 +19,9 @@ files link the exported data and figures to the audited numerical checkpoints.
 `initial_financing_sensitivity.json` records the separately admitted
 high-substitution path that starts much farther from the terminal regime and
 therefore requires an initial household equity injection into the developer.
+The `slow_transition/` subdirectory contains the separately solved and
+admitted four-scenario comparison with the earlier stocks and `chi=0.01`,
+including its plotted data and provenance manifests.
 
 These files should be regenerated through the public workflow rather than
 edited directly. A converged boundary-value calculation is only a candidate;

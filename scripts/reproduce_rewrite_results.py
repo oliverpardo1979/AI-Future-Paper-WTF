@@ -14,6 +14,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SIGMAS = (0.9, 1.0, 1.1, 1.5)
+DESIGNS = ('main', 'slow')
 TEST_FILES = (
     "test_finite_cap_bvp.py",
     "test_global_finite_cap_bvp.py",
@@ -32,16 +33,17 @@ def run(arguments: list[str]) -> None:
 
 def remove_generated_checkpoints() -> None:
     """Remove only this workflow's untracked BVP checkpoints."""
-    cache = ROOT / "tmp" / "rewrite_bvp"
     removed = 0
-    for sigma in SIGMAS:
-        key = f"sigma_{sigma:.2f}".replace(".", "_")
-        for suffix in ("base", "refined", "long"):
-            path = cache / f"{key}_{suffix}.npz"
-            if path.exists():
-                path.unlink()
-                removed += 1
-    print(f"Removed {removed} generated checkpoint(s) from {cache}.", flush=True)
+    for cache_name in ('rewrite_bvp', 'rewrite_bvp_slow'):
+        cache = ROOT / "tmp" / cache_name
+        for sigma in SIGMAS:
+            key = f"sigma_{sigma:.2f}".replace(".", "_")
+            for suffix in ("base", "refined", "long"):
+                path = cache / f"{key}_{suffix}.npz"
+                if path.exists():
+                    path.unlink()
+                    removed += 1
+    print(f"Removed {removed} generated equilibrium checkpoint(s).", flush=True)
 
 
 def main() -> None:
@@ -57,11 +59,12 @@ def main() -> None:
         help="skip the regression suites (use only after an unchanged successful run)",
     )
     parser.add_argument("--export-horizon", type=float, default=500.0)
+    parser.add_argument("--slow-export-horizon", type=float, default=4000.0)
     parser.add_argument("--points", type=int, default=1201)
     args = parser.parse_args()
 
-    if args.export_horizon <= 0 or args.points < 2:
-        parser.error("The export horizon must be positive and --points must be at least 2.")
+    if args.export_horizon <= 0 or args.slow_export_horizon <= 0 or args.points < 2:
+        parser.error("Both export horizons must be positive and --points must be at least 2.")
 
     if args.fresh:
         remove_generated_checkpoints()
@@ -83,55 +86,66 @@ def main() -> None:
                 ]
             )
 
-    for sigma in SIGMAS:
+    horizons = {'main': args.export_horizon, 'slow': args.slow_export_horizon}
+    for design in DESIGNS:
+        for sigma in SIGMAS:
+            run(
+                [
+                    python,
+                    "scripts/simulate_rewrite_finite_frontier.py",
+                    "--design",
+                    design,
+                    "--sigma",
+                    str(sigma),
+                ]
+            )
+
         run(
             [
                 python,
                 "scripts/simulate_rewrite_finite_frontier.py",
-                "--sigma",
-                str(sigma),
+                "--design",
+                design,
+                "--verify-long-horizon",
             ]
         )
-
-    run(
-        [
-            python,
-            "scripts/simulate_rewrite_finite_frontier.py",
-            "--verify-long-horizon",
-        ]
-    )
-    for dates, states in ((81, 101), (321, 241)):
+        for dates, states in ((81, 101), (321, 241)):
+            run(
+                [
+                    python,
+                    "scripts/audit_rewrite_hamiltonian_support.py",
+                    "--design",
+                    design,
+                    "--sigma",
+                    "1.5",
+                    "--time-points",
+                    str(dates),
+                    "--capability-points",
+                    str(states),
+                ]
+            )
+        run([python, "scripts/audit_rewrite_equilibria.py", "--design", design])
         run(
             [
                 python,
-                "scripts/audit_rewrite_hamiltonian_support.py",
-                "--sigma",
-                "1.5",
-                "--time-points",
-                str(dates),
-                "--capability-points",
-                str(states),
+                "scripts/simulate_rewrite_finite_frontier.py",
+                "--design",
+                design,
+                "--export-horizon",
+                str(horizons[design]),
+                "--points",
+                str(args.points),
             ]
         )
-    run([python, "scripts/audit_rewrite_equilibria.py"])
+        run([python, "scripts/plot_rewrite_equilibria.py", "--design", design])
+
     financing_command = [python, "scripts/audit_initial_financing_sensitivity.py"]
     if args.fresh:
         financing_command.append("--fresh")
     run(financing_command)
-    run(
-        [
-            python,
-            "scripts/simulate_rewrite_finite_frontier.py",
-            "--export-horizon",
-            str(args.export_horizon),
-            "--points",
-            str(args.points),
-        ]
-    )
-    run([python, "scripts/plot_rewrite_equilibria.py"])
     print(
-        "\nReproduction complete: all four paths passed admission and the "
-        "audited data and figures were regenerated.",
+        "\nReproduction complete: the main and slow-transition comparisons "
+        "passed admission and their audited data and figures were regenerated.",
         flush=True,
     )
 

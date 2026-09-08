@@ -362,6 +362,7 @@
     "initial_labor_productivity": 1.0,
     "initial_population": 1.0
   },
+  "design": "main",
   "initial_stock_reference": "common interior stocks closer to the capped sigma=1 terminal regime; K0=4 and B0/Bbar=0.10; jump variables solved by the BVP",
   "status": "numerically_admitted",
   "settings": {
