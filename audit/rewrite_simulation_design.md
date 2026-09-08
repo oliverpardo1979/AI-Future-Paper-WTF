@@ -131,6 +131,10 @@ replace it by Pi/Y or label sales as industry value added.
 |---|---|---|
 | A | g_C-(n+gamma) | Linear, percent per year |
 | B | g_K-(n+gamma) | Linear, percent per year |
+| C | g_X-(n+gamma) | Linear, percent per year |
+
+The third panel reports the growth of X/(AL), the relative service input that
+governs the movement in CES share odds conditional on sigma.
 
 ### AI-revenue composition
 

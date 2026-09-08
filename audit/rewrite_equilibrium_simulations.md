@@ -9,7 +9,7 @@ underlying the paper's reported numerical results.
 ## Publication status
 
 Complete. The final 4,804-row CSV, its provenance manifest, four published
-figures, and the separate financing-sensitivity audit were regenerated. All 32
+figures, and the separate financing-sensitivity audit were regenerated. All 33
 relevant regression tests passed. The PDF was compiled and visually inspected
 after the numerical outputs were incorporated.
 
@@ -52,8 +52,9 @@ continuation step through omega_X=0.
 - `scripts/plot_rewrite_equilibria.py`: render the four published figures,
   with checkpoint/data provenance checks. Real-wage growth is
   recovered from the exact static share identity rather than by numerical
-  differentiation. Both figures passed inspection as standalone PNGs and in
-  the compiled paper.
+  differentiation. The growth of X/(AL) is likewise recovered from the exact
+  gradient of the dated static block. All figures passed inspection as
+  standalone PNGs and in the compiled paper.
 
 The saved vector spline must retain `PPoly.axis=1`. An independent residual
 check exposed an incorrect reload orientation during development; the loader
@@ -108,13 +109,13 @@ Completed in the final reproduction run:
   plotted levels and wL/Y+p_X X/Y=0.67. The maximum error in
   U/(p_X X)+M/(p_X X)+Pi/(p_X X)=1 was 1.111e-16.
 
-The eight tests in `test_rewrite_simulation_design.py` all pass, including
+The nine tests in `test_rewrite_simulation_design.py` all pass, including
 saved vector-spline orientation, the maximized-Hamiltonian identity and
-slope, the exact real-wage growth calculation, and the uniform
-service-capability elasticity bound. The eight-test
+slope, the exact real-wage and AI-services growth calculations, and the
+uniform service-capability elasticity bound. The eight-test
 near-unit regression suite also passes after the change to its shared static
 bracketing function. Together with the sixteen finite-frontier and global-BVP
-tests listed above, the final regression count is 32.
+tests listed above, the final regression count is 33.
 
 ## Reproduction commands
 

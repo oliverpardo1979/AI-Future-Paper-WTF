@@ -256,19 +256,30 @@ essential to interpreting the comparison.
 \label{subsec:rewrite-technology-revenue}
 
 Figure~\ref{fig:rewrite-accumulation-growth} reports the growth rates of
-consumption and capital per unit of effective labor. These are
-$g_C-(n+\gamma)$ and $g_K-(n+\gamma)$, respectively. Levels would obscure the
-timing of accumulation because they differ greatly across regimes by the end
-of the window; growth rates show directly when the economy accelerates and how
-it approaches its terminal regime.
+consumption, capital, and effective AI production services per unit of
+effective labor. These are $g_C-(n+\gamma)$, $g_K-(n+\gamma)$, and
+$g_X-(n+\gamma)$, respectively. The third panel connects the simulated path
+directly to equation~\eqref{eq:rewrite-transition-share-odds}, since
+\begin{equation}
+ \frac{d}{dt}\log\!\left(\frac{s_X}{1-s_X}\right)
+ =\frac{\sigma-1}{\sigma}\left[g_X-(n+\gamma)\right].
+ \label{eq:rewrite-transition-share-growth}
+\end{equation}
+Thus the growth of $X/(AL)$ determines the direction and speed at which the
+AI share changes, conditional on $\sigma$. Levels would obscure the timing of
+accumulation because they differ greatly across regimes by the end of the
+window; growth rates show directly when the economy accelerates and how it
+approaches its terminal regime.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_accumulation_growth.pdf}
- \caption{Growth of consumption and capital per unit of effective labor.
+ \caption{Growth of consumption, capital, and effective AI production services
+ per unit of effective labor.
  The scenarios and 500-year window match
  Figure~\ref{fig:rewrite-growth-returns}. Thin horizontal dotted lines mark the
- analytical limits for $\sigma=1.50$. Both panels use linear percentage scales.}
+ analytical limits for $\sigma=1.50$. All three panels use linear percentage
+ scales; Panel C uses its own range.}
  \label{fig:rewrite-accumulation-growth}
 \end{figure}
 

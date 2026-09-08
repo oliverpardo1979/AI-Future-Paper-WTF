@@ -16,7 +16,7 @@ from analyze_axm_finite_cap_bvp import (
 from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from simulate_rewrite_finite_frontier import (
     SIGMAS, FRONTIER, PARAMETERS, INITIAL_CAPITAL, INITIAL_CAPABILITY,
-    save_solution, load_solution, real_wage_growth,
+    save_solution, load_solution, ai_services_growth, real_wage_growth,
 )
 from scipy.interpolate import PPoly
 from solve_near_unit_ai_bvp import solve_monopoly_static_block
@@ -97,6 +97,29 @@ class RewriteSimulationDesign(unittest.TestCase):
                     math.log1p(-trial.ai_ces_share)+trial.log_output
                     - sign*step*p.population_growth)
             numerical = (wages[1]-wages[0])/(2*step)
+            self.assertAlmostEqual(exact, numerical, places=8)
+
+    def test_ai_services_growth_matches_the_differentiated_static_block(self):
+        p = self.p
+        capital_growth = .031
+        capability_growth = .004
+        effective_labor_growth = p.population_growth+p.labor_productivity_growth
+        for sigma in (.9, 1., 1.1, 1.5):
+            log_capital, log_capability, log_effective_labor = math.log(2.), math.log(1.2), .1
+            static = solve_monopoly_static_block(
+                log_capital, log_capability, log_effective_labor, sigma, p)
+            exact = ai_services_growth(
+                static, capital_growth, capability_growth, effective_labor_growth)
+            step = 1e-5
+            log_services = []
+            for sign in (-1, 1):
+                trial = solve_monopoly_static_block(
+                    log_capital+sign*step*capital_growth,
+                    log_capability+sign*step*capability_growth,
+                    log_effective_labor+sign*step*effective_labor_growth,
+                    sigma, p)
+                log_services.append(trial.log_ai_services)
+            numerical = (log_services[1]-log_services[0])/(2*step)
             self.assertAlmostEqual(exact, numerical, places=8)
 
     def test_local_nonlinear_bvps_below_and_at_one(self):

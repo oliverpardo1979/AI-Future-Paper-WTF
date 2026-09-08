@@ -29,6 +29,7 @@ PANELS_AI_DISTRIBUTION=(
 PANELS_ACCUMULATION_GROWTH=(
  ('consumption_effective_labor_growth', 'A. Consumption per effective labor\n$g_C-(n+\\gamma)$', 'rate'),
  ('capital_effective_labor_growth', 'B. Capital per effective labor\n$g_K-(n+\\gamma)$', 'rate'),
+ ('ai_services_effective_labor_growth', 'C. AI services\n$g_X-(n+\\gamma)$', 'rate'),
 )
 PANELS_AI_REVENUE_COMPOSITION=(
  ('inference_revenue_share', 'A. Inference cost\n$U/(p_X X)$', 'share'),
@@ -78,6 +79,9 @@ def render():
         'capital_effective_labor_growth': (
             ai_terminal.terminal_growth-PARAMETERS.population_growth
             -PARAMETERS.labor_productivity_growth),
+        'ai_services_effective_labor_growth': (
+            ai_terminal.terminal_growth-PARAMETERS.population_growth
+            -PARAMETERS.labor_productivity_growth),
         'inference_revenue_share': 1-PARAMETERS.alpha,
         'research_revenue_share': 0.0,
         'profit_revenue_share': PARAMETERS.alpha,
@@ -85,7 +89,7 @@ def render():
     figures=(
         ('equilibrium_growth_returns',PANELS_GROWTH_RETURNS,'three',ai_limits),
         ('equilibrium_ai_distribution',PANELS_AI_DISTRIBUTION,'three',ai_limits),
-        ('equilibrium_accumulation_growth',PANELS_ACCUMULATION_GROWTH,'two',ai_limits),
+        ('equilibrium_accumulation_growth',PANELS_ACCUMULATION_GROWTH,'three',ai_limits),
         ('equilibrium_ai_revenue_composition',PANELS_AI_REVENUE_COMPOSITION,'three',ai_limits),
     )
     for filename,panels,layout,limits in figures:
@@ -126,7 +130,8 @@ def render():
                 lower,upper=axis.get_ylim()
                 axis.set_ylim(min(0,lower),upper)
             if field in ('profit_revenue_share','consumption_effective_labor_growth',
-                          'capital_effective_labor_growth'):
+                          'capital_effective_labor_growth',
+                          'ai_services_effective_labor_growth'):
                 axis.axhline(0,color='#999999',linewidth=.6,zorder=0)
             axis.set_xlim(0,data[1.][-1]['time'])
             axis.set_xticks(np.linspace(0,data[1.][-1]['time'],6))

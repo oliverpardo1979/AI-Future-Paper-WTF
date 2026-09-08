@@ -1,5 +1,5 @@
 {
-  "data_sha256": "23b59aca0c0bb06916f990765db6883827fa1bea7ad2f0e74fde988d33d957d6",
+  "data_sha256": "ad660645c1d3d5cf7cd45e4eb15026d669d1c283b4fd88c862557a0710bcabd7",
   "sigmas": [
     0.9,
     1.0,
@@ -20,7 +20,8 @@
     ],
     "accumulation_growth": [
       "consumption_effective_labor_growth",
-      "capital_effective_labor_growth"
+      "capital_effective_labor_growth",
+      "ai_services_effective_labor_growth"
     ],
     "ai_revenue_composition": [
       "inference_revenue_share",
@@ -38,6 +39,7 @@
       "ai_revenue_output_share": 0.6699999999999999,
       "consumption_effective_labor_growth": 0.02134997581384626,
       "capital_effective_labor_growth": 0.02134997581384626,
+      "ai_services_effective_labor_growth": 0.02134997581384626,
       "inference_revenue_share": 0.6699999999999999,
       "research_revenue_share": 0.0,
       "profit_revenue_share": 0.33

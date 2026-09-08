@@ -44,6 +44,17 @@ def key(sigma):
     return f'sigma_{sigma:.2f}'.replace('.', '_')
 
 
+def ai_services_growth(static, capital_growth, capability_growth,
+                       effective_labor_growth):
+    """Recover ``g_X`` exactly from the dated static equilibrium block."""
+    xk, xb = static.ai_services_log_gradient[:2]
+    return (
+        xk * capital_growth
+        + xb * capability_growth
+        + (1.0 - xk) * effective_labor_growth
+    )
+
+
 def real_wage_growth(static, sigma, capital_growth, capability_growth,
                      effective_labor_growth, output_growth, population_growth):
     """Recover ``g_w`` exactly from the static equilibrium block.
@@ -53,16 +64,12 @@ def real_wage_growth(static, sigma, capital_growth, capability_growth,
     identity supplies the latter without numerically differentiating a
     plotted series.
     """
-    xk, xb = static.ai_services_log_gradient[:2]
-    ai_services_growth = (
-        xk * capital_growth
-        + xb * capability_growth
-        + (1.0 - xk) * effective_labor_growth
-    )
+    gx = ai_services_growth(
+        static, capital_growth, capability_growth, effective_labor_growth)
     labor_share_growth = (
         -elasticity_coordinate(sigma)
         * static.ai_ces_share
-        * (ai_services_growth - effective_labor_growth)
+        * (gx - effective_labor_growth)
     )
     return output_growth - population_growth + labor_share_growth
 
@@ -187,6 +194,10 @@ def export_paths(horizon, points):
             # log q). Homogeneity gives the missing log(AL) derivative 1-yk.
             gy = float(yk*rates[0,j] + yb*gb + (1-yk)*(
                                         p.population_growth+p.labor_productivity_growth))
+            gx = ai_services_growth(
+                static, rates[0,j], gb,
+                p.population_growth+p.labor_productivity_growth,
+            )
             gw = real_wage_growth(
                 static, sigma, rates[0,j], gb,
                 p.population_growth+p.labor_productivity_growth,
@@ -209,6 +220,8 @@ def export_paths(horizon, points):
                     rates[2,j]-p.population_growth-p.labor_productivity_growth),
                 capital_effective_labor_growth=(
                     rates[0,j]-p.population_growth-p.labor_productivity_growth),
+                ai_services_effective_labor_growth=(
+                    gx-p.population_growth-p.labor_productivity_growth),
                 inference_revenue_share=u/revenue, research_revenue_share=m/revenue,
                 profit_revenue_share=1-(u+m)/revenue))
     with (OUT/'equilibrium_paths.csv').open('w', newline='', encoding='utf-8') as stream:
