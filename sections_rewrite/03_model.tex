@@ -136,39 +136,20 @@ The elasticity \(\sigma\) governs two different margins. The first is whether mo
  \label{eq:rewrite-labor-share}
 \end{equation}
 
-\Needspace{7\baselineskip}
-\begin{proposition}[Effective AI production services, wages, labor's income share, and conditional labor demand;
-\citealp{autorkausik2026}; \citealp{yango2026}]\label{rem:effect}
+\begin{remark}[Why the elasticity of substitution matters]
 \label{rem:rewrite-ai-labor}
-Consider an increase in $X$. To evaluate its effects on $w$ and $\ell^Y$, hold $K$ and $L$ fixed; to evaluate its effect on conditional labor demand $L$, hold $K$ and $w$ fixed. If $\sigma<1$, $w$, $\ell^Y$, and $L$ all rise with $X$. If $1<\sigma<1/\alpha$, $w$ and $L$ rise while $\ell^Y$ falls. If $\sigma>1/\alpha$, all three fall. %At $\sigma=1$, $w$ and $L$ rise while $\ell^Y$ is unchanged. At $\sigma=1/\alpha$, $\ell^Y$ falls while $w$ and $L$ are unchanged.
-\end{proposition}
-
-\begin{proof}
-The proposition follows from the final-good firm's first-order conditions in
-Equation~\eqref{eq:rewrite-factor-prices} and the labor-share expression in
-Equation~\eqref{eq:rewrite-labor-share}:
-\begin{align}
- \left.\frac{\partial\ln w}{\partial\ln X}\right|_{K,L}
- &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
- \label{eq:rewrite-wage-x-elasticity}\\
- \left.\frac{\partial\ln\ell^Y}{\partial\ln X}\right|_{K,L}
- &=-\left(1-\frac{1}{\sigma}\right)s_X.
- \label{eq:rewrite-share-x-elasticity}
-\end{align}
-%Equivalently, holding $K,A,$ and $w$ fixed, conditional labor demand obeys
-\begin{equation}
- \left.\frac{\partial\ln L}{\partial\ln X}\right|_{K,w}
- =\frac{s_X(\sigma^{-1}-\alpha)}
- {\alpha(1-s_X)+s_X/\sigma}.
- \label{eq:rewrite-labor-demand-x-elasticity}
-\end{equation}
-%The denominator in the last expression is strictly positive. The signs therefore follow from the thresholds $1$ and $1/\alpha$.
-\end{proof}
-
-Proposition~\ref{rem:effect} describes conditional responses to an increase in
-effective AI production services $X$, not the general-equilibrium effects of greater
-AI efficiency. The latter depend on how the developer adjusts service supply and
-how capital and prices respond.
+Equations~\eqref{eq:rewrite-factor-prices} and
+\eqref{eq:rewrite-labor-share} show that $\sigma$ governs two distinct
+relationships between effective AI production services and labor. Holding $K$
+and $L$ fixed, an increase in $X$ raises $w$ if $\sigma<1/\alpha$ but lowers it
+if $\sigma>1/\alpha$, while labor's income share rises if $\sigma<1$ and falls
+if $\sigma>1$. Equation~\eqref{eq:rewrite-factor-prices} also implies that,
+holding $K$ and $w$ fixed, conditional labor demand rises with $X$ if
+$\sigma<1/\alpha$ and falls if $\sigma>1/\alpha$. These conditional
+relationships, also emphasized by \citet{autorkausik2026} and
+\citet{yango2026}, provide a first illustration of why the elasticity of
+substitution matters for the effects of AI on labor.
+\end{remark}
 
 
 \subsection{The AI developer}
