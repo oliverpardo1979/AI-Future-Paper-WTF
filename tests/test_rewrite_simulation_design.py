@@ -3,7 +3,6 @@ import math
 from pathlib import Path
 import sys
 import unittest
-import tempfile
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +15,8 @@ from analyze_axm_finite_cap_bvp import (
 )
 from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from simulate_rewrite_finite_frontier import (
-    SIGMAS, FRONTIER, save_solution, load_solution, real_wage_growth,
+    SIGMAS, FRONTIER, PARAMETERS, INITIAL_CAPITAL, INITIAL_CAPABILITY,
+    save_solution, load_solution, real_wage_growth,
 )
 from scipy.interpolate import PPoly
 from solve_near_unit_ai_bvp import solve_monopoly_static_block
@@ -31,6 +31,9 @@ class RewriteSimulationDesign(unittest.TestCase):
         self.assertEqual((p.alpha, p.depreciation, p.discount, p.population_growth,
                           p.labor_productivity_growth, p.eta, p.chi, p.omega_x),
                          (.33, .05, .04, .003, .01, .2, .01, .2))
+        self.assertEqual(PARAMETERS.chi, 1.4378)
+        self.assertEqual(INITIAL_CAPITAL, 4.0)
+        self.assertAlmostEqual(INITIAL_CAPABILITY/FRONTIER, .10)
         for sigma in SIGMAS:
             t = terminal_point(sigma, FRONTIER, p)
             self.assertEqual(t.regime, 'ai_dominated' if sigma == 1.5 else 'labor_supported')
@@ -113,13 +116,16 @@ class RewriteSimulationDesign(unittest.TestCase):
         fake=SimpleNamespace(raw=raw,terminal=t,parameters=self.p,
             initial_capital=2.,initial_capability=.5,initial_effective_labor_scale=1.,
             horizon=2.,stages=[])
-        with tempfile.TemporaryDirectory() as directory:
-            filename=Path(directory)/'interpolation.npz'
+        (ROOT/'tmp').mkdir(exist_ok=True)
+        filename=ROOT/'tmp'/'test_interpolation_checkpoint.npz'
+        try:
             save_solution(fake,filename)
             loaded=load_solution(filename)
             for times in (.3,np.array([.1,.4,1.3])):
                 np.testing.assert_allclose(loaded.raw.sol(times),polynomial(times))
                 np.testing.assert_allclose(loaded.raw.sol(times,1),polynomial(times,1))
+        finally:
+            filename.unlink(missing_ok=True)
 
     def test_maximized_hamiltonian_and_its_support_slope(self):
         p=self.p

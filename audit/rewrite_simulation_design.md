@@ -1,6 +1,6 @@
 # Agreed simulation design for the finite-frontier rewrite
 
-Status: design and interior initial-state reference confirmed on 2026-09-03.
+Status: revised design and interior initial-state reference confirmed on 2026-09-07.
 All four BVPs have now passed the final numerical equilibrium audit. See
 `audit/rewrite_equilibrium_simulations.md` and `numerical_rewrite/*_audit.json`
 for execution evidence and remaining publication steps. The original design
@@ -58,12 +58,14 @@ gamma_A=0 values still present in older simulation artifacts.
 | omega_X | 0.20 | Illustrative AI-services CES weight, not an estimated share |
 | omega_L | 0.80 | One minus omega_X |
 | eta | 0.20 | Research exponent, satisfying eta<alpha and 2 eta<=1 |
-| chi | 0.01 | Illustrative research productivity, not estimated |
+| chi | 1.4378 | Research speed calibrated to a 50-year transition midpoint in the sigma=1.50 path |
 
 The UN source does not project a constant population-growth rate forever.
 Likewise, with the other annual rates fixed, chi is not merely a free time-unit
 normalization: changing it changes research speed relative to the other
-processes. None of the AI-specific values is an empirical estimate.
+processes. The midpoint is the first date at which the sigma=1.50 labor share
+has completed half of the decline from its date-zero value to its analytical
+limit. The calibration is illustrative, not an empirical estimate.
 
 ## Initial condition: confirmed interior reference
 
@@ -76,23 +78,24 @@ would be M=0. This is a boundary problem, not an interior path satisfying the
 current research first-order condition and the maintained B_0<Bbar domain.
 Do not put B_0=Bbar into the current interior BVP or approximate it by clipping.
 
-The historical uncapped unit-elastic BGP instead supplied
+The published comparison instead uses
 
 \[
- A_0=N_0=1,\qquad K_0=2.027733653970002,\qquad
- B_0=0.44367093160980464.
+ A_0=N_0=1,\qquad K_0=4,\qquad
+ B_0=0.10\overline B=17.012401740519476.
 \]
 
-These are the confirmed common initial stocks for the finite-frontier
-comparison, but they are not an exact BGP of the new capped model. The old
-consumption and shadow-value choices must not be imported: C_0 and q_0 must be
-selected anew by the equilibrium BVP for each sigma. Using terminal normalized
-capital with B_0<Bbar would be another initialization, also not an exact
-stationary state; no arbitrary frontier gap has been selected.
+These common stocks are closer to the capped sigma=1 terminal regime: initial
+AI efficiency is 10 percent of its frontier and initial capital per unit of
+effective labor is about 44 percent of its terminal sigma=1 value. They are
+still not an exact BGP of the capped model. Consumption and the shadow value
+must be selected anew by the equilibrium BVP for each sigma.
 
-The user approved the recommended interior reference after the distinction
-was explained. Every final BVP uses exactly these stocks; none was moved to
-obtain convergence. Initial consumption and the shadow price are endogenous.
+Every main BVP uses exactly these stocks; none was moved to obtain convergence.
+Initial consumption and the shadow price are endogenous. A separately audited
+financing sensitivity retains the earlier distant stocks
+K_0=2.027733653970002 and B_0=0.44367093160980464 and uses chi=1.4223 to keep
+the same 50-year midpoint. It is not one of the four main plotted paths.
 
 ## Published figure layout
 
@@ -122,17 +125,22 @@ growth wedge governing the labor-income share.
 The last panel shows AI-industry sales relative to final output. Do not
 replace it by Pi/Y or label sales as industry value added.
 
-### Accumulation and AI-revenue composition
+### Accumulation growth
 
 | Panel | Variable | Vertical scale |
 |---|---|---|
-| A | C/(AL) | Logarithmic |
-| B | K/(AL) | Logarithmic |
-| C | U/(p_X X) | Linear, percent |
-| D | M/(p_X X) | Linear, percent |
-| E | Pi/(p_X X) | Linear, percent, allowing negative values |
+| A | g_C-(n+gamma) | Linear, percent per year |
+| B | g_K-(n+gamma) | Linear, percent per year |
 
-The second-row denominator is deliberately AI revenue, not final output:
+### AI-revenue composition
+
+| Panel | Variable | Vertical scale |
+|---|---|---|
+| A | U/(p_X X) | Linear, percent |
+| B | M/(p_X X) | Linear, percent |
+| C | Pi/(p_X X) | Linear, percent, allowing negative values in sensitivities |
+
+The revenue-composition denominator is deliberately AI revenue, not final output:
 U/(p_X X)+M/(p_X X)+Pi/(p_X X)=1. This is a display normalization, not a
 redefinition of any model variable. Preserve negative profits where they
 occur instead of truncating the axis or applying a logarithmic scale.

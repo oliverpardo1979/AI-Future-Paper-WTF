@@ -578,8 +578,9 @@ For each elasticity, I first solve a local BVP near its analytical terminal
 point. I then move the initial stocks and effective-labor scale continuously
 to their common prescribed values, retaining the preceding solution as the
 next guess. The requested design uses 32 continuation stages. There is no
-continuation through the degenerate no-AI economy, and the uncapped
-unit-elastic reference supplies initial stocks only.
+continuation through the degenerate no-AI economy. The common main stocks are
+those in \eqref{eq:rewrite-simulation-initial-stocks}; the uncapped unit-elastic
+reference supplies stocks only for the separate financing sensitivity.
 
 The initial horizon combines the time needed to reach the terminal scale
 with eleven decay times of the slowest stable eigenvalue. This gives an
@@ -587,7 +588,7 @@ initial truncation criterion, not an equilibrium assumption. I extend that
 horizon twice by 500 years, tightening the collocation tolerance from
 $2\times10^{-6}$ to $10^{-8}$ and then $10^{-9}$. The final boundary tolerance
 is $10^{-11}$. Initial meshes of 221, 401, and 601 points are refined
-adaptively by the solver. The final horizons exceed the common 4,000-year
+adaptively by the solver. The final horizons exceed the common 500-year
 display window; the figures contain no extrapolated spline values.
 
 \begin{table}[H]
@@ -599,10 +600,10 @@ display window; the figures contain no extrapolated spline values.
  \toprule
  $\sigma$ & Final horizon & Mesh points & Dynamic residual & Horizon change\\
  \midrule
- 0.90 & 6,857.1 & 809  & $8.53\times10^{-10}$ & $2.44\times10^{-8}$\\
- 1.00 & 6,731.9 & 607  & $8.88\times10^{-10}$ & $5.73\times10^{-9}$\\
- 1.10 & 6,647.9 & 831  & $9.37\times10^{-10}$ & $1.68\times10^{-8}$\\
- 1.50 & 4,919.4 & 1,255 & $1.06\times10^{-9}$ & $2.73\times10^{-8}$\\
+ 0.90 & 4,946.2 & 874  & $9.17\times10^{-10}$ & $3.26\times10^{-8}$\\
+ 1.00 & 4,821.1 & 872  & $1.05\times10^{-9}$ & $3.73\times10^{-8}$\\
+ 1.10 & 4,737.0 & 909  & $9.12\times10^{-10}$ & $3.37\times10^{-8}$\\
+ 1.50 & 3,008.5 & 1,092 & $8.19\times10^{-10}$ & $1.56\times10^{-8}$\\
  \bottomrule
  \end{tabular}
  \par\smallskip
@@ -610,16 +611,16 @@ display window; the figures contain no extrapolated spline values.
  Dynamic residuals reconstruct the four original equations using five-point
  differences of spline values at 1,001 dates, with steps of 0.003 and 0.001
  years; the table reports the larger maximum. Horizon change is the largest
- change in the detrended logarithmic coordinates over years 0--4,000 between
+ change in the detrended logarithmic coordinates over years 0--500 between
  the last two solves. Values are rounded upward.
  \end{minipage}
 \end{table}
 
 The maximum research and static monopoly first-order residuals are below
-$2.3\times10^{-13}$. Initial jump choices change by less than
-$2.4\times10^{-11}$ in logs in the final horizon comparison. The normalized
+$1.8\times10^{-13}$. Initial jump choices change by less than
+$1.8\times10^{-10}$ in logs in the final horizon comparison. The normalized
 terminal coordinates differ from their analytical limits by less than
-$3.2\times10^{-6}$. The acceptance thresholds are deliberately looser than
+$2.3\times10^{-6}$. The acceptance thresholds are deliberately looser than
 these observed errors: $10^{-6}$ for independently reconstructed dynamic
 residuals, $10^{-9}$ for static first-order conditions, $2\times10^{-5}$ for
 horizon sensitivity, and $10^{-4}$ for terminal-coordinate gaps. Tightening
@@ -649,7 +650,7 @@ on the grid. An analytical upper bound on the Hamiltonian's derivative
 covers the unbounded research-depth domain beyond the numerical grid.
 The check is repeated with 81 dates and 101 AI-efficiency points, then with
 321 dates and 241 points. The smallest normalized gap is
-$-2.6\times10^{-14}$, consistent with floating-point error at the tangent
+$-2.0\times10^{-14}$, consistent with floating-point error at the tangent
 point. The numerical gap tolerance is $10^{-10}$; the economic support
 inequality remains exact.
 
@@ -657,13 +658,21 @@ For the infinite-horizon continuation, I use
 \eqref{eq:rewrite-support-terminal-bound} with $B_*=0.75\overline B$.
 Its limiting margin divided by output is approximately $0.09781>0$;
 the computed terminal margin differs from that limit by less than
-$4\times10^{-13}$. Thus the analytical continuation satisfies the
+$6\times10^{-12}$. Thus the analytical continuation satisfies the
 sufficient support condition eventually, while the dated audit checks the
 computed transition. These are numerically verified equilibrium
 approximations supported by analytical terminal and optimality results,
 not interval-arithmetic existence certificates for the common initial
 stocks. Nor do they establish existence for every initial condition or
 every parameter vector.
+
+The financing sensitivity reported in Section~\ref{subsec:rewrite-technology-revenue}
+is solved separately rather than spliced onto a main trajectory. It uses
+$K_0=2.027733654$, $B_0=0.443670932$, and $\chi=1.4223$, preserving the
+50-year transition midpoint while changing the predetermined stocks. The
+calculation repeats both horizon extensions, the independent equation and TVC
+checks, and the two Hamiltonian-support grids. It passes the same admission
+thresholds as the main $\sigma=1.50$ path.
 
 \subsection{Reproduction and export safeguards}
 
@@ -673,8 +682,9 @@ The implementation preserves the earlier solver. The entry point is
 solve each of the four elasticities with \texttt{--sigma}; run
 \texttt{--verify-long-horizon}; run
 \path{audit_rewrite_hamiltonian_support.py} for $\sigma=1.50$ at both
-grid resolutions; run the final audit; export with
-\texttt{--export-horizon 4000}; and render with
+grid resolutions; run the final audit; run
+\path{audit_initial_financing_sensitivity.py}; export with
+\texttt{--export-horizon 500}; and render with
  \path{plot_rewrite_equilibria.py}.
 All code, audit files, plot-ready data, and figures used in these simulations
 are available in the paper's

@@ -56,7 +56,7 @@ def main() -> None:
         action="store_true",
         help="skip the regression suites (use only after an unchanged successful run)",
     )
-    parser.add_argument("--export-horizon", type=float, default=4000.0)
+    parser.add_argument("--export-horizon", type=float, default=500.0)
     parser.add_argument("--points", type=int, default=1201)
     args = parser.parse_args()
 
@@ -114,6 +114,10 @@ def main() -> None:
             ]
         )
     run([python, "scripts/audit_rewrite_equilibria.py"])
+    financing_command = [python, "scripts/audit_initial_financing_sensitivity.py"]
+    if args.fresh:
+        financing_command.append("--fresh")
+    run(financing_command)
     run(
         [
             python,

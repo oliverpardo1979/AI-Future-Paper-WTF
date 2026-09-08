@@ -7,10 +7,16 @@ without first learning the internal structure of every solver module.
 
 ## What the computation does
 
-The simulations compare four values of the elasticity of substitution between
+The main simulations compare four values of the elasticity of substitution between
 effective labor and effective AI production services: 0.90, 1.00, 1.10, and
 1.50. All other parameters, the AI-efficiency frontier, and the predetermined
 initial stocks are held fixed.
+
+The main comparison sets `K0=4`, `B0/Bbar=0.10`, and `chi=1.4378`. The last
+value makes the 1.50 labor share complete half of its decline after about 50
+model years. The separate financing sensitivity uses the earlier distant
+stocks and `chi=1.4223` to preserve the same midpoint; it is not a fifth line
+in the main figures.
 
 Capital and AI efficiency are predetermined at date zero. Consumption and the
 developer's shadow value can jump. The algorithm chooses those two initial
@@ -62,7 +68,8 @@ python3.12 -m venv .venv
 The last command is the public entry point. It runs the regression tests,
 solves and refines all four boundary-value problems, performs the two global
 Hamiltonian-support checks required for the 1.50 case, applies the final
-equilibrium-admission gate, exports the data, and regenerates the figures. It
+equilibrium-admission gate, reproduces the distant-initial-stock financing
+sensitivity, exports the data, and regenerates the figures. It
 stops at the first failure and therefore cannot knowingly create a partial
 published comparison.
 
@@ -75,8 +82,9 @@ scratch, use:
 python scripts/reproduce_rewrite_results.py --fresh
 ```
 
-`--fresh` removes only the twelve generated `base`, `refined`, and `long`
-checkpoint files belonging to these four scenarios. The committed numerical
+`--fresh` removes only the generated `base`, `refined`, and `long`
+checkpoint files belonging to the four main scenarios and the financing
+sensitivity. The committed numerical
 reports and figures are then overwritten only as their corresponding stages
 successfully complete.
 
@@ -89,7 +97,7 @@ of the following:
 - small residuals in the four original dynamic equations, reconstructed from
   saved spline values independently of the solver's derivative routine;
 - small residuals in the static monopoly and research first-order conditions;
-- stability of the initial jump variables and the entire 0--4,000 display
+- stability of the initial jump variables and the entire 0--500 display
   window after a longer horizon and tighter tolerances;
 - convergence toward the regime-specific analytical terminal coordinates;
 - both infinite-horizon transversality conditions;
@@ -115,6 +123,8 @@ The full command regenerates:
   elasticity;
 - `numerical_rewrite/sigma_1_50_support_*.json`: the two global
   Hamiltonian-support audits;
+- `numerical_rewrite/initial_financing_sensitivity.json`: the separately
+  admitted distant-initial-stock financing exercise;
 - `numerical_rewrite/equilibrium_paths.csv`: the 4,804 plotted observations;
 - `numerical_rewrite/paths_manifest.json`: links the exported data to the
   audited checkpoint hashes;
@@ -122,7 +132,8 @@ The full command regenerates:
   data and records the plotted fields;
 - `figures_rewrite/equilibrium_growth_returns.{pdf,png}`;
 - `figures_rewrite/equilibrium_ai_distribution.{pdf,png}`;
-- `figures_rewrite/equilibrium_technology_revenue.{pdf,png}`.
+- `figures_rewrite/equilibrium_accumulation_growth.{pdf,png}`;
+- `figures_rewrite/equilibrium_ai_revenue_composition.{pdf,png}`.
 
 The renderer checks the manifests before plotting. A changed or stale
 checkpoint, audit, or CSV therefore prevents figure generation instead of
@@ -152,6 +163,9 @@ The paper PDF is written to `output/pdf/main_rewrite.pdf`.
   refinement, reconstruction of model variables, and the main diagnostics.
 - `scripts/audit_rewrite_hamiltonian_support.py` implements the alternative
   sufficient optimality check used for the 1.50 scenario.
+- `scripts/audit_initial_financing_sensitivity.py` reproduces the initial
+  loss that arises when the economy starts much farther from the terminal
+  regime while preserving the same 50-year transition midpoint.
 - `scripts/plot_rewrite_equilibria.py` defines the displayed variables,
   normalizations, scales, and figure styles.
 - `tests/` contains the algebra, unit-limit, near-unit, spline-orientation, and

@@ -30,10 +30,10 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 LOCAL_DEPS = ROOT / ".python-packages"
 TMP_DEPS = ROOT / "tmp" / "pydeps"
-if TMP_DEPS.exists():
-    sys.path.insert(0, str(TMP_DEPS))
-elif LOCAL_DEPS.exists():
+if LOCAL_DEPS.exists():
     sys.path.insert(0, str(LOCAL_DEPS))
+elif TMP_DEPS.exists():
+    sys.path.insert(0, str(TMP_DEPS))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from scipy.integrate import cumulative_trapezoid  # noqa: E402

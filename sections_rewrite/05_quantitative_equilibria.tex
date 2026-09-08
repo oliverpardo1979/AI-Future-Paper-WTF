@@ -30,7 +30,7 @@ $\gamma$ & 0.01 & Annual growth of labor-augmenting technology & Illustrative lo
 $\omega_X$ & 0.20 & Weight on effective AI production services & Scenario choice, not an observed industry share\\
 $\omega_L$ & 0.80 & Weight on effective labor & $1-\omega_X$\\
 $\eta$ & 0.20 & Research exponent & $\eta<\alpha$ and $2\eta\leq1$\\
-$\chi$ & 0.01 & Research productivity & Illustrative research-speed parameter\\
+$\chi$ & 1.4378 & Research productivity & Calibrated transition-speed parameter\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Four scenarios spanning the analytical regimes\\
 $\overline B$ & $1.10\,\overline B_c(1.50)$ $\simeq170.124$ & Common AI-efficiency frontier & Ten percent above the threshold for $\sigma=1.50$\\
 \bottomrule
@@ -43,7 +43,12 @@ The OECD benchmark for $\gamma$ concerns measured labor-productivity growth,
 not $A$ directly. I use it only as an approximate guide to the magnitude of
 long-run labor-augmenting technological progress.
 The parameter $\chi$ determines research speed relative to the other annual
-rates, so it is not merely a free time-unit normalization. The horizontal
+rates, so it is not merely a free time-unit normalization. I choose
+$\chi=1.4378$ so that, in the $\sigma=1.50$ equilibrium, the labor income share
+completes half of the distance between its date-zero value and its analytical
+limit after 50 model years. This is an illustrative timing normalization, not
+an estimate. Different values of $\chi$ produce faster or slower transitions
+and require the entire equilibrium path to be solved again. The horizontal
 axes below measure model years, not calendar forecasts. Likewise, the OECD's
 discussion of AI-investment measurement supports treating $\omega_X$ as a
 scenario parameter, but does not identify its value
@@ -57,12 +62,14 @@ comparison of elasticities.
 
 I set
 \begin{equation}
- A_0=N_0=1,\qquad K_0=2.027733654,\qquad B_0=0.443670932.
+ A_0=N_0=1,\qquad K_0=4,\qquad B_0=0.10\overline B\simeq17.0124.
  \label{eq:rewrite-simulation-initial-stocks}
 \end{equation}
-These stocks come from the unit-elastic balanced-growth reference of the
-uncapped specification with the same parameters. They are not a balanced-growth
-state of the capped economy. An exact constant-efficiency reference at
+These common initial stocks place the economy closer to the capped
+$\sigma=1$ terminal regime than the earlier uncapped reference: initial AI
+efficiency is 10 percent of its frontier and initial capital per unit of
+effective labor is about 44 percent of its terminal $\sigma=1$ value. They are
+not a balanced-growth state of the capped economy. An exact constant-efficiency reference at
 $B_0=\overline B$ would eliminate further improvements in AI efficiency and would
 lie outside the interior problem studied here. In each capped economy, the
 BVP selects $C_0$ and $q_0$ anew; neither jump variable is fixed at its
@@ -121,7 +128,7 @@ and AI-revenue shares sum to $1-\alpha$.
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_returns.pdf}
  \caption{Growth and returns. Each panel compares the same four admitted
- numerical equilibrium trajectories over 4,000 model years. Output-per-capita
+ numerical equilibrium trajectories over 500 model years. Output-per-capita
  growth and real-wage growth use the same linear percentage scale; net interest
  uses a separate linear percentage scale. Thin horizontal dotted lines mark the
  analytical limits for $\sigma=1.50$. All scenarios have the same initial
@@ -134,7 +141,7 @@ and AI-revenue shares sum to $1-\alpha$.
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_distribution.pdf}
  \caption{AI transition and the distribution of final output. Each panel
  compares the same four admitted numerical equilibrium trajectories over
- 4,000 model years. Panel A reports AI efficiency relative to its frontier;
+ 500 model years. Panel A reports AI efficiency relative to its frontier;
  Panels B and C report labor income and AI-industry revenue as shares of final
  output. Thin horizontal dotted lines mark the analytical limits for
  $\sigma=1.50$. All three panels use linear scales.}
@@ -151,13 +158,13 @@ and AI-revenue shares sum to $1-\alpha$.
 \toprule
 $\sigma$ & Date & $g_Y-n$ & $g_w$ & $r$ & $wL/Y$ & $p_XX/Y$\\
 \midrule
-0.90 & $0$      & 0.297 & 0.288 & 3.773 & 46.5 & 20.5\\
+0.90 & $0$      & 1.629 & 1.711 & 5.508 & 51.7 & 15.3\\
      & $\infty$ & 1.000 & 1.000 & 5.000 & 54.2 & 12.8\\
-1.00 & $0$      & 1.087 & 1.087 & 5.087 & 53.6 & 13.4\\
+1.00 & $0$      & 2.458 & 2.458 & 6.646 & 53.6 & 13.4\\
      & $\infty$ & 1.000 & 1.000 & 5.000 & 53.6 & 13.4\\
-1.10 & $0$      & 1.831 & 1.815 & 6.358 & 58.1 & 8.9\\
+1.10 & $0$      & 3.046 & 2.909 & 7.380 & 54.0 & 13.0\\
      & $\infty$ & 1.000 & 1.000 & 5.000 & 50.2 & 16.8\\
-1.50 & $0$      & 3.373 & 3.326 & 9.107 & 64.6 & 2.4\\
+1.50 & $0$      & 5.390 & 4.115 & 9.385 & 51.0 & 16.0\\
      & $\infty$ & 3.135 & 2.423 & 7.135 & 0.0 & 67.0\\
 \bottomrule
 \end{tabular}
@@ -180,7 +187,7 @@ vanishes. AI revenue meanwhile approaches $67\%$ of output. These limiting
 rates describe the equilibrium continuations; they are not imposed as
 constant rates during the transition.
 
-The slow transition has a direct structural explanation. Rearranging
+The speed of the transition has a direct structural explanation. Rearranging
 \eqref{eq:rewrite-sx} gives
 \begin{equation}
  \frac{s_X}{1-s_X}
@@ -225,16 +232,19 @@ incentives and the terminal equilibrium. These comparative mechanisms indicate
 how the transition may move, but do not identify a date without recalculating
 the equilibrium path.
 
-The $\sigma=1.50$ path displays this mechanism. The initial adjustment raises
-growth and interest temporarily; both then fall close to the labor-supported
-rates. At model year 500, per-person growth is still only $1.062\%$ and
-labor receives $60.5\%$ of output. By year 1,500, growth reaches $2.797\%$
-and the labor share falls to $14.5\%$. Growth and interest briefly exceed
-their eventual limits before converging. Thus a long interval of moderate
-growth can precede a sharp change in both prosperity and income shares.
-The simulation establishes that such a delay is possible; it does not establish
-that its duration is robust to alternative AI calibrations or provide an
-estimated date for an AI transition.
+The $\sigma=1.50$ path displays this mechanism under the calibrated research
+speed. The labor share completes 10 percent of its decline after 8.3 model
+years, half after 50 years, and 90 percent after 145.2 years. At year 50,
+output per person grows at $5.616\%$, the real wage at $4.050\%$, and labor
+receives $25.5\%$ of output. At year 100, the corresponding growth rates are
+$6.290\%$ and $4.522\%$, while labor's share has fallen to $10.9\%$. By year
+500, output-per-person growth is $3.239\%$, real-wage growth is $2.494\%$,
+and labor's share is $0.19\%$; all three are close to their analytical limits.
+The non-monotone growth response reflects the costly initial research surge,
+the subsequent acceleration in effective AI services, and eventual convergence
+as $B$ approaches its frontier. These dates illustrate an equilibrium under
+one research-speed calibration. They are not estimates of when an actual AI
+transition will occur.
 
 Substitution alone does not produce this outcome. With the same frontier
 and $\sigma=1.10$, the labor share instead approaches $50.2\%$, compared
@@ -242,30 +252,67 @@ with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
 The frontier's position relative to the elasticity-specific threshold is
 essential to interpreting the comparison.
 
-\subsection{Technology, accumulation, and AI-revenue composition}
+\subsection{Accumulation and AI-revenue composition}
 \label{subsec:rewrite-technology-revenue}
 
-Figure~\ref{fig:rewrite-technology-revenue} reports consumption and capital per
-unit of effective labor and the use of AI-industry revenue. The last three
-panels deliberately divide by $p_XX$, not by $Y$:
+Figure~\ref{fig:rewrite-accumulation-growth} reports the growth rates of
+consumption and capital per unit of effective labor. These are
+$g_C-(n+\gamma)$ and $g_K-(n+\gamma)$, respectively. Levels would obscure the
+timing of accumulation because they differ greatly across regimes by the end
+of the window; growth rates show directly when the economy accelerates and how
+it approaches its terminal regime.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_accumulation_growth.pdf}
+ \caption{Growth of consumption and capital per unit of effective labor.
+ The scenarios and 500-year window match
+ Figure~\ref{fig:rewrite-growth-returns}. Thin horizontal dotted lines mark the
+ analytical limits for $\sigma=1.50$. Both panels use linear percentage scales.}
+ \label{fig:rewrite-accumulation-growth}
+\end{figure}
+
+Figure~\ref{fig:rewrite-ai-revenue-composition} separately reports how the AI
+developer uses its revenue. These panels deliberately divide by $p_XX$, not by
+$Y$:
 \begin{equation}
  \frac{U}{p_XX}+\frac{M}{p_XX}+\frac{\Pi}{p_XX}=1.
  \label{eq:rewrite-revenue-composition}
 \end{equation}
 Figure~\ref{fig:rewrite-ai-distribution} measures the industry's size relative
-to final output; Figure~\ref{fig:rewrite-technology-revenue} separates its inference
+to final output; Figure~\ref{fig:rewrite-ai-revenue-composition} separates its inference
 costs, research expenditure, and net distribution to its owner.
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_technology_revenue.pdf}
- \caption{Accumulation and the composition of AI revenue.
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_revenue_composition.pdf}
+ \caption{Composition of AI-industry revenue.
  The scenarios and time window match Figure~\ref{fig:rewrite-growth-returns}.
- Consumption and capital per unit of effective labor use logarithmic scales.
- The three revenue shares use linear scales and sum to one; negative net distributions, if any,
- represent household equity injections rather than negative gross revenue.}
- \label{fig:rewrite-technology-revenue}
+ The three shares use linear scales and sum to one. Thin horizontal dotted
+ lines mark the analytical limits for $\sigma=1.50$.}
+ \label{fig:rewrite-ai-revenue-composition}
 \end{figure}
+
+\paragraph{Initial financing sensitivity.}
+Moving the common initial stocks closer to the $\sigma=1$ terminal regime
+materially reduces the initial financing requirement. In the reported
+$\sigma=1.50$ path, research absorbs $12.0\%$ of AI revenue, inference absorbs
+$41.4\%$, and the developer distributes the remaining $46.6\%$ as profit.
+These quantities equal $1.92\%$, $6.60\%$, and $7.44\%$ of final output,
+respectively.
+
+This benign date-zero composition is not invariant to the initial stocks. In
+an admitted sensitivity path that begins much farther from the terminal regime,
+at $K_0=2.0277$ and $B_0/\overline B=0.26\%$, and recalibrates $\chi$ to preserve
+the same 50-year midpoint, research expenditure initially equals $106.0\%$ of
+AI revenue and profit is $-40.5\%$. The household owner then finances the loss
+through an equity injection because current research raises $B$ and the present
+value of future monopoly rents. The benchmark permits this intertemporal
+financing: it imposes neither a borrowing constraint nor a nonnegative-profit
+constraint on the developer. Adding such a constraint could delay or restrict
+the transition. The contrast therefore identifies initial technological
+distance and financing capacity as substantive determinants of the transition,
+not as innocuous plotting choices.
 
 In the AI-dominated limit, inference absorbs $67\%$ of AI revenue, research's
 revenue share vanishes, and the developer retains $33\%$. Its net distribution

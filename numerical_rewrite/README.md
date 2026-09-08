@@ -16,6 +16,9 @@ python scripts/reproduce_rewrite_results.py
 elasticity. The two `sigma_1_50_support_*.json` files record the additional
 Hamiltonian-support tests used for the high-substitution case. The manifest
 files link the exported data and figures to the audited numerical checkpoints.
+`initial_financing_sensitivity.json` records the separately admitted
+high-substitution path that starts much farther from the terminal regime and
+therefore requires an initial household equity injection into the developer.
 
 These files should be regenerated through the public workflow rather than
 edited directly. A converged boundary-value calculation is only a candidate;

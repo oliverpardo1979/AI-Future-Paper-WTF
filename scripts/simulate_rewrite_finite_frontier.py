@@ -1,10 +1,10 @@
 """Four agreed capped-model BVPs; export only after equilibrium admission.
 
-The inherited uncapped unit BGP supplies K0 and B0, never C0, q0, or a
-terminal restriction. Cached splines are technical candidates, not figures.
+The main comparison uses common interior K0 and B0, never a borrowed C0, q0,
+or terminal restriction. Cached splines are technical candidates, not figures.
 Run each sigma separately to retain reproducible intermediate diagnostics.
 """
-from dataclasses import asdict
+from dataclasses import asdict, replace
 import argparse
 import csv
 import hashlib
@@ -22,7 +22,7 @@ from scipy.interpolate import PPoly
 from analyze_axm_finite_cap_bvp import (
     critical_capability_frontier, terminal_point, terminal_linearization,
 )
-from define_positive_ai_branch import PositiveAIBenchmarkParameters, balanced_growth_seed
+from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from solve_near_unit_ai_bvp import elasticity_coordinate, solve_monopoly_static_block
 from solve_axm_global_finite_cap_bvp import (
     GlobalFiniteCapBVP, GlobalContinuationStage, solve_global_finite_cap_bvp,
@@ -32,8 +32,10 @@ from solve_axm_global_finite_cap_bvp import (
 )
 
 SIGMAS = (0.9, 1.0, 1.1, 1.5)
-PARAMETERS = PositiveAIBenchmarkParameters()
+PARAMETERS = replace(PositiveAIBenchmarkParameters(), chi=1.4378)
 FRONTIER = 1.1 * critical_capability_frontier(1.5, PARAMETERS)
+INITIAL_CAPITAL = 4.0
+INITIAL_CAPABILITY = 0.10 * FRONTIER
 OUT = ROOT / 'numerical_rewrite'
 CACHE = ROOT / 'tmp' / 'rewrite_bvp'
 
@@ -103,7 +105,6 @@ def run(sigma):
     if sigma not in SIGMAS:
         raise ValueError('Use one of the four agreed elasticities.')
     p = PARAMETERS
-    seed = balanced_growth_seed(p)
     terminal = terminal_point(sigma, FRONTIER, p)
     OUT.mkdir(exist_ok=True)
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -116,7 +117,7 @@ def run(sigma):
         if asdict(base.parameters) != asdict(p) or terminal.frontier != FRONTIER:
             raise ValueError('Cached parameters differ from the agreed design.')
     else:
-        base = solve_global_finite_cap_bvp(terminal, p, seed.capital, seed.capability,
+        base = solve_global_finite_cap_bvp(terminal, p, INITIAL_CAPITAL, INITIAL_CAPABILITY,
                                          continuation_steps=32, nodes=221,
                                          tolerance=2e-6, maximum_nodes=20000)
         save_solution(base, base_path)
@@ -137,7 +138,10 @@ def run(sigma):
     payload = _solution_payload(refined, audit, horizon_comparison=comparison,
                                 counterfactual_sufficiency=sufficiency)
     payload['parameters'] = asdict(p)
-    payload['initial_stock_reference'] = 'uncapped unit-elastic BGP, not a capped BGP'
+    payload['initial_stock_reference'] = (
+        'common interior stocks closer to the capped sigma=1 terminal regime; '
+        'K0=4 and B0/Bbar=0.10; jump variables solved by the BVP'
+    )
     payload['status'] = 'numerically_admitted' if payload['equilibrium_certified'] else 'not_admitted'
     payload['settings'] = dict(base_tolerance=2e-6, refined_tolerance=1e-8,
                                horizon_extension=500, continuation_steps=32)
@@ -201,15 +205,43 @@ def export_paths(horizon, points):
                 ai_revenue_output_share=revenue, capability_frontier_ratio=1-psi,
                 consumption_effective_labor=math.exp(v['log_consumption'][j]-al),
                 capital_effective_labor=math.exp(v['log_capital'][j]-al),
+                consumption_effective_labor_growth=(
+                    rates[2,j]-p.population_growth-p.labor_productivity_growth),
+                capital_effective_labor_growth=(
+                    rates[0,j]-p.population_growth-p.labor_productivity_growth),
                 inference_revenue_share=u/revenue, research_revenue_share=m/revenue,
                 profit_revenue_share=1-(u+m)/revenue))
     with (OUT/'equilibrium_paths.csv').open('w', newline='', encoding='utf-8') as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
-    manifest = dict(horizon=horizon, points_per_scenario=points,
-                    checkpoint_sha256=checkpoint_hashes,
-                    csv_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest())
+    ai_rows = [row for row in rows if row['sigma'] == 1.5]
+    terminal_share = terminal_point(1.5, FRONTIER, PARAMETERS).labor_income_share
+    initial_share = ai_rows[0]['labor_income_share']
+
+    def transition_date(fraction):
+        target = initial_share + fraction * (terminal_share-initial_share)
+        for left, right in zip(ai_rows, ai_rows[1:]):
+            yl, yr = left['labor_income_share'], right['labor_income_share']
+            if (yl-target)*(yr-target) <= 0 and yl != yr:
+                weight = (target-yl)/(yr-yl)
+                return left['time']+weight*(right['time']-left['time'])
+        return None
+
+    transition_dates = {f'T{int(100*fraction)}': transition_date(fraction)
+                        for fraction in (.1, .5, .9)}
+    if transition_dates['T50'] is None:
+        raise RuntimeError('The export window does not contain the calibrated transition midpoint.')
+    manifest = dict(
+        horizon=horizon,
+        points_per_scenario=points,
+        checkpoint_sha256=checkpoint_hashes,
+        transition_definition=(
+            'fraction of the sigma=1.50 labor-share decline from its date-zero '
+            'value to its analytical limit'),
+        sigma_1_50_transition_dates=transition_dates,
+        csv_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest(),
+    )
     (OUT/'paths_manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
 
 

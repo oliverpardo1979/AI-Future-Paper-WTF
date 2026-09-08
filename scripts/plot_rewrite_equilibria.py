@@ -26,12 +26,14 @@ PANELS_AI_DISTRIBUTION=(
  ('labor_income_share', 'B. Labor income share\n$wL/Y$', 'share'),
  ('ai_revenue_output_share', 'C. AI revenue share\n$p_X X/Y$', 'share'),
 )
-PANELS_TECHNOLOGY_REVENUE=(
- ('consumption_effective_labor', 'A. Consumption\n$C/(AL)$', 'log'),
- ('capital_effective_labor', 'B. Capital\n$K/(AL)$', 'log'),
- ('inference_revenue_share', 'C. Inference / AI revenue\n$U/(p_X X)$', 'share'),
- ('research_revenue_share', 'D. Research / AI revenue\n$M/(p_X X)$', 'share'),
- ('profit_revenue_share', 'E. Profit / AI revenue\n$\\Pi/(p_X X)$', 'share'),
+PANELS_ACCUMULATION_GROWTH=(
+ ('consumption_effective_labor_growth', 'A. Consumption per effective labor\n$g_C-(n+\\gamma)$', 'rate'),
+ ('capital_effective_labor_growth', 'B. Capital per effective labor\n$g_K-(n+\\gamma)$', 'rate'),
+)
+PANELS_AI_REVENUE_COMPOSITION=(
+ ('inference_revenue_share', 'A. Inference cost\n$U/(p_X X)$', 'share'),
+ ('research_revenue_share', 'B. Research spending\n$M/(p_X X)$', 'share'),
+ ('profit_revenue_share', 'C. Profit\n$\\Pi/(p_X X)$', 'share'),
 )
 STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
         1.1:('#bd8620',(0,(1,1.8))),1.5:('#24618c',(0,(5,1.8,1,1.8)))}
@@ -70,29 +72,38 @@ def render():
         'capability_frontier_ratio': 1.0,
         'labor_income_share': ai_terminal.labor_income_share,
         'ai_revenue_output_share': (1-PARAMETERS.alpha)*ai_terminal.ai_ces_share,
+        'consumption_effective_labor_growth': (
+            ai_terminal.terminal_growth-PARAMETERS.population_growth
+            -PARAMETERS.labor_productivity_growth),
+        'capital_effective_labor_growth': (
+            ai_terminal.terminal_growth-PARAMETERS.population_growth
+            -PARAMETERS.labor_productivity_growth),
+        'inference_revenue_share': 1-PARAMETERS.alpha,
+        'research_revenue_share': 0.0,
+        'profit_revenue_share': PARAMETERS.alpha,
     }
     figures=(
         ('equilibrium_growth_returns',PANELS_GROWTH_RETURNS,'three',ai_limits),
         ('equilibrium_ai_distribution',PANELS_AI_DISTRIBUTION,'three',ai_limits),
-        ('equilibrium_technology_revenue',PANELS_TECHNOLOGY_REVENUE,'five',None),
+        ('equilibrium_accumulation_growth',PANELS_ACCUMULATION_GROWTH,'two',ai_limits),
+        ('equilibrium_ai_revenue_composition',PANELS_AI_REVENUE_COMPOSITION,'three',ai_limits),
     )
     for filename,panels,layout,limits in figures:
         if layout=='three':
             fig,axis_array=plt.subplots(1,3,figsize=(7,3.15),sharex=True)
             axes=list(axis_array)
             bottom_axes=axes
+        elif layout=='two':
+            fig,axis_array=plt.subplots(1,2,figsize=(7,3.15),sharex=True)
+            axes=list(axis_array)
+            bottom_axes=axes
         else:
-            fig=plt.figure(figsize=(7,5.85))
-            grid=fig.add_gridspec(2,6)
-            axes=[fig.add_subplot(grid[0,0:3]),fig.add_subplot(grid[0,3:6]),
-                  fig.add_subplot(grid[1,0:2]),fig.add_subplot(grid[1,2:4]),
-                  fig.add_subplot(grid[1,4:6])]
-            bottom_axes=axes[2:]
+            raise ValueError(f'Unknown layout: {layout}')
         for axis,(field,title,scale) in zip(axes,panels):
             for sigma in SIGMAS:
                 series=data[sigma]
                 values=np.array([r[field] for r in series])
-                if not np.all(np.isfinite(values)) or (scale=='log' and np.any(values<=0)):
+                if not np.all(np.isfinite(values)):
                     raise ValueError(f'Invalid plotted values in {field}, sigma={sigma}.')
                 color,linestyle=STYLES[sigma]
                 axis.plot([r['time'] for r in series],values,color=color,linestyle=linestyle,
@@ -104,9 +115,7 @@ def render():
             # top-row titles into the shared legend when log-axis offset text
             # differs across panels.
             axis.set_title(title,loc='left',pad=7,y=1.02)
-            if scale=='log':
-                axis.set_yscale('log')
-            elif scale in ('rate','share'):
+            if scale in ('rate','share'):
                 decimals = 1 if scale=='rate' or field=='research_revenue_share' else 0
                 axis.yaxis.set_major_formatter(PercentFormatter(1,decimals=decimals))
                 axis.yaxis.set_major_locator(MaxNLocator(5))
@@ -116,10 +125,11 @@ def render():
             if scale=='share':
                 lower,upper=axis.get_ylim()
                 axis.set_ylim(min(0,lower),upper)
-            if field=='profit_revenue_share':
+            if field in ('profit_revenue_share','consumption_effective_labor_growth',
+                          'capital_effective_labor_growth'):
                 axis.axhline(0,color='#999999',linewidth=.6,zorder=0)
             axis.set_xlim(0,data[1.][-1]['time'])
-            axis.set_xticks([0,2000,4000])
+            axis.set_xticks(np.linspace(0,data[1.][-1]['time'],6))
             axis.xaxis.set_major_formatter(FuncFormatter(lambda x,p:f'{x:,.0f}'))
             axis.grid(axis='y',which='major',color='#dddddd',linewidth=.5)
             axis.spines[['top','right']].set_visible(False)
@@ -138,7 +148,7 @@ def render():
         if layout=='three':
             fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.48)
         else:
-            fig.subplots_adjust(left=.095,right=.970,bottom=.10,top=.82,hspace=.46,wspace=.72)
+            fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.34)
         fig.savefig(figdir/f'{filename}.pdf',metadata={'Title':filename})
         fig.savefig(figdir/f'{filename}.png',dpi=190)
         plt.close(fig)
@@ -146,7 +156,8 @@ def render():
                   sigmas=list(SIGMAS),horizon=data[1.][-1]['time'],
                   panels={'growth_returns':[p[0] for p in PANELS_GROWTH_RETURNS],
                           'ai_distribution':[p[0] for p in PANELS_AI_DISTRIBUTION],
-                          'technology_revenue':[p[0] for p in PANELS_TECHNOLOGY_REVENUE]},
+                          'accumulation_growth':[p[0] for p in PANELS_ACCUMULATION_GROWTH],
+                          'ai_revenue_composition':[p[0] for p in PANELS_AI_REVENUE_COMPOSITION]},
                   analytical_limits={'sigma_1_50':ai_limits},
                   all_scenarios_admitted=True)
     (OUT/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')

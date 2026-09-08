@@ -83,7 +83,7 @@ def finalize():
         shorter=load_solution(CACHE/f'{name}_refined.npz')
         shorter.terminal=sol.terminal
         report['first_horizon_comparison']=report.get('first_horizon_comparison',report['horizon_comparison'])
-        report['horizon_comparison']=compare_global_solutions(shorter, sol, common_window=4000)
+        report['horizon_comparison']=compare_global_solutions(shorter, sol, common_window=500)
         report['audit']=audit_global_solution(sol)
         report['counterfactual_developer_sufficiency']=audit_counterfactual_developer_sufficiency(
             sol, time_points=161, capability_points=161)
