@@ -16,25 +16,21 @@ from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
 from simulate_rewrite_finite_frontier import SIGMAS, PARAMETERS, FRONTIER, OUT, CACHE, key
 from analyze_axm_finite_cap_bvp import terminal_point
 
-PANELS_GROWTH_RETURNS=(
- ('output_per_person_growth', 'A. Output per capita growth\n$g_Y-n$', 'rate'),
- ('wage_growth', 'B. Real-wage growth\n$g_w$', 'rate'),
- ('net_interest', 'C. Net interest rate\n$r$', 'rate'),
+PANELS_QUANTITY_GROWTH=(
+ ('output_effective_labor_growth', 'A. Output\n$g_Y-(n+\\gamma)$', 'rate'),
+ ('ai_services_effective_labor_growth', 'B. AI services\n$g_X-(n+\\gamma)$', 'rate'),
+ ('capital_effective_labor_growth', 'C. Capital\n$g_K-(n+\\gamma)$', 'rate'),
 )
-PANELS_AI_DISTRIBUTION=(
- ('capability_frontier_ratio', 'A. AI efficiency\n$B/\\bar{B}$', 'fraction'),
- ('labor_income_share', 'B. Labor income share\n$wL/Y$', 'share'),
- ('ai_revenue_output_share', 'C. AI revenue share\n$p_X X/Y$', 'share'),
+PANELS_PRICES_RETURNS=(
+ ('wage_growth', 'A. Real-wage growth\n$g_w$', 'rate'),
+ ('net_interest', 'B. Net interest rate\n$r$', 'rate'),
+ ('ai_service_price', 'C. AI service price\n$p_X$', 'log_level'),
 )
-PANELS_ACCUMULATION_GROWTH=(
- ('consumption_effective_labor_growth', 'A. Consumption per effective labor\n$g_C-(n+\\gamma)$', 'rate'),
- ('capital_effective_labor_growth', 'B. Capital per effective labor\n$g_K-(n+\\gamma)$', 'rate'),
- ('ai_services_effective_labor_growth', 'C. AI services\n$g_X-(n+\\gamma)$', 'rate'),
-)
-PANELS_AI_REVENUE_COMPOSITION=(
- ('inference_revenue_share', 'A. Inference cost\n$U/(p_X X)$', 'share'),
- ('research_revenue_share', 'B. Research spending\n$M/(p_X X)$', 'share'),
- ('profit_revenue_share', 'C. Profit\n$\\Pi/(p_X X)$', 'share'),
+PANELS_DISTRIBUTION=(
+ ('labor_income_share', 'A. Labor income\n$wL/Y$', 'share'),
+ ('profit_output_share', 'B. AI profit\n$\\Pi/Y$', 'share'),
+ ('inference_output_share', 'C. Inference expenditure\n$U/Y$', 'share'),
+ ('research_output_share', 'D. Research expenditure\n$M/Y$', 'share'),
 )
 STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
         1.1:('#bd8620',(0,(1,1.8))),1.5:('#24618c',(0,(5,1.8,1,1.8)))}
@@ -64,33 +60,31 @@ def render():
                          'xtick.labelsize':8,'ytick.labelsize':8,
                          'legend.fontsize':9,'pdf.fonttype':42})
     ai_terminal=terminal_point(1.5,FRONTIER,PARAMETERS)
+    ai_revenue_limit=(1-PARAMETERS.alpha)*ai_terminal.ai_ces_share
     ai_limits={
-        'output_per_person_growth': ai_terminal.terminal_growth-PARAMETERS.population_growth,
-        'wage_growth': PARAMETERS.labor_productivity_growth+(
-            ai_terminal.net_interest_rate-PARAMETERS.discount
-            -PARAMETERS.labor_productivity_growth)/ai_terminal.sigma_xl,
-        'net_interest': ai_terminal.net_interest_rate,
-        'capability_frontier_ratio': 1.0,
-        'labor_income_share': ai_terminal.labor_income_share,
-        'ai_revenue_output_share': (1-PARAMETERS.alpha)*ai_terminal.ai_ces_share,
-        'consumption_effective_labor_growth': (
-            ai_terminal.terminal_growth-PARAMETERS.population_growth
-            -PARAMETERS.labor_productivity_growth),
-        'capital_effective_labor_growth': (
+        'output_effective_labor_growth': (
             ai_terminal.terminal_growth-PARAMETERS.population_growth
             -PARAMETERS.labor_productivity_growth),
         'ai_services_effective_labor_growth': (
             ai_terminal.terminal_growth-PARAMETERS.population_growth
             -PARAMETERS.labor_productivity_growth),
-        'inference_revenue_share': 1-PARAMETERS.alpha,
-        'research_revenue_share': 0.0,
-        'profit_revenue_share': PARAMETERS.alpha,
+        'capital_effective_labor_growth': (
+            ai_terminal.terminal_growth-PARAMETERS.population_growth
+            -PARAMETERS.labor_productivity_growth),
+        'wage_growth': PARAMETERS.labor_productivity_growth+(
+            ai_terminal.net_interest_rate-PARAMETERS.discount
+            -PARAMETERS.labor_productivity_growth)/ai_terminal.sigma_xl,
+        'net_interest': ai_terminal.net_interest_rate,
+        'ai_service_price': 1/((1-PARAMETERS.alpha)*FRONTIER),
+        'labor_income_share': ai_terminal.labor_income_share,
+        'profit_output_share': ai_revenue_limit*PARAMETERS.alpha,
+        'inference_output_share': ai_revenue_limit*(1-PARAMETERS.alpha),
+        'research_output_share': 0.0,
     }
     figures=(
-        ('equilibrium_growth_returns',PANELS_GROWTH_RETURNS,'three',ai_limits),
-        ('equilibrium_ai_distribution',PANELS_AI_DISTRIBUTION,'three',ai_limits),
-        ('equilibrium_accumulation_growth',PANELS_ACCUMULATION_GROWTH,'three',ai_limits),
-        ('equilibrium_ai_revenue_composition',PANELS_AI_REVENUE_COMPOSITION,'three',ai_limits),
+        ('equilibrium_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
+        ('equilibrium_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),
+        ('equilibrium_ai_distribution',PANELS_DISTRIBUTION,'four',ai_limits),
     )
     for filename,panels,layout,limits in figures:
         if layout=='three':
@@ -101,6 +95,10 @@ def render():
             fig,axis_array=plt.subplots(1,2,figsize=(7,3.15),sharex=True)
             axes=list(axis_array)
             bottom_axes=axes
+        elif layout=='four':
+            fig,axis_array=plt.subplots(2,2,figsize=(7,4.80),sharex=True)
+            axes=list(axis_array.ravel())
+            bottom_axes=axes[2:]
         else:
             raise ValueError(f'Unknown layout: {layout}')
         for axis,(field,title,scale) in zip(axes,panels):
@@ -120,17 +118,19 @@ def render():
             # differs across panels.
             axis.set_title(title,loc='left',pad=7,y=1.02)
             if scale in ('rate','share'):
-                decimals = 1 if scale=='rate' or field=='research_revenue_share' else 0
+                decimals = 1 if scale=='rate' or field=='research_output_share' else 0
                 axis.yaxis.set_major_formatter(PercentFormatter(1,decimals=decimals))
                 axis.yaxis.set_major_locator(MaxNLocator(5))
+            if scale=='log_level':
+                axis.set_yscale('log')
+                axis.yaxis.set_major_formatter(FuncFormatter(lambda y,p:f'{y:g}'))
             if scale=='fraction':
                 axis.set_ylim(0,1.02)
                 axis.set_yticks([0,.5,1])
             if scale=='share':
                 lower,upper=axis.get_ylim()
                 axis.set_ylim(min(0,lower),upper)
-            if field in ('profit_revenue_share','consumption_effective_labor_growth',
-                          'capital_effective_labor_growth',
+            if field in ('output_effective_labor_growth','capital_effective_labor_growth',
                           'ai_services_effective_labor_growth'):
                 axis.axhline(0,color='#999999',linewidth=.6,zorder=0)
             axis.set_xlim(0,data[1.][-1]['time'])
@@ -140,10 +140,11 @@ def render():
             axis.spines[['top','right']].set_visible(False)
             axis.spines[['left','bottom']].set_color('#888888')
             axis.tick_params(length=3,color='#888888')
-        if filename=='equilibrium_growth_returns':
-            common_lower=min(axis.get_ylim()[0] for axis in axes[:2])
-            common_upper=max(axis.get_ylim()[1] for axis in axes[:2])
-            for axis in axes[:2]:
+        if filename=='equilibrium_accumulation_growth':
+            comparable_axes=(axes[0],axes[2])
+            common_lower=min(axis.get_ylim()[0] for axis in comparable_axes)
+            common_upper=max(axis.get_ylim()[1] for axis in comparable_axes)
+            for axis in comparable_axes:
                 axis.set_ylim(common_lower,common_upper)
         for axis in bottom_axes:
             axis.set_xlabel('Years')
@@ -152,6 +153,9 @@ def render():
                    bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
         if layout=='three':
             fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.48)
+        elif layout=='four':
+            fig.subplots_adjust(left=.105,right=.970,bottom=.11,top=.80,
+                                wspace=.32,hspace=.58)
         else:
             fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.34)
         fig.savefig(figdir/f'{filename}.pdf',metadata={'Title':filename})
@@ -159,10 +163,9 @@ def render():
         plt.close(fig)
     manifest=dict(data_sha256=hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest(),
                   sigmas=list(SIGMAS),horizon=data[1.][-1]['time'],
-                  panels={'growth_returns':[p[0] for p in PANELS_GROWTH_RETURNS],
-                          'ai_distribution':[p[0] for p in PANELS_AI_DISTRIBUTION],
-                          'accumulation_growth':[p[0] for p in PANELS_ACCUMULATION_GROWTH],
-                          'ai_revenue_composition':[p[0] for p in PANELS_AI_REVENUE_COMPOSITION]},
+                  panels={'quantity_growth':[p[0] for p in PANELS_QUANTITY_GROWTH],
+                          'prices_returns':[p[0] for p in PANELS_PRICES_RETURNS],
+                          'distribution':[p[0] for p in PANELS_DISTRIBUTION]},
                   analytical_limits={'sigma_1_50':ai_limits},
                   all_scenarios_admitted=True)
     (OUT/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')

@@ -103,60 +103,53 @@ Use one economic variable per panel and one line per admitted scenario.
 Preserve the following row-major order, notation, denominators, and scales.
 The comparison uses line charts, not stacked bars or stacked areas.
 
-### Growth and returns
+### Quantities and accumulation
 
 | Panel | Variable | Vertical scale |
 |---|---|---|
-| A | g_Y-n | Linear, percent per year |
-| B | g_w | Linear, percent per year |
-| C | r | Linear, percent per year |
+| A | g_Y-(n+gamma) | Linear, percent per year |
+| B | g_X-(n+gamma) | Linear, percent per year; separate range |
+| C | g_K-(n+gamma) | Linear, percent per year |
 
-The first two panels use the same vertical scale, so their distance shows the
-growth wedge governing the labor-income share.
+Panels A and C use the same vertical scale. Panel B uses a separate range
+because the initial growth of X/(AL) is much larger.
 
-### AI transition and distribution
-
-| Panel | Variable | Vertical scale |
-|---|---|---|
-| A | B/Bbar | Linear, fraction between zero and one |
-| B | wL/Y | Linear, percent |
-| C | p_X X/Y | Linear, percent |
-
-The last panel shows AI-industry sales relative to final output. Do not
-replace it by Pi/Y or label sales as industry value added.
-
-### Accumulation growth
+### Prices and returns
 
 | Panel | Variable | Vertical scale |
 |---|---|---|
-| A | g_C-(n+gamma) | Linear, percent per year |
-| B | g_K-(n+gamma) | Linear, percent per year |
-| C | g_X-(n+gamma) | Linear, percent per year |
+| A | g_w | Linear, percent per year |
+| B | r | Linear, percent per year |
+| C | p_X | Logarithmic level |
 
-The third panel reports the growth of X/(AL), the relative service input that
-governs the movement in CES share odds conditional on sigma.
+The AI-service price remains strictly positive, declines, and converges to a
+finite level in all four terminal regimes. Its level is therefore more
+informative than its growth rate; the logarithmic scale keeps all four paths
+visible.
 
-### AI-revenue composition
+### Distribution of noncapital output
 
 | Panel | Variable | Vertical scale |
 |---|---|---|
-| A | U/(p_X X) | Linear, percent |
-| B | M/(p_X X) | Linear, percent |
-| C | Pi/(p_X X) | Linear, percent, allowing negative values in sensitivities |
+| A | wL/Y | Linear, percent |
+| B | Pi/Y | Linear, percent |
+| C | U/Y | Linear, percent |
+| D | M/Y | Linear, percent |
 
-The revenue-composition denominator is deliberately AI revenue, not final output:
-U/(p_X X)+M/(p_X X)+Pi/(p_X X)=1. This is a display normalization, not a
-redefinition of any model variable. Preserve negative profits where they
-occur instead of truncating the axis or applying a logarithmic scale.
+The four shares sum to 1-alpha. The omitted gross capital-income share is the
+constant alpha. Keep the separate financing sensitivity in the text because
+its negative initial profit is not part of the four main plotted paths.
 
 Use identical scenario colors and distinguishable line styles in all figures,
 linear time axes, and common plotted horizons. Use the same physical unit and
 normalization across scenarios. Do not divide each scenario by its own
 initial or terminal value, which would conceal impact differences. The
-vertical distance between g_Y-n and g_w is the growth wedge that governs
-the decline of labor's income share. Y/(AL) need not converge in the AI-dominated
-regime. Growth and interest limits can be shown as analytical reference lines,
-not imposed observations or fabricated extensions of a finite numerical path.
+difference between g_Y-n and g_w remains the growth wedge governing the
+decline of labor's income share, even though the two rates now appear in
+different parts of the quantitative presentation. Y/(AL) need not converge in
+the AI-dominated regime. Growth, price, and interest limits can be shown as
+analytical reference lines, not imposed observations or fabricated extensions
+of a finite numerical path.
 
 ## Implementation and admission requirements
 

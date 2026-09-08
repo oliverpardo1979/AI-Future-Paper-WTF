@@ -102,49 +102,94 @@ AI-efficiency levels, but the Hamiltonian support test in
 Proposition~\ref{prop:rewrite-hamiltonian-support} passes. Its analytical
 long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 
-\subsection{Growth, wages, and the distribution of output}
+\subsection{Growth, prices, and the distribution of output}
 \label{subsec:rewrite-distribution}
 
-Figures~\ref{fig:rewrite-growth-returns} and
-\ref{fig:rewrite-ai-distribution} present the six main outcomes in two thematic
-groups. Each figure includes all four admitted trajectories, so the contrast
-between the labor-bottleneck and AI-dominated regimes remains visible on a
-common scale. The three labor-bottleneck paths consequently appear close to
-one another. This compression reflects their common long-run regime; exact
-initial and limiting values are reported in
-Table~\ref{tab:rewrite-central-path-values}.
+Figures~\ref{fig:rewrite-accumulation-growth}--\ref{fig:rewrite-ai-distribution}
+present the transition in three steps: quantities and accumulation, prices and
+returns, and the distribution of output. Each panel includes the same four
+admitted trajectories. The three labor-bottleneck paths consequently appear
+close to one another in several panels. This compression reflects their common
+long-run regime; exact initial and limiting values of the central outcomes are
+reported in Table~\ref{tab:rewrite-central-path-values}.
 
-Panels A and B of Figure~\ref{fig:rewrite-growth-returns} report the annual
-growth rates of output per person and the real wage on the same vertical
-scale. Their vertical distance measures the growth wedge in
-Proposition~\ref{prop:rewrite-output-wage-wedge}. Panel C reports the net
-interest rate. Figure~\ref{fig:rewrite-ai-distribution} connects these outcomes
-to the approach of AI efficiency toward its frontier and to the distribution
-of final output. AI-industry revenue $p_XX/Y$ is distinct from profit and from
-value added. Gross capital income remains $\alpha Y$ throughout, so the labor
-and AI-revenue shares sum to $1-\alpha$.
+\Needspace{10\baselineskip}
+The relative growth of effective AI production services is central to reading
+the figures. Rearranging \eqref{eq:rewrite-sx} gives
+\begin{equation}
+ \frac{s_X}{1-s_X}
+ =\frac{\omega_X}{\omega_L}
+ \left(\frac{X}{AL}\right)^{(\sigma-1)/\sigma}.
+ \label{eq:rewrite-transition-share-odds}
+\end{equation}
+Differentiating this expression yields
+\begin{equation}
+ \frac{d}{dt}\log\!\left(\frac{s_X}{1-s_X}\right)
+ =\frac{\sigma-1}{\sigma}\left[g_X-(n+\gamma)\right].
+ \label{eq:rewrite-transition-share-growth}
+\end{equation}
+Thus the growth of $X/(AL)$ determines the direction and speed at which the
+AI share changes, conditional on $\sigma$.
+
+Figure~\ref{fig:rewrite-accumulation-growth} first reports the growth rates of
+output, effective AI production services, and capital per unit of effective
+labor. These are $g_Y-(n+\gamma)$, $g_X-(n+\gamma)$, and
+$g_K-(n+\gamma)$, respectively. Growth rates show when the economy accelerates
+without compressing the large level differences that emerge across regimes.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_accumulation_growth.pdf}
+ \caption{Growth of output, effective AI production services, and capital per
+ unit of effective labor. Each panel compares the same four admitted numerical
+ equilibrium trajectories over 500 model years. Panels A and C use the same
+ linear percentage scale; Panel B uses a separate linear percentage range.
+ Thin horizontal dotted lines mark the analytical limits for $\sigma=1.50$.}
+ \label{fig:rewrite-accumulation-growth}
+\end{figure}
+
+\Needspace{10\baselineskip}
+Figure~\ref{fig:rewrite-growth-returns} next reports real-wage growth, the net
+interest rate, and the price of effective AI production services. The first
+two are rates; $p_X$ is a relative-price level measured in units of the final
+good. Equation~\eqref{eq:rewrite-markup} implies
+$p_X=1/[B(1-e_X)]$. Because $B$ approaches its finite frontier and $e_X$
+approaches a value below one in every terminal regime, $p_X$ converges to a
+positive finite level. It falls rather than grows without bound in all four
+simulations. I therefore report its level on a logarithmic scale, which keeps
+the four positive price paths visible despite their different magnitudes.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_growth_returns.pdf}
- \caption{Growth and returns. Each panel compares the same four admitted
- numerical equilibrium trajectories over 500 model years. Output-per-capita
- growth and real-wage growth use the same linear percentage scale; net interest
- uses a separate linear percentage scale. Thin horizontal dotted lines mark the
- analytical limits for $\sigma=1.50$. All scenarios have the same initial
- stocks, frontier, and parameters except $\sigma$.}
+ \caption{Wages, returns, and the AI-service price. Each panel compares the same
+ four admitted numerical equilibrium trajectories over 500 model years.
+ Real-wage growth and the net interest rate use linear percentage scales.
+ The level of $p_X$ uses a logarithmic scale. Thin horizontal dotted lines mark
+ the analytical limits for $\sigma=1.50$.}
  \label{fig:rewrite-growth-returns}
 \end{figure}
+
+Finally, Figure~\ref{fig:rewrite-ai-distribution} reports labor income and the
+three uses of AI-industry revenue as shares of final output. Combining final-good
+zero profit with $\Pi=p_XX-U-M$ gives
+\begin{equation}
+ \frac{wL}{Y}+\frac{\Pi}{Y}+\frac{U}{Y}+\frac{M}{Y}=1-\alpha.
+ \label{eq:rewrite-noncapital-distribution}
+\end{equation}
+The four panels therefore exhaust the noncapital share of output. Gross capital
+income, $(r+\delta)K/Y=\alpha$, is constant and accounts for the remainder.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_distribution.pdf}
- \caption{AI transition and the distribution of final output. Each panel
- compares the same four admitted numerical equilibrium trajectories over
- 500 model years. Panel A reports AI efficiency relative to its frontier;
- Panels B and C report labor income and AI-industry revenue as shares of final
- output. Thin horizontal dotted lines mark the analytical limits for
- $\sigma=1.50$. All three panels use linear scales.}
+ \caption{Distribution of the noncapital share of output. The panels report
+ labor income, AI profit, inference expenditure, and research expenditure,
+ each divided by final output. Together they sum to $1-\alpha$; the omitted
+ gross capital-income share is the constant $\alpha$. Each panel compares the
+ same four admitted numerical equilibrium trajectories over 500 model years
+ and uses a linear percentage scale. Thin horizontal dotted lines mark the
+ analytical limits for $\sigma=1.50$.}
  \label{fig:rewrite-ai-distribution}
 \end{figure}
 
@@ -187,15 +232,10 @@ vanishes. AI revenue meanwhile approaches $67\%$ of output. These limiting
 rates describe the equilibrium continuations; they are not imposed as
 constant rates during the transition.
 
-The speed of the transition has a direct structural explanation. Rearranging
-\eqref{eq:rewrite-sx} gives
-\begin{equation}
- \frac{s_X}{1-s_X}
- =\frac{\omega_X}{\omega_L}
- \left(\frac{X}{AL}\right)^{(\sigma-1)/\sigma}.
- \label{eq:rewrite-transition-share-odds}
-\end{equation}
-Thus $\sigma>1$ makes the AI share rise with $X/(AL)$, but it does not make
+Equations~\eqref{eq:rewrite-transition-share-odds} and
+\eqref{eq:rewrite-transition-share-growth} provide the structural explanation
+for the speed of the transition. A value $\sigma>1$ makes the AI share rise
+with $X/(AL)$, but it does not make
 AI immediately replace labor. When $\sigma$ is close to one, the exponent
 $(\sigma-1)/\sigma$ is small and the share responds slowly even to large
 increases in relative AI services. At $\sigma=1.50$, for example, the
@@ -252,59 +292,9 @@ with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
 The frontier's position relative to the elasticity-specific threshold is
 essential to interpreting the comparison.
 
-\subsection{Accumulation and AI-revenue composition}
+\subsection{Initial financing sensitivity}
 \label{subsec:rewrite-technology-revenue}
 
-Figure~\ref{fig:rewrite-accumulation-growth} reports the growth rates of
-consumption, capital, and effective AI production services per unit of
-effective labor. These are $g_C-(n+\gamma)$, $g_K-(n+\gamma)$, and
-$g_X-(n+\gamma)$, respectively. The third panel connects the simulated path
-directly to equation~\eqref{eq:rewrite-transition-share-odds}, since
-\begin{equation}
- \frac{d}{dt}\log\!\left(\frac{s_X}{1-s_X}\right)
- =\frac{\sigma-1}{\sigma}\left[g_X-(n+\gamma)\right].
- \label{eq:rewrite-transition-share-growth}
-\end{equation}
-Thus the growth of $X/(AL)$ determines the direction and speed at which the
-AI share changes, conditional on $\sigma$. Levels would obscure the timing of
-accumulation because they differ greatly across regimes by the end of the
-window; growth rates show directly when the economy accelerates and how it
-approaches its terminal regime.
-
-\begin{figure}[H]
- \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_accumulation_growth.pdf}
- \caption{Growth of consumption, capital, and effective AI production services
- per unit of effective labor.
- The scenarios and 500-year window match
- Figure~\ref{fig:rewrite-growth-returns}. Thin horizontal dotted lines mark the
- analytical limits for $\sigma=1.50$. All three panels use linear percentage
- scales; Panel C uses its own range.}
- \label{fig:rewrite-accumulation-growth}
-\end{figure}
-
-Figure~\ref{fig:rewrite-ai-revenue-composition} separately reports how the AI
-developer uses its revenue. These panels deliberately divide by $p_XX$, not by
-$Y$:
-\begin{equation}
- \frac{U}{p_XX}+\frac{M}{p_XX}+\frac{\Pi}{p_XX}=1.
- \label{eq:rewrite-revenue-composition}
-\end{equation}
-Figure~\ref{fig:rewrite-ai-distribution} measures the industry's size relative
-to final output; Figure~\ref{fig:rewrite-ai-revenue-composition} separates its inference
-costs, research expenditure, and net distribution to its owner.
-
-\begin{figure}[H]
- \centering
- \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ai_revenue_composition.pdf}
- \caption{Composition of AI-industry revenue.
- The scenarios and time window match Figure~\ref{fig:rewrite-growth-returns}.
- The three shares use linear scales and sum to one. Thin horizontal dotted
- lines mark the analytical limits for $\sigma=1.50$.}
- \label{fig:rewrite-ai-revenue-composition}
-\end{figure}
-
-\paragraph{Initial financing sensitivity.}
 Moving the common initial stocks closer to the $\sigma=1$ terminal regime
 materially reduces the initial financing requirement. In the reported
 $\sigma=1.50$ path, research absorbs $12.0\%$ of AI revenue, inference absorbs

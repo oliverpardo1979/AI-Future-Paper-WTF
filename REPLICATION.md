@@ -130,10 +130,9 @@ The full command regenerates:
   audited checkpoint hashes;
 - `numerical_rewrite/figure_manifest.json`: links the figures to the exported
   data and records the plotted fields;
-- `figures_rewrite/equilibrium_growth_returns.{pdf,png}`;
-- `figures_rewrite/equilibrium_ai_distribution.{pdf,png}`;
 - `figures_rewrite/equilibrium_accumulation_growth.{pdf,png}`;
-- `figures_rewrite/equilibrium_ai_revenue_composition.{pdf,png}`.
+- `figures_rewrite/equilibrium_growth_returns.{pdf,png}`;
+- `figures_rewrite/equilibrium_ai_distribution.{pdf,png}`.
 
 The renderer checks the manifests before plotting. A changed or stale
 checkpoint, audit, or CSV therefore prevents figure generation instead of

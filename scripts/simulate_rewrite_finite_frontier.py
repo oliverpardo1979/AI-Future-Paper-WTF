@@ -209,11 +209,15 @@ def export_paths(horizon, points):
             m = math.exp(v['log_research_compute'][j]-v['log_output'][j])
             rows.append(dict(sigma=sigma, time=time,
                 output_effective_labor=math.exp(v['log_output'][j]-al),
+                output_effective_labor_growth=(
+                    gy-p.population_growth-p.labor_productivity_growth),
                 output_per_person_growth=gy-p.population_growth,
                 wage_growth=gw,
                 wage_productivity=(1-p.alpha)*(1-sx)*math.exp(v['log_output'][j]-al),
                 net_interest=v['net_interest_rate'][j], labor_income_share=(1-p.alpha)*(1-sx),
                 ai_revenue_output_share=revenue, capability_frontier_ratio=1-psi,
+                ai_service_price=math.exp(
+                    math.log(revenue)+static.log_output-static.log_ai_services),
                 consumption_effective_labor=math.exp(v['log_consumption'][j]-al),
                 capital_effective_labor=math.exp(v['log_capital'][j]-al),
                 consumption_effective_labor_growth=(
@@ -222,6 +226,8 @@ def export_paths(horizon, points):
                     rates[0,j]-p.population_growth-p.labor_productivity_growth),
                 ai_services_effective_labor_growth=(
                     gx-p.population_growth-p.labor_productivity_growth),
+                inference_output_share=u, research_output_share=m,
+                profit_output_share=revenue-u-m,
                 inference_revenue_share=u/revenue, research_revenue_share=m/revenue,
                 profit_revenue_share=1-(u+m)/revenue))
     with (OUT/'equilibrium_paths.csv').open('w', newline='', encoding='utf-8') as stream:

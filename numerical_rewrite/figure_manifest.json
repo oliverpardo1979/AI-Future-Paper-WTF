@@ -1,5 +1,5 @@
 {
-  "data_sha256": "ad660645c1d3d5cf7cd45e4eb15026d669d1c283b4fd88c862557a0710bcabd7",
+  "data_sha256": "f3afcc486ab925838f9dfce2960e70504e7fca8f2fc661a51e79830be0df1244",
   "sigmas": [
     0.9,
     1.0,
@@ -8,41 +8,35 @@
   ],
   "horizon": 500.0,
   "panels": {
-    "growth_returns": [
-      "output_per_person_growth",
+    "quantity_growth": [
+      "output_effective_labor_growth",
+      "ai_services_effective_labor_growth",
+      "capital_effective_labor_growth"
+    ],
+    "prices_returns": [
       "wage_growth",
-      "net_interest"
+      "net_interest",
+      "ai_service_price"
     ],
-    "ai_distribution": [
-      "capability_frontier_ratio",
+    "distribution": [
       "labor_income_share",
-      "ai_revenue_output_share"
-    ],
-    "accumulation_growth": [
-      "consumption_effective_labor_growth",
-      "capital_effective_labor_growth",
-      "ai_services_effective_labor_growth"
-    ],
-    "ai_revenue_composition": [
-      "inference_revenue_share",
-      "research_revenue_share",
-      "profit_revenue_share"
+      "profit_output_share",
+      "inference_output_share",
+      "research_output_share"
     ]
   },
   "analytical_limits": {
     "sigma_1_50": {
-      "output_per_person_growth": 0.03134997581384626,
+      "output_effective_labor_growth": 0.02134997581384626,
+      "ai_services_effective_labor_growth": 0.02134997581384626,
+      "capital_effective_labor_growth": 0.02134997581384626,
       "wage_growth": 0.02423331720923084,
       "net_interest": 0.07134997581384626,
-      "capability_frontier_ratio": 1.0,
+      "ai_service_price": 0.008773231059304042,
       "labor_income_share": 0.0,
-      "ai_revenue_output_share": 0.6699999999999999,
-      "consumption_effective_labor_growth": 0.02134997581384626,
-      "capital_effective_labor_growth": 0.02134997581384626,
-      "ai_services_effective_labor_growth": 0.02134997581384626,
-      "inference_revenue_share": 0.6699999999999999,
-      "research_revenue_share": 0.0,
-      "profit_revenue_share": 0.33
+      "profit_output_share": 0.2211,
+      "inference_output_share": 0.4488999999999999,
+      "research_output_share": 0.0
     }
   },
   "all_scenarios_admitted": true

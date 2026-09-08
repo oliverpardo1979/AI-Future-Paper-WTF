@@ -8,7 +8,7 @@ underlying the paper's reported numerical results.
 
 ## Publication status
 
-Complete. The final 4,804-row CSV, its provenance manifest, four published
+Complete. The final 4,804-row CSV, its provenance manifest, three published
 figures, and the separate financing-sensitivity audit were regenerated. All 33
 relevant regression tests passed. The PDF was compiled and visually inspected
 after the numerical outputs were incorporated.
@@ -49,11 +49,13 @@ continuation step through omega_X=0.
 - `scripts/audit_rewrite_hamiltonian_support.py`: check the alternative
   sufficient optimality condition proved in the appendix. The stronger failed
   concavity verdict remains visible in the sigma=1.50 JSON report.
-- `scripts/plot_rewrite_equilibria.py`: render the four published figures,
+- `scripts/plot_rewrite_equilibria.py`: render the three published figures,
   with checkpoint/data provenance checks. Real-wage growth is
   recovered from the exact static share identity rather than by numerical
   differentiation. The growth of X/(AL) is likewise recovered from the exact
-  gradient of the dated static block. All figures passed inspection as
+  gradient of the dated static block. The AI-service price and the four
+  noncapital output shares are exact transformations of the same dated static
+  allocation. All figures passed inspection as
   standalone PNGs and in the compiled paper.
 
 The saved vector spline must retain `PPoly.axis=1`. An independent residual
