@@ -1,6 +1,6 @@
 # Bilingual thread: AI, wages, and labor's income share
 
-These posts are designed as a reply or quote-post to Anthropic's economic-scenarios announcement. The charts are generated from the same audited equilibrium paths used in the paper; no new simulation is introduced.
+These posts are designed as a reply or quote-post to Anthropic's economic-scenarios announcement. The title and paper text follow `main_rewrite.tex`. The charts are generated from the same audited equilibrium paths used in the paper; no new simulation is introduced.
 
 Permanent paper link (the same URL used on the author's website):
 
@@ -10,7 +10,7 @@ Permanent paper link (the same URL used on the author's website):
 
 1/7 What can workers expect as AI spreads? Higher real wages? A smaller share of the economy's income? These outcomes may seem contradictory, but both can occur.
 
-2/7 In my working paper “The Future of Growth and Human Labor under Automated AI Research,” I extend the classic Ramsey model to incorporate autonomous AI development. AI services are an input in production, alongside capital and labor.
+2/7 In my working paper “The Future of Growth and Human Labor Under Recursive AI Self-Improvement,” I extend the classic Ramsey model to incorporate autonomous AI development. AI services are an input in production, alongside capital and labor.
 
 3/7 The result depends crucially on how easily AI can substitute for labor. If they are complements, scarce human labor becomes a bottleneck. Long-run growth then returns to the rate determined by labor-augmenting technological progress.
 
@@ -25,13 +25,13 @@ https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth
 
 Suggested attachments: `en_output.png` to post 4, `en_wage.png` to post 5, and `en_labor.png` to post 6.
 
-Effective X character counts, treating each URL as 23 characters: 161, 236, 237, 211, 181, 235, 171.
+Effective X character counts, treating each URL as 23 characters: 161, 244, 237, 211, 181, 235, 171.
 
 ## Español
 
 1/7 ¿Qué pueden esperar los trabajadores ante la expansión de la IA? ¿Mejores salarios reales? ¿Una menor participación en el ingreso de la economía? Aunque parezcan contradictorios, ambos resultados pueden ocurrir.
 
-2/7 En mi working paper “The Future of Growth and Human Labor under Automated AI Research” extiendo el modelo clásico de Ramsey para incorporar el desarrollo autónomo de la IA. Los servicios de IA son un insumo de la producción, junto con el capital y el trabajo.
+2/7 En mi working paper “The Future of Growth and Human Labor Under Recursive AI Self-Improvement” extiendo el modelo clásico de Ramsey para incorporar el desarrollo autónomo de la IA. Los servicios de IA son un insumo de la producción, junto con el capital y el trabajo.
 
 3/7 El resultado depende crucialmente de cuánto puedan sustituirse el trabajo y la IA. Si son complementarios, la escasez de trabajadores se convierte en un cuello de botella. El crecimiento de largo plazo vuelve entonces al ritmo del progreso tecnológico del trabajo.
 
@@ -46,4 +46,4 @@ https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth
 
 Adjuntos sugeridos: `es_output.png` en el trino 4, `es_wage.png` en el trino 5 y `es_labor.png` en el trino 6.
 
-Conteos efectivos de caracteres en X, tratando cada enlace como 23 caracteres: 215, 263, 268, 243, 225, 264, 190.
+Conteos efectivos de caracteres en X, tratando cada enlace como 23 caracteres: 215, 271, 268, 243, 225, 264, 190.
