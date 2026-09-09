@@ -27,6 +27,11 @@ with `B0/Bbar=0.9999`. The three labor-bottleneck paths use their analytical
 terminal capital ratios. The AI-dominated path instead initializes the
 convergent gap product `(Bbar-B0)*K0` at its analytical terminal value. This is
 a terminal-behavior diagnostic, not a common-initial-stock comparison.
+The `ramsey_start/` subdirectory contains four admitted paths with the common
+capital stock from the no-AI Ramsey steady state and `B0/Bbar=0.01`. The
+positive-AI technology applies from date zero onward; consumption and the
+developer's shadow value are re-solved rather than imported from the no-AI
+allocation.
 
 These files should be regenerated through the public workflow rather than
 edited directly. A converged boundary-value calculation is only a candidate;

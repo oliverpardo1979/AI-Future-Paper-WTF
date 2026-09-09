@@ -18,6 +18,8 @@ from simulate_rewrite_finite_frontier import (
     SIGMAS, FRONTIER, PARAMETERS, INITIAL_CAPITAL, INITIAL_CAPABILITY,
     MAIN_DESIGN, SLOW_TRANSITION_DESIGN, NEAR_TERMINAL_DESIGN,
     NEAR_TERMINAL_CAPABILITY_RATIO, design_initial_stocks,
+    RAMSEY_START_DESIGN, RAMSEY_START_CAPABILITY_RATIO,
+    RAMSEY_START_STEADY_STATE,
     save_solution, load_solution,
     ai_services_growth, real_wage_growth,
 )
@@ -70,6 +72,24 @@ class RewriteSimulationDesign(unittest.TestCase):
         self.assertEqual(NEAR_TERMINAL_DESIGN.display_horizon, 500.)
         self.assertNotEqual(MAIN_DESIGN.cache_directory,
                             NEAR_TERMINAL_DESIGN.cache_directory)
+        expected_ramsey_capital = (
+            p.alpha / (p.discount + p.depreciation
+                       + p.labor_productivity_growth)
+        ) ** (1 / (1 - p.alpha))
+        self.assertAlmostEqual(
+            RAMSEY_START_STEADY_STATE.capital, expected_ramsey_capital)
+        self.assertAlmostEqual(
+            RAMSEY_START_DESIGN.initial_capital, expected_ramsey_capital)
+        self.assertAlmostEqual(
+            RAMSEY_START_DESIGN.initial_capability / FRONTIER,
+            RAMSEY_START_CAPABILITY_RATIO)
+        self.assertEqual(
+            design_initial_stocks(RAMSEY_START_DESIGN, 1.5),
+            (expected_ramsey_capital,
+             RAMSEY_START_CAPABILITY_RATIO * FRONTIER))
+        self.assertEqual(RAMSEY_START_DESIGN.display_horizon, 500.)
+        self.assertNotEqual(MAIN_DESIGN.cache_directory,
+                            RAMSEY_START_DESIGN.cache_directory)
         for sigma in SIGMAS:
             t = terminal_point(sigma, FRONTIER, p)
             self.assertEqual(t.regime, 'ai_dominated' if sigma == 1.5 else 'labor_supported')

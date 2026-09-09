@@ -33,6 +33,13 @@ regime has no finite terminal value of that ratio, so it instead sets
 shadow value are still solved by the BVP. This comparison isolates terminal
 behavior; it does not hold every initial stock fixed.
 
+The Ramsey-start experiment fixes `K0/(A0*N0)=5.94157252710329`, the exact
+no-AI steady-state capital ratio under the paper's macro parameters, and sets
+`B0/Bbar=0.01`. Before date zero, `omega_X=0`; from date zero onward all four
+paths use `omega_X=0.20`. Only the predetermined stocks carry across the
+technology switch. Consumption and the developer's shadow value are solved
+anew by the positive-AI BVP.
+
 Capital and AI efficiency are predetermined at date zero. Consumption and the
 developer's shadow value can jump. The algorithm chooses those two initial
 jump variables so that the path beginning at the prescribed stocks approaches
@@ -48,7 +55,7 @@ The workflow has six conceptual steps:
    projection conditions remove the unstable directions.
 3. At each trial point, solve the static monopoly condition and recover
    research expenditure from the developer's first-order condition.
-4. Move the local solution gradually to the common date-zero stocks by
+4. Move the local solution gradually to the prescribed date-zero stocks by
    continuation. The preceding solution supplies the next numerical guess.
 5. Extend the horizon twice and tighten tolerances to check that the initial
    jump variables and the displayed path are stable.
@@ -81,16 +88,18 @@ python3.12 -m venv .venv
 ```
 
 The last command is the public entry point. It runs the regression tests,
-solves and refines the four main, four slow-transition, and four near-terminal
-boundary-value problems, performs the two global Hamiltonian-support checks
-required for the main and slow 1.50 cases, applies the final equilibrium-admission gates, reproduces the
+solves and refines the four main, four Ramsey-start, four slow-transition, and
+four near-terminal boundary-value problems, performs the global
+Hamiltonian-support checks required for the main, Ramsey-start, and slow 1.50
+cases, applies the final equilibrium-admission gates, reproduces the
 distant-initial-stock financing sensitivity, exports the data, and regenerates
 the figures. It
 stops at the first failure and therefore cannot knowingly create a partial
 published comparison.
 
 The calculation stores resumable spline checkpoints in `tmp/rewrite_bvp/`,
-`tmp/rewrite_bvp_slow/`, and `tmp/rewrite_bvp_near_terminal/`.
+`tmp/rewrite_bvp_ramsey_start/`, `tmp/rewrite_bvp_slow/`, and
+`tmp/rewrite_bvp_near_terminal/`.
 They are generated files and are not committed. Rerunning the command reuses
 valid existing stages. To recompute every boundary-value checkpoint from
 scratch, use:
@@ -101,7 +110,8 @@ python scripts/reproduce_rewrite_results.py --fresh
 
 `--fresh` removes only the generated `base`, `refined`, and `long`
 checkpoint files belonging to the four main scenarios, the four slow
-scenarios, the four near-terminal scenarios, and the financing sensitivity.
+scenarios, the four near-terminal scenarios, the four Ramsey-start scenarios,
+and the financing sensitivity.
 The committed numerical
 reports and figures are then overwritten only as their corresponding stages
 successfully complete.
@@ -116,7 +126,7 @@ of the following:
   saved spline values independently of the solver's derivative routine;
 - small residuals in the static monopoly and research first-order conditions;
 - stability of the initial jump variables and the entire display window
-  (0--500 in the main and near-terminal designs and 0--4,000 in the slow design) after a longer
+  (0--500 in the main, Ramsey-start, and near-terminal designs and 0--4,000 in the slow design) after a longer
   horizon and tighter tolerances;
 - convergence toward the regime-specific analytical terminal coordinates;
 - both infinite-horizon transversality conditions;
@@ -152,6 +162,11 @@ The full command regenerates:
 - `figures_rewrite/equilibrium_accumulation_growth.{pdf,png}`;
 - `figures_rewrite/equilibrium_growth_returns.{pdf,png}`;
 - `figures_rewrite/equilibrium_ai_distribution.{pdf,png}`;
+- `numerical_rewrite/ramsey_start/`: the four Ramsey-start audits, two
+  Hamiltonian-support checks, plotted CSV, and provenance manifests;
+- `figures_rewrite/equilibrium_ramsey_start_accumulation_growth.{pdf,png}`;
+- `figures_rewrite/equilibrium_ramsey_start_growth_returns.{pdf,png}`;
+- `figures_rewrite/equilibrium_ramsey_start_ai_distribution.{pdf,png}`;
 - `numerical_rewrite/slow_transition/`: the four slow-transition audits,
   two Hamiltonian-support checks, plotted CSV, and provenance manifests;
 - `figures_rewrite/equilibrium_slow_accumulation_growth.{pdf,png}`;
@@ -177,8 +192,8 @@ The paper PDF is written to `output/pdf/main_rewrite.pdf`.
 ## Where to inspect or change the computation
 
 - `scripts/simulate_rewrite_finite_frontier.py` defines the published
-  elasticities, the main, slow, and near-terminal designs, checkpoint handling,
-  and the plot-data export.
+  elasticities, the main, Ramsey-start, slow, and near-terminal designs,
+  checkpoint handling, and the plot-data export.
 - `scripts/define_positive_ai_branch.py` contains the benchmark parameter
   object.
 - `scripts/solve_near_unit_ai_bvp.py` solves the static monopoly block with an

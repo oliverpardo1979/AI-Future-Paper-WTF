@@ -16,11 +16,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SIGMAS = (0.9, 1.0, 1.1, 1.5)
 DESIGN_SIGMAS = {
     'main': SIGMAS,
+    'ramsey_start': SIGMAS,
     'slow': SIGMAS,
     'near_terminal': SIGMAS,
 }
 DESIGNS = tuple(DESIGN_SIGMAS)
 TEST_FILES = (
+    "test_rck_no_ai_bvp.py",
     "test_finite_cap_bvp.py",
     "test_global_finite_cap_bvp.py",
     "test_rewrite_finite_frontier.py",
@@ -41,6 +43,7 @@ def remove_generated_checkpoints() -> None:
     removed = 0
     cache_designs = {
         'rewrite_bvp': SIGMAS,
+        'rewrite_bvp_ramsey_start': SIGMAS,
         'rewrite_bvp_slow': SIGMAS,
         'rewrite_bvp_near_terminal': DESIGN_SIGMAS['near_terminal'],
     }
@@ -98,6 +101,7 @@ def main() -> None:
 
     horizons = {
         'main': args.export_horizon,
+        'ramsey_start': args.export_horizon,
         'slow': args.slow_export_horizon,
         'near_terminal': args.export_horizon,
     }
@@ -123,7 +127,7 @@ def main() -> None:
                 "--verify-long-horizon",
             ]
         )
-        if design in ('main', 'slow'):
+        if design in ('main', 'ramsey_start', 'slow'):
             for dates, states in ((81, 101), (321, 241)):
                 run(
                     [
@@ -159,9 +163,9 @@ def main() -> None:
         financing_command.append("--fresh")
     run(financing_command)
     print(
-        "\nReproduction complete: the main, slow-transition, and near-terminal "
-        "comparisons passed admission and their audited data and figures were "
-        "regenerated.",
+        "\nReproduction complete: the main, Ramsey-start, slow-transition, "
+        "and near-terminal comparisons passed admission and their audited "
+        "data and figures were regenerated.",
         flush=True,
     )
 

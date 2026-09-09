@@ -2,18 +2,19 @@
 
 Originally completed on 2026-09-03, revalidated under the revised initial
 conditions and transition calibration on 2026-09-07, and extended with the
-slow-transition and near-terminal comparisons on 2026-09-08--09. All twelve
-displayed trajectories passed the final numerical equilibrium admission gate.
+slow-transition, near-terminal, and Ramsey-start comparisons on
+2026-09-08--09. All sixteen displayed trajectories passed the final numerical
+equilibrium admission gate.
 The public reproduction workflow and installation
 instructions are in `REPLICATION.md`; this file records the execution
 underlying the paper's reported numerical results.
 
 ## Publication status
 
-Complete. The main, slow-transition, and near-terminal 4,804-row CSV files,
-their provenance manifests, seven published figures, and
+Complete. The main, Ramsey-start, slow-transition, and near-terminal
+4,804-row CSV files, their provenance manifests, ten published figures, and
 the separate financing-sensitivity audit
-were regenerated. All 33
+were regenerated. All 36
 relevant regression tests passed. The PDF was compiled and visually inspected
 after the numerical outputs were incorporated.
 
@@ -34,6 +35,11 @@ completes half of its decline after 50.014 model years.
 The Section 3 no-AI remark is a separate boundary reduction to
 Ramsey--Cass--Koopmans. It is not a fifth simulation or an intermediate
 continuation step through omega_X=0.
+
+The Ramsey-start comparison uses the exact no-AI steady-state capital ratio
+K0/(A0 N0)=5.94157252710329 and B0/Bbar=0.01. At date zero, omega_X changes
+from zero to 0.20. Only the predetermined stocks are imported: each
+positive-AI BVP selects C0 and q0 anew.
 
 ## Existing architecture preserved
 
@@ -114,7 +120,21 @@ These paths start close to, but not at, the terminal regime because B0 remains
 strictly below the frontier and research is positive. All four pass the
 global-concavity sufficiency test and both transversality conditions.
 
-In the main and slow comparisons, the global concavity diagnostic passes for
+The Ramsey-start comparison has the following final admission results:
+
+| sigma | Initial K0 | Solved horizon | Final mesh | Independent ODE residual | Full-window horizon change |
+|---|---:|---:|---:|---:|---:|
+| 0.90 | 5.941573 | 4946.189 | 1394 | 1.066e-9 | 3.355e-8 |
+| 1.00 | 5.941573 | 4821.043 | 1402 | 1.013e-9 | 3.747e-8 |
+| 1.10 | 5.941573 | 4736.972 | 1413 | 1.059e-9 | 3.257e-8 |
+| 1.50 | 5.941573 | 3008.482 | 1576 | 9.282e-10 | 1.582e-8 |
+
+The first three paths pass the global-concavity condition. The sigma=1.50
+path passes both Hamiltonian-support grids; the dense grid's minimum
+normalized gap is -1.921e-14, within the 1e-10 floating-point tolerance.
+Both transversality conditions pass in all four cases.
+
+In the main, Ramsey-start, and slow comparisons, the global concavity diagnostic passes for
 the first three cases. For sigma=1.50 its minimum counterfactual margin is
 -1.0250, so it fails. The near-terminal sigma=1.50 path is different: its
 reachable counterfactual domain begins sufficiently close to the frontier for
@@ -140,13 +160,15 @@ Completed in the final reproduction run:
 
 - Six existing finite-cap tests, five global finite-cap tests, and five
   rewrite terminal tests passed (16 total).
+- The three no-AI Ramsey tests passed, including the exact detrended steady
+  state used to initialize the Ramsey-start experiment.
 - The first four new design tests passed: agreed parameters/terminal regimes,
   exact unit limit, bilateral terminal continuity, and nonlinear local BVPs
   below and at one. The continuity test uses distances 1e-2, 1e-3, 1e-4,
   1e-6, and 1e-8 from one on both sides.
-- All twelve displayed BVP audits passed as documented above.
+- All sixteen displayed BVP audits passed as documented above.
 - All seven changed/new Python modules passed syntax compilation.
-- A separate PowerShell check of all 4,804 CSV rows confirmed positive
+- Separate checks of each 4,804-row CSV confirmed positive
   plotted levels and wL/Y+p_X X/Y=0.67. The maximum error in
   U/(p_X X)+M/(p_X X)+Pi/(p_X X)=1 was 1.111e-16.
 
@@ -156,7 +178,7 @@ slope, the exact real-wage and AI-services growth calculations, and the
 uniform service-capability elasticity bound. The eight-test
 near-unit regression suite also passes after the change to its shared static
 bracketing function. Together with the sixteen finite-frontier and global-BVP
-tests listed above, the final regression count is 33.
+tests and the three Ramsey tests listed above, the final regression count is 36.
 
 ## Reproduction commands
 
@@ -173,9 +195,9 @@ From the repository root, using a Python environment with the existing
 NumPy, SciPy, and Matplotlib dependencies:
 
 ```powershell
-$horizons = @{ main = 500; slow = 4000; near_terminal = 500 }
-$designSigmas = @{ main = @(0.9, 1.0, 1.1, 1.5); slow = @(0.9, 1.0, 1.1, 1.5); near_terminal = @(0.9, 1.0, 1.1, 1.5) }
-foreach ($design in @('main', 'slow', 'near_terminal')) {
+$horizons = @{ main = 500; ramsey_start = 500; slow = 4000; near_terminal = 500 }
+$designSigmas = @{ main = @(0.9, 1.0, 1.1, 1.5); ramsey_start = @(0.9, 1.0, 1.1, 1.5); slow = @(0.9, 1.0, 1.1, 1.5); near_terminal = @(0.9, 1.0, 1.1, 1.5) }
+foreach ($design in @('main', 'ramsey_start', 'slow', 'near_terminal')) {
     foreach ($sigma in $designSigmas[$design]) {
         python scripts/simulate_rewrite_finite_frontier.py --design $design --sigma $sigma
         if ($LASTEXITCODE -ne 0) { throw "BVP failed for $design, sigma=$sigma" }
@@ -190,6 +212,7 @@ foreach ($design in @('main', 'slow', 'near_terminal')) {
     python scripts/plot_rewrite_equilibria.py --design $design
 }
 python scripts/audit_initial_financing_sensitivity.py
+python -m unittest discover -s tests -p test_rck_no_ai_bvp.py -v
 python -m unittest discover -s tests -p test_finite_cap_bvp.py -v
 python -m unittest discover -s tests -p test_global_finite_cap_bvp.py -v
 python -m unittest discover -s tests -p test_rewrite_finite_frontier.py -v
@@ -198,8 +221,8 @@ python -m unittest discover -s tests -p test_near_unit_ai_bvp.py -v
 ```
 
 Stop on an error; do not bypass the exporter or chart admission guards.
-Checkpoints in `tmp/rewrite_bvp`, `tmp/rewrite_bvp_slow`, and
-`tmp/rewrite_bvp_near_terminal` are local,
+Checkpoints in `tmp/rewrite_bvp`, `tmp/rewrite_bvp_ramsey_start`,
+`tmp/rewrite_bvp_slow`, and `tmp/rewrite_bvp_near_terminal` are local,
 reproducible calculation caches.
 The final JSON audits record their SHA-256 hashes. Plot-ready CSV provenance
 is generated by the final export command; the renderer requires that manifest.
@@ -237,6 +260,13 @@ interest are 3.443%, 2.632%, and 7.437%; by year 500 they are 3.143%, 2.429%,
 and 7.143%, close to their analytical limits. The comparison isolates the
 transitional origin of the higher initial rates in the common-stock
 labor-bottleneck paths while retaining the AI-dominated benchmark.
+
+In the Ramsey-start comparison, initial X/(AL) growth ranges from 30.5% to
+79.0% while K/(AL) initially contracts between 5.7% and 8.1%. For sigma=1.50,
+the labor share starts at 61.48%, reaches the transition midpoint after 49.97
+years, and falls to 0.20% by year 500. Output-per-person growth peaks at 6.38%
+near year 107; real-wage growth peaks at 4.58% near year 109; and the net
+interest rate peaks at 9.98% near year 116.
 
 ## Final delivery
 

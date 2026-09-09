@@ -24,6 +24,7 @@ from analyze_axm_finite_cap_bvp import (
 )
 from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from solve_near_unit_ai_bvp import elasticity_coordinate, solve_monopoly_static_block
+from solve_rck_no_ai_bvp import RCKParameters, steady_state as rck_steady_state
 from solve_axm_global_finite_cap_bvp import (
     GlobalFiniteCapBVP, GlobalContinuationStage, solve_global_finite_cap_bvp,
     refine_global_horizon, audit_global_solution, compare_global_solutions,
@@ -37,6 +38,7 @@ FRONTIER = 1.1 * critical_capability_frontier(1.5, PARAMETERS)
 INITIAL_CAPITAL = 4.0
 INITIAL_CAPABILITY = 0.10 * FRONTIER
 NEAR_TERMINAL_CAPABILITY_RATIO = 0.9999
+RAMSEY_START_CAPABILITY_RATIO = 0.01
 OUT = ROOT / 'numerical_rewrite'
 CACHE = ROOT / 'tmp' / 'rewrite_bvp'
 
@@ -95,8 +97,32 @@ NEAR_TERMINAL_DESIGN = SimulationDesign(
         'the BVP'),
     initial_capital_rule='regime_terminal_reference',
 )
+RAMSEY_START_RCK_PARAMETERS = RCKParameters(
+    alpha=PARAMETERS.alpha,
+    population_growth=PARAMETERS.population_growth,
+    labor_productivity_growth=PARAMETERS.labor_productivity_growth,
+    depreciation=PARAMETERS.depreciation,
+    discount=PARAMETERS.discount,
+)
+RAMSEY_START_STEADY_STATE = rck_steady_state(
+    RAMSEY_START_RCK_PARAMETERS)
+RAMSEY_START_DESIGN = SimulationDesign(
+    name='ramsey_start', sigmas=SIGMAS,
+    parameters=PARAMETERS, frontier=FRONTIER,
+    initial_capital=RAMSEY_START_STEADY_STATE.capital,
+    initial_capability=RAMSEY_START_CAPABILITY_RATIO * FRONTIER,
+    output_directory=OUT / 'ramsey_start',
+    cache_directory=ROOT / 'tmp' / 'rewrite_bvp_ramsey_start',
+    display_horizon=500.0,
+    initial_stock_reference=(
+        'common pre-AI Ramsey steady-state capital and low latent AI '
+        'efficiency; K0/(A0*N0)=5.9415725271 and B0/Bbar=0.01; omega_X '
+        'equals zero before date zero and 0.20 thereafter; jump variables '
+        'are solved anew by the positive-AI BVP'),
+)
 DESIGNS = {
     'main': MAIN_DESIGN,
+    'ramsey_start': RAMSEY_START_DESIGN,
     'slow': SLOW_TRANSITION_DESIGN,
     'near_terminal': NEAR_TERMINAL_DESIGN,
 }
@@ -373,6 +399,17 @@ def export_paths(horizon, points, design=MAIN_DESIGN):
         sigma_1_50_transition_dates=transition_dates,
         csv_sha256=hashlib.sha256(csv_path.read_bytes()).hexdigest(),
     )
+    if design.name == 'ramsey_start':
+        manifest['pre_transition_reference'] = dict(
+            omega_x=0.0,
+            omega_l=1.0,
+            capital_effective_labor=RAMSEY_START_STEADY_STATE.capital,
+            consumption_effective_labor=RAMSEY_START_STEADY_STATE.consumption,
+            output_effective_labor=RAMSEY_START_STEADY_STATE.output,
+            net_interest_rate=RAMSEY_START_STEADY_STATE.net_interest_rate,
+            post_transition_omega_x=design.parameters.omega_x,
+            post_transition_consumption_and_shadow_value='solved_by_bvp',
+        )
     (design.output_directory/'paths_manifest.json').write_text(
         json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
 

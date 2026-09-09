@@ -307,6 +307,103 @@ with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
 The frontier's position relative to the elasticity-specific threshold is
 essential to interpreting the comparison.
 
+\subsection{A transition from the no-AI steady state}
+\label{subsec:rewrite-ramsey-start}
+
+As an additional transition experiment, suppose that the economy is initially
+on the no-AI Ramsey--Cass--Koopmans steady state described in
+Remark~\ref{rem:rewrite-no-ai}. Before date zero, $\omega_X=0$ and
+$\omega_L=1$. AI efficiency is then irrelevant for production, so I assign it
+a low latent value, $B_0/\overline B=0.01$, solely to initialize the economy
+after AI production and research become available. The no-AI steady-state
+capital stock and the two predetermined date-zero stocks are
+\begin{equation}
+ \begin{aligned}
+ \left.\frac{K}{AN}\right|_{\mathrm{RCK}}
+ &=\left(\frac{\alpha}{\rho+\delta+\gamma}\right)^{1/(1-\alpha)}
+ =5.9416,\\
+ A_0&=N_0=1,
+ &K_0&=5.9416,
+ &B_0&=0.01\overline B=1.7012.
+ \end{aligned}
+ \label{eq:rewrite-ramsey-start-stocks}
+\end{equation}
+The corresponding pre-change values are $Y/(AN)=1.8005$ and
+$C/(AN)=1.4262$. At date zero, $\omega_X$ rises to $0.20$ and
+$\omega_L$ falls to $0.80$. I hold the two stocks in
+\eqref{eq:rewrite-ramsey-start-stocks} fixed across the four values of
+$\sigma$. Consumption can jump after the change in technology, and the
+developer's shadow value has no no-AI counterpart. The BVP therefore selects
+$C_0$ and $q_0$ anew in each positive-AI economy.
+
+Figures~\ref{fig:rewrite-ramsey-start-accumulation-growth}--
+\ref{fig:rewrite-ramsey-start-ai-distribution} use the same variables,
+normalizations, scenario order, and scale conventions as the main comparison.
+All four paths are independently solved and pass the equilibrium-admission
+tests.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ramsey_start_accumulation_growth.pdf}
+ \caption{Growth of output, effective AI production services, and capital per
+ unit of effective labor after the switch from the no-AI steady-state stocks.
+ Each panel compares four admitted numerical equilibrium trajectories over
+ 500 model years. Panels A and C use the same linear percentage scale; Panel B
+ uses a separate linear percentage range. Thin horizontal dotted lines mark
+ the analytical limits for $\sigma=1.50$.}
+ \label{fig:rewrite-ramsey-start-accumulation-growth}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ramsey_start_growth_returns.pdf}
+ \caption{Wages, returns, and the AI-service price after the switch from the
+ no-AI steady-state stocks. Each panel compares four admitted numerical
+ equilibrium trajectories over 500 model years. Real-wage growth and the net
+ interest rate use linear percentage scales; the level of $p_X$ uses a
+ logarithmic scale. Thin horizontal dotted lines mark the analytical limits
+ for $\sigma=1.50$.}
+ \label{fig:rewrite-ramsey-start-growth-returns}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_ramsey_start_ai_distribution.pdf}
+ \caption{Distribution of the noncapital share of output after the switch from
+ the no-AI steady-state stocks. Labor income, AI profit, inference expenditure,
+ and research expenditure are divided by final output and sum to $1-\alpha$.
+ The omitted gross capital-income share is the constant $\alpha$. Each panel
+ compares four admitted numerical equilibrium trajectories over 500 model
+ years. Thin horizontal dotted lines mark the analytical limits for
+ $\sigma=1.50$.}
+ \label{fig:rewrite-ramsey-start-ai-distribution}
+\end{figure}
+
+Low initial AI efficiency produces a sharp reallocation. At date zero,
+$X/(AL)$ grows between $30.5\%$ and $79.0\%$ across the four equilibria, while
+$K/(AL)$ falls between $5.7\%$ and $8.1\%$. The net interest rate is initially
+between $0.83\%$ and $2.59\%$, below its $5\%$ no-AI value. These movements do
+not imply that access to an additional technology must lower current output.
+The experiment changes the CES weights from $(\omega_L,\omega_X)=(1,0)$ to
+$(0.80,0.20)$, so the old production technology does not remain available as
+an outside option. It should therefore be read as a change in technological
+regime from Ramsey initial stocks, not as a welfare comparison that holds the
+pre-change production set fixed.
+
+The high-substitution economy subsequently separates from the other three.
+For $\sigma=1.50$, labor initially receives $61.5\%$ of output. Its share
+completes half of the decline toward zero after approximately 50 model years
+and falls to $0.2\%$ by year 500. Output-per-person growth peaks at $6.38\%$
+around year 107, real-wage growth peaks at $4.58\%$ around year 109, and the
+net interest rate peaks at $9.98\%$ around year 116. By year 500, the three
+rates are $3.25\%$, $2.50\%$, and $7.25\%$, respectively, and continue toward
+their analytical limits. In the other three economies, output-per-person and
+real-wage growth have returned to approximately $1\%$ and the net interest
+rate to $5\%$ by year 500. The same Ramsey initial capital stock can therefore
+lead either back to a labor-bottleneck regime or toward the AI-dominated
+regime; the difference is the elasticity and the frontier relative to its
+elasticity-specific threshold.
+
 \subsection{Near-terminal paths}
 \label{subsec:rewrite-near-terminal}
 

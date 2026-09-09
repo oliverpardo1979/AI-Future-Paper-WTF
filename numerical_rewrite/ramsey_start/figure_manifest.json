@@ -1,0 +1,49 @@
+{
+  "design": "ramsey_start",
+  "data_sha256": "4525d737566b56b138e51a79336bfe3aa61542ee514b66683921db7227f203ae",
+  "sigmas": [
+    0.9,
+    1.0,
+    1.1,
+    1.5
+  ],
+  "horizon": 500.0,
+  "panels": {
+    "quantity_growth": [
+      "output_effective_labor_growth",
+      "ai_services_effective_labor_growth",
+      "capital_effective_labor_growth"
+    ],
+    "prices_returns": [
+      "wage_growth",
+      "net_interest",
+      "ai_service_price"
+    ],
+    "distribution": [
+      "labor_income_share",
+      "profit_output_share",
+      "inference_output_share",
+      "research_output_share"
+    ],
+    "near_terminal": [
+      "output_per_person_growth",
+      "wage_growth",
+      "net_interest"
+    ]
+  },
+  "analytical_limits": {
+    "sigma_1_50": {
+      "output_effective_labor_growth": 0.02134997581384626,
+      "ai_services_effective_labor_growth": 0.02134997581384626,
+      "capital_effective_labor_growth": 0.02134997581384626,
+      "wage_growth": 0.02423331720923084,
+      "net_interest": 0.07134997581384626,
+      "ai_service_price": 0.008773231059304042,
+      "labor_income_share": 0.0,
+      "profit_output_share": 0.2211,
+      "inference_output_share": 0.4488999999999999,
+      "research_output_share": 0.0
+    }
+  },
+  "all_scenarios_admitted": true
+}

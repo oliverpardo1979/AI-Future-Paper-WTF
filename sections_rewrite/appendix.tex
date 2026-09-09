@@ -550,6 +550,9 @@ is strictly positive.
 
 The left boundary fixes only $K_0$ and $B_0$: from
 \eqref{eq:rewrite-simulation-initial-stocks} in the main comparison and from
+\eqref{eq:rewrite-ramsey-start-stocks} in the Ramsey-start experiment,
+\eqref{eq:rewrite-near-terminal-stocks}--
+\eqref{eq:rewrite-near-terminal-ai-stock} in the near-terminal diagnostic, and
 \eqref{eq:rewrite-slow-transition-design} in the slow-transition exercise. At
 the right boundary, the
 solution is mapped into the regime-specific normalized coordinates of
@@ -576,7 +579,7 @@ optimum.
 
 For each elasticity, I first solve a local BVP near its analytical terminal
 point. I then move the initial stocks and effective-labor scale continuously
-to their common prescribed values, retaining the preceding solution as the
+to their prescribed values, retaining the preceding solution as the
 next guess. Each design uses 32 continuation stages. There is no
 continuation through the degenerate no-AI economy. The common main stocks are
 those in \eqref{eq:rewrite-simulation-initial-stocks}; the uncapped unit-elastic
@@ -589,9 +592,9 @@ initial truncation criterion, not an equilibrium assumption. I extend that
 horizon twice by 500 years, tightening the collocation tolerance from
 $2\times10^{-6}$ to $10^{-8}$ and then $10^{-9}$. The final boundary tolerance
 is $10^{-11}$. Initial meshes of 221, 401, and 601 points are refined
-adaptively by the solver. The final horizons exceed both the main 500-year
-window and the slow exercise's 4,000-year window; the figures contain no
-extrapolated spline values.
+adaptively by the solver. The final horizons exceed the 500-year display
+windows and the slow exercise's 4,000-year window, as applicable; the figures
+contain no extrapolated spline values.
 
 \begin{table}[H]
  \centering
@@ -626,6 +629,12 @@ reconstructed dynamic residuals are below $1.1\times10^{-9}$, and extending
 the horizon changes the detrended coordinates by at most
 $2.8\times10^{-8}$ over the full 0--4,000 display window.
 
+The Ramsey-start experiment also repeats the complete calculation for four
+separate BVPs. Its final horizons are 4,946.2, 4,821.1, 4,737.0, and 3,008.5
+years for $\sigma=0.90,1,1.10,1.50$. The independently reconstructed dynamic
+residuals are below $1.1\times10^{-9}$, and the final horizon extension changes
+the detrended coordinates by at most $3.8\times10^{-8}$ over years 0--500.
+
 The maximum research and static monopoly first-order residuals are below
 $1.8\times10^{-13}$. Initial jump choices change by less than
 $1.8\times10^{-10}$ in logs in the final horizon comparison. The normalized
@@ -659,7 +668,7 @@ counterfactual AI-efficiency levels $B\geq B_0$, refining every local minimum fo
 on the grid. An analytical upper bound on the Hamiltonian's derivative
 covers the unbounded research-depth domain beyond the numerical grid.
 The check is repeated with 81 dates and 101 AI-efficiency points, then with
-321 dates and 241 points. In the main and slow-transition comparisons, the
+321 dates and 241 points. In the main, Ramsey-start, and slow-transition comparisons, the
 smallest normalized gaps are of order $-10^{-14}$, consistent with
 floating-point error at the tangent point. The numerical gap tolerance is
 $10^{-10}$; the economic support
@@ -691,6 +700,14 @@ checkpoints, audit files, and manifests. It sets $\chi=0.01$ and uses the
 earlier stocks in \eqref{eq:rewrite-slow-transition-design}; all four paths
 pass the equation, horizon, TVC, and developer-optimality gates before export.
 
+The Ramsey-start comparison in
+Section~\ref{subsec:rewrite-ramsey-start} begins directly on the positive-AI
+branch with the predetermined stocks in
+\eqref{eq:rewrite-ramsey-start-stocks}. The numerical continuation changes
+those initial stocks, not $\omega_X$: it never passes through the degenerate
+no-AI problem. All four paths pass the same equation, horizon, TVC, and
+developer-optimality gates before export.
+
 \subsection{Reproduction and export safeguards}
 
 The implementation preserves the earlier solver. The entry point is
@@ -702,8 +719,8 @@ solve each of the four elasticities with \texttt{--sigma}; run
 grid resolutions; run the final audit; run
 \path{audit_initial_financing_sensitivity.py}; export; and render with
 \path{plot_rewrite_equilibria.py}. The public reproduction command performs
-that sequence for both the main design and \texttt{--design slow}, using
-display horizons of 500 and 4,000 years, respectively.
+that sequence for the main, Ramsey-start, slow, and near-terminal designs,
+using display horizons of 500 years except for the 4,000-year slow exercise.
 All code, audit files, plot-ready data, and figures used in these simulations
 are available in the paper's
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF}{public GitHub repository}.

@@ -1,7 +1,8 @@
 # Agreed simulation design for the finite-frontier rewrite
 
 Status: revised design and interior initial-state reference confirmed on 2026-09-07;
-slow-transition and near-terminal diagnostics added on 2026-09-08. All
+slow-transition and near-terminal diagnostics added on 2026-09-08, and the
+Ramsey-start transition added on 2026-09-09. All
 reported BVPs have passed the final numerical equilibrium audit. See
 `audit/rewrite_equilibrium_simulations.md` and `numerical_rewrite/*_audit.json`
 for execution evidence and remaining publication steps. The original design
@@ -110,7 +111,7 @@ the main comparison's variables, normalizations, scenario order, and scale
 types. Because both the initial stocks and chi differ from the main design,
 this is a joint timing sensitivity rather than a one-parameter derivative.
 
-## Near-terminal labor-bottleneck diagnostic
+## Near-terminal diagnostic
 
 To distinguish long-run behavior from adjustment to the common main stocks,
 the diagnostic uses all four elasticities and sets B0/Bbar=0.9999. For
@@ -126,6 +127,26 @@ illustrates each regime near its own terminal allocation; it is not a
 common-stock comparative experiment. The sole figure reports
 output-per-person growth, real-wage growth, and the net interest rate over 500
 years against the regime-specific analytical limits.
+
+## Transition from the no-AI steady state
+
+The additional common-stock experiment starts from the exact no-AI Ramsey
+steady-state capital ratio implied by the maintained macro parameters,
+
+\[
+ K_0/(A_0N_0)=[\alpha/(\rho+\delta+\gamma)]^{1/(1-\alpha)}
+ =5.94157252710329,
+ \qquad B_0/\overline B=0.01.
+\]
+
+Before date zero, omega_X=0 and AI efficiency is irrelevant. At date zero,
+omega_X changes to 0.20 and omega_L to 0.80. The positive-AI BVP is then
+solved independently for all four elasticities. Consumption and the shadow
+value are not imported from the Ramsey allocation. This is a technology-switch
+experiment from Ramsey predetermined stocks, not continuation through the
+degenerate omega_X=0 branch and not a welfare comparison that preserves the
+old production technology as an outside option. The display window is 500
+years and uses the same three figure families as the main comparison.
 
 ## Published figure layout
 
