@@ -60,6 +60,13 @@ long-run labor share, whereas $\sigma=1.50$ enters the AI-dominated regime.
 Changing the frontier separately across scenarios would confound this
 comparison of elasticities.
 
+The choice of initial conditions follows the question posed by each exercise.
+$A_0=N_0=1$ fixes units. The capital stock $K_0$ and AI efficiency $B_0$ are
+predetermined states and are therefore specified before solving an
+equilibrium. Consumption $C_0$ and the developer's shadow value $q_0$ are jump
+variables: I never import them from another economy or choose them to improve
+numerical convergence. The BVP selects them anew for every reported path.
+
 I set
 \begin{equation}
  A_0=N_0=1,\qquad K_0=4,\qquad B_0=0.10\overline B\simeq17.0124.
@@ -68,12 +75,17 @@ I set
 These common initial stocks place the economy closer to the capped
 $\sigma=1$ terminal regime than the earlier uncapped reference: initial AI
 efficiency is 10 percent of its frontier and initial capital per unit of
-effective labor is about 44 percent of its terminal $\sigma=1$ value. They are
-not a balanced-growth state of the capped economy. An exact constant-efficiency reference at
-$B_0=\overline B$ would eliminate further improvements in AI efficiency and would
-lie outside the interior problem studied here. In each capped economy, the
-BVP selects $C_0$ and $q_0$ anew; neither jump variable is fixed at its
-uncapped reference value.
+effective labor is about 44 percent of its terminal $\sigma=1$ value. I use
+these intermediate stocks so that the main figures display the transition
+without letting the financing needs of an extremely distant initial economy
+dominate the comparison. Holding the same two stocks across the four values of
+$\sigma$ then isolates how the substitution elasticity changes the subsequent
+equilibrium path. These values are illustrative rather than estimated, and
+they are not a balanced-growth state of the capped economy. An exact
+constant-efficiency reference at $B_0=\overline B$ would eliminate further
+improvements in AI efficiency and would lie outside the interior problem
+studied here. In each capped economy, the BVP selects $C_0$ and $q_0$ anew;
+neither jump variable is fixed at its uncapped reference value.
 
 \subsection{Numerical method and equilibrium admission}
 \label{subsec:rewrite-method}
@@ -332,8 +344,16 @@ The corresponding pre-change values are $Y/(AN)=1.8005$ and
 $C/(AN)=1.4262$. At date zero, $\omega_X$ rises to $0.20$ and
 $\omega_L$ falls to $0.80$. I hold the two stocks in
 \eqref{eq:rewrite-ramsey-start-stocks} fixed across the four values of
-$\sigma$. Consumption can jump after the change in technology, and the
-developer's shadow value has no no-AI counterpart. The BVP therefore selects
+$\sigma$. The value of $K_0$ is therefore not an additional calibration: it is
+the exact no-AI steady-state capital stock implied by the maintained macro
+parameters. The one-percent value for $B_0/\overline B$ is an illustrative low
+starting point, chosen to leave substantial room for AI improvement after the
+technology switch; it cannot be inferred from the pre-change economy because
+$B$ has no economic role when $\omega_X=0$. Keeping these two predetermined
+stocks common across $\sigma$ isolates the role of substitution conditional on
+the same Ramsey capital stock and the same latent initial AI efficiency.
+Consumption can jump after the change in technology, and the developer's
+shadow value has no no-AI counterpart. The BVP therefore selects
 $C_0$ and $q_0$ anew in each positive-AI economy.
 
 Figures~\ref{fig:rewrite-ramsey-start-accumulation-growth}--
@@ -436,7 +456,15 @@ state that does converge in Proposition~\ref{prop:rewrite-capped-substitutes-exi
  \label{eq:rewrite-near-terminal-ai-stock}
 \end{equation}
 Consumption and the developer's shadow value are again selected by the BVP
-for each path. Because $B_0<\overline B$ and research remains positive, these
+for each path. I use $B_0/\overline B=0.9999$, rather than the frontier itself,
+to begin sufficiently close to the analytical limits while preserving the
+interior research problem. For each labor-bottleneck path, setting capital at
+its terminal normalized value removes a separate capital-adjustment gap. For
+$\sigma=1.50$, the corresponding stationary object is
+$(\overline B-B)K$, not $K/(AN)$, which explains the different capital rule in
+\eqref{eq:rewrite-near-terminal-ai-stock}. These are diagnostic initial
+conditions chosen to display terminal behavior; they are not empirical
+calibrations. Because $B_0<\overline B$ and research remains positive, these
 are not exact steady states at a finite date. They are equilibrium paths that
 begin near their respective terminal regimes. The initial capital condition
 varies across regimes because their convergent state variables differ. This
@@ -478,10 +506,14 @@ recover the earlier calibration with
  \label{eq:rewrite-slow-transition-design}
 \end{equation}
 All other parameters, the common frontier, and the four values of $\sigma$
-are unchanged. These initial stocks come from the uncapped unit-elastic BGP,
-but neither the initial consumption nor the initial shadow value is imported
-from it. Both jump variables are solved again for each capped economy. The
-exercise changes both research productivity and the initial distance from the
+are unchanged. These initial stocks are the values implied by the earlier
+uncapped unit-elastic BGP. Together with the low value $\chi=0.01$, they place
+the capped economy far from its frontier and are chosen to ask whether the same
+long-run regimes can remain hidden for much longer. They are a sensitivity
+design, not estimates of the current world economy. Neither the initial
+consumption nor the initial shadow value is imported from the uncapped BGP.
+Both jump variables are solved again for each capped economy. The exercise
+changes both research productivity and the initial distance from the
 frontier, so it should not be interpreted as a one-parameter estimate of the
 effect of $\chi$. Each of the four paths is independently re-solved and passes
 the same equilibrium-admission tests as the main comparison.
@@ -552,9 +584,14 @@ These quantities equal $1.92\%$, $6.60\%$, and $7.44\%$ of final output,
 respectively.
 
 This benign date-zero composition is not invariant to the initial stocks. In
-an admitted sensitivity path that begins much farther from the terminal regime,
-at $K_0=2.0277$ and $B_0/\overline B=0.26\%$, and recalibrates $\chi$ to preserve
-the same 50-year midpoint, research expenditure initially equals $106.0\%$ of
+an admitted sensitivity path, I deliberately reuse the more distant stocks
+$K_0=2.0277$ and $B_0/\overline B=0.26\%$ from the earlier numerical design.
+This choice isolates the financing consequences of beginning farther from the
+terminal regime. I then recalibrate $\chi$ to preserve the same 50-year
+transition midpoint as in the main $\sigma=1.50$ path, so the comparison does
+not merely contrast different transition dates. The sensitivity path is a
+separately solved equilibrium, and its $C_0$ and $q_0$ are again selected by
+the BVP. Research expenditure initially equals $106.0\%$ of
 AI revenue and profit is $-40.5\%$ of AI revenue. The household owner then
 finances the loss through an equity injection because current research raises
 $B$ and the present value of future monopoly rents. The benchmark permits this intertemporal

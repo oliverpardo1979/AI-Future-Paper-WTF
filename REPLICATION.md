@@ -12,13 +12,18 @@ effective labor and effective AI production services: 0.90, 1.00, 1.10, and
 1.50. All other parameters, the AI-efficiency frontier, and the predetermined
 initial stocks are held fixed.
 
-The main comparison sets `K0=4`, `B0/Bbar=0.10`, and `chi=1.4378`. The last
-value makes the 1.50 labor share complete half of its decline after about 50
-model years. The separate financing sensitivity uses the earlier distant
-stocks and `chi=1.4223` to preserve the same midpoint; it is not a fifth line
-in the main figures.
+The main comparison sets `K0=4`, `B0/Bbar=0.10`, and `chi=1.4378`. These
+intermediate predetermined stocks keep the four elasticities comparable while
+preventing the financing needs of an extremely distant initial economy from
+dominating the main figures. The last value makes the 1.50 labor share complete
+half of its decline after about 50 model years. The separate financing
+sensitivity deliberately uses the earlier distant stocks and `chi=1.4223` to
+preserve the same midpoint. It isolates the effect of initial technological
+distance on date-zero financing and is not a fifth line in the main figures.
 
-The slower-transition comparison recovers the paper's earlier design:
+The slower-transition comparison recovers the paper's earlier design and asks
+how long the same terminal regimes can remain hidden when research is slower
+and the initial economy is farther from its frontier:
 `K0=2.027733653970002`, `B0=0.44367093160980464`, and `chi=0.01`. It repeats
 the same four elasticities and the same three-figure layout over 4,000 model
 years. It is a separately solved and admitted comparison, not a rescaling of
@@ -26,7 +31,9 @@ the main paths. Because both the initial stocks and `chi` change, it should
 not be read as a one-parameter estimate of the effect of research productivity.
 
 The near-terminal diagnostic uses all four elasticities and sets
-`B0/Bbar=0.9999`. For the three labor-bottleneck regimes, it sets
+`B0/Bbar=0.9999`. This value is close enough to display the analytical limits
+while remaining inside the positive-research problem. For the three
+labor-bottleneck regimes, it sets
 `K0/(A0*N0)` equal to the analytical terminal capital ratio. The AI-dominated
 regime has no finite terminal value of that ratio, so it instead sets
 `(Bbar-B0)*K0` equal to the analytical terminal gap scale. Consumption and the
@@ -35,9 +42,11 @@ behavior; it does not hold every initial stock fixed.
 
 The Ramsey-start experiment fixes `K0/(A0*N0)=5.94157252710329`, the exact
 no-AI steady-state capital ratio under the paper's macro parameters, and sets
-`B0/Bbar=0.01`. Before date zero, `omega_X=0`; from date zero onward all four
-paths use `omega_X=0.20`. Only the predetermined stocks carry across the
-technology switch. Consumption and the developer's shadow value are solved
+`B0/Bbar=0.01`. The low latent AI-efficiency value is illustrative and leaves
+room for a visible transition; it is not identified by the no-AI economy,
+where AI efficiency is irrelevant. Before date zero, `omega_X=0`; from date
+zero onward all four paths use `omega_X=0.20`. Only the predetermined stocks
+carry across the technology switch. Consumption and the developer's shadow value are solved
 anew by the positive-AI BVP.
 
 Capital and AI efficiency are predetermined at date zero. Consumption and the
