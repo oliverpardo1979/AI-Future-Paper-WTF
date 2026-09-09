@@ -48,12 +48,12 @@ define
 This function gives the value of $Y/K$ implied by the static equations
 when $s_X\to1$, conditional on AI efficiency $B$. I write
 $\overline\xi\equiv\xi(\overline B;\sigma)$ for its terminal value.
-Define the threshold $B^\dagger(\sigma)$ by
+Define the threshold $\mathcal B(\sigma)$ by
 \begin{equation}
  \begin{aligned}
- \xi(B^\dagger(\sigma);\sigma)
+ \xi(\mathcal B(\sigma);\sigma)
  &=\frac{\rho+\gamma+\delta}{\alpha},\\
- B^\dagger(\sigma)
+ \mathcal B(\sigma)
  &=\frac{[(\rho+\gamma+\delta)/\alpha]^{\alpha/(1-\alpha)}}
  {(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}}.
  \end{aligned}
@@ -67,7 +67,7 @@ $Y/K=(\rho+\gamma+\delta)/\alpha$. The second line gives the threshold
 explicitly.
 Appendix~\ref{app:rewrite-finite-existence}
 derives these expressions and proves the following propositions. I use
-$B^\dagger(\sigma)$ as an economic regime threshold only when $\sigma>1$.
+$\mathcal B(\sigma)$ as an economic regime threshold only when $\sigma>1$.
 For $\sigma<1$, it appears only as a sufficient condition for the particular
 local finite-frontier construction below.
 
@@ -79,7 +79,7 @@ local finite-frontier construction below.
 Under Assumptions~\ref{ass:rewrite-research-concavity} and
 \ref{ass:rewrite-growth-discounting}, suppose
 $0<B_0<\overline B<\infty$, $0<\sigma<1$, and
-$\overline B>B^\dagger(\sigma)$. Then there exist constants
+$\overline B>\mathcal B(\sigma)$. Then there exist constants
 $\overline k,\overline d>0$ and a neighborhood $\mathcal U_L$ of
 $(\overline k,\overline d,0)$ such that every positive initial configuration
 satisfying
@@ -157,13 +157,13 @@ Under Assumptions~\ref{ass:rewrite-research-concavity} and
 \ref{ass:rewrite-growth-discounting}, let
 $0<B_0<\overline B<\infty$ and $\sigma>1$.
 
-If $\overline B<B^\dagger(\sigma)$, initial configurations satisfying
+If $\overline B<\mathcal B(\sigma)$, initial configurations satisfying
 \eqref{eq:rewrite-labor-local-initial} in a sufficiently small neighborhood
 admit an interior infinite-horizon equilibrium with the limits in
 \eqref{eq:rewrite-complements-terminal}, for a limiting share
 $\overline s_X\in(0,1)$.
 
-If $\overline B>B^\dagger(\sigma)$, let
+If $\overline B>\mathcal B(\sigma)$, let
 $\varphi=(\sigma-1)/\sigma$ and define
 \begin{equation}
  \overline r=\alpha\overline\xi-\delta,
@@ -187,7 +187,7 @@ admits an interior infinite-horizon equilibrium with
  \label{eq:rewrite-substitutes-wage-growth}
 \end{align}
 In both cases the nearby convergent choice of $C_0,q_0$ is unique.
-The equality $\overline B=B^\dagger(\sigma)$ is not covered.
+The equality $\overline B=\mathcal B(\sigma)$ is not covered.
 \end{proposition}
 
 Above the threshold, a fixed AI-efficiency level allows output, capital, and
@@ -203,7 +203,7 @@ Consider the long-run equilibria constructed in
 Propositions~\ref{prop:rewrite-capped-complements-existence},
 \ref{prop:rewrite-capped-unit-existence}, and
 \ref{prop:rewrite-capped-substitutes-existence}. For $\sigma>1$, exclude
-$\overline B=B^\dagger(\sigma)$. Then
+$\overline B=\mathcal B(\sigma)$. Then
 \[
  \lim_{t\to\infty}g_w>\gamma
  \quad\Longleftrightarrow\quad
@@ -299,7 +299,7 @@ Substitution of these limits therefore yields
  \label{eq:rewrite-ai-growth-derivation}
 \end{equation}
 The last expression exceeds $\gamma$ exactly when
-$\overline B>B^\dagger(\sigma)$. A finite AI-efficiency level can thus
+$\overline B>\mathcal B(\sigma)$. A finite AI-efficiency level can thus
 support sustained growth above $\gamma$: inference compute expands with
 output, and effective labor ceases to constrain production asymptotically.
 
@@ -309,9 +309,9 @@ give the following comparative statics across finite frontiers:
 \begin{equation}
  \overline r(\overline B;\sigma)=
  \begin{cases}
-  \rho+\gamma,&0<\overline B<B^\dagger(\sigma),\\[2pt]
+  \rho+\gamma,&0<\overline B<\mathcal B(\sigma),\\[2pt]
   \alpha\overline\xi-\delta,
-  &\overline B>B^\dagger(\sigma).
+  &\overline B>\mathcal B(\sigma).
  \end{cases}
  \label{eq:rewrite-interest-frontier}
 \end{equation}
@@ -357,12 +357,12 @@ family, $\overline r=\rho+\gamma$ instead remains independent of the frontier.
   {Labor-bottleneck regime\\
    $g_{Y/N}\to\gamma$\\
    $wL/Y>0$};
- \node[regime] at (6.85,3.02) {$B^\dagger(\sigma)$};
+ \node[regime] at (6.85,3.02) {$\mathcal B(\sigma)$};
 \end{tikzpicture}%
 }
 \caption{Finite-frontier regimes under gross substitution. The vertical axis
 is linear and the curve is schematic rather than calibrated. For $\sigma>1$,
-$B^\dagger(\sigma)$ separates the labor-bottleneck and AI-dominated
+$\mathcal B(\sigma)$ separates the labor-bottleneck and AI-dominated
 equilibria constructed in Proposition~\ref{prop:rewrite-capped-substitutes-existence}.
 The dashed boundary itself is not covered by the existence proof.}
 \label{fig:rewrite-frontier-regimes}
@@ -373,13 +373,13 @@ The dashed boundary itself is not covered by the existence proof.}
 
 Figure~\ref{fig:rewrite-frontier-regimes} summarizes the central comparison
 for $\sigma>1$. Here the finite frontier is an analytical device that bounds
-recursive AI improvement. A frontier below $B^\dagger(\sigma)$ supports the
+recursive AI improvement. A frontier below $\mathcal B(\sigma)$ supports the
 labor-bottleneck equilibrium: output per person and the real wage grow at
 $\gamma$, and labor retains a positive income share. Above the threshold,
 capital and effective AI production services grow faster than effective labor.
 Output per person then grows faster than $\gamma$ and labor's income share
 converges to zero. The figure omits $\sigma<1$ because I do not interpret
-$B^\dagger(\sigma)$ as a regime boundary under complementarity.
+$\mathcal B(\sigma)$ as a regime boundary under complementarity.
 
 Table~\ref{tab:rewrite-finite-existence} collects the sufficient frontier
 conditions. Every row also requires Assumptions
@@ -397,10 +397,10 @@ conditions for all possible equilibria, nor a claim of global uniqueness.
 \toprule
 Elasticity & Frontier condition & $\lim(g_Y-n)$ & $\lim wL/Y$ \\
 \midrule
-$0<\sigma<1$ & $\overline B>B^\dagger(\sigma)$ & $\gamma$ & Positive \\
+$0<\sigma<1$ & $\overline B>\mathcal B(\sigma)$ & $\gamma$ & Positive \\
 $\sigma=1$ & Any finite $\overline B>0$ & $\gamma$ & $(1-\alpha)\omega_L$ \\
-$\sigma>1$ & $\overline B<B^\dagger(\sigma)$ & $\gamma$ & Positive \\
-$\sigma>1$ & $\overline B>B^\dagger(\sigma)$ & $\overline r-\rho>\gamma$ & Zero \\
+$\sigma>1$ & $\overline B<\mathcal B(\sigma)$ & $\gamma$ & Positive \\
+$\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\overline r-\rho>\gamma$ & Zero \\
 \bottomrule
 \end{tabular}
 \end{table}

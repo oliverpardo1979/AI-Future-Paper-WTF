@@ -213,17 +213,17 @@ operating profit satisfies
 \]
 for a constant \(\kappa_X>0\), uniformly when \(K,A,\) and \(L\) remain in
 compact subsets of the positive orthant. Fix \(\Delta\in(0,T)\), choose
-\(M=\mathcal B\) on \([0,\Delta]\), and choose \(M=0\) afterward. Then
+\(M=\mathcal M\) on \([0,\Delta]\), and choose \(M=0\) afterward. Then
 \[
- B_{\mathcal B}(t)^{1-\eta}=B_0^{1-\eta}
- +(1-\eta)\chi\mathcal B^\eta\min\{t,\Delta\}.
+ B_{\mathcal M}(t)^{1-\eta}=B_0^{1-\eta}
+ +(1-\eta)\chi\mathcal M^\eta\min\{t,\Delta\}.
 \]
 Choosing \(X\) optimally at every date gives
 \begin{equation}
- J_T(\mathcal B)=c_\pi\mathcal B^{
+ J_T(\mathcal M)=c_\pi\mathcal M^{
  \eta(1-\alpha)/[\alpha(1-\eta)]}
- -c_M\mathcal B
- +o\!\left(\mathcal B^{
+ -c_M\mathcal M
+ +o\!\left(\mathcal M^{
  \eta(1-\alpha)/[\alpha(1-\eta)]}\right),
  \label{eq:rewrite-research-burst-payoff}
 \end{equation}
@@ -565,7 +565,7 @@ approximates the stable continuation, which is why increasing the horizon
 is a necessary numerical check.
 
 For $\sigma\leq1$, I use the positive-labor-share terminal formulas.
-For $\sigma>1$, the frontier's position relative to $B^\dagger(\sigma)$ selects
+For $\sigma>1$, the frontier's position relative to $\mathcal B(\sigma)$ selects
 the terminal regime. At $\sigma=1$, the CES block uses its exact
 Cobb--Douglas limit. Near one, \texttt{log1p} and \texttt{expm1} evaluate
 the CES expression without cancellation, and the frontier comparison is

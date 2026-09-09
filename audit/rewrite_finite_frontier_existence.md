@@ -19,10 +19,10 @@ proposition. Assumption 1 (eta < alpha) is not needed for these local capped
 constructions; it is used in the uncapped analysis.
 
 - Complementarity: the positive labor-share construction requires
-  $\overline B>B^\dagger(\sigma)$.
+  $\overline B>\mathcal B(\sigma)$.
 - Unit elasticity: every positive finite Bbar supports the local construction.
-- Substitution: $\overline B<B^\dagger(\sigma)$ gives a positive labor share;
-  $\overline B>B^\dagger(\sigma)$ gives the AI-dominated construction.
+- Substitution: $\overline B<\mathcal B(\sigma)$ gives a positive labor share;
+  $\overline B>\mathcal B(\sigma)$ gives the AI-dominated construction.
 - Threshold equality, other complementary-input regimes, arbitrary common
   initial stocks, and the uncapped limit are not established by these proofs.
 
@@ -65,7 +65,7 @@ The five tests cover:
    substitution elasticities. These are algebraic stress tests, not calibration.
 4. Regression checks against the existing AI-dominated equations and Jacobians
    at sigma = 1.1, 1.5, 2, 5, each with
-   $\overline B=2B^\dagger(\sigma)$.
+   $\overline B=2\mathcal B(\sigma)$.
 5. The frontier derivative, threshold boundary value, and Euler/TVC accounting.
 
 On 2026-09-03 all five tests passed. Across the positive labor-share checks,
