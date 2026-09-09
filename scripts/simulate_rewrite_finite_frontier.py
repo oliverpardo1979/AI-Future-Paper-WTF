@@ -1,4 +1,4 @@
-"""Four agreed capped-model BVPs; export only after equilibrium admission.
+"""Capped-model BVP designs; export only after equilibrium admission.
 
 The main comparison uses common interior K0 and B0, never a borrowed C0, q0,
 or terminal restriction. Cached splines are technical candidates, not figures.
@@ -32,6 +32,7 @@ from solve_axm_global_finite_cap_bvp import (
 )
 
 SIGMAS = (0.9, 1.0, 1.1, 1.5)
+LABOR_BOTTLENECK_SIGMAS = (0.9, 1.0, 1.1)
 PARAMETERS = replace(PositiveAIBenchmarkParameters(), chi=1.4378)
 FRONTIER = 1.1 * critical_capability_frontier(1.5, PARAMETERS)
 INITIAL_CAPITAL = 4.0
@@ -44,18 +45,20 @@ CACHE = ROOT / 'tmp' / 'rewrite_bvp'
 class SimulationDesign:
     """A complete comparison design; no jump variable is supplied here."""
     name: str
+    sigmas: tuple[float, ...]
     parameters: PositiveAIBenchmarkParameters
     frontier: float
-    initial_capital: float
+    initial_capital: float | None
     initial_capability: float
     output_directory: Path
     cache_directory: Path
     display_horizon: float
     initial_stock_reference: str
+    initial_capital_rule: str = 'common'
 
 
 MAIN_DESIGN = SimulationDesign(
-    name='main', parameters=PARAMETERS, frontier=FRONTIER,
+    name='main', sigmas=SIGMAS, parameters=PARAMETERS, frontier=FRONTIER,
     initial_capital=INITIAL_CAPITAL, initial_capability=INITIAL_CAPABILITY,
     output_directory=OUT, cache_directory=CACHE,
     display_horizon=500.0,
@@ -66,7 +69,7 @@ MAIN_DESIGN = SimulationDesign(
 SLOW_PARAMETERS = PositiveAIBenchmarkParameters()
 SLOW_FRONTIER = 1.1 * critical_capability_frontier(1.5, SLOW_PARAMETERS)
 SLOW_TRANSITION_DESIGN = SimulationDesign(
-    name='slow', parameters=SLOW_PARAMETERS, frontier=SLOW_FRONTIER,
+    name='slow', sigmas=SIGMAS, parameters=SLOW_PARAMETERS, frontier=SLOW_FRONTIER,
     initial_capital=2.027733653970002,
     initial_capability=0.44367093160980464,
     output_directory=OUT / 'slow_transition',
@@ -76,11 +79,43 @@ SLOW_TRANSITION_DESIGN = SimulationDesign(
         'earlier slow-transition calibration; K0 and B0 from the uncapped '
         'unit-elastic BGP; chi=0.01; jump variables solved anew by the BVP'),
 )
-DESIGNS = {'main': MAIN_DESIGN, 'slow': SLOW_TRANSITION_DESIGN}
+NEAR_TERMINAL_DESIGN = SimulationDesign(
+    name='near_terminal', sigmas=LABOR_BOTTLENECK_SIGMAS,
+    parameters=PARAMETERS, frontier=FRONTIER,
+    initial_capital=None,
+    initial_capability=0.99 * FRONTIER,
+    output_directory=OUT / 'near_terminal',
+    cache_directory=ROOT / 'tmp' / 'rewrite_bvp_near_terminal',
+    display_horizon=500.0,
+    initial_stock_reference=(
+        'near-terminal stocks for the three labor-bottleneck regimes; '
+        'K0/(A0*N0) equals each regime-specific terminal ratio and '
+        'B0/Bbar=0.99; jump variables solved anew by the BVP'),
+    initial_capital_rule='regime_terminal_ratio',
+)
+DESIGNS = {
+    'main': MAIN_DESIGN,
+    'slow': SLOW_TRANSITION_DESIGN,
+    'near_terminal': NEAR_TERMINAL_DESIGN,
+}
 
 
 def key(sigma):
     return f'sigma_{sigma:.2f}'.replace('.', '_')
+
+
+def design_initial_stocks(design, sigma):
+    """Return the predetermined stocks specified by one simulation design."""
+    if design.initial_capital_rule == 'regime_terminal_ratio':
+        terminal = terminal_point(sigma, design.frontier, design.parameters)
+        capital = terminal.auxiliary['capital_effective_labor_ratio']
+    elif design.initial_capital_rule == 'common':
+        if design.initial_capital is None:
+            raise ValueError('A common-capital design must specify initial capital.')
+        capital = design.initial_capital
+    else:
+        raise ValueError(f'Unknown initial-capital rule: {design.initial_capital_rule}')
+    return float(capital), float(design.initial_capability)
 
 
 def ai_services_growth(static, capital_growth, capability_growth,
@@ -149,19 +184,21 @@ def load_solution(filename):
 
 def validate_solution_design(solution, design, sigma):
     """Reject a stale checkpoint before it can enter a design's audit."""
+    initial_capital, initial_capability = design_initial_stocks(design, sigma)
     if (asdict(solution.parameters) != asdict(design.parameters)
             or solution.terminal.frontier != design.frontier
             or solution.terminal.sigma_xl != sigma
-            or solution.initial_capital != design.initial_capital
-            or solution.initial_capability != design.initial_capability):
+            or solution.initial_capital != initial_capital
+            or solution.initial_capability != initial_capability):
         raise ValueError(f'A cached solution differs from the {design.name} design.')
 
 
 def run(sigma, design=MAIN_DESIGN):
-    if sigma not in SIGMAS:
-        raise ValueError('Use one of the four agreed elasticities.')
+    if sigma not in design.sigmas:
+        raise ValueError(f'Use one of the elasticities in the {design.name} design.')
     p = design.parameters
     terminal = terminal_point(sigma, design.frontier, p)
+    initial_capital, initial_capability = design_initial_stocks(design, sigma)
     design.output_directory.mkdir(parents=True, exist_ok=True)
     design.cache_directory.mkdir(parents=True, exist_ok=True)
     name = key(sigma)
@@ -174,8 +211,8 @@ def run(sigma, design=MAIN_DESIGN):
         terminal = base.terminal
     else:
         base = solve_global_finite_cap_bvp(
-                                         terminal, p, design.initial_capital,
-                                         design.initial_capability,
+                                         terminal, p, initial_capital,
+                                         initial_capability,
                                          continuation_steps=32, nodes=221,
                                          tolerance=2e-6, maximum_nodes=20000)
         save_solution(base, base_path)
@@ -214,7 +251,7 @@ def export_paths(horizon, points, design=MAIN_DESIGN):
     """Refuse a partial or uncertified comparison; never extrapolate splines."""
     solutions = []
     checkpoint_hashes = {}
-    for sigma in SIGMAS:
+    for sigma in design.sigmas:
         path = design.output_directory/f'{key(sigma)}_audit.json'
         if not path.exists() or not json.loads(path.read_text())['equilibrium_certified']:
             raise RuntimeError(f'No admitted equilibrium for sigma={sigma}; no figure export.')
@@ -288,30 +325,37 @@ def export_paths(horizon, points, design=MAIN_DESIGN):
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
-    ai_rows = [row for row in rows if row['sigma'] == 1.5]
-    terminal_share = terminal_point(
-        1.5, design.frontier, design.parameters).labor_income_share
-    initial_share = ai_rows[0]['labor_income_share']
+    transition_dates = None
+    if 1.5 in design.sigmas:
+        ai_rows = [row for row in rows if row['sigma'] == 1.5]
+        terminal_share = terminal_point(
+            1.5, design.frontier, design.parameters).labor_income_share
+        initial_share = ai_rows[0]['labor_income_share']
 
-    def transition_date(fraction):
-        target = initial_share + fraction * (terminal_share-initial_share)
-        for left, right in zip(ai_rows, ai_rows[1:]):
-            yl, yr = left['labor_income_share'], right['labor_income_share']
-            if (yl-target)*(yr-target) <= 0 and yl != yr:
-                weight = (target-yl)/(yr-yl)
-                return left['time']+weight*(right['time']-left['time'])
-        return None
+        def transition_date(fraction):
+            target = initial_share + fraction * (terminal_share-initial_share)
+            for left, right in zip(ai_rows, ai_rows[1:]):
+                yl, yr = left['labor_income_share'], right['labor_income_share']
+                if (yl-target)*(yr-target) <= 0 and yl != yr:
+                    weight = (target-yl)/(yr-yl)
+                    return left['time']+weight*(right['time']-left['time'])
+            return None
 
-    transition_dates = {f'T{int(100*fraction)}': transition_date(fraction)
-                        for fraction in (.1, .5, .9)}
-    if transition_dates['T50'] is None:
-        raise RuntimeError('The export window does not contain the calibrated transition midpoint.')
+        transition_dates = {f'T{int(100*fraction)}': transition_date(fraction)
+                            for fraction in (.1, .5, .9)}
+        if transition_dates['T50'] is None:
+            raise RuntimeError(
+                'The export window does not contain the calibrated transition midpoint.')
     manifest = dict(
         design=design.name,
         parameters=asdict(design.parameters),
         frontier=design.frontier,
         initial_capital=design.initial_capital,
         initial_capability=design.initial_capability,
+        initial_capital_by_sigma={
+            key(sigma): design_initial_stocks(design, sigma)[0]
+            for sigma in design.sigmas
+        },
         horizon=horizon,
         points_per_scenario=points,
         checkpoint_sha256=checkpoint_hashes,
@@ -335,7 +379,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     design = DESIGNS[args.design]
     if args.verify_long_horizon:
-        for sigma in SIGMAS:
+        for sigma in design.sigmas:
             source = load_solution(design.cache_directory/f'{key(sigma)}_refined.npz')
             validate_solution_design(source, design, sigma)
             target = design.cache_directory/f'{key(sigma)}_long.npz'

@@ -19,8 +19,9 @@ python -m pip install -r requirements-rewrite.txt
 python scripts/reproduce_rewrite_results.py
 ```
 
-The reproduction command is fail-fast. It exports the four-scenario comparison
-only after every path passes the numerical equilibrium-admission checks. See
+The reproduction command is fail-fast. It exports the main, slow-transition,
+and near-terminal comparisons only after every path passes the numerical
+equilibrium-admission checks. See
 `REPLICATION.md` for the economic intuition, platform-specific setup, output
 map, and interpretation of the diagnostics.
 

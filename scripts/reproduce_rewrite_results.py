@@ -14,7 +14,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SIGMAS = (0.9, 1.0, 1.1, 1.5)
-DESIGNS = ('main', 'slow')
+DESIGN_SIGMAS = {
+    'main': SIGMAS,
+    'slow': SIGMAS,
+    'near_terminal': (0.9, 1.0, 1.1),
+}
+DESIGNS = tuple(DESIGN_SIGMAS)
 TEST_FILES = (
     "test_finite_cap_bvp.py",
     "test_global_finite_cap_bvp.py",
@@ -34,9 +39,14 @@ def run(arguments: list[str]) -> None:
 def remove_generated_checkpoints() -> None:
     """Remove only this workflow's untracked BVP checkpoints."""
     removed = 0
-    for cache_name in ('rewrite_bvp', 'rewrite_bvp_slow'):
+    cache_designs = {
+        'rewrite_bvp': SIGMAS,
+        'rewrite_bvp_slow': SIGMAS,
+        'rewrite_bvp_near_terminal': DESIGN_SIGMAS['near_terminal'],
+    }
+    for cache_name, sigmas in cache_designs.items():
         cache = ROOT / "tmp" / cache_name
-        for sigma in SIGMAS:
+        for sigma in sigmas:
             key = f"sigma_{sigma:.2f}".replace(".", "_")
             for suffix in ("base", "refined", "long"):
                 path = cache / f"{key}_{suffix}.npz"
@@ -86,9 +96,13 @@ def main() -> None:
                 ]
             )
 
-    horizons = {'main': args.export_horizon, 'slow': args.slow_export_horizon}
+    horizons = {
+        'main': args.export_horizon,
+        'slow': args.slow_export_horizon,
+        'near_terminal': args.export_horizon,
+    }
     for design in DESIGNS:
-        for sigma in SIGMAS:
+        for sigma in DESIGN_SIGMAS[design]:
             run(
                 [
                     python,
@@ -109,21 +123,22 @@ def main() -> None:
                 "--verify-long-horizon",
             ]
         )
-        for dates, states in ((81, 101), (321, 241)):
-            run(
-                [
-                    python,
-                    "scripts/audit_rewrite_hamiltonian_support.py",
-                    "--design",
-                    design,
-                    "--sigma",
-                    "1.5",
-                    "--time-points",
-                    str(dates),
-                    "--capability-points",
-                    str(states),
-                ]
-            )
+        if 1.5 in DESIGN_SIGMAS[design]:
+            for dates, states in ((81, 101), (321, 241)):
+                run(
+                    [
+                        python,
+                        "scripts/audit_rewrite_hamiltonian_support.py",
+                        "--design",
+                        design,
+                        "--sigma",
+                        "1.5",
+                        "--time-points",
+                        str(dates),
+                        "--capability-points",
+                        str(states),
+                    ]
+                )
         run([python, "scripts/audit_rewrite_equilibria.py", "--design", design])
         run(
             [
@@ -144,8 +159,9 @@ def main() -> None:
         financing_command.append("--fresh")
     run(financing_command)
     print(
-        "\nReproduction complete: the main and slow-transition comparisons "
-        "passed admission and their audited data and figures were regenerated.",
+        "\nReproduction complete: the main, slow-transition, and near-terminal "
+        "comparisons passed admission and their audited data and figures were "
+        "regenerated.",
         flush=True,
     )
 

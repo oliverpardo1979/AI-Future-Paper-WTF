@@ -22,6 +22,10 @@ therefore requires an initial household equity injection into the developer.
 The `slow_transition/` subdirectory contains the separately solved and
 admitted four-scenario comparison with the earlier stocks and `chi=0.01`,
 including its plotted data and provenance manifests.
+The `near_terminal/` subdirectory contains the three admitted labor-bottleneck
+paths initialized with `B0/Bbar=0.99` and each regime's own analytical
+terminal capital ratio. It is a terminal-behavior diagnostic, not a
+common-initial-stock comparison.
 
 These files should be regenerated through the public workflow rather than
 edited directly. A converged boundary-value calculation is only a candidate;

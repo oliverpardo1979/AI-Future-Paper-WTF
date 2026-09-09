@@ -14,7 +14,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
-from simulate_rewrite_finite_frontier import DESIGNS, MAIN_DESIGN, SIGMAS, key
+from simulate_rewrite_finite_frontier import DESIGNS, MAIN_DESIGN, key
 from analyze_axm_finite_cap_bvp import terminal_point
 
 PANELS_QUANTITY_GROWTH=(
@@ -33,6 +33,16 @@ PANELS_DISTRIBUTION=(
  ('inference_output_share', 'C. Inference expenditure\n$U/Y$', 'share'),
  ('research_output_share', 'D. Research expenditure\n$M/Y$', 'share'),
 )
+PANELS_NEAR_TERMINAL=(
+ ('output_per_person_growth', 'A. Output-per-person\ngrowth, $g_Y-n$', 'rate'),
+ ('wage_growth', 'B. Real-wage\ngrowth, $g_w$', 'rate'),
+ ('net_interest', 'C. Net interest\nrate, $r$', 'rate'),
+)
+NEAR_TERMINAL_YLIMS={
+    'output_per_person_growth':(0.0098,0.0102),
+    'wage_growth':(0.0098,0.0102),
+    'net_interest':(0.0497,0.0501),
+}
 STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
         1.1:('#bd8620',(0,(1,1.8))),1.5:('#24618c',(0,(5,1.8,1,1.8)))}
 LIMIT_STYLE=('#222222',(0,(1,2)))
@@ -43,7 +53,8 @@ def render(design=MAIN_DESIGN):
     cache=design.cache_directory
     parameters=design.parameters
     frontier=design.frontier
-    reports={s:json.loads((output/f'{key(s)}_audit.json').read_text()) for s in SIGMAS}
+    sigmas=design.sigmas
+    reports={s:json.loads((output/f'{key(s)}_audit.json').read_text()) for s in sigmas}
     provenance=json.loads((output/'paths_manifest.json').read_text())
     if provenance.get('design') != design.name:
         raise ValueError('The path manifest belongs to a different simulation design.')
@@ -59,7 +70,7 @@ def render(design=MAIN_DESIGN):
         if provenance['checkpoint_sha256'][key(s)]!=r['checkpoint_sha256']:
             raise ValueError('The CSV and current audit refer to different checkpoints.')
     rows=list(csv.DictReader((output/'equilibrium_paths.csv').open(encoding='utf-8')))
-    data={s:[{k:float(v) for k,v in r.items()} for r in rows if float(r['sigma'])==s] for s in SIGMAS}
+    data={s:[{k:float(v) for k,v in r.items()} for r in rows if float(r['sigma'])==s] for s in sigmas}
     if any(not v for v in data.values()):
         raise ValueError('The CSV omits a requested scenario.')
     figdir=ROOT/'figures_rewrite'
@@ -68,34 +79,46 @@ def render(design=MAIN_DESIGN):
                          'axes.titlesize':9,'axes.labelsize':9,
                          'xtick.labelsize':8,'ytick.labelsize':8,
                          'legend.fontsize':9,'pdf.fonttype':42})
-    ai_terminal=terminal_point(1.5,frontier,parameters)
-    ai_revenue_limit=(1-parameters.alpha)*ai_terminal.ai_ces_share
-    ai_limits={
-        'output_effective_labor_growth': (
-            ai_terminal.terminal_growth-parameters.population_growth
-            -parameters.labor_productivity_growth),
-        'ai_services_effective_labor_growth': (
-            ai_terminal.terminal_growth-parameters.population_growth
-            -parameters.labor_productivity_growth),
-        'capital_effective_labor_growth': (
-            ai_terminal.terminal_growth-parameters.population_growth
-            -parameters.labor_productivity_growth),
-        'wage_growth': parameters.labor_productivity_growth+(
-            ai_terminal.net_interest_rate-parameters.discount
-            -parameters.labor_productivity_growth)/ai_terminal.sigma_xl,
-        'net_interest': ai_terminal.net_interest_rate,
-        'ai_service_price': 1/((1-parameters.alpha)*frontier),
-        'labor_income_share': ai_terminal.labor_income_share,
-        'profit_output_share': ai_revenue_limit*parameters.alpha,
-        'inference_output_share': ai_revenue_limit*(1-parameters.alpha),
-        'research_output_share': 0.0,
-    }
     prefix='equilibrium' if design.name=='main' else f'equilibrium_{design.name}'
-    figures=(
-        (f'{prefix}_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
-        (f'{prefix}_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),
-        (f'{prefix}_ai_distribution',PANELS_DISTRIBUTION,'four',ai_limits),
-    )
+    if design.name=='near_terminal':
+        common_limits={
+            'output_per_person_growth': parameters.labor_productivity_growth,
+            'wage_growth': parameters.labor_productivity_growth,
+            'net_interest': parameters.discount+parameters.labor_productivity_growth,
+        }
+        figures=(
+            (f'{prefix}_growth_returns',PANELS_NEAR_TERMINAL,'three',common_limits),
+        )
+        analytical_limits={'common_labor_bottleneck':common_limits}
+    else:
+        ai_terminal=terminal_point(1.5,frontier,parameters)
+        ai_revenue_limit=(1-parameters.alpha)*ai_terminal.ai_ces_share
+        ai_limits={
+            'output_effective_labor_growth': (
+                ai_terminal.terminal_growth-parameters.population_growth
+                -parameters.labor_productivity_growth),
+            'ai_services_effective_labor_growth': (
+                ai_terminal.terminal_growth-parameters.population_growth
+                -parameters.labor_productivity_growth),
+            'capital_effective_labor_growth': (
+                ai_terminal.terminal_growth-parameters.population_growth
+                -parameters.labor_productivity_growth),
+            'wage_growth': parameters.labor_productivity_growth+(
+                ai_terminal.net_interest_rate-parameters.discount
+                -parameters.labor_productivity_growth)/ai_terminal.sigma_xl,
+            'net_interest': ai_terminal.net_interest_rate,
+            'ai_service_price': 1/((1-parameters.alpha)*frontier),
+            'labor_income_share': ai_terminal.labor_income_share,
+            'profit_output_share': ai_revenue_limit*parameters.alpha,
+            'inference_output_share': ai_revenue_limit*(1-parameters.alpha),
+            'research_output_share': 0.0,
+        }
+        figures=(
+            (f'{prefix}_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
+            (f'{prefix}_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),
+            (f'{prefix}_ai_distribution',PANELS_DISTRIBUTION,'four',ai_limits),
+        )
+        analytical_limits={'sigma_1_50':ai_limits}
     for filename,panels,layout,limits in figures:
         if layout=='three':
             fig,axis_array=plt.subplots(1,3,figsize=(7,3.15),sharex=True)
@@ -112,7 +135,7 @@ def render(design=MAIN_DESIGN):
         else:
             raise ValueError(f'Unknown layout: {layout}')
         for axis,(field,title,scale) in zip(axes,panels):
-            for sigma in SIGMAS:
+            for sigma in sigmas:
                 series=data[sigma]
                 values=np.array([r[field] for r in series])
                 if not np.all(np.isfinite(values)):
@@ -128,7 +151,8 @@ def render(design=MAIN_DESIGN):
             # differs across panels.
             axis.set_title(title,loc='left',pad=7,y=1.02)
             if scale in ('rate','share'):
-                decimals = 1 if scale=='rate' or field=='research_output_share' else 0
+                decimals = (2 if design.name=='near_terminal' else
+                            1 if scale=='rate' or field=='research_output_share' else 0)
                 axis.yaxis.set_major_formatter(PercentFormatter(1,decimals=decimals))
                 axis.yaxis.set_major_locator(MaxNLocator(5))
             if scale=='log_level':
@@ -140,6 +164,9 @@ def render(design=MAIN_DESIGN):
             if scale=='share':
                 lower,upper=axis.get_ylim()
                 axis.set_ylim(min(0,lower),upper)
+            if design.name=='near_terminal':
+                axis.set_ylim(*NEAR_TERMINAL_YLIMS[field])
+                axis.set_yticks(np.linspace(*NEAR_TERMINAL_YLIMS[field],5))
             if field in ('output_effective_labor_growth','capital_effective_labor_growth',
                           'ai_services_effective_labor_growth'):
                 axis.axhline(0,color='#999999',linewidth=.6,zorder=0)
@@ -160,7 +187,7 @@ def render(design=MAIN_DESIGN):
         for axis in bottom_axes:
             axis.set_xlabel('Years')
         handles,labels=axes[0].get_legend_handles_labels()
-        fig.legend(handles,labels,ncol=4,loc='upper center',frameon=False,
+        fig.legend(handles,labels,ncol=len(sigmas),loc='upper center',frameon=False,
                    bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
         if layout=='three':
             fig.subplots_adjust(left=.095,right=.970,bottom=.18,top=.70,wspace=.48)
@@ -174,11 +201,12 @@ def render(design=MAIN_DESIGN):
         plt.close(fig)
     manifest=dict(design=design.name,
                   data_sha256=hashlib.sha256((output/'equilibrium_paths.csv').read_bytes()).hexdigest(),
-                  sigmas=list(SIGMAS),horizon=data[1.][-1]['time'],
+                  sigmas=list(sigmas),horizon=data[1.][-1]['time'],
                   panels={'quantity_growth':[p[0] for p in PANELS_QUANTITY_GROWTH],
                           'prices_returns':[p[0] for p in PANELS_PRICES_RETURNS],
-                          'distribution':[p[0] for p in PANELS_DISTRIBUTION]},
-                  analytical_limits={'sigma_1_50':ai_limits},
+                          'distribution':[p[0] for p in PANELS_DISTRIBUTION],
+                          'near_terminal':[p[0] for p in PANELS_NEAR_TERMINAL]},
+                  analytical_limits=analytical_limits,
                   all_scenarios_admitted=True)
     (output/'figure_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(manifest,indent=2))

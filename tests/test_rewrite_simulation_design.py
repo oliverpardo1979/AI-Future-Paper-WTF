@@ -16,7 +16,9 @@ from analyze_axm_finite_cap_bvp import (
 from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from simulate_rewrite_finite_frontier import (
     SIGMAS, FRONTIER, PARAMETERS, INITIAL_CAPITAL, INITIAL_CAPABILITY,
-    MAIN_DESIGN, SLOW_TRANSITION_DESIGN, save_solution, load_solution,
+    MAIN_DESIGN, SLOW_TRANSITION_DESIGN, NEAR_TERMINAL_DESIGN,
+    LABOR_BOTTLENECK_SIGMAS, design_initial_stocks,
+    save_solution, load_solution,
     ai_services_growth, real_wage_growth,
 )
 from scipy.interpolate import PPoly
@@ -45,6 +47,21 @@ class RewriteSimulationDesign(unittest.TestCase):
         self.assertEqual(SLOW_TRANSITION_DESIGN.display_horizon, 4000.0)
         self.assertNotEqual(MAIN_DESIGN.cache_directory,
                             SLOW_TRANSITION_DESIGN.cache_directory)
+        self.assertEqual(NEAR_TERMINAL_DESIGN.sigmas,
+                         LABOR_BOTTLENECK_SIGMAS)
+        self.assertAlmostEqual(
+            NEAR_TERMINAL_DESIGN.initial_capability / FRONTIER, .99)
+        for sigma in LABOR_BOTTLENECK_SIGMAS:
+            capital, capability = design_initial_stocks(
+                NEAR_TERMINAL_DESIGN, sigma)
+            self.assertAlmostEqual(
+                capital,
+                terminal_point(sigma, FRONTIER, PARAMETERS).auxiliary[
+                    'capital_effective_labor_ratio'])
+            self.assertAlmostEqual(capability / FRONTIER, .99)
+        self.assertEqual(NEAR_TERMINAL_DESIGN.display_horizon, 500.)
+        self.assertNotEqual(MAIN_DESIGN.cache_directory,
+                            NEAR_TERMINAL_DESIGN.cache_directory)
         for sigma in SIGMAS:
             t = terminal_point(sigma, FRONTIER, p)
             self.assertEqual(t.regime, 'ai_dominated' if sigma == 1.5 else 'labor_supported')

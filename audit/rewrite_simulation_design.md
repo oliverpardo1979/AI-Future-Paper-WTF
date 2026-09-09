@@ -1,7 +1,8 @@
 # Agreed simulation design for the finite-frontier rewrite
 
-Status: revised design and interior initial-state reference confirmed on 2026-09-07.
-All four BVPs have now passed the final numerical equilibrium audit. See
+Status: revised design and interior initial-state reference confirmed on 2026-09-07;
+slow-transition and near-terminal diagnostics added on 2026-09-08. All
+reported BVPs have passed the final numerical equilibrium audit. See
 `audit/rewrite_equilibrium_simulations.md` and `numerical_rewrite/*_audit.json`
 for execution evidence and remaining publication steps. The original design
 and the distinction between a capped stationary boundary and the historical
@@ -108,6 +109,19 @@ developer-optimality gates are rerun for all four paths. The figures preserve
 the main comparison's variables, normalizations, scenario order, and scale
 types. Because both the initial stocks and chi differ from the main design,
 this is a joint timing sensitivity rather than a one-parameter derivative.
+
+## Near-terminal labor-bottleneck diagnostic
+
+To distinguish long-run behavior from adjustment to the common main stocks,
+the diagnostic uses only sigma=0.90, 1.00, and 1.10. It sets B0/Bbar=0.99 and
+sets K0/(A0 N0), separately for each elasticity, equal to the corresponding
+analytical terminal capital ratio: 6.557094, 9.098967, and 12.265203. The BVP
+selects consumption and the shadow value anew. Because B0 is strictly below
+the frontier, the paths remain interior and are not exact finite-date steady
+states. Because K0 varies across elasticities, the diagnostic illustrates each
+regime near its own terminal allocation; it is not a common-stock comparative
+experiment. The sole figure reports output-per-person growth, real-wage
+growth, and the net interest rate over 500 years around their common limits.
 
 ## Published figure layout
 

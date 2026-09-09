@@ -307,6 +307,56 @@ with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
 The frontier's position relative to the elasticity-specific threshold is
 essential to interpreting the comparison.
 
+\subsection{Near-terminal labor-bottleneck paths}
+\label{subsec:rewrite-near-terminal}
+
+The initially high and declining growth rates of the three labor-bottleneck
+paths in the main comparison are not their long-run prediction. They partly
+reflect the distance between the common initial stocks in
+\eqref{eq:rewrite-simulation-initial-stocks} and each economy's terminal
+allocation. To isolate terminal behavior, I solve an additional exercise only
+for $\sigma\in\{0.90,1,1.10\}$. I set
+\begin{equation}
+ \frac{B_0}{\overline B}=0.99,
+ \qquad
+ \frac{K_0}{A_0N_0}=
+ \left.\frac{K}{AN}\right|_{\text{terminal}}
+ =\begin{cases}
+  6.5571,&\sigma=0.90,\\
+  9.0990,&\sigma=1,\\
+  12.2652,&\sigma=1.10.
+ \end{cases}
+ \label{eq:rewrite-near-terminal-stocks}
+\end{equation}
+Consumption and the developer's shadow value are again selected by the BVP
+for each path. Because $B_0<\overline B$ and research remains positive, these
+are not exact steady states at a finite date. They are equilibrium paths that
+begin near their respective terminal regimes. Moreover, because the initial
+capital ratio varies with $\sigma$, this exercise isolates terminal behavior;
+it is not a comparative experiment holding all initial stocks fixed.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_near_terminal_growth_returns.pdf}
+ \caption{Near-terminal labor-bottleneck equilibrium paths. The panels report
+ output-per-person growth, real-wage growth, and the net interest rate for
+ three independently admitted numerical equilibria over 500 model years.
+ Thin horizontal dotted lines mark their common analytical limits: $\gamma$
+ for both growth rates and $\rho+\gamma$ for the net interest rate. The
+ vertical axes cover narrow ranges around those limits.}
+ \label{fig:rewrite-near-terminal-growth-returns}
+\end{figure}
+
+Figure~\ref{fig:rewrite-near-terminal-growth-returns} removes the large
+date-zero movements visible in the main comparison. At date zero,
+output-per-person and real-wage growth lie between $0.986\%$ and $0.994\%$,
+while the net interest rate lies between $4.977\%$ and $4.990\%$. The three
+paths then remain close to, and converge toward, their common analytical
+limits of $1\%$, $1\%$, and $5\%$. The exercise therefore confirms that the
+high initial growth rates in the main labor-bottleneck paths are transitional
+responses to the common starting stocks, rather than properties of the
+labor-bottleneck long run.
+
 \subsection{A slower transition}
 \label{subsec:rewrite-slow-transition}
 

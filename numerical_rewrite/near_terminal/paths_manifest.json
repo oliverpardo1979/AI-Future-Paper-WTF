@@ -1,0 +1,33 @@
+{
+  "design": "near_terminal",
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.2,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 1.4378,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 170.12401740519473,
+  "initial_capital": null,
+  "initial_capability": 168.4227772311428,
+  "initial_capital_by_sigma": {
+    "sigma_0_90": 6.557094389151575,
+    "sigma_1_00": 9.098966690678346,
+    "sigma_1_10": 12.265202907632883
+  },
+  "horizon": 500.0,
+  "points_per_scenario": 1201,
+  "checkpoint_sha256": {
+    "sigma_0_90": "7146987ca6add7e830a017f5e22d224d642cbadde85b9c8a94d9e4ef1f88b954",
+    "sigma_1_00": "35e8becbb8814b034cf34c9d873a539e3e49aa150ee5095f254ac039a09f6c6c",
+    "sigma_1_10": "acf435b77ee2b58898b625b6d5ca40426c0f69a51bf3eb5737231d274e2924a3"
+  },
+  "transition_definition": "fraction of the sigma=1.50 labor-share decline from its date-zero value to its analytical limit",
+  "sigma_1_50_transition_dates": null,
+  "csv_sha256": "8f00f2748b0a964b75ef70cf80de34a27906ade55561417b46ab1ad2247bf319"
+}

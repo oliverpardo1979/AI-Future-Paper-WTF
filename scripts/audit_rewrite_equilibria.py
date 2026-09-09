@@ -1,4 +1,4 @@
-"""Independent dated residuals and final admission of a four-scenario design."""
+"""Independent dated residuals and final admission of a simulation design."""
 import argparse
 import hashlib
 import json
@@ -14,7 +14,7 @@ from solve_axm_global_finite_cap_bvp import (reconstruct_levels, raw_to_terminal
     audit_global_solution, compare_global_solutions, audit_counterfactual_developer_sufficiency)
 from solve_near_unit_ai_bvp import solve_monopoly_static_block
 from simulate_rewrite_finite_frontier import (
-    DESIGNS, MAIN_DESIGN, SIGMAS, key, load_solution, validate_solution_design,
+    DESIGNS, MAIN_DESIGN, key, load_solution, validate_solution_design,
 )
 
 
@@ -78,7 +78,7 @@ def terminal_support_bound(sol, fraction=.75):
 
 def finalize(design=MAIN_DESIGN):
     reports=[]
-    for sigma in SIGMAS:
+    for sigma in design.sigmas:
         name=key(sigma)
         report=json.loads((design.output_directory/f'{name}_audit.json').read_text())
         cache=design.cache_directory/f'{name}_long.npz'
