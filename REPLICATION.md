@@ -25,12 +25,13 @@ years. It is a separately solved and admitted comparison, not a rescaling of
 the main paths. Because both the initial stocks and `chi` change, it should
 not be read as a one-parameter estimate of the effect of research productivity.
 
-The near-terminal diagnostic uses only the three labor-bottleneck elasticities
-(0.90, 1.00, and 1.10). It sets `B0/Bbar=0.99` and, separately for each
-elasticity, sets `K0/(A0*N0)` equal to that regime's analytical terminal
-capital ratio. Consumption and the shadow value are still solved by the BVP.
-This is therefore a comparison of equilibrium paths near their respective
-terminal regimes, not an experiment that holds every initial stock fixed.
+The near-terminal diagnostic uses all four elasticities and sets
+`B0/Bbar=0.9999`. For the three labor-bottleneck regimes, it sets
+`K0/(A0*N0)` equal to the analytical terminal capital ratio. The AI-dominated
+regime has no finite terminal value of that ratio, so it instead sets
+`(Bbar-B0)*K0` equal to the analytical terminal gap scale. Consumption and the
+shadow value are still solved by the BVP. This comparison isolates terminal
+behavior; it does not hold every initial stock fixed.
 
 Capital and AI efficiency are predetermined at date zero. Consumption and the
 developer's shadow value can jump. The algorithm chooses those two initial
@@ -80,9 +81,9 @@ python3.12 -m venv .venv
 ```
 
 The last command is the public entry point. It runs the regression tests,
-solves and refines the four main, four slow-transition, and three near-terminal
+solves and refines the four main, four slow-transition, and four near-terminal
 boundary-value problems, performs the two global Hamiltonian-support checks
-required for each 1.50 case, applies the final equilibrium-admission gates, reproduces the
+required for the main and slow 1.50 cases, applies the final equilibrium-admission gates, reproduces the
 distant-initial-stock financing sensitivity, exports the data, and regenerates
 the figures. It
 stops at the first failure and therefore cannot knowingly create a partial
@@ -100,7 +101,7 @@ python scripts/reproduce_rewrite_results.py --fresh
 
 `--fresh` removes only the generated `base`, `refined`, and `long`
 checkpoint files belonging to the four main scenarios, the four slow
-scenarios, the three near-terminal scenarios, and the financing sensitivity.
+scenarios, the four near-terminal scenarios, and the financing sensitivity.
 The committed numerical
 reports and figures are then overwritten only as their corresponding stages
 successfully complete.
@@ -156,7 +157,7 @@ The full command regenerates:
 - `figures_rewrite/equilibrium_slow_accumulation_growth.{pdf,png}`;
 - `figures_rewrite/equilibrium_slow_growth_returns.{pdf,png}`;
 - `figures_rewrite/equilibrium_slow_ai_distribution.{pdf,png}`;
-- `numerical_rewrite/near_terminal/`: the three labor-bottleneck audits,
+- `numerical_rewrite/near_terminal/`: the four near-terminal audits,
   plotted CSV, and provenance manifests;
 - `figures_rewrite/equilibrium_near_terminal_growth_returns.{pdf,png}`.
 

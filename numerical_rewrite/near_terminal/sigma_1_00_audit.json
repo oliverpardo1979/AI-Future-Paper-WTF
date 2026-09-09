@@ -5,9 +5,9 @@
   "frontier_ratio": null,
   "terminal_regime": "labor_supported",
   "initial_capital": 9.098966690678346,
-  "initial_capability": 168.4227772311428,
-  "log_initial_consumption": 0.7573275320201242,
-  "log_initial_shadow_value": -4.895093764902537,
+  "initial_capability": 170.10700500345422,
+  "log_initial_consumption": 0.7582318496444858,
+  "log_initial_shadow_value": -4.8644849134605685,
   "continuation_stages": [
     {
       "fraction": 0.03125,
@@ -15,8 +15,8 @@
       "initial_effective_labor_scale": 1250031.4503053522,
       "iterations": 2,
       "nodes": 387,
-      "maximum_rms_residual": 6.943172414910705e-08,
-      "maximum_boundary_residual": 2.573826155728792e-13
+      "maximum_rms_residual": 6.944703832878761e-08,
+      "maximum_boundary_residual": 2.9249799219998477e-13
     },
     {
       "fraction": 0.0625,
@@ -24,17 +24,17 @@
       "initial_effective_labor_scale": 794778.4277986945,
       "iterations": 2,
       "nodes": 397,
-      "maximum_rms_residual": 1.1698593557824379e-07,
-      "maximum_boundary_residual": 3.809296749876673e-15
+      "maximum_rms_residual": 1.1703141967076683e-07,
+      "maximum_boundary_residual": 1.2232640270446124e-14
     },
     {
       "fraction": 0.09375,
       "horizon": 720.7227392682546,
       "initial_effective_labor_scale": 505325.48532267904,
       "iterations": 2,
-      "nodes": 403,
-      "maximum_rms_residual": 1.795255918021508e-07,
-      "maximum_boundary_residual": 2.0163531532332097e-13
+      "nodes": 404,
+      "maximum_rms_residual": 1.7961568742049115e-07,
+      "maximum_boundary_residual": 1.8385797127432806e-13
     },
     {
       "fraction": 0.125,
@@ -42,8 +42,8 @@
       "initial_effective_labor_scale": 321289.35208251333,
       "iterations": 2,
       "nodes": 408,
-      "maximum_rms_residual": 2.574278310041503e-07,
-      "maximum_boundary_residual": 2.6736891336913143e-13
+      "maximum_rms_residual": 2.57570630415616e-07,
+      "maximum_boundary_residual": 3.601113592333783e-13
     },
     {
       "fraction": 0.15625,
@@ -51,8 +51,8 @@
       "initial_effective_labor_scale": 204277.9372104793,
       "iterations": 2,
       "nodes": 412,
-      "maximum_rms_residual": 3.5055387418470474e-07,
-      "maximum_boundary_residual": 1.8592127023736546e-13
+      "maximum_rms_residual": 3.5074307620031553e-07,
+      "maximum_boundary_residual": 1.8704537104979843e-13
     },
     {
       "fraction": 0.1875,
@@ -60,8 +60,8 @@
       "initial_effective_labor_scale": 129881.29037109074,
       "iterations": 2,
       "nodes": 415,
-      "maximum_rms_residual": 4.583008928602013e-07,
-      "maximum_boundary_residual": 1.948380800604746e-13
+      "maximum_rms_residual": 4.5850520072885507e-07,
+      "maximum_boundary_residual": 2.914593372048832e-13
     },
     {
       "fraction": 0.21875,
@@ -69,8 +69,8 @@
       "initial_effective_labor_scale": 82579.40049139195,
       "iterations": 2,
       "nodes": 418,
-      "maximum_rms_residual": 5.796514768987932e-07,
-      "maximum_boundary_residual": 1.1312409497059059e-13
+      "maximum_rms_residual": 5.798006932475093e-07,
+      "maximum_boundary_residual": 7.915384509129933e-13
     },
     {
       "fraction": 0.25,
@@ -78,8 +78,8 @@
       "initial_effective_labor_scale": 52504.53984583736,
       "iterations": 2,
       "nodes": 420,
-      "maximum_rms_residual": 7.132211312854832e-07,
-      "maximum_boundary_residual": 3.01621101628685e-13
+      "maximum_rms_residual": 7.131878421736723e-07,
+      "maximum_boundary_residual": 3.055509800809987e-13
     },
     {
       "fraction": 0.28125,
@@ -87,8 +87,8 @@
       "initial_effective_labor_scale": 33382.74058686679,
       "iterations": 2,
       "nodes": 422,
-      "maximum_rms_residual": 8.573043647796025e-07,
-      "maximum_boundary_residual": 4.607991975252656e-13
+      "maximum_rms_residual": 8.568796403522694e-07,
+      "maximum_boundary_residual": 2.9495941638144834e-13
     },
     {
       "fraction": 0.3125,
@@ -96,8 +96,8 @@
       "initial_effective_labor_scale": 21224.97163792204,
       "iterations": 2,
       "nodes": 423,
-      "maximum_rms_residual": 1.009920066788144e-06,
-      "maximum_boundary_residual": 1.0331393372283869e-12
+      "maximum_rms_residual": 1.0087810167800925e-06,
+      "maximum_boundary_residual": 1.1791546984887412e-12
     },
     {
       "fraction": 0.34375,
@@ -105,8 +105,8 @@
       "initial_effective_labor_scale": 13494.980133770903,
       "iterations": 2,
       "nodes": 424,
-      "maximum_rms_residual": 1.1688570423829556e-06,
-      "maximum_boundary_residual": 8.71520465755218e-13
+      "maximum_rms_residual": 1.166523317446929e-06,
+      "maximum_boundary_residual": 7.424453267133885e-13
     },
     {
       "fraction": 0.375,
@@ -114,8 +114,8 @@
       "initial_effective_labor_scale": 8580.199395201671,
       "iterations": 2,
       "nodes": 426,
-      "maximum_rms_residual": 1.3317208137046068e-06,
-      "maximum_boundary_residual": 9.137159371888001e-15
+      "maximum_rms_residual": 1.3274961667369388e-06,
+      "maximum_boundary_residual": 3.631626878292194e-13
     },
     {
       "fraction": 0.40625,
@@ -123,8 +123,8 @@
       "initial_effective_labor_scale": 5455.348650509465,
       "iterations": 2,
       "nodes": 427,
-      "maximum_rms_residual": 1.4959830892850786e-06,
-      "maximum_boundary_residual": 3.191326383319005e-13
+      "maximum_rms_residual": 1.4888768449324724e-06,
+      "maximum_boundary_residual": 6.20557151196776e-14
     },
     {
       "fraction": 0.4375,
@@ -132,8 +132,8 @@
       "initial_effective_labor_scale": 3468.547469334882,
       "iterations": 2,
       "nodes": 427,
-      "maximum_rms_residual": 1.659035683295007e-06,
-      "maximum_boundary_residual": 1.3732939623346682e-12
+      "maximum_rms_residual": 1.6476573160956619e-06,
+      "maximum_boundary_residual": 1.1825578635445009e-12
     },
     {
       "fraction": 0.46875,
@@ -141,8 +141,8 @@
       "initial_effective_labor_scale": 2205.325877000708,
       "iterations": 2,
       "nodes": 428,
-      "maximum_rms_residual": 1.8182511781278003e-06,
-      "maximum_boundary_residual": 5.391014141708116e-14
+      "maximum_rms_residual": 1.8006690499528282e-06,
+      "maximum_boundary_residual": 4.02975605079606e-13
     },
     {
       "fraction": 0.5,
@@ -150,8 +150,8 @@
       "initial_effective_labor_scale": 1402.161067930128,
       "iterations": 2,
       "nodes": 429,
-      "maximum_rms_residual": 1.971053256481057e-06,
-      "maximum_boundary_residual": 1.1839865708094567e-12
+      "maximum_rms_residual": 1.9446057723575523e-06,
+      "maximum_boundary_residual": 1.7794171766719914e-12
     },
     {
       "fraction": 0.53125,
@@ -159,8 +159,8 @@
       "initial_effective_labor_scale": 891.5034648270832,
       "iterations": 2,
       "nodes": 431,
-      "maximum_rms_residual": 7.975649226663451e-07,
-      "maximum_boundary_residual": 6.823801245832673e-13
+      "maximum_rms_residual": 7.827060245793354e-07,
+      "maximum_boundary_residual": 7.37816411654515e-13
     },
     {
       "fraction": 0.5625,
@@ -168,8 +168,8 @@
       "initial_effective_labor_scale": 566.8239162936876,
       "iterations": 2,
       "nodes": 431,
-      "maximum_rms_residual": 8.078286451838367e-07,
-      "maximum_boundary_residual": 2.501991704818061e-12
+      "maximum_rms_residual": 7.873362579128759e-07,
+      "maximum_boundary_residual": 9.617196174259862e-13
     },
     {
       "fraction": 0.59375,
@@ -177,8 +177,8 @@
       "initial_effective_labor_scale": 360.39046931223186,
       "iterations": 2,
       "nodes": 432,
-      "maximum_rms_residual": 8.109390846351557e-07,
-      "maximum_boundary_residual": 6.072290621939568e-13
+      "maximum_rms_residual": 7.830600874359391e-07,
+      "maximum_boundary_residual": 1.7083602655562473e-12
     },
     {
       "fraction": 0.625,
@@ -186,8 +186,8 @@
       "initial_effective_labor_scale": 229.13869128944015,
       "iterations": 2,
       "nodes": 432,
-      "maximum_rms_residual": 8.073302202415771e-07,
-      "maximum_boundary_residual": 2.4399313064397263e-12
+      "maximum_rms_residual": 7.698289880281735e-07,
+      "maximum_boundary_residual": 1.6648998437895998e-13
     },
     {
       "fraction": 0.65625,
@@ -195,8 +195,8 @@
       "initial_effective_labor_scale": 145.68792550490255,
       "iterations": 2,
       "nodes": 433,
-      "maximum_rms_residual": 7.976680579949667e-07,
-      "maximum_boundary_residual": 2.520240410159586e-12
+      "maximum_rms_residual": 7.47701705665679e-07,
+      "maximum_boundary_residual": 1.1787651431115588e-12
     },
     {
       "fraction": 0.6875,
@@ -204,8 +204,8 @@
       "initial_effective_labor_scale": 92.62936572816243,
       "iterations": 2,
       "nodes": 433,
-      "maximum_rms_residual": 7.828698183493197e-07,
-      "maximum_boundary_residual": 1.869628388448114e-12
+      "maximum_rms_residual": 7.16832742403524e-07,
+      "maximum_boundary_residual": 2.7519316820922907e-12
     },
     {
       "fraction": 0.71875,
@@ -213,8 +213,8 @@
       "initial_effective_labor_scale": 58.89437553226014,
       "iterations": 2,
       "nodes": 434,
-      "maximum_rms_residual": 7.641303045287314e-07,
-      "maximum_boundary_residual": 2.1157123538753434e-12
+      "maximum_rms_residual": 6.774608740964533e-07,
+      "maximum_boundary_residual": 2.446798829057501e-12
     },
     {
       "fraction": 0.75,
@@ -222,8 +222,8 @@
       "initial_effective_labor_scale": 37.44544121692423,
       "iterations": 2,
       "nodes": 434,
-      "maximum_rms_residual": 7.429572548592429e-07,
-      "maximum_boundary_residual": 1.5437633017554604e-12
+      "maximum_rms_residual": 6.298979110316227e-07,
+      "maximum_boundary_residual": 1.3090180803607955e-12
     },
     {
       "fraction": 0.78125,
@@ -231,8 +231,8 @@
       "initial_effective_labor_scale": 23.80806410218369,
       "iterations": 2,
       "nodes": 435,
-      "maximum_rms_residual": 7.212177589815358e-07,
-      "maximum_boundary_residual": 1.0096281706567115e-12
+      "maximum_rms_residual": 5.745178732618067e-07,
+      "maximum_boundary_residual": 1.4593360217866207e-12
     },
     {
       "fraction": 0.8125,
@@ -240,111 +240,111 @@
       "initial_effective_labor_scale": 15.137327745987406,
       "iterations": 2,
       "nodes": 435,
-      "maximum_rms_residual": 7.011981674171614e-07,
-      "maximum_boundary_residual": 1.1220693428856454e-12
+      "maximum_rms_residual": 5.117466965585036e-07,
+      "maximum_boundary_residual": 2.9379314566180045e-12
     },
     {
       "fraction": 0.84375,
       "horizon": 3286.504653414291,
       "initial_effective_labor_scale": 9.624415084988927,
       "iterations": 2,
-      "nodes": 435,
-      "maximum_rms_residual": 6.856803288946052e-07,
-      "maximum_boundary_residual": 2.0862367570863407e-12
+      "nodes": 434,
+      "maximum_rms_residual": 1.8997742066157051e-06,
+      "maximum_boundary_residual": 1.4652817604948221e-12
     },
     {
       "fraction": 0.875,
       "horizon": 3393.412233170376,
       "initial_effective_labor_scale": 6.119268029505182,
       "iterations": 2,
-      "nodes": 436,
-      "maximum_rms_residual": 6.780374843665996e-07,
-      "maximum_boundary_residual": 1.8787333143991137e-12
+      "nodes": 435,
+      "maximum_rms_residual": 1.6503976023070123e-06,
+      "maximum_boundary_residual": 1.7365457517070456e-12
     },
     {
       "fraction": 0.90625,
       "horizon": 3500.319812926461,
       "initial_effective_labor_scale": 3.890671888760013,
       "iterations": 2,
-      "nodes": 436,
-      "maximum_rms_residual": 6.82353696710572e-07,
-      "maximum_boundary_residual": 3.0101614864382606e-12
+      "nodes": 435,
+      "maximum_rms_residual": 1.3438017093743463e-06,
+      "maximum_boundary_residual": 3.386706047825087e-12
     },
     {
       "fraction": 0.9375,
       "horizon": 3607.2273926825455,
       "initial_effective_labor_scale": 2.4737154301789004,
       "iterations": 2,
-      "nodes": 436,
-      "maximum_rms_residual": 7.035712874597933e-07,
-      "maximum_boundary_residual": 1.063662248199452e-12
+      "nodes": 435,
+      "maximum_rms_residual": 9.762771142223778e-07,
+      "maximum_boundary_residual": 1.0860105062276554e-12
     },
     {
       "fraction": 0.96875,
       "horizon": 3714.1349724386305,
       "initial_effective_labor_scale": 1.5728049561782607,
       "iterations": 2,
-      "nodes": 436,
-      "maximum_rms_residual": 7.476714098843902e-07,
-      "maximum_boundary_residual": 7.077292010831282e-13
+      "nodes": 435,
+      "maximum_rms_residual": 5.441507705808274e-07,
+      "maximum_boundary_residual": 1.1776766207744264e-12
     },
     {
       "fraction": 1.0,
       "horizon": 3821.0425521947154,
       "initial_effective_labor_scale": 1.0,
       "iterations": 2,
-      "nodes": 437,
-      "maximum_rms_residual": 8.218934609332109e-07,
-      "maximum_boundary_residual": 3.191264439245891e-12
+      "nodes": 436,
+      "maximum_rms_residual": 4.3792668659458355e-08,
+      "maximum_boundary_residual": 2.761564753908447e-12
     },
     {
       "fraction": 1.0,
       "horizon": 4321.042552194715,
       "initial_effective_labor_scale": 1.0,
-      "iterations": 4,
-      "nodes": 415,
-      "maximum_rms_residual": 9.481788700747236e-09,
-      "maximum_boundary_residual": 1.1427018709068963e-15
+      "iterations": 2,
+      "nodes": 402,
+      "maximum_rms_residual": 4.718737960666633e-09,
+      "maximum_boundary_residual": 7.669900309986475e-16
     }
   ],
   "audit": {
     "success": true,
     "horizon": 4821.042552194715,
-    "nodes": 641,
-    "iterations": 4,
-    "maximum_rms_residual": 9.528984928298318e-10,
-    "maximum_equation_residual": 5.633064708665962e-10,
-    "maximum_boundary_residual": 2.4393814609285717e-15,
+    "nodes": 604,
+    "iterations": 2,
+    "maximum_rms_residual": 9.370327193424308e-10,
+    "maximum_equation_residual": 6.147794043298025e-10,
+    "maximum_boundary_residual": 6.07347155372588e-15,
     "initial_capital_error": 0.0,
-    "initial_capability_error": 0.0,
-    "minimum_log_positive_level": -12.151615282366745,
+    "initial_capability_error": 2.842170943040401e-14,
+    "minimum_log_positive_level": -17.8673293678163,
     "maximum_capability_frontier_ratio": 0.9999999999999998,
     "maximum_capability_log_ratio": 0.0,
-    "minimum_log_remaining_frontier_share": -59.69494669010879,
-    "maximum_absolute_bounded_coordinate": 5.146387523515763,
-    "maximum_absolute_capability_logit": 59.69494669010879,
+    "minimum_log_remaining_frontier_share": -59.69496512595691,
+    "maximum_absolute_bounded_coordinate": 9.210240366976068,
+    "maximum_absolute_capability_logit": 59.694965125956905,
     "newton_safeguard_not_binding": true,
     "minimum_monopoly_soc_margin": 0.11604399999999992,
-    "minimum_actual_path_concavity_margin": 0.9984526558891454,
+    "minimum_actual_path_concavity_margin": 0.9999845265588914,
     "terminal_household_tvc_log": -176.92865458654677,
-    "terminal_developer_tvc_log": -178.38930050622724,
+    "terminal_developer_tvc_log": -178.38844190695426,
     "asymptotic_household_tvc_growth": -0.037,
     "asymptotic_developer_tvc_growth": -0.037,
     "dated_candidate_accepted": true
   },
   "horizon_comparison": {
     "common_window": 500.0,
-    "maximum_common_window_coordinate_change": 1.8477566143815238e-08,
-    "maximum_initial_jump_change": 1.2073009258983802e-11
+    "maximum_common_window_coordinate_change": 1.3265728515676756e-08,
+    "maximum_initial_jump_change": 3.991473818132363e-12
   },
   "counterfactual_developer_sufficiency": {
     "time_points": 161,
     "capability_points_per_date": 161,
-    "function_evaluations": 30912,
-    "minimum_counterfactual_concavity_margin": 0.9984526559962201,
+    "function_evaluations": 30590,
+    "minimum_counterfactual_concavity_margin": 0.9999845265613546,
     "date_of_minimum_margin": 0.0,
-    "capability_at_minimum_margin": 168.42277734886682,
-    "capability_frontier_ratio_at_minimum": 0.9900000006919895,
+    "capability_at_minimum_margin": 170.10700500616235,
+    "capability_frontier_ratio_at_minimum": 0.9999000000159186,
     "ai_share_at_minimum_margin": 0.2,
     "service_capability_elasticity_at_minimum": 1.1547344110854503,
     "developer_sufficiency_gate_passes": true
@@ -363,7 +363,7 @@
     "initial_population": 1.0
   },
   "design": "near_terminal",
-  "initial_stock_reference": "near-terminal stocks for the three labor-bottleneck regimes; K0/(A0*N0) equals each regime-specific terminal ratio and B0/Bbar=0.99; jump variables solved anew by the BVP",
+  "initial_stock_reference": "near-terminal stocks for all four regimes; B0/Bbar=0.9999; K0/(A0*N0) equals the regime-specific terminal ratio in the labor-supported cases, while (Bbar-B0)*K0 equals the terminal gap scale in the AI-dominated case; jump variables solved anew by the BVP",
   "status": "numerically_admitted",
   "settings": {
     "base_tolerance": 2e-06,
@@ -373,28 +373,28 @@
   },
   "first_horizon_comparison": {
     "common_window": 2500.0,
-    "maximum_common_window_coordinate_change": 3.106191858837093e-06,
-    "maximum_initial_jump_change": 1.495810586504831e-09
+    "maximum_common_window_coordinate_change": 1.4662286407229885e-07,
+    "maximum_initial_jump_change": 3.743938492561938e-11
   },
   "independent_dated_checks": [
     {
       "difference_step": 0.003,
       "samples": 1001,
-      "maximum_ode_residual": 8.981083342296525e-10,
+      "maximum_ode_residual": 9.734484433809865e-10,
       "maximum_research_foc_residual": 7.105427357601002e-15,
       "maximum_monopoly_foc_residual": 1.4210854715202004e-14
     },
     {
       "difference_step": 0.001,
       "samples": 1001,
-      "maximum_ode_residual": 8.9799731192719e-10,
+      "maximum_ode_residual": 9.73374427934437e-10,
       "maximum_research_foc_residual": 7.105427357601002e-15,
       "maximum_monopoly_foc_residual": 1.4210854715202004e-14
     }
   ],
   "optimality_method": "global_profit_concavity_in_research_depth",
-  "maximum_terminal_coordinate_gap": 7.937400804181038e-06,
-  "checkpoint_sha256": "35e8becbb8814b034cf34c9d873a539e3e49aa150ee5095f254ac039a09f6c6c",
+  "maximum_terminal_coordinate_gap": 2.6373248923405868e-05,
+  "checkpoint_sha256": "e2f22f9fbb2e6ceabec433e0439a973c38b6690291d9152a27f21717a8dae32b",
   "checkpoint_filename": "sigma_1_00_long.npz",
   "long_run_scope": "Regime-specific stable continuation, both TVCs, and sufficient developer optimality."
 }

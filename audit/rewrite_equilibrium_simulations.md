@@ -2,7 +2,7 @@
 
 Originally completed on 2026-09-03, revalidated under the revised initial
 conditions and transition calibration on 2026-09-07, and extended with the
-slow-transition and near-terminal comparisons on 2026-09-08. All eleven
+slow-transition and near-terminal comparisons on 2026-09-08--09. All twelve
 displayed trajectories passed the final numerical equilibrium admission gate.
 The public reproduction workflow and installation
 instructions are in `REPLICATION.md`; this file records the execution
@@ -10,8 +10,8 @@ underlying the paper's reported numerical results.
 
 ## Publication status
 
-Complete. The main and slow-transition 4,804-row CSV files, the 3,603-row
-near-terminal CSV, their provenance manifests, seven published figures, and
+Complete. The main, slow-transition, and near-terminal 4,804-row CSV files,
+their provenance manifests, seven published figures, and
 the separate financing-sensitivity audit
 were regenerated. All 33
 relevant regression tests passed. The PDF was compiled and visually inspected
@@ -98,22 +98,27 @@ Hamiltonian-support grid for sigma=1.50 has a minimum normalized gap of
 -2.57e-14, within the 1e-10 floating-point diagnostic tolerance. Both TVCs
 again have asymptotic log growth -0.037.
 
-The near-terminal diagnostic sets B0/Bbar=0.99 and initializes K0/(A0 N0)
-at each labor-bottleneck regime's analytical terminal ratio. Its final
-admission results are:
+The near-terminal diagnostic sets B0/Bbar=0.9999. It initializes K0/(A0 N0)
+at each labor-bottleneck regime's analytical terminal ratio. Because the
+AI-dominated regime has no finite terminal value for that ratio, its initial
+capital instead satisfies (Bbar-B0)K0=dbar. The final admission results are:
 
-| sigma | Initial K0/(A0 N0) | Solved horizon | Final mesh | Independent ODE residual | Full-window horizon change |
+| sigma | Initial K0 | Solved horizon | Final mesh | Independent ODE residual | Full-window horizon change |
 |---|---:|---:|---:|---:|---:|
-| 0.90 | 6.557094 | 4946.189 | 636 | 4.948e-10 | 1.429e-8 |
-| 1.00 | 9.098967 | 4821.043 | 641 | 8.981e-10 | 1.848e-8 |
-| 1.10 | 12.265203 | 4736.972 | 649 | 7.745e-10 | 1.250e-8 |
+| 0.90 | 6.557094 | 4946.189 | 603 | 7.603e-10 | 9.524e-9 |
+| 1.00 | 9.098967 | 4821.043 | 604 | 9.734e-10 | 1.327e-8 |
+| 1.10 | 12.265203 | 4736.972 | 605 | 8.458e-10 | 1.700e-8 |
+| 1.50 | 4101704.227532 | 3008.482 | 628 | 1.003e-9 | 1.433e-8 |
 
 These paths start close to, but not at, the terminal regime because B0 remains
-strictly below the frontier and research is positive. All three pass the
+strictly below the frontier and research is positive. All four pass the
 global-concavity sufficiency test and both transversality conditions.
 
-The original global concavity diagnostic passes for the first three cases.
-For sigma=1.50 its minimum counterfactual margin is -1.0250, so it fails.
+In the main and slow comparisons, the global concavity diagnostic passes for
+the first three cases. For sigma=1.50 its minimum counterfactual margin is
+-1.0250, so it fails. The near-terminal sigma=1.50 path is different: its
+reachable counterfactual domain begins sufficiently close to the frontier for
+the stronger global-concavity test to pass.
 The new appendix proves that a global upper tangent to the maximized
 research-depth Hamiltonian is an alternative sufficient condition for the
 same developer problem. The diagnostic checks all sampled local minima,
@@ -139,7 +144,7 @@ Completed in the final reproduction run:
   exact unit limit, bilateral terminal continuity, and nonlinear local BVPs
   below and at one. The continuity test uses distances 1e-2, 1e-3, 1e-4,
   1e-6, and 1e-8 from one on both sides.
-- Four complete final BVP audits passed as documented above.
+- All twelve displayed BVP audits passed as documented above.
 - All seven changed/new Python modules passed syntax compilation.
 - A separate PowerShell check of all 4,804 CSV rows confirmed positive
   plotted levels and wL/Y+p_X X/Y=0.67. The maximum error in
@@ -169,7 +174,7 @@ NumPy, SciPy, and Matplotlib dependencies:
 
 ```powershell
 $horizons = @{ main = 500; slow = 4000; near_terminal = 500 }
-$designSigmas = @{ main = @(0.9, 1.0, 1.1, 1.5); slow = @(0.9, 1.0, 1.1, 1.5); near_terminal = @(0.9, 1.0, 1.1) }
+$designSigmas = @{ main = @(0.9, 1.0, 1.1, 1.5); slow = @(0.9, 1.0, 1.1, 1.5); near_terminal = @(0.9, 1.0, 1.1, 1.5) }
 foreach ($design in @('main', 'slow', 'near_terminal')) {
     foreach ($sigma in $designSigmas[$design]) {
         python scripts/simulate_rewrite_finite_frontier.py --design $design --sigma $sigma
@@ -225,11 +230,13 @@ In the slow sigma=1.50 equilibrium, the labor share completes 10%, 50%, and
 500, per-person growth is 1.062% and the labor share is 60.53%; at year 1,500,
 the corresponding values are 2.797% and 14.49%.
 
-In the near-terminal labor-bottleneck diagnostic, date-zero output-per-person
-and wage growth range from 0.986% to 0.994%, and the net interest rate ranges
-from 4.977% to 4.990%. All three paths stay close to and converge toward the
-analytical limits of 1%, 1%, and 5%. This isolates the transitional origin of
-the higher initial rates in the common-stock comparison.
+In the near-terminal diagnostic, the three labor-bottleneck paths begin within
+0.001 percentage points of their growth and interest limits. In the
+AI-dominated path, date-zero output-per-person growth, wage growth, and net
+interest are 3.443%, 2.632%, and 7.437%; by year 500 they are 3.143%, 2.429%,
+and 7.143%, close to their analytical limits. The comparison isolates the
+transitional origin of the higher initial rates in the common-stock
+labor-bottleneck paths while retaining the AI-dominated benchmark.
 
 ## Final delivery
 

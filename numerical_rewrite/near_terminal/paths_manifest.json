@@ -14,20 +14,26 @@
   },
   "frontier": 170.12401740519473,
   "initial_capital": null,
-  "initial_capability": 168.4227772311428,
+  "initial_capability": 170.10700500345422,
   "initial_capital_by_sigma": {
     "sigma_0_90": 6.557094389151575,
     "sigma_1_00": 9.098966690678346,
-    "sigma_1_10": 12.265202907632883
+    "sigma_1_10": 12.265202907632883,
+    "sigma_1_50": 4101704.227532196
   },
   "horizon": 500.0,
   "points_per_scenario": 1201,
   "checkpoint_sha256": {
-    "sigma_0_90": "7146987ca6add7e830a017f5e22d224d642cbadde85b9c8a94d9e4ef1f88b954",
-    "sigma_1_00": "35e8becbb8814b034cf34c9d873a539e3e49aa150ee5095f254ac039a09f6c6c",
-    "sigma_1_10": "acf435b77ee2b58898b625b6d5ca40426c0f69a51bf3eb5737231d274e2924a3"
+    "sigma_0_90": "2a7f732e0e6f01ef6350c00decfeada386f040509d4c927870030082beeeabef",
+    "sigma_1_00": "e2f22f9fbb2e6ceabec433e0439a973c38b6690291d9152a27f21717a8dae32b",
+    "sigma_1_10": "561e4948e2738cdc305f3a31da4afe4e07e0b5e23c4a540fef3d7b8d73bf5efe",
+    "sigma_1_50": "2e67fdb4607441a25b7323853e53f2860dddc2fa58f8c9a0fe7f5181dab39726"
   },
   "transition_definition": "fraction of the sigma=1.50 labor-share decline from its date-zero value to its analytical limit",
-  "sigma_1_50_transition_dates": null,
-  "csv_sha256": "8f00f2748b0a964b75ef70cf80de34a27906ade55561417b46ab1ad2247bf319"
+  "sigma_1_50_transition_dates": {
+    "T10": 13.069800635240393,
+    "T50": 88.50177285253929,
+    "T90": 307.1344083582494
+  },
+  "csv_sha256": "39295808e4d162e8e8e30386ea9b4882c657524ca88ebd342702fec8d0cafd5e"
 }

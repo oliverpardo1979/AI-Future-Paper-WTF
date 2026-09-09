@@ -17,7 +17,7 @@ from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from simulate_rewrite_finite_frontier import (
     SIGMAS, FRONTIER, PARAMETERS, INITIAL_CAPITAL, INITIAL_CAPABILITY,
     MAIN_DESIGN, SLOW_TRANSITION_DESIGN, NEAR_TERMINAL_DESIGN,
-    LABOR_BOTTLENECK_SIGMAS, design_initial_stocks,
+    NEAR_TERMINAL_CAPABILITY_RATIO, design_initial_stocks,
     save_solution, load_solution,
     ai_services_growth, real_wage_growth,
 )
@@ -47,18 +47,26 @@ class RewriteSimulationDesign(unittest.TestCase):
         self.assertEqual(SLOW_TRANSITION_DESIGN.display_horizon, 4000.0)
         self.assertNotEqual(MAIN_DESIGN.cache_directory,
                             SLOW_TRANSITION_DESIGN.cache_directory)
-        self.assertEqual(NEAR_TERMINAL_DESIGN.sigmas,
-                         LABOR_BOTTLENECK_SIGMAS)
+        self.assertEqual(NEAR_TERMINAL_DESIGN.sigmas, SIGMAS)
         self.assertAlmostEqual(
-            NEAR_TERMINAL_DESIGN.initial_capability / FRONTIER, .99)
-        for sigma in LABOR_BOTTLENECK_SIGMAS:
+            NEAR_TERMINAL_DESIGN.initial_capability / FRONTIER,
+            NEAR_TERMINAL_CAPABILITY_RATIO)
+        for sigma in SIGMAS:
             capital, capability = design_initial_stocks(
                 NEAR_TERMINAL_DESIGN, sigma)
+            terminal = terminal_point(sigma, FRONTIER, PARAMETERS)
+            if terminal.regime == 'labor_supported':
+                expected_capital = terminal.auxiliary[
+                    'capital_effective_labor_ratio']
+            else:
+                expected_capital = terminal.auxiliary['gap_scale'] / (
+                    FRONTIER - NEAR_TERMINAL_DESIGN.initial_capability)
+                self.assertAlmostEqual(
+                    (FRONTIER-capability)*capital,
+                    terminal.auxiliary['gap_scale'])
+            self.assertAlmostEqual(capital, expected_capital)
             self.assertAlmostEqual(
-                capital,
-                terminal_point(sigma, FRONTIER, PARAMETERS).auxiliary[
-                    'capital_effective_labor_ratio'])
-            self.assertAlmostEqual(capability / FRONTIER, .99)
+                capability / FRONTIER, NEAR_TERMINAL_CAPABILITY_RATIO)
         self.assertEqual(NEAR_TERMINAL_DESIGN.display_horizon, 500.)
         self.assertNotEqual(MAIN_DESIGN.cache_directory,
                             NEAR_TERMINAL_DESIGN.cache_directory)

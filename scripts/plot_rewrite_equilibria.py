@@ -39,9 +39,9 @@ PANELS_NEAR_TERMINAL=(
  ('net_interest', 'C. Net interest\nrate, $r$', 'rate'),
 )
 NEAR_TERMINAL_YLIMS={
-    'output_per_person_growth':(0.0098,0.0102),
-    'wage_growth':(0.0098,0.0102),
-    'net_interest':(0.0497,0.0501),
+    'output_per_person_growth':(0.008,0.036),
+    'wage_growth':(0.008,0.028),
+    'net_interest':(0.048,0.076),
 }
 STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
         1.1:('#bd8620',(0,(1,1.8))),1.5:('#24618c',(0,(5,1.8,1,1.8)))}
@@ -80,16 +80,29 @@ def render(design=MAIN_DESIGN):
                          'xtick.labelsize':8,'ytick.labelsize':8,
                          'legend.fontsize':9,'pdf.fonttype':42})
     prefix='equilibrium' if design.name=='main' else f'equilibrium_{design.name}'
+    extra_limits=None
     if design.name=='near_terminal':
         common_limits={
             'output_per_person_growth': parameters.labor_productivity_growth,
             'wage_growth': parameters.labor_productivity_growth,
             'net_interest': parameters.discount+parameters.labor_productivity_growth,
         }
+        ai_terminal=terminal_point(1.5,frontier,parameters)
+        extra_limits={
+            'output_per_person_growth': (
+                ai_terminal.terminal_growth-parameters.population_growth),
+            'wage_growth': parameters.labor_productivity_growth+(
+                ai_terminal.net_interest_rate-parameters.discount
+                -parameters.labor_productivity_growth)/ai_terminal.sigma_xl,
+            'net_interest': ai_terminal.net_interest_rate,
+        }
         figures=(
             (f'{prefix}_growth_returns',PANELS_NEAR_TERMINAL,'three',common_limits),
         )
-        analytical_limits={'common_labor_bottleneck':common_limits}
+        analytical_limits={
+            'common_labor_bottleneck':common_limits,
+            'sigma_1_50':extra_limits,
+        }
     else:
         ai_terminal=terminal_point(1.5,frontier,parameters)
         ai_revenue_limit=(1-parameters.alpha)*ai_terminal.ai_ces_share
@@ -146,6 +159,9 @@ def render(design=MAIN_DESIGN):
             if limits is not None:
                 axis.axhline(limits[field],color=LIMIT_STYLE[0],linestyle=LIMIT_STYLE[1],
                              linewidth=.9)
+            if extra_limits is not None:
+                axis.axhline(extra_limits[field],color=STYLES[1.5][0],
+                             linestyle=LIMIT_STYLE[1],linewidth=.9)
             # An explicit title coordinate prevents Matplotlib from moving the
             # top-row titles into the shared legend when log-axis offset text
             # differs across panels.

@@ -113,15 +113,19 @@ this is a joint timing sensitivity rather than a one-parameter derivative.
 ## Near-terminal labor-bottleneck diagnostic
 
 To distinguish long-run behavior from adjustment to the common main stocks,
-the diagnostic uses only sigma=0.90, 1.00, and 1.10. It sets B0/Bbar=0.99 and
-sets K0/(A0 N0), separately for each elasticity, equal to the corresponding
-analytical terminal capital ratio: 6.557094, 9.098967, and 12.265203. The BVP
-selects consumption and the shadow value anew. Because B0 is strictly below
-the frontier, the paths remain interior and are not exact finite-date steady
-states. Because K0 varies across elasticities, the diagnostic illustrates each
-regime near its own terminal allocation; it is not a common-stock comparative
-experiment. The sole figure reports output-per-person growth, real-wage
-growth, and the net interest rate over 500 years around their common limits.
+the diagnostic uses all four elasticities and sets B0/Bbar=0.9999. For
+sigma=0.90, 1.00, and 1.10, it sets K0/(A0 N0) equal to the corresponding
+analytical terminal capital ratios: 6.557094, 9.098967, and 12.265203. The
+AI-dominated regime has no finite terminal value of K/(AN). For sigma=1.50,
+the design therefore initializes its convergent predetermined state at
+(Bbar-B0)K0=dbar, which implies K0=4101704.227532. The BVP selects consumption
+and the shadow value anew. Because B0 is strictly below the frontier, the
+paths remain interior and are not exact finite-date steady states. Because
+the initial capital rule differs across terminal regimes, the diagnostic
+illustrates each regime near its own terminal allocation; it is not a
+common-stock comparative experiment. The sole figure reports
+output-per-person growth, real-wage growth, and the net interest rate over 500
+years against the regime-specific analytical limits.
 
 ## Published figure layout
 

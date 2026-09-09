@@ -1,10 +1,11 @@
 {
   "design": "near_terminal",
-  "data_sha256": "8f00f2748b0a964b75ef70cf80de34a27906ade55561417b46ab1ad2247bf319",
+  "data_sha256": "39295808e4d162e8e8e30386ea9b4882c657524ca88ebd342702fec8d0cafd5e",
   "sigmas": [
     0.9,
     1.0,
-    1.1
+    1.1,
+    1.5
   ],
   "horizon": 500.0,
   "panels": {
@@ -35,6 +36,11 @@
       "output_per_person_growth": 0.01,
       "wage_growth": 0.01,
       "net_interest": 0.05
+    },
+    "sigma_1_50": {
+      "output_per_person_growth": 0.03134997581384626,
+      "wage_growth": 0.02423331720923084,
+      "net_interest": 0.07134997581384626
     }
   },
   "all_scenarios_admitted": true

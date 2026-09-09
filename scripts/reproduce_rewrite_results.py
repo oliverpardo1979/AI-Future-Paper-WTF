@@ -17,7 +17,7 @@ SIGMAS = (0.9, 1.0, 1.1, 1.5)
 DESIGN_SIGMAS = {
     'main': SIGMAS,
     'slow': SIGMAS,
-    'near_terminal': (0.9, 1.0, 1.1),
+    'near_terminal': SIGMAS,
 }
 DESIGNS = tuple(DESIGN_SIGMAS)
 TEST_FILES = (
@@ -123,7 +123,7 @@ def main() -> None:
                 "--verify-long-horizon",
             ]
         )
-        if 1.5 in DESIGN_SIGMAS[design]:
+        if design in ('main', 'slow'):
             for dates, states in ((81, 101), (321, 241)):
                 run(
                     [

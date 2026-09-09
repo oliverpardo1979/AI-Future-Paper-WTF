@@ -32,11 +32,11 @@ from solve_axm_global_finite_cap_bvp import (
 )
 
 SIGMAS = (0.9, 1.0, 1.1, 1.5)
-LABOR_BOTTLENECK_SIGMAS = (0.9, 1.0, 1.1)
 PARAMETERS = replace(PositiveAIBenchmarkParameters(), chi=1.4378)
 FRONTIER = 1.1 * critical_capability_frontier(1.5, PARAMETERS)
 INITIAL_CAPITAL = 4.0
 INITIAL_CAPABILITY = 0.10 * FRONTIER
+NEAR_TERMINAL_CAPABILITY_RATIO = 0.9999
 OUT = ROOT / 'numerical_rewrite'
 CACHE = ROOT / 'tmp' / 'rewrite_bvp'
 
@@ -80,18 +80,20 @@ SLOW_TRANSITION_DESIGN = SimulationDesign(
         'unit-elastic BGP; chi=0.01; jump variables solved anew by the BVP'),
 )
 NEAR_TERMINAL_DESIGN = SimulationDesign(
-    name='near_terminal', sigmas=LABOR_BOTTLENECK_SIGMAS,
+    name='near_terminal', sigmas=SIGMAS,
     parameters=PARAMETERS, frontier=FRONTIER,
     initial_capital=None,
-    initial_capability=0.99 * FRONTIER,
+    initial_capability=NEAR_TERMINAL_CAPABILITY_RATIO * FRONTIER,
     output_directory=OUT / 'near_terminal',
     cache_directory=ROOT / 'tmp' / 'rewrite_bvp_near_terminal',
     display_horizon=500.0,
     initial_stock_reference=(
-        'near-terminal stocks for the three labor-bottleneck regimes; '
-        'K0/(A0*N0) equals each regime-specific terminal ratio and '
-        'B0/Bbar=0.99; jump variables solved anew by the BVP'),
-    initial_capital_rule='regime_terminal_ratio',
+        'near-terminal stocks for all four regimes; B0/Bbar=0.9999; '
+        'K0/(A0*N0) equals the regime-specific terminal ratio in the '
+        'labor-supported cases, while (Bbar-B0)*K0 equals the terminal '
+        'gap scale in the AI-dominated case; jump variables solved anew by '
+        'the BVP'),
+    initial_capital_rule='regime_terminal_reference',
 )
 DESIGNS = {
     'main': MAIN_DESIGN,
@@ -106,9 +108,15 @@ def key(sigma):
 
 def design_initial_stocks(design, sigma):
     """Return the predetermined stocks specified by one simulation design."""
-    if design.initial_capital_rule == 'regime_terminal_ratio':
+    if design.initial_capital_rule == 'regime_terminal_reference':
         terminal = terminal_point(sigma, design.frontier, design.parameters)
-        capital = terminal.auxiliary['capital_effective_labor_ratio']
+        if terminal.regime == 'labor_supported':
+            capital = terminal.auxiliary['capital_effective_labor_ratio']
+        elif terminal.regime == 'ai_dominated':
+            capability_gap = design.frontier - design.initial_capability
+            capital = terminal.auxiliary['gap_scale'] / capability_gap
+        else:
+            raise ValueError(f'Unknown terminal regime: {terminal.regime}')
     elif design.initial_capital_rule == 'common':
         if design.initial_capital is None:
             raise ValueError('A common-capital design must specify initial capital.')
