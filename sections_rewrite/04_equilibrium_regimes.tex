@@ -37,29 +37,34 @@ compute used to supply effective AI production services. If AI and labor are sub
 and compute can sustain growth faster than effective labor even when
 AI efficiency converges to a finite limit.
 
-For any positive variable $V$, write $g_V=\dot V/V$. Define the
-output--capital ratio required for growth at the effective-labor rate as
+For any positive variable $V$, write $g_V=\dot V/V$. For $\sigma\ne1$,
+define
 \begin{equation}
- \kappa^\star=\frac{\rho+\gamma+\delta}{\alpha}.
- \label{eq:rewrite-required-output-capital}
-\end{equation}
-Indeed, if $K$ and $C$ grow at $n+\gamma$, the Euler equation requires
-$r=\rho+\gamma$. For $\sigma\ne1$, define
-\begin{align}
  \kappa(B;\sigma)
- &=\left[(1-\alpha)^2B\,
- \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha},
- \label{eq:rewrite-ai-terminal-ratio}\\
- B^\dagger(\sigma)
- &=\frac{(\kappa^\star)^{\alpha/(1-\alpha)}}
- {(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}}.
- \label{eq:rewrite-critical-frontier}
-\end{align}
-The first expression gives the value of $Y/K$ implied by the static equations
+ =\left[(1-\alpha)^2B\,
+ \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
+ \label{eq:rewrite-ai-terminal-ratio}
+\end{equation}
+This function gives the value of $Y/K$ implied by the static equations
 when $s_X\to1$, conditional on AI efficiency $B$. I write
 $\overline\kappa\equiv\kappa(\overline B;\sigma)$ for its terminal value.
-The second expression solves
-$\kappa(B^\dagger(\sigma);\sigma)=\kappa^\star$.
+Define the threshold $B^\dagger(\sigma)$ by
+\begin{equation}
+ \begin{aligned}
+ \kappa(B^\dagger(\sigma);\sigma)
+ &=\frac{\rho+\gamma+\delta}{\alpha},\\
+ B^\dagger(\sigma)
+ &=\frac{[(\rho+\gamma+\delta)/\alpha]^{\alpha/(1-\alpha)}}
+ {(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}}.
+ \end{aligned}
+ \label{eq:rewrite-critical-frontier}
+\end{equation}
+The right-hand side of the first line is the output--capital ratio required
+for output per person to grow at rate $\gamma$. Aggregate capital and
+consumption then grow at $n+\gamma$, so the Euler equation requires
+$r=\rho+\gamma$ and the capital first-order condition requires
+$Y/K=(\rho+\gamma+\delta)/\alpha$. The second line gives the threshold
+explicitly.
 Appendix~\ref{app:rewrite-finite-existence}
 derives these expressions and proves the following propositions. I use
 $B^\dagger(\sigma)$ as an economic regime threshold only when $\sigma>1$.
@@ -122,7 +127,8 @@ with
 \begin{equation}
  \overline k=
  \left[(\beta^2\overline B)^\beta
- (\kappa^\star)^{\beta-1}\right]^{1/(1-\alpha-\beta)}.
+ \left(\frac{\rho+\gamma+\delta}{\alpha}\right)^{\beta-1}
+ \right]^{1/(1-\alpha-\beta)}.
  \label{eq:rewrite-unit-terminal-capital}
 \end{equation}
 The positive constant $\overline d$ is constructed in the proof. The nearby
