@@ -40,18 +40,18 @@ AI efficiency converges to a finite limit.
 For any positive variable $V$, write $g_V=\dot V/V$. For $\sigma\ne1$,
 define
 \begin{equation}
- \kappa(B;\sigma)
+ \xi(B;\sigma)
  =\left[(1-\alpha)^2B\,
  \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
  \label{eq:rewrite-ai-terminal-ratio}
 \end{equation}
 This function gives the value of $Y/K$ implied by the static equations
 when $s_X\to1$, conditional on AI efficiency $B$. I write
-$\overline\kappa\equiv\kappa(\overline B;\sigma)$ for its terminal value.
+$\overline\xi\equiv\xi(\overline B;\sigma)$ for its terminal value.
 Define the threshold $B^\dagger(\sigma)$ by
 \begin{equation}
  \begin{aligned}
- \kappa(B^\dagger(\sigma);\sigma)
+ \xi(B^\dagger(\sigma);\sigma)
  &=\frac{\rho+\gamma+\delta}{\alpha},\\
  B^\dagger(\sigma)
  &=\frac{[(\rho+\gamma+\delta)/\alpha]^{\alpha/(1-\alpha)}}
@@ -166,7 +166,7 @@ $\overline s_X\in(0,1)$.
 If $\overline B>B^\dagger(\sigma)$, let
 $\varphi=(\sigma-1)/\sigma$ and define
 \begin{equation}
- \overline r=\alpha\overline\kappa-\delta,
+ \overline r=\alpha\overline\xi-\delta,
  \qquad \overline g=n+\overline r-\rho>n+\gamma.
  \label{eq:rewrite-substitutes-terminal-growth}
 \end{equation}
@@ -293,9 +293,9 @@ and the monopoly condition imply
 Production gives the identity $Y/K=(Z/Y)^{(1-\alpha)/\alpha}$.
 Substitution of these limits therefore yields
 \begin{equation}
- \frac YK\to\overline\kappa,\qquad
- \overline r=\alpha\overline\kappa-\delta,\qquad
- \lim(g_Y-n)=\alpha\overline\kappa-\delta-\rho.
+ \frac YK\to\overline\xi,\qquad
+ \overline r=\alpha\overline\xi-\delta,\qquad
+ \lim(g_Y-n)=\alpha\overline\xi-\delta-\rho.
  \label{eq:rewrite-ai-growth-derivation}
 \end{equation}
 The last expression exceeds $\gamma$ exactly when
@@ -310,7 +310,7 @@ give the following comparative statics across finite frontiers:
  \overline r(\overline B;\sigma)=
  \begin{cases}
   \rho+\gamma,&0<\overline B<B^\dagger(\sigma),\\[2pt]
-  \alpha\overline\kappa-\delta,
+  \alpha\overline\xi-\delta,
   &\overline B>B^\dagger(\sigma).
  \end{cases}
  \label{eq:rewrite-interest-frontier}
@@ -319,7 +319,7 @@ Below the threshold, a larger frontier does not change the limiting
 interest or growth rate. Above it,
 \begin{equation}
  \frac{\partial\overline r}{\partial\overline B}
- =\frac{1-\alpha}{\overline B}\overline\kappa>0,
+ =\frac{1-\alpha}{\overline B}\overline\xi>0,
  \qquad
  \lim_{\overline B\to\infty}\overline r(\overline B;\sigma)=\infty.
  \label{eq:rewrite-interest-frontier-derivative}
