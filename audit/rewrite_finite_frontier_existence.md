@@ -36,8 +36,9 @@ stable-graph selection argument.
 
 Convergent growth rates and a positive limiting C/Y imply limiting per-capita
 output growth rbar-rho. This equals gamma in the positive labor-share family.
-For sigma > 1 above the threshold,
-$\overline r=\alpha\overline\kappa(\overline B;\sigma)-\delta$ and
+For sigma > 1 above the threshold, with
+$\overline\kappa\equiv\kappa(\overline B;\sigma)$,
+$\overline r=\alpha\overline\kappa-\delta$ and
 $\partial\overline r/\partial\overline B
 =(1-\alpha)\overline\kappa/\overline B>0$. The limiting interest rate is unbounded
 as the finite frontier tends to infinity across economies. This is not an
