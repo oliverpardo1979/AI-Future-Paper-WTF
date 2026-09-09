@@ -47,11 +47,11 @@ the share map increases from zero to
 $\mathcal H_\sigma(1)=[(1-\alpha)^2\omega_X^{1/\varphi}]^\theta$.
 Thus the equation
 \begin{equation}
- \mathcal R=\overline B^\theta\mathcal H_\sigma(\overline s_X)
+ \kappa^\star=\overline B^\theta\mathcal H_\sigma(\overline s_X)
  \label{eq:rewrite-terminal-share-root}
 \end{equation}
 has exactly one interior solution if and only if
-$\overline B>\overline B_c(\sigma)$.
+$\overline B>B^\dagger(\sigma)$.
 
 If $\sigma>1$, the share map decreases strictly on $(0,1)$.
 To verify the sign, put $a=\sigma^{-1}-\alpha$, so $m(s)=\varphi+as$.
@@ -61,7 +61,7 @@ $a(\sigma-2)<(\sigma-2)/\sigma<\varphi$; if $1<\sigma<2$ and $a<0$,
 $a(\sigma-2)<(1-\sigma^{-1})(2-\sigma)<\varphi$.
 The map therefore decreases from infinity to $\mathcal H_\sigma(1)$.
 Equation~\eqref{eq:rewrite-terminal-share-root} has exactly one interior
-solution if and only if $\overline B<\overline B_c(\sigma)$.
+solution if and only if $\overline B<B^\dagger(\sigma)$.
 These calculations also derive
 \eqref{eq:rewrite-ai-terminal-ratio}--\eqref{eq:rewrite-critical-frontier}.
 
@@ -75,7 +75,7 @@ by $AN$, respectively. Construct the normalized terminal values sequentially:
  &\overline u&=\frac{\overline x}{\overline B},\nonumber\\
  \overline y&=
  \frac{\overline u}{(1-\alpha)\overline s_Xm(\overline s_X)},
- &\overline k&=\frac{\overline y}{\mathcal R},\nonumber\\
+ &\overline k&=\frac{\overline y}{\kappa^\star},\nonumber\\
  \overline c&=\overline y-\overline u
        -(\delta+n+\gamma)\overline k,
  &\overline r&=\rho+\gamma.
@@ -87,10 +87,10 @@ The exact static solution is
  y=\left[(\beta^2B)^\beta k^\alpha\right]^{1/(1-\beta)},
  \qquad u=\beta^2y,\qquad x=Bu.
 \]
-The equation $y/k=\mathcal R$ gives
+The equation $y/k=\kappa^\star$ gives
 \eqref{eq:rewrite-unit-terminal-capital}. It has exactly one positive
 solution for every finite $\overline B>0$; set
-$\overline y=\mathcal R\overline k$, $\overline u=\beta^2\overline y$,
+$\overline y=\kappa^\star\overline k$, $\overline u=\beta^2\overline y$,
 and $\overline x=\overline B\,\overline u$, with $\overline c,\overline r$
 as in \eqref{eq:rewrite-labor-terminal-values}.
 
@@ -229,7 +229,7 @@ Optimality and transversality are verified below.
 
 \subsubsection{Construction near the AI-dominated regime}
 
-Let $\sigma>1$ and $\overline B>\overline B_c(\sigma)$.
+Let $\sigma>1$ and $\overline B>B^\dagger(\sigma)$.
 Here $\varphi=(\sigma-1)/\sigma\in(0,1)$. Use the alternative coordinates
 \[
  h=(AN/K)^\varphi,\quad d=(\overline B-B)K,\quad
@@ -262,7 +262,7 @@ $h=0$, sufficient for the stable-manifold argument.
 
 At $h=\tau=0$, the terminal constants are
 \begin{align}
- \overline y&=z_A(\overline B;\sigma),&
+ \overline y&=\overline\kappa(\overline B;\sigma),&
  \overline u&=(1-\alpha)^2\overline y,&
  \overline x&=\overline B\,\overline u,\nonumber\\
  \overline r&=\alpha\overline y-\delta,&
@@ -369,10 +369,10 @@ All quantities remain finite at every finite date, and market clearing and
 the original initial conditions hold by reconstruction. The paths are
 therefore infinite-horizon equilibria, not merely solutions of the
 canonical equations. The result is local only in its set of initial
-stocks. At $\overline B=\overline B_c(\sigma)$ the interior-share terminal
+stocks. At $\overline B=B^\dagger(\sigma)$ the interior-share terminal
 point reaches the boundary and a stable eigenvalue in the boundary
 normalization becomes zero; this proof does not apply. For
-$\sigma<1$ and $\overline B\leq\overline B_c(\sigma)$, it does not rule out
+$\sigma<1$ and $\overline B\leq B^\dagger(\sigma)$, it does not rule out
 equilibria with different long-run ratios. Nor does it imply existence at
 arbitrary initial stocks or in the uncapped limit.
 \hfill$\square$

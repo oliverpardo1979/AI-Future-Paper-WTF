@@ -22,7 +22,7 @@ other parameter, including the capability frontier, fixed. The proposed common
 frontier is
 
 \[
- \overline B=1.10\,\overline B_c(1.50)=170.12401740519488.
+ \overline B=1.10\,B^\dagger(1.50)=170.12401740519488.
 \]
 
 This is an illustrative scenario choice, not an empirical estimate. The

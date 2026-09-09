@@ -12,14 +12,17 @@ finite objectives, market clearing, and global developer optimality are
 verified in the proof. The developer's curvature test holds over every
 alternative reachable capability at every date, not only on the candidate.
 
-The common assumptions are a fixed positive finite frontier, positive AI
-weights and chi, rho > n, n + gamma > 0, 0 < eta < alpha < 1, and 2 eta <= 1,
-together with the stock neighborhoods stated in each proposition.
+The finite-frontier constructions use a fixed positive finite frontier,
+positive AI weights and chi, Assumption 2 (eta <= 1/2), Assumption 3
+(rho > n and n + gamma > 0), and the stock neighborhoods stated in each
+proposition. Assumption 1 (eta < alpha) is not needed for these local capped
+constructions; it is used in the uncapped analysis.
 
-- Complementarity: the positive labor-share construction requires Bbar > Bbar_c.
+- Complementarity: the positive labor-share construction requires
+  $\overline B>B^\dagger(\sigma)$.
 - Unit elasticity: every positive finite Bbar supports the local construction.
-- Substitution: Bbar < Bbar_c gives a positive labor share; Bbar > Bbar_c gives
-  the AI-dominated construction.
+- Substitution: $\overline B<B^\dagger(\sigma)$ gives a positive labor share;
+  $\overline B>B^\dagger(\sigma)$ gives the AI-dominated construction.
 - Threshold equality, other complementary-input regimes, arbitrary common
   initial stocks, and the uncapped limit are not established by these proofs.
 
@@ -33,8 +36,10 @@ stable-graph selection argument.
 
 Convergent growth rates and a positive limiting C/Y imply limiting per-capita
 output growth rbar-rho. This equals gamma in the positive labor-share family.
-For sigma > 1 above the threshold, rbar = alpha*z_A(Bbar;sigma)-delta and
-d rbar/d Bbar = (1-alpha)*z_A/Bbar > 0. The limiting interest rate is unbounded
+For sigma > 1 above the threshold,
+$\overline r=\alpha\overline\kappa(\overline B;\sigma)-\delta$ and
+$\partial\overline r/\partial\overline B
+=(1-\alpha)\overline\kappa/\overline B>0$. The limiting interest rate is unbounded
 as the finite frontier tends to infinity across economies. This is not an
 explosion in time for a fixed frontier and does not prove uncapped existence.
 The initial-state neighborhoods need not be uniform across frontiers.
@@ -58,7 +63,8 @@ The five tests cover:
 3. Consumption positivity at alpha = 0.2, 0.33, 0.8, 0.95, including high
    substitution elasticities. These are algebraic stress tests, not calibration.
 4. Regression checks against the existing AI-dominated equations and Jacobians
-   at sigma = 1.1, 1.5, 2, 5, each with Bbar = 2*Bbar_c.
+   at sigma = 1.1, 1.5, 2, 5, each with
+   $\overline B=2B^\dagger(\sigma)$.
 5. The frontier derivative, threshold boundary value, and Euler/TVC accounting.
 
 On 2026-09-03 all five tests passed. Across the positive labor-share checks,
