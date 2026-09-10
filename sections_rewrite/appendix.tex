@@ -94,7 +94,7 @@ horizon, taking the paths of $K,A,L,$ and $r$ as given. To explain the role of
 Assumption~\ref{ass:rewrite-research-curvature}, I also consider values of
 $\eta$ outside its maintained range, retaining $0<\eta<1$ from the AI-efficiency
 law. Global optimality is addressed separately in
-Proposition~\ref{prop:rewrite-developer-sufficiency}.
+Lemma~\ref{lem:rewrite-developer-verification}.
 
 \begin{proposition}[Large-scale research expenditure]
 \label{prop:rewrite-research-scale}
@@ -254,25 +254,34 @@ The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
 expenditure exponent is approximately $0.508$; the value of $\eta$ is
 illustrative rather than estimated.
 
-\begin{proof}[Proof of Proposition~\ref{prop:rewrite-developer-sufficiency}]
-Fix a date $t$ and suppress the time subscript. Write $B$ for the
-counterfactual efficiency level $b$, $X^*(B)$ for $X_t^*(b)$, and
-$\varepsilon_B$ for $\varepsilon_{B,t}(b)$. Because
-\(\pi_B=X^*(B)/B^2\),
+\paragraph{A concavity test for
+Lemma~\ref{lem:rewrite-developer-verification}.}
+Fix a date $t$ and an alternative AI-efficiency level
+$b\in[B_0,\overline B)$. Let $X_t^*(b)$ be the unique maximizer of
+problem~\eqref{eq:rewrite-service-choice}, evaluated at $K_t,A_t,$ and $L_t$,
+and let $s_{X,t}(b)$ and $e_{X,t}(b)$ be the corresponding values. Implicitly
+differentiating the monopoly condition~\eqref{eq:rewrite-monopoly-foc}, using
+Equations~\eqref{eq:rewrite-sx} and
+\eqref{eq:rewrite-inverse-demand-elasticity}, gives
+\begin{equation}
+ \varepsilon_{B,t}(b)\equiv
+ \frac{\partial\ln X_t^*(b)}{\partial\ln b}
+ =\frac{1-e_{X,t}(b)}{e_{X,t}(b)[1-e_{X,t}(b)]
+ +(\alpha-\sigma^{-1})(1-\sigma^{-1})
+ s_{X,t}(b)[1-s_{X,t}(b)]}.
+ \label{eq:rewrite-service-capability-elasticity}
+\end{equation}
+This endogenous elasticity is not an additional model parameter. In what
+follows, suppress the date and counterfactual-state arguments and write
+\[
+ X^*(B)\equiv X_t^*(b),
+ \qquad
+ \varepsilon_B\equiv\varepsilon_{B,t}(b).
+\]
+Because \(\pi_B=X^*(B)/B^2\),
 \begin{equation}
  \pi_{BB}=\frac{X^*}{B^3}(\varepsilon_B-2).
  \label{eq:rewrite-profit-curvature}
-\end{equation}
-For a finite frontier, define research depth
-\begin{equation}
- R_B=-\overline B\log\left(1-\frac{B}{\overline B}\right).
- \label{eq:rewrite-research-depth}
-\end{equation}
-Then
-\(B(R_B)=\overline B[1-e^{-R_B/\overline B}]\) and
-\begin{equation}
- \dot R_B=\chi[B(R_B)M]^\eta.
- \label{eq:rewrite-research-depth-law}
 \end{equation}
 A direct differentiation gives
 \begin{equation}
@@ -290,49 +299,42 @@ The transformation \eqref{eq:rewrite-research-depth} satisfies
  B''(R_B)=-\frac{\psi(B)}{\overline B}<0.
 \]
 Using \(\pi_B=X^*(B)/B^2\) and \eqref{eq:rewrite-profit-curvature} gives
-\eqref{eq:rewrite-capped-profit-curvature}. Condition
-\eqref{eq:rewrite-capped-concavity-gate} therefore makes optimized operating
-profit concave in \(R_B\) throughout the reachable state domain.
+\eqref{eq:rewrite-capped-profit-curvature}. Hence the algebraic condition
+\begin{equation}
+ \psi(b)[\varepsilon_{B,t}(b)-2]
+ \leq\frac{b}{\overline B}
+ \label{eq:rewrite-capped-concavity-gate}
+\end{equation}
+for every $t\geq0$ and $b\in[B_0,\overline B)$ makes optimized operating
+profit concave in research depth throughout the reachable state domain.
 
 Under Assumption~\ref{ass:rewrite-research-concavity}, the monomial \((BM)^\eta\) is jointly concave and
 increasing in \((B,M)\). Because \(B(R_B)\) is increasing and concave,
 \(\chi[B(R_B)M]^\eta\) is jointly concave in \((R_B,M)\). Research cost is
-linear. The present-value Hamiltonian written in research depth is therefore
-jointly concave, and the transformed first-order and costate conditions
-maximize it globally.
+linear. The research-depth Hamiltonian is therefore jointly concave in its
+state and control, so its maximized value is concave in $R_B$ and satisfies
+the support condition~\eqref{eq:rewrite-hamiltonian-support}. The curvature
+test is sufficient, not necessary: it can fail at low counterfactual
+efficiency levels even when the maximized Hamiltonian has the required
+supporting tangent at the candidate state.
 
-The shadow value of research depth is
-\(q_R=qB'(R_B)=q\psi(B)\). Moreover,
-\[
- \psi(B)R_B
- =-(\overline B-B)\log\left(1-\frac{B}{\overline B}\right)\leq B.
-\]
-The developer's transversality condition therefore implies the terminal
-condition required by the concavity argument in \(R_B\). For any admissible
-alternative with the same initial stock, the standard finite-horizon
-concavity inequality gives
-\[
- J_T^*-\widetilde J_T
- \geq\mu_T(\widetilde R_{B,T}-R_{B,T}^*)
- \geq-\mu_TR_{B,T}^*,
-\]
-where \(\mu_T\) is the present-value shadow price of research depth. The final
-term converges to zero. Taking the lower limit as \(T\to\infty\) establishes
-global optimality.
-\end{proof}
+At unit elasticity, the concavity test has a simple primitive form. Define
+$\beta=(1-\alpha)\omega_X$. The static monopoly solution implies
+$\pi_t(B)=a_tB^{\beta/(1-\beta)}$ for some $a_t>0$. Because $B(R_B)$ is
+increasing and concave, $R_B\mapsto\pi_t(B(R_B))$ is globally concave whenever
+$\beta\leq1/2$. In the benchmark calibration in
+Table~\ref{tab:rewrite-parameters}, $\beta=0.134$, so this sufficient condition
+holds with substantial slack. It is not imposed as an additional maintained
+assumption; outside this range, the support condition can instead be checked
+directly.
 
-\paragraph{A sufficient condition without global concavity.}
-The preceding curvature condition can fail at counterfactual AI-efficiency levels
-even when the candidate is globally optimal. An alternative is to check that
-the maximized Hamiltonian lies below its tangent at the candidate state.
-This changes the optimality test, not the developer's problem.
-
-Fix a date, its capital and effective labor, and the candidate shadow price
+\begin{proof}[Proof of Lemma~\ref{lem:rewrite-developer-verification}]
+Fix a date and the candidate shadow price
 $q_{R,t}=q_t\psi(B_t)>0$. Maximizing the research-depth Hamiltonian over
 research expenditure gives
 \begin{equation}
  \widehat{\mathcal H}_t(\widetilde R_B)
- =\pi(B(\widetilde R_B))+
+ =\pi_t(B(\widetilde R_B))+
  \frac{1-\eta}{\eta}M_t
  \left[\frac{B(\widetilde R_B)}{B_t}\right]^{\eta/(1-\eta)}.
  \label{eq:rewrite-maximized-depth-hamiltonian}
@@ -347,23 +349,6 @@ candidate state is
  \label{eq:rewrite-depth-hamiltonian-slope}
 \end{equation}
 
-\begin{proposition}[Global Hamiltonian support]
-\label{prop:rewrite-hamiltonian-support}
-Fix the environment and paths defined in
-Proposition~\ref{prop:rewrite-developer-sufficiency}. Suppose the integral in
-problem~\eqref{eq:rewrite-developer-reduced} is finite, $0<\eta<1$, and
-conditions (i)--(iv) of that proposition hold. The developer's path is globally
-optimal if, for every $t\geq0$ and every
-$\widetilde R_B\geq R_{B,0}$,
-\begin{equation}
- \widehat{\mathcal H}_t(\widetilde R_B)
- \leq\widehat{\mathcal H}_t(R_{B,t})
- +\widehat{\mathcal H}'_t(R_{B,t})(\widetilde R_B-R_{B,t}).
- \label{eq:rewrite-hamiltonian-support}
-\end{equation}
-\end{proposition}
-
-\begin{proof}[Proof of Proposition~\ref{prop:rewrite-hamiltonian-support}]
 Write $D_t=\exp(-\int_0^t r_s\dd s)$ and $\mu_t=D_tq_{R,t}$.
 The transformed costate equation is
 $\dot\mu_t=-D_t\widehat{\mathcal H}'_t(R_{B,t})$.
@@ -377,7 +362,13 @@ integrate by parts. Equal initial states imply
  \leq-\mu_T(\widetilde R_{B,T}-R_{B,T})
  \leq\mu_TR_{B,T}.
 \]
-Because $\psi(B_t)R_{B,t}\leq B_t$, the last expression converges to zero by
+Because
+\[
+ \psi(B_t)R_{B,t}
+ =-(\overline B-B_t)\log\left(1-\frac{B_t}{\overline B}\right)
+ \leq B_t,
+\]
+the last expression converges to zero by
 the developer's transversality condition. Taking the upper limit establishes
 global optimality. The argument requires a global upper tangent at the
 candidate state, not concavity at every counterfactual state.
@@ -625,7 +616,8 @@ with scalar minimization between grid points. For $\sigma=1.50$, this
 stronger curvature test fails at low counterfactual AI-efficiency levels; checking
 concavity only along the realized path would miss that failure.
 
-I instead apply Proposition~\ref{prop:rewrite-hamiltonian-support}. At each
+I instead apply the support condition in
+Lemma~\ref{lem:rewrite-developer-verification}. At each
 date, I minimize its tangent gap, divided by the candidate's $Y$, over
 counterfactual AI-efficiency levels $B\geq B_0$, refining every local minimum found
 on the grid. An analytical upper bound on the Hamiltonian's derivative

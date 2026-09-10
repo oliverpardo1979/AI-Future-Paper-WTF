@@ -65,7 +65,7 @@ Its transversality condition is
 \subsection{Final-good production}
 \label{subsec:rewrite-final-production}
 
-Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and effective AI production services $X$. Let $0<\alpha<1$ denote the capital elasticity, $\delta\geq0$ the depreciation rate, and $\sigma>0$ the elasticity of substitution between effective labor and effective AI production services. The CES weights $\omega_L$ and $\omega_X$ are strictly positive. Production is
+Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and effective AI production services $X$. Let $0<\alpha<1$ denote the capital elasticity, $\delta\geq0$ the depreciation rate, and $\sigma>0$ the elasticity of substitution between effective labor and effective AI production services. The CES weights $\omega_L$ and $\omega_X$ are strictly positive and sum to one. Production is
 \begin{align}
  Y&=K^\alpha Z^{1-\alpha},
  \label{eq:rewrite-output}\\
@@ -446,67 +446,72 @@ The developer's transversality condition is
 It rules out a path that leaves positive discounted value in the AI-efficiency state.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
 
 The preceding conditions are necessary for an interior optimum, but they do
-not by themselves establish global optimality. To state a sufficient
-condition, fix a date $t$ and an AI-efficiency level
-$b\in[B_0,\overline B)$. Let $X_t^*(b)$ be the unique maximizer of
-problem~\eqref{eq:rewrite-service-choice}, evaluated at $K_t,A_t,$ and $L_t$.
-Let $s_{X,t}(b)$ and $e_{X,t}(b)$ be the corresponding values defined by
-Equations~\eqref{eq:rewrite-sx} and
-\eqref{eq:rewrite-inverse-demand-elasticity}. Define
+not by themselves establish global optimality. For a finite frontier, define
+research depth as the monotone transformation
 \begin{equation}
- \varepsilon_{B,t}(b)\equiv
- \frac{\partial\ln X_t^*(b)}{\partial\ln b}
- =\frac{1-e_{X,t}(b)}{e_{X,t}(b)[1-e_{X,t}(b)]
- +(\alpha-\sigma^{-1})(1-\sigma^{-1})
- s_{X,t}(b)[1-s_{X,t}(b)]}.
- \label{eq:rewrite-service-capability-elasticity}
+ R_B(B)=-\overline B\log\left(1-\frac{B}{\overline B}\right),
+ \qquad
+ B(R_B)=\overline B\left(1-e^{-R_B/\overline B}\right).
+ \label{eq:rewrite-research-depth}
 \end{equation}
-The endogenous elasticity $\varepsilon_{B,t}(b)$ measures the percentage
-change in the developer's optimal sales of AI production services caused by a
-one-percent increase in AI efficiency, holding $K_t,A_t,$ and $L_t$ fixed. It
-is not an additional parameter of the model.
+It maps $B\in[B_0,\overline B)$ into
+$R_B\in[R_{B,0},\infty)$, where $R_{B,t}=R_B(B_t)$ and
+$R_{B,0}=R_B(B_0)$, and rewrites the AI-efficiency law as
+\begin{equation}
+ \dot R_B=\chi[B(R_B)M]^\eta.
+ \label{eq:rewrite-research-depth-law}
+\end{equation}
+Write $\pi_t(B)$ for optimized operating profit evaluated at the date-$t$
+values of $K,A,$ and $L$, and define the shadow value of research depth as
+$q_{R,t}=q_t\psi(B_t)$. Holding this shadow value fixed, let
+\[
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ \equiv\max_{\widetilde M\geq0}
+ \left\{\pi_t(B(\widetilde R_B))-\widetilde M
+ +q_{R,t}\chi[B(\widetilde R_B)\widetilde M]^\eta\right\}.
+\]
 
-\Needspace{20\baselineskip}
-\begin{proposition}[Sufficient condition for global developer optimality]
-\label{prop:rewrite-developer-sufficiency}
-Fix $0<B_0<\overline B<\infty$ and paths
-$\{K_t,A_t,L_t,r_t\}_{t\geq0}$, with $K_t,A_t,L_t>0$. Let
-$\{B_t,M_t,X_t,q_t\}_{t\geq0}$ be paths such that $B_t$ and $q_t$ are
-continuously differentiable and $M_t,X_t,q_t>0$. Suppose the integral in
-problem~\eqref{eq:rewrite-developer-reduced} is finite and, for every
-$t\geq0$:
-\begin{enumerate}[label=(\roman*)]
- \item $X_t=X_t^*(B_t)$ solves the static problem
- \eqref{eq:rewrite-service-choice} and therefore satisfies
- \eqref{eq:rewrite-monopoly-foc};
- \item $B(0)=B_0$, $B_t\in[B_0,\overline B)$, and $B_t$ satisfies the
- AI-efficiency law \eqref{eq:rewrite-capability-law};
- \item $M_t$ and $q_t$ satisfy the research condition
- \eqref{eq:rewrite-research-foc} and the costate equation
- \eqref{eq:rewrite-costate}; and
- \item the transversality condition \eqref{eq:rewrite-developer-tvc} holds.
-\end{enumerate}
-Under Assumption~\ref{ass:rewrite-research-concavity}, suppose in addition that
+\Needspace{16\baselineskip}
+\begin{lemma}[Global verification of the developer's research path]
+\label{lem:rewrite-developer-verification}
+Fix $0<B_0<\overline B<\infty$ and positive paths for $K,A,$ and $L$,
+and take the locally integrable interest-rate path $r$ as given. Consider a
+feasible candidate $\{B_t,M_t\}_{t\geq0}$ for
+problem~\eqref{eq:rewrite-developer-reduced}, with continuously differentiable
+$B_t$, interior research $M_t>0$, and a finite objective. Suppose there is a
+continuously differentiable costate $q_t$ satisfying the research
+condition~\eqref{eq:rewrite-research-foc}, the costate
+equation~\eqref{eq:rewrite-costate}, and the transversality
+condition~\eqref{eq:rewrite-developer-tvc}. If, for every $t\geq0$ and every
+$\widetilde R_B\geq R_{B,0}$,
 \begin{equation}
- \psi(b)[\varepsilon_{B,t}(b)-2]
- \leq\frac{b}{\overline B}
- \label{eq:rewrite-capped-concavity-gate}
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ \leq\widehat{\mathcal H}_t(R_{B,t})
+ +\widehat{\mathcal H}'_t(R_{B,t})
+ (\widetilde R_B-R_{B,t}),
+ \label{eq:rewrite-hamiltonian-support}
 \end{equation}
-for every $t\geq0$ and every $b\in[B_0,\overline B)$. Then
-$\{B_t,M_t\}_{t\geq0}$ solves the reduced developer problem
-\eqref{eq:rewrite-developer-reduced}. Together with
-$X_t=X_t^*(B_t)$, it is globally optimal for the developer.
-\end{proposition}
+then the candidate is a global maximizer of the reduced developer problem.
+Together with the unique static service choice characterized in
+Lemma~\ref{lem:rewrite-monopoly-choice}, it is globally optimal for the
+developer.
+\end{lemma}
 
 \begin{proof}
 See Appendix~\ref{app:rewrite-proofs}.
 \end{proof}
 
-Condition~\eqref{eq:rewrite-capped-concavity-gate} is sufficient, not
-necessary. It holds strictly near the frontier because $\psi(b)$ converges to
-zero while $b/\overline B$ converges to one. It can fail at lower
-AI-efficiency levels, which is why the numerical equilibrium audit checks it at
-every efficiency level that the developer could reach from $B_0$.
+Lemma~\ref{lem:rewrite-developer-verification} is a verification result, not
+an existence theorem. It does not assume that the developer's entire problem
+is globally concave. Condition~\eqref{eq:rewrite-hamiltonian-support} requires
+only that the maximized Hamiltonian have a global supporting tangent at the
+candidate state. Global concavity is one sufficient way to obtain this
+support, but it is not necessary. Under
+Assumption~\ref{ass:rewrite-research-concavity}, it is enough to verify that
+$R_B\mapsto\pi_t(B(R_B))$ is concave. Appendix~\ref{app:rewrite-proofs}
+derives an exact algebraic test for that stronger condition. The equilibrium
+existence proofs use the concavity test, whereas the quantitative analysis
+checks the weaker support condition directly whenever global concavity fails.
 
 %\begin{proposition}[Research is interior]
 %\label{prop:rewrite-research-interior}
