@@ -22,15 +22,62 @@ A finite AI-efficiency frontier does not necessarily make long-run growth of out
 compute used to supply effective AI production services. If AI and labor are substitutes, capital
 and compute can sustain growth faster than effective labor even when AI efficiency converges to a finite limit.
 
-To show this, consider the case where $\sigma>1$ and define $\zeta(B)$ as the value of $Y/K$ when $s_X\to1$ conditional on a level of AI efficiency $B$ : 
+\Needspace{3\baselineskip}
+To identify the output--capital ratio when labor's income share vanishes,
+fix $B>0$ and consider $s_X\to1$, with $\sigma\ne1$. Since
+$wL/Y=(1-\alpha)(1-s_X)$, this limit corresponds to a vanishing labor
+income share.
+
+First, combining the final-good firm's demand for AI services,
+equation~\eqref{eq:rewrite-ai-price}, with the developer's pricing
+condition, equation~\eqref{eq:rewrite-monopoly-foc}, gives
+\[
+ \frac{X}{Y}=B(1-\alpha)s_X(1-e_X).
+\]
+Equation~\eqref{eq:rewrite-inverse-demand-elasticity} implies that
+$e_X\to\alpha$ as $s_X\to1$. Therefore,
+\[
+ \frac{X}{Y}\longrightarrow B(1-\alpha)^2.
+\]
+One factor $1-\alpha$ comes from the marginal product of AI services;
+the other comes from the developer's marginal-revenue condition.
+
+Second, the CES aggregator and the definition of $s_X$,
+equations~\eqref{eq:rewrite-ces} and \eqref{eq:rewrite-sx}, imply
+\[
+ \frac{Z}{X}
+ =\left(\frac{\omega_X}{s_X}\right)^{\sigma/(\sigma-1)}
+ \longrightarrow\omega_X^{\sigma/(\sigma-1)}.
+\]
+Combining these two limits yields
+\[
+ \frac{Z}{Y}=\frac{Z}{X}\frac{X}{Y}
+ \longrightarrow B(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}.
+\]
+
+Finally, dividing the production function,
+equation~\eqref{eq:rewrite-output}, by $Y$ and rearranging gives
+\[
+ 1=\left(\frac{K}{Y}\right)^\alpha
+   \left(\frac{Z}{Y}\right)^{1-\alpha},
+ \qquad
+ \frac{Y}{K}=\left(\frac{Z}{Y}\right)^{(1-\alpha)/\alpha}.
+\]
+I therefore denote the limiting output--capital ratio by
 \begin{equation}
  \zeta(B)
- =\left[(1-\alpha)^2B\,
+ \equiv\left[(1-\alpha)^2B\,
  \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
  \label{eq:rewrite-ai-terminal-ratio}
 \end{equation}
-This function gives . I write
-$\overline{\zeta}\equiv\zeta(\overline B)$ for its terminal value.
+For $\sigma>1$, $s_X\to1$ means that AI production services become
+arbitrarily large relative to effective labor. If AI efficiency also
+converges to its frontier, then $Y/K\to\zeta(\overline B)$. I write
+$\overline{\zeta}\equiv\zeta(\overline B)$. This calculation identifies a
+possible limiting output--capital ratio; it does not establish the
+existence of an equilibrium trajectory approaching it. The propositions
+below address that question.
+
 Define the threshold $\mathcal B(\sigma)$ by
 \begin{equation}
  \begin{aligned}
@@ -53,6 +100,8 @@ derives these expressions and proves the following propositions. I use
 $\mathcal B(\sigma)$ as an economic regime threshold only when $\sigma>1$.
 For $\sigma<1$, it appears only as a sufficient condition for the particular
 local finite-frontier construction below.
+
+For any positive variable $V$, write $g_V=\dot V/V$.
 
 \subsection{Complementarity: \texorpdfstring{\(\sigma<1\)}{sigma < 1}}
 \label{subsec:rewrite-complements}
