@@ -353,7 +353,9 @@ The AI developer uses $M$ for research and owns $B$ and any resulting improvemen
 % \label{eq:rewrite-profit-envelope}
 %\end{equation}
 %The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in AI efficiency saves $X/B^2$ units of compute.
-Given the solution to problem \ref{eq:rewrite-service-choice}, the monopolist chooses how much research compute $M$ to rent to increase AI efficiency $B$ and solves the following problem:
+Taking the paths of $r,K,A,$ and $L$ as given and substituting the static
+solution to problem~\eqref{eq:rewrite-service-choice}, the developer chooses
+the path of research compute $M$ to increase AI efficiency $B$:
 \begin{equation}
 \Pi = \max_{\{M_t\}_{t\geq0}}
  \int_0^\infty
@@ -443,33 +445,57 @@ The developer's transversality condition is
 \end{equation}
 It rules out a path that leaves positive discounted value in the AI-efficiency state.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
 
-The preceding conditions are necessary for an interior optimum. To state a
-sufficient condition, let $X^*(B)$ denote the unique maximizer in
-Lemma~\ref{lem:rewrite-monopoly-choice}, holding $K,A,$ and $L$ fixed, and
-define the service--efficiency elasticity
+The preceding conditions are necessary for an interior optimum, but they do
+not by themselves establish global optimality. To state a sufficient
+condition, fix a date $t$ and an AI-efficiency level
+$b\in[B_0,\overline B)$. Let $X_t^*(b)$ be the unique maximizer of
+problem~\eqref{eq:rewrite-service-choice}, evaluated at $K_t,A_t,$ and $L_t$.
+Let $s_{X,t}(b)$ and $e_{X,t}(b)$ be the corresponding values defined by
+Equations~\eqref{eq:rewrite-sx} and
+\eqref{eq:rewrite-inverse-demand-elasticity}. Define
 \begin{equation}
- \varepsilon_B\equiv
- \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
- =\frac{1-e_X}{e_X(1-e_X)
- +(\alpha-\sigma^{-1})(1-\sigma^{-1})s_X(1-s_X)}.
+ \varepsilon_{B,t}(b)\equiv
+ \frac{\partial\ln X_t^*(b)}{\partial\ln b}
+ =\frac{1-e_{X,t}(b)}{e_{X,t}(b)[1-e_{X,t}(b)]
+ +(\alpha-\sigma^{-1})(1-\sigma^{-1})
+ s_{X,t}(b)[1-s_{X,t}(b)]}.
  \label{eq:rewrite-service-capability-elasticity}
 \end{equation}
+The endogenous elasticity $\varepsilon_{B,t}(b)$ measures the percentage
+change in the developer's optimal sales of AI production services caused by a
+one-percent increase in AI efficiency, holding $K_t,A_t,$ and $L_t$ fixed. It
+is not an additional parameter of the model.
 
-\Needspace{12\baselineskip}
-\begin{proposition}[Sufficient condition for developer optimality]
+\Needspace{20\baselineskip}
+\begin{proposition}[Sufficient condition for global developer optimality]
 \label{prop:rewrite-developer-sufficiency}
-Consider a feasible finite-frontier developer policy with a finite objective.
-Suppose it satisfies the pointwise monopoly choice, research first-order
-condition, AI-efficiency law, costate equation, and developer transversality
-condition derived above. Under Assumption~\ref{ass:rewrite-research-concavity}, if
+Fix $0<B_0<\overline B<\infty$ and paths
+$\{K_t,A_t,L_t,r_t\}_{t\geq0}$, with $K_t,A_t,L_t>0$. Let
+$\{B_t,M_t,X_t,q_t\}_{t\geq0}$ be paths such that $B_t$ and $q_t$ are
+continuously differentiable and $M_t,X_t,q_t>0$. Suppose the integral in
+problem~\eqref{eq:rewrite-developer-reduced} is finite and, for every
+$t\geq0$:
+\begin{enumerate}[label=(\roman*)]
+ \item $X_t=X_t^*(B_t)$ solves the static problem
+ \eqref{eq:rewrite-service-choice} and therefore satisfies
+ \eqref{eq:rewrite-monopoly-foc};
+ \item $B(0)=B_0$, $B_t\in[B_0,\overline B)$, and $B_t$ satisfies the
+ AI-efficiency law \eqref{eq:rewrite-capability-law};
+ \item $M_t$ and $q_t$ satisfy the research condition
+ \eqref{eq:rewrite-research-foc} and the costate equation
+ \eqref{eq:rewrite-costate}; and
+ \item the transversality condition \eqref{eq:rewrite-developer-tvc} holds.
+\end{enumerate}
+Under Assumption~\ref{ass:rewrite-research-concavity}, suppose in addition that
 \begin{equation}
- \psi(B)(\varepsilon_B-2)
- \leq\frac{B}{\overline B}
+ \psi(b)[\varepsilon_{B,t}(b)-2]
+ \leq\frac{b}{\overline B}
  \label{eq:rewrite-capped-concavity-gate}
 \end{equation}
-for every date and every AI-efficiency level in the reachable interval
-$[B_0,\overline B)$, then the policy is a global solution to the developer's
-problem.
+for every $t\geq0$ and every $b\in[B_0,\overline B)$. Then
+$\{B_t,M_t\}_{t\geq0}$ solves the reduced developer problem
+\eqref{eq:rewrite-developer-reduced}. Together with
+$X_t=X_t^*(B_t)$, it is globally optimal for the developer.
 \end{proposition}
 
 \begin{proof}
@@ -477,10 +503,10 @@ See Appendix~\ref{app:rewrite-proofs}.
 \end{proof}
 
 Condition~\eqref{eq:rewrite-capped-concavity-gate} is sufficient, not
-necessary. It holds strictly near the frontier because its left-hand side
-converges to zero while its right-hand side converges to one. It can fail at
-lower AI-efficiency levels, which is why the numerical equilibrium audit checks
-it along the entire reachable path.
+necessary. It holds strictly near the frontier because $\psi(b)$ converges to
+zero while $b/\overline B$ converges to one. It can fail at lower
+AI-efficiency levels, which is why the numerical equilibrium audit checks it at
+every efficiency level that the developer could reach from $B_0$.
 
 %\begin{proposition}[Research is interior]
 %\label{prop:rewrite-research-interior}

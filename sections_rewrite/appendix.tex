@@ -255,7 +255,10 @@ expenditure exponent is approximately $0.508$; the value of $\eta$ is
 illustrative rather than estimated.
 
 \begin{proof}[Proof of Proposition~\ref{prop:rewrite-developer-sufficiency}]
-Because \(\pi_B=X^*/B^2\),
+Fix a date $t$ and suppress the time subscript. Write $B$ for the
+counterfactual efficiency level $b$, $X^*(B)$ for $X_t^*(b)$, and
+$\varepsilon_B$ for $\varepsilon_{B,t}(b)$. Because
+\(\pi_B=X^*(B)/B^2\),
 \begin{equation}
  \pi_{BB}=\frac{X^*}{B^3}(\varepsilon_B-2).
  \label{eq:rewrite-profit-curvature}
@@ -274,7 +277,7 @@ Then
 A direct differentiation gives
 \begin{equation}
  \frac{\partial^2\pi(B(R_B))}{\partial R_B^2}
- =\frac{X\psi(B)}{B^3}
+ =\frac{X^*(B)\psi(B)}{B^3}
  \left[\psi(B)(\varepsilon_B-2)
  -\frac{B}{\overline B}\right].
  \label{eq:rewrite-capped-profit-curvature}
@@ -286,7 +289,7 @@ The transformation \eqref{eq:rewrite-research-depth} satisfies
  \qquad
  B''(R_B)=-\frac{\psi(B)}{\overline B}<0.
 \]
-Using \(\pi_B=X/B^2\) and \eqref{eq:rewrite-profit-curvature} gives
+Using \(\pi_B=X^*(B)/B^2\) and \eqref{eq:rewrite-profit-curvature} gives
 \eqref{eq:rewrite-capped-profit-curvature}. Condition
 \eqref{eq:rewrite-capped-concavity-gate} therefore makes optimized operating
 profit concave in \(R_B\) throughout the reachable state domain.
