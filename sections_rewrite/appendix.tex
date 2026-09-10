@@ -17,6 +17,15 @@ Integration gives
 Local integrability makes the exponent finite at every finite date, so
 \(D_t>0\).
 
+\Needspace{7\baselineskip}
+\begin{lemma}[Static AI-service choice]
+\label{lem:rewrite-monopoly-choice}
+For $K,A,L,B>0$, $0<\alpha<1$, $\sigma>0$, and strictly positive CES weights
+that sum to one, problem~\eqref{eq:rewrite-service-choice} has a unique,
+strictly positive global maximizer. It is characterized by
+condition~\eqref{eq:rewrite-monopoly-foc}.
+\end{lemma}
+
 \begin{proof}[Proof of Lemma~\ref{lem:rewrite-monopoly-choice}]
 Fix \(K,A,L,B>0\), let \(R(X)=p_X(X)X\), and write
 \[
@@ -254,6 +263,102 @@ The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
 expenditure exponent is approximately $0.508$; the value of $\eta$ is
 illustrative rather than estimated.
 
+\paragraph{Global developer verification.}
+For a finite frontier, define research depth as the monotone transformation
+\begin{equation}
+ R_B(B)=-\overline B\log\left(1-\frac{B}{\overline B}\right),
+ \qquad
+ B(R_B)=\overline B\left(1-e^{-R_B/\overline B}\right).
+ \label{eq:rewrite-research-depth}
+\end{equation}
+It maps $B\in[B_0,\overline B)$ into
+$R_B\in[R_{B,0},\infty)$, where $R_{B,t}=R_B(B_t)$ and
+$R_{B,0}=R_B(B_0)$, and rewrites the AI-efficiency law as
+\begin{equation}
+ \dot R_B=\chi[B(R_B)M]^\eta.
+ \label{eq:rewrite-research-depth-law}
+\end{equation}
+Write $\pi_t(B)$ for optimized operating profit evaluated at the date-$t$
+values of $K,A,$ and $L$, and define the shadow value of research depth as
+$q_{R,t}=q_t\psi(B_t)$. Holding this shadow value fixed, let
+\[
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ \equiv\max_{\widetilde M\geq0}
+ \left\{\pi_t(B(\widetilde R_B))-\widetilde M
+ +q_{R,t}\chi[B(\widetilde R_B)\widetilde M]^\eta\right\}.
+\]
+
+\begin{lemma}[Global verification of the developer's research path]
+\label{lem:rewrite-developer-verification}
+Fix $0<B_0<\overline B<\infty$ and positive paths for $K,A,$ and $L$,
+and take the locally integrable interest-rate path $r$ as given. Consider a
+feasible candidate $\{B_t,M_t\}_{t\geq0}$ for
+problem~\eqref{eq:rewrite-developer-reduced}, with continuously differentiable
+$B_t$, interior research $M_t>0$, and a finite objective. Suppose there is a
+continuously differentiable costate $q_t$ satisfying the research
+condition~\eqref{eq:rewrite-research-foc}, the costate
+equation~\eqref{eq:rewrite-costate}, and the transversality
+condition~\eqref{eq:rewrite-developer-tvc}. If, for every $t\geq0$ and every
+$\widetilde R_B\geq R_{B,0}$,
+\begin{equation}
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ \leq\widehat{\mathcal H}_t(R_{B,t})
+ +\widehat{\mathcal H}'_t(R_{B,t})
+ (\widetilde R_B-R_{B,t}),
+ \label{eq:rewrite-hamiltonian-support}
+\end{equation}
+then the candidate is a global maximizer of the reduced developer problem.
+Together with the unique static service choice characterized in
+Lemma~\ref{lem:rewrite-monopoly-choice}, it is globally optimal for the
+developer.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:rewrite-developer-verification}]
+Fix a date and the candidate shadow price
+$q_{R,t}=q_t\psi(B_t)>0$. Maximizing the research-depth Hamiltonian over
+research expenditure gives
+\begin{equation}
+ \widehat{\mathcal H}_t(\widetilde R_B)
+ =\pi_t(B(\widetilde R_B))+
+ \frac{1-\eta}{\eta}M_t
+ \left[\frac{B(\widetilde R_B)}{B_t}\right]^{\eta/(1-\eta)}.
+ \label{eq:rewrite-maximized-depth-hamiltonian}
+\end{equation}
+Here $M_t$ is the candidate's research expenditure. The formula follows by
+maximizing $-M+q_{R,t}\chi[B(\widetilde R_B)M]^\eta$ over $M\geq0$ and
+using the candidate's research first-order condition. Its derivative at the
+candidate state is
+\begin{equation}
+ \widehat{\mathcal H}'_t(R_{B,t})
+ =\frac{\psi(B_t)}{B_t}(U_t+M_t).
+ \label{eq:rewrite-depth-hamiltonian-slope}
+\end{equation}
+
+Write $D_t=\exp(-\int_0^t r_s\dd s)$ and $\mu_t=D_tq_{R,t}$.
+The transformed costate equation is
+$\dot\mu_t=-D_t\widehat{\mathcal H}'_t(R_{B,t})$.
+For any admissible alternative research policy and its state
+$\widetilde R_{B,t}$, maximizing over its control first bounds its Hamiltonian
+by \eqref{eq:rewrite-maximized-depth-hamiltonian}. Apply
+\eqref{eq:rewrite-hamiltonian-support}, subtract the candidate payoff, and
+integrate by parts. Equal initial states imply
+\[
+ \widetilde J_T-J_T
+ \leq-\mu_T(\widetilde R_{B,T}-R_{B,T})
+ \leq\mu_TR_{B,T}.
+\]
+Because
+\[
+ \psi(B_t)R_{B,t}
+ =-(\overline B-B_t)\log\left(1-\frac{B_t}{\overline B}\right)
+ \leq B_t,
+\]
+the last expression converges to zero by
+the developer's transversality condition. Taking the upper limit establishes
+global optimality. The argument requires a global upper tangent at the
+candidate state, not concavity at every counterfactual state.
+\end{proof}
+
 \paragraph{A concavity test for
 Lemma~\ref{lem:rewrite-developer-verification}.}
 Fix a date $t$ and an alternative AI-efficiency level
@@ -327,52 +432,6 @@ Table~\ref{tab:rewrite-parameters}, $\beta=0.134$, so this sufficient condition
 holds with substantial slack. It is not imposed as an additional maintained
 assumption; outside this range, the support condition can instead be checked
 directly.
-
-\begin{proof}[Proof of Lemma~\ref{lem:rewrite-developer-verification}]
-Fix a date and the candidate shadow price
-$q_{R,t}=q_t\psi(B_t)>0$. Maximizing the research-depth Hamiltonian over
-research expenditure gives
-\begin{equation}
- \widehat{\mathcal H}_t(\widetilde R_B)
- =\pi_t(B(\widetilde R_B))+
- \frac{1-\eta}{\eta}M_t
- \left[\frac{B(\widetilde R_B)}{B_t}\right]^{\eta/(1-\eta)}.
- \label{eq:rewrite-maximized-depth-hamiltonian}
-\end{equation}
-Here $M_t$ is the candidate's research expenditure. The formula follows by
-maximizing $-M+q_{R,t}\chi[B(\widetilde R_B)M]^\eta$ over $M\geq0$ and
-using the candidate's research first-order condition. Its derivative at the
-candidate state is
-\begin{equation}
- \widehat{\mathcal H}'_t(R_{B,t})
- =\frac{\psi(B_t)}{B_t}(U_t+M_t).
- \label{eq:rewrite-depth-hamiltonian-slope}
-\end{equation}
-
-Write $D_t=\exp(-\int_0^t r_s\dd s)$ and $\mu_t=D_tq_{R,t}$.
-The transformed costate equation is
-$\dot\mu_t=-D_t\widehat{\mathcal H}'_t(R_{B,t})$.
-For any admissible alternative research policy and its state
-$\widetilde R_{B,t}$, maximizing over its control first bounds its Hamiltonian
-by \eqref{eq:rewrite-maximized-depth-hamiltonian}. Apply
-\eqref{eq:rewrite-hamiltonian-support}, subtract the candidate payoff, and
-integrate by parts. Equal initial states imply
-\[
- \widetilde J_T-J_T
- \leq-\mu_T(\widetilde R_{B,T}-R_{B,T})
- \leq\mu_TR_{B,T}.
-\]
-Because
-\[
- \psi(B_t)R_{B,t}
- =-(\overline B-B_t)\log\left(1-\frac{B_t}{\overline B}\right)
- \leq B_t,
-\]
-the last expression converges to zero by
-the developer's transversality condition. Taking the upper limit establishes
-global optimality. The argument requires a global upper tangent at the
-candidate state, not concavity at every counterfactual state.
-\end{proof}
 
 The AI-dominated continuation supplies an analytical long-run check on the
 support inequality. For $1<\sigma\leq1/\alpha$, the service elasticity defined
