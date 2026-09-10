@@ -101,14 +101,14 @@ Define $s_X$ as the elasticity of $Z$ with respect to $X$:
  \label{eq:rewrite-sx}
 \end{equation}
 The first-order conditions are
-\begin{equation}
- r=\alpha\frac{Y}{K}-\delta,
- \qquad
- w=(1-\alpha)(1-s_X)\frac{Y}{L},
- \qquad
- p_X=(1-\alpha)s_X\frac{Y}{X}.
- \label{eq:rewrite-factor-prices}
-\end{equation}
+\begin{align}
+ r&=\alpha\frac{Y}{K}-\delta,
+ \label{eq:rewrite-capital-return}\\
+ w&=(1-\alpha)(1-s_X)\frac{Y}{L},
+ \label{eq:rewrite-wage}\\
+ p_X&=(1-\alpha)s_X\frac{Y}{X}.
+ \label{eq:rewrite-ai-price}
+\end{align}
 
 Constant returns and these conditions imply
 \begin{equation}
@@ -138,17 +138,40 @@ This demand schedule is an input to the developer's problem.
 
 \begin{remark}[On the role of the elasticity of substitution]
 \label{rem:rewrite-ai-labor}
-Equations~\eqref{eq:rewrite-factor-prices} %and \eqref{eq:rewrite-labor-share} 
-show that $\sigma$ governs two distinct
-relationships between effective AI production services and labor. Holding $K$
-and $AL$ fixed, an increase in $X$ raises $w$ if $\sigma<1/\alpha$ but lowers it
-if $\sigma>1/\alpha$, while labor's income share rises if $\sigma<1$ and falls
-if $\sigma>1$. Equation~\eqref{eq:rewrite-factor-prices} also implies that,
-holding $K$ and $w$ fixed, conditional labor demand rises with $X$ if
-$\sigma<1/\alpha$ and falls if $\sigma>1/\alpha$. These conditional
-relationships, also emphasized by \citet{autorkausik2026}, provide a first
-illustration of why the elasticity of
-substitution matters for the effects of AI on labor.
+Equations~\eqref{eq:rewrite-output}, \eqref{eq:rewrite-ces},
+\eqref{eq:rewrite-sx}, and \eqref{eq:rewrite-wage} imply that, holding $K$, $A$,
+and $L$ fixed,
+\begin{align}
+ \frac{\partial\ln w}{\partial\ln X}
+ &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
+ \label{eq:rewrite-wage-ai-elasticity}\\
+ \frac{\partial\ln (wL/Y)}{\partial\ln X}
+ &=\left(\frac{1}{\sigma}-1\right)s_X.
+ \label{eq:rewrite-labor-share-ai-elasticity}
+\end{align}
+Because $s_X>0$, greater use of AI services raises the wage if
+$\sigma<1/\alpha$ and lowers it if $\sigma>1/\alpha$, while it raises labor's
+income share if $\sigma<1$ and lowers it if $\sigma>1$. Therefore, when
+$1<\sigma<1/\alpha$, greater use of AI services raises the wage while reducing
+labor's income share. This coexistence is a parameterized instance of the more
+general automation paradox studied by \citet[Theorem~1]{autorkausik2026}; the
+exact thresholds here follow from the nested Cobb--Douglas--CES production
+technology.
+
+Holding the wage rather than labor fixed, equations~\eqref{eq:rewrite-output},
+\eqref{eq:rewrite-ces}, \eqref{eq:rewrite-sx}, and
+\eqref{eq:rewrite-wage} imply that conditional labor demand satisfies
+\begin{equation}
+ \frac{\partial\ln L}{\partial\ln X}
+ =
+ \frac{(1/\sigma-\alpha)s_X}
+ {\alpha(1-s_X)+s_X/\sigma}.
+ \label{eq:rewrite-labor-demand-ai-elasticity}
+\end{equation}
+The denominator is positive, so conditional labor demand rises with $X$ if
+$\sigma<1/\alpha$ and falls if $\sigma>1/\alpha$. These relationships provide a
+first illustration of why the elasticity of substitution matters for the
+effects of AI on labor.
 \end{remark}
 
 
