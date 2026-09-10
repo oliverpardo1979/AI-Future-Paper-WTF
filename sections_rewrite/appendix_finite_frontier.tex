@@ -1,14 +1,10 @@
-\subsection{Finite-frontier equilibrium existence}
+\paragraph{Preliminary results for Propositions~\ref{prop:rewrite-capped-complements-existence}--\ref{prop:rewrite-capped-substitutes-existence}.}
 \label{app:rewrite-finite-existence}
 
-This subsection proves Propositions~\ref{prop:rewrite-capped-complements-existence}--\ref{prop:rewrite-capped-substitutes-existence}. The headings below identify which parts of the argument prove each proposition.
 I first construct the terminal values, then a family of convergent solutions
 of the exact equilibrium equations, and finally verify optimality and
 transversality. No equilibrium trajectory or convergence assumption is used
 as a premise.
-
-\subsubsection{Common preliminary derivations}
-\label{app:rewrite-finite-preliminaries}
 
 Write $\theta=(1-\alpha)/\alpha$. For $\sigma\ne1$, let
 $\varphi=(\sigma-1)/\sigma$ and define
@@ -108,8 +104,7 @@ Since $0<\overline s_X<1$, in all three cases
 \]
 It follows that $\overline c/\overline y>0$.
 
-\subsubsection{Proof of Propositions~\ref{prop:rewrite-capped-complements-existence} and~\ref{prop:rewrite-capped-unit-existence}, and of the labor-bottleneck case of Proposition~\ref{prop:rewrite-capped-substitutes-existence}}
-\label{app:rewrite-positive-share-proof}
+\paragraph{Common positive-labor-share construction.}
 
 Use the coordinates
 \begin{equation}
@@ -231,8 +226,7 @@ and the limiting rates in
 \eqref{eq:rewrite-complements-terminal} and \eqref{eq:rewrite-unit-terminal}.
 Optimality and transversality are verified below.
 
-\subsubsection{Proof of the AI-dominated case of Proposition~\ref{prop:rewrite-capped-substitutes-existence}}
-\label{app:rewrite-ai-dominated-proof}
+\paragraph{AI-dominated construction.}
 
 Let $\sigma>1$ and $\overline B>\mathcal B(\sigma)$.
 Here $\varphi=(\sigma-1)/\sigma\in(0,1)$. Use the alternative coordinates
@@ -314,8 +308,7 @@ The wage equation gives
 This proves the growth and distribution limits in
 Proposition~\ref{prop:rewrite-capped-substitutes-existence}.
 
-\subsubsection{Completion of the proofs of Propositions~\ref{prop:rewrite-capped-complements-existence}--\ref{prop:rewrite-capped-substitutes-existence}}
-\label{app:rewrite-finite-optimality-proof}
+\paragraph{Optimality and transversality.}
 
 In either construction let $\overline g$ denote the terminal aggregate
 growth rate: $n+\gamma$ in the positive labor-share case and
@@ -380,4 +373,51 @@ normalization becomes zero; this proof does not apply. For
 $\sigma<1$ and $\overline B\leq\mathcal B(\sigma)$, it does not rule out
 equilibria with different long-run ratios. Nor does it imply existence at
 arbitrary initial stocks or in the uncapped limit.
-\hfill$\square$
+
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-capped-complements-existence}]
+For $0<\sigma<1$ and $\overline B>\mathcal B(\sigma)$, the share map above
+has a unique interior root. Equations~\eqref{eq:rewrite-labor-terminal-values}
+and~\eqref{eq:rewrite-labor-terminal-research} construct the positive terminal
+values. The common positive-labor-share construction gives the local stable
+manifold and the unique nearby choices of $C_0$ and $q_0$. The optimality and
+transversality argument then verifies that these paths satisfy
+Definition~\ref{def:rewrite-equilibrium}, with the limits stated in
+\eqref{eq:rewrite-complements-terminal}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-capped-unit-existence}]
+At $\sigma=1$, the exact static solution above determines positive terminal
+values for every finite $\overline B>0$. The common positive-labor-share
+construction again gives the local stable manifold and the unique nearby
+choices of $C_0$ and $q_0$. The optimality and transversality argument verifies
+Definition~\ref{def:rewrite-equilibrium} and yields
+\eqref{eq:rewrite-unit-terminal}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-capped-substitutes-existence}]
+For $\sigma>1$, the share map above is strictly decreasing. If
+$\overline B<\mathcal B(\sigma)$, it has a unique interior root and the common
+positive-labor-share construction applies. If
+$\overline B>\mathcal B(\sigma)$, the AI-dominated construction gives the
+local stable manifold, the unique nearby choices of $C_0$ and $q_0$, and the
+limits in \eqref{eq:rewrite-substitutes-ai-limits} and
+\eqref{eq:rewrite-substitutes-wage-growth}. The common optimality and
+transversality argument verifies Definition~\ref{def:rewrite-equilibrium} in
+both cases. At $\overline B=\mathcal B(\sigma)$, the boundary fixed point is
+not hyperbolic, so the argument does not apply.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-output-wage-wedge}]
+Propositions~\ref{prop:rewrite-capped-complements-existence} and
+\ref{prop:rewrite-capped-unit-existence}, together with the below-threshold
+case of Proposition~\ref{prop:rewrite-capped-substitutes-existence}, imply
+$g_w\to\gamma$ whenever the limiting labor share is positive. The
+above-threshold case of Proposition~\ref{prop:rewrite-capped-substitutes-existence}
+implies both $g_w\to\gamma+(\overline r-\rho-\gamma)/\sigma>\gamma$ and
+$wL/Y\to0$. This proves the equivalence. Subtract the wage-growth limit in
+\eqref{eq:rewrite-substitutes-wage-growth} from the per-person output-growth
+limit in \eqref{eq:rewrite-substitutes-ai-limits}. Moreover,
+$\mathrm d\log(wL/Y)/\mathrm dt=g_w+n-g_Y$ because $L=N$. Finally, combine
+\eqref{eq:rewrite-labor-share-decline-rate} with
+\eqref{eq:rewrite-substitutes-wage-growth}.
+\end{proof}

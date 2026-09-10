@@ -1,8 +1,7 @@
 \section{Proofs}
 \label{app:rewrite-proofs}
 
-\subsection{Finite-frontier invariance}
-\label{app:rewrite-cap-invariance}
+\paragraph{Finite-frontier invariance.}
 
 Let \(D=\overline B-B\). The finite-frontier state equation gives
 \[
@@ -18,10 +17,7 @@ Integration gives
 Local integrability makes the exponent finite at every finite date, so
 \(D_t>0\).
 
-\subsection{Proof of Lemma~\ref{lem:rewrite-monopoly-choice}}
-\label{app:rewrite-monopoly-choice}
-
-\begin{proof}
+\begin{proof}[Proof of Lemma~\ref{lem:rewrite-monopoly-choice}]
 Fix \(K,A,L,B>0\), let \(R(X)=p_X(X)X\), and write
 \[
  u=\frac{1}{\sigma},\qquad s=s_X,\qquad
@@ -73,8 +69,7 @@ strict second-order condition:
 \end{equation}
 \end{proof}
 
-\subsection{Interior research}
-\label{app:rewrite-research-interior}
+\paragraph{Interior research.}
 
 Lemma~\ref{lem:rewrite-monopoly-choice} establishes \(X^*>0\), and the
 envelope condition \eqref{eq:rewrite-profit-envelope} gives
@@ -89,10 +84,8 @@ is
 Its right derivative diverges as \(M\downarrow0\) because
 \(q,B,\psi(B)>0\) and \(0<\eta<1\). Therefore \(M=0\) cannot
 maximize the Hamiltonian at a finite date.
-\hfill\(\square\)
 
-\subsection{Research expenditure and finite-horizon value}
-\label{app:rewrite-research-scale}
+\paragraph{Research expenditure and finite-horizon value.}
 
 The first-order and transversality conditions do not by themselves establish
 that the developer's objective has a finite value or that a candidate policy
@@ -118,7 +111,7 @@ effects in turn and compares their combined growth with the linear cost of
 research.
 
 \Needspace{6\baselineskip}
-\begin{proof}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-research-scale}]
 I first consider the uncapped economy. Define
 \[
  \theta=\frac{1-\alpha}{\alpha},\qquad
@@ -261,8 +254,7 @@ The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
 expenditure exponent is approximately $0.508$; the value of $\eta$ is
 illustrative rather than estimated.
 
-\subsection{Global optimality of the developer's policy}
-\label{app:rewrite-developer-sufficiency}
+\paragraph{Global optimality of the developer's policy.}
 
 To state a sufficient condition for global optimality, define the
 service--efficiency elasticity
@@ -321,7 +313,7 @@ lower AI-efficiency levels, which is why the numerical equilibrium audit checks
 it along the entire reachable path.
 
 \Needspace{6\baselineskip}
-\begin{proof}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-developer-sufficiency}]
 
 The transformation \eqref{eq:rewrite-research-depth} satisfies
 \[
@@ -402,7 +394,7 @@ date and for every $\widetilde R_B\geq R_{B,0}$,
 \end{equation}
 \end{proposition}
 
-\begin{proof}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-hamiltonian-support}]
 Write $D_t=\exp(-\int_0^t r_s\dd s)$ and $\mu_t=D_tq_{R,t}$.
 The transformed costate equation is
 $\dot\mu_t=-D_t\widehat{\mathcal H}'_t(R_{B,t})$.

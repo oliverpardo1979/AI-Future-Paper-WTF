@@ -65,8 +65,7 @@ Its transversality condition is
 \subsection{Final-good production}
 \label{subsec:rewrite-final-production}
 
-Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and effective AI production services $X$. Let $\delta\geq0$ be the depreciation rate and $\sigma>0$ the elasticity of substitution between effective labor and effective AI production services. The CES weights are denoted by
-$\omega_L$ and $\omega_X$. Production is
+Competitive firms produce the final good from physical capital $K$, effective labor $AL$, and effective AI production services $X$. Let $0<\alpha<1$ denote the capital elasticity, $\delta\geq0$ the depreciation rate, and $\sigma>0$ the elasticity of substitution between effective labor and effective AI production services. The CES weights $\omega_L$ and $\omega_X$ are strictly positive. Production is
 \begin{align}
  Y&=K^\alpha Z^{1-\alpha},
  \label{eq:rewrite-output}\\
@@ -256,15 +255,12 @@ The first-order condition equates marginal revenue to the compute cost of one ad
 
 \begin{lemma}[Static AI-service choice]
 \label{lem:rewrite-monopoly-choice}
-Under the maintained restrictions $0<\alpha<1$, $\sigma>0$, and
-$\omega_L,\omega_X>0$, problem~\eqref{eq:rewrite-service-choice} has a
-unique global maximizer $X^*>0$ for every $K,A,L,B>0$. This maximizer is the
-unique solution to condition~\eqref{eq:rewrite-monopoly-foc}. If
-$R(X)\equiv p_X(X)X$, it also satisfies $R''(X^*)<0$.
+Problem~\eqref{eq:rewrite-service-choice} has a unique global maximizer
+$X^*>0$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:rewrite-monopoly-choice}.
+See Appendix~\ref{app:rewrite-proofs}.
 \end{proof}
 
 Thus, the developer charges the unit cost $1/B$ multiplied by the monopoly
@@ -289,8 +285,8 @@ At a fixed $X$, a marginal increase in AI efficiency saves $U/B$ units of the co
 Let $R(X)=p_X(X)X$ and write the developer's unique within-date choice as
 $X^*(B)$, leaving its dependence on $K,A,$ and $L$ implicit. Holding those
 three variables fixed, condition~\eqref{eq:rewrite-monopoly-foc} gives
-$R'(X^*)=1/B$. The strict second-order condition in
-Lemma~\ref{lem:rewrite-monopoly-choice} therefore
+$R'(X^*)=1/B$. The strict second-order condition
+\eqref{eq:rewrite-monopoly-soc} therefore
 implies
 \begin{equation}
  \frac{\partial X^*}{\partial B}
@@ -437,12 +433,12 @@ expenditure therefore cannot be optimal. A finite frontier already bounds AI
 efficiency, so this restriction is not needed for finite-horizon existence of
 the developer's optimum in that case. I retain it because it also applies when
 the frontier is removed. Proposition~\ref{prop:rewrite-research-scale} in
-Appendix~\ref{app:rewrite-research-scale} establishes these results.
+Appendix~\ref{app:rewrite-proofs} establishes these results.
 
 Assumption~\ref{ass:rewrite-research-concavity} makes the research term
 $(BM)^\eta$ jointly concave in $B$ and $M$. For the finite-frontier technology,
 Proposition~\ref{prop:rewrite-developer-sufficiency} in
-Appendix~\ref{app:rewrite-developer-sufficiency} uses this property after a
+Appendix~\ref{app:rewrite-proofs} uses this property after a
 change of state variable. Together with the operating-profit curvature
 condition stated there, it makes the first-order and transversality conditions
 sufficient for global optimality of a feasible developer policy with a finite
@@ -620,7 +616,7 @@ the interior AI price and costate conditions must not be imposed at
 $\omega_X=0$. In particular, $wN/Y=1-\alpha$ and $(r+\delta)K/Y=\alpha$.
 \end{remark}
 
-For a finite AI-efficiency frontier, Proposition~\ref{prop:rewrite-developer-sufficiency} in Appendix~\ref{app:rewrite-developer-sufficiency} provides a sufficient test
+For a finite AI-efficiency frontier, Proposition~\ref{prop:rewrite-developer-sufficiency} in Appendix~\ref{app:rewrite-proofs} provides a sufficient test
 for the developer's global optimality.
 
 The system contains no separate household budget or final-good zero-profit
