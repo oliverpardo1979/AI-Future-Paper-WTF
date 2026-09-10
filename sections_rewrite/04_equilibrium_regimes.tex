@@ -1,33 +1,39 @@
 \section{Equilibrium existence with a finite AI-efficiency frontier}
 \label{sec:rewrite-regimes}
 
-I now give sufficient conditions for equilibrium in each
-substitution regime.
-
-\begin{assumption}[Aggregate growth]
-\label{ass:rewrite-growth-discounting}
+I now give sufficient conditions for equilibrium in each substitution regime.
+The parameter restrictions used in all three propositions are
 \begin{equation}
- n+\gamma>0.
- \label{eq:rewrite-growth-discounting}
+ \begin{gathered}
+ 0<\alpha<1,\quad 0<\eta<1,\quad \delta\geq0,\quad \chi>0,\\
+ \omega_L,\omega_X>0,\quad \omega_L+\omega_X=1,\quad
+ n\geq0,\quad \gamma>0,\quad \rho>n.
+ \end{gathered}
+ \label{eq:rewrite-finite-existence-parameters}
 \end{equation}
-\end{assumption}
+These are the primitive restrictions in Section~\ref{sec:rewrite-model}.
+In particular, the local finite-frontier results do not
+require Assumptions~\ref{ass:rewrite-research-curvature} or
+\ref{ass:rewrite-research-concavity}. Sufficiently near the frontier, its
+diminishing scope for improvement permits global verification of the
+developer's policy even when $\eta>1/2$.
 
-The inequality makes effective labor grow. In the normalized equilibrium
-dynamics near the long-run limit, it also gives the remaining AI-efficiency
-gap a positive asymptotic rate of closure. The finite-frontier existence results use
-Assumption~\ref{ass:rewrite-research-concavity} to verify the developer's
-global optimality and Assumption~\ref{ass:rewrite-growth-discounting} to
-construct these normalized dynamics.
-Assumption~\ref{ass:rewrite-research-curvature} is not needed for these local
-finite-frontier constructions because $B$ is bounded. It becomes substantive
-when the frontier is removed in Section~\ref{subsec:rewrite-uncapped}.
+The inequality $n+\gamma>0$ already follows from
+\eqref{eq:rewrite-population} and \eqref{eq:rewrite-labor-productivity},
+so it is not a separate assumption. It makes effective labor grow and gives
+the remaining AI-efficiency gap a positive asymptotic rate of closure in the
+constructions below. The case $n+\gamma=0$ is not covered by these proofs.
 
 Each proposition below states the restrictions on $\sigma$, the frontier, and
 the initial stocks that are specific to its construction. The results do not
 concern the uncapped economy. They are local in initial stocks, not in time:
 each constructs a trajectory defined for every $t\geq0$, including both
 transversality conditions and agent optimality. The initial stocks need not lie
-on a balanced-growth path.
+on a balanced-growth path. The neighborhoods are in normalized coordinates
+and require initial AI efficiency sufficiently close to its frontier.
+Local uniqueness below means uniqueness among solutions that remain near
+the indicated normalized long-run limit and converge to it; it does not
+exclude other equilibria outside that neighborhood.
 
 A finite AI-efficiency frontier does not necessarily make long-run growth of
 output per person equal to $\gamma$. It bounds AI efficiency, but not the
@@ -74,21 +80,23 @@ local finite-frontier construction below.
 
 \begin{proposition}[Equilibrium trajectories with complementary inputs]
 \label{prop:rewrite-capped-complements-existence}
-Under Assumptions~\ref{ass:rewrite-research-concavity} and
-\ref{ass:rewrite-growth-discounting}, suppose
-$0<B_0<\overline B<\infty$, $0<\sigma<1$, and
+Under \eqref{eq:rewrite-finite-existence-parameters},
+fix $0<\overline B<\infty$, and suppose $0<\sigma<1$ and
 $\overline B>\mathcal B(\sigma)$. Then there exist constants
 $\overline k,\overline d>0$ and a neighborhood $\mathcal U_L$ of
-$(\overline k,\overline d,0)$ such that every positive initial configuration
-satisfying
+$(\overline k,\overline d,0)$ such that every $A_0,N_0,K_0>0$ and
+$0<B_0<\overline B$ satisfying
 \begin{equation}
  \left(\frac{K_0}{A_0N_0},\; (\overline B-B_0)A_0N_0,\;
  \frac{1}{A_0N_0}\right)\in\mathcal U_L
  \label{eq:rewrite-labor-local-initial}
 \end{equation}
-admits an equilibrium. The initial values $C_0$
-and $q_0$ are uniquely selected among nearby trajectories converging to this
-terminal regime. Along the equilibrium, $s_X$ converges to an endogenous
+admits an equilibrium in the sense of Definition~\ref{def:rewrite-equilibrium}.
+Its initial values $C_0,q_0>0$ are locally unique. The constants
+$\overline k,\overline d$ are given by
+\eqref{eq:rewrite-labor-terminal-values} and
+\eqref{eq:rewrite-labor-terminal-research} in the proof.
+Along the equilibrium, $s_X$ converges to an endogenous
 limit $\overline s_X\in(0,1)$. This limit is the long-run elasticity of $Z$
 with respect to AI production services and is uniquely determined by the
 static equilibrium conditions at $B=\overline B$ and $r=\rho+\gamma$.
@@ -97,7 +105,7 @@ Moreover,
  B\to\overline B,\qquad
  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
  r\to\rho+\gamma,\qquad
- \frac{wL}{Y}\to(1-\alpha)(1-\overline s_X)>0,
+ \frac{wL}{Y}\to(1-\alpha)(1-\overline s_X)>0.
  \label{eq:rewrite-complements-terminal}
 \end{equation}
 \end{proposition}
@@ -123,12 +131,12 @@ $\beta=(1-\alpha)\omega_X$. The monopoly condition gives $U=\beta^2Y$.
 
 \begin{proposition}[Equilibrium trajectories at unit elasticity]
 \label{prop:rewrite-capped-unit-existence}
-Under Assumptions~\ref{ass:rewrite-research-concavity} and
-\ref{ass:rewrite-growth-discounting}, let $\sigma=1$ and
-$0<B_0<\overline B<\infty$. There is an
-equilibrium for initial configurations satisfying
-\eqref{eq:rewrite-labor-local-initial} in a sufficiently small neighborhood,
-with
+Under \eqref{eq:rewrite-finite-existence-parameters},
+fix $\sigma=1$ and $0<\overline B<\infty$. There exist $\overline d>0$
+and a neighborhood $\mathcal U_L$ of $(\overline k,\overline d,0)$ such
+that every $A_0,N_0,K_0>0$ and $0<B_0<\overline B$ satisfying
+\eqref{eq:rewrite-labor-local-initial} admits an equilibrium in the sense of
+Definition~\ref{def:rewrite-equilibrium}, where
 \begin{equation}
  \overline k=
  \left[(\beta^2\overline B)^\beta
@@ -136,8 +144,9 @@ with
  \right]^{1/(1-\alpha-\beta)}.
  \label{eq:rewrite-unit-terminal-capital}
 \end{equation}
-The positive constant $\overline d$ is constructed in the proof. The nearby
-convergent choice of $C_0,q_0$ is unique, and
+The constant $\overline d$ is given by
+\eqref{eq:rewrite-labor-terminal-research} in the proof. The initial values
+$C_0,q_0>0$ are locally unique. Along this equilibrium,
 \begin{equation}
  B\to\overline B,\qquad
  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
@@ -162,15 +171,17 @@ that the economy starts on a balanced-growth path.
 
 \begin{proposition}[Equilibrium trajectories with substitute inputs]
 \label{prop:rewrite-capped-substitutes-existence}
-Under Assumptions~\ref{ass:rewrite-research-concavity} and
-\ref{ass:rewrite-growth-discounting}, let
-$0<B_0<\overline B<\infty$ and $\sigma>1$.
+Under \eqref{eq:rewrite-finite-existence-parameters},
+fix $0<\overline B<\infty$ and $\sigma>1$.
 
-If $\overline B<\mathcal B(\sigma)$, initial configurations satisfying
-\eqref{eq:rewrite-labor-local-initial} in a sufficiently small neighborhood
-admit an equilibrium with the limits in
+If $\overline B<\mathcal B(\sigma)$, there exist $\overline k,\overline d>0$
+and a neighborhood $\mathcal U_L$ of $(\overline k,\overline d,0)$ such
+that every $A_0,N_0,K_0>0$ and $0<B_0<\overline B$ satisfying
+\eqref{eq:rewrite-labor-local-initial} admits an equilibrium with the limits in
 \eqref{eq:rewrite-complements-terminal}, for a limiting share
 $\overline s_X=\lim_{t\to\infty}s_{X,t}\in(0,1)$.
+The constants are given by \eqref{eq:rewrite-labor-terminal-values} and
+\eqref{eq:rewrite-labor-terminal-research} in the proof.
 
 If $\overline B>\mathcal B(\sigma)$, let
 $\varphi=(\sigma-1)/\sigma$ and define
@@ -180,13 +191,16 @@ $\varphi=(\sigma-1)/\sigma$ and define
  \label{eq:rewrite-substitutes-terminal-growth}
 \end{equation}
 There exist a constant $\overline d>0$ and a neighborhood $\mathcal U_A$ of
-$(0,\overline d,0)$ such that every positive initial configuration satisfying
+$(0,\overline d,0)$ such that every $A_0,N_0,K_0>0$ and
+$0<B_0<\overline B$ satisfying
 \begin{equation}
  \left[\left(\frac{A_0N_0}{K_0}\right)^\varphi,\;
  (\overline B-B_0)K_0,\; \frac{1}{A_0N_0}\right]\in\mathcal U_A
  \label{eq:rewrite-ai-local-initial}
 \end{equation}
-admits an equilibrium with
+admits an equilibrium. Here $\overline d$ is given by
+\eqref{eq:rewrite-ai-terminal-values} in the proof. Along this equilibrium,
+$r\to\overline r$, $s_X\to1$, and
 \begin{align}
  B&\to\overline B,& g_Y-n&\to\overline r-\rho>\gamma,&
  \frac{wL}{Y}&\to0,
@@ -195,7 +209,8 @@ admits an equilibrium with
  \frac{\overline r-\rho-\gamma}{\sigma}>\gamma.
  \label{eq:rewrite-substitutes-wage-growth}
 \end{align}
-In both cases the nearby convergent choice of $C_0,q_0$ is unique.
+In both cases the path satisfies Definition~\ref{def:rewrite-equilibrium},
+and the initial values $C_0,q_0>0$ are locally unique.
 The equality $\overline B=\mathcal B(\sigma)$ is not covered.
 \end{proposition}
 
@@ -384,9 +399,8 @@ converges to zero. The figure omits $\sigma<1$ because I do not interpret
 $\mathcal B(\sigma)$ as a regime boundary under complementarity.
 
 Table~\ref{tab:rewrite-finite-existence} collects the sufficient frontier
-conditions. Every row also requires Assumptions
-\ref{ass:rewrite-research-concavity} and
-\ref{ass:rewrite-growth-discounting}, together with the initial-stock
+conditions. Every row uses \eqref{eq:rewrite-finite-existence-parameters},
+together with the initial-stock
 neighborhood stated in the corresponding proposition. These are not necessary
 conditions for all possible equilibria, nor a claim of global uniqueness.
 

@@ -50,6 +50,7 @@ subject to
  \dot K=rK+wN+\Pi-C.
  \label{eq:rewrite-household-budget}
 \end{equation}
+Admissible choices satisfy $C_t>0$, $K_t\geq0$, and $K(0)=K_0$.
 The variable $r$ is the net real interest rate: depreciation has already been deducted from the rental return to capital. The household's Euler condition is
 \begin{equation}
  \frac{\dot C}{C}=n+r-\rho.
@@ -352,15 +353,19 @@ Taking the paths of $r,K,A,$ and $L$ as given and substituting the static
 solution to problem~\eqref{eq:rewrite-service-choice}, the developer chooses
 the path of research compute $M$ to increase AI efficiency $B$:
 \begin{equation}
-\Pi = \max_{\{M_t\}_{t\geq0}}
+\max_{\{M_t\}_{t\geq0}}
  \int_0^\infty
  \exp\left\{-\int_0^t r_s\dd s\right\}
  [\pi(B_t)-M_t]\dd t,
  \label{eq:rewrite-developer-reduced}
 \end{equation}
 subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
+Admissible research paths have $M_t\geq0$ and finite total expenditure on
+every finite interval. The objective is the present value of net
+distributions, not the flow $\Pi$ at a particular date.
 
-I maintain two restrictions on the research technology.
+I use two restrictions on the research technology, distinguishing below
+the results that require them from those that do not.
 \begin{assumption}[Research scale]
 \label{ass:rewrite-research-curvature}
 \begin{equation}
@@ -395,6 +400,10 @@ necessary conditions, I use this property to give a sufficient condition for
 global optimality with a finite frontier. The assumption is not, by itself, a
 concavity condition for the full AI-efficiency law in the original state
 variable.
+Section~\ref{sec:rewrite-regimes} shows that neither restriction is needed
+for local equilibrium existence sufficiently near a fixed finite frontier:
+there the frontier itself supplies the curvature needed for global
+developer optimality.
 
 %Profit can be negative at a date because the model imposes no separate cash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
@@ -552,6 +561,13 @@ following conditions hold:
 \end{align}
 \end{subequations}
 \end{enumerate}
+The exogenous paths are $A_t=A_0e^{\gamma t}$ and $N_t=N_0e^{nt}$,
+and the predetermined stocks satisfy $K(0)=K_0$ and $B(0)=B_0$.
+At $\sigma=1$, the CES equations use their continuous limits
+$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$.
+The trajectory is feasible for the agents' stated problems, the household
+and developer attain their optima, and final-good firms maximize profit.
+For a finite frontier, $B_t<\overline B$ at every finite date.
 %At \(\sigma=1\), equations \eqref{eq:rewrite-eq-z} and \eqref{eq:rewrite-eq-sx} are understood at their continuous limits:
 %$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$. If \(\overline B<\infty\), the path satisfies $B_t<\overline B$ at every finite date. Finally, t
 %The household and developer solve their stated optimization problems, final-good firms maximize profit, and all markets clear. The initial values \(C_t\) and \(q_t\) are endogenous jump variables selected to satisfy the two transversality conditions.

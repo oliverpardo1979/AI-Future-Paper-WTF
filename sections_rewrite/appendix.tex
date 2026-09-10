@@ -23,7 +23,8 @@ Local integrability makes the exponent finite at every finite date, so
 For $K,A,L,B>0$, $0<\alpha<1$, $\sigma>0$, and strictly positive CES weights
 that sum to one, problem~\eqref{eq:rewrite-service-choice} has a unique,
 strictly positive global maximizer. It is characterized by
-condition~\eqref{eq:rewrite-monopoly-foc}.
+condition~\eqref{eq:rewrite-monopoly-foc} and depends smoothly on the positive
+variables $K,A,L,B$, for each fixed $\sigma$.
 \end{lemma}
 
 \begin{proof}[Proof of Lemma~\ref{lem:rewrite-monopoly-choice}]
@@ -59,6 +60,9 @@ obtain
  u^2+\alpha(2-3u)>u^2+u(2-3u)=2u(1-u)>0.
 \]
 Thus marginal revenue decreases strictly whenever it is positive.
+At a solution of $m(X)=1/B$, its derivative is strictly negative.
+The implicit-function theorem therefore makes the maximizing service choice
+smooth in $K,A,L,B$ wherever it exists.
 
 For \(\sigma=1\), define \(\beta=(1-\alpha)\omega_X\).
 As \(X\downarrow0\), revenue is proportional to \(X^{1-u}\) when
@@ -290,7 +294,8 @@ $q_{R,t}=q_t\psi(B_t)$. Holding this shadow value fixed, let
 
 \begin{lemma}[Global verification of the developer's research path]
 \label{lem:rewrite-developer-verification}
-Fix $0<B_0<\overline B<\infty$ and positive paths for $K,A,$ and $L$,
+Let $0<\eta<1$ and $\chi>0$. Fix $0<B_0<\overline B<\infty$
+and positive continuous paths for $K,A,$ and $L$,
 and take the locally integrable interest-rate path $r$ as given. Consider a
 feasible candidate $\{B_t,M_t\}_{t\geq0}$ for
 problem~\eqref{eq:rewrite-developer-reduced}, with continuously differentiable
@@ -308,6 +313,9 @@ $\widetilde R_B\geq R_{B,0}$,
  \label{eq:rewrite-hamiltonian-support}
 \end{equation}
 then the candidate is a global maximizer of the reduced developer problem.
+Admissible alternatives have $M_t\geq0$, locally finite research expenditure,
+and the same initial state; the comparison also bounds the upper limit of
+their truncated discounted payoffs.
 Together with the unique static service choice characterized in
 Lemma~\ref{lem:rewrite-monopoly-choice}, it is globally optimal for the
 developer.
@@ -413,15 +421,29 @@ Using \(\pi_B=X^*(B)/B^2\) and \eqref{eq:rewrite-profit-curvature} gives
 for every $t\geq0$ and $b\in[B_0,\overline B)$ makes optimized operating
 profit concave in research depth throughout the reachable state domain.
 
-Under Assumption~\ref{ass:rewrite-research-concavity}, the monomial \((BM)^\eta\) is jointly concave and
-increasing in \((B,M)\). Because \(B(R_B)\) is increasing and concave,
-\(\chi[B(R_B)M]^\eta\) is jointly concave in \((R_B,M)\). Research cost is
-linear. The research-depth Hamiltonian is therefore jointly concave in its
-state and control, so its maximized value is concave in $R_B$ and satisfies
-the support condition~\eqref{eq:rewrite-hamiltonian-support}. The curvature
-test is sufficient, not necessary: it can fail at low counterfactual
-efficiency levels even when the maximized Hamiltonian has the required
-supporting tangent at the candidate state.
+The research term in \eqref{eq:rewrite-maximized-depth-hamiltonian} is a
+positive multiple of $B(R_B)^\mu$, where $\mu=\eta/(1-\eta)>0$. Its curvature is
+\begin{equation}
+ \frac{\mathrm d^2 B(R_B)^\mu}{\mathrm dR_B^2}
+ =\mu B^{\mu-2}\psi(B)
+ \left[(\mu-1)\psi(B)-\frac B{\overline B}\right].
+ \label{eq:rewrite-depth-research-curvature}
+\end{equation}
+Thus \eqref{eq:rewrite-capped-concavity-gate}, together with
+\begin{equation}
+ \frac{B_0}{\overline B}\geq
+ \max\left\{0,\frac{2\eta-1}{\eta}\right\},
+ \label{eq:rewrite-depth-research-concavity}
+\end{equation}
+makes the maximized Hamiltonian concave throughout the reachable state
+domain and proves \eqref{eq:rewrite-hamiltonian-support}.
+Assumption~\ref{ass:rewrite-research-concavity} makes
+\eqref{eq:rewrite-depth-research-concavity} automatic. But for every fixed
+$0<\eta<1$ its right-hand side is strictly below one, so it also holds
+without that assumption when initial efficiency is sufficiently close to
+the frontier. These curvature tests are sufficient, not necessary: they
+can fail even when the Hamiltonian has the required supporting tangent at
+the candidate state.
 
 At unit elasticity, the concavity test has a simple primitive form. Define
 $\beta=(1-\alpha)\omega_X$. The static monopoly solution implies

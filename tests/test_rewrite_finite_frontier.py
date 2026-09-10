@@ -5,11 +5,12 @@ equations. It neither simulates transition paths nor certifies a numerical
 equilibrium. The existence proof is in appendix_finite_frontier.tex.
 Run: python -m unittest discover -s tests -p test_rewrite_finite_frontier.py -v
 """
-from dataclasses import replace
+from dataclasses import asdict, replace
 from pathlib import Path
 import math
 import sys
 import unittest
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 if (ROOT / ".python-packages").exists():
@@ -21,6 +22,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import numpy as np
 from scipy.optimize import brentq
 from scipy.special import expit
+from scipy.linalg import schur
 from define_positive_ai_branch import PositiveAIBenchmarkParameters
 from analyze_axm_finite_cap_bvp import (
     critical_capability_frontier, terminal_point, terminal_residual,
@@ -231,6 +233,105 @@ class FiniteFrontierProofChecks(unittest.TestCase):
                 self.assertAlmostEqual(growth-r, p.population_growth-p.discount)
             self.assertAlmostEqual(interest(critical),
                                    p.discount+p.labor_productivity_growth)
+
+    def test_relaxed_eta_range_and_repeated_stable_roots(self):
+        # Algebra-only fixtures: the production parameter class deliberately
+        # retains the narrower range used by existing simulation seeds.
+        # No simulation settings or parameter validation are changed here.
+        base = asdict(PositiveAIBenchmarkParameters())
+        g = base["population_growth"] + base["labor_productivity_growth"]
+        r = base["discount"] + base["labor_productivity_growth"]
+        mu_repeated = 1 + g/r  # Makes the research stable root equal to -g.
+        etas = (0.2, 0.5, 0.7, 0.9, mu_repeated/(1+mu_repeated))
+        for eta in etas:
+            p = SimpleNamespace(**{**base, "eta": eta})
+            for sigma in (0.5, 0.9, 0.9999, 1.0, 1.0001, 1.5, 4.0):
+                with self.subTest(regime="positive_share", eta=eta, sigma=sigma):
+                    t = labor_point(sigma, p)
+                    np.testing.assert_allclose(dynamics(np.zeros(5), t, sigma, p),
+                                               0, atol=3e-11)
+                    j = jacobian(t, sigma, p)
+                    # Ordered real Schur vectors remain well defined with
+                    # repeated or defective roots, unlike individual vectors.
+                    _, basis, stable = schur(j, output="real", sort=lambda x: x < 0)
+                    self.assertEqual(stable, 3)
+                    projection = basis[[0, 2, 4], :stable]
+                    self.assertGreater(np.linalg.svd(projection)[1][-1], 1e-5)
+                    step = 1e-5
+                    numeric = np.column_stack([
+                        (dynamics(np.eye(5)[i]*step, t, sigma, p)
+                         -dynamics(-np.eye(5)[i]*step, t, sigma, p))/(2*step)
+                        for i in range(5)])
+                    np.testing.assert_allclose(j, numeric, rtol=3e-6, atol=3e-8)
+            for sigma in (1.1, 1.5, 4.0):
+                with self.subTest(regime="ai_dominated", eta=eta, sigma=sigma):
+                    frontier = 2*critical_capability_frontier(sigma, p)
+                    t = terminal_point(sigma, frontier, p)
+                    np.testing.assert_allclose(terminal_residual(t, p), 0, atol=3e-11)
+                    j = ai_dominated_jacobian(t, p)
+                    _, basis, stable = schur(j, output="real", sort=lambda x: x < 0)
+                    self.assertEqual(stable, 3)
+                    projection = basis[list(t.predetermined_indices), :stable]
+                    self.assertGreater(np.linalg.svd(projection)[1][-1], 1e-5)
+
+    def test_research_depth_curvature_for_all_eta(self):
+        # Frontier normalized to one: b(R)=1-exp(-R). The sign is independent
+        # of frontier units and of the positive coefficient in the Hamiltonian.
+        for eta in (0.1, 0.2, 0.5, 0.7, 0.9, 0.99):
+            mu = eta/(1-eta)
+            threshold = max(0.0, (2*eta-1)/eta)
+            b0 = (1+threshold)/2
+            for b in np.linspace(b0, (1+b0)/2, 5):
+                depth = -math.log1p(-b)
+                def value(z):
+                    return (-math.expm1(-z))**mu
+                exact = mu*b**(mu-2)*(1-b)*((mu-1)*(1-b)-b)
+                self.assertLess(exact, 0)
+                # Two-scale central differences expose sign/formula errors;
+                # tolerances cover O(h^2) truncation and cancellation only.
+                for step in (2e-4, 1e-4):
+                    numeric = (value(depth+step)-2*value(depth)+value(depth-step))/step**2
+                    self.assertAlmostEqual(numeric, exact, delta=2e-6*max(1, abs(exact)))
+            if eta > 0.5:
+                b = threshold/2
+                self.assertGreater((mu-1)*(1-b)-b, 0)
+
+    def test_near_frontier_global_tangent_in_all_regimes(self):
+        base = asdict(PositiveAIBenchmarkParameters())
+        for eta in (0.2, 0.7, 0.9):
+            p = SimpleNamespace(**{**base, "eta": eta})
+            for sigma in (0.5, 1.0, 1.5, 4.0):
+                t = labor_point(sigma, p)
+                frontier = t["b"]
+                b0, candidate = 0.99*frontier, 0.995*frontier
+                mu = eta/(1-eta)
+                self.assertGreater(b0/frontier, max(0, (2*eta-1)/eta))
+
+                def allocation(b):
+                    return static(math.log(t["k"]), math.log(b), sigma, p)
+
+                def profit(b):
+                    y, _, u, s = allocation(b)
+                    return (1-p.alpha)*s*y-u
+
+                y, _, u, _ = allocation(candidate)
+                research = 0.1*y  # Arbitrary positive candidate control.
+                def hamiltonian(b):
+                    return profit(b)+(1-eta)/eta*research*(b/candidate)**mu
+                tangent_slope = (1-candidate/frontier)/candidate*(u+research)
+                candidate_depth = -frontier*math.log1p(-candidate/frontier)
+                h0 = hamiltonian(candidate)
+                # Include the endpoint B0 and approach the open frontier.
+                for fraction in np.linspace(0.99, 0.9999, 25):
+                    b = frontier*fraction
+                    _, _, _, s = allocation(b)
+                    e = (1-s)/sigma+p.alpha*s
+                    curvature = e*(1-e)+(p.alpha-1/sigma)*(1-1/sigma)*s*(1-s)
+                    eps = (1-e)/curvature
+                    self.assertLess((1-fraction)*(eps-2), fraction)
+                    depth = -frontier*math.log1p(-fraction)
+                    slack = h0+tangent_slope*(depth-candidate_depth)-hamiltonian(b)
+                    self.assertGreaterEqual(slack, -2e-12*max(1, abs(h0)))
 
 
 if __name__ == "__main__":

@@ -17,7 +17,8 @@ $\varphi=(\sigma-1)/\sigma$ and define
 Here $m(s)=1-e_X$ is the marginal-revenue factor, not research compute.
 The static monopoly optimum has $m(s_X)>0$ by
 Lemma~\ref{lem:rewrite-monopoly-choice}. The CES share, monopoly condition,
-and production function imply
+and production function, equations~\eqref{eq:rewrite-eq-sx},
+\eqref{eq:rewrite-eq-monopoly}, and \eqref{eq:rewrite-eq-y}, imply
 \begin{align}
  \frac{X}{AN}
  &=\left[\frac{\omega_Ls_X}{\omega_X(1-s_X)}\right]^{1/\varphi},
@@ -123,7 +124,8 @@ AI-efficiency gap. The research condition gives
        \right]^{1/(1-\eta)},\qquad
  a=\chi\frac{B^\eta M^\eta}{\overline B}.
 \]
-The exact dynamic equations are
+Substituting \eqref{eq:rewrite-eq-research} and
+\eqref{eq:rewrite-equilibrium-dynamics} gives the exact dynamic equations
 \begin{subequations}
 \label{eq:rewrite-labor-proof-dynamics}
 \begin{align}
@@ -196,6 +198,8 @@ The sign is immediate when $u_\sigma\geq1$ or $u_\sigma\leq\alpha$.
 For $\alpha<u_\sigma<1$, the braces are linear in $s$, with positive
 endpoint values $u_\sigma(1-u_\sigma)$ and
 $u_\sigma^2+\alpha(1-2u_\sigma)$.
+The latter is positive if $u_\sigma\leq1/2$; otherwise $\alpha<u_\sigma$
+implies it exceeds $u_\sigma(1-u_\sigma)>0$.
 Thus $r_k<0$ in every interior-share case.
 
 Both blocks have negative determinants:
@@ -205,25 +209,35 @@ Both blocks have negative determinants:
 \]
 There are therefore three stable and two unstable eigenvalues. The stable
 direction in $J_R$ has a nonzero $k$ component, and the stable direction in
-$J_B$ has a nonzero $d$ component. Given the stable $\tau$ direction, one
-can successively eliminate the growing solution in the Ramsey block by
-choosing $c$, and then eliminate the growing solution in the research block
-by choosing $\widetilde q$. Hence the stable subspace projects invertibly
-onto $(k,d,\tau)$. This argument does not require distinct stable
-eigenvalues.
+$J_B$ has a nonzero $d$ component. To verify that their number suffices to
+select the jump variables, consider a vector in the stable subspace whose
+state components $(k,d,\tau)$ are all zero. Its linearized $\tau$ path is
+zero. The homogeneous Ramsey block must then follow its stable direction;
+its zero initial $k$ component forces its $c$ component to be zero as well.
+With that forcing absent, the same argument in the research block forces
+$\widetilde q=0$. The projection of the three-dimensional stable subspace
+onto the three predetermined coordinates is therefore injective and hence
+invertible. This argument also covers repeated stable eigenvalues.
 
-The static solution and the vector field are smooth near the terminal
-point. The stable-manifold theorem and the inverse-function theorem
-therefore give a local graph $(c,\widetilde q)$ over $(k,d,\tau)$; see
-\citet{dyatlov2018} for the stable-manifold construction. Every physical
-initial state in a sufficiently small neighborhood
-\eqref{eq:rewrite-labor-local-initial} has one nearby convergent solution on
-this graph. The solution remains in the neighborhood for all future time.
+Lemma~\ref{lem:rewrite-monopoly-choice} makes the static solution smooth.
+The normalized vector field extends smoothly through $\tau=0$, since
+$B=\overline B-d\tau$ remains positive nearby. The stable-manifold theorem
+and the inverse-function theorem therefore give a local graph
+$(c,\widetilde q)$ over $(k,d,\tau)$; see \citet{dyatlov2018}.
+Choose a small neighborhood of the full fixed point and then a smaller
+initial-state neighborhood $\mathcal U_L$. Every physical initial state
+satisfying \eqref{eq:rewrite-labor-local-initial} has a solution on this
+graph that stays in the full neighborhood for all future time and converges
+to the fixed point. It is unique among solutions with those properties.
 Positivity of $\tau,d,c,\widetilde q,k$ and the original AI-efficiency law
 ensure $0<B_t<\overline B$ and $M_t>0$ at every finite date.
 Reconstruction gives the original initial stocks, the equilibrium equations,
 and the limiting rates in
 \eqref{eq:rewrite-complements-terminal} and \eqref{eq:rewrite-unit-terminal}.
+Indeed, the normalized vector field tends to zero at its fixed point, so
+the time derivatives of its smooth static ratios tend to zero as well.
+This step, not convergence of ratios alone, establishes convergence of
+the growth rates.
 Optimality and transversality are verified below.
 
 \paragraph{AI-dominated construction.}
@@ -234,7 +248,7 @@ Here $\varphi=(\sigma-1)/\sigma\in(0,1)$. Use the alternative coordinates
  h=(AN/K)^\varphi,\quad d=(\overline B-B)K,\quad
  c=C/K,\quad v=q/K,\quad \tau=(AN)^{-1}.
 \]
-Within this subsubsection, $y,x,u$ denote $Y/K,X/K,U/K$, respectively.
+Within this construction, $y,x,u$ denote $Y/K,X/K,U/K$, respectively.
 Then
 \[
  B=\overline B-d\tau h^{1/\varphi},\quad
@@ -255,9 +269,13 @@ The exact equations are
 \end{subequations}
 The CES term divided by capital is
 $[\omega_Lh+\omega_Xx^\varphi]^{1/\varphi}$.
-The implicit static solution is smooth in $(h,B)$ near $h=0$.
-Since $1/\varphi>1$, the remaining terms admit a $C^1$ extension through
-$h=0$, sufficient for the stable-manifold argument.
+At $h=0$ the monopoly equation has the strictly positive curvature
+$D(1)=\alpha(1-\alpha)$. Its implicit static solution is therefore smooth
+in $(h,B)$ near $(0,\overline B)$. For the remaining terms, replacing
+$h^{1/\varphi}$ by $\max\{h,0\}^{1/\varphi}$ outside the physical domain
+gives a $C^1$ extension because $1/\varphi>1$. The $C^1$ stable-manifold
+theorem applies; see \citet[p.~7]{feldman2021stable}. The extension is only a
+mathematical device and does not change any equation on $h\geq0$.
 
 At $h=\tau=0$, the terminal constants are
 \begin{align}
@@ -290,15 +308,18 @@ The remaining block in $(\log d,\log v)$ is
  \qquad \det=-\overline g\mu\overline r<0.
 \]
 The linearized system is triangular in the order
-$(h,\tau),c,(d,v)$. Choosing $c$ eliminates its growing solution, and choosing
-$v$ eliminates the growing research solution for a given $d$.
+$(h,\tau),c,(d,v)$. A stable vector with zero state components $(h,d,\tau)$
+has zero $h,\tau$ paths; its consumption component must be zero because the
+unforced consumption equation is unstable. The research block then has zero
+$d$ component and hence zero $v$ component, as in the previous construction.
 Thus the three-dimensional stable subspace projects invertibly onto
 $(h,d,\tau)$. The same graph argument constructs the family specified by
 \eqref{eq:rewrite-ai-local-initial}, with a unique nearby convergent choice
 of $C_0,q_0$ and positive quantities at every finite date.
 
-Since $Y/K$, $X/K$, and $C/K$ converge to positive constants,
-$g_Y,g_X,g_C,g_K\to\overline g$. Also $s_X\to1$ and
+The normalized vector field tends to zero, so the time derivatives of the
+smooth positive ratios $Y/K$, $X/K$, and $C/K$ tend to zero.
+Consequently $g_Y,g_X,g_C,g_K\to\overline g$. Also $s_X\to1$ and
 $1-s_X$ is asymptotically proportional to $(AN/X)^\varphi$.
 The wage equation gives
 \[
@@ -329,22 +350,41 @@ They therefore converge to zero, rather than merely remaining bounded.
 
 Household utility is finite because $\log(C/N)$ grows at most linearly and
 $\rho>n$, as imposed in the household problem. Log utility is concave, the
-household budget is linear at given prices and distributions, and the Euler and transversality conditions
-verify household optimality against admissible budget-feasible alternatives.
+household budget is linear at given prices and distributions. More explicitly,
+let $\lambda_t=e^{-\rho t}N_t/C_t$, so $\dot\lambda_t=-r_t\lambda_t$ by
+\eqref{eq:rewrite-euler}. Concavity of log utility and equal initial capital
+give, for any admissible alternative $(\widetilde C,\widetilde K)$,
+\[
+ \int_0^T e^{-\rho t}N_t
+ \log\frac{\widetilde C_t}{C_t}\,\dd t
+ \leq\int_0^T\lambda_t(\widetilde C_t-C_t)\,\dd t
+ =-\lambda_T(\widetilde K_T-K_T)\leq\lambda_TK_T\to0.
+\]
+Here $\widetilde K_T\geq0$ and the last limit is the household TVC.
 Final-good optimality follows from concavity and constant returns.
 The pointwise monopoly optimum is global by
 Lemma~\ref{lem:rewrite-monopoly-choice}.
 
 For the dynamic developer, feasibility and first-order conditions still
-require a sufficiency argument. Along the constructed paths, operating
-profits at any alternative $B\in[B_0,\overline B)$ grow no faster
-exponentially than the terminal aggregate scale. The discount rate exceeds
-that growth rate by $\rho-n>0$. The candidate's discounted objective is
-finite, since its research compute converges to a finite constant.
+require a sufficiency argument. Let $S_t= A_tN_t$ in the positive-share
+construction and $S_t=K_t$ in the AI-dominated construction, and let
+$D_t=\exp(-\int_0^t r_s\,\dd s)$. Homogeneity of the static problem and
+compactness of the normalized state neighborhood give a constant $C_\pi$
+such that $0\leq\pi_t(b)\leq C_\pi S_t$ for every date and every
+$b\in[B_0,\overline B]$. Since
+$\mathrm d\log(D_tS_t)/\mathrm dt\to\overline g-\overline r=n-\rho<0$,
+$\int_0^\infty D_tS_t\,\dd t<\infty$. Thus discounted operating profit
+is uniformly bounded above across all alternative research policies.
+The candidate's objective is finite, because its research compute is
+bounded and $r_t\to\overline r>0$. An alternative with infinite discounted
+research expenditure has payoff $-\infty$ and cannot improve on it.
 
-It remains to verify the curvature condition
-\eqref{eq:rewrite-capped-concavity-gate} for every date and every alternative
+It remains to verify the curvature conditions
+\eqref{eq:rewrite-capped-concavity-gate} and
+\eqref{eq:rewrite-depth-research-concavity} for every date and every alternative
 AI-efficiency level in $[B_0,\overline B)$, not just on the selected path.
+First fix a compact normalized-state neighborhood and an interval of
+counterfactual efficiencies $[b_*,\overline B]$, with $0<b_*<\overline B$.
 In the positive labor-share construction, $K/(AN)$ stays in a compact
 neighborhood of $\overline k>0$. Smoothness of the static monopoly solution
 bounds $\varepsilon_{B,t}(b)$ uniformly for these states and for AI-efficiency levels near
@@ -352,22 +392,28 @@ $\overline B$. In the AI-dominated construction, $h$ stays near zero, and
 the same uniform bound follows from the smooth static limit
 $\varepsilon_{B,t}(b)\to1/\alpha$. Thus in either case there is a finite constant
 $E$ with $\varepsilon_{B,t}(b)-2\leq E$ throughout that state domain.
-By taking the initial-state neighborhood sufficiently small, $B_0$ is
-close enough to $\overline B$ that
+This bound is chosen before shrinking the initial-state neighborhood.
+Because $\mu=\eta/(1-\eta)$ is finite for each $0<\eta<1$, choose
+$b_{**}\in[b_*,\overline B)$ sufficiently close to $\overline B$ that
 \[
- (1-B_0/\overline B)\max\{E,0\}<B_0/\overline B.
+ (1-b_{**}/\overline B)\max\{E,\mu-1,0\}<b_{**}/\overline B.
 \]
-Because $b\geq B_0$, this inequality implies
-\eqref{eq:rewrite-capped-concavity-gate} on the entire alternative-state
-domain at every date. Together with Assumption~\ref{ass:rewrite-research-concavity} and the verified
-transversality condition, Lemma~\ref{lem:rewrite-developer-verification}
-therefore establishes the developer's global optimality.
+Shrink $\mathcal U_L$ or $\mathcal U_A$ so that $B_0\geq b_{**}$.
+This is possible because $B_0=\overline B-d_0\tau_0$ in the first
+construction and $B_0=\overline B-d_0\tau_0h_0^{1/\varphi}$ in the second.
+Every feasible research policy has $b\geq B_0$, so the two curvature
+conditions hold throughout the entire alternative-state domain at every
+date. Lemma~\ref{lem:rewrite-developer-verification} and the verified TVC
+therefore establish global developer optimality without requiring
+Assumption~\ref{ass:rewrite-research-concavity}. No curvature property of
+the candidate is being assumed: it follows from the primitives and the
+chosen initial-state neighborhood.
 
 All quantities remain finite at every finite date, and market clearing and
 the original initial conditions hold by reconstruction. The paths are
 therefore equilibria, not merely solutions of the
 canonical equations. The result is local only in its set of initial
-stocks. At $\overline B=\mathcal B(\sigma)$ the interior-share terminal
+stocks. For $\sigma>1$, at $\overline B=\mathcal B(\sigma)$ the interior-share terminal
 point reaches the boundary and a stable eigenvalue in the boundary
 normalization becomes zero; this proof does not apply. For
 $\sigma<1$ and $\overline B\leq\mathcal B(\sigma)$, it does not rule out
