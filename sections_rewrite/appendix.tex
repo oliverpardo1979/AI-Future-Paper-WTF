@@ -254,17 +254,7 @@ The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
 expenditure exponent is approximately $0.508$; the value of $\eta$ is
 illustrative rather than estimated.
 
-\paragraph{Global optimality of the developer's policy.}
-
-To state a sufficient condition for global optimality, define the
-service--efficiency elasticity
-\begin{equation}
- \varepsilon_B\equiv
- \left.\frac{\partial\ln X^*(B)}{\partial\ln B}\right|_{K,A,L}
- =\frac{1-e_X}{e_X(1-e_X)
- +(\alpha-\sigma^{-1})(1-\sigma^{-1})s_X(1-s_X)}.
- \label{eq:rewrite-service-capability-elasticity}
-\end{equation}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-developer-sufficiency}]
 Because \(\pi_B=X^*/B^2\),
 \begin{equation}
  \pi_{BB}=\frac{X^*}{B^3}(\varepsilon_B-2).
@@ -289,31 +279,6 @@ A direct differentiation gives
  -\frac{B}{\overline B}\right].
  \label{eq:rewrite-capped-profit-curvature}
 \end{equation}
-
-\begin{proposition}[Developer sufficiency with a finite frontier]
-\label{prop:rewrite-developer-sufficiency}
-Consider a feasible finite-frontier developer policy with a finite objective.
-Suppose it satisfies the pointwise monopoly choice, research first-order
-condition, AI-efficiency law, costate equation, and developer transversality
-condition derived above. Under Assumption~\ref{ass:rewrite-research-concavity}, if
-\begin{equation}
- \psi(B)(\varepsilon_B-2)
- \leq\frac{B}{\overline B}
- \label{eq:rewrite-capped-concavity-gate}
-\end{equation}
-for every date and every AI-efficiency level in the reachable interval
-\([B_0,\overline B)\), then the policy is a global solution to the developer's
-problem.
-\end{proposition}
-
-Condition \eqref{eq:rewrite-capped-concavity-gate} is sufficient, not
-necessary. It holds strictly near the frontier because its left-hand side
-converges to zero while its right-hand side converges to one. It can fail at
-lower AI-efficiency levels, which is why the numerical equilibrium audit checks
-it along the entire reachable path.
-
-\Needspace{6\baselineskip}
-\begin{proof}[Proof of Proposition~\ref{prop:rewrite-developer-sufficiency}]
 
 The transformation \eqref{eq:rewrite-research-depth} satisfies
 \[
