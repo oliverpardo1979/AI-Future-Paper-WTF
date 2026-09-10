@@ -349,11 +349,12 @@ candidate state is
 
 \begin{proposition}[Global Hamiltonian support]
 \label{prop:rewrite-hamiltonian-support}
-Consider a feasible finite-frontier developer policy with a finite objective,
-positive shadow price, and $0<\eta<1$. Suppose it satisfies the monopoly
-choice, research first-order condition, AI-efficiency law, costate equation,
-and developer transversality condition. It is globally optimal if, at every
-date and for every $\widetilde R_B\geq R_{B,0}$,
+Fix the environment and paths defined in
+Proposition~\ref{prop:rewrite-developer-sufficiency}. Suppose the integral in
+problem~\eqref{eq:rewrite-developer-reduced} is finite, $0<\eta<1$, and
+conditions (i)--(iv) of that proposition hold. The developer's path is globally
+optimal if, for every $t\geq0$ and every
+$\widetilde R_B\geq R_{B,0}$,
 \begin{equation}
  \widehat{\mathcal H}_t(\widetilde R_B)
  \leq\widehat{\mathcal H}_t(R_{B,t})
@@ -383,10 +384,11 @@ candidate state, not concavity at every counterfactual state.
 \end{proof}
 
 The AI-dominated continuation supplies an analytical long-run check on the
-support inequality. For $1<\sigma\leq1/\alpha$, the service elasticity satisfies
-$\varepsilon_B\leq1/\alpha$. Indeed, subtracting
-$\alpha(1-e_X)$ from the denominator in
-\eqref{eq:rewrite-service-capability-elasticity} gives
+support inequality. For $1<\sigma\leq1/\alpha$, the service elasticity defined
+in Equation~\eqref{eq:rewrite-service-capability-elasticity} satisfies
+$\varepsilon_{B,t}(b)\leq1/\alpha$ for every $t$ and $b$. Suppressing these
+arguments, subtracting $\alpha(1-e_X)$ from the denominator in that equation
+gives
 \[
  (\sigma^{-1}-\alpha)(1-s_X)
  \left[(1-\sigma^{-1})(1-s_X)+(\sigma^{-1}-\alpha)s_X\right]\geq0.
