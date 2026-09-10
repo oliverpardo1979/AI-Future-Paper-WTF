@@ -127,52 +127,6 @@ The inverse absolute elasticity is
 \end{equation}
 This demand schedule is an input to the developer's problem.
 
-%\subsubsection{AI production services and labor}
-%\label{subsubsec:rewrite-static-substitution}
-
-%The elasticity \(\sigma\) governs two different margins. The first is whether more effective AI production services raise or lower labor's marginal product. The second is whether labor receives a larger or smaller fraction of output. These margins have different thresholds. %Define production labor's share of output as
-%\begin{equation}
-% \ell^Y\equiv\frac{wL}{Y}=(1-\alpha)(1-s_X).
-% \label{eq:rewrite-labor-share}
-%\end{equation}
-
-\begin{remark}[On the role of the elasticity of substitution]
-\label{rem:rewrite-ai-labor}
-Equations~\eqref{eq:rewrite-output}, \eqref{eq:rewrite-ces},
-\eqref{eq:rewrite-sx}, and \eqref{eq:rewrite-wage} imply that, holding $K$ and $AL$ fixed,
-\begin{align}
- \frac{\partial\ln w}{\partial\ln X}
- &=\left(\frac{1}{\sigma}-\alpha\right)s_X,
- \label{eq:rewrite-wage-ai-elasticity}\\
- \frac{\partial\ln (wL/Y)}{\partial\ln X}
- &=\left(\frac{1}{\sigma}-1\right)s_X.
- \label{eq:rewrite-labor-share-ai-elasticity}
-\end{align}
-Because $s_X>0$, greater use of AI services raises the wage if
-$\sigma<1/\alpha$ and lowers it if $\sigma>1/\alpha$, while it raises labor's
-income share if $\sigma<1$ and lowers it if $\sigma>1$. Therefore, when
-$1<\sigma<1/\alpha$, greater use of AI services raises the wage while reducing
-labor's income share. This result matches a possibility emphasized by \citet{autorkausik2026}: a falling
-labor income share can coexist with a rising real wage. %The thresholds $1$ and $1/\alpha$ are specific to the nested Cobb--Douglas--CES production technology used here.
-%
-%Holding the wage rather than labor fixed, equations~\eqref{eq:rewrite-output},
-%\eqref{eq:rewrite-ces}, \eqref{eq:rewrite-sx}, and
-%\eqref{eq:rewrite-wage} imply that conditional labor demand satisfies
-%\begin{equation}
-% \frac{\partial\ln L}{\partial\ln X}
-% =
-% \frac{(1/\sigma-\alpha)s_X}
-% {\alpha(1-s_X)+s_X/\sigma}.
-% \label{eq:rewrite-labor-demand-ai-elasticity}
-%\end{equation}
-%The denominator is positive, so conditional labor demand rises with $X$ if
-%$\sigma<1/\alpha$ and falls if $\sigma>1/\alpha$. 
-These relationships provide a
-first illustration of why the elasticity of substitution matters for the
-effects of AI on labor.
-\end{remark}
-
-
 \subsection{The AI developer}
 \label{subsec:rewrite-developer}
 
@@ -295,9 +249,9 @@ The first-order condition equates marginal revenue to the compute cost of one ad
  \label{eq:rewrite-monopoly-foc}
 \end{equation}
 
-For \(K,A,L,B>0\), condition \eqref{eq:rewrite-monopoly-foc} selects the unique
-global maximizer \(X^*>0\). Appendix~\ref{app:rewrite-monopoly-choice} gives
-the proof.
+For \(K,A,L,B>0\) and \(\omega_L,\omega_X>0\), condition
+\eqref{eq:rewrite-monopoly-foc} selects the unique global maximizer \(X^*>0\).
+Appendix~\ref{app:rewrite-monopoly-choice} gives the proof.
 
 The monopoly price is therefore
 \begin{equation}
@@ -318,6 +272,41 @@ The envelope theorem gives
 \end{equation}
 %The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$:
 At a fixed $X$, a marginal increase in AI efficiency saves $U/B$ units of the consumption good.
+
+\begin{remark}[On the role of the elasticity of substitution]
+\label{rem:rewrite-ai-labor}
+Let $R(X)=p_X(X)X$ and write the developer's unique within-date choice as
+$X^*(B)$, leaving its dependence on $K,A,$ and $L$ implicit. Holding those
+three variables fixed, condition~\eqref{eq:rewrite-monopoly-foc} gives
+$R'(X^*)=1/B$. The strict second-order condition at the maximizer therefore
+implies
+\begin{equation}
+ \frac{\partial X^*}{\partial B}
+ =-\frac{1}{B^2R''(X^*)}>0.
+ \label{eq:rewrite-ai-supply-efficiency}
+\end{equation}
+Define
+$\varepsilon_{X,B}\equiv\partial\ln X^*/\partial\ln B>0$. Equations
+\eqref{eq:rewrite-output}, \eqref{eq:rewrite-ces}, \eqref{eq:rewrite-sx}, and
+\eqref{eq:rewrite-wage}, together with the chain rule, imply
+\begin{align}
+ \frac{\partial\ln w}{\partial\ln B}
+ &=\left(\frac{1}{\sigma}-\alpha\right)s_X\varepsilon_{X,B},
+ \label{eq:rewrite-wage-ai-efficiency-elasticity}\\
+ \frac{\partial\ln (wL/Y)}{\partial\ln B}
+ &=\left(\frac{1}{\sigma}-1\right)s_X\varepsilon_{X,B}.
+ \label{eq:rewrite-labor-share-ai-efficiency-elasticity}
+\end{align}
+Hence greater AI efficiency raises the wage if $\sigma<1/\alpha$ and lowers it
+if $\sigma>1/\alpha$, while it raises labor's income share if $\sigma<1$ and
+lowers it if $\sigma>1$. When $1<\sigma<1/\alpha$, greater AI efficiency
+therefore raises the wage while reducing labor's income share. This result
+provides a concrete AI-production mechanism for the broader possibility
+emphasized by \citet{autorkausik2026}: a falling labor income share can coexist
+with a rising real wage. The thresholds $1$ and $1/\alpha$ are specific to the
+production technology used here. These within-date results hold $K,A,$ and $L$
+fixed.
+\end{remark}
 
 AI efficiency is nonrival in use. Once $B$ has been developed, using it to
 augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make effective AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
