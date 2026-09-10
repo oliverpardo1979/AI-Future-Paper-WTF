@@ -37,10 +37,10 @@ stable-graph selection argument.
 Convergent growth rates and a positive limiting C/Y imply limiting per-capita
 output growth rbar-rho. This equals gamma in the positive labor-share family.
 For sigma > 1 above the threshold, with
-$\overline z\equiv z(\overline B)$,
-$\overline r=\alpha\overline z-\delta$ and
+$\overline{\zeta}\equiv\zeta(\overline B)$,
+$\overline r=\alpha\overline{\zeta}-\delta$ and
 $\partial\overline r/\partial\overline B
-=(1-\alpha)\overline z/\overline B>0$. The limiting interest rate is unbounded
+=(1-\alpha)\overline{\zeta}/\overline B>0$. The limiting interest rate is unbounded
 as the finite frontier tends to infinity across economies. This is not an
 explosion in time for a fixed frontier and does not prove uncapped existence.
 The initial-state neighborhoods need not be uniform across frontiers.
