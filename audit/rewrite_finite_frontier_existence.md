@@ -15,11 +15,12 @@ alternative reachable capability at every date, not only on the candidate.
 
 The finite-frontier constructions use a fixed positive finite frontier,
 positive AI weights and chi, 0 < eta < 1, rho > n, n >= 0, gamma > 0,
-and the stock neighborhoods stated in each proposition. Neither
-Assumption 1 (eta < alpha) nor Assumption 2 (eta <= 1/2) is required for
-these local capped constructions. They remain available for uncapped
-research bounds and simpler global concavity checks, respectively, and the
-simulation calibration is unchanged. The separate former Assumption 3
+and the stock neighborhoods stated in each proposition. Neither eta < alpha
+nor eta <= 1/2 is required for these local capped constructions. These
+inequalities are now stated only as conditions of the uncapped research
+bound and of simpler appendix concavity checks, respectively, not as
+numbered assumptions of the general model. The simulation calibration is
+unchanged. The separate former Assumption 3
 (n + gamma > 0) was redundant given Section 3's n >= 0 and gamma > 0 and has
 been removed. The zero-effective-labor-growth case is not covered here.
 
@@ -135,3 +136,15 @@ benchmark/seed assumptions. Algebra-only test fixtures do not modify it or
 claim that the production algorithm is validated outside its previous range.
 Initial states far from the normalized limits, threshold equality, and the
 uncapped economy remain outside these existence results.
+
+## Follow-up: restrictions stated where used
+
+Removed the two numbered research assumptions and their discussion from
+Section 3. Section 4's uncapped discussion and the expenditure proposition
+retain eta < alpha as a sufficient condition for the finite-horizon bound;
+the appendix's concavity checks state eta <= 1/2 explicitly where needed.
+The general model retains 0 < eta < 1. The calibration table describes
+eta = 0.20 as illustrative, not estimated, with no change to its value.
+Preserved the author's commented-out parameter block in Section 4 and
+replaced its active equation references by references to Section 3.
+The equilibrium constructions, conclusions, and simulation files are unchanged.

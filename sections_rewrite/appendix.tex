@@ -103,10 +103,10 @@ maximize the Hamiltonian at a finite date.
 The first-order and transversality conditions do not by themselves establish
 that the developer's objective has a finite value or that a candidate policy
 is globally optimal. The result below addresses the value on a fixed finite
-horizon, taking the paths of $K,A,L,$ and $r$ as given. To explain the role of
-Assumption~\ref{ass:rewrite-research-curvature}, I also consider values of
-$\eta$ outside its maintained range, retaining $0<\eta<1$ from the AI-efficiency
-law. Global optimality is addressed separately in
+horizon, taking the paths of $K,A,L,$ and $r$ as given. I retain
+$0<\eta<1$ from the AI-efficiency law and distinguish the uncapped cases
+$\eta<\alpha$, $\eta=\alpha$, and $\eta>\alpha$.
+Global optimality is addressed separately in
 Lemma~\ref{lem:rewrite-developer-verification}.
 
 \begin{proposition}[Large-scale research expenditure]
@@ -255,12 +255,11 @@ The objective is therefore weakly upper semicontinuous and attains its maximum.
 \end{proof}
 
 \Needspace{4\baselineskip}
-Assumption~\ref{ass:rewrite-research-curvature} prevents arbitrarily large
+The condition $\eta<\alpha$ prevents arbitrarily large
 research expenditure from being optimal on a fixed horizon in the uncapped
 economy. It is a sufficient restriction, not a necessary one for every value
 of $\sigma$, and finite-horizon existence with a finite frontier does not
-require $\eta<\alpha$. The restriction supplies a common parameter range that
-also covers the uncapped research technology. Neither the bound nor
+require $\eta<\alpha$. Neither the bound nor
 finite-horizon developer existence establishes an equilibrium:
 the paths of $K,A,L,$ and $r$ were taken as given throughout this argument.
 The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
@@ -437,10 +436,10 @@ Thus \eqref{eq:rewrite-capped-concavity-gate}, together with
 \end{equation}
 makes the maximized Hamiltonian concave throughout the reachable state
 domain and proves \eqref{eq:rewrite-hamiltonian-support}.
-Assumption~\ref{ass:rewrite-research-concavity} makes
-\eqref{eq:rewrite-depth-research-concavity} automatic. But for every fixed
+If $\eta\leq1/2$, condition~\eqref{eq:rewrite-depth-research-concavity}
+holds automatically. But for every fixed
 $0<\eta<1$ its right-hand side is strictly below one, so it also holds
-without that assumption when initial efficiency is sufficiently close to
+without this restriction when initial efficiency is sufficiently close to
 the frontier. These curvature tests are sufficient, not necessary: they
 can fail even when the Hamiltonian has the required supporting tangent at
 the candidate state.
@@ -468,7 +467,7 @@ gives
 Choose $B_*\in(B_0,\overline B)$ with
 $B_*/\overline B>\max\{0,(1-2\alpha)/(1-\alpha)\}$.
 Operating profit is then concave in research depth for $B\geq B_*$.
-Under Assumption~\ref{ass:rewrite-research-concavity}, the research term in
+If $\eta\leq1/2$, the research term in
 \eqref{eq:rewrite-maximized-depth-hamiltonian} is concave there as well.
 For a candidate with $B_t\geq B_*$, it consequently suffices to check
 \begin{equation}
