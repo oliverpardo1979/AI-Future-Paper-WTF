@@ -254,9 +254,18 @@ The first-order condition equates marginal revenue to the compute cost of one ad
  \label{eq:rewrite-monopoly-foc}
 \end{equation}
 
-For \(K,A,L,B>0\) and \(\omega_L,\omega_X>0\), condition
-\eqref{eq:rewrite-monopoly-foc} selects the unique global maximizer \(X^*>0\).
-Appendix~\ref{app:rewrite-monopoly-choice} gives the proof.
+\begin{lemma}[Static AI-service choice]
+\label{lem:rewrite-monopoly-choice}
+Under the maintained restrictions $0<\alpha<1$, $\sigma>0$, and
+$\omega_L,\omega_X>0$, problem~\eqref{eq:rewrite-service-choice} has a
+unique global maximizer $X^*>0$ for every $K,A,L,B>0$. This maximizer is the
+unique solution to condition~\eqref{eq:rewrite-monopoly-foc}. If
+$R(X)\equiv p_X(X)X$, it also satisfies $R''(X^*)<0$.
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:rewrite-monopoly-choice}.
+\end{proof}
 
 The monopoly price is therefore
 \begin{equation}
@@ -283,7 +292,8 @@ At a fixed $X$, a marginal increase in AI efficiency saves $U/B$ units of the co
 Let $R(X)=p_X(X)X$ and write the developer's unique within-date choice as
 $X^*(B)$, leaving its dependence on $K,A,$ and $L$ implicit. Holding those
 three variables fixed, condition~\eqref{eq:rewrite-monopoly-foc} gives
-$R'(X^*)=1/B$. The strict second-order condition at the maximizer therefore
+$R'(X^*)=1/B$. The strict second-order condition in
+Lemma~\ref{lem:rewrite-monopoly-choice} therefore
 implies
 \begin{equation}
  \frac{\partial X^*}{\partial B}
