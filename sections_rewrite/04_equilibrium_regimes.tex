@@ -1,9 +1,9 @@
 \section{Equilibrium characterization}
 \label{sec:rewrite-regimes}
 
-In this section, I give sufficient conditions for the existence of an equilibrium in each substitution regime. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high. 
+In this section, I give sufficient conditions for the existence of an equilibrium and characterize an steady state for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high. 
 
-To identify this threshold, I calculate the net return to capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
+To identify this threshold, I calculate the net return on capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
 %The parameter restrictions used in all three propositions are
 %\begin{equation}
 % \begin{gathered}
@@ -20,26 +20,20 @@ To identify this threshold, I calculate the net return to capital implied by the
 
 %Each proposition below states the restrictions on $\sigma$, the frontier, and the initial stocks that are specific to its construction. The results do not concern the uncapped economy. They are local in initial stocks, not in time: each constructs a trajectory defined for every $t\geq0$, including both transversality conditions and agent optimality. The initial stocks need not lie on a balanced-growth path. The neighborhoods are in normalized coordinates and require initial AI efficiency sufficiently close to its frontier. Local uniqueness below means uniqueness among solutions that remain near the indicated normalized long-run limit and converge to it; it does not exclude other equilibria outside that neighborhood.
 
-\subsection{The return to capital and the growth threshold}
+\subsection{The return to capital and the efficiency threshold}
 \label{subsec:rewrite-return-threshold}
 
-A finite frontier bounds AI efficiency, but not the compute used to supply
-AI production services. To identify the return when labor's income share
-vanishes, fix $B>0$ and consider $s_X\to1$, with $\sigma\ne1$.
-Since $wL/Y=(1-\alpha)(1-s_X)$, this is the zero-labor-share limit.
+A finite frontier bounds AI efficiency, but not the compute used to supply AI production services. To identify the return when labor's income share vanishes, fix $B>0$ and consider $s_X\to1$, with $\sigma\ne1$. Since $wL/Y=(1-\alpha)(1-s_X)$, this is the zero-labor-share limit.
 
-Combining the final-good firm's demand for AI services,
-equation~\eqref{eq:rewrite-ai-price}, with the developer's pricing
-condition, equation~\eqref{eq:rewrite-monopoly-foc}, gives
+Combine the final-good firm's demand for AI services in
+equation~\eqref{eq:rewrite-ai-price} with the developer's pricing condition in equation~\eqref{eq:rewrite-monopoly-foc}. The result is:
 \[
  \frac XY=B(1-\alpha)s_X(1-e_X)
  \longrightarrow B(1-\alpha)^2.
 \]
-The limit uses $e_X\to\alpha$ from
-\eqref{eq:rewrite-inverse-demand-elasticity}. One factor $1-\alpha$ comes
-from the marginal product of AI services; the other comes from the
-developer's marginal-revenue condition. The CES aggregator and its
-elasticity, equations~\eqref{eq:rewrite-ces} and \eqref{eq:rewrite-sx}, give
+The limit uses $e_X\to\alpha$ from Equation
+\eqref{eq:rewrite-inverse-demand-elasticity}. %One factor $1-\alpha$ comes from the marginal product of AI services; the other comes from the developer's marginal-revenue condition. 
+The CES aggregator and its elasticity in Equations~\eqref{eq:rewrite-ces} and \eqref{eq:rewrite-sx} give
 \[
  \frac ZX=\left(\frac{\omega_X}{s_X}\right)^{\sigma/(\sigma-1)}
  \longrightarrow\omega_X^{\sigma/(\sigma-1)}.
@@ -51,7 +45,7 @@ $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Hence
  \longrightarrow
  \left[(1-\alpha)^2B\,\omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
 \]
-Using $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return},
+Replacing this result in Equation~\eqref{eq:rewrite-capital-return} $r=\alpha Y/K-\delta$ defines the net return on capital when $s_X\to1$ as a function of $B$:
 I define the corresponding net return as
 \begin{equation}
  \mathcal R(B)
@@ -59,20 +53,11 @@ I define the corresponding net return as
  \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}-\delta.
  \label{eq:rewrite-ai-terminal-ratio}
 \end{equation}
-This is a return at a particular limit of the production and pricing
-conditions, not the interest rate at an arbitrary date. The actual
-interest rate also depends on capital relative to effective labor.
-For $\sigma>1$, $s_X\to1$ means that AI production services become
-arbitrarily large relative to effective labor. An equilibrium approaching
-this limit with $B\to\overline B$ would have
-$r\to\mathcal R(\overline B)$; the calculation alone does not establish
-that such a trajectory exists.
+This is a return at a particular limit of the production and pricing conditions, not necessarily an equilibrium interest rate. %The actual interest rate also depends on capital relative to effective labor. 
+For $\sigma>1$, $s_X\to1$ means that AI production services become arbitrarily large relative to effective labor. For $\sigma<1$, $s_X\to1$ means that effective labor services become arbitrarily large relative to AI production. Whether the equilibrium intteres rate approaches to $\mathcal R(\overline B)$ as $B\to\overline B$ depends on $\sigma$, as shown next.
 
-The relevant comparison is with $\rho+\gamma$. By the Euler equation,
-\eqref{eq:rewrite-euler}, consumption per person grows at $r-\rho$.
-A long-run equilibrium in which consumption per person grows at $\gamma$
-therefore requires $r=\rho+\gamma$. Since $\mathcal R(B)$ is strictly
-increasing, define $\mathcal B(\sigma)$ for $\sigma\ne1$ by
+By the Euler equation \eqref{eq:rewrite-euler}, consumption per person grows at $r-\rho$. A long-run equilibrium in which consumption per person grows at $\gamma$
+therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the level of AI efficiency such that support a consumption growth equal to $\gamma$ when $s_X\to 1$:
 \begin{equation}
  \begin{aligned}
  \mathcal R(\mathcal B(\sigma))&=\rho+\gamma,\\
@@ -82,39 +67,28 @@ increasing, define $\mathcal B(\sigma)$ for $\sigma\ne1$ by
  \end{aligned}
  \label{eq:rewrite-critical-frontier}
 \end{equation}
-The first line equates the zero-labor-share return to the return that
-sustains growth at $\gamma$; the second solves for AI efficiency.
-I interpret this threshold as a boundary between growth regimes only
-for $\sigma>1$. With complementarity, it instead enters a sufficient
-condition for the construction below. At $\sigma=1$,
-\eqref{eq:rewrite-ai-terminal-ratio} is undefined and I use the
-Cobb--Douglas limit of the CES aggregator.
+%The first line equates the zero-labor-share return to the return that sustains growth at $\gamma$; the second solves for AI efficiency. I interpret this threshold as a boundary between growth regimes only for $\sigma>1$. With complementarity, it instead enters a sufficient condition for the construction below. At $\sigma=1$, \eqref{eq:rewrite-ai-terminal-ratio} is undefined and I use the Cobb--Douglas limit of the CES aggregator.
+The inequalities between $\overline B$ and $\mathcal B(\sigma)$ --whether AI can attain sufficient efficiency-- and between $\sigma$ and $1$ --whether labor and AI are substitutes or complements-- define the behavior of the equilibrium trajectories in the long run.
 
 \subsection{Equilibrium existence and long-run regimes}
 \label{subsec:rewrite-equilibrium-existence}
 
-For any positive variable $V$, write $g_V=\dot V/V$.
-The next proposition constructs equilibrium trajectories, not just
-balanced-growth paths.
+Define $g_{Y/N}$ as the growth rate of output per worker and $g_{Y/N}$ as the real-wage growth. The next proposition characterize the equilibrium trajectories near the steady state.
 
 \Needspace{7\baselineskip}
 \begin{proposition}[Equilibrium existence and long-run regimes]
 \label{prop:rewrite-equilibrium-regimes}
-Under the parameter restrictions of Section~\ref{sec:rewrite-model},
-fix $0<\overline B<\infty$. For each parameter configuration covered by
+For each parameter configuration covered by
 a case below, there exists a nonempty open set of initial conditions
-$(A_0,N_0,K_0,B_0)$, with $A_0,N_0,K_0>0$ and
-$0<B_0<\overline B$, such that every initial state in that set has an
-equilibrium trajectory in the sense of
-Definition~\ref{def:rewrite-equilibrium}, defined for all $t\geq0$,
-with the following properties:
+$(A_0,N_0,K_0,B_0)$ such that every initial state in that set has an
+equilibrium trajectory with the following properties:
 \begin{enumerate}[label=(\roman*),ref=\theproposition(\roman*),leftmargin=*,itemsep=0.5em]
  \item \textnormal{\textbf{Complementarity.}}
  \label{prop:rewrite-capped-complements-existence}
  If $0<\sigma<1$ and $\overline B>\mathcal B(\sigma)$, then
  \begin{equation}
-  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
-  r\to\rho+\gamma,\qquad s_X\to\overline s_X\in(0,1).
+  g_{Y/N}\to\gamma,\qquad g_w\to\gamma,\qquad
+  r\to\rho+\gamma,\qquad \lim_{t\to\infty}s_X\in(0,1).
   \label{eq:rewrite-complements-terminal}
  \end{equation}
 
@@ -122,17 +96,16 @@ with the following properties:
  \label{prop:rewrite-capped-unit-existence}
  If $\sigma=1$, then
  \begin{equation}
-  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad r\to\rho+\gamma,
+  g_{Y/N}\to\gamma,\qquad g_w\to\gamma,\qquad r\to\rho+\gamma,\qquad s_X=\omega_X
   \label{eq:rewrite-unit-terminal}
  \end{equation}
- and $s_X=\omega_X$ at every date.
 
  \item \textnormal{\textbf{Substitution with a labor bottleneck.}}
  \label{prop:rewrite-capped-substitutes-labor-existence}
  If $\sigma>1$ and $\overline B<\mathcal B(\sigma)$, then
  \begin{equation}
-  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
-  r\to\rho+\gamma,\qquad s_X\to\overline s_X\in(0,1).
+  g_{Y/N}\to\gamma,\qquad g_w\to\gamma,\qquad
+  r\to\rho+\gamma,\qquad \lim_{t\to\infty}s_X\in(0,1).
   \label{eq:rewrite-substitutes-labor-terminal}
  \end{equation}
 
@@ -140,7 +113,7 @@ with the following properties:
  \label{prop:rewrite-capped-substitutes-existence}
  If $\sigma>1$ and $\overline B>\mathcal B(\sigma)$, then
  \begin{gather}
-  g_Y-n\to\mathcal R(\overline B)-\rho>\gamma,
+  g_{Y/N}\to\mathcal R(\overline B)-\rho>\gamma,
   \label{eq:rewrite-substitutes-ai-limits}\\
   g_w\to\gamma+
   \frac{\mathcal R(\overline B)-\rho-\gamma}{\sigma}>\gamma,
@@ -148,9 +121,7 @@ with the following properties:
   r\to\mathcal R(\overline B),\qquad s_X\to1. \nonumber
  \end{gather}
 \end{enumerate}
-The initial-state sets and the constants $\overline s_X$ depend on the
-parameters and may differ across cases. The proposition does not cover
-$\sigma>1$ with $\overline B=\mathcal B(\sigma)$.
+%The initial-state sets and the constants $\overline s_X$ depend on the parameters and may differ across cases. The proposition does not cover $\sigma>1$ with $\overline B=\mathcal B(\sigma)$.
 \end{proposition}
 
 \begin{proof}
@@ -159,13 +130,73 @@ See Appendix~\ref{app:rewrite-proofs},
 Proposition~\ref*{prop:rewrite-equilibrium-regimes}}.
 \end{proof}
 
-The identity $wL/Y=(1-\alpha)(1-s_X)$ translates these limits into income
-shares. Labor retains a positive share in the first three cases and a
-vanishing share in the fourth. At unit elasticity, its share is exactly
-$(1-\alpha)\omega_L$ at every date; correspondingly,
-$p_XX/Y=(1-\alpha)\omega_X$, whereas $s_X=\omega_X$.
-Write $\overline r=\lim_{t\to\infty}r_t$ along a constructed equilibrium.
-Table~\ref{tab:rewrite-finite-existence} summarizes the four cases.
+The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$ is deliberate as the upper bound $\overline B$ on AI efficiency is a device to avoid a singularity when $\sigma>1$.
+
+
+Figure~\ref{fig:rewrite-frontier-regimes} shows the threshold on both sides
+of unit elasticity. For $0<\sigma<1$, the labeled region above the curve
+corresponds to the positive-labor-share equilibria in
+Proposition~\ref{prop:rewrite-capped-complements-existence}.
+For $\sigma>1$, the curve separates the two constructed growth regimes.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.94\textwidth}{!}{%
+\begin{tikzpicture}[
+ x=1.00cm,y=0.85cm,
+ every node/.style={font=\small},
+ regime/.style={align=center,inner sep=3pt,fill=white}
+]
+ \draw[->] (0,0) -- (11.15,0) node[right] {$\sigma$};
+ \draw[->] (0,0) -- (0,6.25) node[above] {$\overline B$};
+ \draw[semithick] (4.40,0) -- (4.40,6.00);
+ \node[below] at (4.40,0) {$1$};
+ \node[below] at (2.15,-0.12) {$0<\sigma<1$};
+ \node[below] at (8.00,-0.12) {$\sigma>1$};
+
+ % The complementary branch approaches zero as sigma approaches one
+ % from below. It is not a continuation of the gross-substitutes branch.
+ \draw[semithick,dashed]
+  plot[smooth] coordinates
+  {(0.05,2.20) (0.65,1.94) (1.30,1.61) (1.95,1.20)
+   (2.55,0.76) (3.10,0.35) (3.55,0.09) (3.90,0.012)
+   (4.25,0.001)};
+ \node[regime] at (2.15,4.35)
+  {Labor-bottleneck regime\\
+   $g_{Y/N}\to\gamma$\\
+   $\displaystyle\lim_{t\to\infty}wL/Y>0$};
+ \node[regime] at (1.15,2.35) {$\mathcal B(\sigma)$};
+
+ \draw[semithick,dashed,->]
+  plot[smooth] coordinates
+  {(10.80,2.35) (9.60,2.55) (8.30,2.95) (7.25,3.55)
+   (6.20,4.35) (5.40,5.35) (4.95,6.45)};
+
+ \node[regime] at (8.15,4.85)
+  {AI-dominated regime\\
+   $g_{Y/N}\to \mathcal R(\overline B)-\rho>\gamma$\\
+   $wL/Y\to0$};
+ \node[regime] at (8.15,1.25)
+  {Labor-bottleneck regime\\
+   $g_{Y/N}\to\gamma$\\
+   $\displaystyle\lim_{t\to\infty}wL/Y>0$};
+ \node[regime] at (9.75,3.02) {$\mathcal B(\sigma)$};
+\end{tikzpicture}%
+}
+\caption{Constructed finite-frontier regimes. The vertical axis is linear
+and the curves are schematic rather than calibrated. For $0<\sigma<1$,
+$\overline B>\mathcal B(\sigma)$ is the condition for the positive-labor-share
+construction in Proposition~\ref{prop:rewrite-capped-complements-existence};
+the region below that branch is left uncharacterized. For $\sigma>1$,
+the curve separates the labor-bottleneck and AI-dominated equilibria in
+Proposition~\ref{prop:rewrite-capped-substitutes-labor-existence}
+and~\ref{prop:rewrite-capped-substitutes-existence}.
+Neither dashed boundary is covered by the existence proof.}
+\label{fig:rewrite-frontier-regimes}
+\end{figure}
+
+
+The identity $wL/Y=(1-\alpha)(1-s_X)$ translates these limits into income shares. Labor retains a positive share in the first three cases and a vanishing share in the fourth. At unit elasticity, its share is exactly $(1-\alpha)\omega_L$ at every date; correspondingly, $p_XX/Y=(1-\alpha)\omega_X$, whereas $s_X=\omega_X$. Write $\overline r=\lim_{t\to\infty}r_t$ along a constructed equilibrium. Table~\ref{tab:rewrite-finite-existence} summarizes the four cases.
 
 \begin{table}[H]
 \centering
@@ -174,12 +205,12 @@ Table~\ref{tab:rewrite-finite-existence} summarizes the four cases.
 \small
 \begin{tabular}{@{}llll@{}}
 \toprule
-Elasticity & Frontier condition & $\lim(g_Y-n)$ & $\lim wL/Y$ \\
+Elasticity & AI Efficiency & $\lim g_{Y/N}$ & $\lim wL/Y$ \\
 \midrule
 $0<\sigma<1$ & $\overline B>\mathcal B(\sigma)$ & $\gamma$ & Positive \\
-$\sigma=1$ & Any finite $\overline B>0$ & $\gamma$ & $(1-\alpha)\omega_L$ \\
+$\sigma=1$ & Any $\overline B$ & $\gamma$ & $(1-\alpha)\omega_L$ \\
 $\sigma>1$ & $\overline B<\mathcal B(\sigma)$ & $\gamma$ & Positive \\
-$\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\overline r-\rho>\gamma$ & Zero \\
+$\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\mathcal R(\overline B) -\rho>\gamma$ & Zero \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -227,68 +258,6 @@ arbitrary initial states and global uniqueness are not established.
 These analytical limits also guide the algorithm's boundary conditions
 (Appendix~\ref{app:rewrite-algorithm}), but do not determine the duration
 or shape of the transition.
-
-Figure~\ref{fig:rewrite-frontier-regimes} shows the threshold on both sides
-of unit elasticity. For $0<\sigma<1$, the labeled region above the curve
-corresponds to the positive-labor-share equilibria in
-Proposition~\ref{prop:rewrite-capped-complements-existence}.
-For $\sigma>1$, the curve separates the two constructed growth regimes.
-
-\begin{figure}[H]
-\centering
-\resizebox{0.94\textwidth}{!}{%
-\begin{tikzpicture}[
- x=1.00cm,y=0.85cm,
- every node/.style={font=\small},
- regime/.style={align=center,inner sep=3pt,fill=white}
-]
- \draw[->] (0,0) -- (11.15,0) node[right] {$\sigma$};
- \draw[->] (0,0) -- (0,6.25) node[above] {$\overline B$};
- \draw[semithick] (4.40,0) -- (4.40,6.00);
- \node[below] at (4.40,0) {$1$};
- \node[below] at (2.15,-0.12) {$0<\sigma<1$};
- \node[below] at (8.00,-0.12) {$\sigma>1$};
-
- % The complementary branch approaches zero as sigma approaches one
- % from below. It is not a continuation of the gross-substitutes branch.
- \draw[semithick,dashed]
-  plot[smooth] coordinates
-  {(0.05,2.20) (0.65,1.94) (1.30,1.61) (1.95,1.20)
-   (2.55,0.76) (3.10,0.35) (3.55,0.09) (3.90,0.012)
-   (4.25,0.001)};
- \node[regime] at (2.15,4.35)
-  {Labor-bottleneck regime\\
-   $g_{Y/N}\to\gamma$\\
-   $\displaystyle\lim_{t\to\infty}wL/Y>0$};
- \node[regime] at (1.15,2.35) {$\mathcal B(\sigma)$};
-
- \draw[semithick,dashed,->]
-  plot[smooth] coordinates
-  {(10.80,2.35) (9.60,2.55) (8.30,2.95) (7.25,3.55)
-   (6.20,4.35) (5.40,5.35) (4.95,6.45)};
-
- \node[regime] at (8.15,4.85)
-  {AI-dominated regime\\
-   $g_{Y/N}\to\overline r-\rho>\gamma$\\
-   $wL/Y\to0$};
- \node[regime] at (8.15,1.25)
-  {Labor-bottleneck regime\\
-   $g_{Y/N}\to\gamma$\\
-   $\displaystyle\lim_{t\to\infty}wL/Y>0$};
- \node[regime] at (9.75,3.02) {$\mathcal B(\sigma)$};
-\end{tikzpicture}%
-}
-\caption{Constructed finite-frontier regimes. The vertical axis is linear
-and the curves are schematic rather than calibrated. For $0<\sigma<1$,
-$\overline B>\mathcal B(\sigma)$ is the condition for the positive-labor-share
-construction in Proposition~\ref{prop:rewrite-capped-complements-existence};
-the region below that branch is left uncharacterized. For $\sigma>1$,
-the curve separates the labor-bottleneck and AI-dominated equilibria in
-Proposition~\ref{prop:rewrite-capped-substitutes-labor-existence}
-and~\ref{prop:rewrite-capped-substitutes-existence}.
-Neither dashed boundary is covered by the existence proof.}
-\label{fig:rewrite-frontier-regimes}
-\end{figure}
 
 \subsection{Wages and labor's income share}
 \label{subsec:rewrite-wages-shares}
