@@ -103,7 +103,7 @@ local finite-frontier construction below.
 
 For any positive variable $V$, write $g_V=\dot V/V$.
 
-For the next two propositions, I use a normalization that serves both the
+For the next three propositions, I use a normalization that serves both the
 existence proofs and the numerical algorithm. Capital can grow without bound while the remaining
 AI-efficiency gap shrinks to zero. I therefore express the initial
 conditions in coordinates with finite candidate long-run values, which
@@ -144,62 +144,28 @@ for the parameters of the corresponding regime; their derivation is in
 Appendix~\ref{app:rewrite-proofs}. The propositions establish convergence
 to these values rather than assuming it.
 
-The algorithm uses the limiting point and the equilibrium dynamics near
-it to formulate long-run boundary conditions, rather than imposing
-arbitrary final values for consumption and the shadow price. These
-conditions help select the initial $C_0$ and $q_0$ for given initial
-stocks; see Appendix~\ref{app:rewrite-algorithm}. The normalization
-does not itself establish equilibrium: optimality and both
-transversality conditions must still be verified.
+The proofs proceed in three steps. I first identify candidate long-run
+limits. I then construct convergent solutions of the exact dynamic
+equations by selecting $C_0,q_0$ for nearby initial states. Finally, I
+verify agent optimality and both transversality conditions. The results
+are local in initial states, but the trajectories are defined for all
+$t\geq0$ and need not start on a balanced-growth path. The same limits
+and nearby dynamics guide the algorithm's long-run boundary conditions
+(Appendix~\ref{app:rewrite-algorithm}).
 
 \Needspace{4\baselineskip}
-Throughout these two propositions, $0<\overline B<\infty$ and initial
+Throughout these three propositions, $0<\overline B<\infty$ and initial
 conditions satisfy $A_0,N_0,K_0>0$ and $0<B_0<\overline B$. Each
 proposition specifies its own neighborhood $\mathcal U_L$ of
 $(\overline k,\overline d,0)$. Closeness is required in all three
 coordinates: $B_0$ close to $\overline B$ alone is not sufficient for the
 local construction. The point with $\tau=0$ describes the long-run limit,
-not an admissible initial state at a finite date.
-
-\subsection{Complementarity: \texorpdfstring{\(\sigma<1\)}{sigma < 1}}
-\label{subsec:rewrite-complements}
-
-\begin{proposition}[Equilibrium trajectories with complementary inputs]
-\label{prop:rewrite-capped-complements-existence}
-If $0<\sigma<1$ and $\overline B>\mathcal B(\sigma)$, then there are constants
-$\overline k,\overline d>0$ and a neighborhood $\mathcal U_L$ of
-$(\overline k,\overline d,0)$ such that, for every set of initial conditions
-satisfying
+not an admissible initial state at a finite date. I write the
+initial-state restriction as
 \begin{equation}
- (k_0,d_0,\tau_0)\in\mathcal U_L,
+ (k_0,d_0,\tau_0)\in\mathcal U_L.
  \label{eq:rewrite-labor-local-initial}
 \end{equation}
-there exists an equilibrium trajectory with $k\to\overline k$ and
-$d\to\overline d$, along which
-%in the sense of Definition~\ref{def:rewrite-equilibrium}.
-%Its initial values $C_0,q_0>0$ are locally unique. The constants
-%$\overline k,\overline d$ are given by
-%\eqref{eq:rewrite-labor-terminal-values} and
-%\eqref{eq:rewrite-labor-terminal-research} in the proof.
-%Along the equilibrium, %$s_X$ converges to an endogenous limit $\overline s_X\in(0,1)$. This limit is the long-run elasticity of $Z$ with respect to AI production services and is uniquely determined by thestatic equilibrium conditions at $B=\overline B$ and $r=\rho+\gamma$.
-%Moreover,
-\begin{equation}
- g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
- r\to\rho+\gamma,\qquad
- \frac{wL}{Y}\to(1-\alpha)(1-\overline s_X)>0.
- \label{eq:rewrite-complements-terminal}
-\end{equation}
-Here $\overline s_X\equiv\lim_{t\to\infty}s_X(t)\in(0,1)$.
-\end{proposition}
-
-\begin{proof}
-See Appendix~\ref{app:rewrite-proofs}.
-\end{proof}
-
-\Needspace{3\baselineskip}
-With complementarity, both effective labor and effective AI production services remain relevant
-in the long run. Effective AI production services expand through compute even as AI efficiency stagnates,
-and output per person eventually grows at $\gamma$. %Note that it is assumed that the upper bound for AI efficiency is high enough. If it were not, then the proposition does not establish nonexistence of equilibrium; it only excludes the positive-ratio terminal construction used in its proof.
 
 \subsection{Unit elasticity: \texorpdfstring{\(\sigma=1\)}{sigma = 1}}
 \label{subsec:rewrite-unit}
@@ -247,42 +213,90 @@ this local construction.
 The result describes transitions toward balanced growth, not an assumption
 that the economy starts on a balanced-growth path.
 
+\subsection{Complementarity: \texorpdfstring{\(\sigma<1\)}{sigma < 1}}
+\label{subsec:rewrite-complements}
+
+\begin{proposition}[Equilibrium trajectories with complementary inputs]
+\label{prop:rewrite-capped-complements-existence}
+If $0<\sigma<1$ and $\overline B>\mathcal B(\sigma)$, then there are constants
+$\overline k,\overline d>0$ and a neighborhood $\mathcal U_L$ of
+$(\overline k,\overline d,0)$ such that, for every set of initial conditions
+satisfying
+\eqref{eq:rewrite-labor-local-initial},
+there exists an equilibrium trajectory with $k\to\overline k$ and
+$d\to\overline d$, along which
+%in the sense of Definition~\ref{def:rewrite-equilibrium}.
+%Its initial values $C_0,q_0>0$ are locally unique. The constants
+%$\overline k,\overline d$ are given by
+%\eqref{eq:rewrite-labor-terminal-values} and
+%\eqref{eq:rewrite-labor-terminal-research} in the proof.
+%Along the equilibrium, %$s_X$ converges to an endogenous limit $\overline s_X\in(0,1)$. This limit is the long-run elasticity of $Z$ with respect to AI production services and is uniquely determined by thestatic equilibrium conditions at $B=\overline B$ and $r=\rho+\gamma$.
+%Moreover,
+\begin{equation}
+ g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
+ r\to\rho+\gamma,\qquad
+ \frac{wL}{Y}\to(1-\alpha)(1-\overline s_X)>0.
+ \label{eq:rewrite-complements-terminal}
+\end{equation}
+Here $\overline s_X\equiv\lim_{t\to\infty}s_X(t)\in(0,1)$.
+\end{proposition}
+
+\begin{proof}
+See Appendix~\ref{app:rewrite-proofs}.
+\end{proof}
+
+\Needspace{3\baselineskip}
+With complementarity, both effective labor and effective AI production services remain relevant
+in the long run. Effective AI production services expand through compute even as AI efficiency stagnates,
+and output per person eventually grows at $\gamma$. %Note that it is assumed that the upper bound for AI efficiency is high enough. If it were not, then the proposition does not establish nonexistence of equilibrium; it only excludes the positive-ratio terminal construction used in its proof.
+
 \subsection{Gross substitution: \texorpdfstring{\(\sigma>1\)}{sigma > 1}}
 \label{subsec:rewrite-substitutes}
 
-\begin{proposition}[Equilibrium trajectories with substitute inputs]
-\label{prop:rewrite-capped-substitutes-existence}
-Under the parameter restrictions in Section~\ref{sec:rewrite-model},
-fix $0<\overline B<\infty$ and $\sigma>1$.
-
-If $\overline B<\mathcal B(\sigma)$, use the same coordinates $k,d,\tau$
-as in the positive-labor-share constructions above. There exist
+\begin{proposition}[Equilibrium trajectories with substitution and a labor bottleneck]
+\label{prop:rewrite-capped-substitutes-labor-existence}
+If $\sigma>1$ and $\overline B<\mathcal B(\sigma)$, there exist
 $\overline k,\overline d>0$
 and a neighborhood $\mathcal U_L$ of $(\overline k,\overline d,0)$ such
-that every $A_0,N_0,K_0>0$ and $0<B_0<\overline B$ satisfying
-\eqref{eq:rewrite-labor-local-initial} admits an equilibrium with the limits in
-\eqref{eq:rewrite-complements-terminal}, for a limiting share
-$\overline s_X=\lim_{t\to\infty}s_{X,t}\in(0,1)$.
+that, for every set of initial conditions satisfying
+\eqref{eq:rewrite-labor-local-initial}, there exists an equilibrium
+trajectory with $k\to\overline k$ and $d\to\overline d$ and the limits in
+\eqref{eq:rewrite-complements-terminal}, where
+$\overline s_X\equiv\lim_{t\to\infty}s_X(t)\in(0,1)$.
 The constants are given by \eqref{eq:rewrite-labor-terminal-values} and
 \eqref{eq:rewrite-labor-terminal-research} in the proof.
+The initial values $C_0,q_0>0$ are locally unique among the trajectories
+that remain near the normalized long-run limit and converge to it.
+\end{proposition}
 
-If $\overline B>\mathcal B(\sigma)$, let
-$\varphi=(\sigma-1)/\sigma$ and define
+\begin{proof}
+See Appendix~\ref{app:rewrite-proofs}.
+\end{proof}
+
+Below the threshold, labor retains a positive income share and long-run
+growth per person equals $\gamma$, even though AI and labor are substitutes.
+
+\begin{proposition}[AI-dominated equilibrium trajectories]
+\label{prop:rewrite-capped-substitutes-existence}
+Under the parameter restrictions in Section~\ref{sec:rewrite-model},
+fix $0<\overline B<\infty$, $\sigma>1$, and
+$\overline B>\mathcal B(\sigma)$.
+Let $\varphi=(\sigma-1)/\sigma$ and define
 \begin{equation}
  \overline r=\alpha\overline{\zeta}-\delta,
  \qquad \overline g=n+\overline r-\rho>n+\gamma.
  \label{eq:rewrite-substitutes-terminal-growth}
 \end{equation}
 There exist a constant $\overline d>0$ and a neighborhood $\mathcal U_A$ of
-$(0,\overline d,0)$ such that every $A_0,N_0,K_0>0$ and
-$0<B_0<\overline B$ satisfying
+$(0,\overline d,0)$ such that, for every set of initial conditions with
+$A_0,N_0,K_0>0$ and $0<B_0<\overline B$ satisfying
 \begin{equation}
  \left[\left(\frac{A_0N_0}{K_0}\right)^\varphi,\;
- (\overline B-B_0)K_0,\; \frac{1}{A_0N_0}\right]\in\mathcal U_A
+ (\overline B-B_0)K_0,\; \frac{1}{A_0N_0}\right]\in\mathcal U_A,
  \label{eq:rewrite-ai-local-initial}
 \end{equation}
-admits an equilibrium. Here $\overline d$ is the limiting value of
-$(\overline B-B)K$, rather than $(\overline B-B)AN$, and is given by
+there exists an equilibrium trajectory. Here $\overline d$ is the limiting
+value of $(\overline B-B)K$, rather than $(\overline B-B)AN$, and is given by
 \eqref{eq:rewrite-ai-terminal-values} in the proof. Along this equilibrium,
 $r\to\overline r$, $s_X\to1$, and
 \begin{align}
@@ -293,9 +307,8 @@ $r\to\overline r$, $s_X\to1$, and
  \frac{\overline r-\rho-\gamma}{\sigma}>\gamma.
  \label{eq:rewrite-substitutes-wage-growth}
 \end{align}
-In both cases the path satisfies Definition~\ref{def:rewrite-equilibrium},
-and the initial values $C_0,q_0>0$ are locally unique.
-The equality $\overline B=\mathcal B(\sigma)$ is not covered.
+The initial values $C_0,q_0>0$ are locally unique among the trajectories
+that remain near the normalized long-run limit and converge to it.
 \end{proposition}
 
 \begin{proof}
@@ -306,15 +319,14 @@ Above the threshold, a fixed AI-efficiency level allows output, capital, and
 inference compute to grow faster than effective labor. Production becomes
 asymptotically linear in capital, as in an $AK$ model. Growth is finite for
 every fixed frontier, but need not equal $\gamma$. Real wages rise even as
-labor's income share vanishes. Below the threshold, labor retains a positive
-income share and long-run growth per person equals $\gamma$.
+labor's income share vanishes.
+Neither substitution result covers the equality
+$\overline B=\mathcal B(\sigma)$.
 
 \begin{proposition}[Wage growth and labor's income share]
 \label{prop:rewrite-output-wage-wedge}
 Consider the long-run equilibria constructed in
-Propositions~\ref{prop:rewrite-capped-complements-existence},
-\ref{prop:rewrite-capped-unit-existence}, and
-\ref{prop:rewrite-capped-substitutes-existence}. For $\sigma>1$, exclude
+Propositions~\ref{prop:rewrite-capped-unit-existence}--\ref{prop:rewrite-capped-substitutes-existence}. For $\sigma>1$, exclude
 $\overline B=\mathcal B(\sigma)$. Then
 \[
  \lim_{t\to\infty}g_w>\gamma
@@ -464,7 +476,9 @@ family, $\overline r=\rho+\gamma$ instead remains independent of the frontier.
 \caption{Finite-frontier regimes under gross substitution. The vertical axis
 is linear and the curve is schematic rather than calibrated. For $\sigma>1$,
 $\mathcal B(\sigma)$ separates the labor-bottleneck and AI-dominated
-equilibria constructed in Proposition~\ref{prop:rewrite-capped-substitutes-existence}.
+equilibria constructed in
+Propositions~\ref{prop:rewrite-capped-substitutes-labor-existence}
+and~\ref{prop:rewrite-capped-substitutes-existence}.
 The dashed boundary itself is not covered by the existence proof.}
 \label{fig:rewrite-frontier-regimes}
 \end{figure}
