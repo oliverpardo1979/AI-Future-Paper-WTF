@@ -1,7 +1,7 @@
 \section{Equilibrium characterization}
 \label{sec:rewrite-regimes}
 
-In this section, I give sufficient conditions for the existence of an equilibrium and characterize the steady state for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high. 
+In this section, I give sufficient conditions for the existence of an equilibrium and characterize the long-run behavior of these equilibria for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high.
 
 To identify this threshold, I calculate the net return on capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
 %The parameter restrictions used in all three propositions are
@@ -45,8 +45,7 @@ $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Hence
  \longrightarrow
  \left[(1-\alpha)^2B\,\omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
 \]
-Replacing this result in Equation~\eqref{eq:rewrite-capital-return} $r=\alpha Y/K-\delta$ defines the net return on capital when $s_X\to1$ as a function of $B$:
-I define the corresponding net return as
+Substituting this result into $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, defines the net return on capital when $s_X\to1$ as a function of $B$:
 \begin{equation}
  \mathcal R(B)
  \equiv\alpha\left[(1-\alpha)^2B\,
@@ -54,10 +53,10 @@ I define the corresponding net return as
  \label{eq:rewrite-ai-terminal-ratio}
 \end{equation}
 This is a return at a particular limit of the production and pricing conditions, not necessarily an equilibrium interest rate. %The actual interest rate also depends on capital relative to effective labor. 
-For $\sigma>1$, $s_X\to1$ means that AI production services become arbitrarily large relative to effective labor. For $\sigma<1$, $s_X\to1$ means that effective labor services become arbitrarily large relative to AI production. Whether the equilibrium intteres rate approaches to $\mathcal R(\overline B)$ as $B\to\overline B$ depends on $\sigma$, as shown next.
+For $\sigma>1$, $s_X\to1$ means that AI production services become arbitrarily large relative to effective labor. For $\sigma<1$, $s_X\to1$ means that effective labor services become arbitrarily large relative to AI production services. Whether the equilibrium interest rate converges to $\mathcal R(\overline B)$ depends on both $\sigma$ and $\overline B$, as shown below.
 
 By the Euler equation \eqref{eq:rewrite-euler}, consumption per person grows at $r-\rho$. A long-run equilibrium in which consumption per person grows at $\gamma$
-therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the level of AI efficiency such that support a consumption growth equal to $\gamma$ when $s_X\to 1$:
+therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the AI-efficiency level at which the zero-labor-share return equals $\rho+\gamma$, the return required for consumption per person to grow at $\gamma$:
 \begin{equation}
  \begin{aligned}
  \mathcal R(\mathcal B(\sigma))&=\rho+\gamma,\\
@@ -68,16 +67,17 @@ therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the level of 
  \label{eq:rewrite-critical-frontier}
 \end{equation}
 %The first line equates the zero-labor-share return to the return that sustains growth at $\gamma$; the second solves for AI efficiency. I interpret this threshold as a boundary between growth regimes only for $\sigma>1$. With complementarity, it instead enters a sufficient condition for the construction below. At $\sigma=1$, \eqref{eq:rewrite-ai-terminal-ratio} is undefined and I use the Cobb--Douglas limit of the CES aggregator.
-The inequalities between $\overline B$ and $\mathcal B(\sigma)$ --whether AI can attain sufficient efficiency-- and between $\sigma$ and $1$ --whether labor and AI are substitutes or complements-- define the behavior of the equilibrium trajectories in the long run.
+The inequalities between $\overline B$ and $\mathcal B(\sigma)$ --whether AI can attain sufficient efficiency-- and between $\sigma$ and $1$ --whether labor and AI are substitutes or complements-- distinguish the long-run equilibrium regimes characterized below.
 
 \subsection{Equilibrium existence and long-run regimes}
 \label{subsec:rewrite-equilibrium-existence}
 
-Define $g_{Y/N}$ as the growth rate of output per worker and $g_{Y/N}$ as the real-wage growth. The next proposition characterize the equilibrium trajectories near the steady state.
+Define $g_{Y/N}$ as the growth rate of output per worker and $g_w$ as the real-wage growth rate. The next proposition characterizes the long-run behavior of equilibrium trajectories.
 
 \Needspace{7\baselineskip}
 \begin{proposition}[Equilibrium existence and long-run regimes]
 \label{prop:rewrite-equilibrium-regimes}
+Fix $0<\overline B<\infty$.
 For each parameter configuration covered by
 a case below, there exists a nonempty open set of initial conditions
 $(A_0,N_0,K_0,B_0)$ such that every initial state in that set has an
@@ -208,7 +208,7 @@ The identity $wL/Y=(1-\alpha)(1-s_X)$ translates these limits into income shares
 Elasticity & AI Efficiency & $\lim g_{Y/N}$ & $\lim wL/Y$ \\
 \midrule
 $0<\sigma<1$ & $\overline B>\mathcal B(\sigma)$ & $\gamma$ & Positive \\
-$\sigma=1$ & Any $\overline B$ & $\gamma$ & $(1-\alpha)\omega_L$ \\
+$\sigma=1$ & Any finite $\overline B>0$ & $\gamma$ & $(1-\alpha)\omega_L$ \\
 $\sigma>1$ & $\overline B<\mathcal B(\sigma)$ & $\gamma$ & Positive \\
 $\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\mathcal R(\overline B) -\rho>\gamma$ & Zero \\
 \bottomrule

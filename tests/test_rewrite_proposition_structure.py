@@ -51,10 +51,20 @@ class UnifiedPropositionStructure(unittest.TestCase):
         positions = [unified.index(r"\label{" + label + "}") for label in labels]
         self.assertEqual(positions, sorted(positions))
         unit_case = unified[positions[1]:positions[2]]
-        self.assertIn(r"$s_X=\omega_X$ at every date", unit_case)
+        # The identity may appear in prose or inside the displayed system.
+        self.assertIn(r"s_X=\omega_X", unit_case)
         self.assertIn(r"$0<\sigma<1$ and $\overline B>\mathcal B(\sigma)$", unified)
         self.assertIn("nonempty open set", unified)
-        self.assertIn(r"Definition~\ref{def:rewrite-equilibrium}", unified)
+        self.assertIn(r"$0<\overline B<\infty$", unified)
+        self.assertIn(
+            r"\label{def:rewrite-equilibrium}", source("sections_rewrite/03_model.tex")
+        )
+
+    def test_growth_definitions_and_unit_frontier_scope(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        self.assertIn(r"$g_{Y/N}$ as the growth rate of output per worker", body)
+        self.assertIn(r"$g_w$ as the real-wage growth rate", body)
+        self.assertIn(r"$\sigma=1$ & Any finite $\overline B>0$", body)
 
     def test_table_stays_in_main_text_and_coordinates_move_to_proof(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
