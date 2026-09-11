@@ -95,8 +95,14 @@ class UnifiedPropositionStructure(unittest.TestCase):
         )
         self.assertIn(r"$0<\sigma<1$", figure)
         self.assertIn(r"$\overline B>\mathcal B(\sigma)$", figure)
-        self.assertIn("the region below that branch is left uncharacterized", figure)
-        self.assertIn("Neither dashed boundary is covered by the existence proof", figure)
+        # These scope qualifications are in the surrounding text, not
+        # necessarily repeated in the figure caption.
+        normalized_body = " ".join(body.split())
+        self.assertIn(
+            r"The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$",
+            normalized_body,
+        )
+        self.assertIn("the existence proof does not cover it", normalized_body)
         for label in (
             "prop:rewrite-capped-complements-existence",
             "prop:rewrite-capped-substitutes-labor-existence",
