@@ -76,6 +76,25 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"\label{eq:rewrite-finite-existence-tvcs}", unified_proof)
         self.assertIn("The preimage of each open neighborhood", unified_proof)
 
+    def test_regime_figure_includes_only_proven_complementary_region(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        figure = next(
+            block for block in re.findall(
+                r"\\begin\{figure\}.*?\\end\{figure\}", body, re.S
+            ) if r"\label{fig:rewrite-frontier-regimes}" in block
+        )
+        self.assertIn(r"$0<\sigma<1$", figure)
+        self.assertIn(r"$\overline B>\mathcal B(\sigma)$", figure)
+        self.assertIn("the region below that branch is left uncharacterized", figure)
+        self.assertIn("Neither dashed boundary is covered by the existence proof", figure)
+        for label in (
+            "prop:rewrite-capped-complements-existence",
+            "prop:rewrite-capped-substitutes-labor-existence",
+            "prop:rewrite-capped-substitutes-existence",
+        ):
+            self.assertIn(r"\ref{" + label + "}", figure)
+        self.assertEqual(figure.count("plot[smooth] coordinates"), 2)
+
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())
         labels = Counter(re.findall(r"\\label\{([^}]+)\}", text))

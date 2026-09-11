@@ -228,46 +228,65 @@ These analytical limits also guide the algorithm's boundary conditions
 (Appendix~\ref{app:rewrite-algorithm}), but do not determine the duration
 or shape of the transition.
 
-Figure~\ref{fig:rewrite-frontier-regimes} illustrates the two constructed
-growth regimes for $\sigma>1$ and the threshold separating them.
+Figure~\ref{fig:rewrite-frontier-regimes} shows the threshold on both sides
+of unit elasticity. For $0<\sigma<1$, the labeled region above the curve
+corresponds to the positive-labor-share equilibria in
+Proposition~\ref{prop:rewrite-capped-complements-existence}.
+For $\sigma>1$, the curve separates the two constructed growth regimes.
 
 \begin{figure}[H]
 \centering
-\resizebox{0.82\textwidth}{!}{%
+\resizebox{0.94\textwidth}{!}{%
 \begin{tikzpicture}[
- x=1.25cm,y=1.00cm,
+ x=1.00cm,y=0.85cm,
  every node/.style={font=\small},
  regime/.style={align=center,inner sep=3pt,fill=white}
 ]
- \draw[->] (0,0) -- (8.35,0) node[right] {$\sigma$};
+ \draw[->] (0,0) -- (11.15,0) node[right] {$\sigma$};
  \draw[->] (0,0) -- (0,6.25) node[above] {$\overline B$};
- \draw[semithick] (1,0) -- (1,6.00);
- \node[below] at (1,0) {$1$};
- \node[below] at (4.65,-0.12) {$\sigma>1$};
+ \draw[semithick] (4.40,0) -- (4.40,6.00);
+ \node[below] at (4.40,0) {$1$};
+ \node[below] at (2.15,-0.12) {$0<\sigma<1$};
+ \node[below] at (8.00,-0.12) {$\sigma>1$};
+
+ % The complementary branch approaches zero as sigma approaches one
+ % from below. It is not a continuation of the gross-substitutes branch.
+ \draw[semithick,dashed]
+  plot[smooth] coordinates
+  {(0.05,2.20) (0.65,1.94) (1.30,1.61) (1.95,1.20)
+   (2.55,0.76) (3.10,0.35) (3.55,0.09) (3.90,0.012)
+   (4.25,0.001)};
+ \node[regime] at (2.15,4.35)
+  {Labor-bottleneck regime\\
+   $g_{Y/N}\to\gamma$\\
+   $\displaystyle\lim_{t\to\infty}wL/Y>0$};
+ \node[regime] at (1.15,2.35) {$\mathcal B(\sigma)$};
 
  \draw[semithick,dashed,->]
   plot[smooth] coordinates
-  {(8.00,2.35) (6.80,2.55) (5.55,2.95) (4.35,3.55)
-   (3.25,4.35) (2.35,5.35) (1.85,6.45)};
+  {(10.80,2.35) (9.60,2.55) (8.30,2.95) (7.25,3.55)
+   (6.20,4.35) (5.40,5.35) (4.95,6.45)};
 
- \node[regime] at (5.55,4.85)
+ \node[regime] at (8.15,4.85)
   {AI-dominated regime\\
    $g_{Y/N}\to\overline r-\rho>\gamma$\\
    $wL/Y\to0$};
- \node[regime] at (5.55,1.35)
+ \node[regime] at (8.15,1.25)
   {Labor-bottleneck regime\\
    $g_{Y/N}\to\gamma$\\
-   $wL/Y>0$};
- \node[regime] at (6.85,3.02) {$\mathcal B(\sigma)$};
+   $\displaystyle\lim_{t\to\infty}wL/Y>0$};
+ \node[regime] at (9.75,3.02) {$\mathcal B(\sigma)$};
 \end{tikzpicture}%
 }
-\caption{Finite-frontier regimes under gross substitution. The vertical axis
-is linear and the curve is schematic rather than calibrated. For $\sigma>1$,
-$\mathcal B(\sigma)$ separates the labor-bottleneck and AI-dominated
-equilibria constructed in
+\caption{Constructed finite-frontier regimes. The vertical axis is linear
+and the curves are schematic rather than calibrated. For $0<\sigma<1$,
+$\overline B>\mathcal B(\sigma)$ is the condition for the positive-labor-share
+construction in Proposition~\ref{prop:rewrite-capped-complements-existence};
+the region below that branch is left uncharacterized. For $\sigma>1$,
+the curve separates the labor-bottleneck and AI-dominated equilibria in
 Proposition~\ref{prop:rewrite-capped-substitutes-labor-existence}
 and~\ref{prop:rewrite-capped-substitutes-existence}.
-The dashed boundary itself is not covered by the existence proof.}
+Neither dashed boundary is covered by the existence proof.}
 \label{fig:rewrite-frontier-regimes}
 \end{figure}
 
