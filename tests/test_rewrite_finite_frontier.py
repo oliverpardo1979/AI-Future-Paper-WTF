@@ -213,6 +213,65 @@ class FiniteFrontierProofChecks(unittest.TestCase):
             np.testing.assert_allclose(j, np.column_stack(numeric),
                                        rtol=3e-5, atol=3e-7)
 
+    def test_reference_net_return_and_regime_inequalities(self):
+        """Section 4's new notation must reproduce the existing code.
+
+        These are algebra/terminal-point checks, not new transition simulations.
+        Relative tolerances cover floating-point evaluation of equivalent
+        powers and logarithms; they do not classify equilibrium paths.
+        """
+        p = PositiveAIBenchmarkParameters()
+        benchmark = p.discount + p.labor_productivity_growth
+        theta = (1 - p.alpha) / p.alpha
+
+        def reference_return(frontier, sigma):
+            # Evaluate the paper's exact formula without multiplying powers
+            # with very different magnitudes. Unit elasticity is separate.
+            if sigma == 1:
+                raise ValueError("The zero-labor-share formula excludes sigma=1.")
+            log_ratio = theta * (
+                2 * math.log1p(-p.alpha) + math.log(frontier)
+                + sigma / (sigma - 1) * math.log(p.omega_x)
+            )
+            return p.alpha * math.exp(log_ratio) - p.depreciation
+
+        for sigma in (0.5, 0.9, 1.1, 1.5, 2.0, 4.0):
+            critical = critical_capability_frontier(sigma, p)
+            with self.subTest(sigma=sigma, check="threshold"):
+                np.testing.assert_allclose(reference_return(critical, sigma),
+                                           benchmark, rtol=2e-12, atol=0)
+            for ratio in (0.8, 1.2):
+                frontier = ratio * critical
+                reference = reference_return(frontier, sigma)
+                with self.subTest(sigma=sigma, ratio=ratio):
+                    self.assertEqual(reference > benchmark, ratio > 1)
+                    if sigma < 1 and ratio < 1:
+                        # The paper does not claim existence for this case.
+                        continue
+                    terminal = terminal_point(sigma, frontier, p)
+                    ai_dominated = sigma > 1 and ratio > 1
+                    self.assertEqual(terminal.regime == "ai_dominated", ai_dominated)
+                    expected = reference if ai_dominated else benchmark
+                    np.testing.assert_allclose(terminal.net_interest_rate, expected,
+                                               rtol=2e-12, atol=0)
+                    if ai_dominated:
+                        output_capital = terminal.auxiliary["output_capital_ratio"]
+                        np.testing.assert_allclose(
+                            reference, p.alpha * output_capital - p.depreciation,
+                            rtol=2e-12, atol=0,
+                        )
+                    else:
+                        # The reference return is not the actual limiting
+                        # return in either positive-labor-share regime.
+                        self.assertNotAlmostEqual(reference,
+                                                  terminal.net_interest_rate)
+
+        unit_frontier = labor_point(1.0, p)["b"]
+        unit = terminal_point(1.0, unit_frontier, p)
+        self.assertAlmostEqual(unit.net_interest_rate, benchmark)
+        with self.assertRaises(ValueError):
+            reference_return(unit_frontier, 1.0)
+
     def test_interest_frontier_derivative_and_growth_accounting(self):
         p = PositiveAIBenchmarkParameters()
         theta = (1-p.alpha)/p.alpha

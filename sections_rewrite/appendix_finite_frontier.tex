@@ -84,8 +84,12 @@ $a(\sigma-2)<(1-\sigma^{-1})(2-\sigma)<\varphi$.
 The map therefore decreases from infinity to $\mathcal H_\sigma(1)$.
 Equation~\eqref{eq:rewrite-terminal-share-root} has exactly one interior
 solution if and only if $\overline B<\mathcal B(\sigma)$.
-These calculations also derive
+Since $\mathcal R(B)=\alpha B^\theta\mathcal H_\sigma(1)-\delta$,
+these calculations also derive
 \eqref{eq:rewrite-ai-terminal-ratio}--\eqref{eq:rewrite-critical-frontier}.
+The interior-share condition is therefore
+$\mathcal R(\overline B)>\rho+\gamma$ for $\sigma<1$, but
+$\mathcal R(\overline B)<\rho+\gamma$ for $\sigma>1$.
 
 \Needspace{4\baselineskip}
 For either interior-share case, let $x,y,u,k,c$ denote $X,Y,U,K,C$ divided
@@ -304,10 +308,10 @@ mathematical device and does not change any equation on $h\geq0$.
 
 At $h=\tau=0$, the terminal constants are
 \begin{align}
- \overline y&=\overline{\zeta},&
+ \overline y&=\frac{\mathcal R(\overline B)+\delta}{\alpha},&
  \overline u&=(1-\alpha)^2\overline y,&
  \overline x&=\overline B\,\overline u,\nonumber\\
- \overline r&=\alpha\overline y-\delta,&
+ \overline r&=\mathcal R(\overline B),&
  \overline g&=n+\overline r-\rho,&
  \overline c&=\alpha(1-\alpha)\overline y+\rho-n>0,\nonumber\\
  \overline v&=\overline x/(\overline r\,\overline B^2),&
@@ -323,6 +327,9 @@ $(0,\overline d,\overline c,\overline v,0)$.
 
 The $h$ and $\tau$ eigenvalues are
 $\varphi(n+\gamma-\overline g)<0$ and $-(n+\gamma)<0$.
+The first equals $\varphi[\rho+\gamma-\mathcal R(\overline B)]$.
+It becomes zero at $\mathcal R(\overline B)=\rho+\gamma$, which is why
+this stable-manifold argument does not cover the threshold.
 The consumption-ratio eigenvalue is $\overline c>0$.
 The remaining block in $(\log d,\log v)$ is
 \[

@@ -3,7 +3,7 @@
 
 In this section, I give sufficient conditions for the existence of an equilibrium in each substitution regime. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high. 
 
-To identify this threshold, I evaluate the output–capital ratio implied by some of the equilibrium conditions as AI efficiency approaches its upper bound and labor’s income share tends to zero. I compare this ratio with the one required to sustain balanced growth at the exogenous rate of labor-augmenting technological change. If the former exceeds the latter, the resulting return to capital supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
+To identify this threshold, I calculate the net return to capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
 %The parameter restrictions used in all three propositions are
 %\begin{equation}
 % \begin{gathered}
@@ -25,7 +25,7 @@ compute used to supply effective AI production services. If AI and labor are sub
 and compute can sustain growth faster than effective labor even when AI efficiency converges to a finite limit.
 
 \Needspace{3\baselineskip}
-To identify the output--capital ratio when labor's income share vanishes,
+To derive this net return, I first calculate the output--capital ratio when labor's income share vanishes:
 fix $B>0$ and consider $s_X\to1$, with $\sigma\ne1$. Since
 $wL/Y=(1-\alpha)(1-s_X)$, this limit corresponds to a vanishing labor
 income share.
@@ -65,43 +65,77 @@ equation~\eqref{eq:rewrite-output}, by $Y$ and rearranging gives
  \qquad
  \frac{Y}{K}=\left(\frac{Z}{Y}\right)^{(1-\alpha)/\alpha}.
 \]
-I therefore denote the limiting output--capital ratio by
-\begin{equation}
- \zeta(B)
- \equiv\left[(1-\alpha)^2B\,
+Thus the limiting output--capital ratio is
+\[
+ \frac{Y}{K}\longrightarrow
+ \left[(1-\alpha)^2B\,
  \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
+\]
+Using the capital first-order condition,
+$r=\alpha Y/K-\delta$ in equation~\eqref{eq:rewrite-capital-return},
+I define the corresponding net return as
+\begin{equation}
+ \mathcal R(B)
+ \equiv\alpha\left[(1-\alpha)^2B\,
+ \omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}-\delta.
  \label{eq:rewrite-ai-terminal-ratio}
 \end{equation}
+This is a return evaluated at a particular limit of the production and
+pricing conditions, not the interest rate at an arbitrary date. The
+actual interest rate also depends on capital relative to effective labor.
 For $\sigma>1$, $s_X\to1$ means that AI production services become
-arbitrarily large relative to effective labor. If AI efficiency also
-converges to its frontier, then $Y/K\to\zeta(\overline B)$. I write
-$\overline{\zeta}\equiv\zeta(\overline B)$. This calculation identifies a
-possible limiting output--capital ratio; it does not establish the
-existence of an equilibrium trajectory approaching it. The propositions
-below address that question.
+arbitrarily large relative to effective labor. An equilibrium approaching
+this limit with $B\to\overline B$ would have
+$r\to\mathcal R(\overline B)$. This calculation alone does not establish
+that such an equilibrium exists.
 
-Define the threshold $\mathcal B(\sigma)$ by
+The relevant comparison is with $\rho+\gamma$. From the Euler equation,
+\eqref{eq:rewrite-euler}, consumption per person grows at $r-\rho$.
+A long-run equilibrium in which consumption per person grows at $\gamma$
+therefore requires $r=\rho+\gamma$. Since $\mathcal R(B)$ is strictly
+increasing in $B$, define the threshold $\mathcal B(\sigma)$ by
 \begin{equation}
  \begin{aligned}
- \zeta(\mathcal B(\sigma))
- &=\frac{\rho+\gamma+\delta}{\alpha},\\
+ \mathcal R(\mathcal B(\sigma))&=\rho+\gamma,\\
  \mathcal B(\sigma)
  &=\frac{[(\rho+\gamma+\delta)/\alpha]^{\alpha/(1-\alpha)}}
  {(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}}.
  \end{aligned}
  \label{eq:rewrite-critical-frontier}
 \end{equation}
-The right-hand side of the first line is the output--capital ratio required
-for output per person to grow at rate $\gamma$. Aggregate capital and
-consumption then grow at $n+\gamma$, so the Euler equation requires
-$r=\rho+\gamma$ and the capital first-order condition requires
-$Y/K=(\rho+\gamma+\delta)/\alpha$. The second line gives the threshold
-explicitly.
-Appendix~\ref{app:rewrite-proofs}
-derives these expressions and proves the following propositions. I use
-$\mathcal B(\sigma)$ as an economic regime threshold only when $\sigma>1$.
-For $\sigma<1$, it appears only as a sufficient condition for the particular
-local finite-frontier construction below.
+The first line equates the return at a vanishing labor share to the return
+that sustains growth at $\gamma$; the second solves for AI efficiency.
+
+For $\sigma>1$, the strict inequalities distinguish the two equilibrium
+families constructed below:
+\begin{itemize}
+ \item If $\mathcal R(\overline B)<\rho+\gamma$, equivalently
+ $\overline B<\mathcal B(\sigma)$, the return at a vanishing labor share
+ cannot sustain growth faster than effective labor. The constructed
+ equilibrium retains a positive labor share, and its actual interest rate
+ converges to $\rho+\gamma$, not to $\mathcal R(\overline B)$.
+ \item If $\mathcal R(\overline B)>\rho+\gamma$, equivalently
+ $\overline B>\mathcal B(\sigma)$, the return supports growth faster than
+ effective labor even as labor's share vanishes. Along the constructed
+ AI-dominated equilibrium, $r\to\mathcal R(\overline B)$ and output per
+ person grows asymptotically at $\mathcal R(\overline B)-\rho>\gamma$.
+ \item If $\mathcal R(\overline B)=\rho+\gamma$, the two return formulas
+ coincide. This equality identifies the boundary between the strict
+ regimes, but the existence proofs below do not cover it. It establishes
+ neither existence nor nonexistence of an equilibrium at the threshold.
+\end{itemize}
+These are local existence results for the initial conditions specified
+in the propositions, not a classification of all equilibrium trajectories.
+
+I use this comparison as an economic regime threshold only for $\sigma>1$.
+For $\sigma<1$, $s_X\to1$ corresponds instead to AI services becoming scarce
+relative to effective labor. The condition
+$\overline B>\mathcal B(\sigma)$, or
+$\mathcal R(\overline B)>\rho+\gamma$, is then only a sufficient condition
+for the positive-labor-share construction below; it does not imply
+AI-dominated growth. At $\sigma=1$, equation~\eqref{eq:rewrite-ai-terminal-ratio}
+is undefined, and I derive the equilibrium separately.
+Appendix~\ref{app:rewrite-proofs} proves the propositions.
 
 For any positive variable $V$, write $g_V=\dot V/V$.
 
@@ -286,7 +320,7 @@ fix $0<\overline B<\infty$, $\sigma>1$, and
 $\overline B>\mathcal B(\sigma)$.
 Let $\varphi=(\sigma-1)/\sigma$ and define
 \begin{equation}
- \overline r=\alpha\overline{\zeta}-\delta,
+ \overline r=\mathcal R(\overline B),
  \qquad \overline g=n+\overline r-\rho>n+\gamma.
  \label{eq:rewrite-substitutes-terminal-growth}
 \end{equation}
@@ -409,12 +443,13 @@ and the monopoly condition imply
 Production gives the identity $Y/K=(Z/Y)^{(1-\alpha)/\alpha}$.
 Substitution of these limits therefore yields
 \begin{equation}
- \frac YK\to\overline{\zeta},\qquad
- \overline r=\alpha\overline{\zeta}-\delta,\qquad
- \lim(g_Y-n)=\alpha\overline{\zeta}-\delta-\rho.
+ \frac YK\to\frac{\mathcal R(\overline B)+\delta}{\alpha},
+ \qquad \overline r=\mathcal R(\overline B),
+ \qquad \lim(g_Y-n)=\mathcal R(\overline B)-\rho.
  \label{eq:rewrite-ai-growth-derivation}
 \end{equation}
 The last expression exceeds $\gamma$ exactly when
+$\mathcal R(\overline B)>\rho+\gamma$, or
 $\overline B>\mathcal B(\sigma)$. A finite AI-efficiency level can thus
 support sustained growth above $\gamma$: inference compute expands with
 output, and effective labor ceases to constrain production asymptotically.
@@ -425,9 +460,8 @@ give the following comparative statics across finite frontiers:
 \begin{equation}
  \overline r(\overline B;\sigma)=
  \begin{cases}
-  \rho+\gamma,&0<\overline B<\mathcal B(\sigma),\\[2pt]
-  \alpha\overline{\zeta}-\delta,
-  &\overline B>\mathcal B(\sigma).
+  \rho+\gamma,&\mathcal R(\overline B)<\rho+\gamma,\\[2pt]
+  \mathcal R(\overline B),&\mathcal R(\overline B)>\rho+\gamma.
  \end{cases}
  \label{eq:rewrite-interest-frontier}
 \end{equation}
@@ -435,7 +469,8 @@ Below the threshold, a larger frontier does not change the limiting
 interest or growth rate. Above it,
 \begin{equation}
  \frac{\partial\overline r}{\partial\overline B}
- =\frac{1-\alpha}{\overline B}\overline{\zeta}>0,
+ =\frac{1-\alpha}{\alpha}
+ \frac{\mathcal R(\overline B)+\delta}{\overline B}>0,
  \qquad
  \lim_{\overline B\to\infty}\overline r(\overline B;\sigma)=\infty.
  \label{eq:rewrite-interest-frontier-derivative}
