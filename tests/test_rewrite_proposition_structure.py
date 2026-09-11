@@ -102,7 +102,10 @@ class UnifiedPropositionStructure(unittest.TestCase):
             r"The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$",
             normalized_body,
         )
-        self.assertIn("the existence proof does not cover it", normalized_body)
+        # The proposition states strict inequalities; a separate sentence
+        # about the equality case is not required in the figure discussion.
+        self.assertIn(r"If $\sigma>1$ and $\overline B<\mathcal B(\sigma)$", body)
+        self.assertIn(r"If $\sigma>1$ and $\overline B>\mathcal B(\sigma)$", body)
         for label in (
             "prop:rewrite-capped-complements-existence",
             "prop:rewrite-capped-substitutes-labor-existence",
@@ -147,6 +150,22 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"\frac{p_XX}{Y}=1-\alpha-\frac{wL}{Y}\longrightarrow1-\alpha", remark)
         self.assertIn(r"$(r+\delta)K/Y=\alpha$", remark)
         self.assertIn("not the developer's", remark)
+
+    def test_uncapped_discussion_preserves_frontier_limit_distinction(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        self.assertNotIn(r"\subsection{Raising the AI-efficiency frontier}", body)
+        for label in (
+            "subsec:rewrite-growth-frontier",
+            "eq:rewrite-long-run-growth-return",
+            "eq:rewrite-interest-frontier",
+            "eq:rewrite-interest-frontier-derivative",
+        ):
+            self.assertNotIn(label, body)
+        uncapped = body.split(r"\label{subsec:rewrite-uncapped}", 1)[1]
+        self.assertIn(r"\ref{prop:rewrite-equilibrium-regimes}", uncapped)
+        self.assertIn(r"\label{eq:rewrite-noncommuting-limits}", uncapped)
+        self.assertIn(r"become unbounded as $\overline B\to\infty$", uncapped)
+        self.assertIn("proof of a finite-time singularity or of equilibrium nonexistence", uncapped)
 
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())

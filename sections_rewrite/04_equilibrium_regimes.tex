@@ -227,7 +227,7 @@ and~\ref{prop:rewrite-capped-substitutes-existence}.}
 \end{figure}
 
 
-Table \ref{tab:rewrite-finite-existence} summarizes the four cases of Proposition \ref{prop:axm-benchmark-equilibrium-existence}. %The identity $wL/Y=(1-\alpha)(1-s_X)$ translates these limits into income shares.
+Table \ref{tab:rewrite-finite-existence} summarizes the four cases of Proposition \ref{prop:rewrite-equilibrium-regimes}. %The identity $wL/Y=(1-\alpha)(1-s_X)$ translates these limits into income shares.
 Labor retains a positive share in the first three cases and a vanishing share in the fourth. Output per worker grows at a rate $\gamma$ except in the fourth case, where it grows faster. Wages also grow faster in the fourth case but not as fast as output per worker.%At unit elasticity, its share is exactly $(1-\alpha)\omega_L$ at every date; correspondingly, $p_XX/Y=(1-\alpha)\omega_X$, whereas $s_X=\omega_X$. Write $\overline r=\lim_{t\to\infty}r_t$ along a constructed equilibrium. Table~\ref{tab:rewrite-finite-existence} summarizes the four cases.
 
 \begin{table}[H]
@@ -254,53 +254,13 @@ For $\sigma>1$, the strict inequalities distinguish the two equilibrium families
 Across these equilibrium regimes, long-run real-wage growth exceeds $\gamma$ if and only if labor's income share converges to zero. Proposition~\ref{prop:rewrite-output-wage-wedge} in Appendix~\ref{app:rewrite-proofs} derives the exact relationship between
 the wage-growth premium and the decline in labor's income share.
 
-\subsection{Raising the AI-efficiency frontier}
-\label{subsec:rewrite-growth-frontier}
-
-The constructed trajectories have convergent growth rates and a positive
-limiting consumption--output ratio. Consumption and output therefore have
-the same limiting growth rate. The household Euler equation gives
-\begin{equation}
- \lim_{t\to\infty}\frac{\mathrm d\log(Y_t/N_t)}{\mathrm dt}
- =\lim_{t\to\infty}(g_C-n)=\overline r-\rho.
- \label{eq:rewrite-long-run-growth-return}
-\end{equation}
-These are limits of equilibrium transitions, not restrictions imposed on
-their growth rates at every date.
-
-\Needspace{4\baselineskip}
-Holding $\sigma>1$ and all other parameters fixed, the constructed families
-give the following comparative statics across finite frontiers:
-\begin{equation}
- \overline r(\overline B;\sigma)=
- \begin{cases}
-  \rho+\gamma,&\mathcal R(\overline B)<\rho+\gamma,\\[2pt]
-  \mathcal R(\overline B),&\mathcal R(\overline B)>\rho+\gamma.
- \end{cases}
- \label{eq:rewrite-interest-frontier}
-\end{equation}
-Below the threshold, a larger frontier does not change the limiting
-interest or growth rate. Above it,
-\begin{equation}
- \frac{\partial\overline r}{\partial\overline B}
- =\frac{1-\alpha}{\alpha}
- \frac{\mathcal R(\overline B)+\delta}{\overline B}>0,
- \qquad
- \lim_{\overline B\to\infty}\overline r(\overline B;\sigma)=\infty.
- \label{eq:rewrite-interest-frontier-derivative}
-\end{equation}
-The limiting growth rate per person has the same derivative because it
-equals $\overline r-\rho$. The two interest-rate formulas approach
-$\rho+\gamma$ at the threshold, although the existence proof does not cover
-equality. For $\sigma=1$, and for the constructed complementary-input
-family, $\overline r=\rho+\gamma$ instead remains independent of the frontier.
-
 \subsection{The uncapped economy and the role of the frontier}
 \label{subsec:rewrite-uncapped}
 
-The comparative static in
-\eqref{eq:rewrite-interest-frontier-derivative} does not solve the economy
-with an infinite AI-efficiency frontier. It first fixes a finite
+Comparing the long-run equilibria in
+Proposition~\ref{prop:rewrite-equilibrium-regimes} across finite
+AI-efficiency frontiers does not solve the economy with an infinite
+frontier. This comparison first fixes a finite
 $\overline B$, constructs an equilibrium, takes that
 economy's long-run limit, and only then compares the resulting limits as
 $\overline B$ increases. Setting $\overline B=\infty$ at the outset changes
