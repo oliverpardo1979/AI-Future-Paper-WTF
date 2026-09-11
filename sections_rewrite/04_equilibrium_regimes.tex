@@ -227,8 +227,8 @@ and~\ref{prop:rewrite-capped-substitutes-existence}.}
 \end{figure}
 
 
-Table \ref{tab:rewrite-finite-existence} summarizes the four cases of Proposition \ref{prop:rewrite-equilibrium-regimes}. %The identity $wL/Y=(1-\alpha)(1-s_X)$ translates these limits into income shares.
-Labor retains a positive share in the first three cases and a vanishing share in the fourth. Output per worker grows at a rate $\gamma$ except in the fourth case, where it grows faster. Wages also grow faster in the fourth case but not as fast as output per worker.%At unit elasticity, its share is exactly $(1-\alpha)\omega_L$ at every date; correspondingly, $p_XX/Y=(1-\alpha)\omega_X$, whereas $s_X=\omega_X$. Write $\overline r=\lim_{t\to\infty}r_t$ along a constructed equilibrium. Table~\ref{tab:rewrite-finite-existence} summarizes the four cases.
+Table~\ref{tab:rewrite-finite-existence} summarizes the four cases of
+Proposition~\ref{prop:rewrite-equilibrium-regimes}.
 
 \begin{table}[H]
 \centering
@@ -247,7 +247,10 @@ $\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\mathcal R(\overline B) -\rho>\
 \end{tabular}
 \end{table}
 
-For $\sigma>1$, the strict inequalities distinguish the two equilibrium families in Proposition~\ref{prop:rewrite-equilibrium-regimes}. If $\mathcal R(\overline B)<\rho+\gamma$, equivalently $\overline B<\mathcal B(\sigma)$, the return at a vanishing labor share cannot sustain growth faster than effective labor. The constructed equilibrium retains a positive labor share, and its actual interest rate converges to $\rho+\gamma$, not to $\mathcal R(\overline B)$. If $\mathcal R(\overline B)>\rho+\gamma$, equivalently  $\overline B>\mathcal B(\sigma)$, the return supports growth faster than effective labor even as labor's share vanishes. Along the constructed AI-dominated equilibrium, $r\to\mathcal R(\overline B)$ and output per person grows asymptotically at $\mathcal R(\overline B)-\rho>\gamma$.
+For $\sigma>1$, a frontier below $\mathcal B(\sigma)$ makes the return
+at a vanishing labor share too low for capital and AI services to outgrow
+effective labor. Above the threshold, that return supports their faster
+growth along the AI-dominated equilibria.
 
 %I use this comparison as an economic regime threshold only for $\sigma>1$. For $\sigma<1$, $s_X\to1$ corresponds instead to AI services becoming scarce relative to effective labor. The condition $\overline B>\mathcal B(\sigma)$, or $\mathcal R(\overline B)>\rho+\gamma$, is then only a sufficient condition for the positive-labor-share construction in Proposition~\ref{prop:rewrite-capped-complements-existence}; it does not imply AI-dominated growth.
 
@@ -319,28 +322,13 @@ condition and the aggregate resource constraint at the same time. Such an
 allocation is not an equilibrium under
 Definition~\ref{def:rewrite-equilibrium}.
 
-A different failure can occur even when the developer's value is bounded on
-every finite horizon. Recursive improvement may cause $B$, output, capital,
-or research expenditure to become unbounded at a finite date. I use
-\emph{finite-time singularity} for this event, rather than for merely rapid
-growth. A path that ends at such a date is not an equilibrium
-as defined in Section~\ref{sec:rewrite-model}: it does not provide finite,
-feasible allocations for every $t\geq0$, and its infinite-horizon optimality
-and transversality conditions are not defined. The analysis in this paper
+A finite-time singularity is a distinct possible failure, even when the
+developer's value is bounded on every finite horizon. A trajectory that
+ends at a finite date cannot satisfy Definition~\ref{def:rewrite-equilibrium},
+which requires finite, feasible allocations for every $t\geq0$.
+The analysis in this paper
 does not prove that every uncapped trajectory with $\sigma>1$ reaches such a
 singularity. It also does not rule out an uncapped equilibrium that remains
 finite at every finite date. Explosive-growth mechanisms in
 \citet{nordhaus2021} and \citet{davidsonetal2026} motivate this question but
 do not replace the missing equilibrium argument for the present model.
-
-I therefore use a finite frontier as an analytical continuation device, not
-as an estimate of a permanent technological ceiling. For each finite
-$\overline B$, the term $1-B/\overline B$ keeps AI efficiency in a bounded
-state space and makes it possible to establish and compute an equilibrium.
-I then raise the frontier and examine how the equilibrium regime, growth,
-interest rates, and income shares change. This strategy separates results
-that hold for every fixed finite frontier from claims about an uncapped
-economy. If the capped equilibria fail to converge, or their limiting growth
-rates diverge, the correct conclusion is that this continuation does not
-produce an uncapped equilibrium---not that a finite-time singularity has
-already been proved.

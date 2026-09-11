@@ -167,6 +167,17 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"become unbounded as $\overline B\to\infty$", uncapped)
         self.assertIn("proof of a finite-time singularity or of equilibrium nonexistence", uncapped)
 
+    def test_section_four_cuts_keep_table_and_equilibrium_caveat(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        self.assertIn(r"\label{tab:rewrite-finite-existence}", body)
+        self.assertNotIn("Labor retains a positive share in the first three cases", body)
+        self.assertNotIn("I therefore use a finite frontier as an analytical continuation device", body)
+        self.assertNotIn("rather than for merely rapid", body)
+        singularity = body.split("A finite-time singularity is a distinct possible failure", 1)[1]
+        self.assertIn(r"Definition~\ref{def:rewrite-equilibrium}", singularity)
+        self.assertIn(r"finite, feasible allocations for every $t\geq0$", singularity)
+        self.assertIn("does not prove that every uncapped trajectory", singularity)
+
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())
         labels = Counter(re.findall(r"\\label\{([^}]+)\}", text))
