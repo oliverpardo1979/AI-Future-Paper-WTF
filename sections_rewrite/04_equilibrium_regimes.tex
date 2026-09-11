@@ -103,6 +103,64 @@ local finite-frontier construction below.
 
 For any positive variable $V$, write $g_V=\dot V/V$.
 
+For the next two propositions, I use a normalization that serves both the
+existence proofs and the numerical algorithm. Capital can grow without bound while the remaining
+AI-efficiency gap shrinks to zero. I therefore express the initial
+conditions in coordinates with finite candidate long-run values, which
+can guide the construction of equilibrium paths. Since $L=N$,
+effective labor is $AN$. For the constructions with a positive long-run
+labor income share, I define
+\[
+ k=\frac{K}{AN},\qquad
+ d=(\overline B-B)AN,\qquad
+ \tau=\frac{1}{AN}.
+\]
+The variable $k$ is capital per unit of effective labor. Dividing by $AN$
+removes the growth of effective labor from the capital stock. The variable
+$d$ is the remaining AI-efficiency gap scaled by effective labor.
+Multiplying by $AN$ allows a shrinking gap to have a positive limiting
+value. In particular,
+\[
+ \frac{\dot d}{d}
+ =n+\gamma-\frac{\dot B}{\overline B-B}.
+\]
+A constant $d$ therefore requires the gap to shrink at the rate at which
+effective labor expands. Finally, $\dot\tau=-(n+\gamma)\tau$, so the
+inverse of effective labor converges to zero. These coordinates leave the
+model unchanged: at every finite date, $K=k/\tau$ and
+$B=\overline B-d\tau$.
+
+The positive constants $\overline k,\overline d$ introduced in each
+proposition are the limiting values of $k,d$ along the constructed
+equilibrium paths. Thus $\overline k$ is long-run capital per unit of
+effective labor, while $\overline d$ determines the magnitude of the
+remaining efficiency gap:
+\[
+ \frac{\overline B-B(t)}{\overline d/[A(t)N(t)]}\longrightarrow1.
+\]
+The constant $\overline d$ is not a convergence rate or an additional
+parameter. Both constants are determined by the equations of the model
+for the parameters of the corresponding regime; their derivation is in
+Appendix~\ref{app:rewrite-proofs}. The propositions establish convergence
+to these values rather than assuming it.
+
+The algorithm uses the limiting point and the equilibrium dynamics near
+it to formulate long-run boundary conditions, rather than imposing
+arbitrary final values for consumption and the shadow price. These
+conditions help select the initial $C_0$ and $q_0$ for given initial
+stocks; see Appendix~\ref{app:rewrite-algorithm}. The normalization
+does not itself establish equilibrium: optimality and both
+transversality conditions must still be verified.
+
+\Needspace{4\baselineskip}
+Throughout these two propositions, $0<\overline B<\infty$ and initial
+conditions satisfy $A_0,N_0,K_0>0$ and $0<B_0<\overline B$. Each
+proposition specifies its own neighborhood $\mathcal U_L$ of
+$(\overline k,\overline d,0)$. Closeness is required in all three
+coordinates: $B_0$ close to $\overline B$ alone is not sufficient for the
+local construction. The point with $\tau=0$ describes the long-run limit,
+not an admissible initial state at a finite date.
+
 \subsection{Complementarity: \texorpdfstring{\(\sigma<1\)}{sigma < 1}}
 \label{subsec:rewrite-complements}
 
@@ -111,11 +169,9 @@ For any positive variable $V$, write $g_V=\dot V/V$.
 If $0<\sigma<1$ and $\overline B>\mathcal B(\sigma)$, then there are constants
 $\overline k,\overline d>0$ and a neighborhood $\mathcal U_L$ of
 $(\overline k,\overline d,0)$ such that, for every set of initial conditions
-$A_0,N_0,K_0>0$ and
-$0<B_0<\overline B$ satisfying
+satisfying
 \begin{equation}
- \left(\frac{K_0}{A_0N_0},\; (\overline B-B_0)A_0N_0,\;
- \frac{1}{A_0N_0}\right)\in\mathcal U_L,
+ (k_0,d_0,\tau_0)\in\mathcal U_L,
  \label{eq:rewrite-labor-local-initial}
 \end{equation}
 there exists an equilibrium trajectory along which
@@ -127,10 +183,13 @@ there exists an equilibrium trajectory along which
 %Along the equilibrium, %$s_X$ converges to an endogenous limit $\overline s_X\in(0,1)$. This limit is the long-run elasticity of $Z$ with respect to AI production services and is uniquely determined by thestatic equilibrium conditions at $B=\overline B$ and $r=\rho+\gamma$.
 %Moreover,
 \begin{equation}
- B\to\overline B,\qquad
+ \begin{gathered}
+ k\to\overline k,\qquad d\to\overline d,\qquad \tau\to0,\qquad
+ B\to\overline B,\\
  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
  r\to\rho+\gamma,\qquad
  \frac{wL}{Y}\to(1-\alpha)(1-\overline s_X)>0.
+ \end{gathered}
  \label{eq:rewrite-complements-terminal}
 \end{equation}
 Here $\overline s_X\equiv\lim_{t\to\infty}s_X(t)\in(0,1)$.
@@ -151,15 +210,8 @@ and output per person eventually grows at $\gamma$. %Note that it is assumed tha
 At unit elasticity I use the continuous CES limit
 $Z=(AL)^{\omega_L}X^{\omega_X}$, so $s_X=\omega_X$. Define
 $\beta=(1-\alpha)\omega_X$. The monopoly condition gives $U=\beta^2Y$.
-
-\begin{proposition}[Equilibrium trajectories at unit elasticity]
-\label{prop:rewrite-capped-unit-existence}
-Under the parameter restrictions in Section~\ref{sec:rewrite-model},
-fix $\sigma=1$ and $0<\overline B<\infty$. There exist $\overline d>0$
-and a neighborhood $\mathcal U_L$ of $(\overline k,\overline d,0)$ such
-that every $A_0,N_0,K_0>0$ and $0<B_0<\overline B$ satisfying
-\eqref{eq:rewrite-labor-local-initial} admits an equilibrium in the sense of
-Definition~\ref{def:rewrite-equilibrium}, where
+In this case, the limiting capital stock per unit of effective labor has
+the explicit expression
 \begin{equation}
  \overline k=
  \left[(\beta^2\overline B)^\beta
@@ -167,25 +219,39 @@ Definition~\ref{def:rewrite-equilibrium}, where
  \right]^{1/(1-\alpha-\beta)}.
  \label{eq:rewrite-unit-terminal-capital}
 \end{equation}
-The constant $\overline d$ is given by
-\eqref{eq:rewrite-labor-terminal-research} in the proof. The initial values
-$C_0,q_0>0$ are locally unique. Along this equilibrium,
+The denominator of the exponent is positive because
+$1-\alpha-\beta=(1-\alpha)\omega_L>0$. The corresponding value of
+$\overline d$ is derived in
+\eqref{eq:rewrite-labor-terminal-research} in the proof.
+
+\Needspace{14\baselineskip}
+\begin{proposition}[Equilibrium trajectories at unit elasticity]
+\label{prop:rewrite-capped-unit-existence}
+If $\sigma=1$, then there exist $\overline d>0$ and a neighborhood
+$\mathcal U_L$ of $(\overline k,\overline d,0)$, with $\overline k$ given
+by \eqref{eq:rewrite-unit-terminal-capital}, such that, for every set of
+initial conditions satisfying \eqref{eq:rewrite-labor-local-initial},
+there exists an equilibrium trajectory along which
 \begin{equation}
- B\to\overline B,\qquad
+ \begin{gathered}
+ k\to\overline k,\qquad d\to\overline d,\qquad \tau\to0,\qquad
+ B\to\overline B,\\
  g_Y-n\to\gamma,\qquad g_w\to\gamma,\qquad
  r\to\rho+\gamma,\qquad
  \frac{wL}{Y}=(1-\alpha)\omega_L>0.
+ \end{gathered}
  \label{eq:rewrite-unit-terminal}
 \end{equation}
+The initial values $C_0,q_0>0$ are locally unique among the trajectories
+that remain near the normalized long-run limit and converge to it.
 \end{proposition}
 
 \begin{proof}
 See Appendix~\ref{app:rewrite-proofs}.
 \end{proof}
 
-The denominator in \eqref{eq:rewrite-unit-terminal-capital} is positive
-because $1-\alpha-\beta=(1-\alpha)\omega_L>0$. No additional lower or
-upper bound on the finite frontier is needed for this local construction.
+No additional lower or upper bound on the finite frontier is needed for
+this local construction.
 The result describes transitions toward balanced growth, not an assumption
 that the economy starts on a balanced-growth path.
 
@@ -197,7 +263,9 @@ that the economy starts on a balanced-growth path.
 Under the parameter restrictions in Section~\ref{sec:rewrite-model},
 fix $0<\overline B<\infty$ and $\sigma>1$.
 
-If $\overline B<\mathcal B(\sigma)$, there exist $\overline k,\overline d>0$
+If $\overline B<\mathcal B(\sigma)$, use the same coordinates $k,d,\tau$
+as in the positive-labor-share constructions above. There exist
+$\overline k,\overline d>0$
 and a neighborhood $\mathcal U_L$ of $(\overline k,\overline d,0)$ such
 that every $A_0,N_0,K_0>0$ and $0<B_0<\overline B$ satisfying
 \eqref{eq:rewrite-labor-local-initial} admits an equilibrium with the limits in
@@ -221,7 +289,8 @@ $0<B_0<\overline B$ satisfying
  (\overline B-B_0)K_0,\; \frac{1}{A_0N_0}\right]\in\mathcal U_A
  \label{eq:rewrite-ai-local-initial}
 \end{equation}
-admits an equilibrium. Here $\overline d$ is given by
+admits an equilibrium. Here $\overline d$ is the limiting value of
+$(\overline B-B)K$, rather than $(\overline B-B)AN$, and is given by
 \eqref{eq:rewrite-ai-terminal-values} in the proof. Along this equilibrium,
 $r\to\overline r$, $s_X\to1$, and
 \begin{align}
