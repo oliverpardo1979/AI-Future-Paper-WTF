@@ -37,7 +37,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         propositions = re.findall(
             r"\\begin\{proposition\}.*?\\end\{proposition\}", body, re.S
         )
-        self.assertEqual(len(propositions), 2)
+        self.assertEqual(len(propositions), 1)
         unified = propositions[0]
         self.assertIn(r"\label{prop:rewrite-equilibrium-regimes}", unified)
         self.assertEqual(len(re.findall(r"\\item\b", unified)), 4)
@@ -110,6 +110,26 @@ class UnifiedPropositionStructure(unittest.TestCase):
         ):
             self.assertIn(r"\ref{" + label + "}", figure)
         self.assertEqual(figure.count("plot[smooth] coordinates"), 2)
+
+    def test_wage_result_and_proof_are_together_in_appendix(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        appendix = source("sections_rewrite/appendix_finite_frontier.tex")
+        self.assertNotIn(r"\subsection{Wages and labor's income share}", body)
+        for label in (
+            "prop:rewrite-output-wage-wedge",
+            "eq:rewrite-output-wage-wedge",
+            "eq:rewrite-labor-share-decline-rate",
+            "eq:rewrite-wage-premium-share-decline",
+        ):
+            self.assertNotIn(r"\label{" + label + "}", body)
+            self.assertIn(r"\label{" + label + "}", appendix)
+        self.assertLess(
+            appendix.index(r"\label{prop:rewrite-output-wage-wedge}"),
+            appendix.index(r"\label{proof:rewrite-output-wage-wedge}"),
+        )
+        self.assertIn(r"\ref{prop:rewrite-output-wage-wedge}", body)
+        quantitative = source("sections_rewrite/05_quantitative_equilibria.tex")
+        self.assertIn(r"\ref{prop:rewrite-output-wage-wedge}", quantitative)
 
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())
