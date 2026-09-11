@@ -131,6 +131,23 @@ class UnifiedPropositionStructure(unittest.TestCase):
         quantitative = source("sections_rewrite/05_quantitative_equilibria.tex")
         self.assertIn(r"\ref{prop:rewrite-output-wage-wedge}", quantitative)
 
+    def test_ai_revenue_remark_follows_proposition(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        remark = next(
+            block for block in re.findall(
+                r"\\begin\{remark\}.*?\\end\{remark\}", body, re.S
+            ) if r"\label{rem:rewrite-ai-revenue-share}" in block
+        )
+        self.assertLess(body.index(r"\end{proposition}"), body.index(remark))
+        self.assertLess(body.index(remark), body.index(r"\begin{figure}"))
+        self.assertIn(r"\ref{prop:rewrite-capped-substitutes-existence}", remark)
+        self.assertIn(r"\lim_{t\to\infty}g_{Y/N}>\lim_{t\to\infty}g_w>\gamma", remark)
+        for equation in ("eq:rewrite-capital-return", "eq:rewrite-final-zero-profit"):
+            self.assertIn(r"\eqref{" + equation + "}", remark)
+        self.assertIn(r"\frac{p_XX}{Y}=1-\alpha-\frac{wL}{Y}\longrightarrow1-\alpha", remark)
+        self.assertIn(r"$(r+\delta)K/Y=\alpha$", remark)
+        self.assertIn("not the developer's", remark)
+
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())
         labels = Counter(re.findall(r"\\label\{([^}]+)\}", text))
