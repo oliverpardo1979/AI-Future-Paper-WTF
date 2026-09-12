@@ -170,10 +170,14 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertEqual(
             wage_limits,
             [r"$\gamma$"] * 3
-            + [r"$\gamma+\frac{\mathcal R(\overline B)-\rho-\gamma}{\sigma}>\gamma$"],
+            + [r"$\gamma+\frac{\mathcal R(\overline B)-\rho-\gamma}{\sigma}$"],
         )
         limits = [row.rsplit("&", 1)[1].strip().removesuffix(r"\\").strip() for row in rows]
-        self.assertEqual(limits, [r"$\rho+\gamma$"] * 3 + [r"$\mathcal R(\overline B)>\rho+\gamma$"])
+        self.assertEqual(limits, [r"$\rho+\gamma$"] * 3 + [r"$\mathcal R(\overline B)$"])
+        last_cells = [cell.strip() for cell in rows[-1].split("&")]
+        self.assertEqual(last_cells[:2], [r"$\sigma>1$", r"$\overline B>\mathcal B(\sigma)$"])
+        self.assertEqual(last_cells[2], r"$\mathcal R(\overline B) -\rho$")
+        self.assertTrue(all(">" not in cell for cell in last_cells[2:]))
 
     def test_uncapped_discussion_preserves_frontier_limit_distinction(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
