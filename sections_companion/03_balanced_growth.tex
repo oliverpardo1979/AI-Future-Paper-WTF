@@ -1,0 +1,108 @@
+\section{Balanced growth and equilibrium existence}
+\label{sec:companion-bgp}
+
+Substituting $X=B\beta^2Y$ from \eqref{eq:companion-static-shares} into
+\eqref{eq:companion-production-original} yields
+\begin{equation}
+ Y^{1-\beta}=K^\alpha(AL)^\lambda(\beta^2B)^\beta.
+ \label{eq:companion-reduced-output}
+\end{equation}
+Consider a candidate balanced-growth path (BGP) with positive constant
+$K/Y,C/Y,M/Y$. Differentiating \eqref{eq:companion-reduced-output} and the
+research law \eqref{eq:companion-research-law} gives, respectively,
+\begin{align}
+ g_Y&=n+\gamma+(\beta/\lambda)g_B,\label{eq:companion-production-growth}\\
+ (1-\eta)g_B&=\eta g_Y.\label{eq:companion-research-growth}
+\end{align}
+The first equation relates AI improvement to aggregate production. The second
+requires research compute to grow with output when its expenditure share is
+constant. Define
+\begin{equation}
+ \Delta=\lambda(1-\eta)-\beta\eta=(1-\alpha)(1-\eta-\omega_X).
+ \label{eq:companion-feedback}
+\end{equation}
+If $\Delta>0$, the two growth equations have the solution
+\begin{align}
+ g_Y^*&=\frac{(1-\eta)(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma),
+ \label{eq:companion-gy}\\
+ g_B^*&=\frac{\eta(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma).
+ \label{eq:companion-gb}
+\end{align}
+The superscript $*$ identifies this BGP. The wage equation and household Euler
+condition then imply
+\begin{align}
+ g_{Y/N}^*=g_w^*&=\gamma+
+ \frac{\eta\omega_X}{1-\eta-\omega_X}(n+\gamma),
+ \label{eq:companion-premium}\\
+ r^*&=\rho+g_{Y/N}^*.\label{eq:companion-bgp-return}
+\end{align}
+
+To check that these rates belong to an equilibrium, define the candidate
+ratios $k^*=K/Y$, $u^*=U/Y$, $i^*=(\dot K+\delta K)/Y$, $m^*=M/Y$, and
+$c^*=C/Y$. These are capital--output and expenditure ratios, not quantities
+per unit of effective labor. Their values are
+\begin{align}
+ k^*&=\frac{\alpha}{r^*+\delta},\qquad u^*=\beta^2,
+ \label{eq:companion-bgp-capital-inference}\\
+ i^*&=(g_Y^*+\delta)k^*,\label{eq:companion-bgp-investment}\\
+ m^*&=\frac{\beta^2\eta g_B^*}{\rho-n+\eta g_Y^*},
+ \label{eq:companion-bgp-research}\\
+ c^*&=1-u^*-i^*-m^*.\label{eq:companion-bgp-consumption}
+\end{align}
+The research ratio follows from the developer's conditions, not a fixed
+research rule. Indeed, \eqref{eq:companion-research-foc} implies
+$M=\eta qg_BB$. Constant $M/Y$ then gives $g_q=g_Y-g_B$. Dividing
+\eqref{eq:companion-costate} by $q$ and substituting these expressions yields
+\eqref{eq:companion-bgp-research}. The remaining ratios follow from the
+capital return, the static monopoly solution, and resource clearing.
+
+\Needspace{7\baselineskip}
+\begin{proposition}[A balanced-growth equilibrium]
+\label{prop:companion-bgp}
+Maintain the primitive restrictions in Section~\ref{sec:companion-model}.
+Suppose, in addition, that
+\begin{equation}
+ 0<\eta<\alpha,\qquad\eta\leq\tfrac12,\qquad
+ \beta\leq\tfrac12,\qquad\eta+\omega_X<1.
+ \label{eq:companion-sufficient}
+\end{equation}
+For every $A_0,N_0>0$, there exist $K_0^*,B_0^*>0$ and an equilibrium with
+the rates and ratios in \eqref{eq:companion-gy}--\eqref{eq:companion-bgp-consumption}.
+Consumption is positive, both agents attain finite-valued global optima,
+and both transversality conditions hold. AI efficiency grows without bound
+as time tends to infinity but remains finite at every finite date.
+\end{proposition}
+\begin{proof}
+See Appendix~\ref{app:companion-proofs}, Proof of
+Proposition~\ref{prop:companion-bgp}.
+\end{proof}
+
+The restrictions serve different purposes. The condition $\eta+\omega_X<1$
+is necessary for this positive finite-rate BGP when $n+\gamma>0$.
+If it fails, the two growth restrictions either contradict one another or
+require declining AI efficiency. This excludes the specified BGP, not every
+possible equilibrium trajectory. The bounds $\beta\leq1/2$ and $\eta\leq1/2$
+are sufficient concavity conditions for global developer optimality. They
+are not claimed to be necessary. I retain $\eta<\alpha$ for comparability
+with the companion framework in \citet{pardo2026future}; the proof below
+does not separately require that comparison.
+
+Proposition~\ref{prop:companion-bgp} constructs the initial stocks together
+with the BGP. It does not prove equilibrium existence for arbitrary fixed
+$K_0,B_0$. Appendix C of \citet{pardo2026future} also establishes local
+equilibrium trajectories from nearby initial stocks under explicit stability
+and state-projection conditions. No off-BGP simulation is presented here.
+
+The BGP income shares are
+\begin{equation}
+ \frac{wL}{Y}=\lambda,\qquad
+ \frac{(r+\delta)K}{Y}=\alpha,\qquad
+ \frac{p_XX}{Y}=\beta,\qquad
+ \frac{\Pi}{Y}=\beta-\beta^2-m^*.
+ \label{eq:companion-distribution}
+\end{equation}
+Real wages and output per person grow together faster than $\gamma$ while
+labor retains a positive income share. This differs from the characterized
+unit-elastic finite-frontier equilibria, where both growth rates tend to
+$\gamma$. Removing the frontier changes the long-run result; the uncapped
+BGP is not obtained by interchanging the long-run and infinite-frontier limits.

@@ -1,0 +1,170 @@
+\section{Model}
+\label{sec:companion-model}
+
+Time is continuous and measured in years. Population $N$ and labor-augmenting
+technology $A$ satisfy
+\begin{equation}
+ \dot N=nN,\qquad \dot A=\gamma A,
+ \qquad n\geq0,\quad\gamma>0.
+ \label{eq:companion-exogenous}
+\end{equation}
+Each person supplies one unit of labor inelastically. Production labor is
+denoted by $L$; labor-market clearing will impose $L=N$. For any positive
+variable $V$, write $g_V=\dot V/V$. The final good is the numeraire.
+
+\subsection{Household}
+
+The household owns physical capital $K$ and the AI developer. Let $C$ denote
+aggregate consumption, $w$ the real wage, $r$ the net real interest rate, and
+$\Pi$ the developer's net distribution to its owner. Given their paths and
+$K_0>0$, the household chooses consumption to solve
+\begin{equation}
+ \max\int_0^\infty e^{-\rho t}N_t\log(C_t/N_t)\dd t,
+ \qquad \rho>n,
+ \label{eq:companion-household-objective}
+\end{equation}
+subject to
+\begin{equation}
+ \dot K=rK+wN+\Pi-C,\qquad C>0,\quad K\geq0.
+ \label{eq:companion-household-budget}
+\end{equation}
+The parameter $\rho$ is the discount rate. For an interior optimum, the Euler
+and transversality conditions are
+\begin{align}
+ g_C&=n+r-\rho,\label{eq:companion-euler}\\
+ \lim_{t\to\infty}e^{-\rho t}\frac{N_tK_t}{C_t}&=0.
+ \label{eq:companion-household-tvc}
+\end{align}
+Depreciation is already deducted from $r$.
+
+\subsection{Final-good firms}
+
+Let $X$ denote AI production services. I set the elasticity of substitution
+between effective labor $AL$ and $X$ to $\sigma=1$, retaining the production
+weights $\omega_X\in(0,1)$ and $\omega_L=1-\omega_X$. With capital elasticity
+$\alpha\in(0,1)$, production is
+\begin{equation}
+ Y=K^\alpha\left[(AL)^{\omega_L}X^{\omega_X}\right]^{1-\alpha}.
+ \label{eq:companion-production-original}
+\end{equation}
+Define the output elasticities
+\begin{equation}
+ \beta=(1-\alpha)\omega_X,\qquad
+ \lambda=(1-\alpha)\omega_L,\qquad\alpha+\beta+\lambda=1.
+ \label{eq:companion-elasticities}
+\end{equation}
+Thus the same production function is $Y=K^\alpha(AL)^\lambda X^\beta$.
+Let $p_X$ denote the AI-service price and $\delta\geq0$ capital depreciation.
+A competitive final-good firm solves
+\begin{equation}
+ \max_{K,L,X\geq0}\{K^\alpha(AL)^\lambda X^\beta-(r+\delta)K-wL-p_XX\}.
+ \label{eq:companion-firm}
+\end{equation}
+Its interior first-order conditions are
+\begin{align}
+ r&=\alpha Y/K-\delta,\label{eq:companion-rental}\\
+ w&=\lambda Y/L,\label{eq:companion-wage}\\
+ p_X&=\beta Y/X.\label{eq:companion-demand}
+\end{align}
+Constant returns imply zero final-good profit. At given $K,A,L$, equation
+\eqref{eq:companion-demand} defines inverse demand $p_X(X)$ for the developer.
+
+\subsection{The AI developer}
+
+Inference compute $U$ and research compute $M$ are flows of computational
+resources, each costing one unit of the final good per unit of compute.
+They are rival inputs, not stocks of processors. AI efficiency $B$ converts
+them into the flows $BU$ of AI production services and $BM$ of AI research
+services. The same nonrival efficiency index augments both uses of compute.
+The service technology and research law are
+\begin{align}
+ X&=BU,\label{eq:companion-services}\\
+ \dot B&=\chi(BM)^\eta,\qquad\chi>0,\quad0<\eta<1.
+ \label{eq:companion-research-law}
+\end{align}
+The parameter $\chi$ shifts research productivity; $\eta$ is the elasticity
+of the efficiency increment $\dot B$ with respect to research services $BM$.
+Efficiency has no finite upper bound. Higher $B$ raises research productivity
+at a given $M$, creating recursive self-improvement. There is no human
+research input in this benchmark.
+
+The developer exclusively owns $B$, sells $X$, and purchases $U=X/B$ and $M$.
+Ownership makes some benefits of research appropriable through monopoly rents.
+Taking $K,A,L,r$ as given and starting from $B_0>0$, it maximizes
+\begin{equation}
+ \int_0^\infty D_t[p_X(X_t)X_t-X_t/B_t-M_t]\dd t,
+ \qquad D_t=\exp\!\left(-\int_0^t r_s\dd s\right),
+ \label{eq:companion-developer-objective}
+\end{equation}
+subject to \eqref{eq:companion-research-law}, $X,M\geq0$, and finite feasible
+allocations at every finite date. Since $X$ does not enter the research law
+directly, define optimized operating profit, before research expenditure, by
+\begin{equation}
+ \pi(B)=\max_{X\geq0}\{p_X(X)X-X/B\}.
+ \label{eq:companion-static-monopoly}
+\end{equation}
+Dependence on current $K,A,L$ is implicit. Revenue is proportional to $X^\beta$,
+so the objective is strictly concave, its derivative is positive near zero,
+and linear cost dominates revenue at infinity. The unique positive optimum
+therefore satisfies
+\begin{equation}
+ \beta p_X=1/B.
+ \label{eq:companion-monopoly-foc}
+\end{equation}
+Combining this condition with \eqref{eq:companion-demand} and
+\eqref{eq:companion-services}, and applying the envelope theorem, gives
+\begin{equation}
+ p_XX=\beta Y,\qquad U=\beta^2Y,\qquad\pi_B=U/B.
+ \label{eq:companion-static-shares}
+\end{equation}
+
+Let $q$ be the current-value shadow price of AI efficiency. The Hamiltonian
+is $\pi(B)-M+q\chi(BM)^\eta$. Interior research and the costate condition give
+\begin{align}
+ 1&=q\chi\eta B^\eta M^{\eta-1},\label{eq:companion-research-foc}\\
+ \dot q&=rq-U/B-\eta q\dot B/B.\label{eq:companion-costate}
+\end{align}
+Research equates its unit resource cost to the value of the efficiency it
+creates. Holding efficiency also yields compute-cost savings $U/B$ and
+raises the productivity of subsequent research. The required return $rq$
+equals those two benefits plus the capital gain $\dot q$. The developer's
+transversality condition is
+\begin{equation}
+ \lim_{t\to\infty}D_tq_tB_t=0.
+ \label{eq:companion-developer-tvc}
+\end{equation}
+Net distributions are $\Pi=\pi(B)-M=p_XX-U-M$ and can be negative.
+
+\subsection{Equilibrium}
+
+\begin{definition}
+\label{def:companion-equilibrium}
+Given parameters and initial conditions $A_0,N_0,K_0,B_0>0$, an interior
+equilibrium is a trajectory for $(K,B,C,q,Y,L,X,U,M,r,w,p_X,\Pi)$, finite at
+each finite date, with $K,B,C,q,Y,L,X,U,M>0$, such that the household and
+developer attain their global optima, final-good firms maximize profit, and
+markets clear. Its equations and boundary conditions are
+\begin{align}
+ A_t&=A_0e^{\gamma t},\qquad N_t=N_0e^{nt},\qquad L_t=N_t,
+ \label{eq:companion-eq-exogenous}\\
+ Y&=K^\alpha(AL)^\lambda X^\beta,\label{eq:companion-eq-output}\\
+ X&=BU,\label{eq:companion-eq-services}\\
+ p_X&=\beta Y/X,\qquad\beta p_X=1/B,\label{eq:companion-eq-price}\\
+ r&=\alpha Y/K-\delta,\qquad w=\lambda Y/L,\label{eq:companion-eq-factors}\\
+ \Pi&=p_XX-U-M,\label{eq:companion-eq-profit}\\
+ \dot K&=Y-C-U-M-\delta K,\label{eq:companion-eq-kdot}\\
+ \dot B&=\chi(BM)^\eta,\label{eq:companion-eq-bdot}\\
+ \dot C&=(n+r-\rho)C,\label{eq:companion-eq-cdot}\\
+ 1&=q\chi\eta B^\eta M^{\eta-1},\label{eq:companion-eq-research}\\
+ \dot q&=rq-U/B-\eta q\dot B/B,\label{eq:companion-eq-qdot}\\
+ K(0)&=K_0,\qquad B(0)=B_0,\label{eq:companion-eq-initial}\\
+ \lim_{t\to\infty}e^{-\rho t}N_tK_t/C_t&=0,\label{eq:companion-eq-household-tvc}\\
+ \lim_{t\to\infty}D_tq_tB_t&=0.\label{eq:companion-eq-developer-tvc}
+\end{align}
+\end{definition}
+Capital accumulation is the aggregate resource constraint; the household
+budget follows from it and the factor-payment and distribution equations.
+The initial jump variables $C_0,q_0$ are endogenous. This definition imposes
+no balanced-growth restrictions. The first-order conditions and TVCs alone
+are not asserted to be sufficient for equilibrium: global optimality is
+verified under explicit conditions below.

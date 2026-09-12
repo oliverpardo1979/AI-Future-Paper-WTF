@@ -1,0 +1,76 @@
+\section{Calibration and measurement}
+\label{sec:companion-calibration}
+
+Table~\ref{tab:companion-parameters} imports the reference values documented
+in the quantitative section of \citet{pardo2026future}. It separates
+macroeconomic benchmarks from illustrative AI parameters. Reusing these
+values preserves comparability; it does not make them empirical estimates
+of this autonomous-research economy.
+
+\begin{table}[H]
+\centering
+\caption{Inherited parameters and their evidential status}
+\label{tab:companion-parameters}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{P{0.10\textwidth}P{0.11\textwidth}P{0.26\textwidth}P{0.42\textwidth}}
+\toprule
+Parameter & Reference & Interpretation & Source or status\\
+\midrule
+$\alpha$ & 0.33 & Capital elasticity & Inherited one-third macroeconomic benchmark.\\
+$\delta$ & 0.05 & Annual depreciation & Inherited benchmark; PWT is the comparison source, not a direct estimate of this value \citep{pwt110}.\\
+$\rho$ & 0.04 & Annual discount rate & Preference calibration, not a measured market interest rate.\\
+$n$ & 0.003 & Annual population growth & Inherited constant-rate approximation to the UN 2024--2100 world projection \citep{unwpp2024}.\\
+$\gamma$ & 0.01 & Annual labor-augmenting progress & Illustrative trend, with the OECD long-run scenarios as a scale comparison \citep{oecdlongrun2025}.\\
+$\omega_X$ & 0.20 & AI production weight & Illustrative, not estimated. Not the AI revenue share itself.\\
+$\omega_L$ & 0.80 & Effective-labor weight & Defined by $1-\omega_X$.\\
+$\eta$ & 0.20 & Research-services elasticity & Illustrative, not estimated.\\
+$\sigma$ & 1 & AI--labor substitution & Maintained restriction of this paper.\\
+$\chi$ & Free, $>0$ & Research productivity & Does not affect the BGP rates or expenditure ratios. Needs units and level targets for a quantitative level comparison.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The population parameter extrapolates a finite-period approximation, not a
+UN prediction of positive population growth forever. Likewise, measured
+labor-productivity growth is not the same object as the growth of $A$ in
+this model. The OECD comparison does not directly identify $\gamma$.
+Both $n$ and $\gamma$ therefore belong in long-run sensitivity analysis.
+
+The finite-frontier paper uses $\chi=1.4378$ to target an illustrative
+transition duration. I do not transfer that timing target to the uncapped
+economy. Equations~\eqref{eq:companion-gy}--\eqref{eq:companion-bgp-consumption}
+are independent of $\chi$, whereas the initial BGP levels constructed in
+Appendix~\ref{app:companion-proofs} depend on it. Calibrating $\chi$ cannot
+select an arbitrary permanent growth rate.
+
+At the inherited reference values, the analytical calculations give
+\begin{equation}
+ g_{Y/N}^*=g_w^*\simeq1.0867\%\ \text{per year},\qquad
+ r^*\simeq5.0867\%\ \text{per year}.
+ \label{eq:companion-reference-results}
+\end{equation}
+The growth increase relative to $\gamma=1\%$ is about $0.0867$ percentage
+points per year. This comparison is between long-run model benchmarks, not
+a transition from today's economy and not an estimate of AI's observed impact.
+
+Empirical discipline requires a mapping from observables to model objects.
+At unit elasticity, \eqref{eq:companion-distribution} implies that a measured
+AI revenue share would map to $\omega_X$ only after dividing by $1-\alpha$,
+provided the measurement matches the model's industry boundary and pricing
+assumptions. AI investment, compute expenditure, and AI revenue are different
+objects. Measurement difficulties discussed by \citet{oecdaiinvestment2025}
+motivate caution; they do not select $\omega_X=0.20$.
+
+For research, taking logs of \eqref{eq:companion-research-law} gives
+\begin{equation}
+ \log\dot B=\log\chi+\eta\log B+\eta\log M.
+ \label{eq:companion-measurement-law}
+\end{equation}
+The left side is the log of an efficiency increment, not the growth rate
+$g_B$. Moreover, research compute is an endogenous choice. Historical
+algorithmic improvements cannot be read directly as an estimate of $\eta$:
+they may also reflect human research, data, and complementary inputs omitted
+from the autonomous benchmark. Identifying defensible ranges for $\eta$ and
+$\omega_X$ remains a separate empirical task.

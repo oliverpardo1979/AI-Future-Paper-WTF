@@ -1,0 +1,46 @@
+% Companion manuscript. Compile from the repository root.
+% Keep main_rewrite.tex and its finite-frontier results independent.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,float}
+\usepackage{microtype,setspace,needspace}
+\usepackage[round,authoryear]{natbib}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\allowdisplaybreaks[1]
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{How Much Can Recursive AI Self-Improvement\\Raise Economic Growth?}
+\author{Oliver Pardo}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+I study how recursive AI self-improvement affects long-run economic growth
+in a decentralized economy with autonomous AI research. A monopolistic
+developer supplies AI services and invests in AI efficiency without a finite
+efficiency frontier. With unit elasticity of substitution between AI services
+and labor, I derive a balanced-growth equilibrium in which research spending,
+saving, and prices are endogenous. The increase in long-run growth depends on
+research returns, the production weight of AI, and exogenous effective-labor
+growth. Output per person and real wages grow at the same rate, while labor
+retains a positive income share. I use this analytical benchmark to organize
+calibration and parameter sensitivity. The inherited illustrative calibration
+implies a growth increase of about 0.087 percentage points per year; this is
+a conditional model calculation, not an empirical estimate or a forecast.
+\end{abstract}
+\onehalfspacing
+\input{sections_companion/01_introduction}
+\input{sections_companion/02_model}
+\input{sections_companion/03_balanced_growth}
+\input{sections_companion/04_calibration}
+\input{sections_companion/05_sensitivity}
+\appendix
+\input{sections_companion/appendix_proofs}
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}

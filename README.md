@@ -25,6 +25,21 @@ equilibrium-admission checks. See
 `REPLICATION.md` for the economic intuition, platform-specific setup, output
 map, and interpretation of the diagnostics.
 
+## Companion paper
+
+**How Much Can Recursive AI Self-Improvement Raise Economic Growth?**
+
+- `main_companion.tex`: independent entry point, compiled from the repository root.
+- `sections_companion/`: self-contained unit-elastic uncapped model, analytical
+  balanced-growth equilibrium and proof, inherited calibration, and sensitivity framework.
+- `COMPANION.md`: scope, parameter provenance, checks, and remaining empirical work.
+- `output/pdf/main_companion.pdf`: local compiled PDF (generated, not tracked).
+- [Latest companion PDF](https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/how-much-can-recursive-ai-self-improvement-raise-economic-growth.pdf).
+
+The companion is an initial working paper, not a completed empirical assessment.
+The original manuscript and its Appendix C remain in place. Their numerical
+solvers and reported transition paths are unchanged.
+
 ## Repository map
 
 - `scripts/`: analytical, boundary-value, auditing, export, and plotting code.

@@ -8,6 +8,15 @@ https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth
 
 The same GitHub Pages deployment also serves the equilibrium simulator.
 
+The companion working paper is compiled independently from `main_companion.tex`
+and published at a separate permanent path:
+
+https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/how-much-can-recursive-ai-self-improvement-raise-economic-growth.pdf
+
+Its calibration and analytical sensitivity framework are documented in
+`COMPANION.md` at the repository root. It does not replace the original paper
+or the simulator.
+
 Static GitHub Pages companion for the equilibrium model in *Automating
 Innovation*. It has two distinct modes:
 

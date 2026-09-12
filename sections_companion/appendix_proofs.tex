@@ -1,0 +1,102 @@
+\section{Proofs}
+\label{app:companion-proofs}
+
+\begin{proof}[Proof of Proposition~\ref{prop:companion-bgp}]
+First, all candidate ratios are positive. The denominator in
+\eqref{eq:companion-bgp-research} is positive, and
+\[
+ i^*=\frac{\alpha(g_Y^*+\delta)}{\rho-n+g_Y^*+\delta}<\alpha,
+ \qquad m^*<\frac{\beta^2\eta}{1-\eta}.
+\]
+Since $\Delta=(1-\alpha)(1-\eta)-\beta>0$, both
+$\beta<1-\eta$ and $\beta<1-\alpha$. Hence
+\[
+ u^*+m^*<\frac{\beta^2}{1-\eta}<\beta<1-\alpha,
+ \qquad c^*=1-u^*-i^*-m^*>0.
+\]
+Positive consumption is a consequence, not an additional assumption.
+
+For given $A_0,N_0>0$, construct initial levels as
+\begin{align}
+ B_0^*&=\left[A_0N_0(k^*)^{\alpha/\lambda}(u^*)^{\beta/\lambda}
+ m^*\left(\frac{\chi}{g_B^*}\right)^{1/\eta}
+ \right]^{\eta\lambda/\Delta},\label{eq:companion-initial-b}\\
+ Y_0^*&=A_0N_0(k^*)^{\alpha/\lambda}(u^*B_0^*)^{\beta/\lambda},
+ \qquad K_0^*=k^*Y_0^*,\label{eq:companion-initial-y}\\
+ q_0^*&=\frac{m^*Y_0^*}{\eta g_B^*B_0^*}.
+ \label{eq:companion-initial-q}
+\end{align}
+The first two equations solve the initial production equation and
+$g_B^*B_0^*=\chi(B_0^*m^*Y_0^*)^\eta$ simultaneously.
+Let $Y_t^*=Y_0^*e^{g_Y^*t}$, $B_t^*=B_0^*e^{g_B^*t}$, and
+$q_t^*=q_0^*e^{(g_Y^*-g_B^*)t}$. Set
+$K=k^*Y^*$, $C=c^*Y^*$, $U=u^*Y^*$, $M=m^*Y^*$, $X=B^*U$, and $L=N$.
+Determine $p_X,r,w,\Pi$ from the static equations in
+Definition~\ref{def:companion-equilibrium}.
+
+Equations~\eqref{eq:companion-production-growth} and
+\eqref{eq:companion-research-growth} make production and the research law
+hold at every date. The chosen $q_0^*$ ensures $M=\eta q\dot B$, which is
+the research FOC. The capital-return, Euler, and resource equations follow
+from $k^*,r^*,c^*$. Finally, the costate equation reduces to
+\[
+ g_Y^*-g_B^*=r^*-\frac{u^*\eta g_B^*}{m^*}-\eta g_B^*,
+\]
+which follows from \eqref{eq:companion-bgp-research} and
+$(1-\eta)g_B^*=\eta g_Y^*$. All quantities remain finite and positive at
+every finite date.
+
+Both transversality conditions hold explicitly:
+\begin{align}
+ e^{-\rho t}\frac{N_tK_t^*}{C_t^*}
+ &=\frac{N_0k^*}{c^*}e^{-(\rho-n)t}\longrightarrow0,
+ \label{eq:companion-proof-household-tvc}\\
+ D_tq_t^*B_t^*&=q_0^*B_0^*e^{-(\rho-n)t}\longrightarrow0.
+ \label{eq:companion-proof-developer-tvc}
+\end{align}
+Here $D_t=e^{-r^*t}$. Discounted developer profit is proportional to
+$e^{-(\rho-n)t}$. Discounted household utility is
+$N_0e^{-(\rho-n)t}[\log(C_0^*/N_0)+(g_Y^*-n)t]$. Both objective integrals
+are finite because $\rho>n$.
+
+To verify global developer optimality, static optimization at given
+$K_t,A_t,L_t$ gives
+\begin{equation}
+ \pi_t(B)=\beta(1-\beta)
+ [K_t^\alpha(A_tL_t)^\lambda]^{1/(1-\beta)}
+ (\beta^2B)^{\beta/(1-\beta)}.
+ \label{eq:companion-profit-function}
+\end{equation}
+This function is concave in $B$ when $\beta\leq1/2$. Research technology
+$F(B,M)=\chi B^\eta M^\eta$ is jointly concave when $\eta\leq1/2$.
+Since $q_t>0$, the reduced Hamiltonian $\pi_t(B)-M+q_tF(B,M)$ is jointly
+concave. Let $J_T=\int_0^T D_t[\pi_t(B_t)-M_t]\dd t$.
+For any admissible alternative, denoted by a tilde, with the same $B_0$,
+the supporting-hyperplane inequality, research FOC, and costate equation give
+\begin{equation}
+ \widetilde J_T-J_T
+ \leq-D_Tq_T(\widetilde B_T-B_T)
+ \leq D_Tq_TB_T\longrightarrow0.
+ \label{eq:companion-developer-verification}
+\end{equation}
+No alternative can have a larger limiting payoff, or a larger upper limit
+of truncated payoff, than the constructed finite-valued candidate. Static
+optimality was global by strict concavity of
+\eqref{eq:companion-static-monopoly}, so reducing the developer problem did
+not discard a profitable service choice.
+
+For the household, write $\Lambda_t=e^{-\rho t}N_t/C_t$. Euler implies
+$\dot\Lambda=-r\Lambda$. Concavity of log utility and the linear household
+budget yield, for any feasible alternative at the same given prices and
+distributions and with the same $K_0$,
+\begin{equation}
+ \int_0^T e^{-\rho t}N_t
+ [\log(\widetilde C_t/N_t)-\log(C_t/N_t)]\dd t
+ \leq-\Lambda_T(\widetilde K_T-K_T)
+ \leq\Lambda_TK_T\longrightarrow0.
+ \label{eq:companion-household-verification}
+\end{equation}
+This proves global household optimality. Final-good firms face a concave
+constant-returns technology, so their first-order conditions maximize profit.
+Market clearing and both global agent optima establish the claimed equilibrium.
+\end{proof}

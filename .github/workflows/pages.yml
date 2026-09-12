@@ -6,7 +6,9 @@ on:
     paths:
       - "docs/**"
       - "main_rewrite.tex"
+      - "main_companion.tex"
       - "sections_rewrite/**"
+      - "sections_companion/**"
       - "figures_rewrite/**"
       - "references.bib"
       - ".github/workflows/pages.yml"
@@ -27,14 +29,17 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
-      - name: Compile current paper
+      - name: Compile both manuscripts
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: main_rewrite.tex
-      - name: Publish the current paper at a permanent path
+          root_file: |
+            main_rewrite.tex
+            main_companion.tex
+      - name: Publish both papers at their permanent paths
         run: |
           mkdir -p docs/paper
           cp main_rewrite.pdf docs/paper/the-future-of-growth-and-human-labor-under-recursive-ai-self-improvement.pdf
+          cp main_companion.pdf docs/paper/how-much-can-recursive-ai-self-improvement-raise-economic-growth.pdf
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
