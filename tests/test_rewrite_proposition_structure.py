@@ -66,6 +66,16 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"$g_w$ as the real-wage growth rate", body)
         self.assertIn(r"$\sigma=1$ & Any finite $\overline B$", body)
 
+    def test_return_derivation_numbers_and_references_its_two_inputs(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        numbered = re.findall(r"\\begin\{equation\}.*?\\end\{equation\}", body, re.S)
+        for label in ("eq:rewrite-ai-output-limit", "eq:rewrite-composite-ai-limit"):
+            self.assertEqual(sum(r"\label{" + label + "}" in eq for eq in numbered), 1)
+        self.assertIn(
+            r"Substituting equations~\eqref{eq:rewrite-ai-output-limit} and~\eqref{eq:rewrite-composite-ai-limit} into $r=\alpha Y/K-\delta$",
+            body,
+        )
+
     def test_table_stays_in_main_text_and_coordinates_move_to_proof(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
         proof = source("sections_rewrite/appendix_finite_frontier.tex")

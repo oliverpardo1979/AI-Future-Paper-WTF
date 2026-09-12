@@ -27,17 +27,19 @@ A finite frontier bounds AI efficiency, but not the compute used to supply AI pr
 
 Combine the final-good firm's demand for AI services in
 equation~\eqref{eq:rewrite-ai-price} with the developer's pricing condition in equation~\eqref{eq:rewrite-monopoly-foc}. The result is:
-\[
+\begin{equation}
  \frac XY=B(1-\alpha)s_X(1-e_X)
  \longrightarrow B(1-\alpha)^2.
-\]
+ \label{eq:rewrite-ai-output-limit}
+\end{equation}
 The limit uses $e_X\to\alpha$ from Equation
 \eqref{eq:rewrite-inverse-demand-elasticity}. %One factor $1-\alpha$ comes from the marginal product of AI services; the other comes from the developer's marginal-revenue condition. 
 The CES aggregator and its elasticity in Equations~\eqref{eq:rewrite-ces} and \eqref{eq:rewrite-sx} give
-\[
+\begin{equation}
  \frac ZX=\left(\frac{\omega_X}{s_X}\right)^{\sigma/(\sigma-1)}
  \longrightarrow\omega_X^{\sigma/(\sigma-1)}.
-\]
+ \label{eq:rewrite-composite-ai-limit}
+\end{equation}
 Dividing production by $Y$ yields
 $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Hence
 \[
@@ -45,7 +47,7 @@ $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Hence
  \longrightarrow
  \left[(1-\alpha)^2B\,\omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
 \]
-Substituting this result into $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, defines the net return on capital when $s_X\to1$ as a function of $B$:
+Substituting equations~\eqref{eq:rewrite-ai-output-limit} and~\eqref{eq:rewrite-composite-ai-limit} into $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, using the production identity above, defines the net return on capital when $s_X\to1$ as a function of $B$:
 \begin{equation}
  \mathcal R(B)
  \equiv\alpha\left[(1-\alpha)^2B\,
