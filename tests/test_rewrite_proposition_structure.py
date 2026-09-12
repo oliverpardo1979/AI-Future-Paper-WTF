@@ -145,11 +145,24 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertLess(body.index(remark), body.index(r"\begin{figure}"))
         self.assertIn(r"\ref{prop:rewrite-capped-substitutes-existence}", remark)
         self.assertIn(r"\lim_{t\to\infty}g_{Y/N}>\lim_{t\to\infty}g_w>\gamma", remark)
-        for equation in ("eq:rewrite-capital-return", "eq:rewrite-final-zero-profit"):
-            self.assertIn(r"\eqref{" + equation + "}", remark)
-        self.assertIn(r"\frac{p_XX}{Y}=1-\alpha-\frac{wL}{Y}\longrightarrow1-\alpha", remark)
-        self.assertIn(r"$(r+\delta)K/Y=\alpha$", remark)
-        self.assertIn("not the developer's", remark)
+        # The user's shortened remark states the limit in prose and omits
+        # the accounting derivation; do not require that derivation here.
+        self.assertIn("converges to zero", remark)
+        self.assertIn(r"$1-\alpha$", remark)
+
+    def test_regime_table_reports_net_interest_limits(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        table = next(
+            block for block in re.findall(
+                r"\\begin\{table\}.*?\\end\{table\}", body, re.S
+            ) if r"\label{tab:rewrite-finite-existence}" in block
+        )
+        self.assertIn(r"$\lim r$", table)
+        rows = [line.strip() for line in table.splitlines() if line.lstrip().startswith("$")]
+        self.assertEqual(len(rows), 4)
+        self.assertTrue(all(row.count("&") == 4 for row in rows))
+        limits = [row.rsplit("&", 1)[1].strip().removesuffix(r"\\").strip() for row in rows]
+        self.assertEqual(limits, [r"$\rho+\gamma$"] * 3 + [r"$\mathcal R(\overline B)$"])
 
     def test_uncapped_discussion_preserves_frontier_limit_distinction(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
