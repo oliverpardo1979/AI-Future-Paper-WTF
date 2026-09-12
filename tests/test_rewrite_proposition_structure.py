@@ -162,7 +162,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertEqual(len(rows), 4)
         self.assertTrue(all(row.count("&") == 4 for row in rows))
         limits = [row.rsplit("&", 1)[1].strip().removesuffix(r"\\").strip() for row in rows]
-        self.assertEqual(limits, [r"$\rho+\gamma$"] * 3 + [r"$\mathcal R(\overline B)$"])
+        self.assertEqual(limits, [r"$\rho+\gamma$"] * 3 + [r"$\mathcal R(\overline B)>\rho+\gamma$"])
 
     def test_uncapped_discussion_preserves_frontier_limit_distinction(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
