@@ -561,54 +561,41 @@ Definition~\ref{def:rewrite-equilibrium} for all these trajectories.
 \end{proof}
 
 \Needspace{20\baselineskip}
-\begin{proposition}[Wage growth and labor's income share]
-\label{prop:rewrite-output-wage-wedge}
-Consider the long-run equilibria constructed in
-Proposition~\ref{prop:rewrite-equilibrium-regimes}. Then
-\[
- \lim_{t\to\infty}g_w>\gamma
- \quad\Longleftrightarrow\quad
- \lim_{t\to\infty}\frac{wL}{Y}=0,
-\]
-and either condition holds precisely when the equilibrium is AI-dominated.
-Along such an equilibrium, output per person grows asymptotically faster than
-the real wage:
-\begin{equation}
- \lim_{t\to\infty}\bigl[(g_Y-n)-g_w\bigr]
- =\left(1-\frac{1}{\sigma}\right)
-  (\overline r-\rho-\gamma)>0.
- \label{eq:rewrite-output-wage-wedge}
-\end{equation}
-Because $L=N$, the same wedge is the asymptotic rate at which labor's income
-share falls:
-\begin{equation}
- \lim_{t\to\infty}\frac{\mathrm d}{\mathrm dt}
- \log\left(\frac{wL}{Y}\right)
- =-\left(1-\frac{1}{\sigma}\right)
-  (\overline r-\rho-\gamma)<0.
- \label{eq:rewrite-labor-share-decline-rate}
-\end{equation}
-Equivalently,
-\begin{equation}
- -\lim_{t\to\infty}\frac{\mathrm d}{\mathrm dt}
-  \log\left(\frac{wL}{Y}\right)
- =(\sigma-1)\lim_{t\to\infty}(g_w-\gamma)>0.
- \label{eq:rewrite-wage-premium-share-decline}
-\end{equation}
-\end{proposition}
+%\begin{proposition}[Wage growth and labor's income share]
+%\label{prop:rewrite-output-wage-wedge}
+%Consider the long-run equilibria constructed in Proposition~\ref{prop:rewrite-equilibrium-regimes}. Then
+%\[
+% \lim_{t\to\infty}g_w>\gamma
+% \quad\Longleftrightarrow\quad
+% \lim_{t\to\infty}\frac{wL}{Y}=0,
+%\]
+%and either condition holds precisely when the equilibrium is AI-dominated. Along such an equilibrium, output per person grows asymptotically faster than the real wage:
+%\begin{equation}
+% \lim_{t\to\infty}\bigl[(g_Y-n)-g_w\bigr]
+% =\left(1-\frac{1}{\sigma}\right)
+%  (\overline r-\rho-\gamma)>0.
+% \label{eq:rewrite-output-wage-wedge}
+%\end{equation}
+%Because $L=N$, the same wedge is the asymptotic rate at which labor's income share falls:
+%\begin{equation}
+% \lim_{t\to\infty}\frac{\mathrm d}{\mathrm dt}
+% \log\left(\frac{wL}{Y}\right)
+% =-\left(1-\frac{1}{\sigma}\right)
+%  (\overline r-\rho-\gamma)<0.
+% \label{eq:rewrite-labor-share-decline-rate}
+%\end{equation}
+%Equivalently,
+%\begin{equation}
+% -\lim_{t\to\infty}\frac{\mathrm d}{\mathrm dt}
+%  \log\left(\frac{wL}{Y}\right)
+% =(\sigma-1)\lim_{t\to\infty}(g_w-\gamma)>0.
+% \label{eq:rewrite-wage-premium-share-decline}
+%\end{equation}
+%\end{proposition}
 
-\Needspace{4\baselineskip}
-\phantomsection
-\label{proof:rewrite-output-wage-wedge}
-\begin{proof}[Proof of Proposition~\ref{prop:rewrite-output-wage-wedge}]
-The first three cases of Proposition~\ref{prop:rewrite-equilibrium-regimes}
-give $g_w\to\gamma$ and a positive limiting labor share, using
-$wL/Y=(1-\alpha)(1-s_X)$.
-Proposition~\ref{prop:rewrite-capped-substitutes-existence} implies both $g_w\to\gamma+(\overline r-\rho-\gamma)/\sigma>\gamma$ and
-$wL/Y\to0$. This proves the equivalence. Subtract the wage-growth limit in
-\eqref{eq:rewrite-substitutes-wage-growth} from the per-person output-growth
-limit in \eqref{eq:rewrite-substitutes-ai-limits}. Moreover,
-$\mathrm d\log(wL/Y)/\mathrm dt=g_w+n-g_Y$ because $L=N$. Finally, combine
-\eqref{eq:rewrite-labor-share-decline-rate} with
-\eqref{eq:rewrite-substitutes-wage-growth}.
-\end{proof}
+%\Needspace{4\baselineskip}
+%\phantomsection
+%\label{proof:rewrite-output-wage-wedge}
+%\begin{proof}[Proof of Proposition~\ref{prop:rewrite-output-wage-wedge}]
+%The first three cases of Proposition~\ref{prop:rewrite-equilibrium-regimes} give $g_w\to\gamma$ and a positive limiting labor share, using $wL/Y=(1-\alpha)(1-s_X)$. Proposition~\ref{prop:rewrite-capped-substitutes-existence} implies both $g_w\to\gamma+(\overline r-\rho-\gamma)/\sigma>\gamma$ and $wL/Y\to0$. This proves the equivalence. Subtract the wage-growth limit in \eqref{eq:rewrite-substitutes-wage-growth} from the per-person output-growth limit in \eqref{eq:rewrite-substitutes-ai-limits}. Moreover, $\mathrm d\log(wL/Y)/\mathrm dt=g_w+n-g_Y$ because $L=N$. Finally, combine \eqref{eq:rewrite-labor-share-decline-rate} with \eqref{eq:rewrite-substitutes-wage-growth}.
+%\end{proof}
