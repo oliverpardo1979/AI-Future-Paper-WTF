@@ -37,7 +37,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         propositions = re.findall(
             r"\\begin\{proposition\}.*?\\end\{proposition\}", body, re.S
         )
-        self.assertEqual(len(propositions), 1)
+        self.assertEqual(len(propositions), 2)
         unified = propositions[0]
         self.assertIn(r"\label{prop:rewrite-equilibrium-regimes}", unified)
         self.assertEqual(len(re.findall(r"\\item\b", unified)), 4)
@@ -206,7 +206,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         normalized = " ".join(uncapped.split())
         self.assertIn(r"\ref{prop:rewrite-equilibrium-regimes}", uncapped)
         self.assertEqual(len(re.split(r"\n\s*\n", uncapped.strip())), 4)
-        self.assertIn(r"\ref{app:rewrite-uncapped-unit}", uncapped)
+        self.assertIn(r"\ref{subsec:rewrite-uncapped-unit-bgp}", uncapped)
         self.assertIn(r"differs from setting $\overline B=\infty$ at the outset", normalized)
         self.assertIn(r"become unbounded as $\overline B\to\infty$", normalized)
         self.assertIn("not a proof of a finite-time singularity or of equilibrium nonexistence", normalized)
@@ -256,6 +256,34 @@ class UnifiedPropositionStructure(unittest.TestCase):
         refs.update(re.findall(r"\\hyperref\[([^]]+)\]", text))
         self.assertEqual({label: count for label, count in labels.items() if count > 1}, {})
         self.assertEqual(refs - labels.keys(), set())
+
+    def test_uncapped_bgp_precedes_open_substitution_question(self):
+        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        subsections = re.findall(r"\\subsection\{([^}]+)\}", body)
+        self.assertEqual(len(subsections), 4)
+        self.assertEqual(subsections[2:], [
+            "Balanced growth without an AI-efficiency frontier",
+            "The role of the frontier beyond unit elasticity",
+        ])
+        bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
+            r"\subsection{The role of the frontier beyond unit elasticity}", 1)[0]
+        self.assertIn(r"\label{prop:rewrite-uncapped-unit-bgp}", bgp)
+        self.assertLess(bgp.index(r"\label{eq:rewrite-uncapped-unit-elasticities}"),
+                        bgp.index(r"\begin{proposition}"))
+        self.assertIn(r"\label{eq:rewrite-uncapped-unit-labor-share}", bgp)
+        self.assertIn("not a steady state in levels", bgp)
+        self.assertIn("does not", bgp)
+        self.assertIn("arbitrary $K_0,B_0$", bgp)
+        self.assertIn("finite-valued global optima", bgp)
+        self.assertIn("transversality", bgp)
+        self.assertIn(r"\citep{pardo2026companion}", bgp)
+        self.assertIn(r"\hyperref[proof:rewrite-uncapped-unit-bgp]", bgp)
+        literature = " ".join(source("sections_rewrite/02_literature.tex").split())
+        self.assertIn("Across the long-run equilibria characterized here with a finite AI-efficiency frontier", literature)
+        conclusion = " ".join(source("sections_rewrite/06_conclusion.tex").split())
+        self.assertIn("Across the long-run regimes I characterize with a finite AI-efficiency frontier", conclusion)
+        self.assertIn("uncapped unit-elastic benchmark", conclusion)
+        self.assertIn("beyond unit elasticity", conclusion)
 
 
 if __name__ == "__main__":

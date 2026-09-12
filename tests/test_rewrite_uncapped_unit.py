@@ -155,14 +155,18 @@ class UncappedUnitAppendix(unittest.TestCase):
         proofs = (ROOT / "sections_rewrite/appendix_uncapped_unit_proofs.tex").read_text(encoding="utf-8")
         main = (ROOT / "main_rewrite.tex").read_text(encoding="utf-8")
         existing = (ROOT / "sections_rewrite/appendix.tex").read_text(encoding="utf-8")
+        body = (ROOT / "sections_rewrite/04_equilibrium_regimes.tex").read_text(encoding="utf-8")
         self.assertIn(r"\input{sections_rewrite/appendix_uncapped_unit}", main)
         self.assertLess(existing.index(r"\input{sections_rewrite/appendix_uncapped_unit_proofs}"),
                         existing.index(r"\section{Numerical algorithm"))
         self.assertNotRegex(proofs, r"\\(?:sub)*section\{")
-        self.assertEqual(appendix.count(r"\begin{proposition}"), 2)
+        self.assertEqual(appendix.count(r"\begin{proposition}"), 1)
         for suffix in ("bgp", "local"):
             label = "prop:rewrite-uncapped-unit-" + suffix
-            self.assertIn(r"\label{" + label + "}", appendix)
+            location = body if suffix == "bgp" else appendix
+            other = appendix if suffix == "bgp" else body
+            self.assertIn(r"\label{" + label + "}", location)
+            self.assertNotIn(r"\label{" + label + "}", other)
             self.assertIn(r"\begin{proof}[Proof of Proposition~\ref{" + label + "}]", proofs)
         self.assertNotRegex(appendix + proofs, r"\\gamma_A|\\sigma_\{XL\}|\\omega_H|\\sigma_\{HM\}")
         self.assertIn("not every possible equilibrium", appendix)

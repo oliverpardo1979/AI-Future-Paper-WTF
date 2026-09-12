@@ -90,7 +90,9 @@ class CompanionManuscript(unittest.TestCase):
         self.assertNotIn("sections_companion", original)
         self.assertIn(r"\input{sections_rewrite/appendix_uncapped_unit}", original)
         body = (ROOT / "sections_rewrite/04_equilibrium_regimes.tex").read_text(encoding="utf-8")
-        self.assertIn(r"\citep{pardo2026companion}", body.split(r"\label{subsec:rewrite-uncapped}")[1])
+        uncapped_bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}")[1].split(
+            r"\label{subsec:rewrite-uncapped}")[0]
+        self.assertIn(r"\citep{pardo2026companion}", uncapped_bgp)
         workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
         self.assertIn("main_rewrite.tex\n            main_companion.tex", workflow)
         self.assertIn("sections_companion/**", workflow)

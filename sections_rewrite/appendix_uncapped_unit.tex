@@ -1,29 +1,16 @@
 \section{The uncapped economy with unit elasticity}
 \label{app:rewrite-uncapped-unit}
 
-I now remove the efficiency frontier and set $\sigma=1$. The research law is
-\begin{equation}
- \dot B=\chi(BM)^\eta.
- \label{eq:rewrite-uncapped-unit-law}
-\end{equation}
-All other primitives and the meaning of equilibrium remain as in
-Section~\ref{sec:rewrite-model}. In Definition~\ref{def:rewrite-equilibrium},
-I set $\psi(B)=1$ and $\psi'(B)=0$ and remove the upper restriction on $B$.
-Allocations must still be finite at every finite date, agents must attain
-their optima, and both transversality conditions must hold. This is a
-separate equilibrium construction, not a limit of the finite-frontier
-equilibria in Proposition~\ref{prop:rewrite-equilibrium-regimes}.
+This appendix derives the rates and allocation ratios supporting
+Proposition~\ref{prop:rewrite-uncapped-unit-bgp} in
+Section~\ref{subsec:rewrite-uncapped-unit-bgp} and establishes local
+equilibrium trajectories near its BGP. I use the uncapped research law
+\eqref{eq:rewrite-uncapped-unit-law} and the output elasticities
+\eqref{eq:rewrite-uncapped-unit-elasticities}.
 
 \subsection{An explicit balanced-growth equilibrium}
 
-At unit elasticity, define the output elasticities
-\begin{equation}
- \beta=(1-\alpha)\omega_X,\qquad
- \lambda=(1-\alpha)\omega_L,
- \qquad \alpha+\beta+\lambda=1.
- \label{eq:rewrite-uncapped-unit-elasticities}
-\end{equation}
-Then $s_X=\omega_X$ and $e_X=1-\beta$. The AI-demand and monopoly conditions,
+At unit elasticity, $s_X=\omega_X$ and $e_X=1-\beta$. The AI-demand and monopoly conditions,
 equations~\eqref{eq:rewrite-ai-price} and~\eqref{eq:rewrite-monopoly-foc}, give
 \begin{equation}
  \frac{p_XX}{Y}=\beta,\qquad \frac UY=\beta^2.
@@ -35,37 +22,23 @@ Substituting $X=BU=\beta^2BY$ into the Cobb--Douglas production function yields
  \label{eq:rewrite-uncapped-unit-production}
 \end{equation}
 On an exact balanced-growth path with positive constant $K/Y$, $C/Y$, and $M/Y$,
-equations~\eqref{eq:rewrite-uncapped-unit-production}
-and~\eqref{eq:rewrite-uncapped-unit-law} require, respectively,
-\begin{align}
- g_Y&=n+\gamma+\frac{\beta}{\lambda}g_B,
- \label{eq:rewrite-uncapped-unit-production-growth}\\
- (1-\eta)g_B&=\eta g_Y.
- \label{eq:rewrite-uncapped-unit-research-growth}
-\end{align}
+log differentiation of \eqref{eq:rewrite-uncapped-unit-production}
+and~\eqref{eq:rewrite-uncapped-unit-law} gives the two growth restrictions
+\eqref{eq:rewrite-uncapped-unit-production-growth}
+and~\eqref{eq:rewrite-uncapped-unit-research-growth}.
 Define
 \begin{equation}
  \Delta\equiv\lambda(1-\eta)-\beta\eta
  =(1-\alpha)(1-\eta-\omega_X).
  \label{eq:rewrite-uncapped-unit-feedback}
 \end{equation}
-For $\Delta>0$, the unique solution of these two growth restrictions is
-\begin{align}
- g_Y^*&=\frac{(1-\eta)(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma),
- \label{eq:rewrite-uncapped-unit-output-growth}\\
- g_B^*&=\frac{\eta(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma).
- \label{eq:rewrite-uncapped-unit-efficiency-growth}
-\end{align}
-The superscript $*$ denotes the candidate balanced-growth path. Its interest
-rate, wage growth, and output growth per person are
-\begin{align}
- g_{Y/N}^*=g_w^*&=g_Y^*-n
- =\gamma+\frac{\eta\omega_X}{1-\eta-\omega_X}(n+\gamma),
- \label{eq:rewrite-uncapped-unit-wage-growth}\\
- r^*&=\rho+g_Y^*-n.
- \label{eq:rewrite-uncapped-unit-return}
-\end{align}
-Here $g_K=g_C=g_Y^*$ follows from constant capital and consumption ratios;
+For $\Delta>0$, their unique solution has
+\begin{equation}
+ g_Y^*=\frac{(1-\eta)(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma),
+ \label{eq:rewrite-uncapped-unit-output-growth}
+\end{equation}
+and $g_B^*$ as in \eqref{eq:rewrite-uncapped-unit-efficiency-growth}.
+The equality $g_K=g_C=g_Y^*$ follows from constant capital and consumption ratios;
 equations~\eqref{eq:rewrite-wage} and~\eqref{eq:rewrite-euler} then give
 \eqref{eq:rewrite-uncapped-unit-wage-growth}
 and~\eqref{eq:rewrite-uncapped-unit-return}.
@@ -86,36 +59,8 @@ In this appendix, $k^*$ is a capital--output ratio, not capital per unit of
 effective labor. The research share comes from the developer's first-order
 and costate conditions; the consumption share comes from market clearing.
 These ratios are endogenous, not fixed saving or research rules.
-
-\Needspace{7\baselineskip}
-\begin{proposition}[An uncapped balanced-growth equilibrium]
-\label{prop:rewrite-uncapped-unit-bgp}
-Maintain $0<\alpha<1$, $0<\omega_X<1$, $\omega_L=1-\omega_X$,
-$\chi>0$, $\delta\geq0$, $n\geq0$, $\gamma>0$, and $\rho>n$.
-Suppose $\sigma=1$ and
-\begin{equation}
- 0<\eta<\alpha,\qquad \eta\leq\tfrac12,\qquad
- \beta\leq\tfrac12,\qquad \eta+\omega_X<1.
- \label{eq:rewrite-uncapped-unit-sufficient}
-\end{equation}
-For every $A_0,N_0>0$, there exist $K_0^*,B_0^*>0$ and an
-infinite-horizon equilibrium with the constant ratios and growth rates in
-equations~\eqref{eq:rewrite-uncapped-unit-output-growth}--\eqref{eq:rewrite-uncapped-unit-consumption}.
-Along this equilibrium, $B_t=B_0^*e^{g_B^*t}\to\infty$,
+Along the BGP, $B_t=B_0^*e^{g_B^*t}\to\infty$,
 $g_K=g_C=g_U=g_M=g_Y^*$, $g_X=g_Y^*+g_B^*$, and $g_q=g_Y^*-g_B^*$.
-Consumption is strictly positive, both agents have finite-valued global
-optima, and both transversality conditions hold.
-\end{proposition}
-\begin{proof}
-See Appendix~\ref{app:rewrite-proofs},
-\hyperref[proof:rewrite-uncapped-unit-bgp]{Proof of
-Proposition~\ref*{prop:rewrite-uncapped-unit-bgp}}.
-\end{proof}
-
-This result constructs the initial stocks together with the equilibrium.
-It does not establish existence for independently specified $K_0$ and $B_0$.
-Nor is it a steady state in levels: quantities grow exponentially, while
-ratios and appropriately normalized variables are stationary.
 
 The conditions have different roles. Since $n+\gamma>0$, equations
 \eqref{eq:rewrite-uncapped-unit-production-growth}
