@@ -114,25 +114,26 @@ class UnifiedPropositionStructure(unittest.TestCase):
             self.assertIn(r"\ref{" + label + "}", figure)
         self.assertEqual(figure.count("plot[smooth] coordinates"), 2)
 
-    def test_wage_result_and_proof_are_together_in_appendix(self):
+    def test_wage_result_uses_existing_proposition_and_accounting_identity(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
-        appendix = source("sections_rewrite/appendix_finite_frontier.tex")
+        active = "\n".join(active_sources())
         self.assertNotIn(r"\subsection{Wages and labor's income share}", body)
+        # The user removed the separate wage proposition. Keep its economic
+        # implication in the main text without restoring the deleted block.
         for label in (
             "prop:rewrite-output-wage-wedge",
             "eq:rewrite-output-wage-wedge",
             "eq:rewrite-labor-share-decline-rate",
             "eq:rewrite-wage-premium-share-decline",
         ):
-            self.assertNotIn(r"\label{" + label + "}", body)
-            self.assertIn(r"\label{" + label + "}", appendix)
-        self.assertLess(
-            appendix.index(r"\label{prop:rewrite-output-wage-wedge}"),
-            appendix.index(r"\label{proof:rewrite-output-wage-wedge}"),
+            self.assertNotIn(label, active)
+        self.assertIn(
+            "long-run real-wage growth exceeds $\\gamma$ if and only if labor's income share converges to zero",
+            body,
         )
-        self.assertIn(r"\ref{prop:rewrite-output-wage-wedge}", body)
         quantitative = source("sections_rewrite/05_quantitative_equilibria.tex")
-        self.assertIn(r"\ref{prop:rewrite-output-wage-wedge}", quantitative)
+        self.assertIn(r"\eqref{eq:rewrite-transition-labor-share-identity}", quantitative)
+        self.assertIn(r"\label{eq:rewrite-transition-labor-share-identity}", quantitative)
 
     def test_ai_revenue_remark_follows_proposition(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
@@ -148,6 +149,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         # The user's shortened remark states the limit in prose and omits
         # the accounting derivation; do not require that derivation here.
         self.assertIn("converges to zero", remark)
+        self.assertIn("revenue as a share of output", remark)
         self.assertIn(r"$1-\alpha$", remark)
 
     def test_regime_table_reports_net_interest_limits(self):
@@ -159,7 +161,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         )
         self.assertIn(r"$\lim r$", table)
         self.assertIn(r"\begin{tabular}{@{}ccccc@{}}", table)
-        self.assertIn("AI efficiency bounds", table)
+        self.assertIn("AI efficiency bound", table)
         rows = [line.strip() for line in table.splitlines() if line.lstrip().startswith("$")]
         self.assertEqual(len(rows), 4)
         self.assertTrue(all(row.count("&") == 4 for row in rows))
