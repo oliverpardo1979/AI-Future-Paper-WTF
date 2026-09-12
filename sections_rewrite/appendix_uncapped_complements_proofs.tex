@@ -1,0 +1,151 @@
+\Needspace{7\baselineskip}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-complements-bounds}]
+\phantomsection
+\label{proof:rewrite-uncapped-complements-bounds}
+Equations~\eqref{eq:rewrite-uncapped-complements-z-bound}
+and~\eqref{eq:rewrite-uncapped-complements-y-bound} follow because
+$\sigma/(\sigma-1)<0$. Define $k=K/(AL)$. The resource constraint
+\eqref{eq:rewrite-eq-kdot}, nonnegative consumption and compute expenditure,
+and $L=N$ imply
+\begin{equation}
+ \dot k\leq
+ \omega_L^{\sigma(1-\alpha)/(\sigma-1)}k^\alpha
+ -(\delta+n+\gamma)k.
+ \label{eq:rewrite-uncapped-complements-k-bound}
+\end{equation}
+Since $\delta+n+\gamma>0$ and $0<\alpha<1$, the right-hand side is
+negative above a finite positive level. In particular,
+\[
+ k_t\leq
+ \max\left\{k_0,
+ \left[\frac{\omega_L^{\sigma(1-\alpha)/(\sigma-1)}}
+ {\delta+n+\gamma}\right]^{1/(1-\alpha)}\right\}.
+\]
+Equation~\eqref{eq:rewrite-uncapped-complements-y-bound} then bounds
+$Y/(AL)$ uniformly. Since $A_t=A_0e^{\gamma t}$ and $L=N$,
+$Y/N$ is bounded above by a constant times $e^{\gamma t}$.
+Taking logarithms, dividing by $t$, and taking the upper limit gives
+\eqref{eq:rewrite-uncapped-complements-growth-bound}.
+
+The same bounds keep $K$ and $Y$ finite on every bounded time interval.
+For any such horizon $T$, integrating the resource constraint gives
+\[
+ \int_0^T M_t\dd t\leq K_0+\int_0^T Y_t\dd t<\infty.
+\]
+The uncapped research law and H\"older's inequality imply
+\begin{align}
+ B_T^{1-\eta}
+ &=B_0^{1-\eta}+(1-\eta)\chi\int_0^T M_t^\eta\dd t
+ \nonumber\\
+ &\leq B_0^{1-\eta}
+ +(1-\eta)\chi T^{1-\eta}
+ \left(\int_0^T M_t\dd t\right)^\eta<\infty.
+ \label{eq:rewrite-uncapped-complements-b-bound}
+\end{align}
+Thus $B$ cannot diverge at a finite date either. This argument bounds
+stocks and output; it is not a regularity theorem for all instantaneous
+control choices or an equilibrium-existence proof.
+
+There is also no finite-horizon unbounded-payoff argument of the kind used
+for substitution in Proposition~\ref{prop:rewrite-research-scale}.
+At given positive continuous paths of $K,A,L$ on $[0,T]$, optimized operating
+profit satisfies
+\[
+ 0\leq\pi_t(B)\leq p_XX\leq(1-\alpha)Y
+ \leq(1-\alpha)\omega_L^{\sigma(1-\alpha)/(\sigma-1)}
+ K_t^\alpha(A_tL_t)^{1-\alpha}.
+\]
+This upper bound is independent of the developer's choice of $B$.
+For a given locally integrable $r$, the discount factor
+$D_t=\exp(-\int_0^t r_s\dd s)$ has a positive minimum on $[0,T]$.
+Discounted operating revenue is bounded, whereas the cost of research
+tends to infinity with $\int_0^T M_t\dd t$. The developer's truncated
+supremum is therefore finite, and net payoff tends to minus infinity as
+total research expenditure diverges. This conclusion holds for every
+$0<\eta<1$, but does not prove that an infinite-horizon optimum exists.
+\end{proof}
+
+\Needspace{7\baselineskip}
+\begin{proof}[Proof of Conditional result~\ref{cond:rewrite-uncapped-complements-limits}]
+\phantomsection
+\label{proof:rewrite-uncapped-complements-limits}
+Write $x=X/(AL)$, $k=K/(AL)$, and
+$\varphi=(\sigma-1)/\sigma<0$. At given $k$, revenue per unit of effective
+labor is a positive multiple of
+\[
+ s(x)\left[\omega_L+\omega_Xx^\varphi\right]^{(1-\alpha)/\varphi},
+ \qquad
+ s(x)=\frac{\omega_Xx^\varphi}{\omega_L+\omega_Xx^\varphi}.
+\]
+Its derivative has the sign of $1-e_X$ by
+equation~\eqref{eq:rewrite-inverse-demand-elasticity}.
+As $x$ rises from zero to infinity, $s(x)$ decreases from one to zero
+and $e_X$ rises from $\alpha$ to $1/\sigma>1$.
+Revenue therefore has a unique finite maximizer, where $e_X=1$.
+The static monopoly condition~\eqref{eq:rewrite-monopoly-foc},
+$B\to\infty$, and $k\to k_\infty>0$ imply convergence to this maximizer:
+\begin{align}
+ s_\infty&=\frac{1-\sigma}{1-\alpha\sigma},&
+ x_\infty&=
+ \left[\frac{\omega_Ls_\infty}
+ {\omega_X(1-s_\infty)}\right]^{1/\varphi}>0.
+ \label{eq:rewrite-uncapped-complements-x-limit}
+\end{align}
+For each fixed $\sigma<1$, this is a finite number.
+Both $Y/(AL)$ and $w/A=(1-\alpha)(1-s_X)Y/(AL)$ then converge to
+positive finite constants. Together with the assumed finite growth-rate
+limits, these convergences give $g_Y\to n+\gamma$ and $g_w\to\gamma$.
+Similarly, convergence of $C/(AL)$ and existence of the limit of $g_C$
+give $g_C\to n+\gamma$. Euler's equation~\eqref{eq:rewrite-euler}
+implies $r\to\rho+\gamma$. Substitution of $s_\infty$ into
+\eqref{eq:rewrite-wage} and~\eqref{eq:rewrite-ai-price} gives the
+income shares in~\eqref{eq:rewrite-uncapped-complements-income}.
+These steps prove the first part.
+
+For the additional research characterization, let
+$b=\lim g_B>0$ and $m=\lim g_M>0$; these letters denote growth-rate
+limits only, not levels of $B$ or research spending. Since $U=X/B$,
+$X/(AL)\to x_\infty$, and $M/U$ has a positive finite limit, long-run
+logarithmic growth gives $m=n+\gamma-b$.
+Taking logarithms of $g_B=\chi B^{\eta-1}M^\eta$ and dividing by $t$
+gives $(1-\eta)b=\eta m$. Consequently,
+\[
+ b=\eta(n+\gamma),\qquad m=(1-\eta)(n+\gamma).
+\]
+Also $U/Y=(X/(AL))/(B\,Y/(AL))\to0$, and the finite limit of $M/U$
+then gives $M/Y\to0$.
+
+The research first-order condition~\eqref{eq:rewrite-research-foc}
+with $\psi=1$ gives the exact identities
+\[
+ M=\eta qBg_B,\qquad
+ g_q=(1-\eta)g_M-\eta g_B.
+\]
+Thus $g_q\to(1-2\eta)(n+\gamma)$.
+Substituting these limits into the costate equation~\eqref{eq:rewrite-costate}
+determines the necessary research-to-inference ratio:
+\begin{equation}
+ \frac{M}{U}\longrightarrow
+ \frac{\eta^2(n+\gamma)}
+ {\rho+\gamma-(1-\eta)^2(n+\gamma)}.
+ \label{eq:rewrite-uncapped-complements-research-ratio}
+\end{equation}
+Its denominator equals
+$\rho-n+(2\eta-\eta^2)(n+\gamma)>0$.
+
+The proposed asymptotic behavior is also consistent with both
+transversality conditions. The household expression decays as
+$e^{-(\rho-n)t}$ times a positive constant in the limit, since $K/C$
+converges. For the developer,
+\[
+ \lim_{t\to\infty}\frac1t\log(D_tq_tB_t)
+ =-(\rho-n)-\eta(n+\gamma)<0,
+\]
+so $D_tq_tB_t\to0$.
+Operating revenue grows at rate $n+\gamma$ while $r\to\rho+\gamma$,
+which makes its discounted integral finite. Research grows more slowly.
+Discounted log utility is also integrable because $\rho>n$.
+These checks establish consistency of the stated limits; they neither
+construct a trajectory satisfying them nor verify the developer's global
+optimality against all alternative research paths.
+\end{proof}

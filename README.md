@@ -7,7 +7,11 @@ equilibrium solver, admission audits, and published figures.
 
 - `main_rewrite.tex`: current manuscript entry point.
 - `sections_rewrite/`: introduction, literature review, model, equilibrium
-  regimes, quantitative results, conclusion, and appendices.
+  regimes with a finite frontier, the uncapped economy, quantitative results,
+  conclusion, and appendices.
+- `sections_rewrite/05_uncapped_equilibria.tex`: Section 5 compares all three
+  substitution regimes without a frontier, distinguishing production bounds,
+  conditional limits, proved equilibrium existence, and the remaining open case.
 - `output/pdf/main_rewrite.pdf`: local compiled PDF (generated, not tracked).
 - `REPLICATION.md`: user-oriented instructions for reproducing every reported
   numerical equilibrium and figure.

@@ -21,10 +21,12 @@ separate extension, or the current archival manuscript.
 - The notation, timing, and parameter meanings inherited from the current
   benchmark remain unchanged.
 - A finite AI-efficiency frontier is an equilibrium regularization and an
-  analytical device, not a robustness exercise. A separate appendix constructs
-  an uncapped unit-elastic BGP and local equilibrium trajectories; it does not
-  obtain them by taking the long-run limit of finite-frontier equilibria.
-  Uncapped gross substitution requires its own equilibrium analysis.
+  analytical device, not a robustness exercise. Section 5 studies all three
+  uncapped regimes separately: complementarity bounds and conditional limits,
+  a proved unit-elastic BGP, and nonexistence/open cases under substitution.
+  Detailed proofs and the local unit-elastic trajectory result remain in the
+  appendices. None is obtained by taking the long-run limit of finite-frontier
+  equilibria. The companion paper remains separate and unchanged.
 
 ## Logical order
 

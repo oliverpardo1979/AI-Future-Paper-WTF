@@ -155,7 +155,7 @@ class UncappedUnitAppendix(unittest.TestCase):
         proofs = (ROOT / "sections_rewrite/appendix_uncapped_unit_proofs.tex").read_text(encoding="utf-8")
         main = (ROOT / "main_rewrite.tex").read_text(encoding="utf-8")
         existing = (ROOT / "sections_rewrite/appendix.tex").read_text(encoding="utf-8")
-        body = (ROOT / "sections_rewrite/04_equilibrium_regimes.tex").read_text(encoding="utf-8")
+        body = (ROOT / "sections_rewrite/05_uncapped_equilibria.tex").read_text(encoding="utf-8")
         self.assertIn(r"\input{sections_rewrite/appendix_uncapped_unit}", main)
         self.assertLess(existing.index(r"\input{sections_rewrite/appendix_uncapped_unit_proofs}"),
                         existing.index(r"\section{Numerical algorithm"))

@@ -37,7 +37,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         propositions = re.findall(
             r"\\begin\{proposition\}.*?\\end\{proposition\}", body, re.S
         )
-        self.assertEqual(len(propositions), 2)
+        self.assertEqual(len(propositions), 1)
         unified = propositions[0]
         self.assertIn(r"\label{prop:rewrite-equilibrium-regimes}", unified)
         self.assertEqual(len(re.findall(r"\\item\b", unified)), 4)
@@ -193,7 +193,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertTrue(all(">" not in cell for cell in last_cells[2:]))
 
     def test_uncapped_discussion_preserves_frontier_limit_distinction(self):
-        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        body = source("sections_rewrite/05_uncapped_equilibria.tex")
         self.assertNotIn(r"\subsection{Raising the AI-efficiency frontier}", body)
         for label in (
             "subsec:rewrite-growth-frontier",
@@ -205,7 +205,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         uncapped = body.split(r"\label{subsec:rewrite-uncapped}", 1)[1]
         normalized = " ".join(uncapped.split())
         self.assertIn(r"\ref{prop:rewrite-equilibrium-regimes}", uncapped)
-        self.assertEqual(len(re.split(r"\n\s*\n", uncapped.strip())), 4)
+        self.assertIn(r"At $\eta=\alpha$", normalized)
         self.assertIn(r"\ref{subsec:rewrite-uncapped-unit-bgp}", uncapped)
         self.assertIn(r"differs from setting $\overline B=\infty$ at the outset", normalized)
         self.assertIn(r"become unbounded as $\overline B\to\infty$", normalized)
@@ -241,7 +241,8 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertNotIn("Labor retains a positive share in the first three cases", body)
         self.assertNotIn("I therefore use a finite frontier as an analytical continuation device", body)
         self.assertNotIn("rather than for merely rapid", body)
-        singularity = " ".join(body.split(r"\label{subsec:rewrite-uncapped}", 1)[1].split())
+        uncapped = source("sections_rewrite/05_uncapped_equilibria.tex")
+        singularity = " ".join(uncapped.split(r"\label{subsec:rewrite-uncapped}", 1)[1].split())
         self.assertIn(r"Definition~\ref{def:rewrite-equilibrium}", singularity)
         self.assertIn("finite, feasible allocations at every date", singularity)
         self.assertIn("or rule out a finite-time singularity", singularity)
@@ -258,15 +259,17 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertEqual(refs - labels.keys(), set())
 
     def test_uncapped_bgp_precedes_open_substitution_question(self):
-        body = source("sections_rewrite/04_equilibrium_regimes.tex")
+        finite = source("sections_rewrite/04_equilibrium_regimes.tex")
+        self.assertEqual(len(re.findall(r"\\subsection\{", finite)), 2)
+        body = source("sections_rewrite/05_uncapped_equilibria.tex")
         subsections = re.findall(r"\\subsection\{([^}]+)\}", body)
-        self.assertEqual(len(subsections), 4)
-        self.assertEqual(subsections[2:], [
-            "Balanced growth without an AI-efficiency frontier",
-            "The role of the frontier beyond unit elasticity",
+        self.assertEqual(subsections, [
+            "Complementarity: a production bottleneck without a frontier",
+            "Unit elasticity: a balanced-growth equilibrium",
+            "Substitution: unbounded returns and equilibrium existence",
         ])
         bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
-            r"\subsection{The role of the frontier beyond unit elasticity}", 1)[0]
+            r"\subsection{Substitution: unbounded returns and equilibrium existence}", 1)[0]
         self.assertIn(r"\label{prop:rewrite-uncapped-unit-bgp}", bgp)
         self.assertLess(bgp.index(r"\label{eq:rewrite-uncapped-unit-elasticities}"),
                         bgp.index(r"\begin{proposition}"))
