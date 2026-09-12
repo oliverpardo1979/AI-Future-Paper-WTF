@@ -200,8 +200,9 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn("fixed finite horizon", normalized)
         self.assertIn(r"If $\sigma>1$ and $\eta>\alpha$", normalized)
         self.assertIn(r"If $\eta<\alpha$", normalized)
-        self.assertIn("but not establishing an uncapped infinite-horizon equilibrium", normalized)
-        self.assertIn(r"\eqref{eq:rewrite-eq-kdot}", uncapped)
+        self.assertIn("without establishing an uncapped infinite-horizon equilibrium", normalized)
+        self.assertIn("takes the paths of capital, effective labor, and interest rates as given", normalized)
+        self.assertNotIn("numerical simulations point to non-existence", normalized)
 
     def test_section_four_cuts_keep_table_and_equilibrium_caveat(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
@@ -209,9 +210,11 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertNotIn("Labor retains a positive share in the first three cases", body)
         self.assertNotIn("I therefore use a finite frontier as an analytical continuation device", body)
         self.assertNotIn("rather than for merely rapid", body)
-        singularity = " ".join(body.split("A finite-time singularity is a distinct possible failure", 1)[1].split())
+        singularity = " ".join(body.split(r"\label{subsec:rewrite-uncapped}", 1)[1].split())
         self.assertIn(r"Definition~\ref{def:rewrite-equilibrium}", singularity)
-        self.assertIn(r"finite, feasible allocations for every $t\geq0$", singularity)
+        self.assertIn("finite, feasible allocations at every date", singularity)
+        self.assertIn("or rule out a finite-time singularity", singularity)
+        self.assertNotIn("even when the developer's value is bounded on every finite horizon", singularity)
         self.assertIn("does not prove that every uncapped trajectory", singularity)
         self.assertIn("nor does it rule out an uncapped equilibrium defined for all future time", singularity)
 
