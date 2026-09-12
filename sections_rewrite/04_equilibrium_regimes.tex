@@ -251,35 +251,8 @@ $\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\mathcal R(\overline B) -\rho$ 
 \subsection{The uncapped economy and the role of the frontier}
 \label{subsec:rewrite-uncapped}
 
-The finite-frontier equilibria in
-Proposition~\ref{prop:rewrite-equilibrium-regimes} do not establish equilibrium
-existence without a frontier. I first fix $\overline B$, construct an
-equilibrium, and take its long-run limit. Increasing $\overline B$ afterward
-differs from setting $\overline B=\infty$ at the outset, which replaces
-$\psi(B)$ by one in the efficiency law. The initial-state neighborhoods and
-equilibrium choices also depend on the frontier. For $\sigma>1$, the limiting
-growth and interest rates of the AI-dominated equilibria become unbounded as
-$\overline B\to\infty$. This divergence is not a proof of a finite-time
-singularity or of equilibrium nonexistence in the uncapped economy.
+Proposition~\ref{prop:rewrite-equilibrium-regimes} does not establish equilibrium existence without an upper bound for AI efficiency. I first fixed $\overline B$ and characterized an equilibrium for initial conditions near the steady state. Increasing $\overline B$ afterward differs from setting $\overline B=\infty$ at the outset. For $\sigma>1$, the limiting growth and interest rates of the AI-dominated equilibria become unbounded as $\overline B\to\infty$. This divergence is not a proof of a finite-time singularity or of equilibrium nonexistence in the uncapped economy.
 
-Without a frontier, recursive improvement can make the developer's objective
-unbounded: higher $B$ raises both operating profit and research productivity.
-Proposition~\ref{prop:rewrite-research-scale} in Appendix~\ref{app:rewrite-proofs}
-examines this problem on a fixed finite horizon, taking the paths of
-$K,A,L,$ and $r$ as given. If $\sigma>1$ and $\eta>\alpha$, expanding early
-research makes the payoff arbitrarily large, so no finite research plan
-maximizes it. If $\eta<\alpha$, research costs eventually outgrow the benefits,
-ruling out this particular failure but not establishing an uncapped
-infinite-horizon equilibrium. Financing cannot resolve an unbounded
-objective or create the real resources used in research:
-equation~\eqref{eq:rewrite-eq-kdot} requires research compute to compete with
-consumption, inference compute, and physical investment.
+Without an upper bound, recursive improvement can make the developer's objective function unbounded: higher $B$ raises both operating profit and research productivity. Proposition~\ref{prop:rewrite-research-scale} in Appendix~\ref{app:rewrite-proofs} examines this problem on a fixed finite horizon. If $\sigma>1$ and $\eta>\alpha$, expanding early research makes the payoff arbitrarily large, so no finite research plan maximizes it. If $\eta<\alpha$, research costs eventually outgrow the benefits, ruling out this particular failure but necessarly leading to an uncapped infinite-horizon equilibrium. %Financing cannot resolve an unbounded objective or create the real resources used in research: equation~\eqref{eq:rewrite-eq-kdot} requires research compute to compete with consumption, inference compute, and physical investment.
 
-A finite-time singularity is a distinct possible failure, even when the
-developer's value is bounded on every finite horizon. Such a trajectory
-cannot satisfy Definition~\ref{def:rewrite-equilibrium}, which requires finite,
-feasible allocations for every $t\geq0$. This paper does not prove that every
-uncapped trajectory with $\sigma>1$ reaches a singularity, nor does it rule
-out an uncapped equilibrium defined for all future time. The explosive-growth
-mechanisms in \citet{nordhaus2021} and \citet{davidsonetal2026} motivate this
-question; equilibrium existence in the uncapped model remains open.
+A finite-time singularity is a possibility, even when the developer's value is bounded on every finite horizon. Such a trajectory cannot satisfy Definition~\ref{def:rewrite-equilibrium}, which requires finite, feasible allocations. This paper does not prove that every uncapped trajectory with $\sigma>1$ reaches a singularity, nor does it rule out an uncapped equilibrium defined for all future time. The explosive-growth mechanisms in \citet{nordhaus2021} and \citet{davidsonetal2026} motivate this question; equilibrium existence in the uncapped model remains open, but numerical simulations point to non-existence.
