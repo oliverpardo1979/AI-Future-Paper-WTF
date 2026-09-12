@@ -64,7 +64,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
         self.assertIn(r"$g_{Y/N}$ as the growth rate of output per worker", body)
         self.assertIn(r"$g_w$ as the real-wage growth rate", body)
-        self.assertIn(r"$\sigma=1$ & Any finite $\overline B>0$", body)
+        self.assertIn(r"$\sigma=1$ & Any finite $\overline B$", body)
 
     def test_table_stays_in_main_text_and_coordinates_move_to_proof(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
@@ -158,6 +158,8 @@ class UnifiedPropositionStructure(unittest.TestCase):
             ) if r"\label{tab:rewrite-finite-existence}" in block
         )
         self.assertIn(r"$\lim r$", table)
+        self.assertIn(r"\begin{tabular}{@{}ccccc@{}}", table)
+        self.assertIn("AI efficiency bounds", table)
         rows = [line.strip() for line in table.splitlines() if line.lstrip().startswith("$")]
         self.assertEqual(len(rows), 4)
         self.assertTrue(all(row.count("&") == 4 for row in rows))
