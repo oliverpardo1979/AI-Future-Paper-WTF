@@ -186,10 +186,18 @@ class UnifiedPropositionStructure(unittest.TestCase):
         ):
             self.assertNotIn(label, body)
         uncapped = body.split(r"\label{subsec:rewrite-uncapped}", 1)[1]
+        normalized = " ".join(uncapped.split())
         self.assertIn(r"\ref{prop:rewrite-equilibrium-regimes}", uncapped)
-        self.assertIn(r"\label{eq:rewrite-noncommuting-limits}", uncapped)
-        self.assertIn(r"become unbounded as $\overline B\to\infty$", uncapped)
-        self.assertIn("proof of a finite-time singularity or of equilibrium nonexistence", uncapped)
+        self.assertEqual(len(re.split(r"\n\s*\n", uncapped.strip())), 3)
+        self.assertIn(r"differs from setting $\overline B=\infty$ at the outset", normalized)
+        self.assertIn(r"become unbounded as $\overline B\to\infty$", normalized)
+        self.assertIn("not a proof of a finite-time singularity or of equilibrium nonexistence", normalized)
+        self.assertIn(r"\ref{prop:rewrite-research-scale}", uncapped)
+        self.assertIn("fixed finite horizon", normalized)
+        self.assertIn(r"If $\sigma>1$ and $\eta>\alpha$", normalized)
+        self.assertIn(r"If $\eta<\alpha$", normalized)
+        self.assertIn("but not establishing an uncapped infinite-horizon equilibrium", normalized)
+        self.assertIn(r"\eqref{eq:rewrite-eq-kdot}", uncapped)
 
     def test_section_four_cuts_keep_table_and_equilibrium_caveat(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
@@ -197,10 +205,11 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertNotIn("Labor retains a positive share in the first three cases", body)
         self.assertNotIn("I therefore use a finite frontier as an analytical continuation device", body)
         self.assertNotIn("rather than for merely rapid", body)
-        singularity = body.split("A finite-time singularity is a distinct possible failure", 1)[1]
+        singularity = " ".join(body.split("A finite-time singularity is a distinct possible failure", 1)[1].split())
         self.assertIn(r"Definition~\ref{def:rewrite-equilibrium}", singularity)
         self.assertIn(r"finite, feasible allocations for every $t\geq0$", singularity)
         self.assertIn("does not prove that every uncapped trajectory", singularity)
+        self.assertIn("nor does it rule out an uncapped equilibrium defined for all future time", singularity)
 
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())
