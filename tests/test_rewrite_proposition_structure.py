@@ -205,7 +205,8 @@ class UnifiedPropositionStructure(unittest.TestCase):
         uncapped = body.split(r"\label{subsec:rewrite-uncapped}", 1)[1]
         normalized = " ".join(uncapped.split())
         self.assertIn(r"\ref{prop:rewrite-equilibrium-regimes}", uncapped)
-        self.assertEqual(len(re.split(r"\n\s*\n", uncapped.strip())), 3)
+        self.assertEqual(len(re.split(r"\n\s*\n", uncapped.strip())), 4)
+        self.assertIn(r"\ref{app:rewrite-uncapped-unit}", uncapped)
         self.assertIn(r"differs from setting $\overline B=\infty$ at the outset", normalized)
         self.assertIn(r"become unbounded as $\overline B\to\infty$", normalized)
         self.assertIn("not a proof of a finite-time singularity or of equilibrium nonexistence", normalized)

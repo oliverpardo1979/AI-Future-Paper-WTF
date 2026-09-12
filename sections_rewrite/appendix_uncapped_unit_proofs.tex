@@ -1,0 +1,187 @@
+\Needspace{7\baselineskip}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-unit-bgp}]
+\label{proof:rewrite-uncapped-unit-bgp}
+Use the definitions in Appendix~\ref{app:rewrite-uncapped-unit}.
+First, all candidate ratios are positive. The research denominator
+$\rho-n+\eta g_Y^*$ is positive. Moreover,
+\[
+ i^*=\frac{\alpha(g_Y^*+\delta)}{\rho-n+g_Y^*+\delta}<\alpha,
+ \qquad
+ m^*<\frac{\beta^2\eta}{1-\eta}.
+\]
+Since $\Delta=(1-\alpha)(1-\eta)-\beta>0$,
+$\beta<1-\eta$ and $\beta<1-\alpha$. Consequently,
+\[
+ u^*+m^*<\frac{\beta^2}{1-\eta}<\beta<1-\alpha,
+ \qquad c^*=1-u^*-i^*-m^*>0.
+\]
+Thus positive consumption follows from the stated conditions; it is not
+an additional assumption.
+
+For given $A_0,N_0>0$, choose the reference initial stocks as
+\begin{align}
+ B_0^*&=\left[
+ A_0N_0(k^*)^{\alpha/\lambda}(u^*)^{\beta/\lambda}
+ m^*\left(\frac{\chi}{g_B^*}\right)^{1/\eta}
+ \right]^{\eta\lambda/\Delta},
+ \label{eq:rewrite-uncapped-unit-initial-b}\\
+ Y_0^*&=A_0N_0(k^*)^{\alpha/\lambda}(u^*B_0^*)^{\beta/\lambda},
+ \qquad K_0^*=k^*Y_0^*.
+ \label{eq:rewrite-uncapped-unit-initial-y-k}
+\end{align}
+The exponent is positive. These choices solve simultaneously the initial
+production equation and
+$g_B^*B_0^*=\chi(B_0^*m^*Y_0^*)^\eta$.
+Set $U_0^*=u^*Y_0^*$, $M_0^*=m^*Y_0^*$, $C_0^*=c^*Y_0^*$,
+$X_0^*=B_0^*U_0^*$, and
+\begin{equation}
+ q_0^*=\frac{M_0^*}{\eta g_B^*B_0^*}.
+ \label{eq:rewrite-uncapped-unit-initial-q}
+\end{equation}
+Let $Y_t^*=Y_0^*e^{g_Y^*t}$, $B_t^*=B_0^*e^{g_B^*t}$,
+$K_t^*=k^*Y_t^*$, $C_t^*=c^*Y_t^*$, $U_t^*=u^*Y_t^*$,
+$M_t^*=m^*Y_t^*$, and $q_t^*=q_0^*e^{(g_Y^*-g_B^*)t}$.
+Use the exogenous $A_t,N_t$ and set $L_t=N_t$ and $X_t^*=B_t^*U_t^*$.
+The static equilibrium equations determine all remaining quantities and prices.
+
+The two growth identities
+\eqref{eq:rewrite-uncapped-unit-production-growth}
+and~\eqref{eq:rewrite-uncapped-unit-research-growth} make production and
+research accumulation hold at every date once they hold initially.
+The static monopoly condition gives $p_XX=\beta Y$ and $U=\beta^2Y$.
+Equation~\eqref{eq:rewrite-uncapped-unit-initial-q} gives
+$M=\eta q\dot B$, which is the research first-order condition
+\eqref{eq:rewrite-eq-research} with $\psi=1$.
+The definitions of $k^*$, $r^*$, and $c^*$ verify the capital-return,
+Euler, and resource equations. The costate equation reduces to
+\[
+ g_Y^*-g_B^*
+ =r^*-\frac{u^*\eta g_B^*}{m^*}-\eta g_B^*.
+\]
+This holds by equation~\eqref{eq:rewrite-uncapped-unit-research-share}
+and $(1-\eta)g_B^*=\eta g_Y^*$.
+All allocations are positive and finite at every finite date.
+
+Both transversality conditions are explicit:
+\begin{align}
+ e^{-\rho t}\frac{N_tK_t^*}{C_t^*}
+ &=\frac{N_0k^*}{c^*}e^{-(\rho-n)t}\longrightarrow0,
+ \label{eq:rewrite-uncapped-unit-household-tvc}\\
+ e^{-r^*t}q_t^*B_t^*
+ &=q_0^*B_0^*e^{-(\rho-n)t}\longrightarrow0.
+ \label{eq:rewrite-uncapped-unit-developer-tvc}
+\end{align}
+Discounted developer profit is a constant multiple of
+$e^{-(\rho-n)t}$. Discounted household utility is
+$N_0e^{-(\rho-n)t}[\log(C_0^*/N_0)+(g_Y^*-n)t]$.
+Both improper objective integrals are finite.
+
+It remains to establish global optimality, rather than only the dated
+necessary conditions. At given paths of $K,A,L$, static optimization gives
+\begin{equation}
+ \pi_t(B)=\beta(1-\beta)
+ [K_t^\alpha(A_tL_t)^\lambda]^{1/(1-\beta)}
+ (\beta^2B)^{\beta/(1-\beta)}.
+ \label{eq:rewrite-uncapped-unit-profit}
+\end{equation}
+This function is concave in $B$ when $\beta\leq1/2$.
+The research technology $F(B,M)=\chi B^\eta M^\eta$ is jointly concave
+when $\eta\leq1/2$. Since $q>0$, the developer's current-value Hamiltonian
+$\pi_t(B)-M+q_tF(B,M)$ is jointly concave, and its first-order conditions
+maximize it globally. Write $D_t=\exp(-\int_0^t r_s\dd s)$ and
+$J_T=\int_0^T D_t[\pi_t(B_t)-M_t]\dd t$.
+For any admissible alternative with the same initial $B$, the supporting
+hyperplane inequality and the costate equation imply
+\begin{equation}
+ \widetilde J_T-J_T
+ \leq-D_Tq_T(\widetilde B_T-B_T)
+ \leq D_Tq_TB_T\longrightarrow0.
+ \label{eq:rewrite-uncapped-unit-developer-verification}
+\end{equation}
+Hence no admissible alternative has a greater limiting payoff, or a
+greater upper limit of truncated payoff, than this finite-valued candidate.
+This argument applies to any candidate satisfying the uncapped equations
+and developer TVC under the stated curvature restrictions, not just the BGP.
+
+For the household, set $\Lambda_t=e^{-\rho t}N_t/C_t$.
+Euler implies $\dot\Lambda=-r\Lambda$.
+Concavity of log utility and the linear budget give, for any feasible
+alternative with the same $K_0$ and the same given prices and distributions,
+\[
+ \int_0^T e^{-\rho t}N_t
+ \left[\log(\widetilde C_t/N_t)-\log(C_t/N_t)\right]\dd t
+ \leq-\Lambda_T(\widetilde K_T-K_T)
+ \leq\Lambda_TK_T\longrightarrow0.
+\]
+This establishes global household optimality. Competitive final-good firms
+face a concave constant-returns technology, and
+Lemma~\ref{lem:rewrite-monopoly-choice} establishes global static monopoly
+optimality. The constructed path is therefore an equilibrium as defined
+in Appendix~\ref{app:rewrite-uncapped-unit}.
+\end{proof}
+
+\Needspace{7\baselineskip}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-unit-local}]
+\label{proof:rewrite-uncapped-unit-local}
+Use the ordering $\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'$ in
+\eqref{eq:rewrite-uncapped-unit-deviations}, and let $e_K,e_B,e_C,e_q$
+be the corresponding unit row vectors. Define the row vectors
+\begin{align}
+ y_\xi&=\left(\frac{\alpha}{1-\beta},\frac{\beta}{1-\beta},0,0\right),
+ \label{eq:rewrite-uncapped-unit-output-row}\\
+ m_\xi&=\frac{\eta e_B+e_q}{1-\eta},
+ \label{eq:rewrite-uncapped-unit-research-row}\\
+ b_\xi&=g_B^*[(\eta-1)e_B+\eta m_\xi].
+ \label{eq:rewrite-uncapped-unit-efficiency-row}
+\end{align}
+The reduced production equation gives the log deviation of output as
+$y_\xi\xi$. The research FOC implies
+$M=(q\chi\eta B^\eta)^{1/(1-\eta)}$, so the log deviation of $M$ is
+$m_\xi\xi$. Differentiating $g_B=\chi B^{\eta-1}M^\eta$ at the BGP
+gives the level deviation $b_\xi\xi$.
+
+The four rows of $J^*$, derived from capital accumulation, AI research,
+the household Euler equation, and the developer costate equation, are
+\begin{align}
+ J_K^*&=\frac{1-u^*}{k^*}y_\xi-(g_Y^*+\delta)e_K
+ -\frac{c^*}{k^*}e_C-\frac{m^*}{k^*}m_\xi,
+ \label{eq:rewrite-uncapped-unit-jacobian-k}\\
+ J_B^*&=b_\xi,
+ \label{eq:rewrite-uncapped-unit-jacobian-b}\\
+ J_C^*&=(r^*+\delta)(y_\xi-e_K),
+ \label{eq:rewrite-uncapped-unit-jacobian-c}\\
+ J_q^*&=(r^*+\delta)(y_\xi-e_K)
+ -(\rho-n+\eta g_Y^*)(y_\xi-e_q-e_B)-\eta b_\xi.
+ \label{eq:rewrite-uncapped-unit-jacobian-q}
+\end{align}
+The last row uses $U/(qB)=\rho-n+\eta g_Y^*$ at the BGP.
+All entries depend on growth rates and ratios, which are independent of
+$\chi$. No terminal restrictions were used to derive this Jacobian.
+
+The exact normalized vector field is continuously differentiable near
+$\xi=0$. By the assumed hyperbolicity and the two stable eigenvalues,
+the stable-manifold theorem supplies a two-dimensional local manifold
+whose trajectories remain near zero and converge exponentially.
+The derivative of its projection onto $(\xi_K,\xi_B)$ is $V_{KB}$.
+The inverse-function theorem therefore makes this manifold locally the
+graph of a continuously differentiable function selecting $(\xi_C,\xi_q)$
+from the two initial stock deviations. Since exponentiation is a local
+diffeomorphism, the same holds for $(C_0,q_0)$ as functions of $(K_0,B_0)$.
+Shrinking the neighborhood preserves positivity, feasibility, and
+existence for every $t\geq0$. This is local uniqueness among trajectories
+that remain in the neighborhood and converge to the BGP.
+
+Exponential convergence implies that $r_t-r^*$ is integrable. Thus
+$D_t/e^{-r^*t}$ tends to a finite positive constant, and both TVC expressions
+equal their BGP counterparts in
+\eqref{eq:rewrite-uncapped-unit-household-tvc}
+and~\eqref{eq:rewrite-uncapped-unit-developer-tvc} times factors tending
+to finite positive limits. Both TVCs hold. Output and all expenditure
+flows are bounded multiples of $e^{g_Y^*t}$, while log consumption per
+person is a linear function of time plus a bounded deviation. Both
+objective integrals therefore remain finite. The global concavity
+verification in the proof of Proposition~\ref{prop:rewrite-uncapped-unit-bgp}
+applies at these new price and allocation paths, proving agent optimality.
+Static optimality and market clearing then establish equilibrium, not
+merely a solution of the necessary conditions.
+\end{proof}

@@ -259,3 +259,12 @@ Proposition~\ref{prop:rewrite-equilibrium-regimes} does not establish equilibriu
 Without an upper bound, recursive improvement can make the developer's objective unbounded: higher $B$ raises both operating profit and research productivity. If $\sigma>1$ and $\eta>\alpha$, there is no uncapped equilibrium with a finite-valued developer optimum, as established in Proposition~\ref{prop:rewrite-research-scale} in Appendix~\ref{app:rewrite-proofs}. Expanding early research makes discounted net profit arbitrarily large on a fixed finite horizon. The developer can then resume any proposed continuation of research spending with higher AI efficiency and no lower operating profit. Thus every candidate with a finite value admits a profitable deviation. This failure of optimality does not require a finite-time singularity: each deviating plan uses finite research expenditure and keeps $B$ finite on every finite horizon. %Financing cannot resolve an unbounded objective or create the real resources used in research: equation~\eqref{eq:rewrite-eq-kdot} requires research compute to compete with consumption, inference compute, and physical investment.
 
 If $\eta<\alpha$ and $\sigma>1$, the same proposition gives a finite truncated value and shows that research costs eventually outgrow the benefits of increasing expenditure on a fixed horizon. This result takes the paths of capital, effective labor, and interest rates as given. It rules out that particular unbounded-payoff argument, without establishing an uncapped infinite-horizon equilibrium. Neither existence nor general nonexistence is established for this parameter range. Nor does the result establish or rule out a finite-time singularity, which would violate the requirement of finite, feasible allocations at every date in Definition~\ref{def:rewrite-equilibrium}. The explosive-growth mechanisms in \citet{nordhaus2021} and \citet{davidsonetal2026} motivate this remaining question.
+
+An uncapped equilibrium can nevertheless exist at unit elasticity.
+Appendix~\ref{app:rewrite-uncapped-unit} constructs an explicit balanced-growth
+equilibrium for $\sigma=1$ under sufficient conditions, including
+$\eta+\omega_X<1$, and establishes local existence from nearby initial stocks
+that need not lie on that path. Output per person and real wages then grow
+together faster than $\gamma$, while labor's income share remains positive
+and constant. This uncapped result is distinct from the finite-frontier
+regimes above and does not resolve existence for $\sigma>1$.

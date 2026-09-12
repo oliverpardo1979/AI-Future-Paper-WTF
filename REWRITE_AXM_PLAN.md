@@ -21,8 +21,10 @@ separate extension, or the current archival manuscript.
 - The notation, timing, and parameter meanings inherited from the current
   benchmark remain unchanged.
 - A finite AI-efficiency frontier is an equilibrium regularization and an
-  analytical device, not a robustness exercise. The uncapped economy is studied
-  only through an explicitly stated limiting argument.
+  analytical device, not a robustness exercise. A separate appendix constructs
+  an uncapped unit-elastic BGP and local equilibrium trajectories; it does not
+  obtain them by taking the long-run limit of finite-frontier equilibria.
+  Uncapped gross substitution requires its own equilibrium analysis.
 
 ## Logical order
 

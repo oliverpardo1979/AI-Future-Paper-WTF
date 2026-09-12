@@ -1,0 +1,216 @@
+\section{The uncapped economy with unit elasticity}
+\label{app:rewrite-uncapped-unit}
+
+I now remove the efficiency frontier and set $\sigma=1$. The research law is
+\begin{equation}
+ \dot B=\chi(BM)^\eta.
+ \label{eq:rewrite-uncapped-unit-law}
+\end{equation}
+All other primitives and the meaning of equilibrium remain as in
+Section~\ref{sec:rewrite-model}. In Definition~\ref{def:rewrite-equilibrium},
+I set $\psi(B)=1$ and $\psi'(B)=0$ and remove the upper restriction on $B$.
+Allocations must still be finite at every finite date, agents must attain
+their optima, and both transversality conditions must hold. This is a
+separate equilibrium construction, not a limit of the finite-frontier
+equilibria in Proposition~\ref{prop:rewrite-equilibrium-regimes}.
+
+\subsection{An explicit balanced-growth equilibrium}
+
+At unit elasticity, define the output elasticities
+\begin{equation}
+ \beta=(1-\alpha)\omega_X,\qquad
+ \lambda=(1-\alpha)\omega_L,
+ \qquad \alpha+\beta+\lambda=1.
+ \label{eq:rewrite-uncapped-unit-elasticities}
+\end{equation}
+Then $s_X=\omega_X$ and $e_X=1-\beta$. The AI-demand and monopoly conditions,
+equations~\eqref{eq:rewrite-ai-price} and~\eqref{eq:rewrite-monopoly-foc}, give
+\begin{equation}
+ \frac{p_XX}{Y}=\beta,\qquad \frac UY=\beta^2.
+ \label{eq:rewrite-uncapped-unit-static-shares}
+\end{equation}
+Substituting $X=BU=\beta^2BY$ into the Cobb--Douglas production function yields
+\begin{equation}
+ Y^{1-\beta}=K^\alpha(AL)^\lambda(\beta^2B)^\beta.
+ \label{eq:rewrite-uncapped-unit-production}
+\end{equation}
+On an exact balanced-growth path with positive constant $K/Y$, $C/Y$, and $M/Y$,
+equations~\eqref{eq:rewrite-uncapped-unit-production}
+and~\eqref{eq:rewrite-uncapped-unit-law} require, respectively,
+\begin{align}
+ g_Y&=n+\gamma+\frac{\beta}{\lambda}g_B,
+ \label{eq:rewrite-uncapped-unit-production-growth}\\
+ (1-\eta)g_B&=\eta g_Y.
+ \label{eq:rewrite-uncapped-unit-research-growth}
+\end{align}
+Define
+\begin{equation}
+ \Delta\equiv\lambda(1-\eta)-\beta\eta
+ =(1-\alpha)(1-\eta-\omega_X).
+ \label{eq:rewrite-uncapped-unit-feedback}
+\end{equation}
+For $\Delta>0$, the unique solution of these two growth restrictions is
+\begin{align}
+ g_Y^*&=\frac{(1-\eta)(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma),
+ \label{eq:rewrite-uncapped-unit-output-growth}\\
+ g_B^*&=\frac{\eta(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma).
+ \label{eq:rewrite-uncapped-unit-efficiency-growth}
+\end{align}
+The superscript $*$ denotes the candidate balanced-growth path. Its interest
+rate, wage growth, and output growth per person are
+\begin{align}
+ g_{Y/N}^*=g_w^*&=g_Y^*-n
+ =\gamma+\frac{\eta\omega_X}{1-\eta-\omega_X}(n+\gamma),
+ \label{eq:rewrite-uncapped-unit-wage-growth}\\
+ r^*&=\rho+g_Y^*-n.
+ \label{eq:rewrite-uncapped-unit-return}
+\end{align}
+Here $g_K=g_C=g_Y^*$ follows from constant capital and consumption ratios;
+equations~\eqref{eq:rewrite-wage} and~\eqref{eq:rewrite-euler} then give
+\eqref{eq:rewrite-uncapped-unit-wage-growth}
+and~\eqref{eq:rewrite-uncapped-unit-return}.
+
+Define the candidate ratios $k^*=K/Y$, $u^*=U/Y$,
+$i^*=(\dot K+\delta K)/Y$, $m^*=M/Y$, and $c^*=C/Y$ by
+\begin{align}
+ k^*&=\frac{\alpha}{r^*+\delta},\qquad u^*=\beta^2,
+ \label{eq:rewrite-uncapped-unit-capital-inference}\\
+ i^*&=(g_Y^*+\delta)k^*,
+ \label{eq:rewrite-uncapped-unit-investment}\\
+ m^*&=\frac{\beta^2\eta g_B^*}{\rho-n+\eta g_Y^*},
+ \label{eq:rewrite-uncapped-unit-research-share}\\
+ c^*&=1-u^*-i^*-m^*.
+ \label{eq:rewrite-uncapped-unit-consumption}
+\end{align}
+In this appendix, $k^*$ is a capital--output ratio, not capital per unit of
+effective labor. The research share comes from the developer's first-order
+and costate conditions; the consumption share comes from market clearing.
+These ratios are endogenous, not fixed saving or research rules.
+
+\Needspace{7\baselineskip}
+\begin{proposition}[An uncapped balanced-growth equilibrium]
+\label{prop:rewrite-uncapped-unit-bgp}
+Maintain $0<\alpha<1$, $0<\omega_X<1$, $\omega_L=1-\omega_X$,
+$\chi>0$, $\delta\geq0$, $n\geq0$, $\gamma>0$, and $\rho>n$.
+Suppose $\sigma=1$ and
+\begin{equation}
+ 0<\eta<\alpha,\qquad \eta\leq\tfrac12,\qquad
+ \beta\leq\tfrac12,\qquad \eta+\omega_X<1.
+ \label{eq:rewrite-uncapped-unit-sufficient}
+\end{equation}
+For every $A_0,N_0>0$, there exist $K_0^*,B_0^*>0$ and an
+infinite-horizon equilibrium with the constant ratios and growth rates in
+equations~\eqref{eq:rewrite-uncapped-unit-output-growth}--\eqref{eq:rewrite-uncapped-unit-consumption}.
+Along this equilibrium, $B_t=B_0^*e^{g_B^*t}\to\infty$,
+$g_K=g_C=g_U=g_M=g_Y^*$, $g_X=g_Y^*+g_B^*$, and $g_q=g_Y^*-g_B^*$.
+Consumption is strictly positive, both agents have finite-valued global
+optima, and both transversality conditions hold.
+\end{proposition}
+\begin{proof}
+See Appendix~\ref{app:rewrite-proofs},
+\hyperref[proof:rewrite-uncapped-unit-bgp]{Proof of
+Proposition~\ref*{prop:rewrite-uncapped-unit-bgp}}.
+\end{proof}
+
+This result constructs the initial stocks together with the equilibrium.
+It does not establish existence for independently specified $K_0$ and $B_0$.
+Nor is it a steady state in levels: quantities grow exponentially, while
+ratios and appropriately normalized variables are stationary.
+
+The conditions have different roles. Since $n+\gamma>0$, equations
+\eqref{eq:rewrite-uncapped-unit-production-growth}
+and~\eqref{eq:rewrite-uncapped-unit-research-growth} require $\Delta>0$ for
+this positive finite-rate BGP. If $\Delta=0$, they are inconsistent; if
+$\Delta<0$, they imply $g_B<0$, contrary to the research law. Thus
+$\eta+\omega_X\geq1$ excludes this BGP, not every possible equilibrium
+trajectory. The restrictions $\beta\leq1/2$ and $\eta\leq1/2$ make operating
+profit and research technology concave and are sufficient for the global
+optimality proof. They are not asserted to be necessary for existence.
+I retain $\eta<\alpha$ to match the research-curvature restriction discussed
+in Proposition~\ref{prop:rewrite-research-scale}; the construction here
+does not use that comparison separately. Finally, $\rho>n$ makes both
+transversality expressions decline and the objective integrals converge.
+
+\subsection{Equilibrium trajectories near the balanced-growth path}
+
+The BGP supplies a reference for proving existence from nearby initial
+stocks that need not be on that path. Define stationary log deviations
+\begin{equation}
+ \xi_K=\log\frac K{K^*},\quad
+ \xi_B=\log\frac B{B^*},\quad
+ \xi_C=\log\frac C{C^*},\quad
+ \xi_q=\log\frac q{q^*}.
+ \label{eq:rewrite-uncapped-unit-deviations}
+\end{equation}
+Substitution into the four equilibrium dynamics gives a smooth autonomous
+system $\dot\xi=f(\xi)$ with $f(0)=0$, where
+$\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'$. Let $J^*=Df(0)$ denote its Jacobian.
+The proof in Appendix~\ref{app:rewrite-proofs} derives its entries directly from
+equations~\eqref{eq:rewrite-eq-kdot}--\eqref{eq:rewrite-eq-qdot}, with
+$\psi=1$ and $\psi'=0$.
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Local existence of uncapped equilibrium trajectories]
+\label{prop:rewrite-uncapped-unit-local}
+Under the assumptions of Proposition~\ref{prop:rewrite-uncapped-unit-bgp},
+fix $A_0,N_0>0$ and their reference BGP. Suppose $J^*$ has no eigenvalue
+with zero real part and exactly two with negative real parts. Let
+$V_S\in\mathbb R^{4\times2}$ be a real basis of its stable eigenspace and
+$V_{KB}$ its first two rows. If $\det V_{KB}\ne0$, then every
+$(K_0,B_0)$ in a sufficiently small open neighborhood of $(K_0^*,B_0^*)$
+has an infinite-horizon equilibrium trajectory converging to the BGP in
+the normalized variables~\eqref{eq:rewrite-uncapped-unit-deviations}.
+The required $(C_0,q_0)$ are continuously differentiable functions of
+$(K_0,B_0)$. The trajectory satisfies both transversality conditions and
+global agent optimality. Uniqueness is local, among paths that remain in
+the specified neighborhood and converge to the reference BGP.
+\end{proposition}
+\begin{proof}
+See Appendix~\ref{app:rewrite-proofs},
+\hyperref[proof:rewrite-uncapped-unit-local]{Proof of
+Proposition~\ref*{prop:rewrite-uncapped-unit-local}}.
+\end{proof}
+
+No constant growth rates or allocation shares are imposed along these
+transitions. The result is local in initial stocks, not in time; it does
+not establish existence or uniqueness from arbitrary initial conditions.
+For the parameters in Table~\ref{tab:rewrite-parameters}, the eigenvalues are
+approximately $-0.098971$, $-0.003194$, $0.040391$, and $0.149290$.
+The absolute determinant of the state projection of unit-length stable
+eigenvectors is $0.6037$. The two spectral conditions therefore hold at
+this calibration. The normalized Jacobian is independent of $\chi$;
+changing research productivity changes the reference levels, not these roots.
+
+\subsection{Growth and distribution without a frontier}
+
+The uncapped BGP has
+\begin{equation}
+ \frac{wL}{Y}=\lambda>0,\qquad
+ \frac{(r+\delta)K}{Y}=\alpha,\qquad
+ \frac{\Pi}{Y}=\beta-\beta^2-m^*.
+ \label{eq:rewrite-uncapped-unit-distribution}
+\end{equation}
+Equation~\eqref{eq:rewrite-uncapped-unit-wage-growth} shows that real wages
+and output per person grow together at a rate above $\gamma$, even though
+labor retains a positive, constant income share. Without a frontier,
+continued growth in AI efficiency sustains this wage-growth premium.
+With any finite frontier, the unit-elastic equilibria in
+Proposition~\ref{prop:rewrite-capped-unit-existence} instead have
+$g_{Y/N},g_w\to\gamma$. The equivalence between wage growth above
+$\gamma$ and a vanishing labor share across the finite-frontier regimes
+does not extend to the uncapped economy.
+
+Within the restrictions of Proposition~\ref{prop:rewrite-uncapped-unit-bgp},
+increasing the AI weight raises the common growth rate and the interest rate:
+\begin{equation}
+ \frac{\partial g_{Y/N}^*}{\partial\omega_X}
+ =\frac{\partial g_w^*}{\partial\omega_X}
+ =\frac{\partial r^*}{\partial\omega_X}
+ =\frac{\eta(1-\eta)(n+\gamma)}{(1-\eta-\omega_X)^2}>0.
+ \label{eq:rewrite-uncapped-unit-comparative-statics}
+\end{equation}
+Labor's income share falls across these parameterizations, but remains
+constant over time on each BGP. As $\omega_X\to0^+$, the common per-person
+growth rate converges to $\gamma$ and $r^*\to\rho+\gamma$. These statements
+compare balanced-growth equilibria; they do not describe a transition
+from a no-AI economy or establish an uncapped equilibrium for $\sigma>1$.
