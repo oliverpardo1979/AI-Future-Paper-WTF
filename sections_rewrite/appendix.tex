@@ -325,7 +325,7 @@ Lemma~\ref{lem:rewrite-developer-verification}.
 \begin{proposition}[Large-scale research expenditure]
 \label{prop:rewrite-research-scale}
 Fix a finite horizon, an initial AI-efficiency level, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
-\(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
+\(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. Consequently, there is no uncapped infinite-horizon equilibrium with a finite-valued developer optimum when $\sigma>1$ and $\alpha<\eta<1$. This nonexistence result does not require a finite-time singularity. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
 For a fixed finite frontier, the truncated problem instead has a finite value
 and attains its maximum for every $0<\eta<1$.
 \end{proposition}
@@ -451,6 +451,34 @@ with \(c_\pi,c_M>0\). The exponent exceeds one when \(\eta>\alpha\), so this
 family makes the truncated value unbounded above. At equality, the exponent is
 one and the sign of the leading coefficient determines this family's result.
 
+To obtain the infinite-horizon nonexistence conclusion, suppose instead that
+an uncapped equilibrium has a developer policy $\widehat M$, an associated
+efficiency path $\widehat B$, and a finite discounted value $\widehat V_0$.
+Hold its paths of $K,A,L,$ and $r$ fixed, as required by the developer's
+problem~\eqref{eq:rewrite-developer-reduced}. On $[0,T]$, use the burst policy
+above; after $T$, resume $\widehat M$. For a sufficiently large burst,
+$B_{\mathcal M}(T)>\widehat B(T)$. Under the uncapped law, the difference
+$B_{\mathcal M}(t)^{1-\eta}-\widehat B(t)^{1-\eta}$ is then constant and
+positive for $t\geq T$, since the two policies use the same research spending.
+Operating profit is increasing in $B$ by
+equation~\eqref{eq:rewrite-profit-envelope}, so subsequent net profit is no
+lower than under the candidate policy. Let $\widehat J_T$ be the candidate's
+discounted net profit on $[0,T]$ and let $J_\infty(\mathcal M)$ denote the
+payoff from the deviating policy, including its continuation. Then
+\[
+ J_\infty(\mathcal M)
+ \geq J_T(\mathcal M)+\widehat V_0-\widehat J_T
+ \longrightarrow+\infty.
+\]
+The continuation payoff is well defined as a finite value or $+\infty$:
+its difference from the candidate's continuation payoff is the integral of
+a nonnegative operating-profit gain. Each deviation has finite research
+expenditure on every finite interval and hence finite $B$ there by
+\eqref{eq:rewrite-capability-expenditure-bound}. Every finite-valued candidate
+can therefore be improved, contradicting developer optimality. The argument
+excludes a finite-valued optimum; it does not treat an infinite payoff as an
+attained firm value or assume that a trajectory reaches a singularity.
+
 For a finite frontier, the invariance result above confines \(B\) to the compact
 interval \([B_0,\overline B]\). Optimized operating profit
 is continuous in \(B\) and uniformly bounded on the fixed horizon. Hence
@@ -472,9 +500,12 @@ The condition $\eta<\alpha$ prevents arbitrarily large
 research expenditure from being optimal on a fixed horizon in the uncapped
 economy. It is a sufficient restriction, not a necessary one for every value
 of $\sigma$, and finite-horizon existence with a finite frontier does not
-require $\eta<\alpha$. Neither the bound nor
-finite-horizon developer existence establishes an equilibrium:
-the paths of $K,A,L,$ and $r$ were taken as given throughout this argument.
+require $\eta<\alpha$. Neither the bound for $\eta<\alpha$ nor
+finite-horizon developer existence with a finite frontier establishes an
+equilibrium: the paths of $K,A,L,$ and $r$ were taken as given. In contrast,
+for $\sigma>1$ and $\eta>\alpha$, the profitable-deviation argument rules out
+an uncapped equilibrium with a finite-valued developer optimum at any such
+candidate paths.
 The quantitative analysis uses $\eta=0.20<\alpha=0.33$, for which the
 expenditure exponent is approximately $0.508$; the value of $\eta$ is
 illustrative rather than estimated.

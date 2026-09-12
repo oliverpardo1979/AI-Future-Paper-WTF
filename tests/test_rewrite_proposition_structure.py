@@ -202,7 +202,24 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"If $\eta<\alpha$", normalized)
         self.assertIn("without establishing an uncapped infinite-horizon equilibrium", normalized)
         self.assertIn("takes the paths of capital, effective labor, and interest rates as given", normalized)
+        self.assertIn("no uncapped equilibrium with a finite-valued developer optimum", normalized)
+        self.assertIn("This failure of optimality does not require a finite-time singularity", normalized)
+        self.assertIn("Neither existence nor general nonexistence is established for this parameter range", normalized)
         self.assertNotIn("numerical simulations point to non-existence", normalized)
+
+    def test_uncapped_nonexistence_has_a_continuation_argument(self):
+        appendix = " ".join(source("sections_rewrite/appendix.tex").split())
+        self.assertIn(
+            "no uncapped infinite-horizon equilibrium with a finite-valued developer optimum",
+            appendix,
+        )
+        self.assertIn(r"$\sigma>1$ and $\alpha<\eta<1$", appendix)
+        self.assertIn(r"after $T$, resume $\widehat M$", appendix)
+        self.assertIn(r"B_{\mathcal M}(t)^{1-\eta}-\widehat B(t)^{1-\eta}", appendix)
+        self.assertIn(r"\eqref{eq:rewrite-profit-envelope}", appendix)
+        self.assertIn(r"J_T(\mathcal M)+\widehat V_0-\widehat J_T", appendix)
+        self.assertIn("Each deviation has finite research expenditure on every finite interval", appendix)
+        self.assertIn("excludes a finite-valued optimum", appendix)
 
     def test_section_four_cuts_keep_table_and_equilibrium_caveat(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
@@ -215,8 +232,8 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn("finite, feasible allocations at every date", singularity)
         self.assertIn("or rule out a finite-time singularity", singularity)
         self.assertNotIn("even when the developer's value is bounded on every finite horizon", singularity)
-        self.assertIn("does not prove that every uncapped trajectory", singularity)
-        self.assertIn("nor does it rule out an uncapped equilibrium defined for all future time", singularity)
+        self.assertIn("Neither existence nor general nonexistence is established for this parameter range", singularity)
+        self.assertIn("no uncapped equilibrium with a finite-valued developer optimum", singularity)
 
     def test_active_references_resolve_once(self):
         text = "\n".join(active_sources())
