@@ -152,7 +152,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn("revenue as a share of output", remark)
         self.assertIn(r"$1-\alpha$", remark)
 
-    def test_regime_table_reports_net_interest_limits(self):
+    def test_regime_table_reports_wage_growth_and_net_interest_limits(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
         table = next(
             block for block in re.findall(
@@ -160,11 +160,18 @@ class UnifiedPropositionStructure(unittest.TestCase):
             ) if r"\label{tab:rewrite-finite-existence}" in block
         )
         self.assertIn(r"$\lim r$", table)
-        self.assertIn(r"\begin{tabular}{@{}ccccc@{}}", table)
+        self.assertIn(r"$\lim g_{Y/N}$ & $\lim g_w$", table)
+        self.assertIn(r"\begin{tabular}{@{}cccccc@{}}", table)
         self.assertIn("AI efficiency bound", table)
         rows = [line.strip() for line in table.splitlines() if line.lstrip().startswith("$")]
         self.assertEqual(len(rows), 4)
-        self.assertTrue(all(row.count("&") == 4 for row in rows))
+        self.assertTrue(all(row.count("&") == 5 for row in rows))
+        wage_limits = [row.split("&")[3].strip() for row in rows]
+        self.assertEqual(
+            wage_limits,
+            [r"$\gamma$"] * 3
+            + [r"$\gamma+\frac{\mathcal R(\overline B)-\rho-\gamma}{\sigma}>\gamma$"],
+        )
         limits = [row.rsplit("&", 1)[1].strip().removesuffix(r"\\").strip() for row in rows]
         self.assertEqual(limits, [r"$\rho+\gamma$"] * 3 + [r"$\mathcal R(\overline B)>\rho+\gamma$"])
 
