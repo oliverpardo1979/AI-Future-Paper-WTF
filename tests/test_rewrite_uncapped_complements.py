@@ -118,15 +118,22 @@ class UncappedComplements(unittest.TestCase):
         for condition in (
             "and an equilibrium satisfies", r"$B\to\infty$",
             r"$K/(AL)$ and $C/(AL)$ converge to positive finite",
-            "have finite limits", "If, in addition",
+            "have finite limits",
         ):
             self.assertIn(condition, characterization)
         self.assertIn(
             "satisfying the stated convergence conditions; it does not establish its existence.",
             body,
         )
-        self.assertIn("neither", proofs)
-        self.assertIn("construct a trajectory satisfying them nor verify the developer's global", proofs)
+        self.assertNotIn("If, in addition", characterization)
+        self.assertNotIn("For the additional research characterization", proofs)
+        self.assertNotIn("Under the additional research limits", body)
+        for removed_label in (
+            "eq:rewrite-uncapped-complements-research-rates",
+            "eq:rewrite-uncapped-complements-compute-shares",
+            "eq:rewrite-uncapped-complements-research-ratio",
+        ):
+            self.assertNotIn(removed_label, body + proofs)
         self.assertNotRegex(proofs, r"\\(?:sub)*section\{")
         for kind, label in (
             ("Proposition", "prop:rewrite-uncapped-complements-bounds"),
