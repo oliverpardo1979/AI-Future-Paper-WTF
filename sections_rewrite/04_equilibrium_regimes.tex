@@ -34,21 +34,26 @@ equation~\eqref{eq:rewrite-ai-price} with the developer's pricing condition in e
 \end{equation}
 The limit uses $e_X\to\alpha$ from Equation
 \eqref{eq:rewrite-inverse-demand-elasticity}. %One factor $1-\alpha$ comes from the marginal product of AI services; the other comes from the developer's marginal-revenue condition. 
-The CES aggregator and its elasticity in Equations~\eqref{eq:rewrite-ces} and \eqref{eq:rewrite-sx} give
+The CES aggregator in equation~\eqref{eq:rewrite-ces} and the definition of
+$s_X$ in equation~\eqref{eq:rewrite-sx} imply
 \begin{equation}
  \frac ZX=\left(\frac{\omega_X}{s_X}\right)^{\sigma/(\sigma-1)}
  \longrightarrow\omega_X^{\sigma/(\sigma-1)}.
  \label{eq:rewrite-composite-ai-limit}
 \end{equation}
-Dividing production by $Y$ yields
-$1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Hence
+Dividing the production function in equation~\eqref{eq:rewrite-output} by $Y$
+gives $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Using $Z/Y=(Z/X)(X/Y)$ and the limits
+in equations~\eqref{eq:rewrite-ai-output-limit} and
+\eqref{eq:rewrite-composite-ai-limit}, I obtain
 \begin{equation}
  \frac YK=\left(\frac ZY\right)^{(1-\alpha)/\alpha}
  \longrightarrow
  \left[(1-\alpha)^2B\,\omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
  \label{eq:rewrite-output-capital-limit}
 \end{equation}
-Substituting equations~\eqref{eq:rewrite-ai-output-limit} and~\eqref{eq:rewrite-composite-ai-limit} into equation~\eqref{eq:rewrite-output-capital-limit}, and the resulting ratio into $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, defines the net return on capital when $s_X\to1$ as a function of $B$:
+Substituting the limiting output--capital ratio in
+equation~\eqref{eq:rewrite-output-capital-limit} into the capital-return
+condition $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, gives
 \begin{equation}
  \mathcal R(B)
  \equiv\alpha\left[(1-\alpha)^2B\,
