@@ -38,7 +38,7 @@ The variable $A$ measures the level of labor-augmenting technology. One unit of 
 \subsection{Household}
 \label{subsec:rewrite-household}
 
-The representative household owns physical capital and the AI developer. Let \(\Pi\) denote the net distribution the household receives from the AI developer. The household takes the paths of the net interest rate \(r\), the wage \(w\) and \(\Pi\) as given. For a predetermined capital stock $K_0>0$, it chooses aggregate consumption $C$ to solve
+The representative household owns physical capital and the AI developer. Let \(\Pi\) denote the AI developer's net profit, which accrues to the household. The household takes the paths of the net interest rate \(r\), the wage \(w\) and \(\Pi\) as given. For a predetermined capital stock $K_0>0$, it chooses aggregate consumption $C$ to solve
 \begin{equation}
  \max_{\{C_t\}_{t\geq0}}
  \int_0^\infty e^{-\rho t}N_t\log(C_t/N_t)\dd t,
@@ -347,7 +347,7 @@ The AI developer uses $M$ for research and owns $B$ and any resulting improvemen
 % \label{eq:rewrite-profit-envelope}
 %\end{equation}
 %The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in AI efficiency saves $X/B^2$ units of compute.
-After the within-date service choice, the net distribution to the household is
+After the within-date service choice, the developer's net profit is
 $\Pi_t=\pi(B_t)-M_t$: operating profit less research expenditure.
 Taking the paths of $r,K,A,$ and $L$ as given and substituting the static
 solution to problem~\eqref{eq:rewrite-service-choice}, the developer chooses
@@ -361,8 +361,8 @@ the path of research compute $M$ to increase AI efficiency $B$:
 \end{equation}
 subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
 Admissible research paths have $M_t\geq0$ and finite total expenditure on
-every finite interval. The objective is the present value of net
-distributions, not the flow $\Pi$ at a particular date.
+every finite interval. The objective is the present value of net profit,
+not profit at a single date.
 
 %Profit can be negative at a date because the model imposes no separate cash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
@@ -408,16 +408,12 @@ The developer's transversality condition is
 \end{equation}
 It rules out a path that leaves positive discounted value in the AI-efficiency state.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
 
-The preceding conditions are necessary for an interior optimum, but they do
-not by themselves establish global optimality.
+The preceding conditions are necessary for an interior optimum but do not
+establish global optimality.
 Lemma~\ref{lem:rewrite-developer-verification} in
-Appendix~\ref{app:rewrite-proofs} gives a global verification result for the
-developer's research path. It uses a monotone transformation of the bounded
-AI-efficiency state and requires the maximized Hamiltonian to have a global
-supporting tangent at the candidate state. Global concavity is sufficient for
-this condition but is not necessary. The equilibrium existence proofs use a
-concavity test, whereas the quantitative analysis checks the weaker support
-condition directly whenever global concavity fails.
+Appendix~\ref{app:rewrite-proofs} gives sufficient conditions for a research
+path to maximize the present value of the developer's net profit in
+problem~\eqref{eq:rewrite-developer-reduced}.
 
 %\begin{proposition}[Research is interior]
 %\label{prop:rewrite-research-interior}

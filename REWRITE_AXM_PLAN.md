@@ -30,6 +30,10 @@ restatement, and the finite-date upper-bound restatement. Do not reactivate the
 older commented versions of this material. This is an editorial deletion, not
 authorization to change the agents' problems, equations, or simulation rules.
 
+Call $\Pi$ the developer's "net profit", not "net distributions". References
+to verification results must identify the lemma and appendix with automatic
+LaTeX references, not refer vaguely to "the verification lemma in the appendix".
+
 ## Model scope
 
 - The benchmark has autonomous AI research: \(\omega_H=0\).
