@@ -58,6 +58,22 @@ class ShortSubstitutionExposition(unittest.TestCase):
             # R(B)+delta has elasticity (1-alpha)/alpha in B.
             self.assertGreater(alpha*exponent, 0)
 
+    def test_abstract_and_intro_specify_long_run_growth_and_unit_benchmark(self):
+        abstract = " ".join(source("main_rewrite.tex").split(
+            r"\begin{abstract}", 1)[1].split(r"\end{abstract}", 1)[0].split())
+        intro = " ".join(source("sections_rewrite/01_introduction.tex").split())
+        paragraph = intro.split("I also examine the role", 1)[1].split(
+            "Simulations show", 1)[0]
+        self.assertIn("long-run output-per-worker growth cannot exceed", abstract)
+        self.assertIn("increases without bound as the upper bound rises", abstract)
+        self.assertNotIn("growth is always bounded", abstract)
+        self.assertNotIn("IA efficiency", abstract)
+        self.assertIn("long-run output-per-person growth cannot exceed", paragraph)
+        self.assertIn("At unit elasticity and without an upper bound", paragraph)
+        self.assertIn("output per person and real wages grow faster than this exogenous rate",
+                      paragraph)
+        self.assertNotIn("positive labor income share", paragraph)
+
     def test_complementarity_reverses_the_static_comparison(self):
         for alpha in (Q(1, 5), Q(33, 100), Q(3, 5)):
             for sigma in (Q(1, 10), Q(1, 2), Q(99, 100)):
