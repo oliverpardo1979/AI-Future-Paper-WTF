@@ -32,7 +32,7 @@ $\omega_L$ & 0.80 & Weight on effective labor & $1-\omega_X$\\
 $\eta$ & 0.20 & Research exponent & Illustrative choice; not estimated\\
 $\chi$ & 1.4378 & Research productivity & Calibrated transition-speed parameter\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Four scenarios spanning the analytical regimes\\
-$\overline B$ & $1.10\,\mathcal B(1.50)$ $\simeq170.124$ & Common AI-efficiency frontier & Ten percent above the threshold for $\sigma=1.50$\\
+$\overline B$ & $1.10\,\mathcal B(1.50)$ $\simeq170.124$ & Common upper bound on AI efficiency & Ten percent above the threshold for $\sigma=1.50$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -54,10 +54,10 @@ discussion of AI-investment measurement supports treating $\omega_X$ as a
 scenario parameter, but does not identify its value
 \citep{oecdaiinvestment2025,oecdproductivity2026}.
 
-The common frontier is below $\mathcal B(1.10)\simeq60.4$ million but above
+The common upper bound is below $\mathcal B(1.10)\simeq60.4$ million but above
 $\mathcal B(1.50)\simeq154.658$. Thus $\sigma=1.10$ retains a positive
 long-run labor share, whereas $\sigma=1.50$ enters the AI-dominated regime.
-Changing the frontier separately across scenarios would confound this
+Changing the upper bound separately across scenarios would confound this
 comparison of elasticities.
 
 The choice of initial conditions follows the question posed by each exercise.
@@ -74,7 +74,7 @@ I set
 \end{equation}
 These common initial stocks place the economy closer to the capped
 $\sigma=1$ terminal regime than the earlier uncapped reference: initial AI
-efficiency is 10 percent of its frontier and initial capital per unit of
+efficiency is 10 percent of its upper bound and initial capital per unit of
 effective labor is about 44 percent of its terminal $\sigma=1$ value. I use
 these intermediate stocks so that the main figures display the transition
 without letting the financing needs of an extremely distant initial economy
@@ -92,7 +92,7 @@ neither jump variable is fixed at its uncapped reference value.
 
 I retain the four-dimensional boundary-value architecture: two initial stock
 conditions and two terminal conditions selecting the stable equilibrium
-continuation. The appropriate finite-frontier regime from
+continuation. The appropriate regime with a finite upper bound from
 Section~\ref{sec:rewrite-regimes}, not the uncapped unit-elastic BGP, determines
 the terminal conditions. Appendix~\ref{app:rewrite-algorithm} documents the
 continuation, equation reconstruction, and numerical checks.
@@ -165,7 +165,7 @@ Figure~\ref{fig:rewrite-growth-returns} next reports real-wage growth, the net
 interest rate, and the price of effective AI production services. The first
 two are rates; $p_X$ is a relative-price level measured in units of the final
 good. Condition~\eqref{eq:rewrite-monopoly-foc} implies
-$p_X=1/[B(1-e_X)]$. Because $B$ approaches its finite frontier and $e_X$
+$p_X=1/[B(1-e_X)]$. Because $B$ approaches its finite upper bound and $e_X$
 approaches a value below one in every terminal regime, $p_X$ converges to a
 positive finite level. It falls rather than grows without bound in all four
 simulations. I therefore report its level on a logarithmic scale, which keeps
@@ -269,7 +269,7 @@ $(\sigma-1)/\sigma$ is small and the share responds slowly even to large
 increases in relative AI services. At $\sigma=1.50$, for example, the
 exponent is $1/3$: increasing the odds $s_X/(1-s_X)$ by a factor of ten
 requires a thousand-fold increase in $X/(AL)$. For elasticities closer to
-one, the required increase is larger still, conditional on the frontier
+one, the required increase is larger still, conditional on the upper bound
 being high enough to support the AI-dominated regime.
 
 The economy must also accumulate the inputs that produce this change.
@@ -279,7 +279,7 @@ with consumption and physical investment for current output. Moreover,
 $\eta=0.20$ implies strong diminishing returns to a contemporaneous increase
 in research compute. As $B$ rises, however, it reduces the compute required
 to supply a unit of $X$ and makes subsequent research compute more productive.
-The feedback therefore strengthens gradually. Near the finite frontier,
+The feedback therefore strengthens gradually. Near the finite upper bound,
 $\psi(B)$ slows further efficiency improvement. The eventual acceleration in
 the AI-dominated equilibrium is consequently not an explosion of $B$: it is
 sustained by the expansion of capital and effective AI production services
@@ -310,14 +310,14 @@ $6.290\%$ and $4.522\%$, while labor's share has fallen to $10.9\%$. By year
 and labor's share is $0.19\%$; all three are close to their analytical limits.
 The non-monotone growth response reflects the costly initial research surge,
 the subsequent acceleration in effective AI services, and eventual convergence
-as $B$ approaches its frontier. These dates illustrate an equilibrium under
+as $B$ approaches its upper bound. These dates illustrate an equilibrium under
 one research-speed calibration. They are not estimates of when an actual AI
 transition will occur.
 
-Substitution alone does not produce this outcome. With the same frontier
+Substitution alone does not produce this outcome. With the same upper bound
 and $\sigma=1.10$, the labor share instead approaches $50.2\%$, compared
 with $53.6\%$ at $\sigma=1$ and $54.2\%$ at $\sigma=0.90$.
-The frontier's position relative to the elasticity-specific threshold is
+The upper bound's position relative to the elasticity-specific threshold is
 essential to interpreting the comparison.
 
 \subsection{A transition from the no-AI steady state}
@@ -422,7 +422,7 @@ their analytical limits. In the other three economies, output-per-person and
 real-wage growth have returned to approximately $1\%$ and the net interest
 rate to $5\%$ by year 500. The same Ramsey initial capital stock can therefore
 lead either back to a labor-bottleneck regime or toward the AI-dominated
-regime; the difference is the elasticity and the frontier relative to its
+regime; the difference is the elasticity and the upper bound relative to its
 elasticity-specific threshold.
 
 \subsection{Near-terminal paths}
@@ -459,7 +459,7 @@ I initialize this product at its limiting value:
  \label{eq:rewrite-near-terminal-ai-stock}
 \end{equation}
 Consumption and the developer's shadow value are again selected by the BVP
-for each path. I use $B_0/\overline B=0.9999$, rather than the frontier itself,
+for each path. I use $B_0/\overline B=0.9999$, rather than the upper bound itself,
 to begin sufficiently close to the analytical limits while preserving the
 interior research problem. For each labor-bottleneck path, setting capital at
 its terminal normalized value removes a separate capital-adjustment gap. For
@@ -508,16 +508,16 @@ recover the earlier calibration with
  \chi=0.01,\qquad K_0=2.027733654,\qquad B_0=0.443670932.
  \label{eq:rewrite-slow-transition-design}
 \end{equation}
-All other parameters, the common frontier, and the four values of $\sigma$
+All other parameters, the common upper bound, and the four values of $\sigma$
 are unchanged. These initial stocks are the values implied by the earlier
 uncapped unit-elastic BGP. Together with the low value $\chi=0.01$, they place
-the capped economy far from its frontier and are chosen to ask whether the same
+the capped economy far from its upper bound and are chosen to ask whether the same
 long-run regimes can remain hidden for much longer. They are a sensitivity
 design, not estimates of the current world economy. Neither the initial
 consumption nor the initial shadow value is imported from the uncapped BGP.
 Both jump variables are solved again for each capped economy. The exercise
 changes both research productivity and the initial distance from the
-frontier, so it should not be interpreted as a one-parameter estimate of the
+upper bound, so it should not be interpreted as a one-parameter estimate of the
 effect of $\chi$. Each of the four paths is independently re-solved and passes
 the same equilibrium-admission tests as the main comparison.
 
@@ -609,5 +609,5 @@ revenue share vanishes, and the developer retains $33\%$. Its net distribution
 therefore approaches $22.11\%$ of final output. By contrast, at $\sigma=1$
 AI revenue is always $13.4\%$ of output and inference absorbs $13.4\%$ of
 that revenue. A vanishing research share does not mean that research stops:
-the constructed finite-frontier equilibria have a positive limiting level of
+the constructed equilibria with a finite upper bound have a positive limiting level of
 research compute, while industry revenue continues to grow.

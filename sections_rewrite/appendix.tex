@@ -84,7 +84,7 @@ Its right derivative diverges as \(M\downarrow0\) because
 maximize the Hamiltonian at a finite date.
 
 \paragraph{Global developer verification.}
-For a finite frontier, define research depth as the monotone transformation
+For a finite upper bound, define research depth as the monotone transformation
 \begin{equation}
  R_B(B)=-\overline B\log\left(1-\frac{B}{\overline B}\right),
  \qquad
@@ -257,7 +257,7 @@ If $\eta\leq1/2$, condition~\eqref{eq:rewrite-depth-research-concavity}
 holds automatically. But for every fixed
 $0<\eta<1$ its right-hand side is strictly below one, so it also holds
 without this restriction when initial efficiency is sufficiently close to
-the frontier. These curvature tests are sufficient, not necessary: they
+the upper bound. These curvature tests are sufficient, not necessary: they
 can fail even when the Hamiltonian has the required supporting tangent at
 the candidate state.
 
@@ -327,7 +327,7 @@ Lemma~\ref{lem:rewrite-developer-verification}.
 \label{prop:rewrite-research-scale}
 Fix a finite horizon, an initial AI-efficiency level, positive continuous paths for $K,A,L$, and an integrable path for $r$. In the uncapped economy with \(\overline B = \infty\), if $0<\eta<\alpha<1$, the developer's truncated value is finite and its objective tends to minus infinity as total research expenditure diverges. If
 \(\sigma>1\) and \(\eta>\alpha\), fixed-duration expansions of research compute make the truncated value unbounded above. Consequently, there is no uncapped infinite-horizon equilibrium with a finite-valued developer optimum when $\sigma>1$ and $\alpha<\eta<1$. This nonexistence result does not require a finite-time singularity. At \(\eta=\alpha\), the leading benefit and cost terms have the same order, so their coefficients determine the result.
-For a fixed finite frontier, the truncated problem instead has a finite value
+For a fixed finite upper bound, the truncated problem instead has a finite value
 and attains its maximum for every $0<\eta<1$.
 \end{proposition}
 
@@ -480,7 +480,7 @@ can therefore be improved, contradicting developer optimality. The argument
 excludes a finite-valued optimum; it does not treat an infinite payoff as an
 attained firm value or assume that a trajectory reaches a singularity.
 
-For a finite frontier, the invariance result above confines \(B\) to the compact
+For a finite upper bound, the invariance result above confines \(B\) to the compact
 interval \([B_0,\overline B]\). Optimized operating profit
 is continuous in \(B\) and uniformly bounded on the fixed horizon. Hence
 \(J_T(M)\leq C_0-\underline D S\), so every maximizing sequence has bounded
@@ -500,9 +500,9 @@ The objective is therefore weakly upper semicontinuous and attains its maximum.
 The condition $\eta<\alpha$ prevents arbitrarily large
 research expenditure from being optimal on a fixed horizon in the uncapped
 economy. It is a sufficient restriction, not a necessary one for every value
-of $\sigma$, and finite-horizon existence with a finite frontier does not
+of $\sigma$, and finite-horizon existence with a finite upper bound does not
 require $\eta<\alpha$. Neither the bound for $\eta<\alpha$ nor
-finite-horizon developer existence with a finite frontier establishes an
+finite-horizon developer existence with a finite upper bound establishes an
 equilibrium: the paths of $K,A,L,$ and $r$ were taken as given. In contrast,
 for $\sigma>1$ and $\eta>\alpha$, the profitable-deviation argument rules out
 an uncapped equilibrium with a finite-valued developer optimum at any such
@@ -598,7 +598,7 @@ equilibrium. I subtract the analytical terminal aggregate growth rate
 times $t$ from each coordinate to remove its linear trend. This is a
 numerical transformation, not a change in the model's variables. In
 particular, the code stores $\log\psi(B)$ separately: a displayed ratio
-$B/\overline B$ can round to one even though the remaining frontier gap
+$B/\overline B$ can round to one even though the remaining gap to the upper bound
 is strictly positive.
 
 The left boundary fixes only $K_0$ and $B_0$: from
@@ -618,10 +618,10 @@ approximates the stable continuation, which is why increasing the horizon
 is a necessary numerical check.
 
 For $\sigma\leq1$, I use the positive-labor-share terminal formulas.
-For $\sigma>1$, the frontier's position relative to $\mathcal B(\sigma)$ selects
+For $\sigma>1$, the upper bound's position relative to $\mathcal B(\sigma)$ selects
 the terminal regime. At $\sigma=1$, the CES block uses its exact
 Cobb--Douglas limit. Near one, \texttt{log1p} and \texttt{expm1} evaluate
-the CES expression without cancellation, and the frontier comparison is
+the CES expression without cancellation, and the comparison between the upper bound and the threshold is
 performed in logarithms. I solve the labor-supported terminal static
 condition directly for $\log[X/(AL)]$, rather than invert a share formula
 by dividing by $\sigma-1$. A trial quantity with nonpositive marginal

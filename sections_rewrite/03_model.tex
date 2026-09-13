@@ -183,7 +183,7 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
 \subsubsection{Autonomous improvement in AI efficiency}
 \label{subsubsec:rewrite-capability}
 
-Given initial AI efficiency \(B_0>0\) and an efficiency frontier
+Given initial AI efficiency \(B_0>0\) and an upper bound
 \(\overline B\in(B_0,\infty]\), AI efficiency evolves according to
 \begin{equation}
  \dot B=\chi(BM)^\eta\psi(B),
@@ -233,7 +233,7 @@ diminishing returns in idea production. This evidence motivates diminishing
 returns, but it does not establish a literal finite technological ceiling. The
 term $1-B/\overline B$ is a deliberately stronger reduced-form specification to make sure there is an equilibrium when AI and labor are substitutes.
 
-The efficiency frontier \(\overline B\) allows me to establish and compute equilibria for finite values of \(\overline B\) and then ask whether they have a meaningful limit as \(\overline B\to\infty\). Without the frontier, recursive improvement may instead produce a finite-time singularity: one or more endogenous quantities---such as AI efficiency, output, capital, or research compute---become unbounded at a finite date, so the trajectory cannot be continued as a path of finite allocations. %Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. %AI efficiency may approach the frontier asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
+The upper bound on AI efficiency \(\overline B\) allows me to establish and compute equilibria for finite values of \(\overline B\) and then ask whether they have a meaningful limit as \(\overline B\to\infty\). Without the upper bound, recursive improvement may instead produce a finite-time singularity: one or more endogenous quantities---such as AI efficiency, output, capital, or research compute---become unbounded at a finite date, so the trajectory cannot be continued as a path of finite allocations. %Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. %AI efficiency may approach the upper bound asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
 \subsubsection{Supply of effective AI production services}
 \label{subsubsec:rewrite-market-structure}
@@ -388,7 +388,7 @@ The current-value costate equation is
  -\dot B\frac{\psi'(B)}{\psi(B)}.
  \label{eq:rewrite-costate}
 \end{equation}
-%For a finite frontier,\(\psi'/\psi=-1/(\overline B-B)\); for the uncapped economy, the derivative is zero. 
+%For a finite upper bound,\(\psi'/\psi=-1/(\overline B-B)\); for the uncapped economy, the derivative is zero.
 Rearranging gives the return equation
 \begin{equation}
  rq=\frac{U}{B}+q\eta\frac{\dot B}{B}
@@ -396,7 +396,7 @@ Rearranging gives the return equation
  \label{eq:rewrite-capability-return}
 \end{equation}
 The first term on the right-hand side of Equation~\eqref{eq:rewrite-capability-return} is the inference-compute saving from greater AI efficiency. The
-second is the gain in research productivity. With a finite frontier, the third
+second is the gain in research productivity. With a finite upper bound, the third
 term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on AI efficiency. Together these
 returns must equal the market return $rq$.
 
@@ -526,7 +526,7 @@ At $\sigma=1$, the CES equations use their continuous limits
 $Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$.
 The trajectory is feasible for the agents' stated problems, the household
 and developer attain their optima, and final-good firms maximize profit.
-For a finite frontier, $B_t<\overline B$ at every finite date.
+For a finite upper bound, $B_t<\overline B$ at every finite date.
 %At \(\sigma=1\), equations \eqref{eq:rewrite-eq-z} and \eqref{eq:rewrite-eq-sx} are understood at their continuous limits:
 %$Z=(AL)^{\omega_L}X^{\omega_X}$ and $s_X=\omega_X$. If \(\overline B<\infty\), the path satisfies $B_t<\overline B$ at every finite date. Finally, t
 %The household and developer solve their stated optimization problems, final-good firms maximize profit, and all markets clear. The initial values \(C_t\) and \(q_t\) are endogenous jump variables selected to satisfy the two transversality conditions.

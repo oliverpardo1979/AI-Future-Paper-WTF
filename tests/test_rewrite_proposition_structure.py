@@ -264,7 +264,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         body = source("sections_rewrite/05_uncapped_equilibria.tex")
         subsections = re.findall(r"\\subsection\{([^}]+)\}", body)
         self.assertEqual(subsections, [
-            "Complementarity: a production bottleneck without a frontier",
+            "Complementarity: a production bottleneck without an upper bound",
             "Unit elasticity: a balanced-growth equilibrium",
             "Substitution: unbounded returns and equilibrium existence",
         ])
@@ -282,11 +282,30 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"\citep{pardo2026companion}", bgp)
         self.assertIn(r"\hyperref[proof:rewrite-uncapped-unit-bgp]", bgp)
         literature = " ".join(source("sections_rewrite/02_literature.tex").split())
-        self.assertIn("Across the long-run equilibria characterized here with a finite AI-efficiency frontier", literature)
+        self.assertIn("Across the long-run equilibria characterized here with a finite upper bound on AI efficiency", literature)
         conclusion = " ".join(source("sections_rewrite/06_conclusion.tex").split())
-        self.assertIn("Across the long-run regimes I characterize with a finite AI-efficiency frontier", conclusion)
+        self.assertIn("Across the long-run regimes I characterize with a finite upper bound on AI efficiency", conclusion)
         self.assertIn("uncapped unit-elastic benchmark", conclusion)
         self.assertIn("beyond unit elasticity", conclusion)
+
+    def test_upper_bound_terminology_preserves_other_frontiers(self):
+        text = "\n".join(active_sources())
+        # File paths and cross-reference identifiers intentionally retain their names.
+        prose = re.sub(
+            r"\\(?:label|ref|eqref|input|include|path|includegraphics)"
+            r"(?:\[[^\]]*\])?\{[^}]*\}", "", text
+        )
+        self.assertIn("technological frontier", prose)
+        self.assertIn("automation frontier", prose)
+        prose = prose.replace("technological frontier", "")
+        prose = prose.replace("automation frontier", "")
+        self.assertNotRegex(prose, r"(?i)\bfrontier\b")
+        self.assertIn(
+            r"\section{Equilibrium with a finite upper bound on AI efficiency}", text
+        )
+        self.assertIn(
+            r"\section{Without an upper bound on AI efficiency}", text
+        )
 
 
 if __name__ == "__main__":

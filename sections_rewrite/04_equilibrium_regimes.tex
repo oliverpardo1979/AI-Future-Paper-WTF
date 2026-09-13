@@ -1,4 +1,4 @@
-\section{Equilibrium with a finite AI-efficiency frontier}
+\section{Equilibrium with a finite upper bound on AI efficiency}
 \label{sec:rewrite-regimes}
 
 In this section, I characterize the long-run equilibrium behavior for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high.
@@ -14,16 +14,16 @@ To identify this threshold, I calculate the net return on capital implied by the
 % \label{eq:rewrite-finite-existence-parameters}
 %\end{equation}
 %These are the primitive restrictions in Section~\ref{sec:rewrite-model}.
-%In particular, the local finite-frontier results do not require Assumptions~\ref{ass:rewrite-research-curvature} or \ref{ass:rewrite-research-concavity}. Sufficiently near the frontier, its diminishing scope for improvement permits global verification of the developer's policy even when $\eta>1/2$.
+%In particular, the local results with a finite upper bound do not require Assumptions~\ref{ass:rewrite-research-curvature} or \ref{ass:rewrite-research-concavity}. Sufficiently near the upper bound, its diminishing scope for improvement permits global verification of the developer's policy even when $\eta>1/2$.
 
 %The inequality $n+\gamma>0$ already follows from \eqref{eq:rewrite-population} and \eqref{eq:rewrite-labor-productivity}, so it is not a separate assumption. It makes effective labor grow and gives the remaining AI-efficiency gap a positive asymptotic rate of closure in the constructions below. The case $n+\gamma=0$ is not covered by these proofs.
 
-%Each proposition below states the restrictions on $\sigma$, the frontier, and the initial stocks that are specific to its construction. The results do not concern the uncapped economy. They are local in initial stocks, not in time: each constructs a trajectory defined for every $t\geq0$, including both transversality conditions and agent optimality. The initial stocks need not lie on a balanced-growth path. The neighborhoods are in normalized coordinates and require initial AI efficiency sufficiently close to its frontier. Local uniqueness below means uniqueness among solutions that remain near the indicated normalized long-run limit and converge to it; it does not exclude other equilibria outside that neighborhood.
+%Each proposition below states the restrictions on $\sigma$, the upper bound, and the initial stocks that are specific to its construction. The results do not concern the uncapped economy. They are local in initial stocks, not in time: each constructs a trajectory defined for every $t\geq0$, including both transversality conditions and agent optimality. The initial stocks need not lie on a balanced-growth path. The neighborhoods are in normalized coordinates and require initial AI efficiency sufficiently close to its upper bound. Local uniqueness below means uniqueness among solutions that remain near the indicated normalized long-run limit and converge to it; it does not exclude other equilibria outside that neighborhood.
 
 \subsection{The return to capital and the efficiency threshold}
 \label{subsec:rewrite-return-threshold}
 
-A finite frontier bounds AI efficiency, but not the compute used to supply AI production services. To identify the return when labor's income share vanishes, fix $B>0$ and consider $s_X\to1$. Since $wL/Y=(1-\alpha)(1-s_X)$, this is the zero-labor-share limit.
+A finite upper bound restricts AI efficiency, but not the compute used to supply AI production services. To identify the return when labor's income share vanishes, fix $B>0$ and consider $s_X\to1$. Since $wL/Y=(1-\alpha)(1-s_X)$, this is the zero-labor-share limit.
 
 Combine the final-good firm's demand for AI services in
 equation~\eqref{eq:rewrite-ai-price} with the developer's pricing condition in equation~\eqref{eq:rewrite-monopoly-foc}. The result is:
@@ -216,7 +216,7 @@ income share converges to zero.
  \node[regime] at (9.75,3.02) {$\mathcal B(\sigma)$};
 \end{tikzpicture}%
 }
-\caption{Constructed finite-frontier regimes. The vertical axis is linear
+\caption{Constructed regimes with a finite upper bound. The vertical axis is linear
 and the curves are schematic rather than calibrated. For $0<\sigma<1$,
 $\overline B>\mathcal B(\sigma)$ is the condition for the positive-labor-share
 construction in Proposition~\ref{prop:rewrite-capped-complements-existence}. For $\sigma>1$,
@@ -227,7 +227,7 @@ and~\ref{prop:rewrite-capped-substitutes-existence}.}
 \end{figure}
 
 
-Table~\ref{tab:rewrite-finite-existence} summarizes the four cases of Proposition~\ref{prop:rewrite-equilibrium-regimes}. For $\sigma>1$, a frontier below $\mathcal B(\sigma)$ makes the return on capital at a vanishing labor share too low for capital and AI services to outgrow effective labor. Above the threshold, that return supports their faster growth along the AI-dominated equilibria. Across these equilibrium regimes, long-run real-wage growth exceeds $\gamma$ if and only if labor's income share converges to zero. %Proposition~\ref{prop:rewrite-output-wage-wedge} in Appendix~\ref{app:rewrite-proofs} derives the exact relationship between the wage-growth premium and the decline in labor's income share.
+Table~\ref{tab:rewrite-finite-existence} summarizes the four cases of Proposition~\ref{prop:rewrite-equilibrium-regimes}. For $\sigma>1$, an upper bound below $\mathcal B(\sigma)$ makes the return on capital at a vanishing labor share too low for capital and AI services to outgrow effective labor. Above the threshold, that return supports their faster growth along the AI-dominated equilibria. Across these equilibrium regimes, long-run real-wage growth exceeds $\gamma$ if and only if labor's income share converges to zero. %Proposition~\ref{prop:rewrite-output-wage-wedge} in Appendix~\ref{app:rewrite-proofs} derives the exact relationship between the wage-growth premium and the decline in labor's income share.
 
 
 \begin{table}[H]
@@ -251,5 +251,5 @@ $\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\mathcal R(\overline B) -\rho$ 
 %I use this comparison as an economic regime threshold only for $\sigma>1$. For $\sigma<1$, $s_X\to1$ corresponds instead to AI services becoming scarce relative to effective labor. The condition $\overline B>\mathcal B(\sigma)$, or $\mathcal R(\overline B)>\rho+\gamma$, is then only a sufficient condition for the positive-labor-share construction in Proposition~\ref{prop:rewrite-capped-complements-existence}; it does not imply AI-dominated growth.
 
 
-Section~\ref{sec:rewrite-uncapped} studies the economy without an AI-efficiency
-frontier. Those results require a separate equilibrium analysis.
+Section~\ref{sec:rewrite-uncapped} studies the economy without an upper bound
+on AI efficiency. Those results require a separate equilibrium analysis.
