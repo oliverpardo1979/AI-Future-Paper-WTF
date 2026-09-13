@@ -22,6 +22,14 @@ labor and $\omega_X$ weights effective AI production services. Do not restore
 the sentence that the weights "are strictly positive and sum to one" in this
 paragraph; Oliver has repeatedly removed that redundant prose.
 
+Do not restore the paragraph beginning "The exogenous paths are" after the
+equilibrium equation block, in whole or in paraphrase. Oliver explicitly
+removed all of its statements: the repeated exogenous paths and initial stock
+conditions, the unit-elastic CES limits, the feasibility and agent-optimality
+restatement, and the finite-date upper-bound restatement. Do not reactivate the
+older commented versions of this material. This is an editorial deletion, not
+authorization to change the agents' problems, equations, or simulation rules.
+
 ## Model scope
 
 - The benchmark has autonomous AI research: \(\omega_H=0\).
