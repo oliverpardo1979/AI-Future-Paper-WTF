@@ -1,4 +1,4 @@
-\section{Without an upper bound on AI efficiency}
+\section{Equilibrium without an upper bound on AI efficiency}
 \label{sec:rewrite-uncapped}
 
 I now remove the upper bound on AI efficiency and compare the three
@@ -13,20 +13,14 @@ $\psi'(B)=0$ and remove the upper restriction on $B$. Equilibrium still
 requires finite allocations at every finite date, global agent optimality,
 and both transversality conditions. Removing the upper bound does not by itself
 imply that $B$ grows without bound.
-For any positive variable $V$, I write $g_V=\dot V/V$ for its growth rate.
+%For any positive variable $V$, I write $g_V=\dot V/V$ for its growth rate.
 
-The results differ in scope. Under complementarity, I establish production
-bounds and characterize a possible long-run regime, without proving its
-existence. At unit elasticity, I construct an equilibrium. Under substitution,
-I identify a parameter range in which no finite-valued developer optimum
-exists and explain what remains unresolved outside that range.
+The results differ in scope, depending on the elasticity of substitution. Under complementarity, I prove that long-run output per worker is still given by the rate of labor-augmenting technological change. At unit elasticity, there is the need of parameter restrictions for an equilibrium to exists. Such an equilibrium is analytically tractable. Under substitution and no upper bound on AI efficiency, the model leads to a singularity.
 
-\subsection{Complementarity: a production bottleneck without an upper bound}
+\subsection{Complementarity}
 \label{subsec:rewrite-uncapped-complements}
 
-When $0<\sigma<1$, effective labor remains necessary even if AI becomes
-arbitrarily efficient. Since the CES exponent is negative, omitting the AI
-term from the bracket in equation~\eqref{eq:rewrite-ces} gives an upper bound:
+When $sigma<1$, effective labor remains necessary even if AI becomes arbitrarily efficient. Since $sigma<1$,  Equation~\eqref{eq:rewrite-ces} gives an upper bound for $Z$ and $Y$ which does not depend on $B$:
 \begin{align}
  Z&\leq\omega_L^{\sigma/(\sigma-1)}AL,
  \label{eq:rewrite-uncapped-complements-z-bound}\\
@@ -34,7 +28,7 @@ term from the bracket in equation~\eqref{eq:rewrite-ces} gives an upper bound:
  K^\alpha(AL)^{1-\alpha}.
  \label{eq:rewrite-uncapped-complements-y-bound}
 \end{align}
-The right-hand side does not depend on $B$.
+.
 
 \Needspace{7\baselineskip}
 \begin{proposition}[Production bounds under complementarity]
