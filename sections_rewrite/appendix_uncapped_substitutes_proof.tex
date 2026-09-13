@@ -2,6 +2,7 @@
 \begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}]
 \phantomsection
 \label{proof:rewrite-uncapped-substitutes-explosion}
+\textit{Part (i). Persistent positive investment shares.}
 Suppose, for contradiction, that a positive finite path exists for all
 $t\geq t_0$ and satisfies the stated static conditions, feasibility, and
 equation~\eqref{eq:rewrite-uncapped-investment-floors}. Within this proof,
@@ -145,4 +146,202 @@ Osgood's explosion criterion; see
 No globally finite feasible path with the two investment bounds exists.
 Since every equilibrium must be feasible and have finite allocations at
 every finite date, no equilibrium can satisfy those bounds either.
+
+\par\medskip\noindent\textit{Part (ii). Convergent investment shares, including zero limits.}
+Suppose instead that an equilibrium exists and that
+\[
+ i_t:=\frac{\dot K_t+\delta K_t}{Y_t}\to i_\infty\in\mathbb R,
+ \qquad m_t:=\frac{M_t}{Y_t}\to m_\infty\in[0,\infty).
+\]
+These are proof variables, not new saving rules. Also write
+$u_t=U_t/Y_t=u(s_t)$, where $u(s)=(1-\alpha)s[1-e(s)]$, and
+$c_t=C_t/Y_t=1-u_t-m_t-i_t>0$.
+Since $B$ is increasing, it has either a finite positive limit or tends
+to infinity. Neither alternative is imposed in advance.
+
+\textit{Step 5. The household rules out persistently low capital investment when $z\to\infty$.}
+This step does not require convergence of $i$. Let $v=C/K>0$.
+The Euler equation~\eqref{eq:rewrite-euler} and the capital law imply
+\begin{equation}
+ \frac{\dot v}{v}=(\alpha-i)z-(\rho-n).
+ \label{eq:rewrite-uncapped-consumption-capital}
+\end{equation}
+Suppose $z\to\infty$ and $i\leq\varepsilon$ eventually for some
+$0<\varepsilon<\alpha$. Then $\dot v/v\to\infty$ from below, so $v\to\infty$
+on a global path. Feasibility gives $v\leq(1-i)z$ because $U,M\geq0$.
+For every $i\leq\varepsilon$,
+\[
+ \frac{\alpha-i}{1-i}\geq
+ a_\varepsilon:=\frac{\alpha-\varepsilon}{1-\varepsilon}>0.
+\]
+Hence equation~\eqref{eq:rewrite-uncapped-consumption-capital} gives
+$\dot v\geq v[a_\varepsilon v-(\rho-n)]$.
+Once $v\geq2(\rho-n)/a_\varepsilon$,
+$\mathrm d(1/v)/\mathrm dt\leq-a_\varepsilon/2$, contradicting a globally
+positive finite $v$. Thus
+\begin{equation}
+ z\to\infty\quad\Longrightarrow\quad\limsup_{t\to\infty}i_t\geq\alpha.
+ \label{eq:rewrite-uncapped-capital-incentive-bound}
+\end{equation}
+This argument also permits negative gross investment. In particular,
+$B\to\infty$ implies $z\to\infty$ by
+equation~\eqref{eq:rewrite-uncapped-output-capital-bound}, proving
+equation~\eqref{eq:rewrite-uncapped-capital-limsup}.
+
+\textit{Step 6. Static behavior of capital relative to effective labor.}
+Let $k=K/(AL)$. Homogeneity of production and the monopoly condition
+make $z=Y/K$ a function $z(k,B)$. It is strictly decreasing in $k$
+and strictly increasing in $B$. To verify these signs, define
+\[
+ \mathcal D(s)=e(s)[1-e(s)]
+   +(\alpha-1/\sigma)\frac{\sigma-1}{\sigma}s(1-s).
+\]
+Differentiating the static equations gives
+\begin{align}
+ \frac{\partial\log z}{\partial\log k}
+ &=\alpha-1+
+ \frac{\alpha(1-\alpha)s[1-e(s)]}{\mathcal D(s)}<0,\nonumber\\
+ \frac{\partial\log z}{\partial\log B}
+ &=\frac{(1-\alpha)s[1-e(s)]}{\mathcal D(s)}>0.
+ \label{eq:rewrite-uncapped-static-monotonicity}
+\end{align}
+Indeed, with $N(s)=(\sigma-2)(1-\alpha\sigma)s-(\sigma-1)<0$
+from Step 1,
+\[
+ \mathcal D(s)-\alpha s[1-e(s)]
+ =-\frac{(1-s)N(s)}{\sigma^2}>0.
+\]
+Thus the denominators are positive and both derivative signs follow.
+For fixed $B>0$, the endpoint limits are
+\begin{equation}
+ z(k,B)\to\infty\quad(k\downarrow0),\qquad
+ z(k,B)\to a_XB^\theta\quad(k\to\infty).
+ \label{eq:rewrite-uncapped-static-endpoints}
+\end{equation}
+The first follows from the labor lower bound in Step 2. For the second,
+the CES elasticity and $X/Y=Bu(s)$ give
+\[
+ k=\frac{[\omega_Ls/(\omega_X(1-s))]^{\sigma/(\sigma-1)}}
+ {B\,u(s)\,z(s,B)}.
+\]
+Using equation~\eqref{eq:rewrite-uncapped-explosion-static}, the right side
+is $B^{-1/\alpha}$ times a function of $s$ that tends to zero at $s=0$,
+is finite away from $s=1$, and diverges at $s=1$.
+Consequently $k\to\infty$ with $B\geq B_0>0$ implies $s\to1$.
+At fixed $B$, equation~\eqref{eq:rewrite-uncapped-explosion-static}
+then yields the second limit in~\eqref{eq:rewrite-uncapped-static-endpoints}.
+This is the same zero-labor-share return used in Section~
+\ref{subsec:rewrite-return-threshold}, not a separate production technology.
+
+\textit{Step 7. Research cannot lose its output share when its shadow value remains proportional to output.}
+For later use, suppose $m\to0$, $u\to u_\infty>0$, and $i\to i_\infty$.
+Then $c\to c_\infty=1-u_\infty-i_\infty\geq0$.
+For all $s\in(0,1)$,
+\[
+ u(s)\leq(1-\alpha)[1-\min\{\alpha,1/\sigma\}]<1-\alpha.
+\]
+If $c_\infty=0$, it follows that $i_\infty=1-u_\infty>\alpha$.
+The research condition~\eqref{eq:rewrite-research-foc} gives
+$M=\eta qB\,g_B$. Together with the uncapped costate
+equation~\eqref{eq:rewrite-costate}, it implies
+\begin{equation}
+ \frac{\mathrm d(qB)}{\mathrm dt}
+ =rqB-U+\frac{1-\eta}{\eta}M.
+ \label{eq:rewrite-uncapped-shadow-stock}
+\end{equation}
+For $h=qB/K>0$ and $\mathcal T(t)=\int_0^t z_s\,\dd s$, therefore,
+\begin{equation}
+ \frac{\mathrm dh}{\mathrm d\mathcal T}
+ =(\alpha-i)h+\frac{1-\eta}{\eta}m-u.
+ \label{eq:rewrite-uncapped-shadow-capital}
+\end{equation}
+The time variable $\mathcal T$ tends to infinity because
+$z\geq a_XB_0^\theta>0$. If $c_\infty=0$, the right side is eventually
+at most $-u_\infty/2$, contradicting $h>0$. Hence $c_\infty>0$.
+
+Integrate equation~\eqref{eq:rewrite-uncapped-shadow-stock} using
+$D_t=\exp(-\int_0^t r_v\,\dd v)$ and the developer's transversality
+condition~\eqref{eq:rewrite-developer-tvc}. The Euler equation gives
+$D_s/D_t=e^{-(\rho-n)(s-t)}C_t/C_s$, so
+\begin{equation}
+ \frac{q_tB_t}{C_t}=
+ \int_t^\infty e^{-(\rho-n)(s-t)}
+ \frac{u_s-\frac{1-\eta}{\eta}m_s}{c_s}\,\dd s.
+ \label{eq:rewrite-uncapped-shadow-pv}
+\end{equation}
+For sufficiently late $t$, the integrand divided by the exponential
+is uniformly bounded because $c_s\to c_\infty>0$.
+Since $\rho>n$, dominated convergence gives
+\begin{equation}
+ \frac{qB}{Y}\longrightarrow\frac{u_\infty}{\rho-n}>0,
+ \qquad
+ g_B=\frac{m}{\eta(qB/Y)}\longrightarrow0.
+ \label{eq:rewrite-uncapped-vanishing-research-value}
+\end{equation}
+The research first-order condition also gives the exact identity
+\begin{equation}
+ m=\left[\chi\eta\frac{qB}{Y}\right]^{1/(1-\eta)}
+       \frac{Y^{\eta/(1-\eta)}}{B}.
+ \label{eq:rewrite-uncapped-research-output-scale}
+\end{equation}
+Thus $m\to0$ requires $Y^{\eta/(1-\eta)}/B\to0$. This consequence uses
+both the developer's incentives and transversality, not just the marginal
+product of research compute at $M=0$.
+
+\Needspace{4\baselineskip}
+\textit{Step 8. A finite limiting efficiency is impossible under convergent investment shares.}
+Suppose $B\to B_\infty<\infty$. Normalized capital satisfies
+\begin{equation}
+ \frac{\dot k}{k}=i_tz(k,B_t)-\delta-n-\gamma.
+ \label{eq:rewrite-uncapped-normalized-capital}
+\end{equation}
+If $i_\infty\leq0$, then $k\to0$. In detail, for any $\varepsilon>0$,
+$z(k,B_t)\leq z(\varepsilon,B_\infty)$ when $k\geq\varepsilon$.
+For sufficiently late dates, equation~\eqref{eq:rewrite-uncapped-normalized-capital}
+is then at most $-(\delta+n+\gamma)/2$ on $k\geq\varepsilon$.
+The path must cross below $\varepsilon$ and cannot recross it.
+But $k\to0$ implies $z\to\infty$ by the labor lower bound, and Step 5
+contradicts $i_\infty\leq0$. Therefore $i_\infty>0$.
+
+For this positive limit, sufficiently small $k$ has $\dot k>0$ uniformly
+at late dates. Hence $k$ is bounded away from zero.
+The strictly decreasing function
+$i_\infty z(k,B_\infty)-\delta-n-\gamma$ has either a unique zero
+$\overline k>0$ or is positive for all finite $k$.
+In the first case, $k\to\overline k$: for each neighborhood of the zero,
+the vector field is eventually positive below it and negative above it.
+In the second case, $k\to\infty$: at every fixed finite upper boundary,
+the vector field is eventually positive and the path crosses that boundary.
+These sign arguments also cover the boundary
+$i_\infty a_XB_\infty^\theta=\delta+n+\gamma$, where the zero lies at
+infinity.
+The static solution consequently gives a limit $u_\infty>0$ in either
+case. Also $Y\geq c_L k_{\min}^\alpha AL\to\infty$ for some
+$k_{\min}>0$, since $n+\gamma>0$ as specified in Section~\ref{sec:rewrite-model}.
+
+Bounded $B$ and the uncapped research law imply
+$\int_0^\infty M_t^\eta\,\dd t<\infty$.
+If $m_\infty>0$, then $M=mY\to\infty$, contradicting that integral.
+Thus $m_\infty=0$. Step 7 now gives $qB/Y\to u_\infty/(\rho-n)>0$.
+Equation~\eqref{eq:rewrite-uncapped-research-output-scale}, together with
+$Y\to\infty$ and bounded $B$, implies $m\to\infty$, a contradiction.
+
+\textit{Step 9. Unbounded efficiency is also impossible under convergent investment shares.}
+It remains to consider $B\to\infty$. The dated return bound gives
+$z\to\infty$, and Step 5 gives $i_\infty\geq\alpha>0$.
+Therefore $g_K=i_tz-\delta\to\infty$, so $K/(AL)\to\infty$.
+Step 6 implies $s_X\to1$ and $u\to(1-\alpha)^2>0$.
+If $m_\infty>0$, both investment shares have positive lower bounds
+eventually, contradicting part (i). Hence $m_\infty=0$.
+Step 7 gives $g_B\to0$ and
+$Y^{\eta/(1-\eta)}/B\to0$.
+These two conclusions cannot hold together:
+$g_K\to\infty$ implies $\log K_t/t\to\infty$ and, since $Y=zK$ with
+$z$ bounded below, $\log Y_t/t\to\infty$.
+In contrast, $g_B\to0$ implies $\log B_t/t\to0$.
+Thus $Y^{\eta/(1-\eta)}/B\to\infty$, the opposite of what research
+optimality requires.
+Both possible limits of the increasing stock $B$ have been excluded.
+This proves part (ii) without assuming divergence of $B$, a limiting
+AI share, convergence of growth rates, or convergence of share derivatives.
 \end{proof}

@@ -199,23 +199,31 @@ its explosion theorem directly to the present model's optimal allocations.
 Instead, I use a comparison argument that allows investment shares to vary.
 
 \Needspace{7\baselineskip}
-\begin{proposition}[Persistent investment without an efficiency upper bound]
+\begin{proposition}[Investment restrictions without an efficiency upper bound]
 \label{prop:rewrite-uncapped-substitutes-explosion}
 Let $\sigma>1$, $\overline B=\infty$, $0<\alpha<1$, and $0<\eta<1$.
-There is no equilibrium in Definition~\ref{def:rewrite-equilibrium}
-for which both gross capital investment and research expenditure remain
-bounded below by positive shares of output: there cannot exist constants
+No equilibrium in Definition~\ref{def:rewrite-equilibrium} can satisfy
+either of the following conditions:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=0.4em]
+\item Both gross capital investment and research expenditure remain
+bounded below by positive shares of output. That is, there exist constants
 $\iota,\mu>0$ and a finite date $t_0$ such that
 \begin{equation}
  \frac{\dot K_t+\delta K_t}{Y_t}\geq\iota,
  \qquad \frac{M_t}{Y_t}\geq\mu
  \qquad\text{for every }t\geq t_0.
- \label{eq:rewrite-uncapped-investment-floors}
+\label{eq:rewrite-uncapped-investment-floors}
 \end{equation}
-These inequalities are incompatible even with globally finite feasible
-allocations satisfying the static monopoly conditions, the resource
-constraint~\eqref{eq:rewrite-resource}, and the research
-law~\eqref{eq:rewrite-uncapped-unit-law}.
+\item Both investment shares converge to finite limits:
+\begin{equation}
+ \lim_{t\to\infty}\frac{\dot K_t+\delta K_t}{Y_t}
+ \quad\text{and}\quad
+ \lim_{t\to\infty}\frac{M_t}{Y_t}
+ \quad\text{both exist and are finite.}
+ \label{eq:rewrite-uncapped-convergent-investment}
+\end{equation}
+These limits need not be positive; zero limiting shares are also excluded.
+\end{enumerate}
 \end{proposition}
 \begin{proof}
 See Appendix~\ref{app:rewrite-proofs},
@@ -223,7 +231,7 @@ See Appendix~\ref{app:rewrite-proofs},
 Proposition~\ref*{prop:rewrite-uncapped-substitutes-explosion}}.
 \end{proof}
 
-The constants $\iota$ and $\mu$ are lower bounds on expenditure shares,
+In part (i), the constants $\iota$ and $\mu$ are lower bounds on expenditure shares,
 not additional parameters or imposed saving rules. The shares need not be
 constant or converge, and the proposition assumes neither $B\to\infty$
 nor $s_X\to1$. Persistent investment first prevents capital and output
@@ -235,6 +243,20 @@ research. The proof obtains $\dot B\geq c_B B^{1/\alpha}$ for some
 constant $c_B>0$ at sufficiently late dates. Since $1/\alpha>1$, this
 inequality contradicts finite AI efficiency at every finite date. The
 argument works whether $\eta<\alpha$, $\eta=\alpha$, or $\eta>\alpha$.
+
+Part (ii) uses optimality to exclude the possibility that convergent
+investment shares avoid this feedback by tending to zero. If $B\to\infty$,
+the household Euler equation and feasibility imply
+\begin{equation}
+ \limsup_{t\to\infty}\frac{\dot K_t+\delta K_t}{Y_t}\geq\alpha.
+ \label{eq:rewrite-uncapped-capital-limsup}
+\end{equation}
+Thus a convergent capital-investment share cannot be zero. The research
+choice and the developer's transversality condition then rule out a zero
+limiting research share. The proof also excludes a finite limiting $B$
+under the same convergence hypothesis; divergence of $B$ is not assumed.
+Convergence of these two shares is weaker than balanced growth: neither
+constant growth rates nor convergence of their derivatives is required.
 
 Section~\ref{sec:rewrite-regimes} therefore supplies a key inequality for
 the proof, but not both investment bounds. Along its AI-dominated
@@ -255,10 +277,7 @@ bound cannot turn these zero limiting research shares into a positive
 uniform lower bound. This does not imply that research shares vanish
 without an upper bound: that economy has a different research law.
 
-To establish general nonexistence for $\eta\leq\alpha$, one must still
-show that optimal choices cannot avoid the feedback by making at least
-one of the investment shares arbitrarily small at arbitrarily late dates,
-or derive an explosion condition that allows such behavior. The developer's
+The developer's
 research condition~\eqref{eq:rewrite-research-foc}, costate
 equation~\eqref{eq:rewrite-costate}, and transversality
 condition~\eqref{eq:rewrite-developer-tvc} imply the necessary identity
@@ -281,6 +300,9 @@ Positive research at every date does not establish a positive lower bound
 on $M/Y$. Likewise, a higher interest rate raises consumption growth
 through the Euler equation but does not by itself determine how saving
 is divided between physical capital and research. These incentive
-conditions must be analyzed jointly with feasibility; the conditional
-exclusion in Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}
-is not yet a proof of general equilibrium nonexistence for $\eta\leq\alpha$.
+conditions must be analyzed jointly with feasibility, as in the proof of
+part (ii). Any remaining equilibrium candidate must have investment shares
+that do not both converge and cannot both stay above positive lower bounds.
+This restriction does not establish that such a candidate exists. The result
+is not yet a proof of general equilibrium nonexistence for $\eta\leq\alpha$:
+paths with nonconvergent investment shares remain to be analyzed.

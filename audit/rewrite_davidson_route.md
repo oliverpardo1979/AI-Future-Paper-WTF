@@ -2,6 +2,12 @@
 
 Research note, 2026-09-12. Starting commit: 53bdf57.
 
+Subsequent extension: Proposition 5 now also excludes equilibria with two
+convergent investment shares, including zero limits. See
+audit/rewrite_uncapped_investment_optimality.md and Part (ii) of the proof.
+The discussion below records the initial persistent-investment result and
+the gaps identified before that extension; general nonexistence is still open.
+
 The persistent-investment result below is now incorporated in Proposition 5,
 with its proof in the existing proofs appendix. The original proposition and
 proof are preserved in `audit/archive/` (see its README). This revision
