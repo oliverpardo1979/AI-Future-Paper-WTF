@@ -15,7 +15,7 @@ and both transversality conditions. Removing the upper bound does not by itself
 imply that $B$ grows without bound.
 %For any positive variable $V$, I write $g_V=\dot V/V$ for its growth rate.
 
-The results differ in scope, depending on the elasticity of substitution. Under complementarity, I prove that long-run output per worker is still given by the rate of labor-augmenting technological change. At unit elasticity, there is the need of parameter restrictions for an equilibrium to exists. Such an equilibrium is analytically tractable. Under substitution and no upper bound on AI efficiency, the model leads to a singularity.
+The results differ in scope, depending on the elasticity of substitution. Under complementarity, I prove that long-run output per worker is still given by the rate of labor-augmenting technological change. At unit elasticity, there is the need of parameter restrictions for an equilibrium to exists. Such an equilibrium is analytically tractable. Under substitution, I distinguish an unbounded developer objective from a conditional finite-time singularity; either prevents the corresponding path from being an equilibrium.
 
 \subsection{Complementarity}
 \label{subsec:rewrite-uncapped-complements}
@@ -164,7 +164,7 @@ Proposition~\ref{prop:rewrite-equilibrium-regimes} does not establish equilibriu
 
 Without an upper bound, recursive improvement can make the developer's objective unbounded: higher $B$ raises both operating profit and research productivity. If $\sigma>1$ and $\eta>\alpha$, there is no uncapped equilibrium with a finite-valued developer optimum, as established in Proposition~\ref{prop:rewrite-research-scale} in Appendix~\ref{app:rewrite-proofs}. Expanding early research makes discounted net profit arbitrarily large on a fixed finite horizon. The developer can then resume any proposed continuation of research spending with higher AI efficiency and no lower operating profit. Thus every candidate with a finite value admits a profitable deviation. This failure of optimality does not require a finite-time singularity: each deviating plan uses finite research expenditure and keeps $B$ finite on every finite horizon. %Financing cannot resolve an unbounded objective or create the real resources used in research: equation~\eqref{eq:rewrite-eq-kdot} requires research compute to compete with consumption, inference compute, and physical investment.
 
-If $\eta<\alpha$ and $\sigma>1$, the same proposition gives a finite truncated value and shows that research costs eventually outgrow the benefits of increasing expenditure on a fixed horizon. This result takes the paths of capital, effective labor, and interest rates as given. It rules out that particular unbounded-payoff argument, without establishing an uncapped infinite-horizon equilibrium. Neither existence nor general nonexistence is established for this parameter range. Nor does the result establish or rule out a finite-time singularity, which would violate the requirement of finite, feasible allocations at every date in Definition~\ref{def:rewrite-equilibrium}. The explosive-growth mechanisms in \citet{nordhaus2021} and \citet{davidsonetal2026} motivate this remaining question.
+If $\eta<\alpha$ and $\sigma>1$, the same proposition gives a finite truncated value and shows that research costs eventually outgrow the benefits of increasing expenditure on a fixed horizon. This result takes the paths of capital, effective labor, and interest rates as given. It rules out that particular unbounded-payoff argument, without establishing an uncapped infinite-horizon equilibrium. Neither existence nor general nonexistence is established for this parameter range. On its own, this fixed-horizon result does not establish or rule out a finite-time singularity, which would violate the requirement of finite, feasible allocations at every date in Definition~\ref{def:rewrite-equilibrium}.
 
 The equilibrium in Section~\ref{subsec:rewrite-uncapped-unit-bgp} shows that
 unbounded AI efficiency is compatible with equilibrium at unit elasticity.
@@ -175,9 +175,70 @@ order, so their coefficients determine whether that particular
 unbounded-payoff argument applies. Proposition~\ref{prop:rewrite-research-scale}
 does not settle equilibrium existence at this boundary.
 
-The distinction between the three regimes is therefore substantive.
-Complementarity limits output growth even without an upper bound, unit elasticity
-permits a proved balanced-growth equilibrium under the stated restrictions,
-and substitution can make the developer's objective unbounded. A general
-existence or nonexistence result for substitution with $\eta\leq\alpha$
-remains open.
+The literature suggests why $\eta<\alpha$ need not prevent an explosion.
+\citet{nordhaus2021} emphasizes the role of substitution in singular growth,
+and \citet{davidsonetal2026} show how technological and economic feedback
+can jointly overcome diminishing returns in research. Their capital-accumulation
+analysis holds saving and factor-allocation shares fixed. I therefore cannot
+apply its explosion theorem directly to this model, where those allocations
+are endogenous. The following result instead uses this model's production,
+monopoly, research, and household Euler equations.
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Conditional finite-time explosion under substitution]
+\label{prop:rewrite-uncapped-substitutes-explosion}
+Let $\sigma>1$, $\overline B=\infty$, $0<\alpha<1$, and $0<\eta<1$.
+Consider a differentiable solution of the intratemporal and dynamic
+equations~\eqref{eq:rewrite-equilibrium-static} and~\eqref{eq:rewrite-equilibrium-dynamics}
+in Definition~\ref{def:rewrite-equilibrium}, with $K,B,C,M>0$ and research
+law~\eqref{eq:rewrite-uncapped-unit-law}, on a maximal interval $[0,T)$,
+where $T$ may initially be infinite.
+Suppose that, as $t\uparrow T$, $B\to\infty$, $s_X\to1$, and $C/Y$ and
+$M/Y$ converge to positive finite constants, with
+\begin{equation}
+ \frac K Y\frac{\mathrm d}{\mathrm dt}\log\left(\frac C Y\right)\to0,
+ \qquad
+ \frac K Y\frac{\mathrm d}{\mathrm dt}\log\left(\frac M Y\right)\to0.
+ \label{eq:rewrite-uncapped-explosion-regularity}
+\end{equation}
+Then
+\begin{equation}
+ \frac{\mathrm d(Y/K)/\mathrm dt}{(Y/K)^2}
+ \longrightarrow\frac{\eta\alpha(1-\alpha)}{1-\alpha\eta}>0.
+ \label{eq:rewrite-uncapped-explosion-coefficient}
+\end{equation}
+Consequently, $T<\infty$ and $B,K,Y,C,r\to\infty$ as $t\uparrow T$.
+No equilibrium in Definition~\ref{def:rewrite-equilibrium} can have these
+asymptotics, whether $\eta<\alpha$, $\eta=\alpha$, or $\eta>\alpha$.
+\end{proposition}
+\begin{proof}
+See Appendix~\ref{app:rewrite-proofs},
+\hyperref[proof:rewrite-uncapped-substitutes-explosion]{Proof of
+Proposition~\ref*{prop:rewrite-uncapped-substitutes-explosion}}.
+\end{proof}
+
+Condition~\eqref{eq:rewrite-uncapped-explosion-regularity} requires the
+proportional changes in consumption and research shares to become negligible
+relative to $Y/K$. Convergence of the shares alone would not imply this
+condition. Neither constant shares throughout the transition nor convergence
+of $g_B/(Y/K)$ is assumed; the proof derives the latter limit.
+
+The mechanism is cumulative. When AI dominates the composite input, better AI
+raises output per unit of capital. The higher return raises consumption
+growth through the Euler equation. If consumption and research retain
+positive, sufficiently stable shares of output, research spending expands
+with output and sustains further AI improvement. This feedback makes $Y/K$
+grow in proportion to its own square, which implies a finite-time singularity.
+The restriction $\eta<\alpha$ limits the profitability of increasing research
+at given prices; it does not eliminate this joint feedback.
+
+Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion} is conditional:
+it does not construct a path satisfying its hypotheses or show that every
+initial condition leads to them. A solution of the dated equations is not
+necessarily an equilibrium, because global optimality and the transversality
+conditions must also hold. Here finite-time divergence already precludes an
+infinite-horizon equilibrium. For $\eta>\alpha$, the separate profitable-deviation
+argument in Proposition~\ref{prop:rewrite-research-scale} rules out a
+finite-valued developer optimum without these convergence assumptions.
+For $\eta\leq\alpha$, existence or nonexistence outside the asymptotic class
+excluded above remains open.

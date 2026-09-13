@@ -277,8 +277,12 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn("not a steady state in levels", bgp)
         self.assertIn("does not", bgp)
         self.assertIn("arbitrary $K_0,B_0$", bgp)
-        self.assertIn("finite-valued global optima", bgp)
-        self.assertIn("transversality", bgp)
+        # The author removed this repeated claim from the statement. Its
+        # verification must remain in the proof, not be restored as prose.
+        bgp_proof = source("sections_rewrite/appendix_uncapped_unit_proofs.tex")
+        self.assertIn("Both improper objective integrals are finite", bgp_proof)
+        self.assertIn("establish global optimality", bgp_proof)
+        self.assertIn("Both transversality conditions are explicit", bgp_proof)
         self.assertIn(r"\citep{pardo2026companion}", bgp)
         self.assertIn(r"\hyperref[proof:rewrite-uncapped-unit-bgp]", bgp)
         literature = " ".join(source("sections_rewrite/02_literature.tex").split())
