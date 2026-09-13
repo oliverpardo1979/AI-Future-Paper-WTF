@@ -222,8 +222,18 @@ class UncappedComplements(unittest.TestCase):
         for condition in (
             "and an equilibrium satisfies", r"$B\to\infty$",
             r"\label{eq:rewrite-uncapped-complements-allocation-ratios}",
+            r"\label{eq:rewrite-uncapped-complements-compute-shares}",
+            r"\frac UY&\to0", r"\frac MY\to0",
         ):
             self.assertIn(condition, characterization)
+        self.assertNotRegex(characterization, r"\b[UM]\\to0")
+        self.assertIn("not necessarily in levels", " ".join(body.split()))
+        for step in (
+            r"$u,m\to0$ and $y\to y_\infty>0$",
+            r"$U/Y=u/y\to0$", r"$M/Y=m/y\to0$",
+            r"\eqref{eq:rewrite-uncapped-complements-compute-shares}",
+        ):
+            self.assertIn(step, proofs)
         premises = characterization.split("Then", 1)[0]
         self.assertNotIn("finite limit", premises)
         self.assertNotIn("g_C", premises)
@@ -254,7 +264,6 @@ class UncappedComplements(unittest.TestCase):
         self.assertNotIn("Under the additional research limits", body)
         for removed_label in (
             "eq:rewrite-uncapped-complements-research-rates",
-            "eq:rewrite-uncapped-complements-compute-shares",
             "eq:rewrite-uncapped-complements-research-ratio",
         ):
             self.assertNotIn(removed_label, body + proofs)
