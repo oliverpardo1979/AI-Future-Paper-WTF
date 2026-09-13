@@ -232,7 +232,7 @@ class UncappedComplements(unittest.TestCase):
         self.assertNotIn(r"g_Y", premises)
         self.assertNotIn(r"g_w", premises)
         self.assertNotIn(r"\eta", premises)
-        self.assertIn("The capital and consumption ratios are conclusions, not assumptions.", body)
+        self.assertNotIn("The capital and consumption ratios are conclusions, not assumptions.", body)
         self.assertIn("The proposition remains conditional on equilibrium existence",
                       " ".join(body.split()))
         self.assertIn("not an equilibrium-existence theorem", proofs)
