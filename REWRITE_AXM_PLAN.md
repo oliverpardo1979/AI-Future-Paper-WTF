@@ -10,6 +10,13 @@ Every section, proposition, calibration, and figure must contribute directly to
 this question. Material that does not help answer it belongs in the appendix, a
 separate extension, or the current archival manuscript.
 
+## Accepted editorial decision (September 13, 2026)
+
+Do not restore the household sentence "Admissible choices satisfy $C_t>0$,
+$K_t\geq0$, and $K(0)=K_0$", or reintroduce it in paraphrase. Oliver has
+deliberately removed this redundant prose. This editorial deletion does not
+change the equilibrium conditions or simulation constraints stated elsewhere.
+
 ## Model scope
 
 - The benchmark has autonomous AI research: \(\omega_H=0\).
