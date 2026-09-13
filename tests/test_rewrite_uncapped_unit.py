@@ -23,6 +23,49 @@ from define_positive_ai_branch import (  # noqa: E402
 
 
 class UncappedUnitAppendix(unittest.TestCase):
+    def test_expanded_notation_preserves_reference_levels_and_profit(self):
+        for wx in (0.05, 0.2, 0.4, 0.7):
+            p = PositiveAIBenchmarkParameters(omega_x=wx, chi=1.4378)
+            seed = balanced_growth_seed(p)
+            wl = 1-wx
+            k, u, m = (seed.capital_output_ratio, seed.inference_share,
+                       seed.research_share)
+            gb = seed.capability_growth
+            b0 = (p.initial_labor_productivity*p.initial_population
+                  * k**(p.alpha/((1-p.alpha)*wl)) * u**(wx/wl)
+                  * m*(p.chi/gb)**(1/p.eta))**(p.eta*wl/(1-p.eta-wx))
+            y0 = (p.initial_labor_productivity*p.initial_population
+                  * k**(p.alpha/((1-p.alpha)*wl))*(u*b0)**(wx/wl))
+            np.testing.assert_allclose(
+                [b0, y0, (1-p.alpha)**2*wx**2],
+                [seed.capability, seed.output, seed.inference_share],
+                rtol=5e-12, atol=0,
+            )
+            # Operating profits at fixed K, AL: before research expenditure.
+            for B in (0.25, 1, 10):
+                K, AL = 2.0, 1.5
+                expanded = ((1-p.alpha)*wx*(1-(1-p.alpha)*wx)
+                            * (K**p.alpha*AL**((1-p.alpha)*wl))
+                            **(1/(1-(1-p.alpha)*wx))
+                            * ((1-p.alpha)**2*wx**2*B)
+                            **((1-p.alpha)*wx/(1-(1-p.alpha)*wx)))
+                beta, lam = (1-p.alpha)*wx, (1-p.alpha)*wl
+                previous = (beta*(1-beta)*(K**p.alpha*AL**lam)**(1/(1-beta))
+                            * (beta**2*B)**(beta/(1-beta)))
+                self.assertAlmostEqual(expanded/previous, 1, places=13)
+
+    def test_unit_section_and_its_proofs_do_not_introduce_beta_or_lambda(self):
+        body = (ROOT/"sections_rewrite/05_uncapped_equilibria.tex").read_text(encoding="utf-8")
+        unit = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
+            r"\subsection{", 1
+        )[0]
+        for name in ("appendix_uncapped_unit.tex", "appendix_uncapped_unit_proofs.tex"):
+            unit += (ROOT/"sections_rewrite"/name).read_text(encoding="utf-8")
+        # Capital Lambda denotes the household multiplier and is unrelated.
+        self.assertNotRegex(unit, r"\\(?:beta|lambda)\b")
+        self.assertIn(r"(1-\alpha)\omega_X\leq", unit)
+        self.assertIn(r"\frac{\omega_X}{\omega_L}g_B", unit)
+
     def test_closed_form_levels_rates_and_all_dated_conditions(self):
         # Includes the main and historical research productivities and the
         # boundary eta=1/2, where research is weakly jointly concave.

@@ -8,12 +8,12 @@ $\rho-n+\eta g_Y^*$ is positive. Moreover,
 \[
  i^*=\frac{\alpha(g_Y^*+\delta)}{\rho-n+g_Y^*+\delta}<\alpha,
  \qquad
- m^*<\frac{\beta^2\eta}{1-\eta}.
+ m^*<\frac{u^*\eta}{1-\eta}.
 \]
-Since $\Delta=(1-\alpha)(1-\eta)-\beta>0$,
-$\beta<1-\eta$ and $\beta<1-\alpha$. Consequently,
+Since $\Delta=(1-\alpha)(1-\eta-\omega_X)>0$,
+$\omega_X<1-\eta$ and $\omega_X<1$. Consequently,
 \[
- u^*+m^*<\frac{\beta^2}{1-\eta}<\beta<1-\alpha,
+ u^*+m^*<\frac{u^*}{1-\eta}<(1-\alpha)\omega_X<1-\alpha,
  \qquad c^*=1-u^*-i^*-m^*>0.
 \]
 Thus positive consumption follows from the stated conditions; it is not
@@ -22,11 +22,12 @@ an additional assumption.
 For given $A_0,N_0>0$, choose the reference initial stocks as
 \begin{align}
  B_0^*&=\left[
- A_0N_0(k^*)^{\alpha/\lambda}(u^*)^{\beta/\lambda}
+ A_0N_0(k^*)^{\alpha/[(1-\alpha)\omega_L]}(u^*)^{\omega_X/\omega_L}
  m^*\left(\frac{\chi}{g_B^*}\right)^{1/\eta}
- \right]^{\eta\lambda/\Delta},
+ \right]^{\eta\omega_L/(1-\eta-\omega_X)},
  \label{eq:rewrite-uncapped-unit-initial-b}\\
- Y_0^*&=A_0N_0(k^*)^{\alpha/\lambda}(u^*B_0^*)^{\beta/\lambda},
+ Y_0^*&=A_0N_0(k^*)^{\alpha/[(1-\alpha)\omega_L]}
+ (u^*B_0^*)^{\omega_X/\omega_L},
  \qquad K_0^*=k^*Y_0^*.
  \label{eq:rewrite-uncapped-unit-initial-y-k}
 \end{align}
@@ -49,7 +50,7 @@ The two growth identities
 \eqref{eq:rewrite-uncapped-unit-production-growth}
 and~\eqref{eq:rewrite-uncapped-unit-research-growth} make production and
 research accumulation hold at every date once they hold initially.
-The static monopoly condition gives $p_XX=\beta Y$ and $U=\beta^2Y$.
+The static monopoly condition gives $p_XX=(1-\alpha)\omega_XY$ and $U=u^*Y$.
 Equation~\eqref{eq:rewrite-uncapped-unit-initial-q} gives
 $M=\eta q\dot B$, which is the research first-order condition
 \eqref{eq:rewrite-eq-research} with $\psi=1$.
@@ -80,12 +81,14 @@ Both improper objective integrals are finite.
 It remains to establish global optimality, rather than only the dated
 necessary conditions. At given paths of $K,A,L$, static optimization gives
 \begin{equation}
- \pi_t(B)=\beta(1-\beta)
- [K_t^\alpha(A_tL_t)^\lambda]^{1/(1-\beta)}
- (\beta^2B)^{\beta/(1-\beta)}.
+ \begin{split}
+ \pi_t(B)={}&(1-\alpha)\omega_X[1-(1-\alpha)\omega_X]
+ \bigl[K_t^\alpha(A_tL_t)^{(1-\alpha)\omega_L}\bigr]^{1/[1-(1-\alpha)\omega_X]}\\
+ &\times\bigl[(1-\alpha)^2\omega_X^2B\bigr]^{(1-\alpha)\omega_X/[1-(1-\alpha)\omega_X]}.
+ \end{split}
  \label{eq:rewrite-uncapped-unit-profit}
 \end{equation}
-This function is concave in $B$ when $\beta\leq1/2$.
+This function is concave in $B$ when $(1-\alpha)\omega_X\leq1/2$.
 The research technology $F(B,M)=\chi B^\eta M^\eta$ is jointly concave
 when $\eta\leq1/2$. Since $q>0$, the developer's current-value Hamiltonian
 $\pi_t(B)-M+q_tF(B,M)$ is jointly concave, and its first-order conditions
@@ -129,7 +132,8 @@ Use the ordering $\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'$ in
 \eqref{eq:rewrite-uncapped-unit-deviations}, and let $e_K,e_B,e_C,e_q$
 be the corresponding unit row vectors. Define the row vectors
 \begin{align}
- y_\xi&=\left(\frac{\alpha}{1-\beta},\frac{\beta}{1-\beta},0,0\right),
+ y_\xi&=\left(\frac{\alpha}{1-(1-\alpha)\omega_X},
+ \frac{(1-\alpha)\omega_X}{1-(1-\alpha)\omega_X},0,0\right),
  \label{eq:rewrite-uncapped-unit-output-row}\\
  m_\xi&=\frac{\eta e_B+e_q}{1-\eta},
  \label{eq:rewrite-uncapped-unit-research-row}\\

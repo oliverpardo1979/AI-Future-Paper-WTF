@@ -5,6 +5,7 @@ is conditional and these arithmetic tests do not prove equilibrium existence.
 Tolerances cover floating-point differentiation/root finding, not model rules.
 """
 from pathlib import Path
+from fractions import Fraction
 import re
 import unittest
 
@@ -16,6 +17,46 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class UncappedComplements(unittest.TestCase):
+    def test_weighted_transversality_identity_exactly_cancels_research(self):
+        # Exact arithmetic: the identity is not confined to eta <= 1/2 or
+        # eta < alpha. This checks the algebra, not equilibrium existence.
+        alpha = Fraction(33, 100)
+        Y, C, U, K = map(Fraction, (7, 2, 1, 5))
+        delta = Fraction(1, 20)
+        r = alpha*Y/K-delta
+        for eta in (Fraction(1, 10), Fraction(1, 3), Fraction(1, 2),
+                    Fraction(4, 5), Fraction(99, 100)):
+            for M in (Fraction(1, 10), Fraction(3), Fraction(50)):
+                gb = Fraction(2, 7)
+                qb = M/(eta*gb)  # research FOC
+                gq = r-U/qb-eta*gb  # costate
+                d_qb = (gq+gb)*qb
+                self.assertEqual(d_qb-r*qb, -U+(1-eta)*M/eta)
+                d_k = Y-C-U-M-delta*K
+                weighted = d_k-r*K+eta/(1-eta)*(d_qb-r*qb)
+                self.assertEqual(weighted, (1-alpha)*Y-C-U/(1-eta))
+                gm = (gq+eta*gb)/(1-eta)
+                self.assertEqual((1-eta)*gm, r-U/qb)
+                self.assertLess(gm, r/(1-eta))
+
+    def test_derived_capital_consumption_ratios_are_positive(self):
+        for alpha in (Fraction(1, 100), Fraction(33, 100), Fraction(99, 100)):
+            for n in (Fraction(0), Fraction(3, 1000), Fraction(1, 10)):
+                for margin in (Fraction(1, 1000000), Fraction(1, 25)):
+                    rho = n+margin
+                    for gamma in (Fraction(1, 10000), Fraction(1, 100)):
+                        for delta in (Fraction(0), Fraction(1, 20)):
+                            ky = alpha/(rho+gamma+delta)
+                            cy = 1-(delta+n+gamma)*ky
+                            self.assertGreater(ky, 0)
+                            self.assertGreater(cy, 0)
+                            self.assertEqual(alpha/ky-delta, rho+gamma)
+                            self.assertEqual((1-cy)/ky-delta, n+gamma)
+                            self.assertEqual(
+                                cy, (rho-n+(1-alpha)*(n+gamma+delta))
+                                /(rho+gamma+delta),
+                            )
+
     def test_ces_bound_and_normalized_capital_barrier(self):
         for sigma in (0.25, 0.5, 0.9, 0.99):
             v = (sigma - 1) / sigma
@@ -49,6 +90,34 @@ class UncappedComplements(unittest.TestCase):
                 self.assertAlmostEqual(alpha+labor+revenue, 1)
                 self.assertGreater(labor, 0)
                 self.assertGreater(revenue, 0)
+
+    def test_static_identity_and_simple_marginal_revenue_zero(self):
+        # Dated identity used before taking a limit; these are algebraic
+        # static configurations, not asserted equilibrium trajectories.
+        wx, wl, k = 0.2, 0.8, 2.0
+        for sigma in (0.25, 0.5, 0.9, 0.99):
+            varphi = (sigma-1)/sigma
+            for alpha in (0.2, 0.33, 0.7):
+                s0 = (1-sigma)/(1-alpha*sigma)
+                lx0 = np.log(wl*s0/(wx*(1-s0)))/varphi
+                # de_X/d(log x)>0 gives the simple negative slope of MR
+                # at its zero, since its remaining factors are positive.
+                de_dlogx = (alpha-1/sigma)*varphi*s0*(1-s0)
+                self.assertGreater(de_dlogx, 0)
+                self.assertTrue(np.isfinite(lx0))
+                for weight in (0.001, 0.1, 0.8):
+                    s = s0+(1-s0)*weight
+                    lx = np.log(wl*s/(wx*(1-s)))/varphi
+                    lf = (1-alpha)*logsumexp(
+                        [np.log(wl), np.log(wx)+varphi*lx]
+                    )/varphi
+                    ly = alpha*np.log(k)+lf
+                    margin = 1-((1-s)/sigma+alpha*s)
+                    lB = lx-ly-np.log((1-alpha)*s*margin)
+                    left = alpha/(1-alpha)*(ly-np.log(k))
+                    right = (lB+np.log(1-alpha)+sigma/(sigma-1)*np.log(wx)
+                             + np.log(margin)-np.log(s)/(sigma-1))
+                    self.assertAlmostEqual(left, right, places=10)
 
     def test_static_choices_approach_revenue_maximizer(self):
         # Scale B by the marginal cost inducing X/(AL)=x_infinity/2.
@@ -117,14 +186,27 @@ class UncappedComplements(unittest.TestCase):
         self.assertNotIn(r"\newtheorem{conditionalresult}", main)
         for condition in (
             "and an equilibrium satisfies", r"$B\to\infty$",
-            r"$K/(AL)$ and $C/(AL)$ converge to positive finite",
-            "have finite limits",
+            r"$g_C=\dot C/C$", "has a finite limit",
+            r"\label{eq:rewrite-uncapped-complements-allocation-ratios}",
         ):
             self.assertIn(condition, characterization)
-        self.assertIn(
-            "satisfying the stated convergence conditions; it does not establish its existence.",
-            body,
-        )
+        premises = characterization.split("has a finite limit, then", 1)[0]
+        self.assertNotIn(r"$K/(AL)$", premises)
+        self.assertNotIn(r"$C/(AL)$", premises)
+        self.assertNotIn(r"g_Y", premises)
+        self.assertNotIn(r"g_w", premises)
+        self.assertNotIn(r"\eta", premises)
+        self.assertIn("The capital and consumption ratios are conclusions, not assumptions.", body)
+        self.assertIn("The proposition remains conditional on equilibrium existence", body)
+        self.assertIn("not an equilibrium-existence theorem", proofs)
+        for label in (
+            "eq:rewrite-household-tvc", "eq:rewrite-developer-tvc",
+            "eq:rewrite-complements-weighted-tvc",
+            "eq:rewrite-complements-research-pv-bound",
+            "eq:rewrite-complements-research-growth-bound",
+        ):
+            self.assertIn(label, proofs)
+        self.assertIn("A convergent level need not have a convergent derivative", proofs)
         self.assertNotIn("If, in addition", characterization)
         self.assertNotIn("For the additional research characterization", proofs)
         self.assertNotIn("Under the additional research limits", body)

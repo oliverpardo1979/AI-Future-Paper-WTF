@@ -69,21 +69,27 @@ $0<\eta<1$, but does not prove that an infinite-horizon optimum exists.
 \begin{proof}[Proof of Proposition~\ref{cond:rewrite-uncapped-complements-limits}]
 \phantomsection
 \label{proof:rewrite-uncapped-complements-limits}
-Write $x=X/(AL)$, $k=K/(AL)$, and
-$\varphi=(\sigma-1)/\sigma<0$. At given $k$, revenue per unit of effective
-labor is a positive multiple of
+Within this proof, write $x=X/(AL)$, $k=K/(AL)$, $c=C/(AL)$,
+$y=Y/(AL)$, $z=Y/K$, and $\varphi=(\sigma-1)/\sigma<0$.
+
+\textit{Step 1. Static optimality identifies the limiting technology.}
+Equation~\eqref{eq:rewrite-uncapped-complements-k-bound} bounds $k$ above.
+The assumed finite limit of $g_C$ and the Euler and capital-return equations
+\eqref{eq:rewrite-euler} and~\eqref{eq:rewrite-capital-return} imply finite
+limits of $r$ and $z=(r+\delta)/\alpha$.
+The static monopoly condition~\eqref{eq:rewrite-monopoly-foc} requires
+$1-e_X>0$. Since $e_X=(1-s_X)/\sigma+\alpha s_X$, this gives
+$s_X>(1-\sigma)/(1-\alpha\sigma)>0$.
+Production and pricing, as in equations
+\eqref{eq:rewrite-ai-output-limit}--\eqref{eq:rewrite-output-capital-limit},
+give the exact identity
 \[
- s(x)\left[\omega_L+\omega_Xx^\varphi\right]^{(1-\alpha)/\varphi},
- \qquad
- s(x)=\frac{\omega_Xx^\varphi}{\omega_L+\omega_Xx^\varphi}.
+ z^{\alpha/(1-\alpha)}
+ =B(1-\alpha)\omega_X^{\sigma/(\sigma-1)}
+ (1-e_X)s_X^{-1/(\sigma-1)}.
 \]
-Its derivative has the sign of $1-e_X$ by
-equation~\eqref{eq:rewrite-inverse-demand-elasticity}.
-As $x$ rises from zero to infinity, $s(x)$ decreases from one to zero
-and $e_X$ rises from $\alpha$ to $1/\sigma>1$.
-Revenue therefore has a unique finite maximizer, where $e_X=1$.
-The static monopoly condition~\eqref{eq:rewrite-monopoly-foc},
-$B\to\infty$, and $k\to k_\infty>0$ imply convergence to this maximizer:
+As $B\to\infty$ and $z$ remains bounded, this identity forces $e_X\to1$.
+Hence $s_X\to s_\infty$ and $x\to x_\infty$, where the CES formula gives
 \begin{align}
  s_\infty&=\frac{1-\sigma}{1-\alpha\sigma},&
  x_\infty&=
@@ -91,13 +97,138 @@ $B\to\infty$, and $k\to k_\infty>0$ imply convergence to this maximizer:
  {\omega_X(1-s_\infty)}\right]^{1/\varphi}>0.
  \label{eq:rewrite-uncapped-complements-x-limit}
 \end{align}
-For each fixed $\sigma<1$, this is a finite number.
-Both $Y/(AL)$ and $w/A=(1-\alpha)(1-s_X)Y/(AL)$ then converge to
-positive finite constants. Together with the assumed finite growth-rate
-limits, these convergences give $g_Y\to n+\gamma$ and $g_w\to\gamma$.
-Similarly, convergence of $C/(AL)$ and existence of the limit of $g_C$
-give $g_C\to n+\gamma$. Euler's equation~\eqref{eq:rewrite-euler}
-implies $r\to\rho+\gamma$. Substitution of $s_\infty$ into
-\eqref{eq:rewrite-wage} and~\eqref{eq:rewrite-ai-price} gives the
-income shares in~\eqref{eq:rewrite-uncapped-complements-income}.
+Both are finite for each fixed $\sigma<1$.
+Let $f(x)=[\omega_L+\omega_Xx^\varphi]^{(1-\alpha)/\varphi}$.
+Then $y=k^\alpha f(x)$ and $z=k^{\alpha-1}f(x)$.
+Because $k$ is bounded above and $f(x)\to f(x_\infty)>0$,
+the limit of $z$ is strictly positive. Hence
+$k\to k_\infty>0$ and $y\to y_\infty>0$.
+Also $U/(AL)=x/B\to0$, so $U/Y\to0$.
+No convergence of capital or consumption ratios has been assumed.
+
+\textit{Step 2. Both transversality conditions pin down consumption growth.}
+If the limit of $g_C$ exceeded $n+\gamma$, then $c\to\infty$.
+The normalized resource constraint would give
+$\dot k\leq y-c-(\delta+n+\gamma)k$, contradicting positive finite capital.
+If that limit were smaller than $n+\gamma$, then $c\to0$ and $C/Y\to0$.
+
+To exclude the latter case, use the research first-order condition
+\eqref{eq:rewrite-research-foc} and uncapped costate
+equation~\eqref{eq:rewrite-costate} to obtain
+\begin{equation}
+ \frac{\mathrm d(qB)}{\mathrm dt}
+ =rqB-U+\frac{1-\eta}{\eta}M.
+ \label{eq:rewrite-complements-shadow-stock}
+\end{equation}
+For $D_t=\exp(-\int_0^t r_s\dd s)$, combining this equation with the
+resource constraint~\eqref{eq:rewrite-resource} cancels research expenditure:
+\begin{equation}
+ \frac{\mathrm d}{\mathrm dt}
+ \left[D_t\left(K_t+\frac{\eta}{1-\eta}q_tB_t\right)\right]
+ =D_t\left[(1-\alpha)Y_t-C_t-\frac{U_t}{1-\eta}\right].
+ \label{eq:rewrite-complements-weighted-tvc}
+\end{equation}
+The expression in parentheses on the left is an auxiliary positive
+combination, not a definition of the developer's market value.
+The transversality conditions~\eqref{eq:rewrite-household-tvc}
+and~\eqref{eq:rewrite-developer-tvc} imply that the bracketed expression tends
+to zero: Euler makes $D_t$ proportional to $e^{-\rho t}N_t/C_t$.
+If $C/Y\to0$ and $U/Y\to0$, its derivative would instead be strictly
+positive at all sufficiently late dates. A positive increasing expression
+cannot tend to zero. Thus
+\begin{equation}
+ g_C\to n+\gamma,\qquad r\to\rho+\gamma,\qquad
+ \frac KY\to\frac{\alpha}{\rho+\gamma+\delta}.
+ \label{eq:rewrite-complements-euler-limit}
+\end{equation}
+The cancellation in~\eqref{eq:rewrite-complements-weighted-tvc} works for
+every $0<\eta<1$; it requires neither $\eta\leq1/2$ nor $\eta<\alpha$.
+
+\textit{Step 3. Optimal research expenditure vanishes relative to output.}
+Integrate~\eqref{eq:rewrite-complements-shadow-stock} using the developer's
+transversality condition~\eqref{eq:rewrite-developer-tvc}.
+Since $qB>0$ and $M\geq0$,
+\begin{equation}
+ \int_t^\infty\frac{D_s}{D_t}M_s\dd s
+ \leq\frac{\eta}{1-\eta}
+ \int_t^\infty\frac{D_s}{D_t}U_s\dd s.
+ \label{eq:rewrite-complements-research-pv-bound}
+\end{equation}
+Here the integrals exist: $r\to\rho+\gamma>n+\gamma$ and $U/(AL)\to0$
+bound the discounted inference integral; integration over finite horizons
+and the developer TVC then bound the nonnegative research integral.
+More explicitly, put $d=(\rho-n)/2>0$. For sufficiently late $t$,
+$r_s\geq n+\gamma+d$ for all $s\geq t$, so
+\[
+ \frac1{A_tL_t}\int_t^\infty\frac{D_s}{D_t}U_s\dd s
+ \leq\frac1d\sup_{s\geq t}\frac{U_s}{A_sL_s}\longrightarrow0.
+\]
+
+This integral limit also gives a pointwise limit for $M/(AL)$.
+Differentiating the research condition and using the costate equation gives
+\begin{equation}
+ (1-\eta)g_M
+ =r-\frac{\eta\chi UB^{\eta-1}}{M^{1-\eta}}
+ \leq r.
+ \label{eq:rewrite-complements-research-growth-bound}
+\end{equation}
+Choose a positive constant $R$ above the eventual values of $r$, and write
+$H=R/(1-\eta)$. Then $M_s\geq M_t e^{-H(t-s)}$ for $s\in[t-1,t]$
+at sufficiently late dates. Thus
+\[
+ \frac1{A_{t-1}L_{t-1}}
+ \int_{t-1}^t\frac{D_s}{D_{t-1}}M_s\dd s
+ \geq e^{n+\gamma-R-H}\frac{M_t}{A_tL_t}.
+\]
+The left side tends to zero by~\eqref{eq:rewrite-complements-research-pv-bound}.
+Consequently $M/(AL)\to0$ and $M/Y\to0$.
+
+\textit{Step 4. Consumption and capital ratios converge to positive constants.}
+The resource constraint now reads
+\[
+ \dot k=a_t-c,\qquad
+ a_t:=y-\frac{U+M}{AL}-(\delta+n+\gamma)k
+ \longrightarrow a_\infty:=y_\infty-(\delta+n+\gamma)k_\infty.
+\]
+Also $\dot c/c=g_C-n-\gamma\to0$.
+Integrating over $[t,t+1]$ shows that
+$\int_t^{t+1}c_s\dd s\to a_\infty$, since $k$ converges.
+The vanishing logarithmic derivative implies, uniformly on this interval,
+$c_s/c_t\to1$. Therefore $c_t\to a_\infty$.
+Using~\eqref{eq:rewrite-complements-euler-limit},
+\[
+ \frac CY\to\frac{a_\infty}{y_\infty}
+ =1-\frac{\alpha(\delta+n+\gamma)}{\rho+\gamma+\delta}>0.
+\]
+Positivity follows from $\rho>n$, $0<\alpha<1$, and $\gamma>0$.
+In particular, $c$ converges to a positive constant and $\dot k\to0$.
+This proves~\eqref{eq:rewrite-uncapped-complements-allocation-ratios}.
+
+\textit{Step 5. Output and wage growth converge as well.}
+A convergent level need not have a convergent derivative, so this last
+step verifies the growth limits rather than inferring them from levels.
+The same bound on $g_M$ used in Step 3 gives
+\[
+ B_t^{1-\eta}
+ \geq(1-\eta)\chi M_t^\eta\int_0^1e^{-\eta H v}\dd v.
+\]
+The research law therefore bounds $g_B=\chi M^\eta/B^{1-\eta}$ above.
+Write the static marginal-revenue condition as
+$k^\alpha v(x)=1/B$, where
+$v(x)=(1-\alpha)s(x)f(x)[1-e_X(x)]/x$.
+At $x_\infty$, $v$ has a simple zero:
+$v(x_\infty)=0$ and $v'(x_\infty)<0$, because $e_X$ increases through one.
+Differentiation gives
+\[
+ \dot x=-\frac{v(x)}{v'(x)}
+ \left(g_B+\alpha\frac{\dot k}{k}\right)\longrightarrow0.
+\]
+Hence $\dot y\to0$ and $\dot s_X\to0$.
+Since $y\to y_\infty>0$ and $1-s_\infty>0$,
+$g_Y\to n+\gamma$ and, by the wage equation~\eqref{eq:rewrite-wage},
+$g_w\to\gamma$.
+Substitution of $s_\infty$ into~\eqref{eq:rewrite-wage}
+and~\eqref{eq:rewrite-ai-price} gives the stated limiting income shares.
+This is a characterization of any equilibrium satisfying the two remaining
+asymptotic hypotheses, not an equilibrium-existence theorem.
 \end{proof}

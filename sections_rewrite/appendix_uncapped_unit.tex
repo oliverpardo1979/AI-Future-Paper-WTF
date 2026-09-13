@@ -5,7 +5,7 @@ This appendix derives the rates and allocation ratios supporting
 Proposition~\ref{prop:rewrite-uncapped-unit-bgp} in
 Section~\ref{subsec:rewrite-uncapped-unit-bgp} and establishes local
 equilibrium trajectories near its BGP. I use the uncapped research law
-\eqref{eq:rewrite-uncapped-unit-law} and the output elasticities
+\eqref{eq:rewrite-uncapped-unit-law} and the production function
 \eqref{eq:rewrite-uncapped-unit-elasticities}.
 In this appendix and its proofs, a superscript $*$ denotes the reference
 BGP characterized in Section~\ref{subsec:rewrite-uncapped-unit-bgp},
@@ -13,15 +13,18 @@ distinguishing it from nearby equilibrium trajectories.
 
 \subsection{An explicit balanced-growth equilibrium}
 
-At unit elasticity, $s_X=\omega_X$ and $e_X=1-\beta$. The AI-demand and monopoly conditions,
+At unit elasticity, $s_X=\omega_X$ and $e_X=1-(1-\alpha)\omega_X$. The AI-demand and monopoly conditions,
 equations~\eqref{eq:rewrite-ai-price} and~\eqref{eq:rewrite-monopoly-foc}, give
 \begin{equation}
- \frac{p_XX}{Y}=\beta,\qquad \frac UY=\beta^2.
+ \frac{p_XX}{Y}=(1-\alpha)\omega_X,\qquad
+ \frac UY=(1-\alpha)^2\omega_X^2.
  \label{eq:rewrite-uncapped-unit-static-shares}
 \end{equation}
-Substituting $X=BU=\beta^2BY$ into the Cobb--Douglas production function yields
+Substituting $X=BU=(1-\alpha)^2\omega_X^2BY$ into production yields
 \begin{equation}
- Y^{1-\beta}=K^\alpha(AL)^\lambda(\beta^2B)^\beta.
+ Y^{1-(1-\alpha)\omega_X}
+ =K^\alpha(AL)^{(1-\alpha)\omega_L}
+ \bigl[(1-\alpha)^2\omega_X^2B\bigr]^{(1-\alpha)\omega_X}.
  \label{eq:rewrite-uncapped-unit-production}
 \end{equation}
 On an exact balanced-growth path with positive constant $K/Y$, $C/Y$, and $M/Y$,
@@ -31,8 +34,7 @@ and~\eqref{eq:rewrite-uncapped-unit-law} gives the two growth restrictions
 and~\eqref{eq:rewrite-uncapped-unit-research-growth}.
 Define
 \begin{equation}
- \Delta\equiv\lambda(1-\eta)-\beta\eta
- =(1-\alpha)(1-\eta-\omega_X).
+ \Delta\equiv(1-\alpha)(1-\eta-\omega_X).
  \label{eq:rewrite-uncapped-unit-feedback}
 \end{equation}
 For $\Delta>0$, their unique solution has
@@ -49,11 +51,11 @@ and~\eqref{eq:rewrite-uncapped-unit-return}.
 Define the candidate ratios $k^*=K/Y$, $u^*=U/Y$,
 $i^*=(\dot K+\delta K)/Y$, $m^*=M/Y$, and $c^*=C/Y$ by
 \begin{align}
- k^*&=\frac{\alpha}{r^*+\delta},\qquad u^*=\beta^2,
+ k^*&=\frac{\alpha}{r^*+\delta},\qquad u^*=(1-\alpha)^2\omega_X^2,
  \label{eq:rewrite-uncapped-unit-capital-inference}\\
  i^*&=(g_Y^*+\delta)k^*,
  \label{eq:rewrite-uncapped-unit-investment}\\
- m^*&=\frac{\beta^2\eta g_B^*}{\rho-n+\eta g_Y^*},
+ m^*&=\frac{u^*\eta g_B^*}{\rho-n+\eta g_Y^*},
  \label{eq:rewrite-uncapped-unit-research-share}\\
  c^*&=1-u^*-i^*-m^*.
  \label{eq:rewrite-uncapped-unit-consumption}
@@ -71,7 +73,7 @@ and~\eqref{eq:rewrite-uncapped-unit-research-growth} require $\Delta>0$ for
 this positive finite-rate BGP. If $\Delta=0$, they are inconsistent; if
 $\Delta<0$, they imply $g_B<0$, contrary to the research law. Thus
 $\eta+\omega_X\geq1$ excludes this BGP, not every possible equilibrium
-trajectory. The restrictions $\beta\leq1/2$ and $\eta\leq1/2$ make operating
+trajectory. The restrictions $(1-\alpha)\omega_X\leq1/2$ and $\eta\leq1/2$ make operating
 profit and research technology concave and are sufficient for the global
 optimality proof. They are not asserted to be necessary for existence.
 I retain $\eta<\alpha$ to match the research-curvature restriction discussed
@@ -133,9 +135,9 @@ changing research productivity changes the reference levels, not these roots.
 
 The uncapped BGP has
 \begin{equation}
- \frac{wL}{Y}=\lambda>0,\qquad
+ \frac{wL}{Y}=(1-\alpha)\omega_L>0,\qquad
  \frac{(r+\delta)K}{Y}=\alpha,\qquad
- \frac{\Pi}{Y}=\beta-\beta^2-m^*.
+ \frac{\Pi}{Y}=(1-\alpha)\omega_X-u^*-m^*.
  \label{eq:rewrite-uncapped-unit-distribution}
 \end{equation}
 Equation~\eqref{eq:rewrite-uncapped-unit-wage-growth} shows that real wages

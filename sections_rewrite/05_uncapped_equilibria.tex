@@ -20,7 +20,7 @@ The results differ in scope across substitution regimes. Under complementarity, 
 \subsection{Complementarity}
 \label{subsec:rewrite-uncapped-complements}
 
-When $sigma<1$, effective labor remains necessary even if AI becomes arbitrarily efficient. Since $sigma<1$,  Equation~\eqref{eq:rewrite-ces} gives an upper bound for $Z$ and $Y$ which does not depend on $B$:
+When $\sigma<1$, effective labor remains necessary even if AI becomes arbitrarily efficient. Equation~\eqref{eq:rewrite-ces} gives an upper bound for $Z$ and $Y$ which does not depend on $B$:
 \begin{align}
  Z&\leq\omega_L^{\sigma/(\sigma-1)}AL,
  \label{eq:rewrite-uncapped-complements-z-bound}\\
@@ -59,9 +59,12 @@ Complementarity suffices to bound long-run growth, despite no bound on AI effici
 \begin{proposition}[Long-run outcomes under complementarity without an AI efficiency upper bound]
 \label{cond:rewrite-uncapped-complements-limits}
 Suppose $0<\sigma<1$, $\overline B=\infty$, and an equilibrium satisfies
-$B\to\infty$, while $K/(AL)$ and $C/(AL)$ converge to positive finite
-constants. If $g_C$, $g_Y$, and $g_w$ have finite limits, then
+$B\to\infty$. If the aggregate consumption growth rate $g_C=\dot C/C$
+has a finite limit, then
 \begin{align}
+ \frac KY&\to\frac{\alpha}{\rho+\gamma+\delta}>0,\qquad
+ \frac CY\to1-\frac{\alpha(\delta+n+\gamma)}{\rho+\gamma+\delta}>0,
+ \label{eq:rewrite-uncapped-complements-allocation-ratios}\\
  g_{Y/N}&\to\gamma,\qquad g_w\to\gamma,\qquad r\to\rho+\gamma,
  \label{eq:rewrite-uncapped-complements-rates}\\
  s_X&\to\frac{1-\sigma}{1-\alpha\sigma},
@@ -78,28 +81,31 @@ See Appendix~\ref{app:rewrite-proofs},
 Proposition~\ref*{cond:rewrite-uncapped-complements-limits}}.
 \end{proof}
 
-%This proposition characterizes the long-run outcomes of an equilibrium satisfying the stated convergence conditions; it does not establish its existence.
+The capital and consumption ratios are conclusions, not assumptions.
+The proof uses both agents' transversality conditions to rule out consumption
+that permanently grows more slowly than effective labor, and shows that
+inference and research expenditure vanish relative to output.
+It also derives convergence of $K/(AL)$ and $C/(AL)$ to positive constants.
+The proposition remains conditional on equilibrium existence, $B\to\infty$,
+and a finite limit of consumption growth; it does not assume a BGP.
 
 %The limiting income shares follow from the static monopoly condition, equation~\eqref{eq:rewrite-monopoly-foc}. At positive limiting capital per unit of effective labor, $1/B\to0$ implies $e_X\to1$. Substituting into equation~\eqref{eq:rewrite-inverse-demand-elasticity} gives \eqref{eq:rewrite-uncapped-complements-sx}; equations~\eqref{eq:rewrite-wage} and~\eqref{eq:rewrite-ai-price} then give the income shares. The industry retains positive revenue even though its inference cost vanishes relative to output.
 
 \subsection{Unit elasticity}
 \label{subsec:rewrite-uncapped-unit-bgp}
 
-At unit elasticity, define the output elasticities
+At unit elasticity, production becomes
 \begin{equation}
- \beta=(1-\alpha)\omega_X,\qquad
- \lambda=(1-\alpha)\omega_L,
- \qquad\alpha+\beta+\lambda=1.
+ Y=K^\alpha(AL)^{(1-\alpha)\omega_L}X^{(1-\alpha)\omega_X}.
  \label{eq:rewrite-uncapped-unit-elasticities}
 \end{equation}
-Production is then $Y=K^\alpha(AL)^\lambda X^\beta$.
 Consider a balanced-growth path (BGP) with positive constant $K/Y$, $C/Y$,
 and $M/Y$. The AI-demand and
 monopoly conditions, equations~\eqref{eq:rewrite-ai-price}
-and~\eqref{eq:rewrite-monopoly-foc}, imply $U/Y=\beta^2$.
+and~\eqref{eq:rewrite-monopoly-foc}, imply $U/Y=(1-\alpha)^2\omega_X^2$.
 Using $X=BU$ in production, and $g_M=g_Y$ in the research law, gives
 \begin{align}
- g_Y&=n+\gamma+\frac{\beta}{\lambda}g_B,
+ g_Y&=n+\gamma+\frac{\omega_X}{\omega_L}g_B,
  \label{eq:rewrite-uncapped-unit-production-growth}\\
  (1-\eta)g_B&=\eta g_Y.
  \label{eq:rewrite-uncapped-unit-research-growth}
@@ -115,7 +121,7 @@ establishes that they belong to an equilibrium.
 Suppose $\sigma=1$, $\overline B=\infty$, and
 \begin{equation}
  0<\eta<\alpha,\qquad \eta\leq\tfrac12,\qquad
- \beta\leq\tfrac12,\qquad \eta+\omega_X<1.
+ (1-\alpha)\omega_X\leq\tfrac12,\qquad \eta+\omega_X<1.
  \label{eq:rewrite-uncapped-unit-sufficient}
 \end{equation}
 For every $A_0,N_0>0$, there exist $K_0,B_0>0$ and an equilibrium such that
@@ -124,7 +130,7 @@ For every $A_0,N_0>0$, there exist $K_0,B_0>0$ and an equilibrium such that
  \label{eq:rewrite-uncapped-unit-wage-growth}\\
  r&=\rho+\gamma+\frac{\eta\omega_X}{1-\eta-\omega_X}(n+\gamma),
  \label{eq:rewrite-uncapped-unit-return}\\
- \frac{wL}{Y}&=\lambda=(1-\alpha)\omega_L>0,
+ \frac{wL}{Y}&=(1-\alpha)\omega_L>0,
  \label{eq:rewrite-uncapped-unit-labor-share}\\
  g_B&=\frac{\eta(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma).
  \label{eq:rewrite-uncapped-unit-efficiency-growth}
@@ -143,7 +149,7 @@ establish existence for arbitrary $K_0,B_0$. Appendix~\ref{app:rewrite-uncapped-
 derives all allocation ratios and states sufficient conditions for
 equilibrium trajectories from nearby stocks that need not lie on the BGP.
 The condition $\eta+\omega_X<1$ is necessary for this positive finite-rate
-BGP. The bounds $\eta\leq1/2$ and $\beta\leq1/2$ are sufficient for the
+BGP. The bounds $\eta\leq1/2$ and $(1-\alpha)\omega_X\leq1/2$ are sufficient for the
 global optimality proof, not necessary conditions for equilibrium existence.
 The appendix explains the role of each restriction.
 
