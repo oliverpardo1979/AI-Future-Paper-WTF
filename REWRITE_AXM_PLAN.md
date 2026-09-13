@@ -10,12 +10,17 @@ Every section, proposition, calibration, and figure must contribute directly to
 this question. Material that does not help answer it belongs in the appendix, a
 separate extension, or the current archival manuscript.
 
-## Accepted editorial decision (September 13, 2026)
+## Accepted editorial decisions (September 13, 2026)
 
 Do not restore the household sentence "Admissible choices satisfy $C_t>0$,
 $K_t\geq0$, and $K(0)=K_0$", or reintroduce it in paraphrase. Oliver has
 deliberately removed this redundant prose. This editorial deletion does not
 change the equilibrium conditions or simulation constraints stated elsewhere.
+
+When introducing the CES weights, explain that $\omega_L$ weights effective
+labor and $\omega_X$ weights effective AI production services. Do not restore
+the sentence that the weights "are strictly positive and sum to one" in this
+paragraph; Oliver has repeatedly removed that redundant prose.
 
 ## Model scope
 
