@@ -8,6 +8,7 @@ from collections import Counter
 from pathlib import Path
 import re
 import unittest
+from rewrite_section_sources import preserved_section_53
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -205,6 +206,13 @@ class UnifiedPropositionStructure(unittest.TestCase):
         uncapped = body.split(r"\label{subsec:rewrite-uncapped}", 1)[1]
         normalized = " ".join(uncapped.split())
         self.assertIn(r"\ref{prop:rewrite-equilibrium-regimes}", uncapped)
+        self.assertIn(r"both increase without bound as $\overline B\to\infty$", normalized)
+        self.assertIn("do not establish a finite-time singularity", normalized)
+        self.assertIn("or settle equilibrium existence", normalized)
+        # Earlier detailed claims remain testable as preserved research,
+        # not as assertions printed in the shortened subsection.
+        uncapped = preserved_section_53()
+        normalized = " ".join(uncapped.split())
         self.assertIn(r"At $\eta=\alpha$", normalized)
         self.assertIn(r"\ref{subsec:rewrite-uncapped-unit-bgp}", uncapped)
         self.assertIn(r"differs from setting $\overline B=\infty$ at the outset", normalized)
@@ -243,6 +251,10 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertNotIn("rather than for merely rapid", body)
         uncapped = source("sections_rewrite/05_uncapped_equilibria.tex")
         singularity = " ".join(uncapped.split(r"\label{subsec:rewrite-uncapped}", 1)[1].split())
+        self.assertIn("conditional implications", singularity)
+        self.assertIn("do not establish a finite-time singularity", singularity)
+        self.assertIn("or settle equilibrium existence", singularity)
+        singularity = " ".join(preserved_section_53().split())
         self.assertIn(r"Definition~\ref{def:rewrite-equilibrium}", singularity)
         self.assertIn("finite, feasible allocations at every date", singularity)
         self.assertIn("or rule out a finite-time singularity", singularity)
@@ -266,10 +278,10 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertEqual(subsections, [
             "Complementarity",
             "Unit elasticity",
-            "Substitution: unbounded returns and equilibrium existence",
+            "Substitution: growth and the AI-efficiency upper bound",
         ])
         bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
-            r"\subsection{Substitution: unbounded returns and equilibrium existence}", 1)[0]
+            r"\subsection{Substitution: growth and the AI-efficiency upper bound}", 1)[0]
         self.assertIn(r"\label{prop:rewrite-uncapped-unit-bgp}", bgp)
         self.assertLess(bgp.index(r"\label{eq:rewrite-uncapped-unit-elasticities}"),
                         bgp.index(r"\begin{proposition}"))

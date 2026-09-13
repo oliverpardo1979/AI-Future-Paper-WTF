@@ -9,6 +9,7 @@ import math
 from pathlib import Path
 import re
 import unittest
+from rewrite_section_sources import preserved_section_53
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -127,7 +128,7 @@ class InvestmentOptimality(unittest.TestCase):
             self.assertAlmostEqual(evaluated, math.log(float(m)), places=12)
 
     def test_proposition_excludes_convergent_shares_not_all_equilibria(self):
-        body = (ROOT/'sections_rewrite/05_uncapped_equilibria.tex').read_text(encoding='utf-8')
+        body = preserved_section_53()
         proof = (ROOT/'sections_rewrite/appendix_uncapped_substitutes_proof.tex').read_text(encoding='utf-8')
         statement = next(block for block in re.findall(
             r'\\begin\{proposition\}.*?\\end\{proposition\}', body, re.S)

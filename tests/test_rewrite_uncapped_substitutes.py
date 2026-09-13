@@ -9,6 +9,7 @@ from pathlib import Path
 import math
 import re
 import unittest
+from rewrite_section_sources import preserved_section_53
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -103,11 +104,14 @@ class UncappedSubstitutionExplosion(unittest.TestCase):
                 self.assertEqual(z, z0/(1-fraction))
                 self.assertEqual(a/(1/z0-a*t)**2, a*z*z)
 
-    def test_archived_result_and_active_automatic_proof_links(self):
-        body = source("sections_rewrite/05_uncapped_equilibria.tex")
+    def test_archived_results_and_preserved_automatic_proof_links(self):
+        body = preserved_section_53()
         proof = source("sections_rewrite/appendix_uncapped_substitutes_proof.tex")
         appendix = source("sections_rewrite/appendix.tex")
-        self.assertIn(r"\input{sections_rewrite/appendix_uncapped_substitutes_proof}", appendix)
+        self.assertNotIn(r"\input{sections_rewrite/appendix_uncapped_substitutes_proof}", appendix)
+        self.assertNotIn(
+            r"\label{prop:rewrite-uncapped-substitutes-explosion}",
+            source("sections_rewrite/05_uncapped_equilibria.tex"))
         self.assertNotRegex(proof, r"\\(?:sub)*section\{")
         self.assertIn(r"\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}]", proof)
         self.assertIn(r"\hyperref[proof:rewrite-uncapped-substitutes-explosion]", body)
@@ -130,7 +134,7 @@ class UncappedSubstitutionExplosion(unittest.TestCase):
         bib = source("references.bib")
         self.assertIn("@article{ceballosetal2011,", bib)
         self.assertIn("https://ejde.math.txstate.edu/Volumes/2011/05/ceballos.pdf", bib)
-        body = " ".join(source("sections_rewrite/05_uncapped_equilibria.tex").split())
+        body = " ".join(preserved_section_53().split())
         self.assertIn("holds saving and factor-allocation shares fixed", body)
         self.assertIn("cannot apply its explosion theorem directly", body)
 

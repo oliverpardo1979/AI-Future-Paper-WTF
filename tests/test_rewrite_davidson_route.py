@@ -7,6 +7,7 @@ from fractions import Fraction as Q
 import math
 from pathlib import Path
 import unittest
+from rewrite_section_sources import preserved_section_53
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -120,9 +121,9 @@ class DavidsonRoute(unittest.TestCase):
         self.assertIn('D1', note)
         self.assertIn('D9', note)
 
-    def test_active_proposition_does_not_assume_explosion(self):
+    def test_preserved_proposition_does_not_assume_explosion(self):
         import re
-        body = (ROOT/'sections_rewrite/05_uncapped_equilibria.tex').read_text(encoding='utf-8')
+        body = preserved_section_53()
         proof = (ROOT/'sections_rewrite/appendix_uncapped_substitutes_proof.tex').read_text(encoding='utf-8')
         statement = next(block for block in re.findall(
             r'\\begin\{proposition\}.*?\\end\{proposition\}', body, re.S)
@@ -132,9 +133,11 @@ class DavidsonRoute(unittest.TestCase):
         self.assertNotIn(r'B\to\infty', statement)
         self.assertNotIn(r's_X\to1', statement)
         self.assertNotIn('log', statement)
+        section_context = (ROOT/'sections_rewrite/05_uncapped_equilibria.tex').read_text(
+            encoding='utf-8')
         for label in ('eq:rewrite-ai-terminal-ratio', 'eq:rewrite-resource',
                       'eq:rewrite-uncapped-unit-law'):
-            self.assertIn(r'\eqref{'+label+'}', body+proof)
+            self.assertIn(r'\eqref{'+label+'}', section_context+proof)
         self.assertIn(r'\dot B\geq c_BB^{1/\alpha}', proof)
         self.assertIn(r'\emph{upper}', proof)
         self.assertIn('derived, not assumed', proof)
