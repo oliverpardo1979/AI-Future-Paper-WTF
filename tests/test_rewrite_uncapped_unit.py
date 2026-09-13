@@ -150,6 +150,22 @@ class UncappedUnitAppendix(unittest.TestCase):
             self.assertAlmostEqual(abs(np.linalg.det(unit_basis[:2])), 0.6037, places=4)
             self.assertGreater(abs(subspace.state_projection_determinant), 0.60)
 
+    def test_main_bgp_uses_unstarred_notation_with_appendix_mapping(self):
+        body = (ROOT / "sections_rewrite/05_uncapped_equilibria.tex").read_text(encoding="utf-8")
+        section = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
+            r"\subsection{", 1
+        )[0]
+        self.assertNotRegex(section, r"\^\s*(?:\*|\{\s*\*\s*\})")
+        self.assertNotIn("A superscript", section)
+        for expression in (
+            r"$K_0,B_0>0$", r"g_{Y/N}=g_w&=g_Y-n",
+            r"r&=\rho+g_Y-n", r"g_B&=",
+        ):
+            self.assertIn(expression, section)
+        appendix = (ROOT / "sections_rewrite/appendix_uncapped_unit.tex").read_text(encoding="utf-8")
+        self.assertIn("a superscript $*$ denotes the reference", appendix)
+        self.assertIn(r"\xi_K=\log\frac K{K^*}", appendix)
+
     def test_source_scope_numbering_and_single_proof_section(self):
         appendix = (ROOT / "sections_rewrite/appendix_uncapped_unit.tex").read_text(encoding="utf-8")
         proofs = (ROOT / "sections_rewrite/appendix_uncapped_unit_proofs.tex").read_text(encoding="utf-8")

@@ -265,7 +265,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         subsections = re.findall(r"\\subsection\{([^}]+)\}", body)
         self.assertEqual(subsections, [
             "Complementarity",
-            "Unit elasticity: a balanced-growth equilibrium",
+            "Unit elasticity",
             "Substitution: unbounded returns and equilibrium existence",
         ])
         bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
