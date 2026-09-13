@@ -54,11 +54,10 @@ class PositiveAIBenchmarkParameters:
             )
         if not 0.0 < self.eta < self.alpha:
             raise ValueError("The maintained restriction is 0 < eta < alpha.")
-        if 2.0 * self.eta > 1.0:
-            raise ValueError(
-                "The theorem-backed automated benchmark seed requires "
-                "2*eta <= 1."
-            )
+        # The uncapped unit-elastic proof also covers eta > 1/2 by using
+        # S=B**(1-eta) only in its concavity verification. Keep the original
+        # model coordinates and equations here. The remaining profit and
+        # positive-growth restrictions are checked by balanced_growth_seed.
         if self.population_growth < 0.0:
             raise ValueError("Population growth must be nonnegative.")
         if self.labor_productivity_growth < 0.0:

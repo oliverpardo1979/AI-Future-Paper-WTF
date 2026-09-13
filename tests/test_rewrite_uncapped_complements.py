@@ -17,6 +17,41 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class UncappedComplements(unittest.TestCase):
+    def test_static_return_is_decreasing_in_normalized_capital(self):
+        # Analytic derivative on the positive-marginal-revenue branch.
+        for sigma in (Fraction(1, 10), Fraction(1, 2), Fraction(99, 100)):
+            varphi = (sigma-1)/sigma
+            for alpha in (Fraction(1, 5), Fraction(33, 100), Fraction(9, 10)):
+                lower = (1-sigma)/(1-alpha*sigma)
+                for weight in (Fraction(1, 100), Fraction(1, 2), Fraction(99, 100)):
+                    s = lower+(1-lower)*weight
+                    e = (1-s)/sigma+alpha*s
+                    e_prime = (alpha-1/sigma)*varphi*s*(1-s)
+                    mr_elasticity = e+e_prime/(1-e)
+                    output_elasticity = alpha+alpha*(1-alpha)*s/mr_elasticity
+                    self.assertGreater(e_prime, 0)
+                    self.assertGreater(mr_elasticity, alpha*s)
+                    self.assertGreater(output_elasticity, alpha)
+                    self.assertLess(output_elasticity, 1)
+
+    def test_ramsey_limit_has_positive_dulac_divergence_and_is_a_saddle(self):
+        # Exact differentiation of (F(k)-c)/c^2 and h(k)/c.
+        # This validates identities in the proof, not a convergence theorem.
+        alpha, rho, n, gamma, delta = map(
+            Fraction, ("0.33", "0.04", "0.003", "0.01", "0.05")
+        )
+        for c in (Fraction(1, 100), Fraction(2), Fraction(100)):
+            for marginal_product in (Fraction(1, 100), Fraction(1, 2), Fraction(20)):
+                f_prime = marginal_product-delta-n-gamma
+                h = marginal_product-delta-rho-gamma
+                self.assertEqual((f_prime-h)/c**2, (rho-n)/c**2)
+                self.assertGreater((f_prime-h)/c**2, 0)
+        for k in (Fraction(1, 10), Fraction(5), Fraction(100)):
+            c_star = k*((rho+gamma+delta)/alpha-(delta+n+gamma))
+            j21 = c_star*(alpha-1)*(rho+gamma+delta)/k
+            self.assertGreater(c_star, 0)
+            self.assertLess(j21, 0)  # determinant of [[rho-n,-1],[j21,0]]
+
     def test_weighted_transversality_identity_exactly_cancels_research(self):
         # Exact arithmetic: the identity is not confined to eta <= 1/2 or
         # eta < alpha. This checks the algebra, not equilibrium existence.
@@ -186,27 +221,34 @@ class UncappedComplements(unittest.TestCase):
         self.assertNotIn(r"\newtheorem{conditionalresult}", main)
         for condition in (
             "and an equilibrium satisfies", r"$B\to\infty$",
-            r"$g_C=\dot C/C$", "has a finite limit",
             r"\label{eq:rewrite-uncapped-complements-allocation-ratios}",
         ):
             self.assertIn(condition, characterization)
-        premises = characterization.split("has a finite limit, then", 1)[0]
+        premises = characterization.split("Then", 1)[0]
+        self.assertNotIn("finite limit", premises)
+        self.assertNotIn("g_C", premises)
         self.assertNotIn(r"$K/(AL)$", premises)
         self.assertNotIn(r"$C/(AL)$", premises)
         self.assertNotIn(r"g_Y", premises)
         self.assertNotIn(r"g_w", premises)
         self.assertNotIn(r"\eta", premises)
         self.assertIn("The capital and consumption ratios are conclusions, not assumptions.", body)
-        self.assertIn("The proposition remains conditional on equilibrium existence", body)
+        self.assertIn("The proposition remains conditional on equilibrium existence",
+                      " ".join(body.split()))
         self.assertIn("not an equilibrium-existence theorem", proofs)
         for label in (
             "eq:rewrite-household-tvc", "eq:rewrite-developer-tvc",
-            "eq:rewrite-complements-weighted-tvc",
+            "eq:rewrite-complements-household-wealth-bound",
+            "eq:rewrite-complements-effective-labor-pv-bound",
             "eq:rewrite-complements-research-pv-bound",
             "eq:rewrite-complements-research-growth-bound",
+            "eq:rewrite-complements-limiting-ramsey",
         ):
             self.assertIn(label, proofs)
         self.assertIn("A convergent level need not have a convergent derivative", proofs)
+        self.assertIn("Capital cannot repeatedly approach zero", proofs)
+        self.assertIn("No convergence of a growth rate or allocation ratio is assumed", proofs)
+        self.assertIn("complete orbit", proofs)
         self.assertNotIn("If, in addition", characterization)
         self.assertNotIn("For the additional research characterization", proofs)
         self.assertNotIn("Under the additional research limits", body)

@@ -2,6 +2,12 @@
 
 Date: 2026-09-12.
 
+Subsequent update (2026-09-13): the historical restriction eta <= 1/2
+was removed from the current unit-elastic proposition and seed guard.
+The new proof uses eta<alpha in its transformed-concavity branch.
+See `audit/rewrite_ramsey_proof_extensions.md` for the current scope and tests;
+the record below describes the original recovery.
+
 ## Scope and sources
 
 The added Appendix C studies the autonomous-research economy with sigma=1

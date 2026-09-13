@@ -5,6 +5,7 @@ preserved positive-AI implementation. Source checks enforce the appendix/proof
 split. Floating-point tolerances check arithmetic, not existence theorems.
 """
 from pathlib import Path
+from fractions import Fraction
 import re
 import sys
 import unittest
@@ -23,6 +24,53 @@ from define_positive_ai_branch import (  # noqa: E402
 
 
 class UncappedUnitAppendix(unittest.TestCase):
+    def test_transformed_concavity_above_one_half(self):
+        # Exact inequalities establish that the retained restrictions imply
+        # concavity after transformation; grids supplement the written proof.
+        for eta in map(Fraction, ("0.500001", "0.51", "0.6", "0.8", "0.99")):
+            for fraction in map(Fraction, ("0.01", "0.5", "0.99")):
+                alpha = eta+(1-eta)*fraction
+                wx = (1-eta)*fraction
+                beta = (1-alpha)*wx
+                exponent = beta/((1-beta)*(1-eta))
+                self.assertLess(beta, (1-eta)**2)
+                self.assertLess((1-eta)**2, (1-eta)/(2-eta))
+                self.assertGreater(exponent, 0)
+                self.assertLess(exponent, 1)
+                # For a positive coefficient and p, both terms of the
+                # transformed Hamiltonian have a supporting tangent.
+                for ratio in (0.01, 0.5, 2.0, 100.0):
+                    for power in (float(exponent), float(eta)):
+                        self.assertLessEqual(ratio**power, 1+power*(ratio-1)+1e-13)
+
+    def test_transformed_state_costate_and_tvc_match_original_equations(self):
+        for eta, alpha, wx in ((0.6, 0.7, 0.2), (0.75, 0.85, 0.1)):
+            p = PositiveAIBenchmarkParameters(eta=eta, alpha=alpha, omega_x=wx)
+            seed = balanced_growth_seed(p)
+            for t in (0.0, 25.0, 200.0):
+                B = seed.capability*np.exp(seed.capability_growth*t)
+                M = seed.research_compute*np.exp(seed.output_growth*t)
+                U = seed.inference_compute*np.exp(seed.output_growth*t)
+                q = seed.shadow_value*np.exp(seed.shadow_value_growth*t)
+                S = B**(1-eta)
+                costate = q*B**eta/(1-eta)
+                lhs = [
+                    (1-eta)*seed.capability_growth*S,
+                    costate*(1-eta)*p.chi*eta*M**(eta-1),
+                    seed.shadow_value_growth+eta*seed.capability_growth,
+                    costate*S,
+                ]
+                rhs = [
+                    (1-eta)*p.chi*M**eta,
+                    1.0,
+                    seed.net_interest_rate-U/(q*B),
+                    q*B/(1-eta),
+                ]
+                np.testing.assert_allclose(lhs, rhs, rtol=5e-12, atol=0)
+            subspace = stable_subspace(p, seed)
+            self.assertEqual(np.count_nonzero(subspace.eigenvalues.real < 0), 2)
+            self.assertGreater(abs(subspace.state_projection_determinant), 1e-3)
+
     def test_expanded_notation_preserves_reference_levels_and_profit(self):
         for wx in (0.05, 0.2, 0.4, 0.7):
             p = PositiveAIBenchmarkParameters(omega_x=wx, chi=1.4378)
@@ -73,7 +121,11 @@ class UncappedUnitAppendix(unittest.TestCase):
             PositiveAIBenchmarkParameters(omega_x=w, chi=chi)
             for w in (0.05, 0.20, 0.40, 0.70)
             for chi in (0.01, 1.4378)
-        ] + [PositiveAIBenchmarkParameters(alpha=0.60, eta=0.50, omega_x=0.20)]
+        ] + [
+            PositiveAIBenchmarkParameters(alpha=0.60, eta=0.50, omega_x=0.20),
+            PositiveAIBenchmarkParameters(alpha=0.70, eta=0.60, omega_x=0.20),
+            PositiveAIBenchmarkParameters(alpha=0.85, eta=0.75, omega_x=0.10),
+        ]
         for p in configurations:
             with self.subTest(parameters=p):
                 s = balanced_growth_seed(p)
@@ -233,6 +285,13 @@ class UncappedUnitAppendix(unittest.TestCase):
         self.assertIn("does not extend to the uncapped economy", appendix)
         for suffix in ("household-tvc", "developer-tvc", "developer-verification"):
             self.assertIn(r"\label{eq:rewrite-uncapped-unit-" + suffix + "}", proofs)
+        bgp = re.search(
+            r"\\begin\{proposition\}\[An uncapped balanced-growth equilibrium\].*?\\end\{proposition\}",
+            body, re.S,
+        ).group()
+        self.assertNotIn(r"\eta\leq", bgp)
+        self.assertIn(r"0<\eta<\alpha", bgp)
+        self.assertIn("eq:rewrite-uncapped-unit-transformed-state", proofs)
 
 
 if __name__ == "__main__":

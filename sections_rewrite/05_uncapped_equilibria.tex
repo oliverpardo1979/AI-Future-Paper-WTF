@@ -59,8 +59,7 @@ Complementarity suffices to bound long-run growth, despite no bound on AI effici
 \begin{proposition}[Long-run outcomes under complementarity without an AI efficiency upper bound]
 \label{cond:rewrite-uncapped-complements-limits}
 Suppose $0<\sigma<1$, $\overline B=\infty$, and an equilibrium satisfies
-$B\to\infty$. If the aggregate consumption growth rate $g_C=\dot C/C$
-has a finite limit, then
+$B\to\infty$. Then
 \begin{align}
  \frac KY&\to\frac{\alpha}{\rho+\gamma+\delta}>0,\qquad
  \frac CY\to1-\frac{\alpha(\delta+n+\gamma)}{\rho+\gamma+\delta}>0,
@@ -82,12 +81,14 @@ Proposition~\ref*{cond:rewrite-uncapped-complements-limits}}.
 \end{proof}
 
 The capital and consumption ratios are conclusions, not assumptions.
-The proof uses both agents' transversality conditions to rule out consumption
-that permanently grows more slowly than effective labor, and shows that
-inference and research expenditure vanish relative to output.
-It also derives convergence of $K/(AL)$ and $C/(AL)$ to positive constants.
-The proposition remains conditional on equilibrium existence, $B\to\infty$,
-and a finite limit of consumption growth; it does not assume a BGP.
+The proof first uses optimality and transversality to bound consumption and
+future research expenditure. It then shows that capital and consumption per
+unit of effective labor stay away from zero, while inference and research
+expenditure vanish relative to output. The remaining dynamics approach a
+Ramsey system, which yields convergence of $K/(AL)$ and $C/(AL)$ to positive
+constants. Convergence of consumption growth is therefore a conclusion,
+not an assumption. The proposition remains conditional on equilibrium
+existence and $B\to\infty$; it does not assume a BGP.
 
 %The limiting income shares follow from the static monopoly condition, equation~\eqref{eq:rewrite-monopoly-foc}. At positive limiting capital per unit of effective labor, $1/B\to0$ implies $e_X\to1$. Substituting into equation~\eqref{eq:rewrite-inverse-demand-elasticity} gives \eqref{eq:rewrite-uncapped-complements-sx}; equations~\eqref{eq:rewrite-wage} and~\eqref{eq:rewrite-ai-price} then give the income shares. The industry retains positive revenue even though its inference cost vanishes relative to output.
 
@@ -120,7 +121,7 @@ establishes that they belong to an equilibrium.
 \label{prop:rewrite-uncapped-unit-bgp}
 Suppose $\sigma=1$, $\overline B=\infty$, and
 \begin{equation}
- 0<\eta<\alpha,\qquad \eta\leq\tfrac12,\qquad
+ 0<\eta<\alpha,\qquad
  (1-\alpha)\omega_X\leq\tfrac12,\qquad \eta+\omega_X<1.
  \label{eq:rewrite-uncapped-unit-sufficient}
 \end{equation}
@@ -149,9 +150,10 @@ establish existence for arbitrary $K_0,B_0$. Appendix~\ref{app:rewrite-uncapped-
 derives all allocation ratios and states sufficient conditions for
 equilibrium trajectories from nearby stocks that need not lie on the BGP.
 The condition $\eta+\omega_X<1$ is necessary for this positive finite-rate
-BGP. The bounds $\eta\leq1/2$ and $(1-\alpha)\omega_X\leq1/2$ are sufficient for the
-global optimality proof, not necessary conditions for equilibrium existence.
-The appendix explains the role of each restriction.
+BGP. The remaining restrictions are sufficient for the global optimality
+proof, not asserted to be necessary for equilibrium existence. The proof
+also covers $\eta>1/2$: a change of state variable used only in the appendix
+permits a concavity argument without changing the research technology.
 
 With any finite upper bound, the characterized unit-elastic equilibria have
 $g_{Y/N},g_w\to\gamma$. Without an upper bound, continued AI improvement can
