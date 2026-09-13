@@ -1,0 +1,379 @@
+{
+  "date": "2026-09-13",
+  "manuscript_commit": "94fbc05",
+  "corrections_commit": "9295ada",
+  "scope": "sections_rewrite/02_literature.tex",
+  "reading_scope": "Auditoría de atribuciones: se leyeron los pasajes enumerados de los textos completos disponibles, no todos los apéndices de cada artículo. Descargar no equivale a verificar. Los campos pages identifican páginas del PDF, salvo aclaración.",
+  "sources": [
+    {
+      "key": "romer1990",
+      "pages": "2–5 (S71–S74)",
+      "version": "Artículo publicado, JPE 1990",
+      "verdict": "Respaldada",
+      "claim": "La inversión en investigación produce conocimiento no rival.",
+      "note": "El modelo vincula decisiones de investigación con incentivos de mercado y conocimiento parcialmente excluible. Es un antecedente de B no rival, no de nuestro monopolista integrado ni de sus resultados distributivos.",
+      "confidence": "High"
+    },
+    {
+      "key": "aghionhowitt1992",
+      "pages": "2–5",
+      "version": "NBER 3223, enero de 1990; antecedente del artículo de 1992",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "El cambio tecnológico responde a inversión privada en investigación.",
+      "note": "Las rentas monopólicas esperadas financian innovación; la destrucción creativa afecta esos incentivos. No se cotejó línea por línea con la versión final de Econometrica.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "jones1995",
+      "pages": "2–4 (759–761), lectura visual",
+      "version": "Artículo publicado, JPE 1995",
+      "verdict": "Respaldada",
+      "claim": "La investigación genera conocimiento endógenamente.",
+      "note": "El artículo conserva investigación con incentivos privados, aunque elimina efectos de escala y hace depender el crecimiento de largo plazo de parámetros exógenos. Citarlo no obliga a renombrar nuestro modelo. El PDF es una imagen escaneada: se leyeron las páginas renderizadas.",
+      "confidence": "High"
+    },
+    {
+      "key": "trammellkorinek2023",
+      "pages": "2–5",
+      "version": "NBER 31815, revisión de abril de 2026",
+      "verdict": "Respaldada",
+      "claim": "Distingue automatización de producción y automatización de investigación.",
+      "note": "La distinción organiza las secciones 2–4. El artículo también advierte que los efectos sobre salarios dependen de otros supuestos; no es un teorema universal de salarios crecientes.",
+      "confidence": "High"
+    },
+    {
+      "key": "mullainathanrambachan2025",
+      "pages": "No verificadas en texto completo",
+      "version": "Capítulo identificado en NBER y en la página del autor en MIT",
+      "verdict": "Pendiente: acceso",
+      "claim": "La IA reorganiza la generación de ideas y selección de teorías.",
+      "note": "La descarga pública del capítulo devuelve 403. La identificación bibliográfica y los extractos indexados no sustituyen la lectura del texto completo. No certifico todavía esta atribución.",
+      "confidence": "Low"
+    },
+    {
+      "key": "lu2021ai",
+      "pages": "No verificadas en texto completo",
+      "version": "Journal of Macroeconomics 69, 103342 (2021), registro editorial",
+      "verdict": "Pendiente: acceso",
+      "claim": "La IA es un insumo no rival que contribuye a su propia acumulación.",
+      "note": "El resumen editorial concuerda con esta descripción general, pero no pude inspeccionar las ecuaciones ni la asignación de recursos del artículo completo. No usarlo todavía como evidencia precisa de una decisión intertemporal privada equivalente a la nuestra.",
+      "confidence": "Low"
+    },
+    {
+      "key": "gersbachetal2025",
+      "pages": "No verificadas en texto completo",
+      "version": "Economic Modelling 153, 107221 (2025); existe antecedente CEPR 17221 (2022)",
+      "verdict": "Pendiente: acceso",
+      "claim": "Capital autoaprendiz que mejora por uso y asignación de trabajo cualificado a investigación.",
+      "note": "El repositorio ETH identifica el PDF publicado pero la descarga falla; CEPR tampoco permitió recuperar el texto. No certifico la parte específica sobre asignación de trabajo a partir del resumen.",
+      "confidence": "Low"
+    },
+    {
+      "key": "davidsonetal2026",
+      "pages": "2–7; 22; 39; 41–43",
+      "version": "PDF de los autores, mayo de 2026",
+      "verdict": "Respaldada",
+      "claim": "Dos circuitos de retroalimentación; ahorro y participaciones de recursos fijos en la aplicación; complementariedades generan bottlenecks.",
+      "note": "La p. 22 fija tasas de ahorro; la p. 39 fija participaciones de investigación y remite a GATE para endogeneizarlas. Las pp. 41–43 explican los cuellos de botella y condiciones de automatización que los superan. La comparación debe seguir referida a su aplicación, no negar toda endogeneidad tecnológica en el artículo.",
+      "confidence": "High"
+    },
+    {
+      "key": "erdiletal2025gate",
+      "pages": "4–5; 8; 35–37; 65–67",
+      "version": "GATE, PDF de arXiv, 85 páginas",
+      "verdict": "Respaldada",
+      "claim": "Un planificador optimiza inversión y asignación de cómputo entre entrenamiento e inferencia.",
+      "note": "El apéndice C enumera las decisiones. El módulo de externalidades introduce un planificador que infravalora retornos mediante cuñas; no es la solución del monopolista privado de nuestro modelo. No afirmar que GATE carece de inversión endógena.",
+      "confidence": "High"
+    },
+    {
+      "key": "korineksuh2024",
+      "pages": "3–6",
+      "version": "NBER 32255",
+      "verdict": "Respaldada; precisar alcance",
+      "claim": "Frontera de automatización exógena y transición con acumulación de capital.",
+      "note": "Es correcto para el modelo base. La p. 6 también anuncia una extensión con innovación y automatización del progreso tecnológico. Conviene escribir «In their baseline model» para no describir todo el artículo como tecnología exógena.",
+      "confidence": "High"
+    },
+    {
+      "key": "korineketal2026scenarios",
+      "pages": "4; 17; 35–36",
+      "version": "Informe técnico Anthropic, 57 páginas, descargado desde su enlace oficial",
+      "verdict": "Respaldada",
+      "claim": "Escenarios hasta 2030; RSI incorporado en la productividad asumida; salarios medios pueden subir mientras caen salarios cognitivos.",
+      "note": "La p. 17 declara que el efecto de RSI está incorporado en la trayectoria asumida. Las pp. 35–36 distinguen salarios, empleo y comparación con el contrafactual. Son escenarios condicionados, no pronósticos demostrados; el promedio salarial no es el ingreso medio incluyendo desempleados.",
+      "confidence": "High"
+    },
+    {
+      "key": "aghionjonesjones2019",
+      "pages": "3–5",
+      "version": "NBER 23928 (2017), antecedente del capítulo de 2019",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "La lógica de Baumol limita la expansión agregada cuando quedan tareas esenciales difíciles de automatizar.",
+      "note": "El mecanismo se expone explícitamente en la introducción y organiza los modelos de bienes e ideas. No pude comparar esta copia de trabajo con toda la versión final del capítulo.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "jones2025rd",
+      "pages": "1; 3–5",
+      "version": "NBER 34312, octubre de 2025",
+      "verdict": "Respaldada",
+      "claim": "La cobertura de tareas, productividad de la IA y complementariedades determinan su aporte a investigación.",
+      "note": "El título correcto es Artificial Intelligence in Research and Development. El artículo asigna un presupuesto dado de investigación; no elige mediante nuestro equilibrio general cuánto gastar en total.",
+      "confidence": "High"
+    },
+    {
+      "key": "pitchford1960",
+      "pages": "No verificadas en texto completo",
+      "version": "Economic Record 36(76), 491–504; reimpresión identificada en Cambridge",
+      "verdict": "Pendiente: acceso",
+      "claim": "Sustituibilidad y posibilidad de crecimiento sostenido con factores acumulables.",
+      "note": "La atribución tiene respaldo indirecto explícito en Duffy y Papageorgiou, pero eso no cumple la exigencia de leer el original. Las descargas de la muestra y extracto de Cambridge no funcionaron. No certifico el original.",
+      "confidence": "Low"
+    },
+    {
+      "key": "jonesmanuelli1990",
+      "pages": "3–7",
+      "version": "NBER 3241, antecedente del artículo de JPE 1990",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "El crecimiento puede sostenerse con tecnología convexa y rendimientos marginales que no desaparecen.",
+      "note": "Es un resultado más general que una CES con elasticidad alta. Conviene distinguir esta tradición de crecimiento convexo/AK del resultado específico sobre elasticidad de Pitchford.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "rebelo1991",
+      "pages": "2–4",
+      "version": "NBER 3325, abril de 1990; antecedente del artículo de JPE 1991",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "Un núcleo de factores acumulables permite crecimiento con rendimientos constantes.",
+      "note": "El artículo parte de un modelo lineal en capital y lo generaliza. No es necesario atribuirle una condición CES idéntica a la nuestra. Falta cotejo con la edición final de JPE.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "duffypapageorgiou2000",
+      "pages": "2–9; especialmente 9, sección 2.2 y nota 7",
+      "version": "Borrador final de los autores, marzo de 2000",
+      "verdict": "Respaldada",
+      "claim": "Una elasticidad alta no basta: la productividad del factor acumulable debe superar un umbral.",
+      "note": "La condición también depende de ahorro, población y depreciación. La nota 7 ya observa que el destino de crecimiento sostenido y participación laboral nula puede no ser visible aún en los datos. La demora en detectar el régimen no debe presentarse como una intuición enteramente nueva.",
+      "confidence": "High"
+    },
+    {
+      "key": "nordhaus2021",
+      "pages": "3–4; 8–13",
+      "version": "NBER 21547, septiembre de 2015; antecedente del artículo de 2021",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "La sustitución entre información e insumos convencionales es central para una singularidad económica.",
+      "note": "Las pp. 11–13 separan mecanismos de demanda y oferta y explican por qué el avance del cómputo no basta. La cita actual no atribuye a Nordhaus una prueba de inexistencia de nuestro equilibrio. Falta cotejo de la versión publicada.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "jonestonetti2026",
+      "pages": "1–3; 33–34; 37–39",
+      "version": "Versión 0.5, mayo de 2026",
+      "verdict": "Respaldada; conexión adicional útil",
+      "claim": "Los eslabones débiles demoran la aceleración pese a la automatización.",
+      "note": "También endogeneizan ideas y automatización. La tabla 9 fija las proporciones de producto destinadas a investigación e inversión. Es un antecedente especialmente útil para distinguir tecnología endógena de gasto privado óptimo; no debe quedar descrito como un modelo sin investigación endógena.",
+      "confidence": "High"
+    },
+    {
+      "key": "demirermusolffyang2026",
+      "pages": "2–6, figura 1",
+      "version": "NBER 35275, revisión de septiembre de 2026",
+      "verdict": "Corregir precisión",
+      "claim": "Las ganancias de codificación se atenúan al pasar a proyectos y lanzamientos.",
+      "note": "El indicador de proyectos es repositorios en los que se trabaja, no necesariamente proyectos completados. Sustituir «completed software projects» por «repositories touched» o centrarse en «software releases». La elasticidad estimada es local a etapas de producción de software, no nuestra elasticidad macroeconómica IA–trabajo.",
+      "confidence": "High"
+    },
+    {
+      "key": "restrepo2025agi",
+      "pages": "3–5",
+      "version": "NBER 34423",
+      "verdict": "Respaldada",
+      "claim": "Distingue trabajo indispensable para crecer de trabajo suplementario; con AGI la participación laboral puede desaparecer.",
+      "note": "Su premisa permite automatizar todo trabajo y acota los coeficientes de cómputo necesarios. Nuestro caso de servicios sustitutos no es idéntico a esa premisa. La cita conserva esa diferencia.",
+      "confidence": "High"
+    },
+    {
+      "key": "gans2025aiknowledge",
+      "pages": "3–5",
+      "version": "NBER 33907, Growth in AI Knowledge",
+      "verdict": "Respaldada",
+      "claim": "Un umbral de capacidad cambia la dirección de la investigación entre densificación y exploración.",
+      "note": "El umbral se refiere a cobertura/precisión e incentivos para investigar en el espacio de conocimiento, no a reemplazar trabajo en producción final. El texto actual distingue correctamente ambos umbrales.",
+      "confidence": "High"
+    },
+    {
+      "key": "acemoglurestrepo2019",
+      "pages": "1–3 (3–5 de JEP)",
+      "version": "Artículo publicado, JEP 33(2), 2019",
+      "verdict": "Corregir conexión con nuestro modelo",
+      "claim": "Distingue desplazamiento, productividad y reincorporación del trabajo mediante nuevas tareas.",
+      "note": "La atribución al artículo es correcta. Lo impreciso es decir que nuestra CES contiene su displacement effect: ellos separan cambios del contenido de tareas y sustitución dentro de tareas existentes. Nuestro modelo no mueve una frontera de tareas ni crea tareas humanas.",
+      "confidence": "High"
+    },
+    {
+      "key": "karabarbounisneiman2014",
+      "pages": "1–3",
+      "version": "Borrador de octubre de 2013 de los autores; artículo QJE 2014",
+      "verdict": "Precisar analogía",
+      "claim": "La sustitución hacia un factor más barato puede reducir la participación laboral.",
+      "note": "Su análisis usa capital y trabajo y una caída del precio relativo de inversión, no IA y trabajo. Sustituir «This mechanism is central» por una conexión explícita con la misma lógica CES aplicada a otros insumos. No importar su elasticidad como calibración de sigma.",
+      "confidence": "High"
+    },
+    {
+      "key": "autorkausik2026",
+      "pages": "1–4, teorema 1 y aplicación CES",
+      "version": "arXiv 2601.06343v1, enero de 2026",
+      "verdict": "Respaldada",
+      "claim": "La automatización puede elevar salarios y reducir simultáneamente la participación laboral.",
+      "note": "El verbo «can» es apropiado. No afirmar que nuestro resultado es un caso particular del teorema 1: su familia de tecnologías y su ejercicio sobre la participación laboral difieren de nuestro equilibrio con tres insumos y desarrollador.",
+      "confidence": "High"
+    },
+    {
+      "key": "raymookherjee2022",
+      "pages": "2–4",
+      "version": "NBER 26658, enero de 2020; texto fechado diciembre de 2019",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "La acumulación de capital puede llevar la participación laboral a cero mientras los salarios crecen indefinidamente.",
+      "note": "Es explícitamente una posibilidad, no una predicción para cualquier parametrización. El mecanismo distingue capital reproducible y límites de capital humano. Falta cotejo de la versión publicada de 2022.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "farboodikohxia2026",
+      "pages": "3–6; 25–26; 39–40; pasaje de prueba en 72",
+      "version": "NBER 35320, Data-Driven Automation",
+      "verdict": "Respaldada",
+      "claim": "Los datos generados por producción mejoran y amplían la automatización; pueden coexistir crecimiento explosivo y salarios estancados.",
+      "note": "Las proposiciones 3 y 7 respaldan la descripción. La p. 26 señala que el estancamiento también aplica con acumulación de capital. No equiparar sus datos acumulados como subproducto con nuestro gasto M elegido por el desarrollador, ni importar su definición de trayectoria óptima hacia nuestro equilibrio.",
+      "confidence": "High"
+    },
+    {
+      "key": "korineklockwood2026",
+      "pages": "3–5, tabla 1",
+      "version": "NBER 34873, Public Finance in the Age of AI: A Primer",
+      "verdict": "Precisar conexión",
+      "claim": "La transformación por IA puede erosionar bases tributarias laborales y de consumo humano.",
+      "note": "La fuente distingue dos etapas. La desaparición de la base laboral como proporción del producto conecta directamente con nuestro modelo. La desaparición adicional del consumo humano requiere otro mecanismo; no se deriva automáticamente de participación laboral cero.",
+      "confidence": "High"
+    },
+    {
+      "key": "chowhalperinmazlish2026",
+      "pages": "1–3",
+      "version": "Borrador de junio de 2026; primera versión enero de 2023",
+      "verdict": "Respaldada",
+      "claim": "La expectativa de mayor crecimiento del consumo eleva tasas reales de largo plazo mediante suavización intertemporal.",
+      "note": "El argumento incluye además riesgo existencial y se condiciona a un modelo de precios de activos. No identifica cualquier tasa observada con nuestro retorno neto al capital.",
+      "confidence": "High"
+    },
+    {
+      "key": "rachel2025",
+      "pages": "1–3; 7; 43; 46; 48",
+      "version": "BPEA conference draft, septiembre de 2025",
+      "verdict": "Respaldada",
+      "claim": "Un escenario de IA puede elevar la tasa natural mediante ahorro e inversión.",
+      "note": "El escenario modifica crecimiento de productividad, markups y participación laboral. Es un ejercicio condicionado, no una estimación causal aislada del efecto de RSI.",
+      "confidence": "High"
+    },
+    {
+      "key": "melinavilla2025",
+      "pages": "6–7; 22; 31–34 (PDF consultado por web)",
+      "version": "IMF WP/25/224, octubre de 2025",
+      "verdict": "Texto consultado; descarga pendiente; precisar contraste",
+      "claim": "La inversión en IA/ICT puede elevar la tasa natural, con signo dependiente del régimen.",
+      "note": "La fuente usa una tasa natural de corto plazo de un DSGE y encuentra respuestas más fuertes con complementariedad; con sustituibilidad pueden ser pequeñas o negativas. No avala directamente nuestra estática de largo plazo. El lector web permitió consultar el PDF, pero no se obtuvo copia local.",
+      "confidence": "High",
+      "web_url": "https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025224-source-pdf.pdf"
+    },
+    {
+      "key": "wachterwachter2026",
+      "pages": "2–4",
+      "version": "NBER 35290, junio de 2026",
+      "verdict": "Respaldada",
+      "claim": "Datos de inversión disciplinan escenarios de expansión de IA y una tasa libre de riesgo mayor.",
+      "note": "El resultado depende de calibración, preferencias y riesgo de booms. El título y los dos autores corresponden al PDF. No es una identidad entre gasto observado y crecimiento futuro seguro.",
+      "confidence": "High"
+    },
+    {
+      "key": "korinekmckelvey2026",
+      "pages": "4–6",
+      "version": "Bank of Canada Staff Working Paper 2026-20",
+      "verdict": "Respaldada",
+      "claim": "Distingue cómputo físico y producción de IA ajustada por calidad en inferencia y entrenamiento.",
+      "note": "La metodología usa precios API a rendimiento constante y progreso algorítmico. Nuestro B común a ambos usos es una simplificación del modelo, no una variable que esos autores hayan medido exactamente.",
+      "confidence": "High"
+    },
+    {
+      "key": "coylepoquiz2025",
+      "pages": "3–5",
+      "version": "NBER 34330",
+      "verdict": "Respaldada",
+      "claim": "Medir insumos, producción, calidad y procesos transformados por IA plantea dificultades.",
+      "note": "El artículo explica por qué las clasificaciones y matrices insumo-producto pueden mostrar tarde la transformación. No suministra una serie observada de nuestra eficiencia B ni una estimación de omega_X.",
+      "confidence": "High"
+    },
+    {
+      "key": "acemoglurestrepo2018",
+      "pages": "24–28; 37",
+      "version": "Artículo publicado, AER 108(6), 2018",
+      "verdict": "Respaldada",
+      "claim": "Una oferta fija de científicos se asigna entre automatización y nuevas tareas según beneficios esperados.",
+      "note": "La nota 25 explica que esta elección de insumo permite estudiar la dirección, no el volumen total de cambio tecnológico. Las ecuaciones 22 y 28 y los valores de innovación respaldan nuestra distinción.",
+      "confidence": "High"
+    },
+    {
+      "key": "hemousolsen2022",
+      "pages": "1–3 (179–181)",
+      "version": "Artículo publicado, AEJ: Macroeconomics 14(1), 2022",
+      "verdict": "Respaldada",
+      "claim": "Innovación horizontal y automatización responden a incentivos, reforzados por salarios de baja cualificación mayores.",
+      "note": "Es importante conservar «low-skill wages» al describir su canal concreto. No es un modelo de investigación autónoma en IA. El antecedente de innovación privada y distribución sí es directo.",
+      "confidence": "High"
+    },
+    {
+      "key": "korinekvipra2025",
+      "pages": "3–5",
+      "version": "NBER 33139, texto de noviembre de 2024; antecedente de Economic Policy 2025",
+      "verdict": "Respaldada en la versión consultada",
+      "claim": "Fuerzas de escala y estructura de mercado pueden concentrar la provisión de IA.",
+      "note": "También describe competencia intensa y cambios de liderazgo. Justifica estudiar concentración como posibilidad, no afirmar que la no rivalidad obliga a un monopolio único. Falta cotejo con la edición final.",
+      "confidence": "Medium"
+    },
+    {
+      "key": "gans2024",
+      "pages": "3–5",
+      "version": "NBER 32270, Market Power in Artificial Intelligence",
+      "verdict": "Respaldada",
+      "claim": "Revisa problemas de poder de mercado en IA.",
+      "note": "El foco es datos de entrenamiento, datos de entrada y predicciones. No atribuirle una prueba de que monopolizar toda la IA sea condición necesaria para innovar.",
+      "confidence": "High"
+    },
+    {
+      "key": "atheyscottmorton2025",
+      "pages": "3–4",
+      "version": "NBER 34444, Artificial Intelligence, Competition, and Welfare",
+      "verdict": "Respaldada",
+      "claim": "El poder de mercado del proveedor de IA afecta precios, uso, remuneraciones y bienestar.",
+      "note": "Su IA importada y rentas que no se recirculan son relevantes para bienestar. Nuestro hogar posee el desarrollador; no trasladar automáticamente las pérdidas nacionales de su economía importadora a la nuestra.",
+      "confidence": "High"
+    },
+    {
+      "key": "liuwan2026",
+      "pages": "1–5, 8–10, 13–20, 28–31, 35–42 y 44 (páginas del PDF)",
+      "version": "SSRN 6776339; PDF de 107 páginas fechado el 16 de mayo de 2026 en la portada",
+      "verdict": "Respaldada",
+      "claim": "Compara asignaciones descentralizada, planificada y de un supermonopolista con IA general y aplicaciones especializadas; vincula estructura de mercado e incentivos de innovación.",
+      "note": "Las ecuaciones (14) y (20), PDF pp. 17 y 19, maximizan beneficios descontados eligiendo entrenamiento. El supermonopolista internaliza la tasa de interés, PDF p. 37 y problema (54), pp. 39–40; nuestro desarrollador toma esa trayectoria como dada. Las proposiciones 5–7 comparan BGP bajo sus respectivas condiciones. La economía descentralizada ya incluye poder de mercado. La conexión tecnológica usa IA general, aplicaciones y datos de producción, no nuestra CES ni nuestros resultados de salarios y participaciones. Lectura dirigida, no validación de todas sus pruebas.",
+      "confidence": "High"
+    },
+    {
+      "key": "demireretal2025",
+      "pages": "2–4",
+      "version": "NBER 34608, diciembre de 2025",
+      "verdict": "Respaldada",
+      "claim": "Precios, entrada y diferenciación muestran un mercado distinto de un monopolio literal.",
+      "note": "La evidencia procede de APIs de OpenRouter y Azure, no de todo uso mundial de IA. La cautela frente al monopolio es nuestra inferencia de esa evidencia, no un teorema del artículo.",
+      "confidence": "High"
+    }
+  ]
+}
