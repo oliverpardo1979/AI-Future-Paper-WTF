@@ -264,7 +264,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         body = source("sections_rewrite/05_uncapped_equilibria.tex")
         subsections = re.findall(r"\\subsection\{([^}]+)\}", body)
         self.assertEqual(subsections, [
-            "Complementarity: a production bottleneck without an upper bound",
+            "Complementarity",
             "Unit elasticity: a balanced-growth equilibrium",
             "Substitution: unbounded returns and equilibrium existence",
         ])
@@ -304,7 +304,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
             r"\section{Equilibrium with a finite upper bound on AI efficiency}", text
         )
         self.assertIn(
-            r"\section{Without an upper bound on AI efficiency}", text
+            r"\section{Equilibrium without an upper bound on AI efficiency}", text
         )
 
 

@@ -106,17 +106,31 @@ class UncappedComplements(unittest.TestCase):
             "04_equilibrium_regimes", "05_uncapped_equilibria", "05_quantitative_equilibria")]
         self.assertEqual(locations, sorted(locations))
         self.assertIn("does not by itself", body)
-        self.assertIn("without proving its", body)
-        self.assertIn("equilibrium-existence theorem", body)
-        self.assertIn(r"\begin{conditionalresult}", body)
-        self.assertIn("Suppose", body)
-        self.assertIn("have finite limits", body)
-        self.assertIn("in addition", body)
-        self.assertIn("does not establish existence from any initial state", body)
+        propositions = re.findall(
+            r"\\begin\{proposition\}.*?\\end\{proposition\}", body, re.S
+        )
+        characterization = next(
+            block for block in propositions
+            if r"\label{cond:rewrite-uncapped-complements-limits}" in block
+        )
+        self.assertNotIn(r"\begin{conditionalresult}", body)
+        self.assertNotIn(r"\newtheorem{conditionalresult}", main)
+        for condition in (
+            "and an equilibrium satisfies", r"$B\to\infty$",
+            r"$K/(AL)$ and $C/(AL)$ converge to positive finite",
+            "have finite limits", "If, in addition",
+        ):
+            self.assertIn(condition, characterization)
+        self.assertIn(
+            "satisfying the stated convergence conditions; it does not establish its existence.",
+            body,
+        )
+        self.assertIn("neither", proofs)
+        self.assertIn("construct a trajectory satisfying them nor verify the developer's global", proofs)
         self.assertNotRegex(proofs, r"\\(?:sub)*section\{")
         for kind, label in (
             ("Proposition", "prop:rewrite-uncapped-complements-bounds"),
-            ("Conditional result", "cond:rewrite-uncapped-complements-limits"),
+            ("Proposition", "cond:rewrite-uncapped-complements-limits"),
         ):
             self.assertIn(r"\label{"+label+"}", body)
             self.assertIn(r"\begin{proof}[Proof of "+kind+r"~\ref{"+label+"}]", proofs)

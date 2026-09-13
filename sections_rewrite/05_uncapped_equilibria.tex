@@ -56,7 +56,7 @@ Complementarity suffices to bound long-run growth, despite no bound on AI effici
 %The monopoly matters for the limiting income shares. If its marginal cost $1/B$ tends to zero, the developer does not supply unlimited AI services. It approaches the quantity that maximizes revenue. The following conditional result states the implications without assuming that such an equilibrium has been constructed.
 
 \Needspace{7\baselineskip}
-\begin{conditionalresult}[An unbounded-efficiency regime under complementarity]
+\begin{proposition}[Long-run outcomes under complementarity without an AI efficiency upper bound]
 \label{cond:rewrite-uncapped-complements-limits}
 Suppose $0<\sigma<1$, $\overline B=\infty$, and an equilibrium satisfies
 $B\to\infty$, while $K/(AL)$ and $C/(AL)$ converge to positive finite
@@ -80,12 +80,15 @@ constants, then
  \frac{U}{Y}&\to0,\qquad \frac{M}{Y}\to0.
  \label{eq:rewrite-uncapped-complements-compute-shares}
 \end{align}
-\end{conditionalresult}
+\end{proposition}
 \begin{proof}
 See Appendix~\ref{app:rewrite-proofs},
 \hyperref[proof:rewrite-uncapped-complements-limits]{Proof of
-Conditional result~\ref*{cond:rewrite-uncapped-complements-limits}}.
+Proposition~\ref*{cond:rewrite-uncapped-complements-limits}}.
 \end{proof}
+
+This proposition characterizes the long-run outcomes of an equilibrium
+satisfying the stated convergence conditions; it does not establish its existence.
 
 The first set of limits follows from the static monopoly condition,
 equation~\eqref{eq:rewrite-monopoly-foc}. At positive limiting capital per
@@ -98,10 +101,7 @@ vanishes relative to output. Under the additional research limits,
 AI efficiency keeps improving while research also uses a shrinking
 fraction of output.
 
-This characterization does not establish existence from any initial state,
-nor does it show that all equilibria have $B\to\infty$ or the stated limits.
-A trajectory must still be constructed and both agents' global optimality
-verified. Appendix~\ref{app:rewrite-proofs} checks the research identities
+Appendix~\ref{app:rewrite-proofs} checks the research identities
 and transversality implications of the conditional regime.
 
 \subsection{Unit elasticity: a balanced-growth equilibrium}
