@@ -34,6 +34,10 @@ Call $\Pi$ the developer's "net profit", not "net distributions". References
 to verification results must identify the lemma and appendix with automatic
 LaTeX references, not refer vaguely to "the verification lemma in the appendix".
 
+Keep the remark "The economy without AI" to one sentence identifying the
+Ramsey--Cass--Koopmans case; do not restore its redundant equation block or
+the accompanying explanation of the no-AI specialization.
+
 ## Model scope
 
 - The benchmark has autonomous AI research: \(\omega_H=0\).
