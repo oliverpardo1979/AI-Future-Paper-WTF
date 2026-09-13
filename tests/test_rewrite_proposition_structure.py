@@ -75,9 +75,14 @@ class UnifiedPropositionStructure(unittest.TestCase):
             "eq:rewrite-output-capital-limit",
         ):
             self.assertEqual(sum(r"\label{" + label + "}" in eq for eq in numbered), 1)
+        normalized = " ".join(body.split())
         self.assertIn(
-            r"Substituting equations~\eqref{eq:rewrite-ai-output-limit} and~\eqref{eq:rewrite-composite-ai-limit} into equation~\eqref{eq:rewrite-output-capital-limit}, and the resulting ratio into $r=\alpha Y/K-\delta$",
-            body,
+            r"Using $Z/Y=(Z/X)(X/Y)$ and the limits in equations~\eqref{eq:rewrite-ai-output-limit} and \eqref{eq:rewrite-composite-ai-limit}, I obtain",
+            normalized,
+        )
+        self.assertIn(
+            r"Substituting the limiting output--capital ratio in equation~\eqref{eq:rewrite-output-capital-limit} into the capital-return condition $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, gives",
+            normalized,
         )
 
     def test_table_stays_in_main_text_and_coordinates_move_to_proof(self):
