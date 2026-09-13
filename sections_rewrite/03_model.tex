@@ -192,8 +192,7 @@ Given initial AI efficiency \(B_0>0\) and an upper bound
  \qquad \chi>0,\quad0<\eta<1.
  \label{eq:rewrite-capability-law}
 \end{equation}
-Figure~\ref{fig:rewrite-capability-flow} summarizes the
-AI-efficiency improvement mechanism.
+Figure~\ref{fig:rewrite-capability-flow} summarizes the RSI mechanism.
 \begin{figure}[H]
  \centering
  \resizebox{0.72\textwidth}{!}{%
@@ -216,12 +215,12 @@ AI-efficiency improvement mechanism.
     (-5.9,-2.0) -- (B.south);
  \end{tikzpicture}%
  }
- \caption{Autonomous improvement in AI efficiency. AI efficiency $B$ augments
+ \caption{Recursive self-improvement in AI efficiency. AI efficiency $B$ augments
  research compute $M$ to produce $BM$, the flow of AI research services. These services and the remaining
  room for improvement $\psi(B)$ determine \(\dot B\), which increases $B$.}
  \label{fig:rewrite-capability-flow}
 \end{figure}
-The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-efficiency index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Because $BM$ enters the law of motion for AI efficiency, a higher $B$ makes each unit of research compute $M$ more productive and creates recursive improvement. This is the AI-research feedback studied by \citet{davidsonetal2026}. The term \(\psi(B)\) reduces the remaining room for improvement as AI efficiency approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
+The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-efficiency index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Equation~\eqref{eq:rewrite-capability-law} captures RSI: a higher $B$ produces more AI research services $BM$ from a given amount of research compute $M$, and these services help improve $B$ further. This is the AI-research feedback studied by \citet{davidsonetal2026}. The term \(\psi(B)\) reduces the remaining room for improvement as AI efficiency approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
 Evidence that ideas become harder to find motivates allowing research
 productivity to decline as technology advances. \citet{bloometal2020} document
@@ -395,7 +394,7 @@ Rearranging gives the return equation
  \label{eq:rewrite-capability-return}
 \end{equation}
 The first term on the right-hand side of Equation~\eqref{eq:rewrite-capability-return} is the inference-compute saving from greater AI efficiency. The
-second is the gain in research productivity. With a finite upper bound, the third
+second is the research-productivity gain from RSI. With a finite upper bound, the third
 term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on AI efficiency. Together these
 returns must equal the market return $rq$.
 
