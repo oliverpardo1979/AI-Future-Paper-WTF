@@ -2,10 +2,12 @@
 
 Research note, 2026-09-12. Starting commit: 53bdf57.
 
-This note explores a replacement for Proposition 5; it does not replace that
-proposition yet. It preserves the model, notation, calibrated parameters,
-simulation code, figures, main manuscript and public PDF. No new transition
-simulation is computed. The results below are analytical statements about
+The persistent-investment result below is now incorporated in Proposition 5,
+with its proof in the existing proofs appendix. The original proposition and
+proof are preserved in `audit/archive/` (see its README). This revision
+preserves the model, notation, calibrated parameters, simulation code and
+figures; only the relevant manuscript discussion and PDF are updated. No new
+transition simulation is computed. The results below are analytical statements about
 technology, feasibility and necessary equilibrium conditions, not newly
 constructed equilibrium trajectories.
 
@@ -99,7 +101,7 @@ uncapped research law. Classical continuously differentiable paths suffice.
 Every equilibrium is feasible, so D2 also excludes an equilibrium with those
 two persistent investment floors.
 
-Unlike current Proposition 5, this claim requires no convergence of C/Y or
+Unlike the archived Proposition 5, this claim requires no convergence of C/Y or
 M/Y, no regularity of their logarithmic derivatives, no limit of s_X, no
 assumption that B diverges, and no initial AI-efficiency threshold. Shares
 can vary or oscillate. In particular, C/Y need not stay away from zero.
@@ -332,14 +334,84 @@ exclude. For eta > alpha the independent unbounded-profit argument already
 excludes a finite-valued developer optimum, without D2. For eta <= alpha,
 general nonexistence is not established by this note.
 
-## Recommendation and verification
+## 5. Precisely what Section 4 supplies
 
-The new condition is economically clearer than Proposition 5's asymptotic
-regularity conditions. The return bound D1 is independently useful. Before
-replacing the proposition in the manuscript, distinguish the claim excluding
-persistent positive investment shares from the stronger, still unproved
-claim that no equilibrium exists at all. Preserve the original proof as an
-archived result if the replacement is adopted.
+The function R(B) in D1 is exactly Section 4's return function. Its static
+derivation can be strengthened from a limit as s_X -> 1 to the dated lower
+bound D1. This avoids exchanging a limit of capped equilibria with an
+uncapped trajectory. It is a key ingredient of Steps 2-3 above. Crossing
+the Section 4 threshold B(sigma) also implies r > rho+gamma and hence
+consumption-per-person growth > gamma through the Euler equation. It does
+not by itself imply the same instantaneous growth comparison for output.
+
+Section 4's AI-dominated construction gives, for each fixed finite Bbar,
+
+\[
+ \overline g=n+\mathcal R(\overline B)-\rho>n+\gamma,\qquad
+ M\longrightarrow
+ \left[\frac{\overline g\,\overline B^{1-\eta}}{\chi}\right]^{1/\eta}.
+\]
+
+The exact references are `eq:rewrite-substitutes-terminal-growth` and
+`eq:rewrite-ai-terminal-values` in `appendix_finite_frontier.tex`.
+Since Y grows at a positive limiting rate and M has a finite positive
+limit, M/Y -> 0. The capital-investment share instead satisfies
+
+\[
+ \frac{\dot K+\delta K}{Y}\longrightarrow
+ \frac{\alpha[n+\mathcal R(\overline B)-\rho+\delta]}
+ {\mathcal R(\overline B)+\delta}
+ =\alpha-\frac{\alpha(\rho-n)}{\mathcal R(\overline B)+\delta}.
+\]
+
+It is strictly between zero and alpha and tends to alpha as Bbar -> infinity.
+Thus the existing equilibria do supply an eventual positive capital-investment
+share for each bound, but cannot supply a positive uniform research-share floor:
+their limiting research share is zero for EVERY finite bound. This is not a
+counterexample to the uncapped theorem, since their research law includes psi.
+Nor does it prove vanishing research shares in the uncapped economy.
+
+The incentive difference can be seen without a limit interchange. For either
+research law define P=M^(1-eta)=chi eta q B^eta psi(B). Differentiation gives
+
+\[
+ \dot P=rP-\chi\eta U B^{\eta-1}\psi(B).
+\]
+
+The psi derivative in the FOC cancels its counterpart in the costate equation.
+The TVC argument used for D9 still applies since 0 < psi <= 1, and gives
+
+\[
+ M_t^{1-\eta}=\chi\eta\int_t^\infty
+ \exp\left(-\int_t^s r_v\,dv\right)
+ U_s B_s^{\eta-1}\psi(B_s)\,ds.
+\]
+
+In the uncapped economy psi is identically one; near a finite bound it
+approaches zero. This explains why copying terminal research allocations
+across the two problems is not an optimality argument. The upper-bound
+limit at a fixed date would additionally require control of endogenous
+prices, values and initial states. Section 4 only constructs local initial
+stock neighborhoods depending on Bbar; it gives no common-initial-state,
+uniform-in-Bbar compactness or value bound.
+
+The outstanding task is therefore specific: derive restrictions on investment
+shares (possibly averaged over time) from the household Euler/TVC conditions,
+the developer's PV identity, and feasibility. An inference of the form
+"r is large, therefore both uses receive positive shares" skips the allocation
+between research and physical capital. D1 is a lower bound on r and thus an
+upper bound on discount factors; a lower bound on research's PV requires
+additional control of the future inference flow. These observations locate
+the remaining step; they are not a proof that the step is impossible.
+
+## Adoption and verification
+
+The new condition replaces the original Proposition 5's asymptotic regularity
+conditions. Section 5.3 now distinguishes the claim excluding persistent
+positive investment shares from the stronger, still unproved claim that no
+equilibrium exists at all for eta <= alpha. It also includes D1, D9 and the
+Section 4 investment limits. The old asymptotic result and its exact algebra
+tests are retained as archived research material, not active manuscript text.
 
 Next: use D8-D9 together with household optimality and the resource constraint
 to investigate vanishing or intermittent investment shares. The lower-bound
@@ -358,7 +430,7 @@ exponents and integral coefficient on both sides of eta=alpha, feasibility
 of the analytical constant-share rule, and the transformed research Euler
 identity. Numerical checks supplement but do not replace the proof.
 
-Verification on 2026-09-12: all seven tests in the new module passed. The
+Initial verification on 2026-09-12: all seven original tests passed. The
 research present-value identity was additionally checked against the existing
 analytical unit-elastic equilibrium, where it reproduces the research level.
 This is a check of the identity, not an application of the explosion claim
@@ -366,3 +438,14 @@ to sigma=1. The tested derivative/return grids include alpha=0.01, 0.2, 0.33,
 0.6, 0.99 and sigma=1.0001, 1.001, 1.01, 1.5, 2, 4, 100 (as applicable).
 Exact feedback checks use eta=alpha/2, alpha, (1+alpha)/2 for alpha=0.2, 0.33,
 0.6. No numerical blow-up trajectory was used as evidence for the theorem.
+The adoption adds source checks of the new proposition, analytical checks of
+the capped investment/research limits, and the research-FOC/costate cancellation
+with and without the psi factor.
+
+Final adoption verification on 2026-09-12: all 62 tests in the eight-module
+targeted suite passed, including all 10 tests in `test_rewrite_davidson_route`.
+The suite covers the preserved companion/unit-elastic results, finite-bound
+algebra and linearizations, complementary case, positive-AI branch, archived
+asymptotic result, new comparison proof, and active references. These tests
+are algebra/source checks, not a substitute for the written existence or
+nonexistence proofs and not new equilibrium transition simulations.

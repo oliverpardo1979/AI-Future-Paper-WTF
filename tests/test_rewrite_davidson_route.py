@@ -1,4 +1,4 @@
-"""Algebra checks for audit/rewrite_davidson_route.md; no simulated paths.
+"""Algebra/source checks for Proposition 5 and its Section 4 bridge.
 
 Fraction arithmetic checks identities/signs exactly. Log-level evaluations
 avoid overflow near sigma=1; their bound is only a roundoff allowance.
@@ -109,7 +109,7 @@ class DavidsonRoute(unittest.TestCase):
         note = (ROOT/'audit/rewrite_davidson_route.md').read_text(encoding='utf-8')
         text = ' '.join(note.split())
         for phrase in (
-            'it does not replace that proposition yet',
+            'now incorporated in Proposition 5',
             'No new transition simulation is computed',
             'This divergence is derived, not assumed',
             'Dividing two lower bounds would be invalid',
@@ -119,6 +119,74 @@ class DavidsonRoute(unittest.TestCase):
             self.assertIn(phrase, text)
         self.assertIn('D1', note)
         self.assertIn('D9', note)
+
+    def test_active_proposition_does_not_assume_explosion(self):
+        import re
+        body = (ROOT/'sections_rewrite/05_uncapped_equilibria.tex').read_text(encoding='utf-8')
+        proof = (ROOT/'sections_rewrite/appendix_uncapped_substitutes_proof.tex').read_text(encoding='utf-8')
+        statement = next(block for block in re.findall(
+            r'\\begin\{proposition\}.*?\\end\{proposition\}', body, re.S)
+            if r'\label{prop:rewrite-uncapped-substitutes-explosion}' in block)
+        self.assertIn(r'\frac{\dot K_t+\delta K_t}{Y_t}\geq\iota', statement)
+        self.assertIn(r'\frac{M_t}{Y_t}\geq\mu', statement)
+        self.assertNotIn(r'B\to\infty', statement)
+        self.assertNotIn(r's_X\to1', statement)
+        self.assertNotIn('log', statement)
+        for label in ('eq:rewrite-ai-terminal-ratio', 'eq:rewrite-resource',
+                      'eq:rewrite-uncapped-unit-law'):
+            self.assertIn(r'\eqref{'+label+'}', body+proof)
+        self.assertIn(r'\dot B\geq c_BB^{1/\alpha}', proof)
+        self.assertIn(r'\emph{upper}', proof)
+        self.assertIn('derived, not assumed', proof)
+        self.assertIn('not yet a proof of general equilibrium nonexistence',
+                      ' '.join(body.split()))
+        self.assertIn(r'\label{eq:rewrite-uncapped-research-pv}', body)
+        self.assertIn(r'\eqref{eq:rewrite-developer-tvc}', body)
+
+    def test_capped_terminal_investment_limit_and_research_scale(self):
+        # Check Section 4's analytical fixed point, not transition paths.
+        # Parametrize returns above rho+gamma to avoid huge powers when
+        # sigma is close to one. The corresponding finite bound is positive.
+        alpha, n, gamma, rho, delta, chi = 0.33, 0.003, 0.01, 0.04, 0.05, 1.4378
+        for r in (rho+gamma+0.001, 0.1, 1.0, 10.0, 100.0):
+            growth = n+r-rho
+            y = (r+delta)/alpha
+            u = (1-alpha)**2*y
+            c = alpha*(1-alpha)*y+rho-n
+            # Resource condition with M/K -> 0, evaluated independently.
+            direct = 1-u/y-c/y
+            formula = alpha*(n+r-rho+delta)/(r+delta)
+            self.assertTrue(math.isclose(direct, formula, rel_tol=2e-14))
+            self.assertGreater(formula, 0)
+            self.assertLess(formula, alpha)
+            self.assertAlmostEqual(alpha-formula, alpha*(rho-n)/(r+delta))
+            for eta in (0.2, alpha, 0.6):
+                bound = 50.0
+                log_M = (math.log(growth)+(1-eta)*math.log(bound)-math.log(chi))/eta
+                # dot[(Bbar-B)K]=0 requires this closure rate to equal growth.
+                closure = math.exp(math.log(chi)+(eta-1)*math.log(bound)+eta*log_M)
+                self.assertTrue(math.isclose(closure, growth, rel_tol=2e-14))
+                # M is finite for each fixed bound, whereas Y has positive
+                # limiting growth. Thus M/Y -> 0 analytically, not by a
+                # finite-grid claim of convergence.
+                self.assertTrue(math.isfinite(log_M))
+                self.assertGreater(growth, 0)
+
+    def test_research_identity_with_and_without_a_bound(self):
+        # The psi derivative cancels exactly. This verifies why the PV
+        # formula differs by a psi factor, rather than by a new saving rule.
+        for eta in (Q(1, 5), Q(1, 3), Q(3, 5)):
+            for psi in (Q(1), Q(1, 2), Q(1, 100)):
+                # B and B^eta are exact rational powers on this grid.
+                B, B_eta = Q(2)**eta.denominator, Q(2)**eta.numerator
+                chi, q, U = Q(7, 5), Q(3), Q(2)
+                r, gB = Q(1, 10), Q(1, 25)
+                gpsi = Q(0) if psi == 1 else -gB*(1-psi)/psi
+                gq = r-U/(q*B)-eta*gB-gpsi
+                self.assertEqual(gq+eta*gB+gpsi, r-U/(q*B))
+                P = chi*eta*q*B_eta*psi
+                derivative = P*(gq+eta*gB+gpsi)
+                self.assertEqual(derivative, r*P-chi*eta*U*(B_eta/B)*psi)
 
 
 if __name__ == '__main__':

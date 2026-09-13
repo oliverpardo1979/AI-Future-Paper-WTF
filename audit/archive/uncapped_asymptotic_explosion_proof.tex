@@ -1,0 +1,137 @@
+% Archived from commit 819142e on 2026-09-12; not included in main_rewrite.tex.
+\Needspace{7\baselineskip}
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}]
+\phantomsection
+\label{proof:rewrite-uncapped-substitutes-explosion}
+All limits in this proof are taken as $t\uparrow T$. Write
+$z=Y/K$, $s=s_X$, $\theta=(1-\alpha)/\alpha$, and $h=g_B/z$.
+For any positive quantity $V$ used below, $g_V=\dot V/V$.
+In particular, $g_z$ and $g_h$ are the proportional growth rates of $z$ and $h$.
+The uncapped law and positive research imply $h>0$.
+
+\textit{Step 1. An exact relation between output per unit of capital and AI efficiency.}
+Let $e(s)=(1-s)/\sigma+\alpha s$, as in
+equation~\eqref{eq:rewrite-inverse-demand-elasticity}.
+The pricing, monopoly, and service equations~\eqref{eq:rewrite-ai-price},
+\eqref{eq:rewrite-monopoly-foc}, and~\eqref{eq:rewrite-ai-service} give
+\[
+ u(s):=\frac UY=(1-\alpha)s[1-e(s)].
+\]
+Equations~\eqref{eq:rewrite-ces} and~\eqref{eq:rewrite-sx} imply
+$Z/X=(\omega_X/s)^{\sigma/(\sigma-1)}$.
+Substituting this identity and $X=Bu(s)Y$ into
+equation~\eqref{eq:rewrite-output} gives the exact expression
+\begin{equation}
+ z=\left[
+ \omega_X^{\sigma/(\sigma-1)}B(1-\alpha)[1-e(s)]
+ s^{-1/(\sigma-1)}\right]^\theta.
+ \label{eq:rewrite-uncapped-explosion-static}
+\end{equation}
+Thus $z/B^\theta\to
+[(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}]^\theta>0$ and $z\to\infty$.
+Logarithmic differentiation of the exact identity, rather than of its
+limiting approximation, gives
+\[
+ g_z=\theta g_B+E(s)g_s,\qquad
+ E(s)=\theta\left[
+ \frac{s(1/\sigma-\alpha)}{1-e(s)}-\frac1{\sigma-1}\right].
+\]
+The coefficient $E(s)$ has a finite limit as $s\to1$ for each fixed $\sigma>1$.
+
+\textit{Step 2. Growth of output, research, and the AI elasticity.}
+The Euler and return equations~\eqref{eq:rewrite-euler}
+and~\eqref{eq:rewrite-capital-return} imply
+$g_C=\alpha z+n-\delta-\rho$.
+Equation~\eqref{eq:rewrite-uncapped-explosion-regularity} therefore yields
+\begin{equation}
+ \frac{g_Y}{z}\to\alpha,\qquad \frac{g_M}{z}\to\alpha.
+ \label{eq:rewrite-uncapped-explosion-growth-ratios}
+\end{equation}
+To control $g_s$ without imposing a further regularity condition, differentiate
+equation~\eqref{eq:rewrite-sx}:
+\[
+ g_s=(1-s)\frac{\sigma-1}{\sigma}(g_X-n-\gamma).
+\]
+Since $X=Bu(s)Y$, define
+\[
+ D(s)=\frac{\mathrm d\log u(s)}{\mathrm d\log s}
+ =1+\frac{s(1/\sigma-\alpha)}{1-e(s)},\qquad
+ F(s)=\frac{(1-s)(\sigma-1)/\sigma}
+ {1-(1-s)(\sigma-1)D(s)/\sigma}.
+\]
+For $s$ sufficiently close to one the denominator is nonzero, $F(s)\to0$,
+and
+\[
+ g_s=F(s)(g_B+g_Y-n-\gamma),\qquad
+ \frac{g_z}{z}=[\theta+E(s)F(s)]h
+       +E(s)F(s)\left(\frac{g_Y}{z}-\frac{n+\gamma}{z}\right).
+\]
+
+\textit{Step 3. Deriving the normalized research-growth limit.}
+The research law~\eqref{eq:rewrite-uncapped-unit-law} implies
+$g_B=\chi B^{\eta-1}M^\eta$, so that
+$\mathrm d\log g_B/\mathrm dt=(\eta-1)g_B+\eta g_M$.
+Consequently,
+\begin{align*}
+ \frac{g_h}{z}&=a(t)-b(t)h,\\
+ a(t)&=\eta\frac{g_M}{z}
+ -E(s)F(s)\left(\frac{g_Y}{z}-\frac{n+\gamma}{z}\right)\to\eta\alpha,\\
+ b(t)&=1+\theta-\eta+E(s)F(s)\to1+\theta-\eta>0.
+\end{align*}
+Rescale time by $\mathcal T(t)=\int_{t_0}^t z(v)\dd v$ for a fixed $t_0<T$.
+This rescaled time tends to infinity. If $T=\infty$, this follows from
+$z\to\infty$. If $T<\infty$ but $\int_{t_0}^T z\dd t<\infty$,
+equation~\eqref{eq:rewrite-uncapped-explosion-growth-ratios} bounds
+$\int_{t_0}^T|g_Y|\dd t$, hence $Y$ and $M$ would remain bounded. But
+\[
+ B_t^{1-\eta}=B_{t_0}^{1-\eta}
+ +(1-\eta)\chi\int_{t_0}^t M_v^\eta\dd v
+\]
+would then remain finite, contradicting $B\to\infty$.
+
+In rescaled time, $\mathrm dh/\mathrm d\mathcal T=h[a(t)-b(t)h]$.
+For any sufficiently small $\varepsilon>0$, the coefficients eventually lie
+within $\varepsilon$ of their positive limits. Comparison with the two
+constant-coefficient logistic equations gives
+\[
+ \frac{\eta\alpha-\varepsilon}{1+\theta-\eta+\varepsilon}
+ \leq\liminf h\leq\limsup h\leq
+ \frac{\eta\alpha+\varepsilon}{1+\theta-\eta-\varepsilon}.
+\]
+Letting $\varepsilon\downarrow0$ establishes
+\begin{equation}
+ h\to\frac{\eta\alpha}{1+\theta-\eta}
+     =\frac{\eta\alpha^2}{1-\alpha\eta},
+ \qquad
+ \frac{\dot z}{z^2}=\frac{g_z}{z}
+ \to\nu:=\frac{\eta\alpha(1-\alpha)}{1-\alpha\eta}>0.
+ \label{eq:rewrite-uncapped-explosion-research-limit}
+\end{equation}
+No convergence of $h$ was assumed.
+
+\textit{Step 4. Finite-time divergence and equilibrium exclusion.}
+Eventually $\dot z\geq(\nu/2)z^2$. This is the scalar comparison underlying
+Osgood's finite-time explosion criterion; see
+\citet[Lemma 2.2 and Theorem 3.1]{ceballosetal2011}.
+Here the calculation is immediate:
+\[
+ \frac{\mathrm d}{\mathrm dt}\frac1z\leq-\frac\nu2,
+ \qquad
+ \frac1{z(t)}\leq\frac1{z(t_1)}-\frac\nu2(t-t_1)
+ \quad(t\geq t_1)
+\]
+for a sufficiently late $t_1<T$. Positivity of $z$ is incompatible with an
+infinite interval, so $T<\infty$.
+Moreover,
+\[
+ \frac{g_K}{z}=\frac{g_Y-g_z}{z}
+ \to\alpha-\nu=\frac{\alpha(1-\eta)}{1-\alpha\eta}>0.
+\]
+Since $\int_{t_0}^T z\dd t=\infty$, it follows that $K\to\infty$,
+$Y=zK\to\infty$, $C\to\infty$, and $r=\alpha z-\delta\to\infty$.
+AI efficiency diverges by hypothesis. Such a solution cannot extend to an
+equilibrium with finite allocations at every finite date. Both
+$\nu>0$ and $\alpha-\nu>0$ hold for every $0<\eta<1$; their signs do not change
+at $\eta=\alpha$.
+\end{proof}
+

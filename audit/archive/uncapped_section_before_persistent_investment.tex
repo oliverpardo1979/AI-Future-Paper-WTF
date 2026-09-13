@@ -1,3 +1,4 @@
+% Archived from commit 819142e on 2026-09-12; not included in main_rewrite.tex.
 \section{Equilibrium without an upper bound on AI efficiency}
 \label{sec:rewrite-uncapped}
 
@@ -175,47 +176,41 @@ order, so their coefficients determine whether that particular
 unbounded-payoff argument applies. Proposition~\ref{prop:rewrite-research-scale}
 does not settle equilibrium existence at this boundary.
 
-The return function derived in Section~\ref{subsec:rewrite-return-threshold}
-also gives a bound that holds at every date. For $\sigma>1$, the production
-and monopoly conditions imply
-\begin{equation}
- r_t\geq\mathcal R(B_t).
- \label{eq:rewrite-uncapped-dated-return-bound}
-\end{equation}
-The proof below derives this inequality without assuming $s_X\to1$ or
-$B\to\infty$. Thus, if AI efficiency grows without bound, the interest
-rate must do so too. Once $B_t>\mathcal B(\sigma)$, the Euler equation
-also gives $g_{C/N}=r_t-\rho>\gamma$. Unlike a comparison of long-run
-equilibria with different upper bounds, these are restrictions on a single
-trajectory.
-
-The literature suggests how to connect this return bound to a finite-time
-explosion. \citet{nordhaus2021} emphasizes the role of substitution, and
-\citet{davidsonetal2026} show how technological and capital-accumulation
-feedback can jointly overcome diminishing returns in research. Their
-benchmark holds saving and factor-allocation shares fixed; its discussion
-of endogenous saving draws on \citet{trammellkorinek2023}. I cannot apply
-its explosion theorem directly to the present model's optimal allocations.
-Instead, I use a comparison argument that allows investment shares to vary.
+The literature suggests why $\eta<\alpha$ need not prevent an explosion.
+\citet{nordhaus2021} emphasizes the role of substitution in singular growth,
+and \citet{davidsonetal2026} show how technological and economic feedback
+can jointly overcome diminishing returns in research. Their capital-accumulation
+analysis holds saving and factor-allocation shares fixed. I therefore cannot
+apply its explosion theorem directly to this model, where those allocations
+are endogenous. The following result instead uses this model's production,
+monopoly, research, and household Euler equations.
 
 \Needspace{7\baselineskip}
-\begin{proposition}[Persistent investment without an efficiency upper bound]
+\begin{proposition}[Conditional finite-time explosion under substitution]
 \label{prop:rewrite-uncapped-substitutes-explosion}
 Let $\sigma>1$, $\overline B=\infty$, $0<\alpha<1$, and $0<\eta<1$.
-There is no equilibrium in Definition~\ref{def:rewrite-equilibrium}
-for which both gross capital investment and research expenditure remain
-bounded below by positive shares of output: there cannot exist constants
-$\iota,\mu>0$ and a finite date $t_0$ such that
+Consider a differentiable solution of the intratemporal and dynamic
+equations~\eqref{eq:rewrite-equilibrium-static} and~\eqref{eq:rewrite-equilibrium-dynamics}
+in Definition~\ref{def:rewrite-equilibrium}, with $K,B,C,M>0$ and research
+law~\eqref{eq:rewrite-uncapped-unit-law}, on a maximal interval $[0,T)$,
+where $T$ may initially be infinite.
+Suppose that, as $t\uparrow T$, $B\to\infty$, $s_X\to1$, and $C/Y$ and
+$M/Y$ converge to positive finite constants, with
 \begin{equation}
- \frac{\dot K_t+\delta K_t}{Y_t}\geq\iota,
- \qquad \frac{M_t}{Y_t}\geq\mu
- \qquad\text{for every }t\geq t_0.
- \label{eq:rewrite-uncapped-investment-floors}
+ \frac K Y\frac{\mathrm d}{\mathrm dt}\log\left(\frac C Y\right)\to0,
+ \qquad
+ \frac K Y\frac{\mathrm d}{\mathrm dt}\log\left(\frac M Y\right)\to0.
+ \label{eq:rewrite-uncapped-explosion-regularity}
 \end{equation}
-These inequalities are incompatible even with globally finite feasible
-allocations satisfying the static monopoly conditions, the resource
-constraint~\eqref{eq:rewrite-resource}, and the research
-law~\eqref{eq:rewrite-uncapped-unit-law}.
+Then
+\begin{equation}
+ \frac{\mathrm d(Y/K)/\mathrm dt}{(Y/K)^2}
+ \longrightarrow\frac{\eta\alpha(1-\alpha)}{1-\alpha\eta}>0.
+ \label{eq:rewrite-uncapped-explosion-coefficient}
+\end{equation}
+Consequently, $T<\infty$ and $B,K,Y,C,r\to\infty$ as $t\uparrow T$.
+No equilibrium in Definition~\ref{def:rewrite-equilibrium} can have these
+asymptotics, whether $\eta<\alpha$, $\eta=\alpha$, or $\eta>\alpha$.
 \end{proposition}
 \begin{proof}
 See Appendix~\ref{app:rewrite-proofs},
@@ -223,64 +218,29 @@ See Appendix~\ref{app:rewrite-proofs},
 Proposition~\ref*{prop:rewrite-uncapped-substitutes-explosion}}.
 \end{proof}
 
-The constants $\iota$ and $\mu$ are lower bounds on expenditure shares,
-not additional parameters or imposed saving rules. The shares need not be
-constant or converge, and the proposition assumes neither $B\to\infty$
-nor $s_X\to1$. Persistent investment first prevents capital and output
-from disappearing and keeps research positive. AI efficiency must then
-eventually exceed every finite level. The return bound from Section~
-\ref{subsec:rewrite-return-threshold} makes depreciation negligible
-relative to investment and strengthens the feedback between capital and
-research. The proof obtains $\dot B\geq c_B B^{1/\alpha}$ for some
-constant $c_B>0$ at sufficiently late dates. Since $1/\alpha>1$, this
-inequality contradicts finite AI efficiency at every finite date. The
-argument works whether $\eta<\alpha$, $\eta=\alpha$, or $\eta>\alpha$.
+Condition~\eqref{eq:rewrite-uncapped-explosion-regularity} requires the
+proportional changes in consumption and research shares to become negligible
+relative to $Y/K$. Convergence of the shares alone would not imply this
+condition. Neither constant shares throughout the transition nor convergence
+of $g_B/(Y/K)$ is assumed; the proof derives the latter limit.
 
-Section~\ref{sec:rewrite-regimes} therefore supplies a key inequality for
-the proof, but not both investment bounds. Along its AI-dominated
-equilibria, for each fixed finite $\overline B$,
-\begin{equation}
- \frac{\dot K+\delta K}{Y}
- \longrightarrow
- \frac{\alpha[n+\mathcal R(\overline B)-\rho+\delta]}
- {\mathcal R(\overline B)+\delta}>0,
- \qquad \frac MY\longrightarrow0.
- \label{eq:rewrite-capped-investment-limits}
-\end{equation}
-The capital-investment limit follows from the limiting growth and return
-in Proposition~\ref{prop:rewrite-capped-substitutes-existence}; the research
-limit follows from the finite limiting level of $M$ in equation~
-\eqref{eq:rewrite-ai-terminal-values} in its proof. Raising the upper
-bound cannot turn these zero limiting research shares into a positive
-uniform lower bound. This does not imply that research shares vanish
-without an upper bound: that economy has a different research law.
+The mechanism is cumulative. When AI dominates the composite input, better AI
+raises output per unit of capital. The higher return raises consumption
+growth through the Euler equation. If consumption and research retain
+positive, sufficiently stable shares of output, research spending expands
+with output and sustains further AI improvement. This feedback makes $Y/K$
+grow in proportion to its own square, which implies a finite-time singularity.
+The restriction $\eta<\alpha$ limits the profitability of increasing research
+at given prices; it does not eliminate this joint feedback.
 
-To establish general nonexistence for $\eta\leq\alpha$, one must still
-show that optimal choices cannot avoid the feedback by making at least
-one of the investment shares arbitrarily small at arbitrarily late dates,
-or derive an explosion condition that allows such behavior. The developer's
-research condition~\eqref{eq:rewrite-research-foc}, costate
-equation~\eqref{eq:rewrite-costate}, and transversality
-condition~\eqref{eq:rewrite-developer-tvc} imply the necessary identity
-\begin{equation}
- M_t^{1-\eta}=\eta\chi\int_t^\infty
- \exp\left(-\int_t^s r_v\,\dd v\right)
- U_s B_s^{\eta-1}\,\dd s.
- \label{eq:rewrite-uncapped-research-pv}
-\end{equation}
-It equates current research incentives to future discounted savings in
-inference costs.\footnote{Write $P=M^{1-\eta}=\chi\eta qB^\eta$.
-Differentiating the research condition and using the uncapped costate
-equation gives $\dot P=rP-\eta\chi UB^{\eta-1}$.
-For $D_t=\exp(-\int_0^t r_v\,\dd v)$, the developer's transversality
-condition implies $D_tP_t\to0$, since
-$D_tP_t=\chi\eta(D_tq_tB_t)B_t^{\eta-1}$ and $B_t\geq B_0>0$.
-Integrating $\mathrm d(DP)/\mathrm dt$ proves
-equation~\eqref{eq:rewrite-uncapped-research-pv}.}
-Positive research at every date does not establish a positive lower bound
-on $M/Y$. Likewise, a higher interest rate raises consumption growth
-through the Euler equation but does not by itself determine how saving
-is divided between physical capital and research. These incentive
-conditions must be analyzed jointly with feasibility; the conditional
-exclusion in Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}
-is not yet a proof of general equilibrium nonexistence for $\eta\leq\alpha$.
+Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion} is conditional:
+it does not construct a path satisfying its hypotheses or show that every
+initial condition leads to them. A solution of the dated equations is not
+necessarily an equilibrium, because global optimality and the transversality
+conditions must also hold. Here finite-time divergence already precludes an
+infinite-horizon equilibrium. For $\eta>\alpha$, the separate profitable-deviation
+argument in Proposition~\ref{prop:rewrite-research-scale} rules out a
+finite-valued developer optimum without these convergence assumptions.
+For $\eta\leq\alpha$, existence or nonexistence outside the asymptotic class
+excluded above remains open.
+

@@ -1,4 +1,4 @@
-"""Algebra/source checks for the conditional uncapped explosion theorem.
+"""Algebra checks preserving the archived asymptotic explosion result.
 
 These are not transition simulations or evidence of equilibrium existence.
 Rational identities use exact arithmetic; a log-level check avoids overflow
@@ -103,23 +103,27 @@ class UncappedSubstitutionExplosion(unittest.TestCase):
                 self.assertEqual(z, z0/(1-fraction))
                 self.assertEqual(a/(1/z0-a*t)**2, a*z*z)
 
-    def test_conditional_scope_and_automatic_proof_links(self):
+    def test_archived_result_and_active_automatic_proof_links(self):
         body = source("sections_rewrite/05_uncapped_equilibria.tex")
         proof = source("sections_rewrite/appendix_uncapped_substitutes_proof.tex")
         appendix = source("sections_rewrite/appendix.tex")
-        normalized = " ".join(body.split())
         self.assertIn(r"\input{sections_rewrite/appendix_uncapped_substitutes_proof}", appendix)
         self.assertNotRegex(proof, r"\\(?:sub)*section\{")
         self.assertIn(r"\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}]", proof)
         self.assertIn(r"\hyperref[proof:rewrite-uncapped-substitutes-explosion]", body)
-        self.assertIn(r"$K,B,C,M>0$", body)
+        # Preserve the exact earlier result, but do not mistake its source
+        # assertions for checks of the newly adopted theorem.
+        archived_body = source("audit/archive/uncapped_section_before_persistent_investment.tex")
+        archived_proof = source("audit/archive/uncapped_asymptotic_explosion_proof.tex")
+        normalized = " ".join(archived_body.split())
+        self.assertIn(r"$K,B,C,M>0$", archived_body)
         self.assertIn("where $T$ may initially be infinite", normalized)
         self.assertIn("does not construct a path satisfying its hypotheses", normalized)
         self.assertIn("Convergence of the shares alone would not imply", normalized)
         self.assertIn(r"$\eta<\alpha$, $\eta=\alpha$, or $\eta>\alpha$", normalized)
-        self.assertIn("No convergence of $h$ was assumed", proof)
-        self.assertIn("logistic equations", proof)
-        self.assertIn("finite allocations at every finite date", proof)
+        self.assertIn("No convergence of $h$ was assumed", archived_proof)
+        self.assertIn("logistic equations", archived_proof)
+        self.assertIn("finite allocations at every finite date", " ".join(proof.split()))
         self.assertIn(r"{ceballosetal2011}", proof)
 
     def test_cited_primary_source_is_in_bibliography(self):

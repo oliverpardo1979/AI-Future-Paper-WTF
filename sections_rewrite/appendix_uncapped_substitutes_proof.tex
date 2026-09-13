@@ -2,134 +2,147 @@
 \begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-substitutes-explosion}]
 \phantomsection
 \label{proof:rewrite-uncapped-substitutes-explosion}
-All limits in this proof are taken as $t\uparrow T$. Write
-$z=Y/K$, $s=s_X$, $\theta=(1-\alpha)/\alpha$, and $h=g_B/z$.
-For any positive quantity $V$ used below, $g_V=\dot V/V$.
-In particular, $g_z$ and $g_h$ are the proportional growth rates of $z$ and $h$.
-The uncapped law and positive research imply $h>0$.
+Suppose, for contradiction, that a positive finite path exists for all
+$t\geq t_0$ and satisfies the stated static conditions, feasibility, and
+equation~\eqref{eq:rewrite-uncapped-investment-floors}. Within this proof,
+write $z=Y/K$, $s=s_X$, and $\theta=(1-\alpha)/\alpha>0$.
 
-\textit{Step 1. An exact relation between output per unit of capital and AI efficiency.}
+\textit{Step 1. The return bound from Section~\ref{subsec:rewrite-return-threshold}.}
 Let $e(s)=(1-s)/\sigma+\alpha s$, as in
-equation~\eqref{eq:rewrite-inverse-demand-elasticity}.
-The pricing, monopoly, and service equations~\eqref{eq:rewrite-ai-price},
+equation~\eqref{eq:rewrite-inverse-demand-elasticity}. The pricing,
+monopoly, and service equations~\eqref{eq:rewrite-ai-price},
 \eqref{eq:rewrite-monopoly-foc}, and~\eqref{eq:rewrite-ai-service} give
-\[
- u(s):=\frac UY=(1-\alpha)s[1-e(s)].
-\]
-Equations~\eqref{eq:rewrite-ces} and~\eqref{eq:rewrite-sx} imply
-$Z/X=(\omega_X/s)^{\sigma/(\sigma-1)}$.
-Substituting this identity and $X=Bu(s)Y$ into
-equation~\eqref{eq:rewrite-output} gives the exact expression
+$U/Y=(1-\alpha)s[1-e(s)]$ and $X/Y=B(1-\alpha)s[1-e(s)]$.
+The CES and its elasticity in equations~\eqref{eq:rewrite-ces}
+and~\eqref{eq:rewrite-sx} give
+$Z/X=(\omega_X/s)^{\sigma/(\sigma-1)}$. Substituting both ratios into
+production, equation~\eqref{eq:rewrite-output}, yields
 \begin{equation}
  z=\left[
  \omega_X^{\sigma/(\sigma-1)}B(1-\alpha)[1-e(s)]
  s^{-1/(\sigma-1)}\right]^\theta.
  \label{eq:rewrite-uncapped-explosion-static}
 \end{equation}
-Thus $z/B^\theta\to
-[(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}]^\theta>0$ and $z\to\infty$.
-Logarithmic differentiation of the exact identity, rather than of its
-limiting approximation, gives
+Define $f(s)=[1-e(s)]s^{-1/(\sigma-1)}$. Its logarithmic derivative is
 \[
- g_z=\theta g_B+E(s)g_s,\qquad
- E(s)=\theta\left[
- \frac{s(1/\sigma-\alpha)}{1-e(s)}-\frac1{\sigma-1}\right].
+ \frac{\mathrm d\log f}{\mathrm d\log s}
+ =\frac{(\sigma-2)(1-\alpha\sigma)s-(\sigma-1)}
+ {\sigma(\sigma-1)[1-e(s)]}.
 \]
-The coefficient $E(s)$ has a finite limit as $s\to1$ for each fixed $\sigma>1$.
-
-\textit{Step 2. Growth of output, research, and the AI elasticity.}
-The Euler and return equations~\eqref{eq:rewrite-euler}
-and~\eqref{eq:rewrite-capital-return} imply
-$g_C=\alpha z+n-\delta-\rho$.
-Equation~\eqref{eq:rewrite-uncapped-explosion-regularity} therefore yields
+The denominator is positive. The numerator is affine in $s$ and equals
+$-(\sigma-1)<0$ at $s=0$ and
+$-[1-\alpha+\alpha(\sigma-1)^2]<0$ at $s=1$. Thus $f$ is strictly
+decreasing on $(0,1)$, with $f(1)=1-\alpha$. Set
+\[
+ a_X=\left[(1-\alpha)^2\omega_X^{\sigma/(\sigma-1)}\right]^\theta>0.
+\]
+Equation~\eqref{eq:rewrite-uncapped-explosion-static} then implies
 \begin{equation}
- \frac{g_Y}{z}\to\alpha,\qquad \frac{g_M}{z}\to\alpha.
- \label{eq:rewrite-uncapped-explosion-growth-ratios}
+ z\geq a_XB^\theta,\qquad
+ r=\alpha z-\delta\geq\alpha a_XB^\theta-\delta=\mathcal R(B),
+ \label{eq:rewrite-uncapped-output-capital-bound}
 \end{equation}
-To control $g_s$ without imposing a further regularity condition, differentiate
-equation~\eqref{eq:rewrite-sx}:
-\[
- g_s=(1-s)\frac{\sigma-1}{\sigma}(g_X-n-\gamma).
-\]
-Since $X=Bu(s)Y$, define
-\[
- D(s)=\frac{\mathrm d\log u(s)}{\mathrm d\log s}
- =1+\frac{s(1/\sigma-\alpha)}{1-e(s)},\qquad
- F(s)=\frac{(1-s)(\sigma-1)/\sigma}
- {1-(1-s)(\sigma-1)D(s)/\sigma}.
-\]
-For $s$ sufficiently close to one the denominator is nonzero, $F(s)\to0$,
-and
-\[
- g_s=F(s)(g_B+g_Y-n-\gamma),\qquad
- \frac{g_z}{z}=[\theta+E(s)F(s)]h
-       +E(s)F(s)\left(\frac{g_Y}{z}-\frac{n+\gamma}{z}\right).
-\]
+using the return definition~\eqref{eq:rewrite-ai-terminal-ratio}.
+This proves equation~\eqref{eq:rewrite-uncapped-dated-return-bound}.
+The inequalities are strict for $0<s_X<1$, and equality is attained only
+in the limiting static allocation $s_X\to1$. This step uses neither
+investment bounds nor an assumption about the long-run behavior of $B$.
 
-\textit{Step 3. Deriving the normalized research-growth limit.}
-The research law~\eqref{eq:rewrite-uncapped-unit-law} implies
-$g_B=\chi B^{\eta-1}M^\eta$, so that
-$\mathrm d\log g_B/\mathrm dt=(\eta-1)g_B+\eta g_M$.
-Consequently,
-\begin{align*}
- \frac{g_h}{z}&=a(t)-b(t)h,\\
- a(t)&=\eta\frac{g_M}{z}
- -E(s)F(s)\left(\frac{g_Y}{z}-\frac{n+\gamma}{z}\right)\to\eta\alpha,\\
- b(t)&=1+\theta-\eta+E(s)F(s)\to1+\theta-\eta>0.
-\end{align*}
-Rescale time by $\mathcal T(t)=\int_{t_0}^t z(v)\dd v$ for a fixed $t_0<T$.
-This rescaled time tends to infinity. If $T=\infty$, this follows from
-$z\to\infty$. If $T<\infty$ but $\int_{t_0}^T z\dd t<\infty$,
-equation~\eqref{eq:rewrite-uncapped-explosion-growth-ratios} bounds
-$\int_{t_0}^T|g_Y|\dd t$, hence $Y$ and $M$ would remain bounded. But
+\textit{Step 2. Persistent investment implies unbounded AI efficiency.}
+Since $\sigma>1$, the CES also gives
 \[
- B_t^{1-\eta}=B_{t_0}^{1-\eta}
- +(1-\eta)\chi\int_{t_0}^t M_v^\eta\dd v
+ Y\geq c_LK^\alpha(AL)^{1-\alpha},\qquad
+ c_L=\omega_L^{\sigma(1-\alpha)/(\sigma-1)}>0.
 \]
-would then remain finite, contradicting $B\to\infty$.
-
-In rescaled time, $\mathrm dh/\mathrm d\mathcal T=h[a(t)-b(t)h]$.
-For any sufficiently small $\varepsilon>0$, the coefficients eventually lie
-within $\varepsilon$ of their positive limits. Comparison with the two
-constant-coefficient logistic equations gives
+Effective labor is positive and nondecreasing. The gross investment bound
+therefore implies
 \[
- \frac{\eta\alpha-\varepsilon}{1+\theta-\eta+\varepsilon}
- \leq\liminf h\leq\limsup h\leq
- \frac{\eta\alpha+\varepsilon}{1+\theta-\eta-\varepsilon}.
+ \dot K\geq\iota c_LK^\alpha[AL(t_0)]^{1-\alpha}-\delta K.
 \]
-Letting $\varepsilon\downarrow0$ establishes
+For $\delta>0$, capital cannot cross below the positive constant
+\[
+ K_{\min}=\min\left\{K(t_0),
+ \left(\frac{\iota c_L[AL(t_0)]^{1-\alpha}}{\delta}
+ \right)^{1/(1-\alpha)}\right\}.
+\]
+For $\delta=0$, take $K_{\min}=K(t_0)$. Consequently
+$Y\geq Y_{\min}:=c_LK_{\min}^{\alpha}[AL(t_0)]^{1-\alpha}>0$
+and $M\geq\mu Y_{\min}$. Integrating the research
+law~\eqref{eq:rewrite-uncapped-unit-law} gives
 \begin{equation}
- h\to\frac{\eta\alpha}{1+\theta-\eta}
-     =\frac{\eta\alpha^2}{1-\alpha\eta},
+ B_t^{1-\eta}\geq B_{t_0}^{1-\eta}
+ +(1-\eta)\chi(\mu Y_{\min})^\eta(t-t_0).
+ \label{eq:rewrite-uncapped-persistent-research}
+\end{equation}
+Thus $B$ would tend to infinity if the path were global. This conclusion
+is derived, not assumed. Nondecreasing $AL$ suffices for this step,
+including constant effective labor.
+
+\textit{Step 3. Capital and research imply a superlinear growth bound.}
+Equations~\eqref{eq:rewrite-uncapped-output-capital-bound}
+and~\eqref{eq:rewrite-uncapped-persistent-research} imply $z\to\infty$.
+Hence there is a finite $t_1$ after which $\delta/z\leq\iota/2$ and
+\begin{equation}
+ \dot K\geq\frac{\iota}{2}Y,\qquad
+ \chi\mu^\eta B^\eta Y^\eta\leq\dot B\leq\chi B^\eta Y^\eta.
+ \label{eq:rewrite-uncapped-stock-growth-bounds}
+\end{equation}
+The upper research bound uses $M\leq Y$, which follows from the resource
+constraint, nonnegative consumption and inference compute, and positive
+gross capital investment. The factor $1/2$ is a convenient proof margin,
+not an additional restriction.
+
+Since $\dot B>0$, use $B$ as the independent variable along the proposed
+path. Divide the lower bound on $\dot K$ by the \emph{upper} bound on
+$\dot B$ to obtain
+\begin{align}
+ \frac{\mathrm dK^\eta}{\mathrm dB}
+ &=\frac{\eta K^{\eta-1}\dot K}{\dot B}
+ \geq\frac{\eta\iota}{2\chi}B^{-\eta}z^{1-\eta}\nonumber\\
+ &\geq\frac{\eta\iota a_X^{1-\eta}}{2\chi}
+ B^{(1-\alpha-\eta)/\alpha}.
+ \label{eq:rewrite-uncapped-capital-feedback}
+\end{align}
+Because $(1-\eta)/\alpha>0$, integration yields
+\[
+ K^\eta\geq K(t_1)^\eta+
+ c_K\left[B^{(1-\eta)/\alpha}-B(t_1)^{(1-\eta)/\alpha}\right],
  \qquad
- \frac{\dot z}{z^2}=\frac{g_z}{z}
- \to\nu:=\frac{\eta\alpha(1-\alpha)}{1-\alpha\eta}>0.
- \label{eq:rewrite-uncapped-explosion-research-limit}
+ c_K=\frac{\eta\iota\alpha a_X^{1-\eta}}{2\chi(1-\eta)}>0.
+\]
+For sufficiently large $B$, this implies
+$K^\eta\geq(c_K/2)B^{(1-\eta)/\alpha}$. Substituting into the
+\emph{lower} bound on $\dot B$ in
+equation~\eqref{eq:rewrite-uncapped-stock-growth-bounds} gives
+\begin{equation}
+ \dot B\geq c_BB^{1/\alpha},\qquad
+ c_B=\frac{\chi\mu^\eta a_X^\eta c_K}{2}>0.
+ \label{eq:rewrite-uncapped-superlinear-feedback}
 \end{equation}
-No convergence of $h$ was assumed.
+Indeed, the exponent is
+$\eta+\eta(1-\alpha)/\alpha+(1-\eta)/\alpha=1/\alpha>1$.
+It is greater than one for every $0<\eta<1$, on either side of
+$\eta=\alpha$.
 
-\textit{Step 4. Finite-time divergence and equilibrium exclusion.}
-Eventually $\dot z\geq(\nu/2)z^2$. This is the scalar comparison underlying
-Osgood's finite-time explosion criterion; see
+\textit{Step 4. Contradiction with a globally finite trajectory.}
+For a sufficiently late $t_2$, equation~\eqref{eq:rewrite-uncapped-superlinear-feedback}
+implies
+\[
+ \frac{\mathrm d}{\mathrm dt}B^{1-1/\alpha}
+ \leq-(1/\alpha-1)c_B,
+ \qquad
+ B_t^{1-1/\alpha}\leq
+ B_{t_2}^{1-1/\alpha}-(1/\alpha-1)c_B(t-t_2).
+\]
+The right side reaches zero at the finite date
+\[
+ t_2+\frac{B_{t_2}^{1-1/\alpha}}{(1/\alpha-1)c_B}.
+\]
+The left side must remain strictly positive whenever $B$ is positive
+and finite. This contradiction is the scalar comparison underlying
+Osgood's explosion criterion; see
 \citet[Lemma 2.2 and Theorem 3.1]{ceballosetal2011}.
-Here the calculation is immediate:
-\[
- \frac{\mathrm d}{\mathrm dt}\frac1z\leq-\frac\nu2,
- \qquad
- \frac1{z(t)}\leq\frac1{z(t_1)}-\frac\nu2(t-t_1)
- \quad(t\geq t_1)
-\]
-for a sufficiently late $t_1<T$. Positivity of $z$ is incompatible with an
-infinite interval, so $T<\infty$.
-Moreover,
-\[
- \frac{g_K}{z}=\frac{g_Y-g_z}{z}
- \to\alpha-\nu=\frac{\alpha(1-\eta)}{1-\alpha\eta}>0.
-\]
-Since $\int_{t_0}^T z\dd t=\infty$, it follows that $K\to\infty$,
-$Y=zK\to\infty$, $C\to\infty$, and $r=\alpha z-\delta\to\infty$.
-AI efficiency diverges by hypothesis. Such a solution cannot extend to an
-equilibrium with finite allocations at every finite date. Both
-$\nu>0$ and $\alpha-\nu>0$ hold for every $0<\eta<1$; their signs do not change
-at $\eta=\alpha$.
+No globally finite feasible path with the two investment bounds exists.
+Since every equilibrium must be feasible and have finite allocations at
+every finite date, no equilibrium can satisfy those bounds either.
 \end{proof}
