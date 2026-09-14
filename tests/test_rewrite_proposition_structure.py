@@ -241,7 +241,8 @@ class UnifiedPropositionStructure(unittest.TestCase):
             "no infinite-horizon equilibrium with a finite-valued developer optimum",
             body,
         )
-        self.assertIn(r"$\sigma>1$, $\overline B=\infty$, and $0<\alpha<\eta<1$", body)
+        self.assertIn(r"$\sigma>1$, $\overline B=\infty$, $0<\alpha<1$, and $0<\eta<1$", body)
+        self.assertIn(r"\item If $\eta>\alpha$", body)
         self.assertIn(r"after $T$, resume $\widehat M$", appendix)
         self.assertIn(r"B_{\mathcal M}(t)^{1-\eta}-\widehat B(t)^{1-\eta}", appendix)
         self.assertIn(r"\eqref{eq:rewrite-profit-envelope}", appendix)
@@ -263,6 +264,10 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn("positive continuous paths", statement)
         self.assertIn("integrable interest-rate path", statement)
         self.assertIn("arbitrarily large", statement)
+        self.assertIn(r"\item If $\eta<\alpha$", statement)
+        self.assertIn("bounded above over all research plans", statement)
+        self.assertIn("minus infinity as total research expenditure", statement)
+        self.assertEqual(statement.count(r"\item"), 2)
         proof = " ".join(appendix.split())
         self.assertIn("without requiring a BGP or a bounded interest rate", proof)
         self.assertIn("auxiliary finite-horizon bounds", proof)

@@ -12,6 +12,19 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Restore the low-eta research-value case (September 14, 2026)
+
+- Proposition 5 now states both uncapped, fixed-horizon cases for sigma>1:
+  finite value/coercivity when eta<alpha and unbounded value when eta>alpha.
+  Keep its existing label and automatic numbering; its proof was already
+  present and is now explicitly organized into parts (i) and (ii).
+- Link eta=0.20<alpha=0.33 in the simulation design and parameter tables to
+  part (i). This is a conservative modeling restriction, not an empirical
+  estimate, not necessary for finite-horizon bounded value with a finite
+  Bbar, and not a proof of uncapped infinite-horizon equilibrium existence.
+- Preserve the eta>alpha continuation/nonexistence result, the unsettled
+  equality case, all commented research, and every simulation input/output.
+
 ### Select two displayed calibrations (September 14, 2026)
 
 - This decision supersedes the presentation choices below, not the saved

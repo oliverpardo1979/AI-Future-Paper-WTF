@@ -222,18 +222,23 @@ These conditional implications and the comparison across finite upper
 bounds do not establish a finite-time singularity or settle equilibrium
 existence without an upper bound.
 
-The developer's optimization problem yields a stronger conclusion for
-$\eta>\alpha$.
+The developer's problem distinguishes the cases $\eta<\alpha$ and $\eta>\alpha$.
 
 \Needspace{8\baselineskip}
-\begin{proposition}[Unbounded research incentives]
+\begin{proposition}[Research expenditure and the developer's value]
 \label{prop:rewrite-research-scale}
-Suppose $\sigma>1$, $\overline B=\infty$, and $0<\alpha<\eta<1$.
-For any $B_0>0$, any finite horizon $T>0$, positive continuous paths of
-$K,A,L$, and an integrable interest-rate path, the developer can make
-discounted net profits over $[0,T]$ arbitrarily large. Consequently,
-there is no infinite-horizon equilibrium with a finite-valued developer
-optimum.
+Suppose $\sigma>1$, $\overline B=\infty$, $0<\alpha<1$, and $0<\eta<1$.
+Fix any $B_0>0$, any finite horizon $T>0$, positive continuous paths of
+$K,A,L$, and an integrable interest-rate path. For the developer's
+problem~\eqref{eq:rewrite-developer-reduced} restricted to $[0,T]$:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item If $\eta<\alpha$, discounted net profit is bounded above over all
+research plans and tends to minus infinity as total research expenditure
+over $[0,T]$ tends to infinity.
+\item If $\eta>\alpha$, the developer can make discounted net profit
+arbitrarily large. Consequently, there is no infinite-horizon equilibrium
+with a finite-valued developer optimum.
+\end{enumerate}
 \end{proposition}
 \begin{proof}
 See Appendix~\ref{app:rewrite-proofs},
@@ -241,11 +246,21 @@ See Appendix~\ref{app:rewrite-proofs},
 Proposition~\ref*{prop:rewrite-research-scale}}.
 \end{proof}
 
-The gains from scaling up early research eventually outgrow its cost.
+When $\eta<\alpha$, research costs eventually dominate profit gains on a
+fixed horizon. When $\eta>\alpha$, expanding early research makes the
+gains outgrow the cost.
 Each deviating plan uses finite research expenditure and keeps AI efficiency
 finite on every finite interval. The obstruction is therefore an unbounded
-objective, not a finite-time singularity. The result does not resolve
-equilibrium existence for $\eta\leq\alpha$.
+objective, not a finite-time singularity.
+
+The first case motivates the
+choice $\eta=0.20<\alpha=0.33$ in Section~\ref{sec:rewrite-quantitative}:
+it avoids this unbounded-payoff mechanism even without an efficiency cap.
+This is a modeling restriction, not an estimate of $\eta$. With a finite
+upper bound, $\eta<\alpha$ is not needed to bound the developer's
+finite-horizon value. Part (i) does not establish an infinite-horizon
+equilibrium without an upper bound. At $\eta=\alpha$, comparing the growth
+orders of benefits and costs alone is inconclusive.
 
 % BEGIN COMMENTED PREVIOUS SECTION 5.3 (2026-09-13)
 % Preserved verbatim below, with one comment prefix per line.

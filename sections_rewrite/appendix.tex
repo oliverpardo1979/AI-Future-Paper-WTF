@@ -319,11 +319,8 @@ support check.
 
 \paragraph{Research expenditure and finite-horizon value.}
 
-The proof of Proposition~\ref{prop:rewrite-research-scale} also establishes
-auxiliary finite-horizon bounds. Fix $T>0$, $B_0>0$, positive continuous paths
-of $K,A,L$, and an integrable path for $r$. Without an upper bound on $B$,
-if $0<\eta<\alpha<1$, the developer's truncated value is finite and its
-objective tends to minus infinity as total research expenditure diverges.
+Besides the two cases in Proposition~\ref{prop:rewrite-research-scale},
+the proof gives auxiliary finite-horizon bounds for the same given paths.
 At $\eta=\alpha$, the leading benefit and cost terms of the research-burst
 construction below have the same order, so comparing exponents alone does
 not settle the result. With a fixed finite upper bound, the truncated problem
@@ -334,7 +331,7 @@ in Lemma~\ref{lem:rewrite-developer-verification}.
 \Needspace{6\baselineskip}
 \begin{proof}[Proof of Proposition~\ref{prop:rewrite-research-scale}]
 \label{proof:rewrite-research-scale}
-I first consider the uncapped economy. Define
+\emph{Part (i).} I first consider the uncapped economy. Define
 \[
  \theta=\frac{1-\alpha}{\alpha},\qquad
  S=\int_0^T M_t\dd t.
@@ -379,6 +376,7 @@ implies
  p_XX\leq(1-\alpha)\overline K^\alpha
  \left(\overline{\mathcal L}^{1-\alpha}+X^{1-\alpha}\right).
 \]
+\Needspace{6\baselineskip}
 Write the right-hand side as $a+bX^{1-\alpha}$, with $a,b>0$ determined by
 the given paths and production parameters. The first-order condition for
 maximizing this revenue bound net of $X/B$ is
@@ -420,7 +418,7 @@ benefit grows at most sublinearly in expenditure while its cost grows linearly.
 The bound tends to minus infinity as $S\to\infty$, so the value is finite and
 the objective is coercive.
 
-An upper bound with $p>1$ does not by itself prove unboundedness. For the
+\emph{Part (ii).} An upper bound with $p>1$ does not by itself prove unboundedness. For the
 converse, I construct research policies with unbounded payoffs. Suppose
 \(\sigma>1\). As \(B\to\infty\), optimized
 operating profit satisfies
