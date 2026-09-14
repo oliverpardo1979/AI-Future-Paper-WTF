@@ -1,11 +1,18 @@
-\subsection{A lower AI weight and a higher efficiency bound}
+\subsection{Principal calibration: AI prices and common initial stocks}
 \label{subsec:rewrite-low-ai-price-calibration}
+
+I adopt this configuration as the principal calibration. The four economies
+share the no-AI Ramsey capital stock, $\omega_X=0.10$, $\eta=0.20$, and
+initial AI efficiency equal to $1\%$ of its upper bound. Research productivity
+is calibrated to the unit-elastic price decline and then held fixed across
+$\sigma=0.90,1,1.10,1.50$. The preceding exercises remain illustrative
+comparisons; their parameters and equilibrium paths are unchanged.
 
 Table~\ref{tab:rewrite-low-ai-price-parameters} lists the full configuration,
 including the changed upper bound and the recalibrated research productivity.
-\begin{rewriteParameterTable}{Lower AI weight: parameters and initial stocks}{tab:rewrite-low-ai-price-parameters}
-$\omega_X$ & 0.10 & AI production weight & Arbitrary lower-weight scenario, not fitted to the industry's size; zero before date zero.\\
-$\omega_L$ & 0.90 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
+\begin{rewriteParameterTable}{Principal calibration: parameters and initial stocks}{tab:rewrite-low-ai-price-parameters}
+$\omega_X$ & 0.10 & AI production weight & Assumed reference value, not fitted to the industry's size.\\
+$\omega_L$ & 0.90 & Effective-labor weight & Computed as $1-\omega_X$.\\
 $\chi$ & 36.031845 & Research productivity & Refitted at $\sigma=1$ to $p_X(2.25)/p_X(0)=0.20$; same approximate OECD target \citep{oecdaimarkets2026}.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenarios; the fitted $\chi$ is shared across all four.\\
 $\overline B$ & 1,360.992139 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$ evaluated at $\omega_X=0.10$; arbitrary 10\% margin chosen to keep $\sigma=1.50$ AI-dominated.\\
@@ -13,10 +20,10 @@ $\overline B$ & 1,360.992139 & AI-efficiency upper bound & $1.10\mathcal B(1.50)
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}.\\
 $B_0$ & 13.609921 & Initial AI efficiency & $0.01\overline B$; arbitrary initial distance from the higher bound, not an estimate.\\
-$K_0/Y_0$ & 4.728; 3.867; 3.672; 3.466 & Post-change capital--output ratio & Calculated from the saved paths; 3.30 before the technology switch. Not independently targeted.\\
+$K_0/Y_0$ & 4.728; 3.867; 3.672; 3.466 & Initial capital--output ratio & Calculated from the saved paths; the no-AI reference is 3.30. Not independently targeted.\\
 \end{rewriteParameterTable}
 
-I repeat the price-calibrated comparison with $\omega_X=0.10$ and
+The principal calibration uses $\omega_X=0.10$ and
 $\omega_L=0.90$, starting AI efficiency at $1\%$ of its upper bound.
 Reducing the AI weight raises the threshold for AI domination. At
 $\sigma=1.50$, halving $\omega_X$ multiplies $\mathcal B(1.50)$ by eight,
@@ -34,8 +41,13 @@ $17.0124$ to $13.6099$.
 
 I again set $A_0=N_0=1$ and use the no-AI Ramsey capital stock
 $K_0=5.9416$ from \eqref{eq:rewrite-ramsey-start-stocks}.
-The economy begins with this inherited capital stock because the experiment
-introduces AI into an economy previously on the no-AI steady state.
+The Ramsey benchmark disciplines the initial capital stock; it does not
+require the positive-AI economy to begin on a BGP. I hold $K_0$, $A_0$, $N_0$,
+and $B_0$ fixed across the four elasticities, rather than choosing a different
+capital stock for each technology. Initial output and the capital--output
+ratio can therefore differ across cases. This is a comparison of positive-AI
+economies from common stocks, not an adoption experiment that preserves the
+old no-AI production technology as an available alternative.
 The initial AI-efficiency ratio remains illustrative. I retain $\eta=0.20$
 and all macroeconomic parameters, and solve initial consumption and the
 developer's shadow value anew. I recalibrate $\chi$ at $\sigma=1$ to the
@@ -44,6 +56,9 @@ then hold it fixed across the four elasticities. Here the target implies
 $B(2.25)=0.05\overline B$, rather than $0.50\overline B$ in the preceding
 comparison. The same observed price decline therefore leaves much more room
 for subsequent efficiency gains relative to the assumed upper bound.
+Matching the same proportional price decline does not make the two initial
+efficiency choices equivalent: $B_0$ affects the initial price and production
+allocation, while $\chi$ affects the subsequent improvement in efficiency.
 
 The fitted value is $\chi\simeq36.03$, compared with $51.76$ in the
 preceding experiment. This difference is not an estimate of a change in
@@ -64,7 +79,7 @@ dense checks over the initial ten years.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_price_calibrated_low_ai_high_cap_accumulation_growth_windows.pdf}
- \caption{Lower-weight price calibration: growth of output, AI production
+ \caption{Principal calibration: growth of output, AI production
  services, and capital per unit of effective labor. The upper row shows
  years 0--10; the lower row shows years 10--500, with separate vertical
  ranges. Rates are instantaneous annual rates, not realized one-year
@@ -84,7 +99,7 @@ $14.2\%$ after 27 months and $15.2\%$ after ten years.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_price_calibrated_low_ai_high_cap_growth_returns_windows.pdf}
- \caption{Lower-weight price calibration: real-wage growth, the net
+ \caption{Principal calibration: real-wage growth, the net
  interest rate, and the AI-service price. The upper row shows years 0--10;
  the lower row shows years 10--500. Rates use linear percentage scales
  and $p_X$ uses a logarithmic scale. The black diamond marks the same
@@ -105,7 +120,7 @@ transition need not occur at the same speed.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth,height=0.83\textheight,keepaspectratio]{figures_rewrite/equilibrium_price_calibrated_low_ai_high_cap_ai_distribution_windows.pdf}
- \caption{Lower-weight price calibration: labor income, AI net profit,
+ \caption{Principal calibration: labor income, AI net profit,
  inference expenditure, and research expenditure as shares of output.
  The first two rows show years 0--10; the last two show years 10--500,
  with separate vertical ranges. The shares sum to $1-\alpha$; gross
@@ -138,9 +153,10 @@ AI weight in the expression for $R(\overline B)$ at this elasticity.
 The comparison changes the transition and the terminal levels in the
 labor-bottleneck cases, not the terminal growth-rate contrast.
 
-This is a joint sensitivity exercise: the AI weight, the initial efficiency
-ratio, the upper bound, and the fitted $\chi$ all change. It does not isolate
-the effect of any one parameter. Initial AI revenue ranges from $5.2\%$ to
+Relative to Section~\ref{subsec:rewrite-price-calibration}, the AI weight,
+the initial efficiency ratio, the upper bound, and the fitted $\chi$ all
+change. That comparison does not isolate the effect of any one parameter;
+within the principal calibration, only $\sigma$ varies. Initial AI revenue ranges from $5.2\%$ to
 $10.2\%$ of output across the four cases; at unit elasticity it is always
 $6.7\%$. These shares have not been matched to the current AI industry.
 The experiment remains a price-calibrated equilibrium comparison, not a

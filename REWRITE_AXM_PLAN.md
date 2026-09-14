@@ -12,6 +12,25 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Principal calibration (September 14, 2026)
+
+The existing lower-weight price-calibrated comparison in
+`sections_rewrite/07_low_ai_price_calibration.tex` is now the principal
+calibration. Keep the four sigmas 0.90, 1.00, 1.10, 1.50; common no-AI Ramsey
+initial capital; eta=0.20; omega_X=0.10; Bbar=1.10 times the sigma=1.50
+threshold; B0/Bbar=0.01; and chi=36.03184470863892, fitted to the price decline
+at sigma=1 and then held fixed across sigmas. Numerical files remain in
+`numerical_rewrite/price_calibrated_low_ai_high_cap/`; do not rename code
+identifiers or overwrite earlier simulations merely to change their editorial
+status. Ramsey supplies the capital reference; the principal comparison does
+not assume that adding AI preserves the old production set. Matching the same
+price decline does not make different B0 values economically equivalent.
+The omega_X=0.20 and B0/Bbar=0.10 price exercise remains a joint sensitivity,
+not a one-parameter B0 comparison. A B0/Bbar=0.10 exercise at omega_X=0.10 has
+not yet been solved and must not be claimed as completed.
+
+### Preserved model edits
+
 Do not restore the household sentence "Admissible choices satisfy $C_t>0$,
 $K_t\geq0$, and $K(0)=K_0$", or reintroduce it in paraphrase. Oliver has
 deliberately removed this redundant prose. This editorial deletion does not

@@ -580,8 +580,8 @@ parameter, and diagnostic records in
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/price_calibrated}
 {\texttt{numerical\_rewrite/price\_calibrated/}}.
 
-The comparison in Section~\ref{subsec:rewrite-low-ai-price-calibration}
-uses the same procedure with the script option \texttt{--variant low\_ai}.
+For the principal calibration in Section~\ref{subsec:rewrite-low-ai-price-calibration},
+I use the script option \texttt{--variant low\_ai}.
 It recalibrates $\chi$ after setting $\omega_X=0.10$,
 $B_0/\overline B=0.01$, and $\overline B=1.10\,\mathcal B(1.50)$ under
 the new AI weight. Its separately computed paths and diagnostics are stored in
@@ -627,9 +627,12 @@ particular, the code stores $\log\psi(B)$ separately: a displayed ratio
 $B/\overline B$ can round to one even though the remaining gap to the upper bound
 is strictly positive.
 
-The left boundary fixes only $K_0$ and $B_0$: from
-\eqref{eq:rewrite-simulation-initial-stocks} in the main comparison and from
-\eqref{eq:rewrite-ramsey-start-stocks} in the Ramsey-start experiment,
+The left boundary fixes only $K_0$ and $B_0$. The principal calibration uses
+the Ramsey capital stock in \eqref{eq:rewrite-ramsey-start-stocks} and the
+initial AI efficiency in \eqref{eq:rewrite-low-ai-price-stocks}. The retained
+illustrative exercises use the stocks in
+\eqref{eq:rewrite-simulation-initial-stocks} for the timing comparison,
+\eqref{eq:rewrite-ramsey-start-stocks} for the Ramsey-start experiment,
 \eqref{eq:rewrite-near-terminal-stocks}--
 \eqref{eq:rewrite-near-terminal-ai-stock} in the near-terminal diagnostic, and
 \eqref{eq:rewrite-slow-transition-design} in the slow-transition exercise. At
@@ -660,7 +663,7 @@ For each elasticity, I first solve a local BVP near its analytical terminal
 point. I then move the initial stocks and effective-labor scale continuously
 to their prescribed values, retaining the preceding solution as the
 next guess. Each design uses 32 continuation stages. There is no
-continuation through the degenerate no-AI economy. The common main stocks are
+continuation through the degenerate no-AI economy. The common illustrative stocks are
 those in \eqref{eq:rewrite-simulation-initial-stocks}; the uncapped unit-elastic
 reference supplies stocks for the slow-transition and financing sensitivities,
 but never supplies their jump variables.
@@ -701,7 +704,7 @@ contain no extrapolated spline values.
 \end{table}
 
 The slower-transition exercise repeats this entire calculation rather than
-rescaling or extending the main trajectories. Its final horizons are 6,857.1,
+rescaling or extending the illustrative trajectories. Its final horizons are 6,857.1,
 6,731.9, 6,647.9, and 4,919.4 years for
 $\sigma=0.90,1,1.10,1.50$, respectively. The corresponding independently
 reconstructed dynamic residuals are below $1.1\times10^{-9}$, and extending
@@ -748,7 +751,7 @@ counterfactual AI-efficiency levels $B\geq B_0$, refining every local minimum fo
 on the grid. An analytical upper bound on the Hamiltonian's derivative
 covers the unbounded research-depth domain beyond the numerical grid.
 The check is repeated with 81 dates and 101 AI-efficiency points, then with
-321 dates and 241 points. In the main, Ramsey-start, and slow-transition comparisons, the
+321 dates and 241 points. In the illustrative, Ramsey-start, and slow-transition comparisons, the
 smallest normalized gaps are of order $-10^{-14}$, consistent with
 floating-point error at the tangent point. The numerical gap tolerance is
 $10^{-10}$; the economic support
@@ -767,12 +770,12 @@ stocks. Nor do they establish existence for every initial condition or
 every parameter vector.
 
 The financing sensitivity reported in Section~\ref{subsec:rewrite-technology-revenue}
-is solved separately rather than spliced onto a main trajectory. It uses
+is solved separately rather than spliced onto an illustrative trajectory. It uses
 $K_0=2.027733654$, $B_0=0.443670932$, and $\chi=1.4223$, preserving the
 50-year transition midpoint while changing the predetermined stocks. The
 calculation repeats both horizon extensions, the independent equation and TVC
 checks, and the two Hamiltonian-support grids. It passes the same admission
-thresholds as the main $\sigma=1.50$ path.
+thresholds as the illustrative $\sigma=1.50$ path.
 
 The slow-transition comparison in
 Section~\ref{subsec:rewrite-slow-transition} likewise uses separate BVPs,
@@ -799,7 +802,7 @@ solve each of the four elasticities with \texttt{--sigma}; run
 grid resolutions; run the final audit; run
 \path{audit_initial_financing_sensitivity.py}; export; and render with
 \path{plot_rewrite_equilibria.py}. The public reproduction command performs
-that sequence for the main, Ramsey-start, slow, and near-terminal designs,
+that sequence for the illustrative, Ramsey-start, slow, and near-terminal designs,
 using display horizons of 500 years except for the 4,000-year slow exercise.
 All code, audit files, plot-ready data, and figures used in these simulations
 are available in the paper's

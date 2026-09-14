@@ -7,19 +7,34 @@ without first learning the internal structure of every solver module.
 
 ## What the computation does
 
-The main simulations compare four values of the elasticity of substitution between
+The principal calibration, adopted on September 14, 2026, is the existing
+lower-weight price-calibrated comparison in Section 6.6. Its full-precision
+inputs are `K0=5.94157252710329`, `omega_X=0.10`, `eta=0.20`,
+`Bbar=1360.9921392415592`, `B0=13.609921392415593`, and
+`chi=36.03184470863892`. The same stocks and parameters apply at
+`sigma=0.90,1.00,1.10,1.50`; only the unit-elastic price decline is fitted.
+Run `python scripts/calibrate_rewrite_ai_price.py --variant low_ai` to
+reproduce it. The no-AI Ramsey BGP supplies a capital reference, not an
+assumption that all four AI economies start on a BGP or retain the old
+production technology as an outside option. This designation does not alter
+the numerical paths, their admission checks, or their existing filenames.
+
+All common-stock comparisons use four values of the elasticity of substitution between
 effective labor and effective AI production services: 0.90, 1.00, 1.10, and
 1.50. All other parameters, the AI-efficiency frontier, and the predetermined
 initial stocks are held fixed.
 
-The main comparison sets `K0=4`, `B0/Bbar=0.10`, and `chi=1.4378`. These
+The earlier illustrative comparison sets `K0=4`, `B0/Bbar=0.10`, and `chi=1.4378`. These
 intermediate predetermined stocks keep the four elasticities comparable while
 preventing the financing needs of an extremely distant initial economy from
 dominating the main figures. The last value makes the 1.50 labor share complete
 half of its decline after about 50 model years. The separate financing
 sensitivity deliberately uses the earlier distant stocks and `chi=1.4223` to
 preserve the same midpoint. It isolates the effect of initial technological
-distance on date-zero financing and is not a fifth line in the main figures.
+distance on date-zero financing and is not a fifth line in those figures.
+The legacy design name `main` in the solver and the full-replication workflow
+still identifies this earlier timing exercise, not the newly designated
+principal calibration. Code names and saved outputs are preserved.
 
 The slower-transition comparison recovers the paper's earlier design and asks
 how long the same terminal regimes can remain hidden when research is slower
@@ -133,9 +148,9 @@ at two resolutions. These checks use the existing tolerances. They prevent
 a uniform multi-millennial audit grid from overlooking a fast initial
 transition. Additional export dates resolve this same early window.
 
-### Lower AI weight and higher efficiency bound
+### Principal calibration: lower AI weight and higher efficiency bound
 
-The additional lower-weight comparison uses the same price target, macro
+The principal lower-weight comparison uses the same price target, macro
 parameters, and no-AI Ramsey capital stock. It changes `omega_X` to `0.10`,
 `B0/Bbar` to `0.01`, and sets `Bbar=1360.9921392415592`: ten percent above
 the new `sigma=1.5` threshold. This bound is eight times the preceding bound;

@@ -2,6 +2,13 @@
 \label{sec:rewrite-quantitative}
 \input{sections_rewrite/parameter_tables}
 
+The principal calibration is reported in
+Section~\ref{subsec:rewrite-low-ai-price-calibration}. It uses common Ramsey
+initial capital, an AI weight of $0.10$, initial AI efficiency at $1\%$ of
+its upper bound, and research productivity calibrated to the decline in AI
+prices. I retain the earlier timing and initial-condition exercises below
+to show how the transition depends on these choices.
+
 \subsection{Parameters and initial conditions}
 \label{subsec:rewrite-calibration}
 
@@ -12,7 +19,7 @@ are illustrative, not estimated. All four economies have autonomous research
 and a positive AI weight; the no-AI economy in Remark~\ref{rem:rewrite-no-ai}
 is not one of these four scenarios.
 
-\begin{rewriteParameterTable}{Main comparison: parameters and initial stocks}{tab:rewrite-parameters}
+\begin{rewriteParameterTable}{Illustrative comparison: parameters and initial stocks}{tab:rewrite-parameters}
 \rewriteMainParameterRows
 \end{rewriteParameterTable}
 
@@ -40,7 +47,7 @@ benchmark comparison, not an exact national-accounts match. The data extract
 and calculations are included in the replication files.}
 Thus the Ramsey ratio is a plausible benchmark, but it is not an exact fit
 to the world economy. The illustrative AI starting points need not match it:
-the main comparison starts at ratios between 2.29 and 3.14, below the
+the illustrative comparison starts at ratios between 2.29 and 3.14, below the
 current-price sample ratio. Every exercise reports its own $K_0/Y_0$; none
 has been recalibrated to match this additional moment.
 
@@ -83,7 +90,7 @@ These common initial stocks place the economy closer to the capped
 $\sigma=1$ terminal regime than the earlier uncapped reference: initial AI
 efficiency is 10 percent of its upper bound and initial capital per unit of
 effective labor is about 44 percent of its terminal $\sigma=1$ value. I use
-these intermediate stocks so that the main figures display the transition
+these intermediate stocks so that the illustrative figures display the transition
 without letting the financing needs of an extremely distant initial economy
 dominate the comparison. Holding the same two stocks across the four values of
 $\sigma$ then isolates how the substitution elasticity changes the subsequent
@@ -98,9 +105,9 @@ neither jump variable is fixed at its uncapped reference value.
 \label{subsec:rewrite-method}
 
 Table~\ref{tab:rewrite-method-parameters} repeats the inputs passed to the
-algorithm for the main comparison. Each subsequent exercise reports its own
+algorithm for the illustrative comparison. Each subsequent exercise reports its own
 configuration in a separate table.
-\begin{rewriteParameterTable}{Inputs to the main-comparison algorithm}{tab:rewrite-method-parameters}
+\begin{rewriteParameterTable}{Inputs to the illustrative-comparison algorithm}{tab:rewrite-method-parameters}
 \rewriteMainParameterRows
 \end{rewriteParameterTable}
 
@@ -348,7 +355,7 @@ in technology; before date zero the production weights are $(1,0)$.
 \begin{rewriteParameterTable}{Ramsey-start transition: parameters and initial stocks}{tab:rewrite-ramsey-parameters}
 $\omega_X$ & 0.20 & AI production weight & Arbitrary post-change weight; zero before date zero.\\
 $\omega_L$ & 0.80 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
-$\chi$ & 1.4378 & Research productivity & Retained from the main comparison's arbitrary 50-year timing calibration; not refitted here.\\
+$\chi$ & 1.4378 & Research productivity & Retained from the illustrative comparison's arbitrary 50-year timing calibration; not refitted here.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenario values; irrelevant in the pre-change no-AI economy.\\
 $\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
 \midrule
@@ -399,7 +406,7 @@ $C_0$ and $q_0$ anew in each positive-AI economy.
 
 Figures~\ref{fig:rewrite-ramsey-start-accumulation-growth}--
 \ref{fig:rewrite-ramsey-start-ai-distribution} use the same variables,
-normalizations, scenario order, and scale conventions as the main comparison.
+normalizations, scenario order, and scale conventions as the illustrative comparison.
 All four paths are independently solved and pass the equilibrium-admission
 tests.
 
@@ -474,9 +481,9 @@ elasticity-specific threshold.
 Table~\ref{tab:rewrite-near-terminal-parameters} separates the chosen
 initial efficiency from the capital stocks calculated for each terminal regime.
 \begin{rewriteParameterTable}{Near-terminal paths: parameters and initial stocks}{tab:rewrite-near-terminal-parameters}
-$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the main comparison.\\
+$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the illustrative comparison.\\
 $\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
-$\chi$ & 1.4378 & Research productivity & Retained from the main timing calibration; no new timing target.\\
+$\chi$ & 1.4378 & Research productivity & Retained from the illustrative timing calibration; no new timing target.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & The same four arbitrary scenario values.\\
 $\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
 \midrule
@@ -487,7 +494,7 @@ $K_0/Y_0$ & 3.300; 3.300; 3.300; 2.653 & Initial capital--output ratio & Calcula
 \end{rewriteParameterTable}
 
 The initially high and declining growth rates of the three labor-bottleneck
-paths in the main comparison are not their long-run prediction. They partly
+paths in the illustrative comparison are not their long-run prediction. They partly
 reflect the distance between the common initial stocks in
 \eqref{eq:rewrite-simulation-initial-stocks} and each economy's terminal
 allocation. To isolate terminal behavior while preserving the comparison
@@ -544,17 +551,17 @@ stocks fixed.
 \end{figure}
 
 Figure~\ref{fig:rewrite-near-terminal-growth-returns} removes the large
-date-zero movements of the three labor-bottleneck paths in the main
+date-zero movements of the three labor-bottleneck paths in the illustrative
 comparison. Their output-per-person growth, real-wage growth, and net interest
 rate all begin within $0.001$ percentage points of their analytical limits of
 $1\%$, $1\%$, and $5\%$. For $\sigma=1.50$, the corresponding date-zero values
 are $3.443\%$, $2.632\%$, and $7.437\%$; by year 500 they have reached
 $3.143\%$, $2.429\%$, and $7.143\%$, close to their analytical limits of
 $3.135\%$, $2.423\%$, and $7.135\%$. The exercise confirms that the high
-initial growth rates in the main labor-bottleneck paths are transitional
+initial growth rates in the illustrative labor-bottleneck paths are transitional
 responses to the common starting stocks. It also displays the distinct
 AI-dominated long run without the much larger initial adjustment present in
-the main comparison.
+the illustrative comparison.
 
 \subsection{A slower transition}
 \label{subsec:rewrite-slow-transition}
@@ -562,7 +569,7 @@ the main comparison.
 Table~\ref{tab:rewrite-slow-parameters} records the recovered slow-transition
 configuration, including the provenance of its initial stocks.
 \begin{rewriteParameterTable}{Slower transition: parameters and initial stocks}{tab:rewrite-slow-parameters}
-$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the main comparison.\\
+$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the illustrative comparison.\\
 $\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
 $\chi$ & 0.01 & Research productivity & Arbitrary value from the earlier slow-transition design; not fitted to a date or an empirical moment.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & The same four arbitrary scenario values.\\
@@ -574,7 +581,7 @@ $B_0$ & 0.443670932 & Initial AI efficiency & Same uncapped BGP reference; about
 $K_0/Y_0$ & 3.762; 3.272; 2.905; 2.339 & Initial capital--output ratio & Calculated from the saved paths; adopting the earlier BGP stocks does not fix this ratio across $\sigma$.\\
 \end{rewriteParameterTable}
 
-The 50-year midpoint in the main comparison is a timing calibration rather
+The 50-year midpoint in the illustrative comparison is a timing calibration rather
 than a prediction. To show how strongly the transition can stretch out, I
 recover the earlier calibration with
 \begin{equation}
@@ -592,11 +599,11 @@ Both jump variables are solved again for each capped economy. The exercise
 changes both research productivity and the initial distance from the
 upper bound, so it should not be interpreted as a one-parameter estimate of the
 effect of $\chi$. Each of the four paths is independently re-solved and passes
-the same equilibrium-admission tests as the main comparison.
+the same equilibrium-admission tests as the illustrative comparison.
 
 Figures~\ref{fig:rewrite-slow-accumulation-growth}--
 \ref{fig:rewrite-slow-ai-distribution} retain the variables, normalizations,
-scenario order, and scale conventions of the main figures. The only
+scenario order, and scale conventions of the illustrative figures. The only
 presentational change is the 4,000-year window needed to display the slower
 adjustment.
 
@@ -643,7 +650,7 @@ In the slow $\sigma=1.50$ equilibrium, labor's income share completes only
 $1.062\%$, the real wage at $1.043\%$, and labor still receives $60.5\%$ of
 output. By year 1,500, output-per-person growth has risen to $2.797\%$, while
 labor's share has fallen to $14.5\%$. The analytical limits are the same as in
-the main comparison because $\sigma$ and $\overline B$ are unchanged; what
+the illustrative comparison because $\sigma$ and $\overline B$ are unchanged; what
 changes radically is when the economy approaches them. The model can therefore
 generate a long interval in which little appears to happen before growth and
 the distribution of output change sharply. It does not identify which of the
@@ -654,17 +661,17 @@ two timing calibrations is empirically more plausible.
 
 Table~\ref{tab:rewrite-financing-parameters} compares the two configurations
 used for the $\sigma=1.50$ financing exercise.
-\begin{rewriteParameterTable}{Initial financing: main and distant-stock configurations}{tab:rewrite-financing-parameters}
+\begin{rewriteParameterTable}{Initial financing: illustrative and distant-stock configurations}{tab:rewrite-financing-parameters}
 $\omega_X$ & 0.20 & AI production weight & Same arbitrary weight in both configurations.\\
 $\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
-$\chi$ & 1.4378 (main);\newline 1.4223 (distant) & Research productivity & Each fitted to the same arbitrary 50-year labor-share midpoint, not to data.\\
+$\chi$ & 1.4378 (illustrative);\newline 1.4223 (distant) & Research productivity & Each fitted to the same arbitrary 50-year labor-share midpoint, not to data.\\
 $\sigma$ & 1.50 & AI--labor substitution & Arbitrary high-substitution scenario used for this financing comparison.\\
 $\overline B$ & 170.1240 & AI-efficiency upper bound & Same $1.10\mathcal B(1.50)$ in both configurations; arbitrary 10\% margin.\\
 \midrule
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations in both configurations.\\
-$K_0$ & 4 (main);\newline 2.027733654 (distant) & Initial capital & Main: arbitrary intermediate stock. Distant: earlier uncapped BGP stock, used as an illustrative reference.\\
-$B_0$ & 17.012402 (main);\newline 0.443670932 (distant) & Initial AI efficiency & Main: arbitrary $10\%$ of the bound. Distant: earlier BGP value, about $0.2608\%$ of the bound; not estimated.\\
-$K_0/Y_0$ & 2.294 (main);\newline 2.339 (distant) & Initial capital--output ratio & Calculated at $\sigma=1.50$; both below the current-price international benchmark.\\
+$K_0$ & 4 (illustrative);\newline 2.027733654 (distant) & Initial capital & Illustrative: arbitrary intermediate stock. Distant: earlier uncapped BGP stock, used as an illustrative reference.\\
+$B_0$ & 17.012402 (illustrative);\newline 0.443670932 (distant) & Initial AI efficiency & Illustrative: arbitrary $10\%$ of the bound. Distant: earlier BGP value, about $0.2608\%$ of the bound; not estimated.\\
+$K_0/Y_0$ & 2.294 (illustrative);\newline 2.339 (distant) & Initial capital--output ratio & Calculated at $\sigma=1.50$; both below the current-price international benchmark.\\
 \end{rewriteParameterTable}
 
 Moving the common initial stocks closer to the $\sigma=1$ terminal regime
@@ -679,7 +686,7 @@ an admitted sensitivity path, I deliberately reuse the more distant stocks
 $K_0=2.0277$ and $B_0/\overline B=0.26\%$ from the earlier numerical design.
 This choice isolates the financing consequences of beginning farther from the
 terminal regime. I then recalibrate $\chi$ to preserve the same 50-year
-transition midpoint as in the main $\sigma=1.50$ path, so the comparison does
+transition midpoint as in the illustrative $\sigma=1.50$ path, so the comparison does
 not merely contrast different transition dates. The sensitivity path is a
 separately solved equilibrium, and its $C_0$ and $q_0$ are again selected by
 the BVP. Research expenditure initially equals $106.0\%$ of

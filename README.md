@@ -16,16 +16,23 @@ equilibrium solver, admission audits, and published figures.
 - `REPLICATION.md`: user-oriented instructions for reproducing every reported
   numerical equilibrium and figure.
 
-To reproduce the simulations from a fresh clone with Python 3.12:
+The principal calibration is in Section 6.6, "Principal calibration: AI
+prices and common initial stocks". It uses the existing
+`price_calibrated_low_ai_high_cap` results: common Ramsey capital,
+`omega_X=0.10`, `eta=0.20`, `B0/Bbar=0.01`, and `chi=36.03184470863892`
+fitted at unit elasticity and held fixed across the four elasticities.
+The upper bound is ten percent above the `sigma=1.50` threshold.
+
+To reproduce the principal calibration from a fresh clone with Python 3.12:
 
 ```text
 python -m pip install -r requirements-rewrite.txt
-python scripts/reproduce_rewrite_results.py
+python scripts/calibrate_rewrite_ai_price.py --variant low_ai
 ```
 
-The reproduction command is fail-fast. It exports the main, slow-transition,
-and near-terminal comparisons only after every path passes the numerical
-equilibrium-admission checks. See
+The command exports only paths that pass the numerical equilibrium-admission
+checks. The earlier timing, slow-transition, and near-terminal comparisons
+remain available through `python scripts/reproduce_rewrite_results.py`. See
 `REPLICATION.md` for the economic intuition, platform-specific setup, output
 map, and interpretation of the diagnostics.
 
