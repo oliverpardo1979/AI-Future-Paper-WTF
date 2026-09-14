@@ -55,7 +55,7 @@ The same staged flags apply. Initial stocks, other parameters, equilibrium
 equations, tolerances, and figure windows are unchanged. Outputs and
 checkpoints have separate folders; the original 80% exercise is preserved.
 The default reproduction driver runs both active RSI comparisons and the
-unit-elastic research-expenditure calibration before
+four-regime research-expenditure comparison before
 any optional legacy comparisons.
 
 ## Approximate research-expenditure calibration
@@ -66,13 +66,22 @@ $27,811.517 billion, or 0.0663754%. At chi=1.4378 the unit-elastic path gives
 0.0637427%, a shortfall of 0.2633 basis points. The author requested an
 approximate match; no equilibrium tolerance was relaxed. All other parameters
 and initial stocks are unchanged. The three figure groups retain their format.
-Only sigma=1 is included at this chi. Data, checks and source qualifications
+Chi is selected at sigma=1 and held fixed at 0.90, 1.10 and 1.50; no second
+target is imposed in those cases. Each economy retains its own fixed-B
+pre-RSI BGP with common K0/Y0=3.30. Data, checks and source qualifications
 are in `numerical_rewrite/rsi_research_share_2023/README.md`.
 
 ```text
 python scripts/calibrate_rewrite_research_share_low.py
 python -m unittest discover -s tests -p test_rewrite_research_share_low.py -v
 ```
+
+For a staged run, add `--sigma 0.9`, `--sigma 1`, `--sigma 1.1`, or
+`--sigma 1.5` to solve one case, then run without arguments to audit and
+publish the complete comparison. The existing two horizon extensions,
+early-window residual tests, terminal/TVC and Hamiltonian-support gates
+are unchanged. `annual_moments.json` reports first- and second-year
+expenditure shares and untargeted price changes for every elasticity.
 
 The default full-replication driver includes the low-target publication.
 The higher 2025-target exercise is no longer displayed but remains intact in

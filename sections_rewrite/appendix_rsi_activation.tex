@@ -72,9 +72,12 @@ below the $0.06638\%$ target by $0.26$ basis points. This is an approximate
 empirical match, not a root solved to numerical precision. Publication
 requires a discrepancy below one basis point as well as all the original
 equilibrium checks. The annual moment must also remain stable within
-$2\times10^{-5}$ in logs after both horizon extensions. Only the verified
-unit-elastic path is displayed; the earlier high-target search and its
-figures remain available in the repository.
+$2\times10^{-5}$ in logs after both horizon extensions. I hold this
+unit-elastic calibration fixed for $\sigma=0.90,1.10,1.50$ and solve each
+equilibrium from its own fixed-efficiency pre-RSI BGP. Research expenditure
+and the price decline in these three cases are outcomes, not additional
+targets. The earlier high-target search and its figures remain available
+in the repository.
 
 \subsection{Equilibrium checks and replication}
 
@@ -138,9 +141,12 @@ For the approximate research-expenditure calibration, run:
 python scripts/calibrate_rewrite_research_share_low.py
 \end{verbatim}
 \end{quote}
-This command reproduces the selected unit-elastic path if its checkpoint
-is absent, repeats its equilibrium and activation checks, and exports the
-three figures. The
+This command reproduces the selected unit-elastic calibration and all
+four equilibrium paths, repeats the equilibrium and activation checks,
+and exports the three comparison figures. The optional argument
+\texttt{--sigma 1.5}, for example, solves only that case; the command
+without arguments requires all four cases to pass before publishing.
+The
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2023}
 {research-expenditure results folder} contains the sources, admitted CSV,
 numerical checks, figure metadata and approximate-calibration record.

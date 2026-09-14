@@ -5,6 +5,7 @@ explored candidate on the increasing low-chi branch; retain every original
 equilibrium and stability gate. The high-target results remain untouched.
 """
 from dataclasses import asdict, replace
+import argparse
 import hashlib
 import json
 import math
@@ -13,22 +14,18 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'.python-packages'),str(ROOT/'scripts')]
-import numpy as np
 from calibrate_rewrite_research_share import checked_moment, SOURCE as HIGH_SOURCE
 from calibrate_rewrite_ai_price import (
-    make_design as price_design, write_json, extend, log_price_ratio,
-    audit_rsi_activation, render_comparison_views, summarize,
+    make_design as price_design, write_json, log_price_ratio,
+    finish as finish_comparison,
 )
 from simulate_rewrite_finite_frontier import (
     key, design_initial_stocks, load_solution, save_solution,
-    validate_solution_design, run, export_paths,
+    validate_solution_design, run,
+    SIGMAS,
 )
 from analyze_axm_finite_cap_bvp import terminal_point
-from solve_axm_global_finite_cap_bvp import (
-    solve_global_finite_cap_bvp, audit_counterfactual_developer_sufficiency,
-)
-from audit_rewrite_equilibria import finalize, independent_residuals
-from plot_rewrite_equilibria import render
+from solve_axm_global_finite_cap_bvp import solve_global_finite_cap_bvp
 
 NAME='rsi_research_share_2023'
 TARGET_SHARE=18.46/27811.517
@@ -49,19 +46,19 @@ def select_candidate():
 
 
 def make_design(chi):
-    return replace(price_design(chi,'rsi_activation'),name=NAME,sigmas=(1.,),
+    return replace(price_design(chi,'rsi_activation'),name=NAME,sigmas=SIGMAS,
         output_directory=ROOT/'numerical_rewrite'/NAME,
         cache_directory=ROOT/'tmp'/f'rewrite_bvp_{NAME}',
-        initial_stock_reference='Unchanged existing-AI fixed-B pre-RSI BGP at sigma=1; '
+        initial_stock_reference='Existing-AI fixed-B pre-RSI BGP for each elasticity; '
             'K0/Y0=3.30 and B0=0.01 Bbar. RSI becomes available unexpectedly. '
             'Only K0 and B0 are inherited; C0, q0 and M0 are endogenous. '
-            'Chi approximates the annual 2023 US research-compute/GDP proxy.')
+            'Chi approximates the annual 2023 US research-compute/GDP proxy at sigma=1 '
+            'and is held fixed for sigma=0.90, 1.10 and 1.50.')
 
 
-def publish():
-    row,selection_hash=select_candidate()
-    design=make_design(row['chi'])
-    output,cache=design.output_directory,design.cache_directory
+def prepare_unit(design, row):
+    """Preserve the already verified unit-elastic calibration checkpoint."""
+    cache=design.cache_directory
     base_path=cache/f'{key(1.)}_base.npz'
     if not base_path.exists():
         archived=ROOT/row['checkpoint'].replace('\\','/')
@@ -78,43 +75,66 @@ def publish():
         save_solution(base,base_path)
     base=load_solution(base_path)
     validate_solution_design(base,design,1.)
+    return base
+
+
+def publish():
+    row,selection_hash=select_candidate()
+    design=make_design(row['chi'])
+    output,cache=design.output_directory,design.cache_directory
+    base=prepare_unit(design,row)
     original_moment=checked_moment(base)
-    run(1.,design)
-    extend(1.,design)
-    report=finalize(design)[0]
+    for sigma in SIGMAS:
+        run(sigma,design)
+
+    moments={}
+    def validate_moment(solution):
+        first=checked_moment(solution)
+        change=abs(math.log(first['share']/original_moment['share']))
+        if change>=2e-5:
+            raise RuntimeError('Annual research share is not stable across horizon extensions.')
+        if abs(first['share']-TARGET_SHARE)>1e-4:
+            raise RuntimeError('Candidate is no longer within one basis point of the target.')
+        for sigma in SIGMAS:
+            sol=load_solution(cache/f'{key(sigma)}_long.npz')
+            one,two=checked_moment(sol),checked_moment(sol,1.)
+            initial=checked_moment(load_solution(cache/f'{key(sigma)}_base.npz'))
+            delta=abs(math.log(one['share']/initial['share']))
+            if delta>=2e-5:
+                raise RuntimeError(f'Annual moment is not stable for sigma={sigma}.')
+            moments[key(sigma)]=dict(first_year=one,second_year=two,
+                annual_share_growth=two['share']/one['share']-1,
+                moment_log_change_after_two_horizon_extensions=delta,
+                untargeted_price_ratio_27_months=math.exp(log_price_ratio(sol)))
+        return dict(refined_matched_share=first['share'],
+                    moment_log_change_after_two_horizon_extensions=change)
+
+    # The existing four-regime pipeline checks original equations, both TVCs,
+    # horizon stability and global developer support before exporting figures.
+    # No price-target check is used: prices are untargeted in this exercise.
+    calibration_path=output/'calibration.json'
+    if not calibration_path.exists():
+        write_json(calibration_path,dict(status='awaiting_equilibrium_checks',chi=row['chi']))
+    finish_comparison(design,calibration_validator=validate_moment)
     checkpoint=cache/f'{key(1.)}_long.npz'
     solution=load_solution(checkpoint)
-    checks=[independent_residuals(solution,h,np.linspace(.001,10.,801))
-        for h in (.0003,.0001)]
-    optimality=audit_counterfactual_developer_sufficiency(solution,time_points=161,
-        capability_points=161,sample_times=np.linspace(0.,10.,161))
-    early=bool(optimality['developer_sufficiency_gate_passes'] and all(
-        c['maximum_ode_residual']<1e-6 and c['maximum_research_foc_residual']<1e-9
-        and c['maximum_monopoly_foc_residual']<1e-9 for c in checks))
     first,second=checked_moment(solution),checked_moment(solution,1.)
     moment_change=abs(math.log(first['share']/original_moment['share']))
-    if not (report['equilibrium_certified'] and early and moment_change<2e-5):
-        raise RuntimeError('Equilibrium or moment-stability checks failed; no publication.')
-    # An empirical mismatch is reported, never passed off as solver error.
-    # One basis point is stricter than the author's allowance of a few bp.
-    if abs(first['share']-TARGET_SHARE)>1e-4:
-        raise RuntimeError('Candidate is no longer within one basis point of the target.')
-    report['early_window_checks']=dict(passes=early,independent_residuals=checks,
-        concavity=optimality)
+    report=json.loads((output/f'{key(1.)}_audit.json').read_text())
     report['settings']['base_tolerance']=2e-7
     write_json(output/f'{key(1.)}_audit.json',report)
-    audit_rsi_activation(design)
-    export_paths(500.,4001,design,additional_times=np.r_[np.linspace(0.,10.,1001),2.25])
-    render(design,reference_sigma=1.)
-    render_comparison_views(design,show_price_target=False,reference_sigma=1.)
-    summarize(design)
+    write_json(output/'annual_moments.json',dict(target_share=TARGET_SHARE,
+        target_sigma=1.,scenarios=moments,
+        csv_sha256=hashlib.sha256((output/'equilibrium_paths.csv').read_bytes()).hexdigest()))
     manifest=json.loads((output/'figure_manifest.json').read_text())
     figure_hashes={}
     for view in manifest['two_window_views']:
         for ext in ('pdf','png'):
             path=ROOT/'figures_rewrite'/f'{view["filename"]}.{ext}'
             figure_hashes[path.relative_to(ROOT).as_posix()]=hashlib.sha256(path.read_bytes()).hexdigest()
-    payload=dict(status='numerically_admitted_approximate_calibration',sigmas=[1.],
+    payload=dict(status='numerically_admitted_approximate_calibration',sigmas=list(SIGMAS),
+        calibration_sigma=1.,chi_held_fixed_across_sigmas=True,
+        initial_stocks_by_sigma={key(s):list(design_initial_stocks(design,s)) for s in SIGMAS},
         parameters=asdict(design.parameters),chi=design.parameters.chi,
         frontier=design.frontier,initial_stocks=list(design_initial_stocks(design,1.)),
         source=SOURCE,target_share=TARGET_SHARE,target_years=1.,first_year=first,
@@ -138,4 +158,15 @@ def publish():
 
 
 if __name__=='__main__':
-    publish()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--sigma',type=float,choices=SIGMAS,
+        help='Solve one elasticity; final publication still requires all four.')
+    args=parser.parse_args()
+    if args.sigma is None:
+        publish()
+    else:
+        selected,_=select_candidate()
+        design=make_design(selected['chi'])
+        if args.sigma==1.:
+            prepare_unit(design,selected)
+        run(args.sigma,design)

@@ -56,7 +56,7 @@ def remove_generated_checkpoints(include_legacy: bool = False) -> None:
         'rewrite_bvp_rsi_activation': SIGMAS,
         'rewrite_bvp_rsi_activation_half_decline': SIGMAS,
         'rewrite_bvp_rsi_research_share_2025/peak_audit': (1.0,),
-        'rewrite_bvp_rsi_research_share_2023': (1.0,),
+        'rewrite_bvp_rsi_research_share_2023': SIGMAS,
     }
     for cache_name, sigmas in cache_designs.items():
         if not include_legacy and cache_name not in ('rewrite_bvp_rsi_activation',
@@ -126,7 +126,7 @@ def main() -> None:
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_research_share_low.py", "-v"])
     if not args.include_legacy:
-        print("Both RSI-activation comparisons and the approximate unit-elastic research calibration reproduced; legacy files left unchanged.", flush=True)
+        print("All three four-regime RSI comparisons reproduced; legacy files left unchanged.", flush=True)
         return
 
     horizons = {

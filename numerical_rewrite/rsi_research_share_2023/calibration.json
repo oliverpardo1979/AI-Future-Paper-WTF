@@ -1,8 +1,31 @@
 {
   "status": "numerically_admitted_approximate_calibration",
   "sigmas": [
-    1.0
+    0.9,
+    1.0,
+    1.1,
+    1.5
   ],
+  "calibration_sigma": 1.0,
+  "chi_held_fixed_across_sigmas": true,
+  "initial_stocks_by_sigma": {
+    "sigma_0_90": [
+      3.433644797858547,
+      13.609921392415593
+    ],
+    "sigma_1_00": [
+      4.649320432676148,
+      13.609921392415593
+    ],
+    "sigma_1_10": [
+      5.036956080779938,
+      13.609921392415593
+    ],
+    "sigma_1_50": [
+      5.5046668887702594,
+      13.609921392415593
+    ]
+  },
   "parameters": {
     "alpha": 0.33,
     "omega_x": 0.1,
@@ -68,13 +91,13 @@
   "selection": "Nearest archived candidate on the examined increasing low-chi branch.",
   "selection_diagnostic_sha256": "2ab46c49b50953be5275ed4fd2ef406c73125abcafd6b96145b95434c6d0dc14",
   "checkpoint_sha256": "fb8110b76f82c683a8cb006c27ca7cd10c98e61cfa96cbee9a56d3d4a46a7576",
-  "csv_sha256": "7e420edf52fc4fe77d165223b5534a62a42f398b1524749ca60aad7fd5850707",
+  "csv_sha256": "099e8a551ccf2d4dec16479809624b4cc18d764418d61a784c041ef2ceffee30",
   "figure_sha256": {
-    "figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.pdf": "ca96cf1747eb81ef63eac3fdafe0ba6cb5dde86082f94f3d476818ba4b0e424e",
-    "figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.png": "2aaba77976b134f4b9c18032ccbe0bd6bb5a24170cdb19b1403df63cc3e210ec",
-    "figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.pdf": "c594f2046495656c492fe45ff1cb93a0526a9b0265e91ceb1f88908d0b6bc544",
-    "figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.png": "ea548b07a72d739e9df81e79becddd73bc01d73ce12d123cc3ee828caa58c87a",
-    "figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.pdf": "b8ab6b09074681a4d2d598bf177f10d28d840b774bed0c4aa229a7ef03e80402",
-    "figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.png": "8ea726436c3de18fec38fb80c9ee8a9ad764ead499f1758baaecbde1889a73a7"
+    "figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.pdf": "273e95708ec63f2aebbfc15f34802342ba6b507c609889f8bbcb1881350a6a45",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.png": "c2a8ca52f8e6ddd9f20ab7869d19dd75576e65de2d66851b55d1b48e5b7bb35b",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.pdf": "87a359d018d979d571da827aa08bfc5fd25cff8a1a2441d7c0a11a98cbcd16f6",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.png": "9f207e74f5198328023273c2b28b8d55967a13273d2ec4abc5e42b1728bbd4e7",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.pdf": "b07e6ebe9612eb56793cccbeac5b5ba7f3d675848d698dd05d9c39c389fe4d77",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.png": "2f2c760fd74724ada5a3c3f874e326c3ac3fbcd32e294933b0510a287e36652c"
   }
 }
