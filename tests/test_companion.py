@@ -92,7 +92,11 @@ class CompanionManuscript(unittest.TestCase):
         body = (ROOT / "sections_rewrite/05_uncapped_equilibria.tex").read_text(encoding="utf-8")
         uncapped_bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}")[1].split(
             r"\label{subsec:rewrite-uncapped}")[0]
-        self.assertIn(r"\citep{pardo2026companion}", uncapped_bgp)
+        # The author removed the two closing paragraphs of Section 5.2,
+        # including this citation; the separate manuscript is preserved.
+        self.assertNotIn(r"\citep{pardo2026companion}", uncapped_bgp)
+        self.assertNotIn("This is balanced growth, not a steady state in levels", uncapped_bgp)
+        self.assertNotIn("With any finite upper bound, the characterized", uncapped_bgp)
         workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
         self.assertIn("main_rewrite.tex\n            main_companion.tex", workflow)
         self.assertIn("sections_companion/**", workflow)
