@@ -21,7 +21,10 @@ class ShortSubstitutionExposition(unittest.TestCase):
         active = source("sections_rewrite/05_uncapped_equilibria.tex").split(
             r"\label{subsec:rewrite-uncapped}", 1)[1]
         self.assertLess(len(active.split()), 0.4 * len(previous.split()))
-        self.assertNotIn(r"\begin{proposition}", active)
+        # Only the finite-value nonexistence result is now stated in 5.3;
+        # the archived conditional explosion proposition stays commented.
+        self.assertEqual(active.count(r"\begin{proposition}"), 1)
+        self.assertIn(r"\label{prop:rewrite-research-scale}", active)
         self.assertNotIn("investment shares", active)
         all_active = "\n".join(active_sources())
         self.assertNotIn("prop:rewrite-uncapped-substitutes-explosion", all_active)

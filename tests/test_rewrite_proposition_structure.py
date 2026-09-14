@@ -235,18 +235,38 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertNotIn("numerical simulations point to non-existence", normalized)
 
     def test_uncapped_nonexistence_has_a_continuation_argument(self):
+        body = " ".join(source("sections_rewrite/05_uncapped_equilibria.tex").split())
         appendix = " ".join(source("sections_rewrite/appendix.tex").split())
         self.assertIn(
-            "no uncapped infinite-horizon equilibrium with a finite-valued developer optimum",
-            appendix,
+            "no infinite-horizon equilibrium with a finite-valued developer optimum",
+            body,
         )
-        self.assertIn(r"$\sigma>1$ and $\alpha<\eta<1$", appendix)
+        self.assertIn(r"$\sigma>1$, $\overline B=\infty$, and $0<\alpha<\eta<1$", body)
         self.assertIn(r"after $T$, resume $\widehat M$", appendix)
         self.assertIn(r"B_{\mathcal M}(t)^{1-\eta}-\widehat B(t)^{1-\eta}", appendix)
         self.assertIn(r"\eqref{eq:rewrite-profit-envelope}", appendix)
         self.assertIn(r"J_T(\mathcal M)+\widehat V_0-\widehat J_T", appendix)
         self.assertIn("Each deviation has finite research expenditure on every finite interval", appendix)
         self.assertIn("excludes a finite-valued optimum", appendix)
+
+    def test_research_nonexistence_is_stated_once_in_body(self):
+        body = source("sections_rewrite/05_uncapped_equilibria.tex")
+        appendix = source("sections_rewrite/appendix.tex")
+        label = r"\label{prop:rewrite-research-scale}"
+        self.assertEqual(body.count(label), 1)
+        self.assertNotIn(label, appendix)
+        self.assertIn(r"\hyperref[proof:rewrite-research-scale]", body)
+        self.assertIn(r"\begin{proof}[Proof of Proposition~\ref{prop:rewrite-research-scale}]", appendix)
+        self.assertIn(r"\label{proof:rewrite-research-scale}", appendix)
+        statement = " ".join(body.split(label, 1)[1].split(r"\end{proposition}", 1)[0].split())
+        self.assertIn("any finite horizon $T>0$", statement)
+        self.assertIn("positive continuous paths", statement)
+        self.assertIn("integrable interest-rate path", statement)
+        self.assertIn("arbitrarily large", statement)
+        proof = " ".join(appendix.split())
+        self.assertIn("without requiring a BGP or a bounded interest rate", proof)
+        self.assertIn("auxiliary finite-horizon bounds", proof)
+        self.assertIn("attains its maximum for every $0<\\eta<1$", proof)
 
     def test_section_four_cuts_keep_table_and_equilibrium_caveat(self):
         body = source("sections_rewrite/04_equilibrium_regimes.tex")
