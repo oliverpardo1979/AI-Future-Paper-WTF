@@ -199,12 +199,117 @@ The last row uses $U/(qB)=\rho-n+\eta g_Y^*$ at the BGP.
 All entries depend on growth rates and ratios, which are independent of
 $\chi$. No terminal restrictions were used to derive this Jacobian.
 
+I next establish the two local properties
+\eqref{eq:rewrite-uncapped-unit-local-spectrum}
+and~\eqref{eq:rewrite-uncapped-unit-local-projection} from the parameter
+restrictions, rather than impose them. For this linearization only, define
+\begin{align*}
+ \nu&=\frac{1-\eta}{\eta},&
+ a_K&=\frac{\alpha}{1-(1-\alpha)\omega_X},&
+ a_T&=\frac{(1-\alpha)\omega_X\eta}
+ {[1-(1-\alpha)\omega_X](1-\eta)},\\
+ d&=\rho-n,&P&=r^*+\delta,&h&=\rho-n+\eta g_Y^*.
+\end{align*}
+All six quantities are positive, and the restriction $\eta+\omega_X<1$ gives
+\begin{equation}
+ 1-a_K-a_T
+ =\frac{(1-\alpha)(1-\eta-\omega_X)}
+ {[1-(1-\alpha)\omega_X](1-\eta)}>0.
+ \label{eq:rewrite-uncapped-unit-local-gap}
+\end{equation}
+Make the invertible linear change of deviations
+\[
+ \widehat\xi=(\xi_K,\nu\xi_B,\xi_C,\xi_q+(1-\nu)\xi_B)'.
+\]
+This changes neither the model nor the eigenvalues. Applying it to
+\eqref{eq:rewrite-uncapped-unit-jacobian-k}--\eqref{eq:rewrite-uncapped-unit-jacobian-q}
+gives a similar matrix
+\begin{equation}
+ \widehat J=
+ \begin{pmatrix}
+  \mathsf A&\mathsf B&-\mathsf C&-\mathsf V\\
+  0&0&0&\mathsf D\\
+  -\mathsf G&\mathsf H&0&0\\
+  -\mathsf E&\mathsf F&0&d
+ \end{pmatrix},
+ \label{eq:rewrite-uncapped-unit-local-similarity}
+\end{equation}
+where the following letters abbreviate matrix coefficients only:
+\begin{align*}
+ \mathsf A&=d+(1-\alpha)\omega_X P,&
+ \mathsf B&=\frac{(1-u^*)a_T-m^*}{k^*},&
+ \mathsf C&=\frac{c^*}{k^*},\\
+ \mathsf V&=\frac{m^*}{k^*(1-\eta)},&
+ \mathsf D&=\frac{\eta g_Y^*}{1-\eta},&
+ \mathsf G&=P(1-a_K),\\
+ \mathsf H&=Pa_T,&
+ \mathsf E&=\mathsf G+ha_K,&
+ \mathsf F&=\mathsf H+h(1-a_T).
+\end{align*}
+All coefficients other than $\mathsf B$ are positive by their definitions.
+The BGP allocation
+ratios imply the identities
+\begin{align}
+ \mathsf L&\equiv\mathsf B-\frac{\mathsf Vd}{\mathsf D}
+ =\frac{(1-\alpha)\omega_X\eta}{(1-\eta)k^*}>0,
+ \label{eq:rewrite-uncapped-unit-local-l}\\
+ \mathsf G\mathsf F-\mathsf H\mathsf E
+ &=hP(1-a_K-a_T)>0.
+ \label{eq:rewrite-uncapped-unit-local-minor}
+\end{align}
+Set $\mathsf N=\mathsf C\mathsf G+\mathsf V\mathsf E>0$ and
+$\mathsf Q=\mathsf C\mathsf H+\mathsf V\mathsf F>0$.
+Expanding the determinant gives the characteristic polynomial
+\begin{equation}
+ \begin{split}
+ p(\ell)&=\det(\ell I-\widehat J)\\
+ &=(\ell^2-\mathsf A\ell-\mathsf N)
+ (\ell^2-d\ell-\mathsf D\mathsf F)
+ -\mathsf D\mathsf E(\mathsf Q-\mathsf L\ell).
+ \end{split}
+ \label{eq:rewrite-uncapped-unit-local-polynomial}
+\end{equation}
+In particular,
+\[
+ p(0)=\mathsf D\mathsf C hP(1-a_K-a_T)>0.
+\]
+Let $\mu=(d-\sqrt{d^2+4\mathsf D\mathsf F})/2<0$, the negative
+root of the second quadratic factor. Then
+$p(\mu)=-\mathsf D\mathsf E(\mathsf Q-\mathsf L\mu)<0$.
+Since $p(\ell)\to+\infty$ as $\ell\to-\infty$, there is one
+negative root below $\mu$ and another between $\mu$ and zero.
+These are the only negative roots: the cubic coefficient of $p$ is
+$-(\mathsf A+d)<0$, its linear coefficient is
+$\mathsf A\mathsf D\mathsf F+d\mathsf N+\mathsf L\mathsf D\mathsf E>0$,
+and its constant coefficient is positive. Thus the coefficient signs of
+$p(-x)$, in descending powers, are $(+,+,\text{arbitrary},-,+)$.
+Descartes' rule of signs gives exactly two sign changes, regardless of
+the quadratic coefficient. The two negative roots are therefore real,
+distinct, and simple. Write them as $\ell_1<\mu<\ell_2<0$.
+The remaining two roots have positive product and positive sum, because
+$p(0)>0$ and the sum of all four roots is $\mathsf A+d>0$.
+If real, both are positive; if complex, their real parts are positive.
+This proves \eqref{eq:rewrite-uncapped-unit-local-spectrum}.
+
+To establish the state projection, write a stable eigenvector in transformed
+coordinates as $(x,y,z,u)'$. Its second component cannot be zero:
+the second, fourth, and first rows would successively imply $u=x=z=0$.
+Normalize $y=1$. The second and fourth rows then give
+\[
+ x(\ell)=\frac{\mathsf D\mathsf F+d\ell-\ell^2}{\mathsf D\mathsf E}.
+\]
+The ordering of the roots implies $x(\ell_1)<0<x(\ell_2)$.
+Hence the two projected stable eigenvectors $(x(\ell_1),1)'$ and
+$(x(\ell_2),1)'$ are linearly independent. Returning to $(\xi_K,\xi_B)$
+only rescales their second component by $1/\nu>0$, so
+\eqref{eq:rewrite-uncapped-unit-local-projection} follows as well.
+
 The exact normalized vector field is continuously differentiable near
-$\xi=0$. By condition~\eqref{eq:rewrite-uncapped-unit-local-spectrum},
-the stable-manifold theorem supplies a two-dimensional local manifold
+$\xi=0$. The spectral property just proved and the stable-manifold
+theorem supply a two-dimensional local manifold
 whose trajectories remain near zero and converge exponentially.
 The derivative of its projection onto $(\xi_K,\xi_B)$ is $V_{KB}$.
-Condition~\eqref{eq:rewrite-uncapped-unit-local-projection} and the
+The nonsingularity just proved and the
 inverse-function theorem therefore make this manifold locally the
 graph of a continuously differentiable function selecting $(\xi_C,\xi_q)$
 from the two initial stock deviations. Since exponentiation is a local
@@ -227,6 +332,18 @@ because every trajectory remaining in this local region and converging
 to zero belongs to the same stable manifold, which is a graph over stocks.
 This does not assert convergence from arbitrary initial $C_0,q_0$ or
 exclude equilibrium trajectories that leave the region.
+
+The statement also permits nearby $A_0,N_0$. Equations
+\eqref{eq:rewrite-uncapped-unit-initial-b}
+and~\eqref{eq:rewrite-uncapped-unit-initial-y-k} make the reference
+$B_0^*,K_0^*$ smooth functions of these two positive initial values.
+After normalization by the corresponding BGP, the exact vector field
+depends only on the parameters and BGP ratios, not on $A_0,N_0$.
+The set of $(A_0,N_0,K_0,B_0)$ whose stock deviations belong to
+$\mathcal U$ is therefore open and contains the reference initial condition.
+From each such initial condition, the construction converges to the BGP
+associated with its own $A_0,N_0$, not necessarily to the same levels as
+the original reference path.
 
 Since $f(\xi(t))\to0$, growth rates converge to their BGP values, not only
 normalized levels. The static equations give the same convergence for

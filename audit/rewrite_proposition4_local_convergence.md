@@ -2,6 +2,11 @@
 
 Date: 2026-09-13. Baseline: `359f6fc`.
 
+Historical report for commit `ccfe608`. Its treatment of the two local
+properties as additional assumptions is superseded by
+`rewrite_proposition4_stability_from_primitives.md`, which proves both
+from the existing parameter restrictions.
+
 ## Scope and result
 
 The user requested that Proposition 4 cover equilibrium trajectories from

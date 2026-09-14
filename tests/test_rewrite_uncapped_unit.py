@@ -254,7 +254,7 @@ class UncappedUnitAppendix(unittest.TestCase):
         self.assertNotRegex(section, r"\^\s*(?:\*|\{\s*\*\s*\})")
         self.assertNotIn("A superscript", section)
         for expression in (
-            r"$K_0,B_0>0$", r"g_{Y/N}=g_w& =\gamma+",
+            r"$(A_0,N_0,K_0,B_0)$", r"g_{Y/N}=g_w& =\gamma+",
             r"r&=\rho+\gamma+", r"g_B&=",
         ):
             self.assertIn(expression, section)
@@ -294,16 +294,20 @@ class UncappedUnitAppendix(unittest.TestCase):
         statement = body.split(r"\label{prop:rewrite-uncapped-unit-bgp}", 1)[1].split(
             r"\end{proposition}", 1)[0]
         text = " ".join(statement.split())
-        self.assertIn("every $(K_0,B_0)$", text)
-        self.assertIn("for every sufficiently small neighborhood", text)
-        self.assertIn("stays in the chosen stationary neighborhood and converges", text)
-        self.assertIn("locally unique among trajectories", text)
+        self.assertIn("There is an equilibrium trajectory such that", text)
+        self.assertIn("There is an open neighborhood", text)
+        self.assertIn("from every initial condition in that neighborhood", text)
+        self.assertIn("converging to the corresponding BGP in normalized variables", text)
+        self.assertNotIn("there exist $K_0,B_0", text)
         for condition in ("local-spectrum", "local-projection"):
-            self.assertIn(r"\eqref{eq:rewrite-uncapped-unit-"+condition+"}", statement)
+            self.assertNotIn(r"\eqref{eq:rewrite-uncapped-unit-"+condition+"}", statement)
         proof = (ROOT / "sections_rewrite/appendix_uncapped_unit_proofs.tex").read_text(encoding="utf-8")
         self.assertIn(r"\|\xi(t)\|\leq H e^{-at}\|\xi(0)\|", proof)
         self.assertIn("global concavity", proof)
         self.assertIn("Both TVCs hold", proof)
+        self.assertIn("Descartes' rule of signs", proof)
+        self.assertIn("The statement also permits nearby $A_0,N_0$", proof)
+        self.assertIn("not on $A_0,N_0$", proof)
 
     def test_source_scope_numbering_and_single_proof_section(self):
         appendix = (ROOT / "sections_rewrite/appendix_uncapped_unit.tex").read_text(encoding="utf-8")

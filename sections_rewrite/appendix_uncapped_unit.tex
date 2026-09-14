@@ -3,8 +3,8 @@
 
 This appendix derives the rates and allocation ratios supporting
 Proposition~\ref{prop:rewrite-uncapped-unit-bgp} in
-Section~\ref{subsec:rewrite-uncapped-unit-bgp} and gives the local conditions
-for its convergence result. I use the uncapped research law
+Section~\ref{subsec:rewrite-uncapped-unit-bgp} and defines the normalized
+variables used to prove local convergence. I use the uncapped research law
 \eqref{eq:rewrite-uncapped-unit-law} and the production function
 \eqref{eq:rewrite-uncapped-unit-elasticities}.
 In this appendix and its proofs, a superscript $*$ denotes the reference
@@ -101,28 +101,28 @@ The proof in Appendix~\ref{app:rewrite-proofs} derives its entries directly from
 equations~\eqref{eq:rewrite-eq-kdot}--\eqref{eq:rewrite-eq-qdot}, with
 $\psi=1$ and $\psi'=0$.
 
-The local convergence part of Proposition~\ref{prop:rewrite-uncapped-unit-bgp}
-uses two conditions. First, the linearized dynamics have exactly two stable
+The parameter restrictions in Proposition~\ref{prop:rewrite-uncapped-unit-bgp}
+imply two local properties. First, the linearized dynamics have exactly two stable
 directions and no eigenvalue with zero real part. Writing $E^s$ for the real
 invariant subspace associated with eigenvalues having negative real parts,
-this requires
+the first property is
 \begin{equation}
  \operatorname{spec}(J^*)\cap i\mathbb R=\varnothing,
  \qquad \dim E^s=2.
  \label{eq:rewrite-uncapped-unit-local-spectrum}
 \end{equation}
-Second, these stable directions must allow independent changes in the two
+Second, these stable directions allow independent changes in the two
 predetermined stocks. Let $V_S\in\mathbb R^{4\times2}$ be any real basis
-matrix for $E^s$, and let $V_{KB}$ consist of its first two rows. The condition is
+matrix for $E^s$, and let $V_{KB}$ consist of its first two rows. Then
 \begin{equation}
  \det V_{KB}\ne0.
  \label{eq:rewrite-uncapped-unit-local-projection}
 \end{equation}
 Nonsingularity does not depend on the choice of basis. It allows the stable
 manifold to select $C_0,q_0$ for every sufficiently close pair $K_0,B_0$,
-rather than only for stocks on a curve. The two conditions are sufficient
-local restrictions; the proof does not infer them from the BGP growth
-identities alone. The complete argument, including both transversality
+rather than only for stocks on a curve. Both properties follow analytically
+from the proposition's parameter restrictions; neither is an additional
+assumption or a calibration-specific test. The complete argument, including both transversality
 conditions and global agent optimality, is in Appendix~\ref{app:rewrite-proofs},
 \hyperref[proof:rewrite-uncapped-unit-local]{Proof of
 Proposition~\ref*{prop:rewrite-uncapped-unit-bgp}}.
@@ -136,8 +136,8 @@ neighborhood.
 For the parameters in Table~\ref{tab:rewrite-parameters}, the eigenvalues are
 approximately $-0.098971$, $-0.003194$, $0.040391$, and $0.149290$.
 The absolute determinant of the state projection of unit-length stable
-eigenvectors is $0.6037$. The two spectral conditions therefore hold at
-this calibration. The normalized Jacobian is independent of $\chi$;
+eigenvectors is $0.6037$. These values illustrate the general result.
+The normalized Jacobian is independent of $\chi$, $A_0$, and $N_0$;
 changing research productivity changes the reference levels, not these roots.
 
 \subsection{Growth and distribution without an upper bound}
