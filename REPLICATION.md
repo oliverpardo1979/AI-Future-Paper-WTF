@@ -20,15 +20,16 @@ the fixed-B BGP, with `K0/Y0=3.30` and `r0=0.05`. The four stocks are
 `3.433644797858547`, `4.649320432676148`, `5.036956080779938`, and
 `5.5046668887702594`, respectively. The common inputs are `omega_X=0.10`,
 `eta=0.20`, `Bbar=1360.9921392415592`, and `B0=13.609921392415593`.
-The principal `chi=1.4378` approximately matches the unit-elastic research
-expenditure target. The faster sensitivity uses `chi=7.616304576019883`,
-fitted to half the observed percentage price decline. Each value stays
+The central scenario uses `chi=7.616304576019883`, fitted to half the
+observed percentage price decline. The slow-transition sensitivity uses
+`chi=1.4378`, approximately matching the unit-elastic research-expenditure
+target. Each value stays
 fixed across the four elasticities. Pre-event consumption is
 reported for comparison but is NOT a boundary condition after activation.
 The post-event BVP independently selects consumption and the shadow value.
 
-Section 6.1 gives the common design, Section 6.2 the principal calibration,
-Section 6.3 the faster sensitivity, and Section 6.4 the limitations. Run
+Section 6.1 gives the common design, Section 6.2 the central illustrative
+scenario, Section 6.3 the slow-transition sensitivity, and Section 6.4 the limitations. Run
 `python scripts/reproduce_rewrite_results.py` for both displayed comparisons
 in this order. Add `--include-legacy` to regenerate the preserved comparisons
 as well. These commands re-solve and audit the model; they do not rescale a
@@ -43,9 +44,44 @@ Change the former to `\showlegacysimulationstrue` to restore the older
 quantitative section and numerical appendix instead. These are editorial
 switches, not simulation settings; all underlying files remain available.
 
-## Approximate research-expenditure calibration
+## Central illustrative scenario: half of the observed percentage price decline
 
-The principal calibration in Section 6.2 uses the lowest previously discussed dated proxy, US 2023:
+Section 6.2 uses a 40% decline over 27 months as the unit-elastic target,
+hence `p_X(2.25)/p_X(0)=0.60`. It is half the observed rounded percentage
+decline, not half its log change or half of chi.
+
+```text
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.py -v
+```
+
+For a staged run, append `--calibrate-only`, then run `--sigma 0.9`,
+`--sigma 1`, `--sigma 1.1`, and `--sigma 1.5` separately, and finally
+`--finish`. Finishing repeats the equilibrium checks and event-continuity
+audit, verifies the final price match, and only then exports all four paths.
+Initial stocks, other parameters, equations, tolerances and figure windows
+are unchanged. Results are in `numerical_rewrite/rsi_activation_half_decline/`.
+
+The unit-elastic first-year research share is 0.1829159%, compared with the
+US 2024 proxy of 0.1543791% (45.23/29298.013) and the US 2025 proxy of
+0.3562176% (109.58/30762.099). Compute estimates are from Korinek and
+McKelvey (2026), Table 3; nominal GDP is the BEA GDPA series. This is a
+check on magnitude, not a second target or a joint empirical fit. The
+estimates assume a 50% training/research allocation of rental-equivalent
+AI compute spending and do not directly measure global autonomous RSI.
+At sigma=1.50, first-year M/Y is 3.0091%, well above these proxies.
+All annual ratios use the integral of M divided by the integral of Y,
+not an initial instantaneous ratio. All four model ratios fall between
+the first and second years, unlike the US estimates over 2023-2025.
+
+At sigma=1.50, labor's share reaches half its initial value around year 47.
+The limiting output-per-person growth, wage growth and net interest rate
+are 3.13%, 2.42% and 7.13%. Industry size and recent expenditure growth
+remain unfitted; the reported dates are not forecasts.
+
+## Slow-transition sensitivity: approximate research-expenditure calibration
+
+Section 6.3 uses the lowest previously discussed dated proxy, US 2023:
 training/research compute of $18.46 billion divided by nominal GDP of
 $27,811.517 billion, or 0.0663754%. At chi=1.4378 the unit-elastic path gives
 0.0637427%, a shortfall of 0.2633 basis points. The author requested an
@@ -77,26 +113,8 @@ The original high-target search remains available through `--diagnose`, while
 `--compare-published` measures the earlier price-calibrated paths. These
 commands retain the distinction between verified equilibria and exact fits.
 
-## Faster sensitivity: half of the observed percentage price decline
-
-Section 6.3 changes only chi: a 40% decline over 27 months is the new
-unit-elastic target, hence `p_X(2.25)/p_X(0)=0.60`. It is half the observed
-rounded percentage decline, not half its log change or half of chi.
-
-```text
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
-python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.py -v
-```
-
-For a staged run, append `--calibrate-only`, then run `--sigma 0.9`,
-`--sigma 1`, `--sigma 1.1`, and `--sigma 1.5` separately, and finally
-`--finish`. Finishing repeats the equilibrium checks and event-continuity
-audit, verifies the final price match, and only then exports all four paths.
-Initial stocks, other parameters, equations, tolerances and figure windows
-are unchanged. Results are in `numerical_rewrite/rsi_activation_half_decline/`.
-
-At sigma=1.50, labor's share reaches half its initial value around year 47,
-versus 221 in the principal calibration. The limiting output-per-person
+At sigma=1.50, labor's share reaches half its initial value around year 221,
+versus 47 in the central scenario. The limiting output-per-person
 growth, wage growth and net interest rate remain 3.13%, 2.42% and 7.13%.
 In the finite-bound limits characterized in the paper, positive chi affects
 the transition, not those limits. This does not identify sigma or Bbar,

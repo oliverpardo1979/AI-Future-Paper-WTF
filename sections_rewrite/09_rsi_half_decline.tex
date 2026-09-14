@@ -1,7 +1,7 @@
-\subsection{Sensitivity: a faster transition}
+\subsection{Central illustrative scenario}
 \label{subsec:rewrite-rsi-half-decline}
 
-I next calibrate $\chi$ to half the nearly $80\%$ decline in the OECD
+In the central illustrative scenario, I calibrate $\chi$ to half the nearly $80\%$ decline in the OECD
 quality-adjusted language-model price index between January 2024 and
 April 2026 \citep{oecdaimarkets2026}. At $\sigma=1$, the target is
 \begin{equation}
@@ -10,8 +10,8 @@ April 2026 \citep{oecdaimarkets2026}. At $\sigma=1$, the target is
 \end{equation}
 The target is a $40\%$ decline over 2.25 years.
 It halves the percentage decline, not its logarithm, the annual growth
-rate, or $\chi$ itself. This is an illustrative sensitivity exercise,
-not a second empirical estimate or an estimate of how monopoly changes
+rate, or $\chi$ itself. This is an illustrative target,
+not an estimate of how monopoly changes
 the pace of price declines. Competition, hardware, human research and
 changes in task intensity also affect observed prices. The comparison
 treats the final-good price as constant over this window. Date zero remains
@@ -21,28 +21,48 @@ At unit elasticity, Equation~\eqref{eq:rewrite-monopoly-foc} gives a
 constant markup and a price inversely proportional to $B$. The target
 therefore requires $B$ to increase by a factor of $5/3$ within 2.25 years.
 
-All other parameters and initial stocks are unchanged. Each economy starts
-on the same fixed-efficiency BGP as in
+Each economy starts on the fixed-efficiency BGP described in
 Section~\ref{subsec:rewrite-rsi-activation}, with existing AI and
-$K_0/Y_0=3.30$. RSI is activated unexpectedly at date zero. I recalibrate
+$K_0/Y_0=3.30$. RSI is activated unexpectedly at date zero. I calibrate
 $\chi$ at unit elasticity, hold it fixed across the other three elasticities,
-and solve consumption and research again using the same BVP and equilibrium
-checks. The new paths are not time-rescaled versions of the earlier paths.
+and solve consumption and research using the BVP and equilibrium checks
+described in Appendix~\ref{app:rewrite-algorithm}.
 Table~\ref{tab:rewrite-rsi-half-parameters} reports the parameters and initial stocks.
 
-\input{sections_rewrite/rsi_half_decline_parameters}
 \input{sections_rewrite/rsi_half_decline_results}
 
+Research expenditure provides a separate check on the magnitude of this
+calibration, not an additional fitted target. At $\sigma=1$, first-year
+research expenditure divided by first-year output is $0.1829\%$, compared
+with an estimated $0.1544\%$ for the United States in 2024 and $0.3562\%$
+in 2025.\footnote{Training compute expenditure in Table 3 of
+\citet{korinekmckelvey2026} is \$45.23 billion in 2024 and \$109.58 billion
+in 2025. The corresponding nominal GDP values in the BEA series
+\texttt{GDPA}, accessed through
+\href{https://fred.stlouisfed.org/data/GDPA}{FRED} on September 14, 2026,
+are \$29,298.013 billion and \$30,762.099 billion.}
+These estimates use rental-equivalent compute costs and allocate half of
+AI compute spending to training and research; they do not measure worldwide
+autonomous RSI directly. The comparison supports the order of magnitude at
+unit elasticity, not an empirical fit for all four scenarios. In particular,
+first-year research expenditure is $3.0091\%$ of output at $\sigma=1.50$,
+well above these estimates. Research expenditure relative to output also
+falls between the first and second years in all four scenarios, unlike the
+increase in the US estimates.
+
+\input{sections_rewrite/rsi_half_decline_parameters}
+
 Figures~\ref{fig:rewrite-rsi-half-accumulation}--\ref{fig:rewrite-rsi-half-distribution}
-retain the variables, normalizations, line styles, and time windows of the
-preceding exercise. Vertical scales may differ between exercises to keep
-the individual paths legible. Dotted horizontal lines show the unchanged
-analytical limits for $\sigma=1.50$.
+show growth rates, prices and income shares in separate windows for the
+first ten years and years 10--500. Dotted horizontal lines show the
+analytical limits for $\sigma=1.50$. The slow-transition sensitivity in
+Section~\ref{subsec:rewrite-rsi-research-share} uses the same presentation;
+vertical scales may differ to keep each comparison legible.
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_accumulation_growth_windows.pdf}
- \caption{A $40\%$ price-decline target: growth of output, AI production
+ \caption{Central illustrative scenario: growth of output, AI production
  services, and capital per unit of effective labor. Rates are instantaneous
  annual rates. The upper row shows two pre-event years and years 0--10;
  the lower row shows years 10--500. Panels A and C share a scale within
@@ -53,7 +73,7 @@ analytical limits for $\sigma=1.50$.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_growth_returns_windows.pdf}
- \caption{A $40\%$ price-decline target: real-wage growth, the net interest
+ \caption{Central illustrative scenario: real-wage growth, the net interest
  rate, and the AI-service price. Rates are annual; the price is in final-good
  units on a logarithmic scale. The diamond marks the unit-elastic target
  $p_X(2.25)/p_X(0)=0.60$. The vertical line marks RSI activation.}
@@ -63,7 +83,7 @@ analytical limits for $\sigma=1.50$.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_ai_distribution_windows.pdf}
- \caption{A $40\%$ price-decline target: labor income, AI net profit,
+ \caption{Central illustrative scenario: labor income, AI net profit,
  inference expenditure, and research expenditure relative to output.
  The first two rows show the pre-event BGP and years 0--10; the last two
  show years 10--500. The omitted gross capital share remains $\alpha=0.33$.}

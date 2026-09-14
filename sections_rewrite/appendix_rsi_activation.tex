@@ -52,7 +52,17 @@ problem; neither $\omega_X=0$ nor $\chi=0$ is used as a degenerate BVP seed.
 At unit elasticity the static block uses its exact Cobb--Douglas limit;
 near one, \texttt{log1p} and \texttt{expm1} avoid cancellation.
 
-The principal calibration in Section~\ref{subsec:rewrite-rsi-research-share} uses an approximate
+For the central scenario in Section~\ref{subsec:rewrite-rsi-half-decline}, an
+outer bracketed search in $\log\chi$ solves the unit-elastic BVP and
+evaluates the price ratio at exactly 2.25 years. It matches
+Equation~\eqref{eq:rewrite-rsi-half-price-target}, then fixes $\chi$ for the
+other three elasticities. The tolerance in $\log\chi$ is $2\times10^{-6}$;
+the final price-ratio log error must be below $2\times10^{-5}$ after both
+horizon extensions. These numerical tolerances are well below the precision
+of the rounded target. The archived full-price-decline exercise uses the
+same method with a price ratio of $0.20$ instead of $0.60$.
+
+The slow-transition sensitivity in Section~\ref{subsec:rewrite-rsi-research-share} uses an approximate
 research-expenditure calibration at $\sigma=1$. For each trial $\chi$,
 Gauss--Legendre quadrature with 64 and 128 nodes evaluates the two integrals
 in Equation~\eqref{eq:rewrite-research-share-target}; their ratio must agree
@@ -69,16 +79,6 @@ equilibrium from its own fixed-efficiency pre-RSI BGP. Research expenditure
 and the price decline in these three cases are outcomes, not additional
 targets. The earlier high-target search and its figures remain available
 in the repository.
-
-For the sensitivity in Section~\ref{subsec:rewrite-rsi-half-decline}, an
-outer bracketed search in $\log\chi$ solves the unit-elastic BVP and
-evaluates the price ratio at exactly 2.25 years. It matches
-Equation~\eqref{eq:rewrite-rsi-half-price-target}, then fixes $\chi$ for the
-other three elasticities. The tolerance in $\log\chi$ is $2\times10^{-6}$;
-the final price-ratio log error must be below $2\times10^{-5}$ after both
-horizon extensions. These numerical tolerances are well below the precision
-of the rounded target. The archived full-price-decline exercise uses the
-same method with a price ratio of $0.20$ instead of $0.60$.
 
 \subsection{Equilibrium checks and replication}
 
@@ -107,13 +107,24 @@ infinite-horizon continuation. These are numerically verified equilibrium
 approximations, not interval-arithmetic existence certificates for arbitrary
 initial stocks.
 
-\input{sections_rewrite/rsi_research_share_accuracy}
 \input{sections_rewrite/rsi_half_decline_accuracy}
+\input{sections_rewrite/rsi_research_share_accuracy}
 \ifshowfullpricebenchmark
 \input{sections_rewrite/rsi_activation_accuracy}
 \fi
 
-From the repository root, reproduce the principal comparison with:
+From the repository root, reproduce the central scenario with:
+\begin{quote}
+\scriptsize
+\begin{verbatim}
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+\end{verbatim}
+\end{quote}
+Its outputs are in the
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation_half_decline}
+{half-decline results folder}.
+
+For the slow-transition sensitivity, run:
 \begin{quote}
 \small
 \begin{verbatim}
@@ -130,16 +141,7 @@ The
 {research-expenditure results folder} contains the sources, admitted CSV,
 numerical checks, figure metadata and approximate-calibration record.
 
-For the faster-transition sensitivity, run:
-\begin{quote}
-\scriptsize
-\begin{verbatim}
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
-\end{verbatim}
-\end{quote}
-Its outputs are in the
-\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation_half_decline}
-{half-decline results folder}. Each comparison has separate checkpoints,
+Each comparison has separate checkpoints,
 calibration results, audits and figures. No paths or figures are exported
 unless every scenario passes admission and the activation continuity check.
 Checkpoint and CSV hashes bind the audits to the plotted data.

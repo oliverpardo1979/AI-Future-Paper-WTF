@@ -1,7 +1,8 @@
-\subsection{Principal calibration: research expenditure}
+\subsection{Sensitivity: a slow transition}
 \label{subsec:rewrite-rsi-research-share}
 
-I use research expenditure to guide the choice of $\chi$. The reference is the United
+To examine a slower transition, I reduce $\chi$ using a lower research-expenditure
+target. The reference is the United
 States in 2023: \citet{korinekmckelvey2026} estimate training compute
 expenditure of \$18.46 billion, equivalent to $0.0664\%$ of nominal
 GDP.\footnote{Training compute is from Table 3 of
@@ -23,7 +24,7 @@ changing the initial stocks, production quantities or prices. Consumption
 and research adjust endogenously. The initial capital stocks differ across
 elasticities to preserve the common capital--output ratio, not to fit
 post-activation outcomes. All parameters except $\chi$ are shared with
-the sensitivity exercise in Section~\ref{subsec:rewrite-rsi-half-decline};
+the central scenario in Section~\ref{subsec:rewrite-rsi-half-decline};
 Table~\ref{tab:rewrite-research-share-parameters} lists them.
 
 At $\sigma=1$, I compare annual expenditure with annual output:
@@ -34,6 +35,7 @@ At $\sigma=1$, I compare annual expenditure with annual output:
 \end{equation}
 Among the previously explored candidates on the increasing low-$\chi$
 branch, $\chi=1.4378$ gives the closest annual ratio, $0.06374\%$.
+This value is about one fifth of $\chi=7.616305$ in the central scenario.
 It falls short of the empirical proxy by $0.26$ basis points, or about
 $4.0\%$ of the target. I retain this approximate match rather than refine
 $\chi$ to fit an uncertain proxy more closely. This choice does not relax
@@ -42,7 +44,8 @@ I then hold $\chi=1.4378$ fixed across the other three elasticities.
 Their research expenditure and price declines are equilibrium outcomes,
 not separately fitted targets.
 
-The initial growth effects are modest across all four elasticities.
+The initial growth effects are smaller than in the central scenario across
+all four elasticities.
 Output per person begins growing at instantaneous annual rates of
 $1.08\%$, $1.23\%$, $1.26\%$, and $1.45\%$, compared with $1\%$ before
 activation. At $\sigma=1.50$, consumption rises by $0.84\%$, research
@@ -51,7 +54,10 @@ at $2.73\%$ of output. Gross investment remains $19.57\%$ of output:
 physical capital grows by $0.93\%$ annually at activation, although it
 falls relative to effective labor, which grows by $1.30\%$.
 This adjustment requires neither initial developer losses nor capital
-liquidation.
+liquidation. Compared with the central scenario at $\sigma=1.50$, initial
+research spending falls from $3.10\%$ to $0.57\%$ of output and gross
+investment rises from $13.79\%$ to $19.57\%$. The consumption jump falls
+from $5.05\%$ to $0.84\%$.
 
 The first-year research shares are $0.00687\%$, $0.06374\%$, $0.14175\%$,
 and $0.56313\%$ of output. Only the second value is calibrated: stronger
@@ -67,9 +73,13 @@ the first ten years and years 10--500. The subsequent paths separate:
 the three labor-supported economies return to output-per-person and
 real-wage growth of $1\%$ and an interest rate of $5\%$. At $\sigma=1.50$,
 growth accelerates and labor's income share tends to zero. Its decline
-reaches half its initial share after approximately 221 model years.
+reaches half its initial share after approximately 221 model years, compared
+with 47 in the central scenario. Completing $90\%$ of the decline takes
+approximately 424 years rather than 137.
 The limiting output-per-person growth, wage growth and interest rate
-are $3.13\%$, $2.42\%$, and $7.13\%$, respectively.
+are unchanged at $3.13\%$, $2.42\%$, and $7.13\%$, respectively. Research
+productivity changes the speed and shape of adjustment, not these long-run
+outcomes.
 
 The plotted horizon is not the terminal boundary. At year 500 in the
 $\sigma=1.50$ case, output-per-person growth is $4.27\%$, wage growth is
@@ -85,7 +95,7 @@ a large remaining deviation of growth from its limiting rate.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.pdf}
- \caption{Principal calibration: growth of
+ \caption{Slow-transition sensitivity: growth of
  output, AI production services and capital per unit of effective labor.
  Rates are instantaneous annual rates. The upper row shows years $-2$ to
  10 and the lower row years 10--500. Vertical scales differ between rows;
@@ -97,7 +107,7 @@ a large remaining deviation of growth from its limiting rate.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.pdf}
- \caption{Principal calibration: real-wage
+ \caption{Slow-transition sensitivity: real-wage
  growth, the net interest rate and the AI-service price. The price is in
  final-good units on a logarithmic scale and is not a calibration target.
  Vertical scales differ between the initial and subsequent windows.
@@ -108,7 +118,7 @@ a large remaining deviation of growth from its limiting rate.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.pdf}
- \caption{Principal calibration: labor
+ \caption{Slow-transition sensitivity: labor
  income, AI net profit, inference expenditure and research expenditure as
  shares of output. The first two rows show years $-2$ to 10 and the last
  two show years 10--500. The instantaneous research share differs from

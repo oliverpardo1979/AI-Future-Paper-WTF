@@ -48,14 +48,14 @@ class SimulationSelection(unittest.TestCase):
         headings = re.findall(r'\\subsection\{([^}]+)\}', text)
         self.assertEqual(headings, [
             'Experimental design and initial conditions',
-            'Principal calibration: research expenditure',
-            'Sensitivity: a faster transition',
+            'Central illustrative scenario',
+            'Sensitivity: a slow transition',
             'Interpretation and limitations',
         ])
         figures = re.findall(r'\\includegraphics\[[^]]*\]\{([^}]+)\}', text)
         self.assertEqual(len(figures), 6)
-        self.assertTrue(all('rsi_research_share_2023_' in p for p in figures[:3]))
-        self.assertTrue(all('rsi_activation_half_decline_' in p for p in figures[3:]))
+        self.assertTrue(all('rsi_activation_half_decline_' in p for p in figures[:3]))
+        self.assertTrue(all('rsi_research_share_2023_' in p for p in figures[3:]))
         self.assertTrue(all((ROOT / p).exists() for p in figures))
 
     def test_full_price_benchmark_can_be_reactivated(self):
@@ -88,8 +88,8 @@ class SimulationSelection(unittest.TestCase):
         commands = [c.args[0] for c in run.call_args_list]
         calibrations = [c for c in commands if any('scripts/calibrate_' in x for x in c)]
         self.assertEqual(len(calibrations), 2)
-        self.assertIn('scripts/calibrate_rewrite_research_share_low.py', calibrations[0])
-        self.assertEqual(calibrations[1][-1], 'rsi_activation_half_decline')
+        self.assertEqual(calibrations[0][-1], 'rsi_activation_half_decline')
+        self.assertIn('scripts/calibrate_rewrite_research_share_low.py', calibrations[1])
         self.assertFalse(any('rsi_activation' in c for c in commands))
 
     def test_legacy_driver_retains_full_price_command(self):
@@ -97,6 +97,31 @@ class SimulationSelection(unittest.TestCase):
              patch.object(reproduce, 'run') as run, contextlib.redirect_stdout(io.StringIO()):
             reproduce.main()
         self.assertTrue(any(c.args[0][-1] == 'rsi_activation' for c in run.call_args_list))
+
+    def test_central_empirical_check_is_not_a_second_calibration_target(self):
+        text = quantitative_text()
+        self.assertIn('not an additional fitted target', text)
+        self.assertIn(r'$0.1829\%$', text)
+        self.assertIn(r'$0.1544\%$', text)
+        self.assertIn(r'$3.0091\%$', text)
+        self.assertNotIn('Principal calibration: research expenditure', text)
+        comparison = json.loads((ROOT / 'numerical_rewrite/rsi_research_share_2025/'
+                                 'published_comparison.json').read_text())
+        moment = comparison['rsi_activation_half_decline']['first_year']['share']
+        self.assertAlmostEqual(100 * moment, .1829, places=4)
+        proxy = 45.23 / 29298.013
+        self.assertAlmostEqual(100 * proxy, .1544, places=4)
+        self.assertAlmostEqual(10000 * (moment - proxy), 2.8536871, places=6)
+
+    def test_appendix_and_replication_follow_display_order(self):
+        appendix = (ROOT / 'sections_rewrite/appendix_rsi_activation.tex').read_text()
+        self.assertLess(appendix.index('rsi_half_decline_accuracy'),
+                        appendix.index('rsi_research_share_accuracy'))
+        self.assertLess(appendix.index('python scripts/calibrate_rewrite_ai_price.py'),
+                        appendix.index('python scripts/calibrate_rewrite_research_share_low.py'))
+        guide = (ROOT / 'REPLICATION.md').read_text()
+        self.assertLess(guide.index('## Central illustrative scenario'),
+                        guide.index('## Slow-transition sensitivity'))
 
 
 if __name__ == '__main__':

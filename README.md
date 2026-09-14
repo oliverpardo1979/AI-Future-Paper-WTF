@@ -24,22 +24,26 @@ and an upper bound ten percent above the `sigma=1.50` threshold. Research
 productivity is calibrated at unit elasticity, then shared across all four
 scenarios. Section 6.1 explains this common design and the initial conditions.
 
-Section 6.2 is the principal research-expenditure calibration: chi=1.4378
-approximately matches the historical US 2023 training-compute/GDP proxy.
-Data, sources and checks are in `numerical_rewrite/rsi_research_share_2023/`.
-Section 6.3 holds the other parameters and initial stocks fixed but fits
-chi=7.616304576019883 to a 40% price decline over 27 months. This faster
-sensitivity is in `numerical_rewrite/rsi_activation_half_decline/`.
+Section 6.2 is the central illustrative scenario: chi=7.616304576019883
+fits a 40% price decline over 27 months at sigma=1. Its first-year research
+share of 0.1829% is close in magnitude to the US 2024 estimate of 0.1544%,
+but this was not a second calibration target. At sigma=1.50, the first-year
+share is 3.0091%, well above the empirical estimates. Results are in
+`numerical_rewrite/rsi_activation_half_decline/`.
+Section 6.3 is the slow-transition sensitivity: chi=1.4378 approximately
+matches the historical US 2023 training-compute/GDP proxy. Other parameters
+and initial stocks are unchanged. Data, sources and checks are in
+`numerical_rewrite/rsi_research_share_2023/`.
 Section 6.4 discusses the unfitted industry size, expenditure-growth mismatch
 and adjustment assumptions. Within the characterized finite-bound limits,
 chi affects transitions, not limiting growth and distribution. The reported
 dates are conditional model outcomes, not forecasts.
 
-To reproduce the principal calibration from a fresh clone with Python 3.12:
+To reproduce the central scenario from a fresh clone with Python 3.12:
 
 ```text
 python -m pip install -r requirements-rewrite.txt
-python scripts/calibrate_rewrite_research_share_low.py
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
 ```
 
 The command exports only paths that pass the numerical equilibrium-admission

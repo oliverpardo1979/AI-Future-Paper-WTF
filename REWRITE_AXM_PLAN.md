@@ -12,6 +12,22 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Central illustrative scenario and slow sensitivity (September 14, 2026)
+
+- The author selected the former Section 6.3 as the central illustrative
+  scenario. It now appears as Section 6.2, chi=7.616304576019883, with
+  the same 40% price-decline target at sigma=1. The former Section 6.2
+  becomes the slow-transition sensitivity in 6.3, chi=1.4378.
+- Supersede the ordering and principal/sensitivity designations below,
+  not any saved calibration or trajectory. Keep all four sigmas, stocks,
+  equations, numerical gates and figure files unchanged.
+- State that the central unit-elastic annual M/Y of 0.1829% is close in
+  magnitude to the US 2024 proxy of 0.1544%, not a second fitted target.
+  Disclose that sigma=1.50 gives 3.0091% and does not match these data;
+  the proxy is US rental-equivalent training/research, not global RSI.
+- Reorder the figure/parameter/accuracy tables and replication instructions
+  consistently. Keep title, abstract and introduction unchanged.
+
 ### Restore the low-eta research-value case (September 14, 2026)
 
 - Proposition 5 now states both uncapped, fixed-horizon cases for sigma>1:

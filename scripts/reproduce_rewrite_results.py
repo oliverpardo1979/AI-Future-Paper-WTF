@@ -115,12 +115,12 @@ def main() -> None:
                 ]
             )
 
-    run([python, "scripts/calibrate_rewrite_research_share_low.py"])
-    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
-         "test_rewrite_research_share_low.py", "-v"])
     run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation_half_decline"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_rsi_half_decline.py", "-v"])
+    run([python, "scripts/calibrate_rewrite_research_share_low.py"])
+    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
+         "test_rewrite_research_share_low.py", "-v"])
     if not args.include_legacy:
         print("Both displayed four-regime RSI comparisons reproduced; archived files left unchanged.", flush=True)
         return
