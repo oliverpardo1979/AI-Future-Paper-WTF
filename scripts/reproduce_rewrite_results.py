@@ -29,6 +29,7 @@ TEST_FILES = (
     "test_rewrite_simulation_design.py",
     "test_near_unit_ai_bvp.py",
     "test_rewrite_price_calibration.py",
+    "test_rewrite_rsi_activation.py",
 )
 
 
@@ -39,7 +40,7 @@ def run(arguments: list[str]) -> None:
     subprocess.run(arguments, cwd=ROOT, check=True)
 
 
-def remove_generated_checkpoints() -> None:
+def remove_generated_checkpoints(include_legacy: bool = False) -> None:
     """Remove only this workflow's untracked BVP checkpoints."""
     removed = 0
     cache_designs = {
@@ -49,8 +50,11 @@ def remove_generated_checkpoints() -> None:
         'rewrite_bvp_near_terminal': DESIGN_SIGMAS['near_terminal'],
         'rewrite_bvp_price_calibrated': SIGMAS,
         'rewrite_bvp_price_calibrated_low_ai_high_cap': SIGMAS,
+        'rewrite_bvp_rsi_activation': SIGMAS,
     }
     for cache_name, sigmas in cache_designs.items():
+        if not include_legacy and cache_name != 'rewrite_bvp_rsi_activation':
+            continue
         cache = ROOT / "tmp" / cache_name
         for sigma in sigmas:
             key = f"sigma_{sigma:.2f}".replace(".", "_")
@@ -77,13 +81,15 @@ def main() -> None:
     parser.add_argument("--export-horizon", type=float, default=500.0)
     parser.add_argument("--slow-export-horizon", type=float, default=4000.0)
     parser.add_argument("--points", type=int, default=1201)
+    parser.add_argument("--include-legacy", action="store_true",
+                        help="also reproduce the earlier, currently hidden comparisons")
     args = parser.parse_args()
 
     if args.export_horizon <= 0 or args.slow_export_horizon <= 0 or args.points < 2:
         parser.error("Both export horizons must be positive and --points must be at least 2.")
 
     if args.fresh:
-        remove_generated_checkpoints()
+        remove_generated_checkpoints(args.include_legacy)
 
     python = sys.executable
     if not args.skip_tests:
@@ -101,6 +107,13 @@ def main() -> None:
                     "-v",
                 ]
             )
+
+    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation"])
+    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
+         "test_rewrite_rsi_activation.py", "-v"])
+    if not args.include_legacy:
+        print("RSI-activation comparison reproduced; legacy files left unchanged.", flush=True)
+        return
 
     horizons = {
         'main': args.export_horizon,

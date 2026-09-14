@@ -12,11 +12,28 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
-### Principal calibration (September 14, 2026)
+### RSI activation replaces the displayed calibration (September 14, 2026)
+
+The user approved a pre-event BGP with AI already present and fixed B0,
+followed by an unanticipated activation of previously unavailable RSI.
+Keep omega_X=0.10 before and after the event. Choose K0 separately for
+each sigma to match K0/Y0=3.30 and r0=0.05; do not impose pre-event C0
+on the new equilibrium. Keep eta, the four sigmas, B0/Bbar=0.01, and
+Bbar=1.10 times the sigma=1.50 threshold. Refit chi at sigma=1, then hold
+it fixed. The new variant is `rsi_activation`; source and results use
+separate files. Preserve the post-event equations, BVP logic, and admission
+thresholds. Add checks of the pre-event BGP and event continuity.
+
+The LaTeX switch `\showlegacysimulationsfalse` selects the new section and
+numerical appendix; `\showlegacysimulationstrue` restores all earlier
+simulations. No old trajectory, figure, or numerical data is deleted.
+The title, abstract, introduction, and analytical model remain untouched.
+
+### Previous principal calibration (preserved, September 14, 2026)
 
 The existing lower-weight price-calibrated comparison in
-`sections_rewrite/07_low_ai_price_calibration.tex` is now the principal
-calibration. Keep the four sigmas 0.90, 1.00, 1.10, 1.50; common no-AI Ramsey
+`sections_rewrite/07_low_ai_price_calibration.tex` was the principal
+calibration. Preserve its four sigmas 0.90, 1.00, 1.10, 1.50; common no-AI Ramsey
 initial capital; eta=0.20; omega_X=0.10; Bbar=1.10 times the sigma=1.50
 threshold; B0/Bbar=0.01; and chi=36.03184470863892, fitted to the price decline
 at sigma=1 and then held fixed across sigmas. Numerical files remain in

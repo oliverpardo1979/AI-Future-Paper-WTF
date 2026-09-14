@@ -1,6 +1,6 @@
 """Capped-model BVP designs; export only after equilibrium admission.
 
-The main comparison uses common interior K0 and B0, never a borrowed C0, q0,
+Each design supplies predetermined K0 and B0, never a borrowed C0, q0,
 or terminal restriction. Cached splines are technical candidates, not figures.
 Run each sigma separately to retain reproducible intermediate diagnostics.
 """
@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT / '.python-packages'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import numpy as np
 from scipy.interpolate import PPoly
+from scipy.optimize import brentq
 from analyze_axm_finite_cap_bvp import (
     critical_capability_frontier, terminal_point, terminal_linearization,
 )
@@ -132,6 +133,54 @@ def key(sigma):
     return f'sigma_{sigma:.2f}'.replace('.', '_')
 
 
+def fixed_efficiency_bgp(sigma, capability, parameters):
+    """Pre-RSI BGP with existing AI and B fixed, at A0*N0=1.
+
+    Research is unavailable in this auxiliary pre-event economy (chi=0,
+    M=0), not an imposed corner of the post-event positive-chi problem.
+    Only its stocks are inherited by the post-event BVP. Its C is NOT an
+    initial boundary condition after the unanticipated RSI activation.
+    """
+    p = parameters
+    if capability <= 0 or sigma <= 0 or p.discount <= p.population_growth:
+        raise ValueError('The pre-RSI reference requires B>0, sigma>0, rho>n.')
+    target = p.alpha / (p.discount + p.labor_productivity_growth + p.depreciation)
+
+    def block(log_k):
+        return solve_monopoly_static_block(log_k, math.log(capability), 0., sigma, p)
+
+    def residual(log_k):
+        return log_k - block(log_k).log_output - math.log(target)
+
+    # A search bracket in log capital, not an economic restriction. Expand
+    # symmetrically around the no-AI ratio's implied stock until bracketed.
+    center = math.log(target) / (1-p.alpha)
+    for width in (1., 2., 4., 8., 16., 32.):
+        lo, hi = center-width, center+width
+        if residual(lo)*residual(hi) <= 0:
+            break
+    else:
+        raise ValueError('No positive fixed-B labor-supported BGP was bracketed.')
+    log_k = brentq(residual, lo, hi, xtol=1e-12, rtol=1e-14)
+    s = block(log_k)
+    k, y, u = math.exp(log_k), math.exp(s.log_output), math.exp(s.log_inference_compute)
+    x = math.exp(s.log_ai_services)
+    revenue = (1-p.alpha)*s.ai_ces_share*y
+    c = y-u-(p.depreciation+p.population_growth+p.labor_productivity_growth)*k
+    if c <= 0 or abs(residual(log_k)) > 1e-10:
+        raise ValueError('The fixed-B reference fails positivity or K/Y consistency.')
+    return dict(sigma=sigma, capital=k, capability=capability, output=y,
+                consumption=c, inference_compute=u, research_compute=0.,
+                ai_services=x, ai_service_price=revenue/x,
+                wage=(1-p.alpha)*(1-s.ai_ces_share)*y,
+                interest_rate=p.alpha*y/k-p.depreciation,
+                capital_output_ratio=k/y, labor_income_share=(1-p.alpha)*(1-s.ai_ces_share),
+                ai_revenue_output_share=revenue/y, profit_output_share=(revenue-u)/y,
+                inference_output_share=u/y, research_output_share=0.,
+                monopoly_foc_residual=s.monopoly_foc_log_residual,
+                pre_event_research_available=False)
+
+
 def design_initial_stocks(design, sigma):
     """Return the predetermined stocks specified by one simulation design."""
     if design.initial_capital_rule == 'regime_terminal_reference':
@@ -143,6 +192,9 @@ def design_initial_stocks(design, sigma):
             capital = terminal.auxiliary['gap_scale'] / capability_gap
         else:
             raise ValueError(f'Unknown terminal regime: {terminal.regime}')
+    elif design.initial_capital_rule == 'fixed_efficiency_bgp':
+        capital = fixed_efficiency_bgp(
+            sigma, design.initial_capability, design.parameters)['capital']
     elif design.initial_capital_rule == 'common':
         if design.initial_capital is None:
             raise ValueError('A common-capital design must specify initial capital.')

@@ -1,0 +1,149 @@
+{
+  "status": "numerically_admitted",
+  "chi": 36.83070200718361,
+  "calibration_sigma": 1.0,
+  "target_years": 2.25,
+  "target_price_ratio": 0.2,
+  "matched_price_ratio": 0.20000000094075143,
+  "variant": "rsi_activation",
+  "design": "rsi_activation",
+  "target_log_residual": 4.703757150487805e-09,
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 36.83070200718361,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.9921392415592,
+  "initial_capital": null,
+  "initial_capital_rule": "fixed_efficiency_bgp",
+  "initial_capital_by_sigma": {
+    "sigma_0_90": 3.433644797858547,
+    "sigma_1_00": 4.649320432676148,
+    "sigma_1_10": 5.036956080779938,
+    "sigma_1_50": 5.5046668887702594
+  },
+  "initial_capability": 13.609921392415593,
+  "source": {
+    "url": "https://www.oecd.org/en/publications/artificial-intelligence-markets_d531d73f-en/full-report.html",
+    "title": "Artificial Intelligence markets: Recent developments and competition issues",
+    "institution": "OECD",
+    "publication_date": "2026-07-10",
+    "accessed": "2026-09-14",
+    "window_start": "2024-01",
+    "window_end": "2026-04",
+    "measure": "Quality-adjusted cloud API price index for text-to-text models",
+    "source_precision": "nearly 80 percent; rounded to 80 percent for this exercise"
+  },
+  "numeraire_assumption": "The general final-good price is held constant over the target window. This uses the rounded dollar-price fall as an approximate relative-price target, not an exactly deflated empirical estimate.",
+  "interpretation": "Conditional timing calibration, not identification of RSI productivity; competition, hardware, human R&D and task intensity are not separately identified. Model year zero is an experiment date, not a claim that January 2024 had no AI.",
+  "root_log_chi_tolerance": 2e-06,
+  "trials": [
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.9104055199368656,
+      "log_target_residual": 1.5155727600051934,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_02054a452f1a1b45.npz",
+      "maximum_rms_residual": 1.9669762501040257e-07
+    },
+    {
+      "chi": 2.8756,
+      "price_ratio": 0.8199958344367824,
+      "log_target_residual": 1.4109818937422156,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_3187db0317b2fc89.npz",
+      "maximum_rms_residual": 1.9934818706792303e-07
+    },
+    {
+      "chi": 5.7512,
+      "price_ratio": 0.6736430288401922,
+      "log_target_residual": 1.2143829732594342,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_42b859e5986f0a7c.npz",
+      "maximum_rms_residual": 1.957823358395931e-07
+    },
+    {
+      "chi": 11.502400000000002,
+      "price_ratio": 0.4843052553723148,
+      "log_target_residual": 0.8843980342834071,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_65b35bb7a06d8894.npz",
+      "maximum_rms_residual": 1.9829171493045252e-07
+    },
+    {
+      "chi": 23.004800000000003,
+      "price_ratio": 0.29918547540118207,
+      "log_target_residual": 0.4027463335918039,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_83f6567413d7b318.npz",
+      "maximum_rms_residual": 1.9704011995624033e-07
+    },
+    {
+      "chi": 46.00960000000001,
+      "price_ratio": 0.16271118251360117,
+      "log_target_residual": -0.2063406238084361,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_b4dcad605816458c.npz",
+      "maximum_rms_residual": 1.995018399201937e-07
+    },
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.9104055199368656,
+      "log_target_residual": 1.5155727600051934,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_02054a452f1a1b45.npz",
+      "maximum_rms_residual": 1.9669762501040257e-07
+    },
+    {
+      "chi": 46.00960000000001,
+      "price_ratio": 0.16271118251360117,
+      "log_target_residual": -0.2063406238084361,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_b4dcad605816458c.npz",
+      "maximum_rms_residual": 1.995018399201937e-07
+    },
+    {
+      "chi": 30.372676455954306,
+      "price_ratio": 0.23734128477142083,
+      "log_target_residual": 0.1711817588849767,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_00be784f7e53094e.npz",
+      "maximum_rms_residual": 1.9272828786154295e-07
+    },
+    {
+      "chi": 36.66629236981772,
+      "price_ratio": 0.20081334375687285,
+      "log_target_residual": 0.0040584720341107485,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_a94698058c394089.npz",
+      "maximum_rms_residual": 1.9795254159140166e-07
+    },
+    {
+      "chi": 36.831105337714796,
+      "price_ratio": 0.1999980132157544,
+      "log_target_residual": -9.933970569778062e-06,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_f532bbc51ae663b3.npz",
+      "maximum_rms_residual": 1.9817650921391858e-07
+    },
+    {
+      "chi": 36.83070200718361,
+      "price_ratio": 0.20000000094075146,
+      "log_target_residual": 4.703757150487805e-09,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_c8f8f0ab0e60b943.npz",
+      "maximum_rms_residual": 1.981759632566197e-07
+    },
+    {
+      "chi": 36.83073884454523,
+      "price_ratio": 0.19999981939445916,
+      "log_target_residual": -9.030281120096202e-07,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_49508768ad92427a.npz",
+      "maximum_rms_residual": 1.981760130787507e-07
+    },
+    {
+      "chi": 36.83070200718361,
+      "price_ratio": 0.20000000094075146,
+      "log_target_residual": 4.703757150487805e-09,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_c8f8f0ab0e60b943.npz",
+      "maximum_rms_residual": 1.981759632566197e-07
+    }
+  ],
+  "refined_matched_price_ratio": 0.2000000011758617,
+  "final_checkpoint_sha256": "9014f9d327385b288a35a28737aa9e2027546af31f46450a4f7694407b5b4e50"
+}

@@ -7,17 +7,49 @@ without first learning the internal structure of every solver module.
 
 ## What the computation does
 
-The principal calibration, adopted on September 14, 2026, is the existing
-lower-weight price-calibrated comparison in Section 6.6. Its full-precision
-inputs are `K0=5.94157252710329`, `omega_X=0.10`, `eta=0.20`,
-`Bbar=1360.9921392415592`, `B0=13.609921392415593`, and
-`chi=36.03184470863892`. The same stocks and parameters apply at
-`sigma=0.90,1.00,1.10,1.50`; only the unit-elastic price decline is fitted.
-Run `python scripts/calibrate_rewrite_ai_price.py --variant low_ai` to
-reproduce it. The no-AI Ramsey BGP supplies a capital reference, not an
-assumption that all four AI economies start on a BGP or retain the old
-production technology as an outside option. This designation does not alter
-the numerical paths, their admission checks, or their existing filenames.
+The principal exercise now activates RSI in an economy with existing AI.
+Before date zero, `B=B0` is fixed and research is unavailable (`chi=0`,
+`M=0`). At date zero RSI unexpectedly becomes available. Production weights
+remain unchanged, so the event does not mechanically change output, AI
+production services, inference, wages, interest, or the service price.
+The experiment is not the first appearance of AI and not an anticipated
+event under pre-event perfect foresight.
+
+For each `sigma=0.90,1.00,1.10,1.50`, initial capital is calculated from
+the fixed-B BGP, with `K0/Y0=3.30` and `r0=0.05`. The four stocks are
+`3.433644797858547`, `4.649320432676148`, `5.036956080779938`, and
+`5.5046668887702594`, respectively. The common inputs are `omega_X=0.10`,
+`eta=0.20`, `Bbar=1360.9921392415592`, and `B0=13.609921392415593`.
+The refitted `chi=36.83070200718361` matches the unit-elastic price target,
+then stays fixed across the other elasticities. Pre-event consumption is
+reported for comparison but is NOT a boundary condition after activation.
+The post-event BVP independently selects consumption and the shadow value.
+
+```text
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
+python -m unittest discover -s tests -p test_rewrite_rsi_activation.py -v
+```
+
+For a staged run, append `--calibrate-only`, then run `--sigma 0.9`,
+`--sigma 1`, `--sigma 1.1`, and `--sigma 1.5` separately, and finally
+`--finish`. Finishing repeats the original equilibrium checks, adds the
+event-continuity audit, verifies the final price match, and only then
+exports all four paths. See `numerical_rewrite/rsi_activation/README.md`.
+
+The default `python scripts/reproduce_rewrite_results.py` reproduces this
+exercise. Add `--include-legacy` to regenerate the earlier comparisons as
+well. All old data, figures, and texts remain intact. In `main_rewrite.tex`,
+`\showlegacysimulationsfalse` displays RSI activation; changing it to
+`\showlegacysimulationstrue` restores the earlier quantitative section and
+numerical appendix. This is an editorial switch, not a simulation setting.
+
+## Preserved earlier comparisons
+
+The earlier principal configuration is still available with
+`python scripts/calibrate_rewrite_ai_price.py --variant low_ai`, using
+common no-AI Ramsey capital and `chi=36.03184470863892`. Its files were
+not overwritten. The remaining instructions below describe these preserved
+designs where their names are specified.
 
 All common-stock comparisons use four values of the elasticity of substitution between
 effective labor and effective AI production services: 0.90, 1.00, 1.10, and

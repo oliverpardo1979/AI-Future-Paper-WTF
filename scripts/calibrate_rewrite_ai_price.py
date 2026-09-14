@@ -1,4 +1,4 @@
-"""Price-targeted Ramsey-start comparison; existing paper designs stay intact.
+"""Price-targeted comparisons, including RSI activation with existing AI.
 
 Calibrate chi at sigma=1 to a rounded 80% price decline over 27 months.
 All trial objects are BVP candidates, never exported as equilibrium paths.
@@ -23,6 +23,7 @@ from analyze_axm_finite_cap_bvp import terminal_point, critical_capability_front
 from simulate_rewrite_finite_frontier import (
     PARAMETERS, FRONTIER, RAMSEY_START_STEADY_STATE, SIGMAS, SimulationDesign,
     key, save_solution, load_solution, run, export_paths, validate_solution_design,
+    design_initial_stocks, fixed_efficiency_bgp,
 )
 from solve_axm_global_finite_cap_bvp import (
     solve_global_finite_cap_bvp, refine_global_horizon, reconstruct_levels,
@@ -39,6 +40,8 @@ VARIANTS = {
     'baseline': ('price_calibrated', PARAMETERS.omega_x, 0.10, FRONTIER),
     'low_ai': ('price_calibrated_low_ai_high_cap', 0.10, 0.01,
                1.10*critical_capability_frontier(1.5, replace(PARAMETERS, omega_x=0.10))),
+    'rsi_activation': ('rsi_activation', 0.10, 0.01,
+               1.10*critical_capability_frontier(1.5, replace(PARAMETERS, omega_x=0.10))),
 }
 
 
@@ -47,11 +50,19 @@ def make_design(chi: float, variant: str = 'baseline') -> SimulationDesign:
     return SimulationDesign(
         name=name, sigmas=SIGMAS,
         parameters=replace(PARAMETERS, chi=float(chi), omega_x=omega_x), frontier=frontier,
-        initial_capital=RAMSEY_START_STEADY_STATE.capital,
+        initial_capital=(None if variant == 'rsi_activation'
+                         else RAMSEY_START_STEADY_STATE.capital),
         initial_capability=initial_ratio * frontier,
         output_directory=ROOT/'numerical_rewrite'/name,
         cache_directory=ROOT/'tmp'/f'rewrite_bvp_{name}', display_horizon=500.0,
+        initial_capital_rule=('fixed_efficiency_bgp' if variant == 'rsi_activation' else 'common'),
         initial_stock_reference=(
+            'Existing AI with omega_X=0.10 before and after an unanticipated RSI activation. '
+            'Pre-event B=B0 is fixed and research is unavailable; pre-event chi=0, M=0. '
+            'Each sigma inherits its own fixed-B BGP capital, with K0/Y0=3.30 and r0=0.05. '
+            'Only stocks are inherited; C0 and q0 are selected anew by the positive-chi BVP. '
+            'Chi matches the rounded OECD price decline at sigma=1 and is shared across sigmas.'
+            if variant == 'rsi_activation' else
             f'No-AI Ramsey steady-state capital, B0/Bbar={initial_ratio:.2f}; omega_X=0 '
             f'before date zero and {omega_x:.2f} thereafter. Chi matches the rounded '
             'OECD price decline at sigma=1 and is held fixed across sigmas. '
@@ -92,9 +103,10 @@ def calibrate(variant='baseline'):
             validate_solution_design(solution, design, 1.0)
         else:
             terminal = terminal_point(1.0, design.frontier, design.parameters)
+            capital, capability = design_initial_stocks(design, 1.0)
             solution = solve_global_finite_cap_bvp(
-                terminal, design.parameters, design.initial_capital,
-                design.initial_capability, continuation_steps=32, nodes=221,
+                terminal, design.parameters, capital,
+                capability, continuation_steps=32, nodes=221,
                 tolerance=2e-7, boundary_tolerance=1e-10, maximum_nodes=40000)
             save_solution(solution, filename)
         ratio = math.exp(log_price_ratio(solution))
@@ -110,7 +122,7 @@ def calibrate(variant='baseline'):
     lower = math.log(PARAMETERS.chi)
     # For lower initial B, grow the bracket from the solved small-chi case;
     # there is no need to solve a distant high-chi candidate to bracket the target.
-    upper = math.log(2*PARAMETERS.chi if variant == 'low_ai' else 64.0)
+    upper = math.log(2*PARAMETERS.chi if variant in ('low_ai', 'rsi_activation') else 64.0)
     fl, fu = objective(lower), objective(upper)
     for _ in range(10):
         if fl * fu <= 0:
@@ -134,7 +146,9 @@ def calibrate(variant='baseline'):
         target_price_ratio=TARGET_PRICE_RATIO, matched_price_ratio=TARGET_PRICE_RATIO*math.exp(residual),
         variant=variant, design=template.name,
         target_log_residual=residual, parameters=asdict(make_design(chi, variant).parameters),
-        frontier=template.frontier, initial_capital=RAMSEY_START_STEADY_STATE.capital,
+        frontier=template.frontier, initial_capital=template.initial_capital,
+        initial_capital_rule=template.initial_capital_rule,
+        initial_capital_by_sigma={key(s): design_initial_stocks(template, s)[0] for s in SIGMAS},
         initial_capability=template.initial_capability,
         source=dict(url=SOURCE, title='Artificial Intelligence markets: Recent developments and competition issues',
                     institution='OECD', publication_date='2026-07-10', accessed='2026-09-14',
@@ -152,6 +166,11 @@ def calibrate(variant='baseline'):
         root_log_chi_tolerance=2e-6, trials=trials,
     )
     write_json(output/'calibration.json', payload)
+    if variant == 'rsi_activation':
+        write_json(output/'pre_rsi_reference.json', dict(
+            interpretation=template.initial_stock_reference,
+            scenarios={key(s): fixed_efficiency_bgp(s, template.initial_capability,
+                                                   template.parameters) for s in SIGMAS}))
     return make_design(chi, variant)
 
 
@@ -166,6 +185,11 @@ def calibrated_design(variant='baseline'):
     if (payload['initial_capital'] != design.initial_capital
             or payload['initial_capability'] != design.initial_capability):
         raise ValueError('Stored calibration belongs to other initial stocks.')
+    if variant == 'rsi_activation' and (
+            payload.get('initial_capital_rule') != design.initial_capital_rule
+            or payload.get('initial_capital_by_sigma') != {
+                key(s): design_initial_stocks(design, s)[0] for s in SIGMAS}):
+        raise ValueError('Stored calibration belongs to another pre-RSI BGP.')
     return design
 
 
@@ -198,6 +222,14 @@ def render_comparison_views(design):
     with csv_path.open(encoding='utf-8', newline='') as stream:
         rows = [{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
     limits = manifest['analytical_limits']['sigma_1_50']
+    pre = None
+    if design.name == 'rsi_activation':
+        activation_path = output/'activation_audit.json'
+        activation = json.loads(activation_path.read_text())
+        if not activation['passes']:
+            raise ValueError('The RSI event has not passed its continuity audit.')
+        pre = {key(s): fixed_efficiency_bgp(s, design.initial_capability, design.parameters)
+               for s in SIGMAS}
     views = []
     for suffix, panels in (('accumulation_growth', PANELS_QUANTITY_GROWTH),
                            ('growth_returns', PANELS_PRICES_RETURNS),
@@ -207,13 +239,22 @@ def render_comparison_views(design):
         fig, axes = plt.subplots(2*rows_per_view, columns,
                                  figsize=(7, 5.7 if columns == 3 else 8.5))
         axes = np.asarray(axes).reshape(2, len(panels))
-        windows = ((0.0,10.0), (10.0,design.display_horizon))
+        windows = ((-2.0 if pre else 0.0,10.0), (10.0,design.display_horizon))
         for view, (start, end) in enumerate(windows):
             for axis, (field, title, scale) in zip(axes[view], panels):
                 for sigma in SIGMAS:
                     series = [r for r in rows if r['sigma'] == sigma and start <= r['time'] <= end]
                     color, linestyle = STYLES[sigma]
-                    axis.plot([r['time'] for r in series], [r[field] for r in series],
+                    times, values = [r['time'] for r in series], [r[field] for r in series]
+                    if pre and view == 0:
+                        reference = dict(pre[key(sigma)],
+                            output_effective_labor_growth=0., ai_services_effective_labor_growth=0.,
+                            capital_effective_labor_growth=0.,
+                            wage_growth=design.parameters.labor_productivity_growth,
+                            net_interest=pre[key(sigma)]['interest_rate'])
+                        times = [-2., 0.] + times
+                        values = [reference[field], reference[field]] + values
+                    axis.plot(times, values,
                               color=color, linestyle=linestyle, linewidth=1.4,
                               label=fr'$\sigma={sigma:.2f}$')
                 axis.axhline(limits[field], color='#222222', linestyle=(0,(1,2)), linewidth=.8)
@@ -232,7 +273,10 @@ def render_comparison_views(design):
                 if field.endswith('effective_labor_growth'):
                     axis.axhline(0, color='#999999', linewidth=.5)
                 axis.set_xlim(start, end)
-                axis.set_xticks(np.linspace(0,end,6) if view == 0 else [10,100,200,300,400,500])
+                axis.set_xticks(([-2,0,2,4,6,8,10] if pre else np.linspace(0,end,6))
+                               if view == 0 else [10,100,200,300,400,500])
+                if pre and view == 0:
+                    axis.axvline(0, color='#888888', linewidth=.7, linestyle=':')
                 axis.set_xlabel('Years: initial transition' if view == 0 else 'Years: subsequent transition')
                 axis.grid(axis='y', color='#dddddd', linewidth=.5)
                 axis.spines[['top','right']].set_visible(False)
@@ -262,6 +306,9 @@ def render_comparison_views(design):
                           fields=[p[0] for p in panels],
                           independent_vertical_scales_between_windows=True))
     manifest['two_window_views'] = views
+    if pre:
+        manifest['pre_event_bgp'] = pre
+        manifest['activation_audit_sha256'] = hashlib.sha256(activation_path.read_bytes()).hexdigest()
     write_json(output/'figure_manifest.json', manifest)
 
 
@@ -283,6 +330,66 @@ def summarize(design):
     summary['sigma_1_50_transition_dates']=manifest['sigma_1_50_transition_dates']
     summary['data_sha256']=manifest['csv_sha256']
     write_json(output/'summary.json',summary)
+
+
+def audit_rsi_activation(design):
+    """Check pre-event equations and unchanged production at the RSI event."""
+    from solve_near_unit_ai_bvp import solve_monopoly_static_block
+    p = design.parameters
+    checks = {}
+    for sigma in SIGMAS:
+        pre = fixed_efficiency_bgp(sigma, design.initial_capability, p)
+        sol = load_solution(design.cache_directory/f'{key(sigma)}_long.npz')
+        validate_solution_design(sol, design, sigma)
+        v = reconstruct_levels(np.array([0.]), sol.raw.sol(np.array([0.])), sol)
+        post = {name: math.exp(v['log_'+field][0]) for name, field in (
+            ('capital','capital'), ('capability','capability'), ('output','output'),
+            ('consumption','consumption'), ('inference_compute','inference_compute'),
+            ('research_compute','research_compute'))}
+        s = solve_monopoly_static_block(math.log(post['capital']), math.log(post['capability']), 0., sigma, p)
+        post.update(ai_services=math.exp(s.log_ai_services),
+            ai_service_price=(1-p.alpha)*s.ai_ces_share*post['output']/math.exp(s.log_ai_services),
+            wage=(1-p.alpha)*(1-s.ai_ces_share)*post['output'],
+            interest_rate=p.alpha*post['output']/post['capital']-p.depreciation)
+        continuous = ('capital','capability','output','ai_services','inference_compute',
+                      'ai_service_price','wage','interest_rate')
+        gaps = {field: abs(math.log(post[field]/pre[field])) for field in continuous}
+        bgp_checks=[]
+        growth=p.population_growth+p.labor_productivity_growth
+        for t in (-10., -2., 0.):
+            scale=math.exp(growth*t)
+            block=solve_monopoly_static_block(math.log(pre['capital'])+growth*t,
+                        math.log(pre['capability']),growth*t,sigma,p)
+            y,u=math.exp(block.log_output),math.exp(block.log_inference_compute)
+            bgp_checks.append(dict(time=t,
+                output_scaling_residual=abs(block.log_output-math.log(pre['output'])-growth*t),
+                resource_residual=abs((y-pre['consumption']*scale-u-
+                   (p.depreciation+growth)*pre['capital']*scale)/y),
+                household_euler_residual=abs(p.alpha*y/(pre['capital']*scale)
+                   -p.depreciation-p.discount-p.labor_productivity_growth),
+                monopoly_foc_residual=abs(block.monopoly_foc_log_residual)))
+        passes=max(gaps.values())<1e-9 and all(
+            max(v for k,v in row.items() if k!='time')<1e-9 for row in bgp_checks)
+        pre_i=pre['output']-pre['consumption']-pre['inference_compute']
+        post_i=post['output']-post['consumption']-post['inference_compute']-post['research_compute']
+        reallocation=abs((post_i-pre_i+post['consumption']-pre['consumption']
+                         +post['research_compute'])/pre['output'])
+        passes=bool(passes and reallocation<1e-9)
+        checks[key(sigma)]=dict(pre=pre,post=post,level_log_gaps=gaps,
+            pre_event_equation_checks=bgp_checks,passes=passes,
+            consumption_jump=post['consumption']/pre['consumption']-1,
+            post_event_research_output_share=post['research_compute']/post['output'],
+            pre_gross_investment_output_share=pre_i/pre['output'],
+            post_gross_investment_output_share=post_i/post['output'],
+            post_net_capital_growth=post_i/post['capital']-p.depreciation,
+            resource_reallocation_residual=reallocation)
+    payload=dict(design=design.name,passes=all(c['passes'] for c in checks.values()),
+        interpretation='Unexpected activation of previously unavailable RSI; production weights do not change.',
+        tolerance=1e-9, tolerance_reason='Same static equations and inherited stocks, at final BC tolerance 1e-11.',
+        scenarios=checks)
+    write_json(design.output_directory/'activation_audit.json',payload)
+    if not payload['passes']:
+        raise RuntimeError('RSI activation continuity/reference audit failed; no figure export.')
 
 
 def finish(design):
@@ -345,6 +452,8 @@ def finish(design):
     payload = json.loads(calibration.read_text(encoding='utf-8'))
     payload.update(status='numerically_admitted', refined_matched_price_ratio=final_ratio,
                    final_checkpoint_sha256=hashlib.sha256((cache/f'{key(1.0)}_long.npz').read_bytes()).hexdigest())
+    if design.name == 'rsi_activation':
+        audit_rsi_activation(design)
     write_json(calibration, payload)
     export_paths(design.display_horizon, 4001, design,
                  additional_times=np.linspace(0.0, 10.0, 1001))
