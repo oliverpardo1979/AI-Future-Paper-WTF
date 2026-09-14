@@ -229,7 +229,7 @@ def extend(sigma, design):
     print(f'{key(sigma)}: second horizon extension complete', flush=True)
 
 
-def render_comparison_views(design):
+def render_comparison_views(design, *, show_price_target=True):
     """Same economic panels, with explicit initial and subsequent windows."""
     import matplotlib.pyplot as plt
     from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
@@ -310,7 +310,7 @@ def render_comparison_views(design):
                 axis.spines[['top','right']].set_visible(False)
                 axis.spines[['left','bottom']].set_color('#888888')
                 axis.tick_params(length=3, color='#888888')
-                if field == 'ai_service_price' and view == 0:
+                if show_price_target and field == 'ai_service_price' and view == 0:
                     p0 = next(r[field] for r in rows if r['sigma'] == 1. and r['time'] == 0.)
                     axis.plot(TARGET_YEARS, design_price_target(design)*p0, marker='D',
                               color='black', markersize=4, linestyle='none', zorder=5)
@@ -334,7 +334,8 @@ def render_comparison_views(design):
                           fields=[p[0] for p in panels],
                           independent_vertical_scales_between_windows=True))
     manifest['two_window_views'] = views
-    manifest['price_target'] = dict(years=TARGET_YEARS, ratio=design_price_target(design))
+    manifest['price_target'] = (dict(years=TARGET_YEARS, ratio=design_price_target(design))
+                                if show_price_target else None)
     if pre:
         manifest['pre_event_bgp'] = pre
         manifest['activation_audit_sha256'] = hashlib.sha256(activation_path.read_bytes()).hexdigest()
@@ -470,7 +471,8 @@ def compare_rsi_price_targets(design):
         cases=cases))
 
 
-def finish(design):
+def finish(design, *, calibration_validator=None):
+    """Shared, unchanged equilibrium gates; validate the selected moment last."""
     cache, output = design.cache_directory, design.output_directory
     calibration = output/'calibration.json'
     from audit_rewrite_hamiltonian_support import audit_support
@@ -524,11 +526,15 @@ def finish(design):
     if not all(report['equilibrium_certified'] for report in reports):
         raise RuntimeError('Incomplete equilibrium admission: no path or figure export.')
     unit = load_solution(cache / f'{key(1.0)}_long.npz')
-    final_ratio = math.exp(log_price_ratio(unit))
-    if abs(math.log(final_ratio/design_price_target(design))) > 2e-5:
-        raise RuntimeError('Price match changed after horizon refinement; recalibration required.')
+    if calibration_validator is None:
+        final_ratio = math.exp(log_price_ratio(unit))
+        if abs(math.log(final_ratio/design_price_target(design))) > 2e-5:
+            raise RuntimeError('Price match changed after horizon refinement; recalibration required.')
+        moment_results = dict(refined_matched_price_ratio=final_ratio)
+    else:
+        moment_results = calibration_validator(unit)
     payload = json.loads(calibration.read_text(encoding='utf-8'))
-    payload.update(status='numerically_admitted', refined_matched_price_ratio=final_ratio,
+    payload.update(status='numerically_admitted', **moment_results,
                    final_checkpoint_sha256=hashlib.sha256((cache/f'{key(1.0)}_long.npz').read_bytes()).hexdigest())
     if design.initial_capital_rule == 'fixed_efficiency_bgp':
         audit_rsi_activation(design)
@@ -536,7 +542,7 @@ def finish(design):
     export_paths(design.display_horizon, 4001, design,
                  additional_times=np.linspace(0.0, 10.0, 1001))
     render(design)
-    render_comparison_views(design)
+    render_comparison_views(design, show_price_target=calibration_validator is None)
     summarize(design)
     if design.name == 'rsi_activation_half_decline':
         compare_rsi_price_targets(design)

@@ -58,6 +58,32 @@ any optional legacy comparisons.
 
 ## Preserved earlier comparisons
 
+### Research-expenditure target: an unsuccessful high-target fit
+
+The separate diagnostic in `numerical_rewrite/rsi_research_share_2025/README.md`
+tests whether chi can fit annual research compute expenditure/GDP to the 2025
+US proxy of 0.356218%, without changing the other parameters or initial stocks.
+The highest local value found on the examined unit-elastic branch is 0.321497%,
+at chi about 81.0848. This path passes the numerical equilibrium checks, but
+does not match the empirical target. No new four-regime comparison or paper
+figure is exported. The existing two RSI exercises above are unchanged.
+
+```text
+python scripts/calibrate_rewrite_research_share.py --diagnose
+python scripts/calibrate_rewrite_research_share.py --verify-peak
+python scripts/calibrate_rewrite_research_share.py --compare-published
+python -m unittest discover -s tests -p test_rewrite_research_share.py -v
+```
+
+The diagnostic is not part of the default full-replication driver, since it
+does not underpin a published additional simulation. Its README explains
+annual aggregation, source limitations, a failed extreme-chi solve, the local
+scope of the search, and the distinction between verified paths and a fitted
+calibration. The `--calibrate-only` command intentionally refuses to declare a
+fit when the increasing branch turns below the target.
+
+### Earlier quantitative designs
+
 The earlier principal configuration is still available with
 `python scripts/calibrate_rewrite_ai_price.py --variant low_ai`, using
 common no-AI Ramsey capital and `chi=36.03184470863892`. Its files were

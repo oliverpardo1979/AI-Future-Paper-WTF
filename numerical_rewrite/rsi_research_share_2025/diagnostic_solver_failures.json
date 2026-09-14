@@ -1,0 +1,6 @@
+[
+  {
+    "chi": 368.0767999999999,
+    "error": "Global finite-cap continuation failed near fraction 0.950880, after adaptive step refinement: A singular Jacobian encountered when solving the collocation system."
+  }
+]

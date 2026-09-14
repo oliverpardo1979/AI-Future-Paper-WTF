@@ -1,0 +1,230 @@
+{
+  "status": "diagnostic_only_not_a_fitted_calibration",
+  "target_share": 0.003562175649977591,
+  "source": {
+    "geography": "United States",
+    "year": 2025,
+    "research_compute_billion_usd": 109.58,
+    "nominal_gdp_billion_usd": 30762.099,
+    "compute_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9.pdf",
+    "method_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9-appendix.pdf",
+    "gdp_url": "https://fred.stlouisfed.org/data/GDPA",
+    "accessed": "2026-09-14",
+    "limitations": [
+      "Rental-equivalent compute expenditure is estimated, not a sum of observed bills.",
+      "Research/training is assumed to account for 50 percent of total AI compute spending.",
+      "This US proxy is neither a global total nor a direct measure of autonomous RSI.",
+      "The ratio of nominal annual flows proxies the model ratio in final-good units.",
+      "The 2025 value is the higher dated estimate, not an upper confidence bound."
+    ]
+  },
+  "parameters_except_chi": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.9921392415592,
+  "initial_stocks_by_sigma": {
+    "sigma_0_90": [
+      3.433644797858547,
+      13.609921392415593
+    ],
+    "sigma_1_00": [
+      4.649320432676148,
+      13.609921392415593
+    ],
+    "sigma_1_10": [
+      5.036956080779938,
+      13.609921392415593
+    ],
+    "sigma_1_50": [
+      5.5046668887702594,
+      13.609921392415593
+    ]
+  },
+  "explored_chi_range": [
+    0.17972500000000005,
+    368.0767999999999
+  ],
+  "solver_failures": [
+    {
+      "chi": 368.0767999999999,
+      "error": "Global finite-cap continuation failed near fraction 0.950880, after adaptive step refinement: A singular Jacobian encountered when solving the collocation system."
+    }
+  ],
+  "local_peak_chi": 81.08480942910101,
+  "local_peak_share": 0.003214972615007558,
+  "relative_target_shortfall": 0.09746937520394805,
+  "peak_log_chi_tolerance": 0.002,
+  "trials": [
+    {
+      "chi": 0.17972500000000005,
+      "annual_research_share": 8.075089618833452e-05,
+      "log_target_residual": -3.786757714462948,
+      "quadrature_log_gap": 0.0,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_90dce1b7c5533be9.npz",
+      "checkpoint_sha256": "c8e0f58d426c329a2f07793c193dd777ca32d236990ca1098814c52dcfbc3289",
+      "maximum_rms_residual": 1.9322142713539151e-07
+    },
+    {
+      "chi": 0.35945000000000005,
+      "annual_research_share": 0.00017388768129056537,
+      "log_target_residual": -3.019717193852652,
+      "quadrature_log_gap": 0.0,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_1a74da9665f3cac2.npz",
+      "checkpoint_sha256": "b90d56abd69bab383964857d27da8ac570e20f9d98dc344cd263d5d1c0f26b60",
+      "maximum_rms_residual": 1.8882736182021015e-07
+    },
+    {
+      "chi": 0.7189,
+      "annual_research_share": 0.0003483764064115746,
+      "log_target_residual": -2.324843251955425,
+      "quadrature_log_gap": 8.881784197001248e-16,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_15e0df8ab2fa88f8.npz",
+      "checkpoint_sha256": "00c177e4f732d37e0c41789db863ec7cadc294ab3fdd7df8907ab03a39fbd4a1",
+      "maximum_rms_residual": 1.785320932752425e-07
+    },
+    {
+      "chi": 1.4378,
+      "annual_research_share": 0.0006374273170356458,
+      "log_target_residual": -1.7206865167721184,
+      "quadrature_log_gap": 8.881784197001248e-16,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_02054a452f1a1b45.npz",
+      "checkpoint_sha256": "0bd4cbed10e630a4de72511512d4cc4b2530a768db4348150519a88753200a7a",
+      "maximum_rms_residual": 1.9669762501040257e-07
+    },
+    {
+      "chi": 2.8756,
+      "annual_research_share": 0.0010571869611937371,
+      "log_target_residual": -1.214759925496856,
+      "quadrature_log_gap": 1.176836406102659e-14,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_3187db0317b2fc89.npz",
+      "checkpoint_sha256": "6f1a83d4a41d44a4e7668aeb11d0c6e560225a33c6f442e043fcd8fd43c04103",
+      "maximum_rms_residual": 1.9934818706792303e-07
+    },
+    {
+      "chi": 5.7512,
+      "annual_research_share": 0.0015915508212921876,
+      "log_target_residual": -0.8056625956479533,
+      "quadrature_log_gap": 1.7763568394004082e-13,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_42b859e5986f0a7c.npz",
+      "checkpoint_sha256": "60da5fcb6f60b9bb84973430c0713dacbcb1b631d6d178d1a81c7a7ae4d5abdb",
+      "maximum_rms_residual": 1.957823358395931e-07
+    },
+    {
+      "chi": 11.502399999999996,
+      "annual_research_share": 0.002183261277243232,
+      "log_target_residual": -0.4895517381844522,
+      "quadrature_log_gap": 1.9728663147590978e-13,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_7e62b6935f97ca6e.npz",
+      "checkpoint_sha256": "03660ddf4b17ff9022dcdbf7c560272db97e8209a3a02535918b672fff98aad8",
+      "maximum_rms_residual": 1.9829171491486523e-07
+    },
+    {
+      "chi": 11.502400000000002,
+      "annual_research_share": 0.002183261277243232,
+      "log_target_residual": -0.4895517381844522,
+      "quadrature_log_gap": 1.9728663147590978e-13,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_65b35bb7a06d8894.npz",
+      "checkpoint_sha256": "e2aaec1b574abc66fe9d67460a887db4403d05c16831c7ad55c45b2e3fba2478",
+      "maximum_rms_residual": 1.9829171493045252e-07
+    },
+    {
+      "chi": 23.004800000000003,
+      "annual_research_share": 0.0027318976585087194,
+      "log_target_residual": -0.2653750151049634,
+      "quadrature_log_gap": 1.5053513990903829e-12,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_83f6567413d7b318.npz",
+      "checkpoint_sha256": "e2b8f28c9a07dd709ecc62034da223be94ef1148653a336028695e891e3ec7d6",
+      "maximum_rms_residual": 1.9704011995624033e-07
+    },
+    {
+      "chi": 46.00960000000001,
+      "annual_research_share": 0.0031099263919226886,
+      "log_target_residual": -0.1357724381105544,
+      "quadrature_log_gap": 1.3121836950433279e-11,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_b4dcad605816458c.npz",
+      "checkpoint_sha256": "598270c36c40a6763173c986f90d0103fc44ea01a1c27102aa0002cf330bf893",
+      "maximum_rms_residual": 1.995018399201937e-07
+    },
+    {
+      "chi": 63.822754247664946,
+      "annual_research_share": 0.0031959078263392314,
+      "log_target_residual": -0.1085003086607907,
+      "quadrature_log_gap": 1.585842568387148e-11,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_751182d9cdd9723d.npz",
+      "checkpoint_sha256": "238bb4e4db90bab7a71ac3941608c844f0e92cffd4c5c5f2205128dcedf86dc4",
+      "maximum_rms_residual": 1.9906506809254277e-07
+    },
+    {
+      "chi": 78.12947589745056,
+      "annual_research_share": 0.0032145088562079765,
+      "log_target_residual": -0.10269691615269876,
+      "quadrature_log_gap": 8.247624805369374e-12,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_4bce5ef417118c5e.npz",
+      "checkpoint_sha256": "8381d4aca3cadbe87a7ba7d74e312598c64e437c35c28aa34fee62a39136e267",
+      "maximum_rms_residual": 1.9932217247263862e-07
+    },
+    {
+      "chi": 81.03076562146407,
+      "annual_research_share": 0.0032149723960989765,
+      "log_target_residual": -0.10255272414914103,
+      "quadrature_log_gap": 3.49420492540886e-12,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_8e549f3c9c2d1c87.npz",
+      "checkpoint_sha256": "3107231899ed2ffed0c55e29c2728b657e996babaed1461e3a97b79ec9b67462",
+      "maximum_rms_residual": 1.9824194498179037e-07
+    },
+    {
+      "chi": 81.08480942910101,
+      "annual_research_share": 0.003214972615007558,
+      "log_target_residual": -0.10255265605879788,
+      "quadrature_log_gap": 3.4957592376433405e-12,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_184ecdc7feee6177.npz",
+      "checkpoint_sha256": "3ff8a69745b6842ac4bf64bd2ae5bc9d772a6dcfa4ce16f31784fda2e9237df6",
+      "maximum_rms_residual": 1.9835032829345747e-07
+    },
+    {
+      "chi": 81.13888928148123,
+      "annual_research_share": 0.003214972537315213,
+      "log_target_residual": -0.10255268022458555,
+      "quadrature_log_gap": 3.4968694606679697e-12,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_ee220734bd50e2a7.npz",
+      "checkpoint_sha256": "cd82669d10e43dfbd7843d7b583a85d782df6e4c4e664d4373d015752742d485",
+      "maximum_rms_residual": 1.9845871061226755e-07
+    },
+    {
+      "chi": 92.01920000000003,
+      "annual_research_share": 0.0032096483484491084,
+      "log_target_residual": -0.10421011345826792,
+      "quadrature_log_gap": 1.0144773909866288e-11,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_ccac453320258906.npz",
+      "checkpoint_sha256": "305899eee83b4a8fb03d9c1c5dd1f3ca09ca86d29abd46ee9aee5a5899e82f68",
+      "maximum_rms_residual": 1.9636909754456268e-07
+    },
+    {
+      "chi": 108.37821540943298,
+      "annual_research_share": 0.0031870091111292262,
+      "log_target_residual": -0.11128860155649817,
+      "quadrature_log_gap": 4.382449958580387e-11,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_a9ae92ed79d0975a.npz",
+      "checkpoint_sha256": "63e8d777a0049763428a707af1ada22dbd9ea87b3f14c191dd6f547c63e5f36b",
+      "maximum_rms_residual": 1.9992714360777777e-07
+    },
+    {
+      "chi": 184.03840000000008,
+      "annual_research_share": 0.002997925859644177,
+      "log_target_residual": -0.17245082639349033,
+      "quadrature_log_gap": 4.646061313440562e-12,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_research_share_2025\\calibration_trials\\chi_07bab3d02031fbdd.npz",
+      "checkpoint_sha256": "4f235c00d1b8ba869fbd94a576c3ed9dc24b6e652dcdfbfb033a6d208611939e",
+      "maximum_rms_residual": 1.994675576047992e-07
+    }
+  ],
+  "interpretation": "Finite-range candidate search, not a global impossibility theorem. No four-regime equilibrium comparison is exported without a fitted target and admission."
+}
