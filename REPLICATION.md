@@ -60,28 +60,28 @@ any optional legacy comparisons.
 
 ## Approximate research-expenditure calibration
 
-The separate diagnostic in `numerical_rewrite/rsi_research_share_2025/README.md`
-tests whether chi can fit annual research compute expenditure/GDP to the 2025
-US proxy of 0.356218%, without changing the other parameters or initial stocks.
-The highest local value found on the examined unit-elastic branch is 0.321497%,
-at chi about 81.0848. The author accepted this approximate match and the
-paper now presents the already-verified sigma=1 path as an additional
-subsection. The three figure groups and numerical checks are unchanged.
-No other elasticity is included at this chi; the existing two comparisons
-above remain intact. Published data are under `published_unit/` in that folder.
+Subsection 6.3 now uses the lowest previously discussed dated proxy, US 2023:
+training/research compute of $18.46 billion divided by nominal GDP of
+$27,811.517 billion, or 0.0663754%. At chi=1.4378 the unit-elastic path gives
+0.0637427%, a shortfall of 0.2633 basis points. The author requested an
+approximate match; no equilibrium tolerance was relaxed. All other parameters
+and initial stocks are unchanged. The three figure groups retain their format.
+Only sigma=1 is included at this chi. Data, checks and source qualifications
+are in `numerical_rewrite/rsi_research_share_2023/README.md`.
 
 ```text
-python scripts/calibrate_rewrite_research_share.py --publish-unit
-python -m unittest discover -s tests -p test_rewrite_research_share.py -v
+python scripts/calibrate_rewrite_research_share_low.py
+python -m unittest discover -s tests -p test_rewrite_research_share_low.py -v
 ```
 
-The default full-replication driver includes this publication. The original
-search remains available through `--diagnose`, while `--compare-published`
-measures annual research shares in the older two price calibrations. Its README explains
-annual aggregation, source limitations, a failed extreme-chi solve, the local
-scope of the search, and the distinction between verified paths and a fitted
-calibration. The `--calibrate-only` command intentionally refuses to declare a
-fit when the increasing branch turns below the target.
+The default full-replication driver includes the low-target publication.
+The higher 2025-target exercise is no longer displayed but remains intact in
+`numerical_rewrite/rsi_research_share_2025/` and can be reproduced with
+`python scripts/calibrate_rewrite_research_share.py --publish-unit`.
+Its former text and tables are in `sections_rewrite/preserved/`.
+The original high-target search remains available through `--diagnose`, while
+`--compare-published` measures the earlier price-calibrated paths. These
+commands retain the distinction between verified equilibria and exact fits.
 
 ## Preserved earlier comparisons
 

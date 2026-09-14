@@ -1,0 +1,84 @@
+{
+  "design": "rsi_research_share_2023",
+  "passes": true,
+  "interpretation": "Unexpected activation of previously unavailable RSI; production weights do not change.",
+  "tolerance": 1e-09,
+  "tolerance_reason": "Same static equations and inherited stocks, at final BC tolerance 1e-11.",
+  "scenarios": {
+    "sigma_1_00": {
+      "pre": {
+        "sigma": 1.0,
+        "capital": 4.649320432676148,
+        "capability": 13.609921392415593,
+        "output": 1.4088849795988327,
+        "consumption": 1.1096533076668162,
+        "inference_compute": 0.006324484673419157,
+        "research_compute": 0.0,
+        "ai_services": 0.08607573925277197,
+        "ai_service_price": 1.0966538824130045,
+        "wage": 0.849557642698096,
+        "interest_rate": 0.05000000000000002,
+        "capital_output_ratio": 3.3,
+        "labor_income_share": 0.6029999999999999,
+        "ai_revenue_output_share": 0.06700000000000002,
+        "profit_output_share": 0.06251100000000002,
+        "inference_output_share": 0.004488999999999998,
+        "research_output_share": 0.0,
+        "monopoly_foc_residual": 1.3322676295501878e-15,
+        "pre_event_research_available": false
+      },
+      "post": {
+        "capital": 4.649320432676148,
+        "capability": 13.609921392415597,
+        "output": 1.4088849795988327,
+        "consumption": 1.1201901556880183,
+        "inference_compute": 0.006324484673419157,
+        "research_compute": 0.000910654122866622,
+        "ai_services": 0.08607573925277197,
+        "ai_service_price": 1.0966538824130045,
+        "wage": 0.849557642698096,
+        "interest_rate": 0.05000000000000002
+      },
+      "level_log_gaps": {
+        "capital": 0.0,
+        "capability": 2.2204460492503128e-16,
+        "output": 0.0,
+        "ai_services": 0.0,
+        "inference_compute": 0.0,
+        "ai_service_price": 0.0,
+        "wage": 0.0,
+        "interest_rate": 0.0
+      },
+      "pre_event_equation_checks": [
+        {
+          "time": -10.0,
+          "output_scaling_residual": 5.551115123125783e-17,
+          "resource_residual": 4.487071374072183e-17,
+          "household_euler_residual": 1.5612511283791264e-17,
+          "monopoly_foc_residual": 1.3322676295501878e-15
+        },
+        {
+          "time": -2.0,
+          "output_scaling_residual": 9.020562075079397e-17,
+          "resource_residual": 0.0,
+          "household_euler_residual": 1.5612511283791264e-17,
+          "monopoly_foc_residual": 8.881784197001252e-16
+        },
+        {
+          "time": 0.0,
+          "output_scaling_residual": 0.0,
+          "resource_residual": 0.0,
+          "household_euler_residual": 1.5612511283791264e-17,
+          "monopoly_foc_residual": 1.3322676295501878e-15
+        }
+      ],
+      "passes": true,
+      "consumption_jump": 0.009495621694092016,
+      "post_event_research_output_share": 0.0006463651299099822,
+      "pre_gross_investment_output_share": 0.2079,
+      "post_gross_investment_output_share": 0.1997747787719845,
+      "post_net_capital_growth": 0.01053781174908621,
+      "resource_reallocation_residual": 7.487685148923777e-17
+    }
+  }
+}

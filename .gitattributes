@@ -9,3 +9,5 @@ numerical_rewrite/rsi_research_share_2025/*.json -text whitespace=blank-at-eol,b
 numerical_rewrite/rsi_research_share_2025/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 numerical_rewrite/rsi_research_share_2025/published_unit/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 numerical_rewrite/rsi_research_share_2025/published_unit/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2023/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2023/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

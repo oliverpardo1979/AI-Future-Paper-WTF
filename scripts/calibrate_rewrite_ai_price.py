@@ -292,12 +292,14 @@ def render_comparison_views(design, *, show_price_target=True, reference_sigma=1
                                 and axis.get_ylim()[1] < .001 else
                                 2 if len(design.sigmas)==1 and field in (
                                     'inference_output_share','research_output_share') else 1)
+                    if len(design.sigmas)==1 and scale=='rate' and max(abs(v) for v in axis.get_ylim())<.01:
+                        decimals=2
                     axis.yaxis.set_major_formatter(PercentFormatter(1, decimals=decimals))
                     axis.yaxis.set_major_locator(MaxNLocator(4))
                 elif scale == 'log_level':
                     axis.set_yscale('log')
                     axis.yaxis.set_major_formatter(FuncFormatter(lambda y,p:f'{y:g}'))
-                    if len(design.sigmas)==1 and view==1:
+                    if len(design.sigmas)==1 and view==1 and axis.get_ylim()[1]/axis.get_ylim()[0]<3:
                         axis.yaxis.set_major_locator(MaxNLocator(4))
                         axis.yaxis.set_minor_locator(NullLocator())
                 if scale == 'share':

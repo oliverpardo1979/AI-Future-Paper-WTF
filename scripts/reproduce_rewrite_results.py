@@ -32,6 +32,7 @@ TEST_FILES = (
     "test_rewrite_rsi_activation.py",
     "test_rewrite_rsi_half_decline.py",
     "test_rewrite_research_share.py",
+    "test_rewrite_research_share_low.py",
 )
 
 
@@ -55,11 +56,12 @@ def remove_generated_checkpoints(include_legacy: bool = False) -> None:
         'rewrite_bvp_rsi_activation': SIGMAS,
         'rewrite_bvp_rsi_activation_half_decline': SIGMAS,
         'rewrite_bvp_rsi_research_share_2025/peak_audit': (1.0,),
+        'rewrite_bvp_rsi_research_share_2023': (1.0,),
     }
     for cache_name, sigmas in cache_designs.items():
         if not include_legacy and cache_name not in ('rewrite_bvp_rsi_activation',
                                                    'rewrite_bvp_rsi_activation_half_decline',
-                                                   'rewrite_bvp_rsi_research_share_2025/peak_audit'):
+                                                   'rewrite_bvp_rsi_research_share_2023'):
             continue
         cache = ROOT / "tmp" / cache_name
         for sigma in sigmas:
@@ -120,9 +122,9 @@ def main() -> None:
     run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation_half_decline"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_rsi_half_decline.py", "-v"])
-    run([python, "scripts/calibrate_rewrite_research_share.py", "--publish-unit"])
+    run([python, "scripts/calibrate_rewrite_research_share_low.py"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
-         "test_rewrite_research_share.py", "-v"])
+         "test_rewrite_research_share_low.py", "-v"])
     if not args.include_legacy:
         print("Both RSI-activation comparisons and the approximate unit-elastic research calibration reproduced; legacy files left unchanged.", flush=True)
         return

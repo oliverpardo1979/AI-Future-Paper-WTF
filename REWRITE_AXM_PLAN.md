@@ -12,6 +12,22 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Lower research-expenditure target replaces subsection 6.3 (September 14, 2026)
+
+- The author requested the lowest previously discussed M/Y datum and allowed
+  a few basis points of empirical mismatch. Use US 2023, 18.46/27811.517,
+  or 0.0663754%, not the 2024 or 2025 datum.
+- Select the nearest previously explored increasing-branch candidate:
+  chi=1.4378, annual M/Y=0.0637427%, shortfall 0.2633 bp. All non-chi
+  parameters and initial stocks stay fixed; only sigma=1 is presented.
+- Original equilibrium, optimality, two-horizon-extension, early-window and
+  event checks pass. Numerical tolerances are unchanged.
+- Active results: numerical_rewrite/rsi_research_share_2023/;
+  script: scripts/calibrate_rewrite_research_share_low.py.
+  The former high-target results and figures remain intact; the old text
+  and tables are under sections_rewrite/preserved/.
+- Leave title, abstract, introduction, analytical model and subsections 6.1/6.2 untouched.
+
 ### Approximate research-expenditure calibration accepted (September 14, 2026)
 
 The author accepted 0.3215% first-year M/Y against the 0.3562% US 2025 proxy

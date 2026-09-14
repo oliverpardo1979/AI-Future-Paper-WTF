@@ -199,11 +199,11 @@ class PublishedApproximation(unittest.TestCase):
         self.assertAlmostEqual(limits['labor_income_share'],.603)
 
     def test_subsection_keeps_three_figures_and_parameter_table(self):
-        source=(ROOT/'sections_rewrite/10_rsi_research_share.tex').read_text()
+        source=(ROOT/'sections_rewrite/preserved/10_rsi_research_share_high.tex').read_text()
         main=(ROOT/'main_rewrite.tex').read_text()
         self.assertIn('\\input{sections_rewrite/10_rsi_research_share}',main)
         self.assertIn('\\input{sections_rewrite/09_rsi_half_decline}',main)
-        self.assertIn('\\input{sections_rewrite/rsi_research_share_parameters}',source)
+        self.assertIn('\\input{sections_rewrite/preserved/rsi_research_share_high_parameters}',source)
         self.assertEqual(source.count('\\begin{figure}'),3)
         self.assertIn('9.75\\%',source)
         self.assertIn('instantaneous',source)

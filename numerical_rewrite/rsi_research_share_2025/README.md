@@ -1,5 +1,10 @@
 # Research expenditure calibration diagnostic (2025 US proxy)
 
+Preserved high-target exercise: the active subsection 6.3 now uses the
+lower 2023 proxy in `../rsi_research_share_2023/`. No data or figures here
+were deleted. The former subsection and tables are retained under
+`sections_rewrite/preserved/`; the reproduction command below still works.
+
 Companion data for [The Future of Growth and Human Labor Under Recursive AI
 Self-Improvement](https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth-and-human-labor-under-recursive-ai-self-improvement.pdf),
 compiled from `main_rewrite.tex`, subsection "An approximate calibration to

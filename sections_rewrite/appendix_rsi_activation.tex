@@ -65,15 +65,16 @@ Section~\ref{subsec:rewrite-rsi-research-share} instead uses an approximate
 research-expenditure calibration at $\sigma=1$. For each trial $\chi$,
 Gauss--Legendre quadrature with 64 and 128 nodes evaluates the two integrals
 in Equation~\eqref{eq:rewrite-research-share-target}; their ratio must agree
-within $10^{-8}$ in logs. A logarithmic grid from $0.179725$ to $368.0768$
-locates a turning point, and a bounded search between its neighboring
-successful grid points refines the local maximum with a tolerance of
-$0.002$ in $\log\chi$. The solve at the largest grid value fails and is
-recorded as missing evidence, not zero expenditure. This is a local
-numerical search, not a proof of a global upper bound. I retain
-$\chi=81.084809$ and explicitly report the remaining empirical discrepancy;
-no equilibrium tolerance is relaxed to accommodate it. Only the verified
-unit-elastic path is displayed.
+within $10^{-8}$ in logs. I reuse the increasing low-$\chi$ branch from the
+earlier numerical search and select its candidate closest to the 2023
+proxy. The selected $\chi=1.4378$ produces an annual ratio of $0.06374\%$,
+below the $0.06638\%$ target by $0.26$ basis points. This is an approximate
+empirical match, not a root solved to numerical precision. Publication
+requires a discrepancy below one basis point as well as all the original
+equilibrium checks. The annual moment must also remain stable within
+$2\times10^{-5}$ in logs after both horizon extensions. Only the verified
+unit-elastic path is displayed; the earlier high-target search and its
+figures remain available in the repository.
 
 \subsection{Equilibrium checks and replication}
 
@@ -134,17 +135,18 @@ For the approximate research-expenditure calibration, run:
 \begin{quote}
 \small
 \begin{verbatim}
-python scripts/calibrate_rewrite_research_share.py --publish-unit
+python scripts/calibrate_rewrite_research_share_low.py
 \end{verbatim}
 \end{quote}
 This command reproduces the selected unit-elastic path if its checkpoint
 is absent, repeats its equilibrium and activation checks, and exports the
-three figures. The unsuccessful exact-target search remains separately
-reproducible with \texttt{--diagnose}. The
+three figures. The
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2023}
+{research-expenditure results folder} contains the sources, admitted CSV,
+numerical checks, figure metadata and approximate-calibration record.
+Instructions for reproducing the former high-target exercise remain in the
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2025}
-{research-expenditure results folder} retains the sources, search diagnostics
-and numerical checks; its \texttt{published\_unit/} subfolder contains the
-admitted CSV, figure metadata and approximate-calibration record.
+{preserved 2025-target results folder}.
 
 Earlier simulations and their numerical appendix remain in the source.
 The editorial switch in \texttt{main\_rewrite.tex} selects either this
