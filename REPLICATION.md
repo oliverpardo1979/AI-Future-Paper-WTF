@@ -20,47 +20,32 @@ the fixed-B BGP, with `K0/Y0=3.30` and `r0=0.05`. The four stocks are
 `3.433644797858547`, `4.649320432676148`, `5.036956080779938`, and
 `5.5046668887702594`, respectively. The common inputs are `omega_X=0.10`,
 `eta=0.20`, `Bbar=1360.9921392415592`, and `B0=13.609921392415593`.
-The refitted `chi=36.83070200718361` matches the unit-elastic price target,
-then stays fixed across the other elasticities. Pre-event consumption is
+The principal `chi=1.4378` approximately matches the unit-elastic research
+expenditure target. The faster sensitivity uses `chi=7.616304576019883`,
+fitted to half the observed percentage price decline. Each value stays
+fixed across the four elasticities. Pre-event consumption is
 reported for comparison but is NOT a boundary condition after activation.
 The post-event BVP independently selects consumption and the shadow value.
 
-```text
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
-python -m unittest discover -s tests -p test_rewrite_rsi_activation.py -v
-```
+Section 6.1 gives the common design, Section 6.2 the principal calibration,
+Section 6.3 the faster sensitivity, and Section 6.4 the limitations. Run
+`python scripts/reproduce_rewrite_results.py` for both displayed comparisons
+in this order. Add `--include-legacy` to regenerate the preserved comparisons
+as well. These commands re-solve and audit the model; they do not rescale a
+saved trajectory in time. No numerical files were changed for this editorial
+selection.
 
-For a staged run, append `--calibrate-only`, then run `--sigma 0.9`,
-`--sigma 1`, `--sigma 1.1`, and `--sigma 1.5` separately, and finally
-`--finish`. Finishing repeats the original equilibrium checks, adds the
-event-continuity audit, verifies the final price match, and only then
-exports all four paths. See `numerical_rewrite/rsi_activation/README.md`.
-
-The default `python scripts/reproduce_rewrite_results.py` reproduces this
-exercise, the half-decline sensitivity, and the approximate unit-elastic
-research-expenditure calibration below. Add `--include-legacy` to regenerate the earlier comparisons as
-well. All old data, figures, and texts remain intact. In `main_rewrite.tex`,
-`\showlegacysimulationsfalse` displays RSI activation; changing it to
-`\showlegacysimulationstrue` restores the earlier quantitative section and
-numerical appendix. This is an editorial switch, not a simulation setting.
-
-## Half of the observed percentage price decline
-
-The additional subsection changes only the price target: a 40% decline
-over 27 months, hence `p_X(2.25)/p_X(0)=0.60`. It is half the observed
-rounded percentage decline, not half its log change or half of chi.
-Run `python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline`
-and then `python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.py -v`.
-The same staged flags apply. Initial stocks, other parameters, equilibrium
-equations, tolerances, and figure windows are unchanged. Outputs and
-checkpoints have separate folders; the original 80% exercise is preserved.
-The default reproduction driver runs both active RSI comparisons and the
-four-regime research-expenditure comparison before
-any optional legacy comparisons.
+In `main_rewrite.tex`, both `\showlegacysimulationsfalse` and
+`\showfullpricebenchmarkfalse` are the defaults. Change the latter to
+`\showfullpricebenchmarktrue` to add back the full 80%-price-decline
+experiment, including its parameter table, figures and accuracy table.
+Change the former to `\showlegacysimulationstrue` to restore the older
+quantitative section and numerical appendix instead. These are editorial
+switches, not simulation settings; all underlying files remain available.
 
 ## Approximate research-expenditure calibration
 
-Subsection 6.3 now uses the lowest previously discussed dated proxy, US 2023:
+The principal calibration in Section 6.2 uses the lowest previously discussed dated proxy, US 2023:
 training/research compute of $18.46 billion divided by nominal GDP of
 $27,811.517 billion, or 0.0663754%. At chi=1.4378 the unit-elastic path gives
 0.0637427%, a shortfall of 0.2633 basis points. The author requested an
@@ -91,6 +76,51 @@ Its former text and tables are in `sections_rewrite/preserved/`.
 The original high-target search remains available through `--diagnose`, while
 `--compare-published` measures the earlier price-calibrated paths. These
 commands retain the distinction between verified equilibria and exact fits.
+
+## Faster sensitivity: half of the observed percentage price decline
+
+Section 6.3 changes only chi: a 40% decline over 27 months is the new
+unit-elastic target, hence `p_X(2.25)/p_X(0)=0.60`. It is half the observed
+rounded percentage decline, not half its log change or half of chi.
+
+```text
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.py -v
+```
+
+For a staged run, append `--calibrate-only`, then run `--sigma 0.9`,
+`--sigma 1`, `--sigma 1.1`, and `--sigma 1.5` separately, and finally
+`--finish`. Finishing repeats the equilibrium checks and event-continuity
+audit, verifies the final price match, and only then exports all four paths.
+Initial stocks, other parameters, equations, tolerances and figure windows
+are unchanged. Results are in `numerical_rewrite/rsi_activation_half_decline/`.
+
+At sigma=1.50, labor's share reaches half its initial value around year 47,
+versus 221 in the principal calibration. The limiting output-per-person
+growth, wage growth and net interest rate remain 3.13%, 2.42% and 7.13%.
+In the finite-bound limits characterized in the paper, positive chi affects
+the transition, not those limits. This does not identify sigma or Bbar,
+and the dates are not forecasts. Industry size and recent expenditure
+growth remain unfitted; the two empirical moments are not matched jointly.
+
+## Preserved full-price-decline benchmark
+
+The former Section 6.1 fitted chi=36.83070200718361 to the full rounded
+80% price decline. Its large initial research outlay, developer loss and
+negative gross investment at sigma=1.50 motivate removing its figures from
+the main presentation, not rejecting its numerical equilibrium checks.
+Its original source is `sections_rewrite/08_rsi_activation.tex`, with
+tables/results beside it, figures in `figures_rewrite/`, and data/audits in
+`numerical_rewrite/rsi_activation/`. Nothing was deleted.
+
+```text
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
+python -m unittest discover -s tests -p test_rewrite_rsi_activation.py -v
+```
+
+The same staged flags as the half-decline exercise apply. See
+`numerical_rewrite/rsi_activation/README.md`. Use the editorial switch above
+to restore the figures without rerunning any simulation.
 
 ## Preserved earlier comparisons
 

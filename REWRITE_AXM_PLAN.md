@@ -12,6 +12,30 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Select two displayed calibrations (September 14, 2026)
+
+- This decision supersedes the presentation choices below, not the saved
+  simulations. All four sigmas have now passed the original equilibrium
+  checks in the lower research-expenditure calibration.
+- Section 6.1 contains common design and initial conditions. Section 6.2
+  presents the principal US 2023 M/Y proxy calibration (chi=1.4378).
+  Section 6.3 presents the faster sensitivity fitted to half the observed
+  percentage price decline (chi=7.616304576019883). Section 6.4 discusses
+  interpretation and limitations.
+- Keep the full 80%-price-decline text, data, code and figures intact.
+  `\showfullpricebenchmarkfalse` hides its displayed results; changing it
+  to true restores them. Its large initial reallocations are explained
+  briefly in limitations. Clarify the introductory loss example with a
+  footnote, leaving the approved paragraph itself unchanged.
+- State in limitations and conclusions that, within the characterized
+  finite-bound limits and for positive chi, chi changes the transition but
+  not limiting growth, interest or income shares. These conditional results
+  are firmer than takeoff dates; sigma, Bbar and other parameters still
+  matter. Do not claim Bbar alone determines outcomes or that these are
+  forecasts. No new simulations, parameter changes or tolerance changes.
+- Keep title, abstract and analytical results unchanged. Preserve the
+  legacy presentation switch and document both options in the replication guide.
+
 ### Lower research-expenditure target replaces subsection 6.3 (September 14, 2026)
 
 - The author requested the lowest previously discussed M/Y datum and allowed

@@ -52,16 +52,7 @@ problem; neither $\omega_X=0$ nor $\chi=0$ is used as a degenerate BVP seed.
 At unit elasticity the static block uses its exact Cobb--Douglas limit;
 near one, \texttt{log1p} and \texttt{expm1} avoid cancellation.
 
-An outer bracketed search in $\log\chi$ solves the unit-elastic BVP and
-evaluates the price ratio at exactly 2.25 years. It matches
-Equation~\eqref{eq:rewrite-rsi-price-target} or
-Equation~\eqref{eq:rewrite-rsi-half-price-target}, then fixes $\chi$ for the
-other three elasticities. The tolerance in $\log\chi$ is $2\times10^{-6}$;
-the final price-ratio log error must be below $2\times10^{-5}$ after both
-horizon extensions. These numerical tolerances are well below the precision
-of the rounded empirical target.
-
-Section~\ref{subsec:rewrite-rsi-research-share} instead uses an approximate
+The principal calibration in Section~\ref{subsec:rewrite-rsi-research-share} uses an approximate
 research-expenditure calibration at $\sigma=1$. For each trial $\chi$,
 Gauss--Legendre quadrature with 64 and 128 nodes evaluates the two integrals
 in Equation~\eqref{eq:rewrite-research-share-target}; their ratio must agree
@@ -78,6 +69,16 @@ equilibrium from its own fixed-efficiency pre-RSI BGP. Research expenditure
 and the price decline in these three cases are outcomes, not additional
 targets. The earlier high-target search and its figures remain available
 in the repository.
+
+For the sensitivity in Section~\ref{subsec:rewrite-rsi-half-decline}, an
+outer bracketed search in $\log\chi$ solves the unit-elastic BVP and
+evaluates the price ratio at exactly 2.25 years. It matches
+Equation~\eqref{eq:rewrite-rsi-half-price-target}, then fixes $\chi$ for the
+other three elasticities. The tolerance in $\log\chi$ is $2\times10^{-6}$;
+the final price-ratio log error must be below $2\times10^{-5}$ after both
+horizon extensions. These numerical tolerances are well below the precision
+of the rounded target. The archived full-price-decline exercise uses the
+same method with a price ratio of $0.20$ instead of $0.60$.
 
 \subsection{Equilibrium checks and replication}
 
@@ -106,35 +107,13 @@ infinite-horizon continuation. These are numerically verified equilibrium
 approximations, not interval-arithmetic existence certificates for arbitrary
 initial stocks.
 
-\input{sections_rewrite/rsi_activation_accuracy}
-\input{sections_rewrite/rsi_half_decline_accuracy}
 \input{sections_rewrite/rsi_research_share_accuracy}
+\input{sections_rewrite/rsi_half_decline_accuracy}
+\ifshowfullpricebenchmark
+\input{sections_rewrite/rsi_activation_accuracy}
+\fi
 
-From the repository root, run:
-\begin{quote}
-\small
-\begin{verbatim}
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
-\end{verbatim}
-\end{quote}
-The command calibrates, solves, audits, and exports the $80\%$-decline
-comparison. For the $40\%$-decline comparison, use the variant
-\texttt{rsi\_activation\_half\_decline} instead. Each variant has separate
-checkpoints, calibration results, audits, and figures. No paths or figures are exported
-unless every scenario passes admission and the activation continuity check.
-Checkpoint and CSV hashes bind the audits to the plotted data. The code,
-initial references, calibrated parameters, diagnostics, and figures are in
-the \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF}{paper's repository},
-with outputs in
-\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation}
-{\texttt{numerical\_rewrite/rsi\_activation/}}.
-The new sensitivity is stored alongside it in the
-\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation_half_decline}
-{half-decline results folder}.
-The \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/REPLICATION.md}
-{replication guide} gives installation instructions and the staged workflow.
-
-For the approximate research-expenditure calibration, run:
+From the repository root, reproduce the principal comparison with:
 \begin{quote}
 \small
 \begin{verbatim}
@@ -150,11 +129,34 @@ The
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2023}
 {research-expenditure results folder} contains the sources, admitted CSV,
 numerical checks, figure metadata and approximate-calibration record.
-Instructions for reproducing the former high-target exercise remain in the
+
+For the faster-transition sensitivity, run:
+\begin{quote}
+\scriptsize
+\begin{verbatim}
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+\end{verbatim}
+\end{quote}
+Its outputs are in the
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation_half_decline}
+{half-decline results folder}. Each comparison has separate checkpoints,
+calibration results, audits and figures. No paths or figures are exported
+unless every scenario passes admission and the activation continuity check.
+Checkpoint and CSV hashes bind the audits to the plotted data.
+The \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/REPLICATION.md}
+{replication guide} gives installation instructions and the staged workflow;
+\texttt{scripts/reproduce\_rewrite\_results.py} runs both displayed comparisons.
+
+The full $80\%$-price-decline exercise is preserved in the
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation}
+{full-price-decline results folder}. To reproduce it, use the price
+calibration command with \texttt{--variant rsi\_activation} instead.
+Instructions for the former high-expenditure-target exercise remain in the
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2025}
 {preserved 2025-target results folder}.
 
 Earlier simulations and their numerical appendix remain in the source.
-The editorial switch in \texttt{main\_rewrite.tex} selects either this
-set of exercises or the earlier presentation. The replication guide explains how
-to change it without altering any numerical file.
+The replication guide explains how to reactivate the full-price benchmark
+or restore the older quantitative section and numerical appendix using
+the two switches in \texttt{main\_rewrite.tex}.
+These switches change the presentation, not any numerical file.

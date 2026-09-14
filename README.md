@@ -21,36 +21,37 @@ Each elasticity starts from its own fixed-efficiency BGP, with common
 `K0/Y0=3.30` and `r0=0.05`. Production weights do not jump: `omega_X=0.10`
 before and after activation. The exercise keeps `eta=0.20`, `B0/Bbar=0.01`,
 and an upper bound ten percent above the `sigma=1.50` threshold. Research
-productivity is refitted at unit elasticity, then shared across all four
-scenarios. Data and audits are in `numerical_rewrite/rsi_activation/`.
+productivity is calibrated at unit elasticity, then shared across all four
+scenarios. Section 6.1 explains this common design and the initial conditions.
 
-A second subsection keeps the same initial economies and all other parameters,
-but fits chi to a 40% price decline over 27 months instead of 80%.
-Its separate results are in `numerical_rewrite/rsi_activation_half_decline/`.
-Use `--variant rsi_activation_half_decline` for that exercise, or
-`python scripts/reproduce_rewrite_results.py` for all active comparisons.
-
-A third subsection selects chi=1.4378 using the lower historical US
-research-expenditure proxy (2023), then holds it fixed across the same four
-elasticities. Run `python scripts/calibrate_rewrite_research_share_low.py`.
-Its data, source qualifications and admission checks are in
-`numerical_rewrite/rsi_research_share_2023/`. The manuscript explains the
-unfitted industry size, expenditure-growth mismatch and adjustment assumptions;
-these are conditional scenarios, not forecasts of current-world growth.
+Section 6.2 is the principal research-expenditure calibration: chi=1.4378
+approximately matches the historical US 2023 training-compute/GDP proxy.
+Data, sources and checks are in `numerical_rewrite/rsi_research_share_2023/`.
+Section 6.3 holds the other parameters and initial stocks fixed but fits
+chi=7.616304576019883 to a 40% price decline over 27 months. This faster
+sensitivity is in `numerical_rewrite/rsi_activation_half_decline/`.
+Section 6.4 discusses the unfitted industry size, expenditure-growth mismatch
+and adjustment assumptions. Within the characterized finite-bound limits,
+chi affects transitions, not limiting growth and distribution. The reported
+dates are conditional model outcomes, not forecasts.
 
 To reproduce the principal calibration from a fresh clone with Python 3.12:
 
 ```text
 python -m pip install -r requirements-rewrite.txt
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
+python scripts/calibrate_rewrite_research_share_low.py
 ```
 
 The command exports only paths that pass the numerical equilibrium-admission
-checks. The earlier timing, slow-transition, and near-terminal comparisons
-remain available through `python scripts/reproduce_rewrite_results.py --include-legacy`.
-Nothing was deleted: `\showlegacysimulationsfalse` in `main_rewrite.tex`
-selects the three RSI exercises; change it to `\showlegacysimulationstrue` to
-restore the earlier quantitative section and numerical appendix. See
+checks. Run `python scripts/reproduce_rewrite_results.py` for both displayed
+comparisons; add `--include-legacy` for the earlier comparisons as well.
+The full 80%-price-decline experiment is preserved, but hidden because of
+its implausibly large initial reallocations, not a failure of its numerical
+checks. Its original text is `sections_rewrite/08_rsi_activation.tex` and
+its outputs are in `numerical_rewrite/rsi_activation/`.
+Set `\showfullpricebenchmarktrue` in `main_rewrite.tex` to display it again.
+Separately, `\showlegacysimulationstrue` restores the older quantitative
+section and numerical appendix. Both switches are false by default. See
 `REPLICATION.md` for the economic intuition, platform-specific setup, output
 map, and interpretation of the diagnostics.
 

@@ -59,8 +59,7 @@ def remove_generated_checkpoints(include_legacy: bool = False) -> None:
         'rewrite_bvp_rsi_research_share_2023': SIGMAS,
     }
     for cache_name, sigmas in cache_designs.items():
-        if not include_legacy and cache_name not in ('rewrite_bvp_rsi_activation',
-                                                   'rewrite_bvp_rsi_activation_half_decline',
+        if not include_legacy and cache_name not in ('rewrite_bvp_rsi_activation_half_decline',
                                                    'rewrite_bvp_rsi_research_share_2023'):
             continue
         cache = ROOT / "tmp" / cache_name
@@ -116,19 +115,19 @@ def main() -> None:
                 ]
             )
 
-    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation"])
-    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
-         "test_rewrite_rsi_activation.py", "-v"])
-    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation_half_decline"])
-    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
-         "test_rewrite_rsi_half_decline.py", "-v"])
     run([python, "scripts/calibrate_rewrite_research_share_low.py"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_research_share_low.py", "-v"])
+    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation_half_decline"])
+    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
+         "test_rewrite_rsi_half_decline.py", "-v"])
     if not args.include_legacy:
-        print("All three four-regime RSI comparisons reproduced; legacy files left unchanged.", flush=True)
+        print("Both displayed four-regime RSI comparisons reproduced; archived files left unchanged.", flush=True)
         return
 
+    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation"])
+    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
+         "test_rewrite_rsi_activation.py", "-v"])
     horizons = {
         'main': args.export_horizon,
         'ramsey_start': args.export_horizon,

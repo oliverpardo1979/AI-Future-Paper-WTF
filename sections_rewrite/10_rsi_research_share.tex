@@ -1,8 +1,7 @@
-\subsection{A lower research-expenditure calibration}
+\subsection{Principal calibration: research expenditure}
 \label{subsec:rewrite-rsi-research-share}
 
-I now use research expenditure rather than the decline in the AI-service
-price to guide the choice of $\chi$. The lower reference is the United
+I use research expenditure to guide the choice of $\chi$. The reference is the United
 States in 2023: \citet{korinekmckelvey2026} estimate training compute
 expenditure of \$18.46 billion, equivalent to $0.0664\%$ of nominal
 GDP.\footnote{Training compute is from Table 3 of
@@ -23,8 +22,8 @@ $K_0/Y_0=3.30$. RSI becomes available unexpectedly at date zero, without
 changing the initial stocks, production quantities or prices. Consumption
 and research adjust endogenously. The initial capital stocks differ across
 elasticities to preserve the common capital--output ratio, not to fit
-post-activation outcomes. All parameters except $\chi$ remain unchanged
-relative to the preceding exercises;
+post-activation outcomes. All parameters except $\chi$ are shared with
+the sensitivity exercise in Section~\ref{subsec:rewrite-rsi-half-decline};
 Table~\ref{tab:rewrite-research-share-parameters} lists them.
 
 At $\sigma=1$, I compare annual expenditure with annual output:
@@ -63,15 +62,14 @@ falls between the first and second years in all four cases, so matching
 its level at unit elasticity does not reproduce its recent empirical growth.
 
 Figures~\ref{fig:rewrite-research-share-accumulation}--\ref{fig:rewrite-research-share-distribution}
-retain the same panels and time windows. The subsequent paths separate:
+show growth rates, prices and income shares, using separate windows for
+the first ten years and years 10--500. The subsequent paths separate:
 the three labor-supported economies return to output-per-person and
 real-wage growth of $1\%$ and an interest rate of $5\%$. At $\sigma=1.50$,
 growth accelerates and labor's income share tends to zero. Its decline
-reaches half its initial share after approximately 221 model years,
-compared with 47 in the half-price-decline exercise. The limiting
-output-per-person growth, wage growth and interest rate remain $3.13\%$,
-$2.42\%$, and $7.13\%$: changing $\chi$ changes the transition, not these
-long-run outcomes.
+reaches half its initial share after approximately 221 model years.
+The limiting output-per-person growth, wage growth and interest rate
+are $3.13\%$, $2.42\%$, and $7.13\%$, respectively.
 
 The plotted horizon is not the terminal boundary. At year 500 in the
 $\sigma=1.50$ case, output-per-person growth is $4.27\%$, wage growth is
@@ -82,42 +80,12 @@ $B/\overline B$ is only $0.46$ at year 500, while labor's income share
 remains $60.3\%$. A slow approach to the efficiency bound need not imply
 a large remaining deviation of growth from its limiting rate.
 
-\paragraph{Interpretation and limitations.}
-These are quantitative scenarios informed by data, not a joint empirical
-fit of the current AI economy. At unit elasticity, AI-industry revenue
-is $(1-\alpha)\omega_X=6.7\%$ of output, independently of $K_0$, $B_0$
-and $\chi$. That share is not fitted to the size estimates discussed by
-\citet{korinekmckelvey2026}. Matching historical research expenditure also
-does not reproduce its recent growth. The proxy measures
-US training compute, not worldwide autonomous RSI. Nor does the exercise
-match expenditure and price changes simultaneously.
-
-The adjustment mechanism also limits the interpretation of timing.
-RSI appears unexpectedly, compute use can expand without installation
-delays, capital is reversible, and owners can finance developer losses
-against future profit. The large initial reallocations in
-Section~\ref{subsec:rewrite-rsi-activation}, including negative gross
-investment, expose the importance of these assumptions. Lowering $\chi$
-moderates the response but does not introduce the capacity costs or
-complementary investments discussed by \citet{erdiletal2025gate} and
-\citet{brynjolfssonrocksyverson2021}. Permanent monopoly and the absence
-of human research further restrict the interpretation of prices and
-developer profit.
-
-Finally, $\sigma$ and $\overline B$ describe technological scenarios,
-not estimated probabilities: the upper bound deliberately places
-$\sigma=1.50$ in the AI-dominated regime. Transition dates are therefore
-conditional model outcomes, not forecasts. The income shares describe
-payments to labor, capital and the AI developer. Without heterogeneous
-asset ownership or the creation of new human tasks, they do not establish
-how gains are distributed across households or how political power changes.
-
 \input{sections_rewrite/rsi_research_share_parameters}
 
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.pdf}
- \caption{Lower research-expenditure calibration: growth of
+ \caption{Principal calibration: growth of
  output, AI production services and capital per unit of effective labor.
  Rates are instantaneous annual rates. The upper row shows years $-2$ to
  10 and the lower row years 10--500. Vertical scales differ between rows;
@@ -129,7 +97,7 @@ how gains are distributed across households or how political power changes.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.pdf}
- \caption{Lower research-expenditure calibration: real-wage
+ \caption{Principal calibration: real-wage
  growth, the net interest rate and the AI-service price. The price is in
  final-good units on a logarithmic scale and is not a calibration target.
  Vertical scales differ between the initial and subsequent windows.
@@ -140,7 +108,7 @@ how gains are distributed across households or how political power changes.
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.pdf}
- \caption{Lower research-expenditure calibration: labor
+ \caption{Principal calibration: labor
  income, AI net profit, inference expenditure and research expenditure as
  shares of output. The first two rows show years $-2$ to 10 and the last
  two show years 10--500. The instantaneous research share differs from

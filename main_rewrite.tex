@@ -42,6 +42,10 @@
 % numerical appendix in place of the RSI-activation presentation.
 \newif\ifshowlegacysimulations
 \showlegacysimulationsfalse
+% Optional full observed-price-decline benchmark: its text, figures, and
+% numerical files remain intact, but the main comparison uses two calibrations.
+\newif\ifshowfullpricebenchmark
+\showfullpricebenchmarkfalse
 
 \title{The Future of Growth and Human Labor\\
 Under Recursive AI Self-Improvement}
@@ -91,9 +95,14 @@ without an upper bound on AI efficiency. With substitution, the long-run output-
 \ifshowlegacysimulations
 \input{sections_rewrite/05_quantitative_equilibria}
 \else
+\ifshowfullpricebenchmark
 \input{sections_rewrite/08_rsi_activation}
-\input{sections_rewrite/09_rsi_half_decline}
+\else
+\input{sections_rewrite/08_rsi_design}
+\fi
 \input{sections_rewrite/10_rsi_research_share}
+\input{sections_rewrite/09_rsi_half_decline}
+\input{sections_rewrite/11_rsi_limitations}
 \fi
 \input{sections_rewrite/06_conclusion}
 

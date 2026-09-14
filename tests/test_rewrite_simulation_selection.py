@@ -1,0 +1,103 @@
+"""Editorial selection preserves all data and the reproduction route."""
+import contextlib
+import hashlib
+import io
+import json
+from pathlib import Path
+import re
+import sys
+import unittest
+from unittest.mock import patch
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+import reproduce_rewrite_results as reproduce
+
+
+def quantitative_text(full=False, legacy=False):
+    main = (ROOT / 'main_rewrite.tex').read_text(encoding='utf-8')
+    section = main.split(r'\input{sections_rewrite/05_uncapped_equilibria}')[1]
+    section = section.split(r'\input{sections_rewrite/06_conclusion}')[0]
+    flags = {'showfullpricebenchmark': full, 'showlegacysimulations': legacy}
+    stack, active, output = [], True, []
+    def expand(path):
+        text = (ROOT / (path + '.tex')).read_text(encoding='utf-8')
+        return re.sub(r'\\input\{([^}]+)\}', lambda m: expand(m[1]), text)
+    for line in section.splitlines():
+        line = line.strip()
+        if line.startswith(r'\if'):
+            stack.append((active, flags[line[3:]]))
+            active = active and stack[-1][1]
+        elif line == r'\else':
+            active = stack[-1][0] and not stack[-1][1]
+        elif line == r'\fi':
+            active = stack.pop()[0]
+        elif active and line.startswith(r'\input'):
+            output.append(expand(re.search(r'\{([^}]+)\}', line)[1]))
+    if stack:
+        raise AssertionError('Unclosed editorial conditional')
+    return '\n'.join(output)
+
+
+class SimulationSelection(unittest.TestCase):
+    def test_default_order_and_six_retained_figures(self):
+        main = (ROOT / 'main_rewrite.tex').read_text()
+        self.assertIn(r'\showfullpricebenchmarkfalse', main)
+        self.assertIn(r'\showlegacysimulationsfalse', main)
+        text = quantitative_text()
+        headings = re.findall(r'\\subsection\{([^}]+)\}', text)
+        self.assertEqual(headings, [
+            'Experimental design and initial conditions',
+            'Principal calibration: research expenditure',
+            'Sensitivity: a faster transition',
+            'Interpretation and limitations',
+        ])
+        figures = re.findall(r'\\includegraphics\[[^]]*\]\{([^}]+)\}', text)
+        self.assertEqual(len(figures), 6)
+        self.assertTrue(all('rsi_research_share_2023_' in p for p in figures[:3]))
+        self.assertTrue(all('rsi_activation_half_decline_' in p for p in figures[3:]))
+        self.assertTrue(all((ROOT / p).exists() for p in figures))
+
+    def test_full_price_benchmark_can_be_reactivated(self):
+        text = quantitative_text(full=True)
+        self.assertEqual(text.count(r'\begin{figure}'), 9)
+        for suffix in ('accumulation_growth', 'growth_returns', 'ai_distribution'):
+            self.assertIn('equilibrium_rsi_activation_' + suffix + '_windows.pdf', text)
+        self.assertIn(r'\label{eq:rewrite-rsi-price-target}', text)
+
+    def test_only_chi_differs_and_reported_timing_matches_saved_data(self):
+        folders = [ROOT / 'numerical_rewrite' / name for name in (
+            'rsi_research_share_2023', 'rsi_activation_half_decline')]
+        manifests = [json.loads((p / 'paths_manifest.json').read_text()) for p in folders]
+        first, second = manifests
+        self.assertEqual({k:v for k,v in first['parameters'].items() if k != 'chi'},
+                         {k:v for k,v in second['parameters'].items() if k != 'chi'})
+        self.assertNotEqual(first['parameters']['chi'], second['parameters']['chi'])
+        for field in ('frontier', 'initial_capital_by_sigma', 'initial_capability'):
+            self.assertEqual(first[field], second[field], field)
+        for p, manifest in zip(folders, manifests):
+            digest = hashlib.sha256((p / 'equilibrium_paths.csv').read_bytes()).hexdigest()
+            self.assertEqual(digest, manifest['csv_sha256'])
+        self.assertAlmostEqual(first['sigma_1_50_transition_dates']['T50'], 220.5497042, places=6)
+        self.assertAlmostEqual(second['sigma_1_50_transition_dates']['T50'], 46.7960891, places=6)
+
+    def test_default_driver_runs_only_the_two_displayed_calibrations(self):
+        with patch.object(sys, 'argv', ['reproduce', '--skip-tests']), \
+             patch.object(reproduce, 'run') as run, contextlib.redirect_stdout(io.StringIO()):
+            reproduce.main()
+        commands = [c.args[0] for c in run.call_args_list]
+        calibrations = [c for c in commands if any('scripts/calibrate_' in x for x in c)]
+        self.assertEqual(len(calibrations), 2)
+        self.assertIn('scripts/calibrate_rewrite_research_share_low.py', calibrations[0])
+        self.assertEqual(calibrations[1][-1], 'rsi_activation_half_decline')
+        self.assertFalse(any('rsi_activation' in c for c in commands))
+
+    def test_legacy_driver_retains_full_price_command(self):
+        with patch.object(sys, 'argv', ['reproduce', '--skip-tests', '--include-legacy']), \
+             patch.object(reproduce, 'run') as run, contextlib.redirect_stdout(io.StringIO()):
+            reproduce.main()
+        self.assertTrue(any(c.args[0][-1] == 'rsi_activation' for c in run.call_args_list))
+
+
+if __name__ == '__main__':
+    unittest.main()
