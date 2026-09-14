@@ -281,7 +281,7 @@ def run(sigma, design=MAIN_DESIGN):
     return payload
 
 
-def export_paths(horizon, points, design=MAIN_DESIGN):
+def export_paths(horizon, points, design=MAIN_DESIGN, additional_times=None):
     """Refuse a partial or uncertified comparison; never extrapolate splines."""
     solutions = []
     checkpoint_hashes = {}
@@ -301,6 +301,12 @@ def export_paths(horizon, points, design=MAIN_DESIGN):
         checkpoint_hashes[key(sigma)] = report['checkpoint_sha256']
     rows = []
     times = np.linspace(0, horizon, points)
+    if additional_times is not None:
+        extra = np.asarray(additional_times, dtype=float)
+        if (extra.ndim != 1 or not np.all(np.isfinite(extra))
+                or np.any(extra < 0) or np.any(extra > horizon)):
+            raise ValueError('Additional export dates must lie inside the display horizon.')
+        times = np.unique(np.r_[times, extra])
     for sol in solutions:
         p, sigma = sol.parameters, sol.terminal.sigma_xl
         bounded = sol.raw.sol(times)
@@ -391,7 +397,7 @@ def export_paths(horizon, points, design=MAIN_DESIGN):
             for sigma in design.sigmas
         },
         horizon=horizon,
-        points_per_scenario=points,
+        points_per_scenario=len(times),
         checkpoint_sha256=checkpoint_hashes,
         transition_definition=(
             'fraction of the sigma=1.50 labor-share decline from its date-zero '
@@ -399,7 +405,7 @@ def export_paths(horizon, points, design=MAIN_DESIGN):
         sigma_1_50_transition_dates=transition_dates,
         csv_sha256=hashlib.sha256(csv_path.read_bytes()).hexdigest(),
     )
-    if design.name == 'ramsey_start':
+    if design.name in ('ramsey_start', 'price_calibrated'):
         manifest['pre_transition_reference'] = dict(
             omega_x=0.0,
             omega_l=1.0,

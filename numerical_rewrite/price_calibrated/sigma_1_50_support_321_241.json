@@ -1,0 +1,2587 @@
+{
+  "time_points": 321,
+  "capability_points": 241,
+  "gap_roundoff_tolerance": 1e-10,
+  "worst": {
+    "time": 1774.0132225681798,
+    "minimum_gap": -1.9095836023552692e-14,
+    "counterfactual_logit": 33.3630660398548,
+    "own_gap": 0.0,
+    "actual_capability_ratio": 0.9999999999999998,
+    "unbounded_tail_derivative_ratio": 0.13533528323661315
+  },
+  "maximum_own_gap": 2.220446049250313e-16,
+  "maximum_tail_derivative_ratio": 0.1353352832367199,
+  "support_diagnostic_passes": true,
+  "checks": [
+    {
+      "time": 0.0,
+      "minimum_gap": -9.992007221626409e-16,
+      "counterfactual_logit": -2.1972245429404387,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.09999999999999999,
+      "unbounded_tail_derivative_ratio": 6.290009948359562e-14
+    },
+    {
+      "time": 7.955216244700358,
+      "minimum_gap": -6.106226635438361e-16,
+      "counterfactual_logit": 4.071043246125067,
+      "own_gap": -2.220446049250313e-16,
+      "actual_capability_ratio": 0.9832265634473483,
+      "unbounded_tail_derivative_ratio": 5.639164402148204e-12
+    },
+    {
+      "time": 15.910432489400716,
+      "minimum_gap": -5.273559366969494e-16,
+      "counterfactual_logit": 7.098247234458685,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9991741297135682,
+      "unbounded_tail_derivative_ratio": 1.1337705563219918e-10
+    },
+    {
+      "time": 23.86564873410107,
+      "minimum_gap": -6.38378239159465e-16,
+      "counterfactual_logit": 9.351233031573113,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999131492226608,
+      "unbounded_tail_derivative_ratio": 1.0775134399434632e-09
+    },
+    {
+      "time": 31.82086497880143,
+      "minimum_gap": -9.159339953157541e-16,
+      "counterfactual_logit": 11.140013777576458,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999854806059378,
+      "unbounded_tail_derivative_ratio": 6.444993114420898e-09
+    },
+    {
+      "time": 39.77608122350179,
+      "minimum_gap": -2.7755575615628914e-16,
+      "counterfactual_logit": 12.626002086372843,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999967144877311,
+      "unbounded_tail_derivative_ratio": 2.8481556047059206e-08
+    },
+    {
+      "time": 47.73129746820214,
+      "minimum_gap": -8.326672684688674e-16,
+      "counterfactual_logit": 13.900839783110705,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999990817977084,
+      "unbounded_tail_derivative_ratio": 1.0191251795812785e-07
+    },
+    {
+      "time": 55.6865137129025,
+      "minimum_gap": -7.494005416219807e-16,
+      "counterfactual_logit": 15.020910466149312,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999997004047574,
+      "unbounded_tail_derivative_ratio": 3.1234226108755854e-07
+    },
+    {
+      "time": 63.64172995760286,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 16.02267067066184,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999998899873829,
+      "unbounded_tail_derivative_ratio": 8.505955238667308e-07
+    },
+    {
+      "time": 71.59694620230322,
+      "minimum_gap": -1.5543122344752192e-15,
+      "counterfactual_logit": 16.931633358810814,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.999999955669045,
+      "unbounded_tail_derivative_ratio": 2.1108553557079374e-06
+    },
+    {
+      "time": 79.55216244700358,
+      "minimum_gap": -7.494005416219807e-16,
+      "counterfactual_logit": 17.765708313818987,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999807470799,
+      "unbounded_tail_derivative_ratio": 4.860365758985996e-06
+    },
+    {
+      "time": 87.50737869170393,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 18.538056629208253,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999911074908,
+      "unbounded_tail_derivative_ratio": 1.052304069106782e-05
+    },
+    {
+      "time": 95.46259493640429,
+      "minimum_gap": -1.0269562977782698e-15,
+      "counterfactual_logit": 19.259066645122537,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999956758873,
+      "unbounded_tail_derivative_ratio": 2.164056120558999e-05
+    },
+    {
+      "time": 103.41781118110465,
+      "minimum_gap": -2.7755575615628914e-16,
+      "counterfactual_logit": 19.93628371440473,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999978036438,
+      "unbounded_tail_derivative_ratio": 4.260521529080371e-05
+    },
+    {
+      "time": 111.373027425805,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 20.576277554393133,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999988419164,
+      "unbounded_tail_derivative_ratio": 8.080267677995828e-05
+    },
+    {
+      "time": 119.32824367050537,
+      "minimum_gap": -1.7763568394002505e-15,
+      "counterfactual_logit": 21.18325023510156,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999993692856,
+      "unbounded_tail_derivative_ratio": 0.00014836543113559364
+    },
+    {
+      "time": 127.28345991520573,
+      "minimum_gap": -1.0547118733938987e-15,
+      "counterfactual_logit": 21.765454646090763,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999996466495,
+      "unbounded_tail_derivative_ratio": 0.00026482593437917614
+    },
+    {
+      "time": 135.23867615990608,
+      "minimum_gap": -6.661338147750939e-16,
+      "counterfactual_logit": 22.318643455132662,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.999999999797051,
+      "unbounded_tail_derivative_ratio": 0.0004610828520445611
+    },
+    {
+      "time": 143.19389240460643,
+      "minimum_gap": -2.275957200481571e-15,
+      "counterfactual_logit": 22.851909729183316,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999998808347,
+      "unbounded_tail_derivative_ratio": 0.0007852675731327032
+    },
+    {
+      "time": 151.1491086493068,
+      "minimum_gap": -1.970645868709653e-15,
+      "counterfactual_logit": 23.36799669157304,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999286409,
+      "unbounded_tail_derivative_ratio": 0.0013113403416467567
+    },
+    {
+      "time": 159.10432489400716,
+      "minimum_gap": -2.831068712794149e-15,
+      "counterfactual_logit": 23.860552685596705,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999565083,
+      "unbounded_tail_derivative_ratio": 0.0021515812441094107
+    },
+    {
+      "time": 167.05954113870752,
+      "minimum_gap": -1.9984014443252818e-15,
+      "counterfactual_logit": 24.335902053856454,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999730683,
+      "unbounded_tail_derivative_ratio": 0.003474605584117928
+    },
+    {
+      "time": 175.01475738340787,
+      "minimum_gap": -2.220446049250313e-16,
+      "counterfactual_logit": 24.802405963021044,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999830816,
+      "unbounded_tail_derivative_ratio": 0.005531172690011621
+    },
+    {
+      "time": 182.96997362810822,
+      "minimum_gap": -2.3037127760972e-15,
+      "counterfactual_logit": 25.25332987899114,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999892324,
+      "unbounded_tail_derivative_ratio": 0.008690935538654172
+    },
+    {
+      "time": 190.92518987280857,
+      "minimum_gap": -2.581268532253489e-15,
+      "counterfactual_logit": 25.70924040571941,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999930658,
+      "unbounded_tail_derivative_ratio": 0.013494481302302215
+    },
+    {
+      "time": 198.88040611750895,
+      "minimum_gap": -2.0816681711721685e-15,
+      "counterfactual_logit": 26.102199027276267,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999954851,
+      "unbounded_tail_derivative_ratio": 0.02072665589340768
+    },
+    {
+      "time": 206.8356223622093,
+      "minimum_gap": -1.2490009027033011e-15,
+      "counterfactual_logit": 26.594468930091992,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999970306,
+      "unbounded_tail_derivative_ratio": 0.031519404167157185
+    },
+    {
+      "time": 214.79083860690966,
+      "minimum_gap": -8.604228440844963e-16,
+      "counterfactual_logit": 26.997012562355174,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999980298,
+      "unbounded_tail_derivative_ratio": 0.047495401392222664
+    },
+    {
+      "time": 222.74605485161,
+      "minimum_gap": -3.7192471324942744e-15,
+      "counterfactual_logit": 27.38948839943709,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999986808,
+      "unbounded_tail_derivative_ratio": 0.07096788146576981
+    },
+    {
+      "time": 230.70127109631036,
+      "minimum_gap": -8.049116928532385e-16,
+      "counterfactual_logit": 27.719363259105272,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999991107,
+      "unbounded_tail_derivative_ratio": 0.10521766084607553
+    },
+    {
+      "time": 238.65648734101075,
+      "minimum_gap": -1.887379141862766e-15,
+      "counterfactual_logit": 28.162903798618764,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999993957,
+      "unbounded_tail_derivative_ratio": 0.1353352832367199
+    },
+    {
+      "time": 246.6117035857111,
+      "minimum_gap": -3.191891195797325e-15,
+      "counterfactual_logit": 28.453912246970248,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999995869,
+      "unbounded_tail_derivative_ratio": 0.13533528323668537
+    },
+    {
+      "time": 254.56691983041145,
+      "minimum_gap": -1.7763568394002505e-15,
+      "counterfactual_logit": 28.945279354871285,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999997154,
+      "unbounded_tail_derivative_ratio": 0.13533528323666247
+    },
+    {
+      "time": 262.5221360751118,
+      "minimum_gap": -9.992007221626409e-16,
+      "counterfactual_logit": 29.208638200294388,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999998025,
+      "unbounded_tail_derivative_ratio": 0.13533528323664842
+    },
+    {
+      "time": 270.47735231981216,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 29.592488388714255,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.999999999999863,
+      "unbounded_tail_derivative_ratio": 0.13533528323663857
+    },
+    {
+      "time": 278.4325685645125,
+      "minimum_gap": -2.0539125955565396e-15,
+      "counterfactual_logit": 30.037617081844985,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999037,
+      "unbounded_tail_derivative_ratio": 0.1353352832366296
+    },
+    {
+      "time": 286.38778480921286,
+      "minimum_gap": -1.7486012637846216e-15,
+      "counterfactual_logit": 30.244917768663786,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999324,
+      "unbounded_tail_derivative_ratio": 0.1353352832366242
+    },
+    {
+      "time": 294.3430010539132,
+      "minimum_gap": -4.6351811278100286e-15,
+      "counterfactual_logit": 30.460728425591384,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999519,
+      "unbounded_tail_derivative_ratio": 0.1353352832366199
+    },
+    {
+      "time": 302.2982172986136,
+      "minimum_gap": -2.220446049250313e-16,
+      "counterfactual_logit": 31.00717029318848,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999661,
+      "unbounded_tail_derivative_ratio": 0.1353352832366184
+    },
+    {
+      "time": 310.253433543314,
+      "minimum_gap": -5.828670879282072e-16,
+      "counterfactual_logit": 30.843553322481537,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999758,
+      "unbounded_tail_derivative_ratio": 0.135335283236616
+    },
+    {
+      "time": 318.2086497880143,
+      "minimum_gap": -8.604228440844963e-16,
+      "counterfactual_logit": 31.796752747631153,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.999999999999983,
+      "unbounded_tail_derivative_ratio": 0.13533528323661626
+    },
+    {
+      "time": 326.1638660327147,
+      "minimum_gap": -8.326672684688674e-16,
+      "counterfactual_logit": 32.306728591057805,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999873,
+      "unbounded_tail_derivative_ratio": 0.13533528323661426
+    },
+    {
+      "time": 334.11908227741503,
+      "minimum_gap": -4.996003610813204e-16,
+      "counterfactual_logit": 32.644669497112886,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999908,
+      "unbounded_tail_derivative_ratio": 0.13533528323661412
+    },
+    {
+      "time": 342.0742985221154,
+      "minimum_gap": -1.8318679906315083e-15,
+      "counterfactual_logit": 31.999998245075627,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999934,
+      "unbounded_tail_derivative_ratio": 0.13533528323661584
+    },
+    {
+      "time": 350.02951476681574,
+      "minimum_gap": -3.6637359812630166e-15,
+      "counterfactual_logit": 33.15375882951604,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999953,
+      "unbounded_tail_derivative_ratio": 0.13533528323661367
+    },
+    {
+      "time": 357.9847310115161,
+      "minimum_gap": -2.498001805406602e-16,
+      "counterfactual_logit": 33.16366707408311,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999961,
+      "unbounded_tail_derivative_ratio": 0.1353352832366137
+    },
+    {
+      "time": 365.93994725621644,
+      "minimum_gap": -2.55351295663786e-15,
+      "counterfactual_logit": 34.26416893112571,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999971,
+      "unbounded_tail_derivative_ratio": 0.13533528323661378
+    },
+    {
+      "time": 373.8951635009168,
+      "minimum_gap": -4.996003610813204e-16,
+      "counterfactual_logit": 34.26219450097207,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366139
+    },
+    {
+      "time": 381.85037974561715,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.28652270287929,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999988,
+      "unbounded_tail_derivative_ratio": 0.13533528323661304
+    },
+    {
+      "time": 389.80559599031756,
+      "minimum_gap": -1.3877787807814457e-16,
+      "counterfactual_logit": 34.27965872822587,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999988,
+      "unbounded_tail_derivative_ratio": 0.135335283236613
+    },
+    {
+      "time": 397.7608122350179,
+      "minimum_gap": -1.942890293094024e-16,
+      "counterfactual_logit": 34.302257326449514,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999988,
+      "unbounded_tail_derivative_ratio": 0.13533528323661204
+    },
+    {
+      "time": 405.71602847971826,
+      "minimum_gap": -1.582067810090848e-15,
+      "counterfactual_logit": 35.354287113006855,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999988,
+      "unbounded_tail_derivative_ratio": 0.13533528323661348
+    },
+    {
+      "time": 413.6712447244186,
+      "minimum_gap": -1.1102230246251565e-15,
+      "counterfactual_logit": 33.88344676976338,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 421.62646096911897,
+      "minimum_gap": -1.0269562977782698e-15,
+      "counterfactual_logit": 34.3272969280378,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 429.5816772138193,
+      "minimum_gap": -1.887379141862766e-15,
+      "counterfactual_logit": 33.17112698619446,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 437.53689345851967,
+      "minimum_gap": -1.3877787807814457e-16,
+      "counterfactual_logit": 34.37175950320752,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 445.49210970322,
+      "minimum_gap": -1.6653345369377348e-16,
+      "counterfactual_logit": 33.277754723227346,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661267
+    },
+    {
+      "time": 453.4473259479204,
+      "minimum_gap": -1.7208456881689926e-15,
+      "counterfactual_logit": 34.39596816066163,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 461.40254219262073,
+      "minimum_gap": -8.326672684688674e-17,
+      "counterfactual_logit": 34.31418883429304,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 469.35775843732114,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 35.44630625070213,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 477.3129746820215,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 34.308124462386694,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366126
+    },
+    {
+      "time": 485.26819092672184,
+      "minimum_gap": -2.7755575615628914e-17,
+      "counterfactual_logit": 35.44685400496852,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 493.2234071714222,
+      "minimum_gap": -8.049116928532385e-16,
+      "counterfactual_logit": 33.749619488924736,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 501.17862341612255,
+      "minimum_gap": -2.7755575615628914e-17,
+      "counterfactual_logit": 35.42898763632477,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 509.1338396608229,
+      "minimum_gap": -2.7755575615628914e-17,
+      "counterfactual_logit": 32.797711847092074,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661267
+    },
+    {
+      "time": 517.0890559055233,
+      "minimum_gap": -1.6375789613221059e-15,
+      "counterfactual_logit": 33.75885588966337,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661267
+    },
+    {
+      "time": 525.0442721502236,
+      "minimum_gap": -2.7755575615628914e-17,
+      "counterfactual_logit": 33.81494964184057,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 532.999488394924,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.13194568221654,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 540.9547046396243,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 34.2883723625751,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661267
+    },
+    {
+      "time": 548.9099208843247,
+      "minimum_gap": -2.3314683517128287e-15,
+      "counterfactual_logit": 33.219348681868965,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 556.865137129025,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.50978666004126,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 564.8203533737254,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.917414248597375,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661267
+    },
+    {
+      "time": 572.7755696184257,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.13851295275911,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 580.7307858631261,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.461947185756124,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 588.6860021078264,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 32.80996190680163,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 596.6412183525268,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 32.63796126349567,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 604.5964345972272,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.381480094744305,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 612.5516508419275,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.866332905739284,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 620.506867086628,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.25912608523583,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366126
+    },
+    {
+      "time": 628.4620833313282,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.89038564099335,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 636.4172995760287,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.294270915005626,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 644.372515820729,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.51133040892673,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 652.3277320654294,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.52931297609934,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 660.2829483101297,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.544680176630685,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661262
+    },
+    {
+      "time": 668.2381645548301,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 34.332974143369114,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661267
+    },
+    {
+      "time": 676.1933807995304,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.36239595821759,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 684.1485970442308,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 32.89197385226245,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661265
+    },
+    {
+      "time": 692.1038132889312,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.88194489349911,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 700.0590295336315,
+      "minimum_gap": -4.773959005888173e-15,
+      "counterfactual_logit": 33.49558655516658,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661212
+    },
+    {
+      "time": 708.0142457783319,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.4840117147671,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 715.9694620230322,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.25889169004724,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 723.9246782677326,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 32.816765232541314,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366122
+    },
+    {
+      "time": 731.8798945124329,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.00762710998496,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366122
+    },
+    {
+      "time": 739.8351107571333,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.198340086806134,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 747.7903270018336,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.74189082860502,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661212
+    },
+    {
+      "time": 755.745543246534,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 32.92886512316127,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 763.7007594912343,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.33369485285117,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 771.6559757359347,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.49378039905506,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 779.6111919806351,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.47162973080027,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 787.5664082253354,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.89700297988399,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 795.5216244700358,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 34.30714612448172,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 803.4768407147361,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.39070415366383,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 811.4320569594365,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.358928298456384,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 819.3872732041368,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.06440239897433,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 827.3424894488372,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.243554316940525,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 835.2977056935375,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.50929987983143,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 843.2529219382379,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.4374704380158,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 851.2081381829383,
+      "minimum_gap": -4.773959005888173e-15,
+      "counterfactual_logit": 33.088683926711,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 859.1633544276386,
+      "minimum_gap": -1.5543122344752192e-15,
+      "counterfactual_logit": 33.03233764885356,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 867.118570672339,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.90531602455505,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 875.0737869170393,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 33.61478409297997,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 883.0290031617398,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 32.849192477581056,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 890.98421940644,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.38337060054183,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 898.9394356511405,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.427881723048586,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661212
+    },
+    {
+      "time": 906.8946518958408,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.50871093524611,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 914.8498681405412,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.812015911430755,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 922.8050843852415,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.979021780898535,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 930.7603006299419,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.56675668073047,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 938.7155168746423,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 33.06969830989605,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 946.6707331193426,
+      "minimum_gap": -1.5543122344752192e-15,
+      "counterfactual_logit": 32.746723264444434,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 954.625949364043,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 32.91015577545134,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661212
+    },
+    {
+      "time": 962.5811656087433,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.54004539834195,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 970.5363818534437,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.46705054184492,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 978.491598098144,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 34.396006918079216,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 986.4468143428444,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.563287288831255,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 994.4020305875447,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.722011408464816,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1002.3572468322451,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.8901491597237,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1010.3124630769454,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.574398923118544,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1018.2676793216458,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.48982827310007,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1026.222895566346,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 32.84511833663805,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1034.1781118110466,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.001454378180455,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1042.133328055747,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.480363659348555,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1050.0885443004472,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.054867352681455,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1058.0437605451475,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.553137765467,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1065.998976789848,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.45704502535479,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1073.9541930345483,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.7323705088689,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1081.9094092792486,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.14781944456926,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1089.864625523949,
+      "minimum_gap": -2.0539125955565396e-15,
+      "counterfactual_logit": 33.300627075859175,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1097.8198417686494,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.581819429072176,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1105.7750580133497,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.47653507545213,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1113.73027425805,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.68566012522474,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1121.6854905027506,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.52856177024565,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1129.6407067474508,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.417544456842826,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1137.5959229921511,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.2508398574851,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1145.5511392368514,
+      "minimum_gap": -9.492406860545088e-15,
+      "counterfactual_logit": 34.36997336231988,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1153.506355481552,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.61881672339428,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1161.4615717262523,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.0244039774619,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1169.4167879709526,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.17027683576873,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1177.3720042156529,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 31.928901905721244,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1185.3272204603534,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 32.90482686015628,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1193.2824367050537,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.56594586856018,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1201.237652949754,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.438902671445796,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1209.1928691944545,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.77152072234321,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1217.1480854391548,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.479090578595,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1225.103301683855,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.338358806600986,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1233.0585179285554,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 34.337039558623225,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1241.013734173256,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.76348274319812,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1248.9689504179562,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.49178687121539,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1256.9241666626565,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.75260278076843,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1264.8793829073568,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 32.890438818500655,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1272.8345991520573,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.7371515955634,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1280.7898153967576,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.16610069405581,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1288.745031641458,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.89072277022451,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1296.7002478861584,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.21674447102473,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1304.6554641308587,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.35362649770086,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1312.610680375559,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.4982782118832,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1320.5658966202593,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.642927281747866,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1328.5211128649598,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.99301643794374,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366122
+    },
+    {
+      "time": 1336.4763291096601,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.230131543251,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1344.4315453543604,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 32.76178176682763,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1352.3867615990607,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.19640333983613,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1360.3419778437612,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.45519194176833,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1368.2971940884615,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.853324716658435,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1376.2524103331618,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.29021875816119,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661217
+    },
+    {
+      "time": 1384.2076265778624,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.11525876199227,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1392.1628428225627,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.6298157232948,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1400.118059067263,
+      "minimum_gap": -6.439293542825908e-15,
+      "counterfactual_logit": 33.68652957034226,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1408.0732753119632,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.57670434805299,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1416.0284915566638,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.3274893201411,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1423.983707801364,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.64662361776818,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1431.9389240460644,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.47051679185155,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1439.8941402907647,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.771838479119594,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661215
+    },
+    {
+      "time": 1447.8493565354652,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.42764261852913,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1455.8045727801655,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.97658243852211,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1463.7597890248658,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.38020944296408,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1471.7150052695663,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.916621381021116,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1479.6702215142666,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.40383610796158,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1487.6254377589669,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.4614471270299,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1495.5806540036672,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.97963725758545,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1503.5358702483677,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.40375722711358,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1511.491086493068,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.58413521036894,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1519.4463027377683,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.73011962552,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1527.4015189824686,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.47245843832908,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1535.356735227169,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.60340646265243,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1543.3119514718694,
+      "minimum_gap": -1.609823385706477e-15,
+      "counterfactual_logit": 34.4149946958389,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1551.2671677165697,
+      "minimum_gap": -3.3861802251067274e-15,
+      "counterfactual_logit": 31.893559133697796,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1559.2223839612702,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.66413027057349,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1567.1776002059705,
+      "minimum_gap": -3.3861802251067274e-15,
+      "counterfactual_logit": 32.12812374590757,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1575.1328164506708,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.589350121837285,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1583.088032695371,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.69821992229666,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1591.0432489400716,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 32.8166395675683,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1598.998465184772,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.63754222162388,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1606.9536814294722,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 31.927872097806578,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1614.9088976741727,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 32.831808865181394,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1622.864113918873,
+      "minimum_gap": -1.6653345369377348e-16,
+      "counterfactual_logit": 32.00596300098671,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1630.8193301635733,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.751098098561,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1638.7745464082736,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 34.55766184121046,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1646.7297626529742,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.30092640908916,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1654.6849788976745,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.41820519570174,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1662.6401951423748,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 31.984013394597838,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1670.595411387075,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 32.17836482462183,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1678.5506276317756,
+      "minimum_gap": -1.6653345369377348e-16,
+      "counterfactual_logit": 31.67485983182831,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1686.5058438764759,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.63899514208008,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1694.4610601211762,
+      "minimum_gap": -1.2823075934420558e-14,
+      "counterfactual_logit": 31.947169695621724,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1702.4162763658767,
+      "minimum_gap": -1.27675647831893e-14,
+      "counterfactual_logit": 33.41664856711153,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1710.371492610577,
+      "minimum_gap": -9.381384558082573e-15,
+      "counterfactual_logit": 32.16767213609295,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1718.3267088552773,
+      "minimum_gap": -9.603429163007604e-15,
+      "counterfactual_logit": 34.00153879363932,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1726.2819250999776,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.541791196014586,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1734.237141344678,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.87664879892134,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1742.1923575893784,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.63334285824321,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1750.1475738340787,
+      "minimum_gap": -1.27675647831893e-14,
+      "counterfactual_logit": 33.74720386562988,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1758.102790078779,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.6639792310897,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1766.0580063234795,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.97492555917216,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1774.0132225681798,
+      "minimum_gap": -1.9095836023552692e-14,
+      "counterfactual_logit": 33.3630660398548,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1781.96843881288,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.47464943249477,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1789.9236550575806,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.58623273915772,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1797.878871302281,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.52919558386316,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1805.8340875469812,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.54422816738334,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1813.7893037916815,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.920982187540815,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1821.744520036382,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.51133212282522,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1829.6997362810823,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 34.51497846753522,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1837.6549525257826,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.51179314286262,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1845.610168770483,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.62109876197791,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1853.5653850151834,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.60163499864868,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1861.5206012598837,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.83970983952778,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1869.475817504584,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.45510863195835,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1877.4310337492846,
+      "minimum_gap": -3.3861802251067274e-15,
+      "counterfactual_logit": 34.43598265153287,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1885.3862499939848,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 34.546426623077444,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1893.3414662386851,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 32.08698900318916,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1901.2966824833854,
+      "minimum_gap": -6.5503158452884236e-15,
+      "counterfactual_logit": 33.24300355509867,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1909.251898728086,
+      "minimum_gap": -9.71445146547012e-15,
+      "counterfactual_logit": 33.348893021666996,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1917.2071149727863,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.37155702565768,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1925.1623312174866,
+      "minimum_gap": -1.27675647831893e-14,
+      "counterfactual_logit": 33.56067185414015,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1933.1175474621868,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.59472175050674,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1941.0727637068874,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.70630406623356,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1949.0279799515877,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 34.26624917219259,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1956.983196196288,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.20613338457528,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 1964.9384124409885,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.69993194240185,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1972.8936286856888,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 34.58733274323446,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1980.848844930389,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.51696953911103,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 1988.8040611750894,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 34.407786078406836,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 1996.75927741979,
+      "minimum_gap": -1.2823075934420558e-14,
+      "counterfactual_logit": 34.118934396290456,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2004.7144936644902,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.82780550925832,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2012.6697099091905,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.93141746328202,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2020.6249261538908,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 34.03502940087654,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2028.5801423985913,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.73582224160928,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2036.5353586432916,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.44138558610913,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2044.490574887992,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.54272029501298,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2052.445791132692,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.24134398462292,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2060.4010073773925,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.36078806813845,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2068.3562236220932,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 34.65670072731415,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2076.3114398667935,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.94805900824814,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2084.266656111494,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.67845515291084,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2092.221872356194,
+      "minimum_gap": -1.2712053631958042e-14,
+      "counterfactual_logit": 33.742324335294946,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2100.1770886008944,
+      "minimum_gap": -3.3861802251067274e-15,
+      "counterfactual_logit": 31.79480759428741,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2108.1323048455947,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 31.889310669659476,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2116.087521090295,
+      "minimum_gap": -1.27675647831893e-14,
+      "counterfactual_logit": 34.042912430918506,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2124.0427373349958,
+      "minimum_gap": -1.2712053631958042e-14,
+      "counterfactual_logit": 33.730150116797084,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2131.997953579696,
+      "minimum_gap": -6.5503158452884236e-15,
+      "counterfactual_logit": 31.660968663111298,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2139.9531698243964,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.51302943278238,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2147.9083860690967,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.610948245813645,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2155.863602313797,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.708867052731456,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2163.8188185584972,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 33.806785853862586,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2171.7740348031975,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.324494524247235,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2179.729251047898,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.68633730125657,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2187.6844672925986,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.67847516970053,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2195.639683537299,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.77525536014234,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2203.594899781999,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.44769130949118,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2211.5501160266995,
+      "minimum_gap": -1.2712053631958042e-14,
+      "counterfactual_logit": 34.39429855534763,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2219.5053322713998,
+      "minimum_gap": -6.439293542825908e-15,
+      "counterfactual_logit": 31.932488819041662,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2227.4605485161,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 32.02357604201378,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2235.4157647608004,
+      "minimum_gap": -1.2712053631958042e-14,
+      "counterfactual_logit": 34.25915625164428,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2243.370981005501,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 33.495862042874755,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2251.3261972502014,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.59036502703145,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2259.2814134949017,
+      "minimum_gap": -6.439293542825908e-15,
+      "counterfactual_logit": 33.68486800830176,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2267.236629739602,
+      "minimum_gap": -3.3306690738754696e-15,
+      "counterfactual_logit": 33.77937098684034,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2275.1918459843023,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 34.30846551146985,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2283.1470622290026,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.53264679758156,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2291.102278473703,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 31.878536263826692,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2299.0574947184036,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 34.59539019521129,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2307.012710963104,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.58093110077781,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2314.967927207804,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.46581981113288,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2322.9231434525045,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.765161037104654,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2330.878359697205,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.420518089704046,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2338.833575941905,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.298796887582576,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2346.7887921866054,
+      "minimum_gap": -1.27675647831893e-14,
+      "counterfactual_logit": 34.27956179245922,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2354.7440084313057,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.710858503262386,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2362.6992246760065,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.572058448972946,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2370.6544409207067,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.66314563343302,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2378.609657165407,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.75423281667644,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2386.5648734101073,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.29585180596989,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2394.5200896548076,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.0330663858436,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2402.475305899508,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.0274943597431,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2410.430522144208,
+      "minimum_gap": -3.219646771412954e-15,
+      "counterfactual_logit": 34.11858153873943,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2418.385738388909,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 34.66475488298955,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2426.3409546336093,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 32.01963211455323,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2434.2961708783096,
+      "minimum_gap": -5.551115123125783e-17,
+      "counterfactual_logit": 31.863601515776715,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2442.25138712301,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 33.5659263753944,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661306
+    },
+    {
+      "time": 2450.20660336771,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 34.5740174208286,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2458.1618196124105,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.74354636567192,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2466.1170358571107,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.370438655500855,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2474.0722521018115,
+      "minimum_gap": -6.439293542825908e-15,
+      "counterfactual_logit": 33.45811005938042,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2482.027468346512,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 33.5457814626891,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2489.982684591212,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 34.09878633874067,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2497.9379008359124,
+      "minimum_gap": -3.164135620181696e-15,
+      "counterfactual_logit": 33.72112426771511,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661315
+    },
+    {
+      "time": 2505.8931170806127,
+      "minimum_gap": -6.5503158452884236e-15,
+      "counterfactual_logit": 31.93835305926434,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2513.848333325313,
+      "minimum_gap": -6.38378239159465e-15,
+      "counterfactual_logit": 33.42771782862177,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2521.8035495700133,
+      "minimum_gap": 0.0,
+      "counterfactual_logit": 35.393801967105524,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.1353352832366131
+    },
+    {
+      "time": 2529.7587658147136,
+      "minimum_gap": -6.328271240363392e-15,
+      "counterfactual_logit": 33.60078345074085,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2537.7139820594143,
+      "minimum_gap": -9.547918011776346e-15,
+      "counterfactual_logit": 34.15948127224938,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    },
+    {
+      "time": 2545.6691983041146,
+      "minimum_gap": -1.27675647831893e-14,
+      "counterfactual_logit": 34.72045627260956,
+      "own_gap": 0.0,
+      "actual_capability_ratio": 0.9999999999999998,
+      "unbounded_tail_derivative_ratio": 0.13533528323661312
+    }
+  ],
+  "checkpoint_sha256": "1baa88d971e84ff962836a3ef3a99f6669c4c9027d772b7352e0105b69860dbf"
+}

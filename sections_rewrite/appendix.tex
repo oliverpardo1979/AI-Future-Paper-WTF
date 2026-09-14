@@ -562,6 +562,24 @@ two boundaries. The terminal date is a computational truncation; the
 infinite-horizon interpretation comes from the analytical continuation and
 the transversality checks described below.
 
+The price-calibrated experiment in
+Section~\ref{subsec:rewrite-price-calibration} adds an outer scalar search
+without changing this equilibrium algorithm. For each trial $\chi$, I solve
+the unit-elastic BVP and evaluate the price ratio at exactly 2.25 years.
+A bracketed root search in $\log\chi$ matches
+\eqref{eq:rewrite-price-calibration-target}. I then fix $\chi$ and solve
+the four elasticities separately. Two horizon extensions verify the price
+match and the equilibrium paths. Additional finite-difference and
+counterfactual-optimality checks cover the first ten years densely, since a
+uniform grid over the full computational horizon can miss a rapid initial
+adjustment. The original admission tolerances are unchanged. The public
+replication package includes
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/scripts/calibrate_rewrite_ai_price.py}
+{\texttt{calibrate\_rewrite\_ai\_price.py}} and its source, target,
+parameter, and diagnostic records in
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/price_calibrated}
+{\texttt{numerical\_rewrite/price\_calibrated/}}.
+
 \subsection{Notation in the paper and code}
 
 The numerical code retains its existing variable names. To make the

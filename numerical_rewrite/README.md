@@ -36,3 +36,10 @@ allocation.
 These files should be regenerated through the public workflow rather than
 edited directly. A converged boundary-value calculation is only a candidate;
 the workflow exports it as a paper result only after all admission checks pass.
+
+The `price_calibrated/` comparison starts from the no-AI Ramsey capital stock
+and `B0/Bbar=0.10`. `calibration.json` records the rounded OECD price target,
+its 27-month window, the numeraire approximation, and the fitted common `chi`.
+Run `python scripts/calibrate_rewrite_ai_price.py` to reproduce it. Its audits
+include additional dense checks over the first ten years; only admitted
+paths enter the plotted CSV and figure manifest.

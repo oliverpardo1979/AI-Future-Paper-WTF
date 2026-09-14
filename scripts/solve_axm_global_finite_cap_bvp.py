@@ -884,6 +884,7 @@ def audit_counterfactual_developer_sufficiency(
     *,
     time_points: int = 81,
     capability_points: int = 81,
+    sample_times: np.ndarray | None = None,
 ) -> dict[str, float | bool | int]:
     """Numerically minimize the developer gate over dates and reachable B."""
 
@@ -895,7 +896,11 @@ def audit_counterfactual_developer_sufficiency(
     lower_logit = math.log(lower_ratio / (1.0 - lower_ratio))
     upper_logit = 30.0
     logit_grid = np.linspace(lower_logit, upper_logit, capability_points)
-    times = np.linspace(0.0, solution.horizon, time_points)
+    times = (np.linspace(0.0, solution.horizon, time_points) if sample_times is None
+             else np.asarray(sample_times, dtype=float))
+    if (times.ndim != 1 or times.size < 11 or not np.all(np.isfinite(times))
+            or np.min(times) < 0 or np.max(times) > solution.horizon):
+        raise ValueError('Counterfactual sample times must stay inside the solved horizon.')
     minimum = math.inf
     minimum_time = math.nan
     minimum_capability = math.nan
@@ -965,7 +970,7 @@ def audit_counterfactual_developer_sufficiency(
             minimum_share = share
             minimum_elasticity = elasticity
     return {
-        "time_points": time_points,
+        "time_points": len(times),
         "capability_points_per_date": capability_points,
         "function_evaluations": evaluations,
         "minimum_counterfactual_concavity_margin": minimum,

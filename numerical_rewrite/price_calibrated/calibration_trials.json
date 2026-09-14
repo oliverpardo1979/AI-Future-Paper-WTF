@@ -1,0 +1,72 @@
+[
+  {
+    "chi": 1.4378,
+    "price_ratio": 0.9082856677162102,
+    "log_target_residual": 1.51324157459553,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_02054a452f1a1b45.npz",
+    "maximum_rms_residual": 1.9301557007622403e-07
+  },
+  {
+    "chi": 63.99999999999998,
+    "price_ratio": 0.17639322789732148,
+    "log_target_residual": -0.1256016143170374,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_2126fbfc1a9b236c.npz",
+    "maximum_rms_residual": 1.9641899261619228e-07
+  },
+  {
+    "chi": 1.4378,
+    "price_ratio": 0.9082856677162102,
+    "log_target_residual": 1.51324157459553,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_02054a452f1a1b45.npz",
+    "maximum_rms_residual": 1.9301557007622403e-07
+  },
+  {
+    "chi": 63.99999999999998,
+    "price_ratio": 0.17639322789732148,
+    "log_target_residual": -0.1256016143170374,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_2126fbfc1a9b236c.npz",
+    "maximum_rms_residual": 1.9641899261619228e-07
+  },
+  {
+    "chi": 47.84534339659045,
+    "price_ratio": 0.20993631168614477,
+    "log_target_residual": 0.048486840486429546,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_d38a49b26048b3a1.npz",
+    "maximum_rms_residual": 1.9903569673585597e-07
+  },
+  {
+    "chi": 51.88332200844274,
+    "price_ratio": 0.1997108996459785,
+    "log_target_residual": -0.0014465475156641512,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_5b1332506521b23f.npz",
+    "maximum_rms_residual": 1.984555100231661e-07
+  },
+  {
+    "chi": 51.761683425010176,
+    "price_ratio": 0.19999726785587474,
+    "log_target_residual": -1.3660813934856602e-05,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_02948052376a855f.npz",
+    "maximum_rms_residual": 1.9786374245957257e-07
+  },
+  {
+    "chi": 51.76052545026819,
+    "price_ratio": 0.20000000005906765,
+    "log_target_residual": 2.9533819829809795e-10,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_759b247b58f8c017.npz",
+    "maximum_rms_residual": 1.9786384263776339e-07
+  },
+  {
+    "chi": 51.76057722103349,
+    "price_ratio": 0.19999987790521934,
+    "log_target_residual": -6.104740896567458e-07,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_730345b442417b8a.npz",
+    "maximum_rms_residual": 1.978638382536881e-07
+  },
+  {
+    "chi": 51.76052545026819,
+    "price_ratio": 0.20000000005906765,
+    "log_target_residual": 2.9533819829809795e-10,
+    "checkpoint": "tmp\\rewrite_bvp_price_calibrated\\calibration_trials\\chi_759b247b58f8c017.npz",
+    "maximum_rms_residual": 1.9786384263776339e-07
+  }
+]

@@ -1,0 +1,354 @@
+"""Price-targeted Ramsey-start comparison; existing paper designs stay intact.
+
+Calibrate chi at sigma=1 to a rounded 80% price decline over 27 months.
+All trial objects are BVP candidates, never exported as equilibrium paths.
+The final four paths use the paper's full, unchanged admission workflow.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+from dataclasses import asdict, replace
+import hashlib
+import json
+import math
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path[:0] = [str(ROOT / '.python-packages'), str(ROOT / 'scripts')]
+import numpy as np
+from scipy.optimize import brentq
+from analyze_axm_finite_cap_bvp import terminal_point
+from simulate_rewrite_finite_frontier import (
+    PARAMETERS, FRONTIER, RAMSEY_START_STEADY_STATE, SIGMAS, SimulationDesign,
+    key, save_solution, load_solution, run, export_paths, validate_solution_design,
+)
+from solve_axm_global_finite_cap_bvp import (
+    solve_global_finite_cap_bvp, refine_global_horizon, reconstruct_levels,
+)
+
+OUTPUT = ROOT / 'numerical_rewrite' / 'price_calibrated'
+CACHE = ROOT / 'tmp' / 'rewrite_bvp_price_calibrated'
+TARGET_YEARS = 27 / 12
+TARGET_PRICE_RATIO = 0.20
+CALIBRATION = OUTPUT / 'calibration.json'
+SOURCE = ('https://www.oecd.org/en/publications/'
+          'artificial-intelligence-markets_d531d73f-en/full-report.html')
+
+
+def make_design(chi: float) -> SimulationDesign:
+    return SimulationDesign(
+        name='price_calibrated', sigmas=SIGMAS,
+        parameters=replace(PARAMETERS, chi=float(chi)), frontier=FRONTIER,
+        initial_capital=RAMSEY_START_STEADY_STATE.capital,
+        initial_capability=0.10 * FRONTIER,
+        output_directory=OUTPUT, cache_directory=CACHE, display_horizon=500.0,
+        initial_stock_reference=(
+            'No-AI Ramsey steady-state capital, B0/Bbar=0.10; omega_X=0 '
+            'before date zero and 0.20 thereafter. Chi matches the rounded '
+            'OECD price decline at sigma=1 and is held fixed across sigmas. '
+            'Consumption and the shadow value are selected anew by the BVP.'),
+    )
+
+
+def log_price_ratio(solution, years=TARGET_YEARS):
+    if not 0 < years <= solution.horizon:
+        raise ValueError('The price target must lie inside the solved horizon.')
+    times = np.array([0.0, float(years)])
+    v = reconstruct_levels(times, solution.raw.sol(times), solution)
+    p, sigma = solution.parameters, solution.terminal.sigma_xl
+    share = v['ai_ces_share']
+    elasticity = (1 - share) / sigma + p.alpha * share
+    prices = -v['log_capability'] - np.log1p(-elasticity)
+    return float(prices[1] - prices[0])
+
+
+def write_json(path, payload):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+
+def calibrate():
+    trials = []
+
+    def objective(log_chi):
+        chi = math.exp(float(log_chi))
+        design = make_design(chi)
+        tag = hashlib.sha256(float(chi).hex().encode()).hexdigest()[:16]
+        filename = CACHE / 'calibration_trials' / f'chi_{tag}.npz'
+        print(f'Price calibration: solving chi={chi:.10g}', flush=True)
+        if filename.exists():
+            solution = load_solution(filename)
+            validate_solution_design(solution, design, 1.0)
+        else:
+            terminal = terminal_point(1.0, FRONTIER, design.parameters)
+            solution = solve_global_finite_cap_bvp(
+                terminal, design.parameters, design.initial_capital,
+                design.initial_capability, continuation_steps=32, nodes=221,
+                tolerance=2e-7, boundary_tolerance=1e-10, maximum_nodes=40000)
+            save_solution(solution, filename)
+        ratio = math.exp(log_price_ratio(solution))
+        residual = math.log(ratio / TARGET_PRICE_RATIO)
+        trials.append(dict(chi=chi, price_ratio=ratio, log_target_residual=residual,
+                           checkpoint=str(filename.relative_to(ROOT)),
+                           maximum_rms_residual=float(np.max(solution.raw.rms_residuals))))
+        write_json(OUTPUT / 'calibration_trials.json', trials)
+        print(f'chi={chi:.10g}: p(2.25)/p(0)={ratio:.10g}', flush=True)
+        return residual
+
+    # These are search brackets, not economic restrictions or fitted data.
+    lower, upper = math.log(PARAMETERS.chi), math.log(64.0)
+    fl, fu = objective(lower), objective(upper)
+    for _ in range(10):
+        if fl * fu <= 0:
+            break
+        if fl > 0 and fu > 0:
+            upper += math.log(2)
+            fu = objective(upper)
+        else:
+            lower -= math.log(2)
+            fl = objective(lower)
+    else:
+        raise RuntimeError('No price-target bracket found; no calibration published.')
+    root = brentq(objective, lower, upper, xtol=2e-6, rtol=1e-10)
+    chi = math.exp(root)
+    residual = objective(root)
+    if abs(residual) > 2e-5:
+        raise RuntimeError('Price target not matched; no calibration published.')
+    payload = dict(
+        status='fitted_candidate_pending_equilibrium_admission', chi=chi,
+        calibration_sigma=1.0, target_years=TARGET_YEARS,
+        target_price_ratio=TARGET_PRICE_RATIO, matched_price_ratio=TARGET_PRICE_RATIO*math.exp(residual),
+        target_log_residual=residual, parameters=asdict(make_design(chi).parameters),
+        frontier=FRONTIER, initial_capital=RAMSEY_START_STEADY_STATE.capital,
+        initial_capability=0.10*FRONTIER,
+        source=dict(url=SOURCE, title='Artificial Intelligence markets: Recent developments and competition issues',
+                    institution='OECD', publication_date='2026-07-10', accessed='2026-09-14',
+                    window_start='2024-01', window_end='2026-04',
+                    measure='Quality-adjusted cloud API price index for text-to-text models',
+                    source_precision='nearly 80 percent; rounded to 80 percent for this exercise'),
+        numeraire_assumption=(
+            'The general final-good price is held constant over the target window. '
+            'This uses the rounded dollar-price fall as an approximate relative-price target, '
+            'not an exactly deflated empirical estimate.'),
+        interpretation=(
+            'Conditional timing calibration, not identification of RSI productivity; '
+            'competition, hardware, human R&D and task intensity are not separately identified. '
+            'Model year zero is an experiment date, not a claim that January 2024 had no AI.'),
+        root_log_chi_tolerance=2e-6, trials=trials,
+    )
+    write_json(CALIBRATION, payload)
+    return make_design(chi)
+
+
+def calibrated_design():
+    payload = json.loads(CALIBRATION.read_text(encoding='utf-8'))
+    if payload['target_years'] != TARGET_YEARS or payload['target_price_ratio'] != TARGET_PRICE_RATIO:
+        raise ValueError('Stored calibration belongs to another price target.')
+    design = make_design(payload['chi'])
+    if payload['parameters'] != asdict(design.parameters) or payload['frontier'] != FRONTIER:
+        raise ValueError('Stored calibration belongs to other parameters.')
+    return design
+
+
+def extend(sigma, design):
+    source = load_solution(CACHE / f'{key(sigma)}_refined.npz')
+    validate_solution_design(source, design, sigma)
+    target = CACHE / f'{key(sigma)}_long.npz'
+    if not target.exists():
+        longer = refine_global_horizon(source, source.horizon+500, nodes=601,
+                                      tolerance=1e-9, boundary_tolerance=1e-11)
+        save_solution(longer, target)
+    else:
+        validate_solution_design(load_solution(target), design, sigma)
+    print(f'{key(sigma)}: second horizon extension complete', flush=True)
+
+
+def render_comparison_views(design):
+    """Same economic panels, with explicit early and full-horizon views."""
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
+    from plot_rewrite_equilibria import (
+        STYLES, PANELS_QUANTITY_GROWTH, PANELS_PRICES_RETURNS, PANELS_DISTRIBUTION,
+    )
+    manifest = json.loads((OUTPUT/'figure_manifest.json').read_text())
+    csv_path = OUTPUT/'equilibrium_paths.csv'
+    if hashlib.sha256(csv_path.read_bytes()).hexdigest() != manifest['data_sha256']:
+        raise ValueError('Price-comparison data differ from the admitted export.')
+    with csv_path.open(encoding='utf-8', newline='') as stream:
+        rows = [{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
+    limits = manifest['analytical_limits']['sigma_1_50']
+    views = []
+    for suffix, panels in (('accumulation_growth', PANELS_QUANTITY_GROWTH),
+                           ('growth_returns', PANELS_PRICES_RETURNS),
+                           ('ai_distribution', PANELS_DISTRIBUTION)):
+        columns = 3 if len(panels) == 3 else 2
+        rows_per_view = 1 if columns == 3 else 2
+        fig, axes = plt.subplots(2*rows_per_view, columns,
+                                 figsize=(7, 5.7 if columns == 3 else 8.5))
+        axes = np.asarray(axes).reshape(2, len(panels))
+        windows = ((0.0,10.0), (10.0,design.display_horizon))
+        for view, (start, end) in enumerate(windows):
+            for axis, (field, title, scale) in zip(axes[view], panels):
+                for sigma in SIGMAS:
+                    series = [r for r in rows if r['sigma'] == sigma and start <= r['time'] <= end]
+                    color, linestyle = STYLES[sigma]
+                    axis.plot([r['time'] for r in series], [r[field] for r in series],
+                              color=color, linestyle=linestyle, linewidth=1.4,
+                              label=fr'$\sigma={sigma:.2f}$')
+                axis.axhline(limits[field], color='#222222', linestyle=(0,(1,2)), linewidth=.8)
+                axis.set_title(title, loc='left', y=1.02, pad=6)
+                if scale in ('rate', 'share'):
+                    decimals = 3 if view == 1 and field == 'research_output_share' else 1
+                    axis.yaxis.set_major_formatter(PercentFormatter(1, decimals=decimals))
+                    axis.yaxis.set_major_locator(MaxNLocator(4))
+                elif scale == 'log_level':
+                    axis.set_yscale('log')
+                    axis.yaxis.set_major_formatter(FuncFormatter(lambda y,p:f'{y:g}'))
+                if scale == 'share':
+                    lo, hi = axis.get_ylim()
+                    axis.set_ylim(min(0,lo), hi)
+                if field.endswith('effective_labor_growth'):
+                    axis.axhline(0, color='#999999', linewidth=.5)
+                axis.set_xlim(start, end)
+                axis.set_xticks(np.linspace(0,end,6) if view == 0 else [10,100,200,300,400,500])
+                axis.set_xlabel('Years: initial transition' if view == 0 else 'Years: subsequent transition')
+                axis.grid(axis='y', color='#dddddd', linewidth=.5)
+                axis.spines[['top','right']].set_visible(False)
+                axis.spines[['left','bottom']].set_color('#888888')
+                axis.tick_params(length=3, color='#888888')
+                if field == 'ai_service_price' and view == 0:
+                    p0 = next(r[field] for r in rows if r['sigma'] == 1. and r['time'] == 0.)
+                    axis.plot(TARGET_YEARS, TARGET_PRICE_RATIO*p0, marker='D',
+                              color='black', markersize=4, linestyle='none', zorder=5)
+            if suffix == 'accumulation_growth':
+                lo=min(axes[view, j].get_ylim()[0] for j in (0,2))
+                hi=max(axes[view, j].get_ylim()[1] for j in (0,2))
+                for j in (0,2):
+                    axes[view,j].set_ylim(lo,hi)
+        handles, labels = axes[0,0].get_legend_handles_labels()
+        fig.legend(handles,labels,ncol=4,loc='upper center',frameon=False,
+                   bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
+        fig.subplots_adjust(left=.105,right=.970,bottom=.09 if columns==3 else .055,
+                            top=.83 if columns==3 else .90,
+                            wspace=.50 if columns==3 else .35,
+                            hspace=.95 if columns==3 else .90)
+        filename=f'equilibrium_price_calibrated_{suffix}_windows'
+        for extension in ('pdf','png'):
+            fig.savefig(ROOT/'figures_rewrite'/f'{filename}.{extension}', dpi=190)
+        plt.close(fig)
+        views.append(dict(filename=filename, windows=[list(w) for w in windows],
+                          fields=[p[0] for p in panels],
+                          independent_vertical_scales_between_windows=True))
+    manifest['two_window_views'] = views
+    write_json(OUTPUT/'figure_manifest.json', manifest)
+
+
+def summarize(design):
+    """Save the exact CSV observations used in the paper's numerical prose."""
+    with (OUTPUT/'equilibrium_paths.csv').open(encoding='utf-8', newline='') as stream:
+        rows=[{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
+    summary=dict(design=design.name, instantaneous_growth_rates=True, scenarios={})
+    for sigma in SIGMAS:
+        series=[r for r in rows if r['sigma']==sigma]
+        snapshots={str(t): next(r for r in series if r['time']==t)
+                   for t in (0.,2.25,10.,50.,100.,500.)}
+        summary['scenarios'][key(sigma)]=dict(
+            snapshots=snapshots,
+            target_window_price_ratio=snapshots['2.25']['ai_service_price']/series[0]['ai_service_price'],
+            initial_profit_ai_revenue_ratio=series[0]['profit_output_share']/series[0]['ai_revenue_output_share'])
+    manifest=json.loads((OUTPUT/'paths_manifest.json').read_text())
+    summary['sigma_1_50_transition_dates']=manifest['sigma_1_50_transition_dates']
+    summary['data_sha256']=manifest['csv_sha256']
+    write_json(OUTPUT/'summary.json',summary)
+
+
+def finish(design):
+    from audit_rewrite_hamiltonian_support import audit_support
+    from audit_rewrite_equilibria import finalize, independent_residuals
+    from solve_axm_global_finite_cap_bvp import audit_counterfactual_developer_sufficiency
+    from plot_rewrite_equilibria import render
+    for sigma in SIGMAS:
+        extend(sigma, design)
+    checkpoint = CACHE / f'{key(1.5)}_long.npz'
+    solution = load_solution(checkpoint)
+    for dates, states in ((81,101), (321,241)):
+        result = audit_support(solution, dates, states)
+        result['checkpoint_sha256'] = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+        write_json(OUTPUT / f'{key(1.5)}_support_{dates}_{states}.json', result)
+        print(f'Hamiltonian support {dates}/{states}: {result["support_diagnostic_passes"]}', flush=True)
+    reports = finalize(design)
+    # Uniform long-horizon grids can miss a rapid initial adjustment. Keep all
+    # existing checks and add dense early-window tests, not looser tolerances.
+    for sigma, report in zip(SIGMAS, reports):
+        sol = load_solution(CACHE / f'{key(sigma)}_long.npz')
+        early_times = np.linspace(0.001, 10.0, 801)
+        residuals = [independent_residuals(sol, step, early_times)
+                     for step in (0.0003, 0.0001)]
+        concavity = audit_counterfactual_developer_sufficiency(
+            sol, time_points=161, capability_points=161,
+            sample_times=np.linspace(0.0, 10.0, 161))
+        early_optimality = concavity['developer_sufficiency_gate_passes']
+        support = []
+        if not early_optimality and sigma == 1.5:
+            for dates, states in ((161,161), (321,241)):
+                check = audit_support(sol, dates, states,
+                                      sample_times=np.linspace(0.0, 10.0, dates))
+                check['checkpoint_sha256'] = hashlib.sha256(
+                    (CACHE / f'{key(sigma)}_long.npz').read_bytes()).hexdigest()
+                write_json(OUTPUT / f'{key(sigma)}_early_support_{dates}_{states}.json', check)
+                support.append({k:v for k,v in check.items() if k != 'checks'})
+            early_optimality = all(
+                c['support_diagnostic_passes'] and c['maximum_own_gap'] < 1e-10
+                and c['maximum_tail_derivative_ratio'] <= 1 for c in support)
+        early_passes = bool(early_optimality and all(
+            c['maximum_ode_residual'] < 1e-6
+            and c['maximum_research_foc_residual'] < 1e-9
+            and c['maximum_monopoly_foc_residual'] < 1e-9 for c in residuals))
+        report['early_window_checks'] = dict(
+            start=0.0, end=10.0, independent_residuals=residuals,
+            concavity=concavity, support=support, passes=early_passes)
+        report['equilibrium_certified'] = bool(report['equilibrium_certified'] and early_passes)
+        report['status'] = 'numerically_admitted' if report['equilibrium_certified'] else 'not_admitted'
+        write_json(OUTPUT / f'{key(sigma)}_audit.json', report)
+        print(f'{key(sigma)}: early-window admission={early_passes}', flush=True)
+    if not all(report['equilibrium_certified'] for report in reports):
+        raise RuntimeError('Incomplete equilibrium admission: no path or figure export.')
+    unit = load_solution(CACHE / f'{key(1.0)}_long.npz')
+    final_ratio = math.exp(log_price_ratio(unit))
+    if abs(math.log(final_ratio/TARGET_PRICE_RATIO)) > 2e-5:
+        raise RuntimeError('Price match changed after horizon refinement; recalibration required.')
+    payload = json.loads(CALIBRATION.read_text(encoding='utf-8'))
+    payload.update(status='numerically_admitted', refined_matched_price_ratio=final_ratio,
+                   final_checkpoint_sha256=hashlib.sha256((CACHE/f'{key(1.0)}_long.npz').read_bytes()).hexdigest())
+    write_json(CALIBRATION, payload)
+    export_paths(design.display_horizon, 4001, design,
+                 additional_times=np.linspace(0.0, 10.0, 1001))
+    render(design)
+    render_comparison_views(design)
+    summarize(design)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--calibrate-only', action='store_true')
+    parser.add_argument('--sigma', type=float, choices=SIGMAS)
+    parser.add_argument('--finish', action='store_true')
+    args = parser.parse_args()
+    if args.calibrate_only:
+        calibrate()
+        return
+    design = calibrated_design() if CALIBRATION.exists() else calibrate()
+    if args.sigma is not None:
+        run(args.sigma, design)
+    elif args.finish:
+        finish(design)
+    else:
+        for sigma in SIGMAS:
+            run(sigma, design)
+        finish(design)
+
+
+if __name__ == '__main__':
+    main()

@@ -98,14 +98,18 @@ def dated_support(solution, time, points=121):
                 actual_capability_ratio=ba, unbounded_tail_derivative_ratio=bound/slope)
 
 
-def audit_support(solution, time_points=161, capability_points=121):
-    times = np.linspace(0, solution.horizon, time_points)
+def audit_support(solution, time_points=161, capability_points=121, sample_times=None):
+    times = (np.linspace(0, solution.horizon, time_points) if sample_times is None
+             else np.asarray(sample_times, dtype=float))
+    if (times.ndim != 1 or times.size == 0 or not np.all(np.isfinite(times))
+            or np.min(times) < 0 or np.max(times) > solution.horizon):
+        raise ValueError('Support sample times must stay inside the solved horizon.')
     checks = [dated_support(solution, float(t), capability_points) for t in times]
     worst = min(checks, key=lambda c:c['minimum_gap'])
     # Reconstructing revenue and spending involves subtraction. The gap is
     # scaled by Y, and -1e-10 is a rounding/optimization diagnostic bound,
     # not a changed economic condition. Repeat at twice the grid resolution.
-    return dict(time_points=time_points, capability_points=capability_points,
+    return dict(time_points=len(times), capability_points=capability_points,
                 gap_roundoff_tolerance=1e-10, worst=worst,
                 maximum_own_gap=max(abs(c['own_gap']) for c in checks),
                 maximum_tail_derivative_ratio=max(c['unbounded_tail_derivative_ratio'] for c in checks),

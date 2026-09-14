@@ -77,6 +77,42 @@ equilibrium.
 
 ## Quick start from a fresh clone
 
+### Additional price-calibrated comparison
+
+The price-calibrated exercise is separate from all preceding designs. It keeps
+the no-AI Ramsey capital stock `K0=5.94157252710329`, sets `B0/Bbar=0.10`, and
+retains `eta=0.20`, `omega_X=0.20`, and the common `Bbar=170.12401740519473`.
+It chooses `chi` at `sigma=1` to match `p_X(2.25)/p_X(0)=0.20`, then uses the
+same `chi` at all four elasticities. The target is a rounded approximation to
+the [OECD price-index decline from January 2024 to April 2026](https://www.oecd.org/en/publications/artificial-intelligence-markets_d531d73f-en/full-report.html).
+It is a cumulative decline over 27 months, not an annual rate. The exercise
+holds the general final-good price constant when mapping this dollar-price
+index into the model's relative price. It is not an exactly deflated estimate
+of RSI productivity or a calibration of the current industry's revenue share.
+
+Run only this additional exercise with:
+
+```text
+python scripts/calibrate_rewrite_ai_price.py
+```
+
+To refit `chi`, run the same script with `--calibrate-only`. To resume one
+elasticity, use `--sigma 1.5` (or another of the four values); `--finish` runs
+the second horizon extensions, final audits, and exports. Checkpoints live in
+`tmp/rewrite_bvp_price_calibrated/`; published data and the source/target record
+live in `numerical_rewrite/price_calibrated/`. Calibration trials are explicitly
+marked as candidates and are not plotted. The final fit is checked again on
+the longest-horizon unit-elastic path before export.
+
+The established admission checks are supplemented with dense tests over the
+first ten years: independent five-point differences at steps 0.0003 and
+0.0001 years, counterfactual concavity, and, when needed, Hamiltonian support
+at two resolutions. These checks use the existing tolerances. They prevent
+a uniform multi-millennial audit grid from overlooking a fast initial
+transition. Additional export dates resolve this same early window.
+
+### Full replication
+
 Python 3.12 is recommended. From the repository root, create an isolated
 environment and install the pinned numerical dependencies.
 

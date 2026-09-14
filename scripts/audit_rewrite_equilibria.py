@@ -18,8 +18,12 @@ from simulate_rewrite_finite_frontier import (
 )
 
 
-def independent_residuals(sol, step):
-    times = np.linspace(1., sol.horizon-1., 1001)
+def independent_residuals(sol, step, sample_times=None):
+    times = (np.linspace(1., sol.horizon-1., 1001) if sample_times is None
+             else np.asarray(sample_times, dtype=float))
+    if (times.ndim != 1 or times.size == 0 or not np.all(np.isfinite(times))
+            or np.min(times)-2*step < 0 or np.max(times)+2*step > sol.horizon):
+        raise ValueError('Finite-difference sample times must stay inside the solved horizon.')
     # Five-point differences of the saved spline VALUES, not its derivatives
     # or the solver RHS. All four original equations are reconstructed below.
     derivative = (-sol.raw.sol(times+2*step)+8*sol.raw.sol(times+step)
