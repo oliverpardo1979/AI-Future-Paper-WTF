@@ -77,6 +77,18 @@ equilibrium.
 
 ## Quick start from a fresh clone
 
+### Initial capital-output audit
+
+The [capital-output comparison](empirical/capital_output/README.md) documents
+the initial ratio in every quantitative exercise and checks it against
+PWT 11.0 and the calibration literature. Run
+`python scripts/audit_rewrite_capital_output.py` to reproduce the comparison
+from the included data extract and saved equilibrium paths, without solving
+any new trajectories. The no-AI steady-state ratio is 3.30; the ratio after
+the introduction of AI generally differs because output can change while
+capital is inherited. None of the existing simulations has been refitted to
+this additional moment.
+
 ### Separate joint-calibration audit
 
 The [joint-calibration workstream](empirical/joint_calibration/README.md)

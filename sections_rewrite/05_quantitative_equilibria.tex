@@ -16,6 +16,34 @@ is not one of these four scenarios.
 \rewriteMainParameterRows
 \end{rewriteParameterTable}
 
+The capital--output ratio provides an additional calibration check. In the
+no-AI steady state, Equation~\eqref{eq:rewrite-capital-return} and
+$r=\rho+\gamma$ imply
+\begin{equation}
+ \left.\frac{K}{Y}\right|_{\mathrm{RCK}}
+ =\frac{\alpha}{\rho+\gamma+\delta}=3.30.
+ \label{eq:rewrite-ramsey-capital-output}
+\end{equation}
+This is close to the annual ratio of 3.32 in the broad US calibration of
+\citet{cooleyprescott1995}. My calculation from PWT 11.0 gives 3.61 for a
+180-economy sample in 2023 and 3.42 for the United States, valuing capital and
+annual GDP at current national prices and aggregating at market exchange
+rates \citep{feenstrainklaartimmer2015,pwt110}. The corresponding sample ratio
+at purchasing-power parities is 4.72.\footnote{The current-price sample ratio
+is $\sum_i\mathtt{cn}_i\mathtt{pl\_n}_i/
+\sum_i\mathtt{cgdpo}_i\mathtt{pl\_gdpo}_i$; the PPP ratio is
+$\sum_i\mathtt{cn}_i/\sum_i\mathtt{cgdpo}_i$. The sample accounts for 99.95\%
+of available PWT output at current PPPs. I use the capital stock, not the
+capital-services index. Asset coverage, relative prices, and the treatment
+of compute expenditure differ from the one-good model, so this is a
+benchmark comparison, not an exact national-accounts match. The data extract
+and calculations are included in the replication files.}
+Thus the Ramsey ratio is a plausible benchmark, but it is not an exact fit
+to the world economy. The illustrative AI starting points need not match it:
+the main comparison starts at ratios between 2.29 and 3.14, below the
+current-price sample ratio. Every exercise reports its own $K_0/Y_0$; none
+has been recalibrated to match this additional moment.
+
 The constant $n$ extrapolates a finite-period demographic approximation; it
 is not a claim that the UN projects constant population growth forever.
 The OECD benchmark for $\gamma$ concerns measured labor-productivity growth,
@@ -327,6 +355,7 @@ $\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; a
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}; not independently chosen.\\
 $B_0$ & 1.701240 & Initial AI efficiency & $0.01\overline B$; arbitrary latent efficiency, not identified by the no-AI economy.\\
+$K_0/Y_0$ & 5.658; 5.169; 4.844; 4.347 & Post-change capital--output ratio & Calculated equilibrium ratios; the pre-change no-AI ratio is 3.30, Equation~\eqref{eq:rewrite-ramsey-capital-output}.\\
 \end{rewriteParameterTable}
 
 As an additional transition experiment, suppose that the economy is initially
@@ -348,7 +377,12 @@ capital stock and the two predetermined date-zero stocks are
  \label{eq:rewrite-ramsey-start-stocks}
 \end{equation}
 The corresponding pre-change values are $Y/(AN)=1.8005$ and
-$C/(AN)=1.4262$. At date zero, $\omega_X$ rises to $0.20$ and
+$C/(AN)=1.4262$, with $K/Y=3.30$. After the change, $K_0/Y_0$ ranges from
+4.35 to 5.66, above the 3.61 current-price international benchmark. Capital
+is inherited, but output falls when the production weights change at this
+low initial AI efficiency. This initial level effect is part of the
+illustrative technology switch, not an empirically fitted impact of AI.
+At date zero, $\omega_X$ rises to $0.20$ and
 $\omega_L$ falls to $0.80$. I hold the two stocks in
 \eqref{eq:rewrite-ramsey-start-stocks} fixed across the four values of
 $\sigma$. The value of $K_0$ is therefore not an additional calibration: it is
@@ -449,6 +483,7 @@ $\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; a
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 6.5571 ($\sigma=0.90$);\newline 9.0990 ($\sigma=1$);\newline 12.2652 ($\sigma=1.10$);\newline $4{,}101{,}704.23$ ($\sigma=1.50$) & Initial capital & Calculated from the terminal normalized stocks, Equations~\eqref{eq:rewrite-near-terminal-stocks}--\eqref{eq:rewrite-near-terminal-ai-stock}; not empirical estimates.\\
 $B_0$ & 170.107005 & Initial AI efficiency & $0.9999\overline B$; arbitrary diagnostic proximity to the bound, preserving positive research.\\
+$K_0/Y_0$ & 3.300; 3.300; 3.300; 2.653 & Initial capital--output ratio & Calculated near-terminal equilibrium ratios; diagnostic long-run initializations, not a calibration to today's economy.\\
 \end{rewriteParameterTable}
 
 The initially high and declining growth rates of the three labor-bottleneck
@@ -536,6 +571,7 @@ $\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; a
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 2.027733654 & Initial capital & Calculated from the earlier uncapped unit-elastic BGP; adopting that reference is an illustrative choice.\\
 $B_0$ & 0.443670932 & Initial AI efficiency & Same uncapped BGP reference; about $0.2608\%$ of $\overline B$. Not an empirical estimate.\\
+$K_0/Y_0$ & 3.762; 3.272; 2.905; 2.339 & Initial capital--output ratio & Calculated from the saved paths; adopting the earlier BGP stocks does not fix this ratio across $\sigma$.\\
 \end{rewriteParameterTable}
 
 The 50-year midpoint in the main comparison is a timing calibration rather
@@ -628,6 +664,7 @@ $\overline B$ & 170.1240 & AI-efficiency upper bound & Same $1.10\mathcal B(1.50
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations in both configurations.\\
 $K_0$ & 4 (main);\newline 2.027733654 (distant) & Initial capital & Main: arbitrary intermediate stock. Distant: earlier uncapped BGP stock, used as an illustrative reference.\\
 $B_0$ & 17.012402 (main);\newline 0.443670932 (distant) & Initial AI efficiency & Main: arbitrary $10\%$ of the bound. Distant: earlier BGP value, about $0.2608\%$ of the bound; not estimated.\\
+$K_0/Y_0$ & 2.294 (main);\newline 2.339 (distant) & Initial capital--output ratio & Calculated at $\sigma=1.50$; both below the current-price international benchmark.\\
 \end{rewriteParameterTable}
 
 Moving the common initial stocks closer to the $\sigma=1$ terminal regime

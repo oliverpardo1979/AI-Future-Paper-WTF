@@ -2,9 +2,12 @@
 import json
 from pathlib import Path
 import re
+import sys
 import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path[:0]=[str(ROOT/'.python-packages'),str(ROOT/'scripts')]
+from audit_rewrite_capital_output import simulation_comparison, empirical_comparison
 SECTION=ROOT/'sections_rewrite'
 SHARED=(SECTION/'parameter_tables.tex').read_text(encoding='utf-8')
 COMMON,MAIN=SHARED.split(r'\newcommand{\rewriteMainParameterRows}',1)
@@ -95,6 +98,41 @@ class ParameterTables(unittest.TestCase):
         for label in ('tab:rewrite-price-parameters','tab:rewrite-low-ai-price-parameters'):
             self.assertIn(r'\citep{oecdaimarkets2026}',TABLES[label])
             self.assertIn('0.20',TABLES[label])
+
+    def test_initial_capital_output_ratios_match_paths_and_static_block(self):
+        calculated=simulation_comparison()
+        expected={(r['scenario'],r['sigma']):r for r in calculated}
+        frozen=json.loads((ROOT/'numerical_rewrite/initial_capital_output_audit.json').read_text())
+        self.assertEqual(calculated,frozen['simulations'])
+        for label,directory in SCENARIOS.items():
+            displayed=rows(TABLES[label])['K_0/Y_0'].split(';')
+            self.assertEqual(len(displayed),4)
+            for index,sigma in enumerate((.9,1.,1.1,1.5)):
+                self.check_display(displayed[index],expected[(directory or 'main',sigma)]['K0_Y0_years'])
+        displayed=rows(TABLES['tab:rewrite-financing-parameters'])['K_0/Y_0'].split(r';\newline ')
+        for index,scenario in enumerate(('main','initial_financing_distant')):
+            self.check_display(displayed[index],expected[(scenario,1.5)]['K0_Y0_years'])
+
+    def test_no_ai_ratio_is_distinct_from_post_change_ratio(self):
+        frozen=json.loads((ROOT/'numerical_rewrite/initial_capital_output_audit.json').read_text())
+        for row in frozen['simulations']:
+            if row['scenario']=='ramsey_start':
+                self.assertAlmostEqual(row['no_ai_steady_state_ratio_years'],3.3)
+                self.assertGreater(row['K0_Y0_years'],4.3)
+                self.assertLess(row['output_change_from_no_ai_same_stocks'],0)
+        self.assertIn('not an\nadditional parameter',COMMON)
+        self.assertIn('pre-change no-AI ratio is 3.30',TABLES['tab:rewrite-ramsey-parameters'])
+
+    def test_pwt_comparison_uses_matched_sample_and_correct_price_conversion(self):
+        frozen=json.loads((ROOT/'numerical_rewrite/initial_capital_output_audit.json').read_text())
+        actual=empirical_comparison()
+        self.assertEqual(actual,frozen['empirical'])
+        latest=actual['observations'][-1]
+        self.assertEqual(latest['year'],2023)
+        self.assertEqual(latest['countries_used'],180)
+        self.assertEqual(latest['excluded_missing'],['CUW','GUY','SOM','SSD','SXM'])
+        self.assertAlmostEqual(latest['sample_current_price_ratio'],3.6090723275645424)
+        self.assertAlmostEqual(latest['sample_ppp_ratio'],4.716904846871783)
 
 
 if __name__=='__main__':

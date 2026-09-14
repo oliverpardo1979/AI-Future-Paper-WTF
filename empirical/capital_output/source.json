@@ -1,0 +1,26 @@
+{
+  "title": "Penn World Table 11.0",
+  "doi": "10.34894/FABVLR",
+  "download_url": "https://dataverse.nl/api/access/datafile/554030",
+  "retrieved": "2026-09-14",
+  "raw_file_sha256": "2a0d214958dd46ad6cb9966f5dfa2fc8ad546475c79ed70564caf7383777aaa1",
+  "license": "CC BY 4.0",
+  "rows_full_dataset": 13690,
+  "years_extracted": [
+    2019,
+    2021,
+    2023
+  ],
+  "rows_extracted": 555,
+  "source_variable_labels": {
+    "countrycode": "3-letter ISO country code",
+    "country": "Country name",
+    "year": "Year",
+    "cn": "Capital stock at current PPPs (in mil. 2021US$)",
+    "cgdpo": "Output-side real GDP at current PPPs (in mil. 2021US$)",
+    "pl_n": "Price level of the capital stock, price level of USA 2021=1",
+    "pl_gdpo": "Price level of CGDPo (PPP/XR),  price level of USA GDPo in 2021=1",
+    "ck": "Capital services levels at current PPPs (USA=1)"
+  },
+  "attribution": "Feenstra, Inklaar and Timmer (2015), AER 105(10), 3150-3182"
+}
