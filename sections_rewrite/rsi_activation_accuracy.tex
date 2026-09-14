@@ -1,0 +1,26 @@
+Table~\ref{tab:rewrite-rsi-accuracy} reports the final numerical checks.
+\begin{table}[H]
+ \centering
+ \caption{Numerical accuracy of the RSI-activation equilibria}
+ \label{tab:rewrite-rsi-accuracy}
+ \small
+ \begin{tabular}{rrrrr}
+ \toprule
+ $\sigma$ & Final horizon & Mesh points & Dynamic residual & Horizon change\\
+ \midrule
+ 0.90 & 4,815.9 & 1,740 & $1.63\times10^{-9}$ & $2.89\times10^{-8}$\\
+ 1.00 & 4,591.9 & 1,868 & $2.84\times10^{-9}$ & $3.76\times10^{-8}$\\
+ 1.10 & 4,591.9 & 1,959 & $3.18\times10^{-9}$ & $2.86\times10^{-8}$\\
+ 1.50 & 2,545.7 & 2,294 & $3.65\times10^{-9}$ & $1.52\times10^{-8}$\\
+ \bottomrule
+ \end{tabular}
+ \par\smallskip
+ \begin{minipage}{0.95\textwidth}\footnotesize
+ Dynamic residuals are the largest independently reconstructed errors
+ across the full-horizon and dense first-decade checks. Horizon change
+ compares the last two solutions in detrended logarithmic coordinates
+ over years 0--500. Error bounds are rounded upward. The event-continuity
+ log gaps are below $1.4\times10^{-15}$; the final unit-elastic price ratio
+ is $0.2000000012$.
+ \end{minipage}
+\end{table}

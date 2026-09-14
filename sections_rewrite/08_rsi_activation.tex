@@ -1,0 +1,81 @@
+\section{Quantitative equilibrium paths}
+\label{sec:rewrite-quantitative}
+\input{sections_rewrite/parameter_tables}
+
+\subsection{Activating RSI in an economy with existing AI}
+\label{subsec:rewrite-rsi-activation}
+
+I study an unanticipated activation of RSI, rather than the first introduction
+of AI. Before date zero, the economy already uses AI production services,
+with $\omega_X=0.10$ and fixed efficiency $B_0$, but research that improves
+AI efficiency is unavailable. It follows the BGP of this fixed-efficiency
+economy. At date zero, the developer gains access to the RSI technology
+with $\chi>0$. Neither the production function nor its weights change.
+The pre-event restriction corresponds to $\chi=0$ and $M=0$; it is not an
+imposed zero-research choice under the post-event technology.
+
+For each elasticity, I choose the pre-event capital stock to satisfy
+\begin{equation}
+ r_0=\rho+\gamma,\qquad
+ \frac{K_0}{Y_0}=\frac{\alpha}{\rho+\gamma+\delta}=3.30.
+ \label{eq:rewrite-rsi-initial-ratio}
+\end{equation}
+Here $Y_0$ is obtained from the production and monopoly conditions with AI
+already present. Thus $K_0$ differs across elasticities, while the initial
+capital--output ratio and interest rate are common. With $A_0=N_0=1$ and
+the common $B_0$, the four capital stocks are approximately $3.434$, $4.649$,
+$5.037$, and $5.505$. These are calibrated alternative economies, not
+different outcomes of introducing AI into one economy with the same capital
+stock. The ratio is a theoretical BGP reference, not an exact empirical fit:
+the PWT 11.0 comparison yields a 2023 current-price capital--output ratio
+of about $3.61$ for the covered world sample and $3.42$ for the United States,
+with capital definitions that differ from the one-good model \citep{pwt110}.
+
+Before activation, consumption satisfies
+\begin{equation}
+ C(0^-)=Y_0-U_0-(\delta+n+\gamma)K_0>0.
+ \label{eq:rewrite-rsi-pre-consumption}
+\end{equation}
+Only $K_0$ and $B_0$, together with the exogenous $A_0,N_0$, are inherited
+by the post-event equilibrium. The BVP selects $C(0^+)$ and $q(0^+)$ anew.
+Since the production block and its predetermined inputs do not change,
+$Y$, $X$, $U$, $w$, $r$, and $p_X$ are continuous at activation. Research,
+consumption, investment, and growth rates can adjust immediately. The
+pre-event BGP requires an unanticipated activation: announcing RSI earlier
+would generally change saving and consumption before date zero, as in the
+technology-news mechanisms reviewed by \citet{beaudryportier2014}.
+
+The sudden activation is an experimental assumption, not a requirement of
+the RSI technology. It differs from the continued endogenous automation in
+\citet{jonestonetti2026}. The exercise also omits the costs of expanding
+compute capacity in GATE \citep{erdiletal2025gate} and the complementary
+intangible investment studied by \citet{brynjolfssonrocksyverson2021}.
+Those mechanisms can delay adjustment or measured productivity gains, but
+they do not explain the paths computed here. Reducing $\chi$ does not remove
+the unanticipated activation or require consumption and research spending
+to be continuous at date zero.
+
+\input{sections_rewrite/rsi_activation_parameters}
+
+I retain $\eta=0.20$, $B_0/\overline B=0.01$, and
+$\overline B=1.10\mathcal B(1.50)$, with the threshold evaluated at
+$\omega_X=0.10$. The upper bound is chosen to put $\sigma=1.50$ in the
+AI-dominated regime; it is not estimated. The other three elasticities
+converge to labor-supported regimes. I calibrate $\chi$ at $\sigma=1$ to
+\begin{equation}
+ \frac{p_X(2.25)}{p_X(0)}=0.20,
+ \label{eq:rewrite-rsi-price-target}
+\end{equation}
+and then hold it fixed across all four elasticities. This approximates the
+nearly $80\%$ decline in the OECD quality-adjusted language-model price index
+between January 2024 and April 2026 \citep{oecdaimarkets2026}. It treats the
+final-good price as constant over this window. Competition, hardware,
+human research, and changes in task intensity also affect observed prices;
+the target therefore disciplines timing conditional on the model, rather
+than identifying autonomous research productivity. Date zero denotes the
+hypothetical activation, not a claim that RSI appeared in January 2024.
+
+\paragraph{Equilibrium transition.}
+\label{subsec:rewrite-rsi-results}
+
+\input{sections_rewrite/rsi_activation_results}

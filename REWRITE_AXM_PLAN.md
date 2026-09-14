@@ -12,11 +12,68 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
-### Principal calibration (September 14, 2026)
+### Lower research-expenditure target replaces subsection 6.3 (September 14, 2026)
+
+- The author requested the lowest previously discussed M/Y datum and allowed
+  a few basis points of empirical mismatch. Use US 2023, 18.46/27811.517,
+  or 0.0663754%, not the 2024 or 2025 datum.
+- Select the nearest previously explored increasing-branch candidate:
+  chi=1.4378, annual M/Y=0.0637427%, shortfall 0.2633 bp. All non-chi
+  parameters and initial stocks stay fixed; only sigma=1 is presented.
+- Original equilibrium, optimality, two-horizon-extension, early-window and
+  event checks pass. Numerical tolerances are unchanged.
+- Active results: numerical_rewrite/rsi_research_share_2023/;
+  script: scripts/calibrate_rewrite_research_share_low.py.
+  The former high-target results and figures remain intact; the old text
+  and tables are under sections_rewrite/preserved/.
+- Leave title, abstract, introduction, analytical model and subsections 6.1/6.2 untouched.
+
+### Approximate research-expenditure calibration accepted (September 14, 2026)
+
+The author accepted 0.3215% first-year M/Y against the 0.3562% US 2025 proxy
+and requested that the already-verified simulation become a new subsection.
+Publish only the existing sigma=1 path, chi=81.08480942910101, with unchanged
+initial stocks, other parameters and equilibrium gates. This is an approximate
+empirical fit, not an exact fit or an excuse to relax numerical tolerances.
+Retain all prior simulations and the diagnostic search. Use the same three
+figure groups, a parameter/initial-stock table, and explicit source caveats.
+The new source is `sections_rewrite/10_rsi_research_share.tex`; its separate
+outputs are `numerical_rewrite/rsi_research_share_2025/published_unit/`.
+Do not label it a four-elasticity comparison: the other three paths at this
+chi have not been constructed or admitted. Do not change the title, abstract,
+introduction, or analytical model.
+
+### Additional half-price-decline target (September 14, 2026)
+
+Add a second active subsection with `p_X(2.25)/p_X(0)=0.60`: half the
+rounded observed 80% percentage decline. Refit chi at sigma=1 and solve
+all four elasticities again with the existing BVP and unchanged audits.
+Keep the same fixed-B pre-RSI BGP stocks and all other parameters.
+Preserve the 80%-decline exercise and the silenced legacy comparisons.
+Do not interpret the sensitivity as an empirical monopoly/competition wedge.
+
+### RSI activation replaces the displayed calibration (September 14, 2026)
+
+The user approved a pre-event BGP with AI already present and fixed B0,
+followed by an unanticipated activation of previously unavailable RSI.
+Keep omega_X=0.10 before and after the event. Choose K0 separately for
+each sigma to match K0/Y0=3.30 and r0=0.05; do not impose pre-event C0
+on the new equilibrium. Keep eta, the four sigmas, B0/Bbar=0.01, and
+Bbar=1.10 times the sigma=1.50 threshold. Refit chi at sigma=1, then hold
+it fixed. The new variant is `rsi_activation`; source and results use
+separate files. Preserve the post-event equations, BVP logic, and admission
+thresholds. Add checks of the pre-event BGP and event continuity.
+
+The LaTeX switch `\showlegacysimulationsfalse` selects the new section and
+numerical appendix; `\showlegacysimulationstrue` restores all earlier
+simulations. No old trajectory, figure, or numerical data is deleted.
+The title, abstract, introduction, and analytical model remain untouched.
+
+### Previous principal calibration (preserved, September 14, 2026)
 
 The existing lower-weight price-calibrated comparison in
-`sections_rewrite/07_low_ai_price_calibration.tex` is now the principal
-calibration. Keep the four sigmas 0.90, 1.00, 1.10, 1.50; common no-AI Ramsey
+`sections_rewrite/07_low_ai_price_calibration.tex` was the principal
+calibration. Preserve its four sigmas 0.90, 1.00, 1.10, 1.50; common no-AI Ramsey
 initial capital; eta=0.20; omega_X=0.10; Bbar=1.10 times the sigma=1.50
 threshold; B0/Bbar=0.01; and chi=36.03184470863892, fitted to the price decline
 at sigma=1 and then held fixed across sigmas. Numerical files remain in

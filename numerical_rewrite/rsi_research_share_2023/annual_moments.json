@@ -1,0 +1,91 @@
+{
+  "target_share": 0.0006637537966735148,
+  "target_sigma": 1.0,
+  "scenarios": {
+    "sigma_0_90": {
+      "first_year": {
+        "share": 6.872391467937765e-05,
+        "quadrature_log_gap": 1.776356839400252e-15,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 6.649653216707172e-05,
+        "quadrature_log_gap": 0.0,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "annual_share_growth": -0.03241058840576083,
+      "moment_log_change_after_two_horizon_extensions": 6.469052031060253e-07,
+      "untargeted_price_ratio_27_months": 0.9756022193514856
+    },
+    "sigma_1_00": {
+      "first_year": {
+        "share": 0.000637427338959885,
+        "quadrature_log_gap": 8.881784197001256e-16,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.000620366986197661,
+        "quadrature_log_gap": 0.0,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "annual_share_growth": -0.026764388220408053,
+      "moment_log_change_after_two_horizon_extensions": 3.43948843486658e-08,
+      "untargeted_price_ratio_27_months": 0.9104055211179549
+    },
+    "sigma_1_10": {
+      "first_year": {
+        "share": 0.0014174856336761125,
+        "quadrature_log_gap": 8.881784197001248e-16,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.0013817877926107557,
+        "quadrature_log_gap": 0.0,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "annual_share_growth": -0.025183917365552366,
+      "moment_log_change_after_two_horizon_extensions": 3.0561638812515746e-07,
+      "untargeted_price_ratio_27_months": 0.8913048205437424
+    },
+    "sigma_1_50": {
+      "first_year": {
+        "share": 0.005631335531925891,
+        "quadrature_log_gap": 0.0,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.0055721107769274875,
+        "quadrature_log_gap": 7.771561172376099e-16,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "annual_share_growth": -0.01051699985956056,
+      "moment_log_change_after_two_horizon_extensions": 6.505977976460606e-10,
+      "untargeted_price_ratio_27_months": 0.8584617262313966
+    }
+  },
+  "csv_sha256": "099e8a551ccf2d4dec16479809624b4cc18d764418d61a784c041ef2ceffee30"
+}

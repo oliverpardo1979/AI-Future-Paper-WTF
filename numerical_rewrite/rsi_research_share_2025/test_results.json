@@ -1,0 +1,47 @@
+{
+  "tests_run": 138,
+  "passed": 132,
+  "failures": [
+    {
+      "test": "test_rewrite_proposition_structure.UnifiedPropositionStructure.test_active_references_resolve_once",
+      "message": "AssertionError: {'sec:rewrite-quantitative': 2, 'app:rewrite-algorithm': 2} != {}\n- {'app:rewrite-algorithm': 2, 'sec:rewrite-quantitative': 2}\n+ {}"
+    },
+    {
+      "test": "test_rewrite_proposition_structure.UnifiedPropositionStructure.test_uncapped_bgp_precedes_open_substitution_question",
+      "message": "AssertionError: 'not a steady state in levels' not found in \"\\n\\nAt unit elasticity, production becomes\\n\\\\begin{equation}\\n Y=K^\\\\alpha(AL)^{(1-\\\\alpha)\\\\omega_L}X^{(1-\\\\alpha)\\\\omega_X}.\\n \\\\label{eq:rewrite-uncapped-unit-elasticities}\\n\\\\end{equation}\\nConsider a balanced-growth path (BGP) with positive constant $K/Y$, $C/Y$,\\nand $M/Y$. The AI-demand and\\nmonopoly conditions, equations~\\\\eqref{eq:rewrite-ai-p"
+    },
+    {
+      "test": "test_rewrite_proposition_structure.UnifiedPropositionStructure.test_upper_bound_terminology_preserves_other_frontiers",
+      "message": "AssertionError: 'technological frontier' not found in '\\n\\n\\n\\n\\n\\n\\n\\n\\n\\\\documentclass[11pt]{article}\\n\\n\\\\usepackage[margin=1in]{geometry}\\n\\\\usepackage{amsmath,amssymb,amsthm,mathtools}\\n\\\\usepackage{booktabs,array}\\n\\\\usepackage{graphicx}\\n\\\\usepackage{float}\\n\\\\usepackage{tikz}\\n\\\\usetikzlibrary{arrows.meta,positioning}\\n\\\\usepackage{microtype}\\n\\\\usepackage{setspace}\\n\\\\usepackage{needspace}\\n\\\\usepackage{"
+    },
+    {
+      "test": "test_rewrite_short_substitution.ShortSubstitutionExposition.test_abstract_and_intro_specify_long_run_growth_and_unit_benchmark",
+      "message": "AssertionError: 'increases without bound as the upper bound rises' not found in \"I develop an endogenous-growth model in which a monopolistic AI developer supplies AI production services and uses recursive AI self-improvement to improve AI efficiency. I characterize the model's long-run equilibria under a finite upper bound on AI efficiency. The equilibrium regime depends jointly on the elasticity of substitution"
+    },
+    {
+      "test": "test_rewrite_uncapped_complements.UncappedComplements.test_new_section_order_and_explicit_conditional_scope",
+      "message": "AssertionError: 'The proposition remains conditional on equilibrium existence' not found in \"\\\\section{Equilibrium without an upper bound on AI efficiency} \\\\label{sec:rewrite-uncapped} I now remove the upper bound on AI efficiency and compare the three substitution regimes. The RSI technology becomes \\\\begin{equation} \\\\dot B=\\\\chi(BM)^\\\\eta. \\\\label{eq:rewrite-uncapped-unit-law} \\\\end{equation} All other primit"
+    }
+  ],
+  "errors": [],
+  "skipped": [
+    {
+      "test": "test_rewrite_research_share.ResearchMoment.test_admission_target_and_provenance",
+      "reason": "Run all four equilibria first"
+    }
+  ],
+  "baseline_recheck": {
+    "commit": "f7ec991",
+    "method": "Re-run the five failed, unchanged tests reading manuscript sources from git HEAD instead of the working tree.",
+    "tests_run": 5,
+    "failures": [
+      "test_rewrite_proposition_structure.UnifiedPropositionStructure.test_active_references_resolve_once",
+      "test_rewrite_proposition_structure.UnifiedPropositionStructure.test_uncapped_bgp_precedes_open_substitution_question",
+      "test_rewrite_proposition_structure.UnifiedPropositionStructure.test_upper_bound_terminology_preserves_other_frontiers",
+      "test_rewrite_short_substitution.ShortSubstitutionExposition.test_abstract_and_intro_specify_long_run_growth_and_unit_benchmark",
+      "test_rewrite_uncapped_complements.UncappedComplements.test_new_section_order_and_explicit_conditional_scope"
+    ],
+    "errors": [],
+    "same_five_failures": true
+  }
+}

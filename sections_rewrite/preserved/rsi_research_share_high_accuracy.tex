@@ -1,0 +1,24 @@
+\begin{table}[H]
+ \centering
+ \caption{Numerical accuracy of the approximate research-expenditure calibration}
+ \label{tab:rewrite-research-share-accuracy}
+ \small
+ \begin{tabular}{rrrrr}
+ \toprule
+ $\sigma$ & Final horizon & Mesh points & Dynamic residual & Horizon change\\
+ \midrule
+ 1.00 & 4,591.9 & 2,257 & $3.06\times10^{-9}$ & $6.03\times10^{-9}$\\
+ \bottomrule
+ \end{tabular}
+ \par\smallskip
+ \begin{minipage}{0.95\textwidth}\footnotesize
+ Definitions are those of Table~\ref{tab:rewrite-rsi-accuracy}; error bounds
+ are rounded upward. The initial candidate uses the stricter tolerance
+ $2\times10^{-7}$, followed by $10^{-8}$ and $10^{-9}$. Event-continuity
+ log gaps are below $2.23\times10^{-16}$. The annual expenditure ratio is
+ $0.003214972614$ after both horizon extensions; its log change from the
+ initial candidate is below $4.44\times10^{-10}$. The remaining difference
+ from the empirical target is a calibration discrepancy, not a numerical
+ error or a relaxation of equilibrium conditions.
+ \end{minipage}
+\end{table}

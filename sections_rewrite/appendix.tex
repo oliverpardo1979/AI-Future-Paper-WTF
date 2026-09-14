@@ -266,7 +266,12 @@ $\beta=(1-\alpha)\omega_X$. The static monopoly solution implies
 $\pi_t(B)=a_tB^{\beta/(1-\beta)}$ for some $a_t>0$. Because $B(R_B)$ is
 increasing and concave, $R_B\mapsto\pi_t(B(R_B))$ is globally concave whenever
 $\beta\leq1/2$. In the benchmark calibration in
-Table~\ref{tab:rewrite-parameters}, $\beta=0.134$, so this sufficient condition
+\ifshowlegacysimulations
+Table~\ref{tab:rewrite-parameters}, $\beta=0.134$,
+\else
+Table~\ref{tab:rewrite-rsi-parameters}, $\beta=0.067$,
+\fi
+so this sufficient condition
 holds with substantial slack. It is not imposed as an additional maintained
 assumption; outside this range, the support condition can instead be checked
 directly.
@@ -512,6 +517,7 @@ illustrative rather than estimated.
 % Keep the complete proof file available without compiling an orphan proof.
 % \input{sections_rewrite/appendix_uncapped_substitutes_proof}
 
+\ifshowlegacysimulations
 \section{Numerical algorithm and equilibrium audit}
 \label{app:rewrite-algorithm}
 
@@ -820,3 +826,6 @@ links the plotted CSV to those checkpoints. Failed or stale candidates
 cannot silently enter a partial comparison. The data retain the original
 model variables and use only the normalizations stated in the figure
 captions.
+\else
+\input{sections_rewrite/appendix_rsi_activation}
+\fi

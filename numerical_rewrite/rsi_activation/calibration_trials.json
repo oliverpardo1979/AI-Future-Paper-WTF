@@ -1,0 +1,100 @@
+[
+  {
+    "chi": 1.4378,
+    "price_ratio": 0.9104055199368656,
+    "log_target_residual": 1.5155727600051934,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_02054a452f1a1b45.npz",
+    "maximum_rms_residual": 1.9669762501040257e-07
+  },
+  {
+    "chi": 2.8756,
+    "price_ratio": 0.8199958344367824,
+    "log_target_residual": 1.4109818937422156,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_3187db0317b2fc89.npz",
+    "maximum_rms_residual": 1.9934818706792303e-07
+  },
+  {
+    "chi": 5.7512,
+    "price_ratio": 0.6736430288401922,
+    "log_target_residual": 1.2143829732594342,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_42b859e5986f0a7c.npz",
+    "maximum_rms_residual": 1.957823358395931e-07
+  },
+  {
+    "chi": 11.502400000000002,
+    "price_ratio": 0.4843052553723148,
+    "log_target_residual": 0.8843980342834071,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_65b35bb7a06d8894.npz",
+    "maximum_rms_residual": 1.9829171493045252e-07
+  },
+  {
+    "chi": 23.004800000000003,
+    "price_ratio": 0.29918547540118207,
+    "log_target_residual": 0.4027463335918039,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_83f6567413d7b318.npz",
+    "maximum_rms_residual": 1.9704011995624033e-07
+  },
+  {
+    "chi": 46.00960000000001,
+    "price_ratio": 0.16271118251360117,
+    "log_target_residual": -0.2063406238084361,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_b4dcad605816458c.npz",
+    "maximum_rms_residual": 1.995018399201937e-07
+  },
+  {
+    "chi": 1.4378,
+    "price_ratio": 0.9104055199368656,
+    "log_target_residual": 1.5155727600051934,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_02054a452f1a1b45.npz",
+    "maximum_rms_residual": 1.9669762501040257e-07
+  },
+  {
+    "chi": 46.00960000000001,
+    "price_ratio": 0.16271118251360117,
+    "log_target_residual": -0.2063406238084361,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_b4dcad605816458c.npz",
+    "maximum_rms_residual": 1.995018399201937e-07
+  },
+  {
+    "chi": 30.372676455954306,
+    "price_ratio": 0.23734128477142083,
+    "log_target_residual": 0.1711817588849767,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_00be784f7e53094e.npz",
+    "maximum_rms_residual": 1.9272828786154295e-07
+  },
+  {
+    "chi": 36.66629236981772,
+    "price_ratio": 0.20081334375687285,
+    "log_target_residual": 0.0040584720341107485,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_a94698058c394089.npz",
+    "maximum_rms_residual": 1.9795254159140166e-07
+  },
+  {
+    "chi": 36.831105337714796,
+    "price_ratio": 0.1999980132157544,
+    "log_target_residual": -9.933970569778062e-06,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_f532bbc51ae663b3.npz",
+    "maximum_rms_residual": 1.9817650921391858e-07
+  },
+  {
+    "chi": 36.83070200718361,
+    "price_ratio": 0.20000000094075146,
+    "log_target_residual": 4.703757150487805e-09,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_c8f8f0ab0e60b943.npz",
+    "maximum_rms_residual": 1.981759632566197e-07
+  },
+  {
+    "chi": 36.83073884454523,
+    "price_ratio": 0.19999981939445916,
+    "log_target_residual": -9.030281120096202e-07,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_49508768ad92427a.npz",
+    "maximum_rms_residual": 1.981760130787507e-07
+  },
+  {
+    "chi": 36.83070200718361,
+    "price_ratio": 0.20000000094075146,
+    "log_target_residual": 4.703757150487805e-09,
+    "checkpoint": "tmp\\rewrite_bvp_rsi_activation\\calibration_trials\\chi_c8f8f0ab0e60b943.npz",
+    "maximum_rms_residual": 1.981759632566197e-07
+  }
+]

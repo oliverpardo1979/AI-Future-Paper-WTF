@@ -1,0 +1,46 @@
+{
+  "rsi_activation": {
+    "chi": 36.83070200718361,
+    "first_year": {
+      "share": 0.0030148052028624033,
+      "quadrature_log_gap": 1.332267629550179e-14,
+      "orders": [
+        64,
+        128
+      ]
+    },
+    "second_year": {
+      "share": 0.002250386465544875,
+      "quadrature_log_gap": 2.3092638912203524e-14,
+      "orders": [
+        64,
+        128
+      ]
+    },
+    "initial_share": 0.0036976904243034635,
+    "price_ratio_27_months": 0.2000000011758617,
+    "checkpoint_sha256": "9014f9d327385b288a35a28737aa9e2027546af31f46450a4f7694407b5b4e50"
+  },
+  "rsi_activation_half_decline": {
+    "chi": 7.616304576019883,
+    "first_year": {
+      "share": 0.0018291594077711098,
+      "quadrature_log_gap": 5.68434188608064e-14,
+      "orders": [
+        64,
+        128
+      ]
+    },
+    "second_year": {
+      "share": 0.0016353598628651201,
+      "quadrature_log_gap": 8.260059303210824e-14,
+      "orders": [
+        64,
+        128
+      ]
+    },
+    "initial_share": 0.0019466461750886055,
+    "price_ratio_27_months": 0.6000000059127867,
+    "checkpoint_sha256": "33f2a8afc834d6d80c1ef9775f77e7f7a9ca4a1442282bd965994463473e11a9"
+  }
+}

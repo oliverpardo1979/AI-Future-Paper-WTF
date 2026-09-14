@@ -69,7 +69,7 @@ def analytical_plot_limits(sigma, frontier, parameters):
     }
 
 
-def render(design=MAIN_DESIGN):
+def render(design=MAIN_DESIGN, *, reference_sigma=1.5):
     output=design.output_directory
     cache=design.cache_directory
     parameters=design.parameters
@@ -125,13 +125,13 @@ def render(design=MAIN_DESIGN):
             'sigma_1_50':extra_limits,
         }
     else:
-        ai_limits=analytical_plot_limits(1.5,frontier,parameters)
+        ai_limits=analytical_plot_limits(reference_sigma,frontier,parameters)
         figures=(
             (f'{prefix}_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
             (f'{prefix}_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),
             (f'{prefix}_ai_distribution',PANELS_DISTRIBUTION,'four',ai_limits),
         )
-        analytical_limits={'sigma_1_50':ai_limits}
+        analytical_limits={key(reference_sigma):ai_limits}
     for filename,panels,layout,limits in figures:
         if layout=='three':
             fig,axis_array=plt.subplots(1,3,figsize=(7,3.15),sharex=True)

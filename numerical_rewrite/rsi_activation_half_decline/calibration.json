@@ -1,0 +1,145 @@
+{
+  "status": "numerically_admitted",
+  "chi": 7.616304576019883,
+  "calibration_sigma": 1.0,
+  "target_years": 2.25,
+  "target_price_ratio": 0.6,
+  "matched_price_ratio": 0.6000000011110639,
+  "observed_rounded_price_ratio": 0.2,
+  "target_decline_fraction_of_observed": 0.5,
+  "target_definition": "Arithmetic percentage decline over 27 months, not a log decline or a halving of chi.",
+  "variant": "rsi_activation_half_decline",
+  "design": "rsi_activation_half_decline",
+  "target_log_residual": 1.8517731775254807e-09,
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 7.616304576019883,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.9921392415592,
+  "initial_capital": null,
+  "initial_capital_rule": "fixed_efficiency_bgp",
+  "initial_capital_by_sigma": {
+    "sigma_0_90": 3.433644797858547,
+    "sigma_1_00": 4.649320432676148,
+    "sigma_1_10": 5.036956080779938,
+    "sigma_1_50": 5.5046668887702594
+  },
+  "initial_capability": 13.609921392415593,
+  "source": {
+    "url": "https://www.oecd.org/en/publications/artificial-intelligence-markets_d531d73f-en/full-report.html",
+    "title": "Artificial Intelligence markets: Recent developments and competition issues",
+    "institution": "OECD",
+    "publication_date": "2026-07-10",
+    "accessed": "2026-09-14",
+    "window_start": "2024-01",
+    "window_end": "2026-04",
+    "measure": "Quality-adjusted cloud API price index for text-to-text models",
+    "source_precision": "nearly 80 percent; rounded to 80 percent for this exercise"
+  },
+  "numeraire_assumption": "The general final-good price is held constant over the target window. This uses the rounded dollar-price fall as an approximate relative-price target, not an exactly deflated empirical estimate.",
+  "interpretation": "Conditional timing calibration, not identification of RSI productivity; competition, hardware, human R&D and task intensity are not separately identified. Model year zero is an experiment date, not a claim that January 2024 had no AI.",
+  "root_log_chi_tolerance": 2e-06,
+  "trials": [
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.9104055199368656,
+      "log_target_residual": 0.41696047133708386,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_02054a452f1a1b45.npz",
+      "maximum_rms_residual": 1.9669762501040257e-07
+    },
+    {
+      "chi": 2.8756,
+      "price_ratio": 0.8199958344367824,
+      "log_target_residual": 0.31236960507410605,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_3187db0317b2fc89.npz",
+      "maximum_rms_residual": 1.9934818706792303e-07
+    },
+    {
+      "chi": 5.7512,
+      "price_ratio": 0.6736430288401922,
+      "log_target_residual": 0.11577068459132464,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_42b859e5986f0a7c.npz",
+      "maximum_rms_residual": 1.957823358395931e-07
+    },
+    {
+      "chi": 11.502400000000002,
+      "price_ratio": 0.4843052553723148,
+      "log_target_residual": -0.21421425438470248,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_65b35bb7a06d8894.npz",
+      "maximum_rms_residual": 1.9829171493045252e-07
+    },
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.9104055199368656,
+      "log_target_residual": 0.41696047133708386,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_02054a452f1a1b45.npz",
+      "maximum_rms_residual": 1.9669762501040257e-07
+    },
+    {
+      "chi": 11.502400000000002,
+      "price_ratio": 0.4843052553723148,
+      "log_target_residual": -0.21421425438470248,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_65b35bb7a06d8894.npz",
+      "maximum_rms_residual": 1.9829171493045252e-07
+    },
+    {
+      "chi": 5.679223364289425,
+      "price_ratio": 0.6767847066611549,
+      "log_target_residual": 0.12042355627971468,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_3734a23a66203342.npz",
+      "maximum_rms_residual": 1.933083308786772e-07
+    },
+    {
+      "chi": 7.321272855625547,
+      "price_ratio": 0.6107212406939002,
+      "log_target_residual": 0.017710965305269,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_39413c83dd116556.npz",
+      "maximum_rms_residual": 1.9595277451981248e-07
+    },
+    {
+      "chi": 7.6234769226328805,
+      "price_ratio": 0.5997433617689987,
+      "log_target_residual": -0.0004278218877366024,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_1573da3b7393dde0.npz",
+      "maximum_rms_residual": 1.947842677073782e-07
+    },
+    {
+      "chi": 7.61620747258527,
+      "price_ratio": 0.6000034769304909,
+      "log_target_residual": 5.794867361367897e-06,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_c9c684592c8fb0a2.npz",
+      "maximum_rms_residual": 1.9425012083481224e-07
+    },
+    {
+      "chi": 7.616304576019883,
+      "price_ratio": 0.6000000011110639,
+      "log_target_residual": 1.8517731775254807e-09,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_18ae74008f664603.npz",
+      "maximum_rms_residual": 1.942572506771295e-07
+    },
+    {
+      "chi": 7.616312193101432,
+      "price_ratio": 0.5999997284589269,
+      "log_target_residual": -4.5256855756508923e-07,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_e5dfbe4a109638e6.npz",
+      "maximum_rms_residual": 1.9425780983481215e-07
+    },
+    {
+      "chi": 7.616304576019883,
+      "price_ratio": 0.6000000011110639,
+      "log_target_residual": 1.8517731775254807e-09,
+      "checkpoint": "tmp\\rewrite_bvp_rsi_activation_half_decline\\calibration_trials\\chi_18ae74008f664603.npz",
+      "maximum_rms_residual": 1.942572506771295e-07
+    }
+  ],
+  "refined_matched_price_ratio": 0.6000000059127867,
+  "final_checkpoint_sha256": "33f2a8afc834d6d80c1ef9775f77e7f7a9ca4a1442282bd965994463473e11a9"
+}

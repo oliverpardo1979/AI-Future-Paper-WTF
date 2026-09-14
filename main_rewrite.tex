@@ -37,6 +37,12 @@
 \newcommand{\sX}{s_X}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
+% Reversible editorial switch: retain every earlier simulation and audit.
+% Change false to true to restore the earlier quantitative section and its
+% numerical appendix in place of the RSI-activation presentation.
+\newif\ifshowlegacysimulations
+\showlegacysimulationsfalse
+
 \title{The Future of Growth and Human Labor\\
 Under Recursive AI Self-Improvement}
 \author{Oliver Pardo}
@@ -82,7 +88,13 @@ without an upper bound on AI efficiency. With substitution, the long-run output-
 \input{sections_rewrite/03_model}
 \input{sections_rewrite/04_equilibrium_regimes}
 \input{sections_rewrite/05_uncapped_equilibria}
+\ifshowlegacysimulations
 \input{sections_rewrite/05_quantitative_equilibria}
+\else
+\input{sections_rewrite/08_rsi_activation}
+\input{sections_rewrite/09_rsi_half_decline}
+\input{sections_rewrite/10_rsi_research_share}
+\fi
 \input{sections_rewrite/06_conclusion}
 
 \appendix

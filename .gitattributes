@@ -1,0 +1,13 @@
+# These published numerical artifacts are bound by byte-level SHA-256 hashes.
+# Preserve their original line endings across Windows/Linux Git checkouts.
+# Scope this rule to the new comparison; legacy artifacts remain untouched.
+numerical_rewrite/rsi_activation/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_activation/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_activation_half_decline/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_activation_half_decline/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2025/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2025/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2025/published_unit/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2025/published_unit/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2023/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_research_share_2023/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

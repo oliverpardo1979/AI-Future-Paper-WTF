@@ -1,0 +1,142 @@
+{
+  "same_parameters_except_chi": true,
+  "same_initial_stocks": true,
+  "common_initial_stocks": {
+    "sigma_0_90": {
+      "capital": 3.433644797858547,
+      "capability": 13.609921392415593
+    },
+    "sigma_1_00": {
+      "capital": 4.649320432676148,
+      "capability": 13.609921392415593
+    },
+    "sigma_1_10": {
+      "capital": 5.036956080779938,
+      "capability": 13.609921392415593
+    },
+    "sigma_1_50": {
+      "capital": 5.5046668887702594,
+      "capability": 13.609921392415593
+    }
+  },
+  "chi_ratio": 0.2067922727765104,
+  "target_definition": "Half of the arithmetic percentage decline over 2.25 years.",
+  "cases": {
+    "rsi_activation": {
+      "chi": 36.83070200718361,
+      "data_sha256": "6236821b6ba0e2a3d19dd1c4a396cd6d6c15e325536a2d182e3f4cffda3953cd",
+      "target_price_ratio": 0.2,
+      "matched_price_ratio": 0.2000000011758617,
+      "activation_audit_sha256": "84febdee022488c0404c52978d941cd1184f45d1c1f7e37e63bcc0c05811ef62",
+      "initial": {
+        "sigma_0_90": {
+          "output_per_person_growth": 0.04598822738830978,
+          "wage_growth": 0.05233450093124453,
+          "net_interest": 0.05000000000000002,
+          "consumption_jump": 0.02850473344678539,
+          "gross_investment_output_share": 0.18510197924413216,
+          "research_output_share": 0.0002444475537657782,
+          "profit_output_share": 0.10152029482729807,
+          "research_revenue_share": 0.0023815384431029683,
+          "profit_revenue_share": 0.9890648573150309
+        },
+        "sigma_1_00": {
+          "output_per_person_growth": 0.11508009014137718,
+          "wage_growth": 0.11508009014137718,
+          "net_interest": 0.05,
+          "consumption_jump": 0.09294103622356542,
+          "gross_investment_output_share": 0.13100092709461805,
+          "research_output_share": 0.0036976904243034635,
+          "profit_output_share": 0.05881330957569656,
+          "research_revenue_share": 0.055189409317962124,
+          "profit_revenue_share": 0.8778105906820379
+        },
+        "sigma_1_10": {
+          "output_per_person_growth": 0.13482956638647486,
+          "wage_growth": 0.11661504809096032,
+          "net_interest": 0.0500000000000001,
+          "consumption_jump": 0.10802856770277591,
+          "gross_investment_output_share": 0.11378566548532848,
+          "research_output_share": 0.009426076756448961,
+          "profit_output_share": 0.04029434978746349,
+          "research_revenue_share": 0.16286322526337307,
+          "profit_revenue_share": 0.6962035145520141
+        },
+        "sigma_1_50": {
+          "output_per_person_growth": 0.23969897285848388,
+          "wage_growth": 0.11204598596668555,
+          "net_interest": 0.04999999999999999,
+          "consumption_jump": 0.2270752284879729,
+          "gross_investment_output_share": -0.060935307940307284,
+          "research_output_share": 0.09316548930608293,
+          "profit_output_share": -0.06019500132124676,
+          "research_revenue_share": 1.8107609665726825,
+          "profit_revenue_share": -1.1699477949093753
+        }
+      },
+      "transition_dates": {
+        "T10": 1.09450963807055,
+        "T50": 11.744001796463913,
+        "T90": 60.020219492709046
+      }
+    },
+    "rsi_activation_half_decline": {
+      "chi": 7.616304576019883,
+      "data_sha256": "5f23c921205eaf2f11abbfda7ac0ce032db5c60ef211ede54d745c066903b996",
+      "target_price_ratio": 0.6,
+      "matched_price_ratio": 0.6000000059127867,
+      "activation_audit_sha256": "f9d31cb84b811556c8dafb6e90ffee6fbe288bb80b5e45466d48ef993950ec74",
+      "initial": {
+        "sigma_0_90": {
+          "output_per_person_growth": 0.016171345716035495,
+          "wage_growth": 0.017383969127980316,
+          "net_interest": 0.05000000000000002,
+          "consumption_jump": 0.014205288254135029,
+          "gross_investment_output_share": 0.19649226542008216,
+          "research_output_share": 0.00016819750111299068,
+          "profit_output_share": 0.10159654487995086,
+          "research_revenue_share": 0.0016386697627510472,
+          "profit_revenue_share": 0.9898077259953829
+        },
+        "sigma_1_00": {
+          "output_per_person_growth": 0.027139582396809126,
+          "wage_growth": 0.027139582396809126,
+          "net_interest": 0.05,
+          "consumption_jump": 0.03866280411272327,
+          "gross_investment_output_share": 0.17550210401488525,
+          "research_output_share": 0.0019466461750886055,
+          "profit_output_share": 0.06056435382491142,
+          "research_revenue_share": 0.029054420523710524,
+          "profit_revenue_share": 0.9039455794762895
+        },
+        "sigma_1_10": {
+          "output_per_person_growth": 0.030162403659444965,
+          "wage_growth": 0.026915472305430985,
+          "net_interest": 0.0500000000000001,
+          "consumption_jump": 0.04215908752968023,
+          "gross_investment_output_share": 0.17022519580361947,
+          "research_output_share": 0.004624475496398277,
+          "profit_output_share": 0.045095951047514175,
+          "research_revenue_share": 0.07990142812910794,
+          "profit_revenue_share": 0.7791653116862791
+        },
+        "sigma_1_50": {
+          "output_per_person_growth": 0.04535960975980384,
+          "wage_growth": 0.024284755254264396,
+          "net_interest": 0.04999999999999999,
+          "consumption_jump": 0.0504516535847761,
+          "gross_investment_output_share": 0.1378915220366956,
+          "research_output_share": 0.030978096296183217,
+          "profit_output_share": 0.0019923916886529468,
+          "research_revenue_share": 0.602089121300798,
+          "profit_revenue_share": 0.03872405036250948
+        }
+      },
+      "transition_dates": {
+        "T10": 6.36112801663185,
+        "T50": 46.79608906261537,
+        "T90": 137.02405771748656
+      }
+    }
+  }
+}

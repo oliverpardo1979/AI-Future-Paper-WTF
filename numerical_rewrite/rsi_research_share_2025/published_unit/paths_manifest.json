@@ -1,0 +1,29 @@
+{
+  "design": "rsi_research_share_approximate_unit",
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 81.08480942910101,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.9921392415592,
+  "initial_capital": null,
+  "initial_capability": 13.609921392415593,
+  "initial_capital_by_sigma": {
+    "sigma_1_00": 4.649320432676148
+  },
+  "horizon": 500.0,
+  "points_per_scenario": 4961,
+  "checkpoint_sha256": {
+    "sigma_1_00": "0c9c60d420861758ce59d36902c11e4ec1309e3fb636b91362fa3891d8c56808"
+  },
+  "transition_definition": "fraction of the sigma=1.50 labor-share decline from its date-zero value to its analytical limit",
+  "sigma_1_50_transition_dates": null,
+  "csv_sha256": "0a15fcfdacf97b95cba4ad7c6a0fe0687d915c2ee85c55f1604f12b5b3c79591"
+}

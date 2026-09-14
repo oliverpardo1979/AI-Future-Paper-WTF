@@ -16,23 +16,41 @@ equilibrium solver, admission audits, and published figures.
 - `REPLICATION.md`: user-oriented instructions for reproducing every reported
   numerical equilibrium and figure.
 
-The principal calibration is in Section 6.6, "Principal calibration: AI
-prices and common initial stocks". It uses the existing
-`price_calibrated_low_ai_high_cap` results: common Ramsey capital,
-`omega_X=0.10`, `eta=0.20`, `B0/Bbar=0.01`, and `chi=36.03184470863892`
-fitted at unit elasticity and held fixed across the four elasticities.
-The upper bound is ten percent above the `sigma=1.50` threshold.
+The principal exercise activates RSI in an economy already using AI.
+Each elasticity starts from its own fixed-efficiency BGP, with common
+`K0/Y0=3.30` and `r0=0.05`. Production weights do not jump: `omega_X=0.10`
+before and after activation. The exercise keeps `eta=0.20`, `B0/Bbar=0.01`,
+and an upper bound ten percent above the `sigma=1.50` threshold. Research
+productivity is refitted at unit elasticity, then shared across all four
+scenarios. Data and audits are in `numerical_rewrite/rsi_activation/`.
+
+A second subsection keeps the same initial economies and all other parameters,
+but fits chi to a 40% price decline over 27 months instead of 80%.
+Its separate results are in `numerical_rewrite/rsi_activation_half_decline/`.
+Use `--variant rsi_activation_half_decline` for that exercise, or
+`python scripts/reproduce_rewrite_results.py` for all active comparisons.
+
+A third subsection selects chi=1.4378 using the lower historical US
+research-expenditure proxy (2023), then holds it fixed across the same four
+elasticities. Run `python scripts/calibrate_rewrite_research_share_low.py`.
+Its data, source qualifications and admission checks are in
+`numerical_rewrite/rsi_research_share_2023/`. The manuscript explains the
+unfitted industry size, expenditure-growth mismatch and adjustment assumptions;
+these are conditional scenarios, not forecasts of current-world growth.
 
 To reproduce the principal calibration from a fresh clone with Python 3.12:
 
 ```text
 python -m pip install -r requirements-rewrite.txt
-python scripts/calibrate_rewrite_ai_price.py --variant low_ai
+python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
 ```
 
 The command exports only paths that pass the numerical equilibrium-admission
 checks. The earlier timing, slow-transition, and near-terminal comparisons
-remain available through `python scripts/reproduce_rewrite_results.py`. See
+remain available through `python scripts/reproduce_rewrite_results.py --include-legacy`.
+Nothing was deleted: `\showlegacysimulationsfalse` in `main_rewrite.tex`
+selects the three RSI exercises; change it to `\showlegacysimulationstrue` to
+restore the earlier quantitative section and numerical appendix. See
 `REPLICATION.md` for the economic intuition, platform-specific setup, output
 map, and interpretation of the diagnostics.
 

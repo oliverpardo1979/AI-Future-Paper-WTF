@@ -1,0 +1,103 @@
+{
+  "status": "numerically_admitted_approximate_calibration",
+  "sigmas": [
+    0.9,
+    1.0,
+    1.1,
+    1.5
+  ],
+  "calibration_sigma": 1.0,
+  "chi_held_fixed_across_sigmas": true,
+  "initial_stocks_by_sigma": {
+    "sigma_0_90": [
+      3.433644797858547,
+      13.609921392415593
+    ],
+    "sigma_1_00": [
+      4.649320432676148,
+      13.609921392415593
+    ],
+    "sigma_1_10": [
+      5.036956080779938,
+      13.609921392415593
+    ],
+    "sigma_1_50": [
+      5.5046668887702594,
+      13.609921392415593
+    ]
+  },
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 1.4378,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "chi": 1.4378,
+  "frontier": 1360.9921392415592,
+  "initial_stocks": [
+    4.649320432676148,
+    13.609921392415593
+  ],
+  "source": {
+    "geography": "United States",
+    "year": 2023,
+    "research_compute_billion_usd": 18.46,
+    "nominal_gdp_billion_usd": 27811.517,
+    "compute_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9.pdf",
+    "method_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9-appendix.pdf",
+    "gdp_url": "https://fred.stlouisfed.org/data/GDPA",
+    "accessed": "2026-09-14",
+    "limitations": [
+      "Rental-equivalent compute expenditure is estimated, not a sum of observed bills.",
+      "Research/training is assumed to account for 50 percent of total AI compute spending.",
+      "This US proxy is neither a global total nor a direct measure of autonomous RSI.",
+      "The ratio of nominal annual flows proxies the model ratio in final-good units.",
+      "The 2023 value is the lowest dated proxy previously discussed, not a lower confidence bound.",
+      "The ratio does not measure the current level of research spending."
+    ]
+  },
+  "target_share": 0.0006637537966735148,
+  "target_years": 1.0,
+  "first_year": {
+    "share": 0.000637427338959885,
+    "quadrature_log_gap": 8.881784197001256e-16,
+    "orders": [
+      64,
+      128
+    ]
+  },
+  "second_year": {
+    "share": 0.000620366986197661,
+    "quadrature_log_gap": 0.0,
+    "orders": [
+      64,
+      128
+    ]
+  },
+  "matched_share": 0.000637427338959885,
+  "target_exactly_matched": false,
+  "empirical_tolerance_basis_points": 1.0,
+  "error_basis_points": -0.2632645771362982,
+  "relative_shortfall": 0.039662986254192734,
+  "numerical_tolerances_unchanged": true,
+  "moment_log_change_after_two_horizon_extensions": 3.43948843486658e-08,
+  "untargeted_price_ratio_27_months": 0.9104055211179549,
+  "selection": "Nearest archived candidate on the examined increasing low-chi branch.",
+  "selection_diagnostic_sha256": "2ab46c49b50953be5275ed4fd2ef406c73125abcafd6b96145b95434c6d0dc14",
+  "checkpoint_sha256": "fb8110b76f82c683a8cb006c27ca7cd10c98e61cfa96cbee9a56d3d4a46a7576",
+  "csv_sha256": "099e8a551ccf2d4dec16479809624b4cc18d764418d61a784c041ef2ceffee30",
+  "figure_sha256": {
+    "figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.pdf": "273e95708ec63f2aebbfc15f34802342ba6b507c609889f8bbcb1881350a6a45",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_accumulation_growth_windows.png": "c2a8ca52f8e6ddd9f20ab7869d19dd75576e65de2d66851b55d1b48e5b7bb35b",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.pdf": "87a359d018d979d571da827aa08bfc5fd25cff8a1a2441d7c0a11a98cbcd16f6",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_growth_returns_windows.png": "9f207e74f5198328023273c2b28b8d55967a13273d2ec4abc5e42b1728bbd4e7",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.pdf": "b07e6ebe9612eb56793cccbeac5b5ba7f3d675848d698dd05d9c39c389fe4d77",
+    "figures_rewrite/equilibrium_rsi_research_share_2023_ai_distribution_windows.png": "2f2c760fd74724ada5a3c3f874e326c3ac3fbcd32e294933b0510a287e36652c"
+  }
+}
