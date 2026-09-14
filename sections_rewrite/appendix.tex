@@ -580,6 +580,16 @@ parameter, and diagnostic records in
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/price_calibrated}
 {\texttt{numerical\_rewrite/price\_calibrated/}}.
 
+The comparison in Section~\ref{subsec:rewrite-low-ai-price-calibration}
+uses the same procedure with the script option \texttt{--variant low\_ai}.
+It recalibrates $\chi$ after setting $\omega_X=0.10$,
+$B_0/\overline B=0.01$, and $\overline B=1.10\,\mathcal B(1.50)$ under
+the new AI weight. Its separately computed paths and diagnostics are stored in
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/price_calibrated_low_ai_high_cap}
+{the lower-weight comparison folder}. For each regime, the code recalculates
+the terminal conditions and solves the initial jump variables under the new
+parameters.
+
 \subsection{Notation in the paper and code}
 
 The numerical code retains its existing variable names. To make the

@@ -111,6 +111,27 @@ at two resolutions. These checks use the existing tolerances. They prevent
 a uniform multi-millennial audit grid from overlooking a fast initial
 transition. Additional export dates resolve this same early window.
 
+### Lower AI weight and higher efficiency bound
+
+The additional lower-weight comparison uses the same price target, macro
+parameters, and no-AI Ramsey capital stock. It changes `omega_X` to `0.10`,
+`B0/Bbar` to `0.01`, and sets `Bbar=1360.9921392415592`: ten percent above
+the new `sigma=1.5` threshold. This bound is eight times the preceding bound;
+it keeps `sigma=1.5` in the AI-dominated regime. The same target does not imply
+the same `chi`: this design refits it at unit elasticity.
+
+```text
+python scripts/calibrate_rewrite_ai_price.py --variant low_ai
+```
+
+Use `--variant low_ai --calibrate-only` to refit, `--variant low_ai --sigma 1.5`
+to resume one elasticity, or `--variant low_ai --finish` to finish the admission
+and exports. Its files are isolated in
+`numerical_rewrite/price_calibrated_low_ai_high_cap/` and
+`tmp/rewrite_bvp_price_calibrated_low_ai_high_cap/`. The variant name is a code
+identifier, not a claim that the resulting revenue share matches today's AI
+industry. The baseline price-calibrated comparison is unchanged.
+
 ### Full replication
 
 Python 3.12 is recommended. From the repository root, create an isolated

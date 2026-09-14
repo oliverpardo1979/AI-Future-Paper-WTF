@@ -1,0 +1,49 @@
+{
+  "design": "price_calibrated_low_ai_high_cap",
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 36.03184470863892,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.9921392415592,
+  "initial_capital": 5.94157252710329,
+  "initial_capability": 13.609921392415593,
+  "initial_capital_by_sigma": {
+    "sigma_0_90": 5.94157252710329,
+    "sigma_1_00": 5.94157252710329,
+    "sigma_1_10": 5.94157252710329,
+    "sigma_1_50": 5.94157252710329
+  },
+  "horizon": 500.0,
+  "points_per_scenario": 4961,
+  "checkpoint_sha256": {
+    "sigma_0_90": "4cf4373a43a79a22150134eebaea75329d4433db93f4f7f7ea422d6af7e571c0",
+    "sigma_1_00": "74345329b8936db4ddbce5ae80580af8d954b1183e8881372ece816bc368bd93",
+    "sigma_1_10": "5a7c12cbab36b9a6f9ee42bae1d0dba4009602b544d0f36f05ee57aa20b63297",
+    "sigma_1_50": "8dafd6556d49175bd6ae45e3a5564a18dd52a2b134a4735ebdf69d45e0bc53de"
+  },
+  "transition_definition": "fraction of the sigma=1.50 labor-share decline from its date-zero value to its analytical limit",
+  "sigma_1_50_transition_dates": {
+    "T10": 1.0933481905736588,
+    "T50": 11.87954899528587,
+    "T90": 60.46037483148091
+  },
+  "csv_sha256": "92c900bfab13d292171cd8b2022e9343ac47d0452b10b3240212522737d50de9",
+  "pre_transition_reference": {
+    "omega_x": 0.0,
+    "omega_l": 1.0,
+    "capital_effective_labor": 5.94157252710329,
+    "consumption_effective_labor": 1.426157454157126,
+    "output_effective_labor": 1.8004765233646332,
+    "net_interest_rate": 0.05,
+    "post_transition_omega_x": 0.1,
+    "post_transition_consumption_and_shadow_value": "solved_by_bvp"
+  }
+}

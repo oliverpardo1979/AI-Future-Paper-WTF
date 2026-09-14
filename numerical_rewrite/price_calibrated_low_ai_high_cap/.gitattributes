@@ -1,0 +1,2 @@
+# Preserve the exact exported bytes checked by the figure and path manifests.
+equilibrium_paths.csv -text whitespace=cr-at-eol

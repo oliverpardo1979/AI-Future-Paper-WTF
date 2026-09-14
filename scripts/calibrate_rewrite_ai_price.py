@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / '.python-packages'), str(ROOT / 'scripts')]
 import numpy as np
 from scipy.optimize import brentq
-from analyze_axm_finite_cap_bvp import terminal_point
+from analyze_axm_finite_cap_bvp import terminal_point, critical_capability_frontier
 from simulate_rewrite_finite_frontier import (
     PARAMETERS, FRONTIER, RAMSEY_START_STEADY_STATE, SIGMAS, SimulationDesign,
     key, save_solution, load_solution, run, export_paths, validate_solution_design,
@@ -35,18 +35,25 @@ TARGET_PRICE_RATIO = 0.20
 CALIBRATION = OUTPUT / 'calibration.json'
 SOURCE = ('https://www.oecd.org/en/publications/'
           'artificial-intelligence-markets_d531d73f-en/full-report.html')
+VARIANTS = {
+    'baseline': ('price_calibrated', PARAMETERS.omega_x, 0.10, FRONTIER),
+    'low_ai': ('price_calibrated_low_ai_high_cap', 0.10, 0.01,
+               1.10*critical_capability_frontier(1.5, replace(PARAMETERS, omega_x=0.10))),
+}
 
 
-def make_design(chi: float) -> SimulationDesign:
+def make_design(chi: float, variant: str = 'baseline') -> SimulationDesign:
+    name, omega_x, initial_ratio, frontier = VARIANTS[variant]
     return SimulationDesign(
-        name='price_calibrated', sigmas=SIGMAS,
-        parameters=replace(PARAMETERS, chi=float(chi)), frontier=FRONTIER,
+        name=name, sigmas=SIGMAS,
+        parameters=replace(PARAMETERS, chi=float(chi), omega_x=omega_x), frontier=frontier,
         initial_capital=RAMSEY_START_STEADY_STATE.capital,
-        initial_capability=0.10 * FRONTIER,
-        output_directory=OUTPUT, cache_directory=CACHE, display_horizon=500.0,
+        initial_capability=initial_ratio * frontier,
+        output_directory=ROOT/'numerical_rewrite'/name,
+        cache_directory=ROOT/'tmp'/f'rewrite_bvp_{name}', display_horizon=500.0,
         initial_stock_reference=(
-            'No-AI Ramsey steady-state capital, B0/Bbar=0.10; omega_X=0 '
-            'before date zero and 0.20 thereafter. Chi matches the rounded '
+            f'No-AI Ramsey steady-state capital, B0/Bbar={initial_ratio:.2f}; omega_X=0 '
+            f'before date zero and {omega_x:.2f} thereafter. Chi matches the rounded '
             'OECD price decline at sigma=1 and is held fixed across sigmas. '
             'Consumption and the shadow value are selected anew by the BVP.'),
     )
@@ -69,20 +76,22 @@ def write_json(path, payload):
     path.write_text(json.dumps(payload, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def calibrate():
+def calibrate(variant='baseline'):
+    template = make_design(PARAMETERS.chi, variant)
+    output, cache = template.output_directory, template.cache_directory
     trials = []
 
     def objective(log_chi):
         chi = math.exp(float(log_chi))
-        design = make_design(chi)
+        design = make_design(chi, variant)
         tag = hashlib.sha256(float(chi).hex().encode()).hexdigest()[:16]
-        filename = CACHE / 'calibration_trials' / f'chi_{tag}.npz'
+        filename = cache / 'calibration_trials' / f'chi_{tag}.npz'
         print(f'Price calibration: solving chi={chi:.10g}', flush=True)
         if filename.exists():
             solution = load_solution(filename)
             validate_solution_design(solution, design, 1.0)
         else:
-            terminal = terminal_point(1.0, FRONTIER, design.parameters)
+            terminal = terminal_point(1.0, design.frontier, design.parameters)
             solution = solve_global_finite_cap_bvp(
                 terminal, design.parameters, design.initial_capital,
                 design.initial_capability, continuation_steps=32, nodes=221,
@@ -93,12 +102,15 @@ def calibrate():
         trials.append(dict(chi=chi, price_ratio=ratio, log_target_residual=residual,
                            checkpoint=str(filename.relative_to(ROOT)),
                            maximum_rms_residual=float(np.max(solution.raw.rms_residuals))))
-        write_json(OUTPUT / 'calibration_trials.json', trials)
+        write_json(output / 'calibration_trials.json', trials)
         print(f'chi={chi:.10g}: p(2.25)/p(0)={ratio:.10g}', flush=True)
         return residual
 
     # These are search brackets, not economic restrictions or fitted data.
-    lower, upper = math.log(PARAMETERS.chi), math.log(64.0)
+    lower = math.log(PARAMETERS.chi)
+    # For lower initial B, grow the bracket from the solved small-chi case;
+    # there is no need to solve a distant high-chi candidate to bracket the target.
+    upper = math.log(2*PARAMETERS.chi if variant == 'low_ai' else 64.0)
     fl, fu = objective(lower), objective(upper)
     for _ in range(10):
         if fl * fu <= 0:
@@ -120,9 +132,10 @@ def calibrate():
         status='fitted_candidate_pending_equilibrium_admission', chi=chi,
         calibration_sigma=1.0, target_years=TARGET_YEARS,
         target_price_ratio=TARGET_PRICE_RATIO, matched_price_ratio=TARGET_PRICE_RATIO*math.exp(residual),
-        target_log_residual=residual, parameters=asdict(make_design(chi).parameters),
-        frontier=FRONTIER, initial_capital=RAMSEY_START_STEADY_STATE.capital,
-        initial_capability=0.10*FRONTIER,
+        variant=variant, design=template.name,
+        target_log_residual=residual, parameters=asdict(make_design(chi, variant).parameters),
+        frontier=template.frontier, initial_capital=RAMSEY_START_STEADY_STATE.capital,
+        initial_capability=template.initial_capability,
         source=dict(url=SOURCE, title='Artificial Intelligence markets: Recent developments and competition issues',
                     institution='OECD', publication_date='2026-07-10', accessed='2026-09-14',
                     window_start='2024-01', window_end='2026-04',
@@ -138,24 +151,29 @@ def calibrate():
             'Model year zero is an experiment date, not a claim that January 2024 had no AI.'),
         root_log_chi_tolerance=2e-6, trials=trials,
     )
-    write_json(CALIBRATION, payload)
-    return make_design(chi)
+    write_json(output/'calibration.json', payload)
+    return make_design(chi, variant)
 
 
-def calibrated_design():
-    payload = json.loads(CALIBRATION.read_text(encoding='utf-8'))
+def calibrated_design(variant='baseline'):
+    path = make_design(PARAMETERS.chi, variant).output_directory/'calibration.json'
+    payload = json.loads(path.read_text(encoding='utf-8'))
     if payload['target_years'] != TARGET_YEARS or payload['target_price_ratio'] != TARGET_PRICE_RATIO:
         raise ValueError('Stored calibration belongs to another price target.')
-    design = make_design(payload['chi'])
-    if payload['parameters'] != asdict(design.parameters) or payload['frontier'] != FRONTIER:
+    design = make_design(payload['chi'], variant)
+    if payload['parameters'] != asdict(design.parameters) or payload['frontier'] != design.frontier:
         raise ValueError('Stored calibration belongs to other parameters.')
+    if (payload['initial_capital'] != design.initial_capital
+            or payload['initial_capability'] != design.initial_capability):
+        raise ValueError('Stored calibration belongs to other initial stocks.')
     return design
 
 
 def extend(sigma, design):
-    source = load_solution(CACHE / f'{key(sigma)}_refined.npz')
+    cache = design.cache_directory
+    source = load_solution(cache / f'{key(sigma)}_refined.npz')
     validate_solution_design(source, design, sigma)
-    target = CACHE / f'{key(sigma)}_long.npz'
+    target = cache / f'{key(sigma)}_long.npz'
     if not target.exists():
         longer = refine_global_horizon(source, source.horizon+500, nodes=601,
                                       tolerance=1e-9, boundary_tolerance=1e-11)
@@ -166,14 +184,15 @@ def extend(sigma, design):
 
 
 def render_comparison_views(design):
-    """Same economic panels, with explicit early and full-horizon views."""
+    """Same economic panels, with explicit initial and subsequent windows."""
     import matplotlib.pyplot as plt
     from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
     from plot_rewrite_equilibria import (
         STYLES, PANELS_QUANTITY_GROWTH, PANELS_PRICES_RETURNS, PANELS_DISTRIBUTION,
     )
-    manifest = json.loads((OUTPUT/'figure_manifest.json').read_text())
-    csv_path = OUTPUT/'equilibrium_paths.csv'
+    output = design.output_directory
+    manifest = json.loads((output/'figure_manifest.json').read_text())
+    csv_path = output/'equilibrium_paths.csv'
     if hashlib.sha256(csv_path.read_bytes()).hexdigest() != manifest['data_sha256']:
         raise ValueError('Price-comparison data differ from the admitted export.')
     with csv_path.open(encoding='utf-8', newline='') as stream:
@@ -200,7 +219,8 @@ def render_comparison_views(design):
                 axis.axhline(limits[field], color='#222222', linestyle=(0,(1,2)), linewidth=.8)
                 axis.set_title(title, loc='left', y=1.02, pad=6)
                 if scale in ('rate', 'share'):
-                    decimals = 3 if view == 1 and field == 'research_output_share' else 1
+                    decimals = (3 if view == 1 and field == 'research_output_share'
+                                and axis.get_ylim()[1] < .001 else 1)
                     axis.yaxis.set_major_formatter(PercentFormatter(1, decimals=decimals))
                     axis.yaxis.set_major_locator(MaxNLocator(4))
                 elif scale == 'log_level':
@@ -234,7 +254,7 @@ def render_comparison_views(design):
                             top=.83 if columns==3 else .90,
                             wspace=.50 if columns==3 else .35,
                             hspace=.95 if columns==3 else .90)
-        filename=f'equilibrium_price_calibrated_{suffix}_windows'
+        filename=f'equilibrium_{design.name}_{suffix}_windows'
         for extension in ('pdf','png'):
             fig.savefig(ROOT/'figures_rewrite'/f'{filename}.{extension}', dpi=190)
         plt.close(fig)
@@ -242,12 +262,13 @@ def render_comparison_views(design):
                           fields=[p[0] for p in panels],
                           independent_vertical_scales_between_windows=True))
     manifest['two_window_views'] = views
-    write_json(OUTPUT/'figure_manifest.json', manifest)
+    write_json(output/'figure_manifest.json', manifest)
 
 
 def summarize(design):
     """Save the exact CSV observations used in the paper's numerical prose."""
-    with (OUTPUT/'equilibrium_paths.csv').open(encoding='utf-8', newline='') as stream:
+    output = design.output_directory
+    with (output/'equilibrium_paths.csv').open(encoding='utf-8', newline='') as stream:
         rows=[{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
     summary=dict(design=design.name, instantaneous_growth_rates=True, scenarios={})
     for sigma in SIGMAS:
@@ -258,31 +279,33 @@ def summarize(design):
             snapshots=snapshots,
             target_window_price_ratio=snapshots['2.25']['ai_service_price']/series[0]['ai_service_price'],
             initial_profit_ai_revenue_ratio=series[0]['profit_output_share']/series[0]['ai_revenue_output_share'])
-    manifest=json.loads((OUTPUT/'paths_manifest.json').read_text())
+    manifest=json.loads((output/'paths_manifest.json').read_text())
     summary['sigma_1_50_transition_dates']=manifest['sigma_1_50_transition_dates']
     summary['data_sha256']=manifest['csv_sha256']
-    write_json(OUTPUT/'summary.json',summary)
+    write_json(output/'summary.json',summary)
 
 
 def finish(design):
+    cache, output = design.cache_directory, design.output_directory
+    calibration = output/'calibration.json'
     from audit_rewrite_hamiltonian_support import audit_support
     from audit_rewrite_equilibria import finalize, independent_residuals
     from solve_axm_global_finite_cap_bvp import audit_counterfactual_developer_sufficiency
     from plot_rewrite_equilibria import render
     for sigma in SIGMAS:
         extend(sigma, design)
-    checkpoint = CACHE / f'{key(1.5)}_long.npz'
+    checkpoint = cache / f'{key(1.5)}_long.npz'
     solution = load_solution(checkpoint)
     for dates, states in ((81,101), (321,241)):
         result = audit_support(solution, dates, states)
         result['checkpoint_sha256'] = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
-        write_json(OUTPUT / f'{key(1.5)}_support_{dates}_{states}.json', result)
+        write_json(output / f'{key(1.5)}_support_{dates}_{states}.json', result)
         print(f'Hamiltonian support {dates}/{states}: {result["support_diagnostic_passes"]}', flush=True)
     reports = finalize(design)
     # Uniform long-horizon grids can miss a rapid initial adjustment. Keep all
     # existing checks and add dense early-window tests, not looser tolerances.
     for sigma, report in zip(SIGMAS, reports):
-        sol = load_solution(CACHE / f'{key(sigma)}_long.npz')
+        sol = load_solution(cache / f'{key(sigma)}_long.npz')
         early_times = np.linspace(0.001, 10.0, 801)
         residuals = [independent_residuals(sol, step, early_times)
                      for step in (0.0003, 0.0001)]
@@ -296,8 +319,8 @@ def finish(design):
                 check = audit_support(sol, dates, states,
                                       sample_times=np.linspace(0.0, 10.0, dates))
                 check['checkpoint_sha256'] = hashlib.sha256(
-                    (CACHE / f'{key(sigma)}_long.npz').read_bytes()).hexdigest()
-                write_json(OUTPUT / f'{key(sigma)}_early_support_{dates}_{states}.json', check)
+                    (cache / f'{key(sigma)}_long.npz').read_bytes()).hexdigest()
+                write_json(output / f'{key(sigma)}_early_support_{dates}_{states}.json', check)
                 support.append({k:v for k,v in check.items() if k != 'checks'})
             early_optimality = all(
                 c['support_diagnostic_passes'] and c['maximum_own_gap'] < 1e-10
@@ -311,18 +334,18 @@ def finish(design):
             concavity=concavity, support=support, passes=early_passes)
         report['equilibrium_certified'] = bool(report['equilibrium_certified'] and early_passes)
         report['status'] = 'numerically_admitted' if report['equilibrium_certified'] else 'not_admitted'
-        write_json(OUTPUT / f'{key(sigma)}_audit.json', report)
+        write_json(output / f'{key(sigma)}_audit.json', report)
         print(f'{key(sigma)}: early-window admission={early_passes}', flush=True)
     if not all(report['equilibrium_certified'] for report in reports):
         raise RuntimeError('Incomplete equilibrium admission: no path or figure export.')
-    unit = load_solution(CACHE / f'{key(1.0)}_long.npz')
+    unit = load_solution(cache / f'{key(1.0)}_long.npz')
     final_ratio = math.exp(log_price_ratio(unit))
     if abs(math.log(final_ratio/TARGET_PRICE_RATIO)) > 2e-5:
         raise RuntimeError('Price match changed after horizon refinement; recalibration required.')
-    payload = json.loads(CALIBRATION.read_text(encoding='utf-8'))
+    payload = json.loads(calibration.read_text(encoding='utf-8'))
     payload.update(status='numerically_admitted', refined_matched_price_ratio=final_ratio,
-                   final_checkpoint_sha256=hashlib.sha256((CACHE/f'{key(1.0)}_long.npz').read_bytes()).hexdigest())
-    write_json(CALIBRATION, payload)
+                   final_checkpoint_sha256=hashlib.sha256((cache/f'{key(1.0)}_long.npz').read_bytes()).hexdigest())
+    write_json(calibration, payload)
     export_paths(design.display_horizon, 4001, design,
                  additional_times=np.linspace(0.0, 10.0, 1001))
     render(design)
@@ -332,14 +355,16 @@ def finish(design):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--variant', choices=tuple(VARIANTS), default='baseline')
     parser.add_argument('--calibrate-only', action='store_true')
     parser.add_argument('--sigma', type=float, choices=SIGMAS)
     parser.add_argument('--finish', action='store_true')
     args = parser.parse_args()
     if args.calibrate_only:
-        calibrate()
+        calibrate(args.variant)
         return
-    design = calibrated_design() if CALIBRATION.exists() else calibrate()
+    calibration = make_design(PARAMETERS.chi, args.variant).output_directory/'calibration.json'
+    design = calibrated_design(args.variant) if calibration.exists() else calibrate(args.variant)
     if args.sigma is not None:
         run(args.sigma, design)
     elif args.finish:

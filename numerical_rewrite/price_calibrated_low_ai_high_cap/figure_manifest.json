@@ -1,0 +1,109 @@
+{
+  "design": "price_calibrated_low_ai_high_cap",
+  "data_sha256": "92c900bfab13d292171cd8b2022e9343ac47d0452b10b3240212522737d50de9",
+  "sigmas": [
+    0.9,
+    1.0,
+    1.1,
+    1.5
+  ],
+  "horizon": 500.0,
+  "panels": {
+    "quantity_growth": [
+      "output_effective_labor_growth",
+      "ai_services_effective_labor_growth",
+      "capital_effective_labor_growth"
+    ],
+    "prices_returns": [
+      "wage_growth",
+      "net_interest",
+      "ai_service_price"
+    ],
+    "distribution": [
+      "labor_income_share",
+      "profit_output_share",
+      "inference_output_share",
+      "research_output_share"
+    ],
+    "near_terminal": [
+      "output_per_person_growth",
+      "wage_growth",
+      "net_interest"
+    ]
+  },
+  "analytical_limits": {
+    "sigma_1_50": {
+      "output_effective_labor_growth": 0.021349975813846525,
+      "ai_services_effective_labor_growth": 0.021349975813846525,
+      "capital_effective_labor_growth": 0.021349975813846525,
+      "wage_growth": 0.02423331720923102,
+      "net_interest": 0.07134997581384653,
+      "ai_service_price": 0.0010966538824130042,
+      "labor_income_share": 0.0,
+      "profit_output_share": 0.22110000000000002,
+      "inference_output_share": 0.4488999999999999,
+      "research_output_share": 0.0
+    }
+  },
+  "all_scenarios_admitted": true,
+  "two_window_views": [
+    {
+      "filename": "equilibrium_price_calibrated_low_ai_high_cap_accumulation_growth_windows",
+      "windows": [
+        [
+          0.0,
+          10.0
+        ],
+        [
+          10.0,
+          500.0
+        ]
+      ],
+      "fields": [
+        "output_effective_labor_growth",
+        "ai_services_effective_labor_growth",
+        "capital_effective_labor_growth"
+      ],
+      "independent_vertical_scales_between_windows": true
+    },
+    {
+      "filename": "equilibrium_price_calibrated_low_ai_high_cap_growth_returns_windows",
+      "windows": [
+        [
+          0.0,
+          10.0
+        ],
+        [
+          10.0,
+          500.0
+        ]
+      ],
+      "fields": [
+        "wage_growth",
+        "net_interest",
+        "ai_service_price"
+      ],
+      "independent_vertical_scales_between_windows": true
+    },
+    {
+      "filename": "equilibrium_price_calibrated_low_ai_high_cap_ai_distribution_windows",
+      "windows": [
+        [
+          0.0,
+          10.0
+        ],
+        [
+          10.0,
+          500.0
+        ]
+      ],
+      "fields": [
+        "labor_income_share",
+        "profit_output_share",
+        "inference_output_share",
+        "research_output_share"
+      ],
+      "independent_vertical_scales_between_windows": true
+    }
+  ]
+}

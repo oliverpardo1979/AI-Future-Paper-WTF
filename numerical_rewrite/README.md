@@ -43,3 +43,10 @@ its 27-month window, the numeraire approximation, and the fitted common `chi`.
 Run `python scripts/calibrate_rewrite_ai_price.py` to reproduce it. Its audits
 include additional dense checks over the first ten years; only admitted
 paths enter the plotted CSV and figure manifest.
+
+The `price_calibrated_low_ai_high_cap/` comparison instead uses `omega_X=0.10`,
+`B0/Bbar=0.01`, and `Bbar=1360.9921392415592`, ten percent above the revised
+`sigma=1.50` threshold. The same unit-elastic price target is refitted with
+`python scripts/calibrate_rewrite_ai_price.py --variant low_ai`. Parameters,
+initial states, numerical admission, and plot data remain separate from the
+preceding comparison.

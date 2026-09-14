@@ -48,6 +48,27 @@ STYLES={.9:('#677748',(0,(5,2))),1.:('#414141','-'),
 LIMIT_STYLE=('#222222',(0,(1,2)))
 
 
+def analytical_plot_limits(sigma, frontier, parameters):
+    """Use the selected regime, not AI-only pricing for a labor-supported limit."""
+    terminal = terminal_point(sigma, frontier, parameters)
+    revenue = (1-parameters.alpha)*terminal.ai_ces_share
+    elasticity = (1-terminal.ai_ces_share)/sigma + parameters.alpha*terminal.ai_ces_share
+    normalized_growth = (terminal.terminal_growth-parameters.population_growth
+                         -parameters.labor_productivity_growth)
+    return {
+        'output_effective_labor_growth': normalized_growth,
+        'ai_services_effective_labor_growth': normalized_growth,
+        'capital_effective_labor_growth': normalized_growth,
+        'wage_growth': parameters.labor_productivity_growth+normalized_growth/sigma,
+        'net_interest': terminal.net_interest_rate,
+        'ai_service_price': 1/((1-elasticity)*frontier),
+        'labor_income_share': terminal.labor_income_share,
+        'profit_output_share': revenue-terminal.inference_output_share,
+        'inference_output_share': terminal.inference_output_share,
+        'research_output_share': 0.0,
+    }
+
+
 def render(design=MAIN_DESIGN):
     output=design.output_directory
     cache=design.cache_directory
@@ -104,28 +125,7 @@ def render(design=MAIN_DESIGN):
             'sigma_1_50':extra_limits,
         }
     else:
-        ai_terminal=terminal_point(1.5,frontier,parameters)
-        ai_revenue_limit=(1-parameters.alpha)*ai_terminal.ai_ces_share
-        ai_limits={
-            'output_effective_labor_growth': (
-                ai_terminal.terminal_growth-parameters.population_growth
-                -parameters.labor_productivity_growth),
-            'ai_services_effective_labor_growth': (
-                ai_terminal.terminal_growth-parameters.population_growth
-                -parameters.labor_productivity_growth),
-            'capital_effective_labor_growth': (
-                ai_terminal.terminal_growth-parameters.population_growth
-                -parameters.labor_productivity_growth),
-            'wage_growth': parameters.labor_productivity_growth+(
-                ai_terminal.net_interest_rate-parameters.discount
-                -parameters.labor_productivity_growth)/ai_terminal.sigma_xl,
-            'net_interest': ai_terminal.net_interest_rate,
-            'ai_service_price': 1/((1-parameters.alpha)*frontier),
-            'labor_income_share': ai_terminal.labor_income_share,
-            'profit_output_share': ai_revenue_limit*parameters.alpha,
-            'inference_output_share': ai_revenue_limit*(1-parameters.alpha),
-            'research_output_share': 0.0,
-        }
+        ai_limits=analytical_plot_limits(1.5,frontier,parameters)
         figures=(
             (f'{prefix}_accumulation_growth',PANELS_QUANTITY_GROWTH,'three',ai_limits),
             (f'{prefix}_growth_returns',PANELS_PRICES_RETURNS,'three',ai_limits),

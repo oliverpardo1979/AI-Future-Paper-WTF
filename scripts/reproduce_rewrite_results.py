@@ -48,6 +48,7 @@ def remove_generated_checkpoints() -> None:
         'rewrite_bvp_slow': SIGMAS,
         'rewrite_bvp_near_terminal': DESIGN_SIGMAS['near_terminal'],
         'rewrite_bvp_price_calibrated': SIGMAS,
+        'rewrite_bvp_price_calibrated_low_ai_high_cap': SIGMAS,
     }
     for cache_name, sigmas in cache_designs.items():
         cache = ROOT / "tmp" / cache_name
@@ -165,11 +166,12 @@ def main() -> None:
         financing_command.append("--fresh")
     run(financing_command)
     run([python, "scripts/calibrate_rewrite_ai_price.py"])
+    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "low_ai"])
     print(
         "\nReproduction complete: the main, Ramsey-start, slow-transition, "
         "and near-terminal comparisons passed admission and their audited "
         "data and figures were regenerated. The separate price-calibrated "
-        "Ramsey-start comparison also passed admission.",
+        "Ramsey-start comparisons also passed admission.",
         flush=True,
     )
 

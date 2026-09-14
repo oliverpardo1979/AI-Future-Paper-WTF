@@ -405,7 +405,7 @@ def export_paths(horizon, points, design=MAIN_DESIGN, additional_times=None):
         sigma_1_50_transition_dates=transition_dates,
         csv_sha256=hashlib.sha256(csv_path.read_bytes()).hexdigest(),
     )
-    if design.name in ('ramsey_start', 'price_calibrated'):
+    if design.name in ('ramsey_start', 'price_calibrated', 'price_calibrated_low_ai_high_cap'):
         manifest['pre_transition_reference'] = dict(
             omega_x=0.0,
             omega_l=1.0,
