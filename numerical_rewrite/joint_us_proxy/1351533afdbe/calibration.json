@@ -1,0 +1,154 @@
+{
+  "status": "numerically_admitted",
+  "design": "joint_us_proxy_1351533afdbe",
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.003455993119508944,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 26.14433812408505,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 170.12401740519473,
+  "initial_capital": 5.94157252710329,
+  "initial_capability": 1.7012401740519474,
+  "empirical_reference": {
+    "year": 2024,
+    "services_revenue": 67.84,
+    "training_compute": 45.23,
+    "gdp_usd": 29298013000000,
+    "revenue_gdp_share": 0.002315515390070992,
+    "implied_unit_omega": 0.003455993119508944
+  },
+  "price_reference": {
+    "url": "https://www.oecd.org/en/publications/artificial-intelligence-markets_d531d73f-en/full-report.html",
+    "title": "Artificial Intelligence markets: Recent developments and competition issues",
+    "locator": "Figure 2 and preceding paragraph",
+    "start": "2024-01",
+    "end": "2026-04",
+    "years": 2.25,
+    "ratio": 0.2,
+    "reported_precision": "nearly 80 percent; rounded to 80 percent",
+    "measurement": "Quality-adjusted cloud API price index, text-to-text models",
+    "role": "Conditional price reference, not identified monopoly RSI productivity",
+    "numeraire_assumption": "General final-good price held constant over the observation window"
+  },
+  "fitted_parameters": [
+    "omega_X",
+    "chi"
+  ],
+  "conditioned_on": [
+    "eta",
+    "sigma=1",
+    "Bbar",
+    "B0",
+    "macro parameters"
+  ],
+  "fit_is_global_identification": false,
+  "interpretation": "Two conditional moment matches; no claim of global identification or estimated monopoly RSI productivity.",
+  "research_moment_fitted": false,
+  "trials": [
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.8699192145069365,
+      "log_price_residual": 1.4700829839005463,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\02054a452f1a1b45.npz"
+    },
+    {
+      "chi": 2.8756,
+      "price_ratio": 0.7515213423718891,
+      "log_price_residual": 1.323782241938188,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\3187db0317b2fc89.npz"
+    },
+    {
+      "chi": 5.7512,
+      "price_ratio": 0.5797802420216598,
+      "log_price_residual": 1.0643317721282102,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\42b859e5986f0a7c.npz"
+    },
+    {
+      "chi": 11.502400000000002,
+      "price_ratio": 0.3868665707093299,
+      "log_price_residual": 0.6597624885030997,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\65b35bb7a06d8894.npz"
+    },
+    {
+      "chi": 23.004800000000003,
+      "price_ratio": 0.22401395737895818,
+      "log_price_residual": 0.11339099309332457,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\83f6567413d7b318.npz"
+    },
+    {
+      "chi": 46.00960000000001,
+      "price_ratio": 0.11749873239636284,
+      "log_price_residual": -0.531889821138076,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\b4dcad605816458c.npz"
+    },
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.8699192145069365,
+      "log_price_residual": 1.4700829839005463,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\02054a452f1a1b45.npz"
+    },
+    {
+      "chi": 46.00960000000001,
+      "price_ratio": 0.11749873239636284,
+      "log_price_residual": -0.531889821138076,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\b4dcad605816458c.npz"
+    },
+    {
+      "chi": 18.321285240282332,
+      "price_ratio": 0.2717233825764233,
+      "log_price_residual": 0.30646720645520964,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\5b762545037a0df0.npz"
+    },
+    {
+      "chi": 25.653073861686455,
+      "price_ratio": 0.2034321598967758,
+      "log_price_residual": 0.01701521615500501,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\6ef63797f4af916b.npz"
+    },
+    {
+      "chi": 26.149676339001225,
+      "price_ratio": 0.19996337719197463,
+      "log_price_residual": -0.0001831308075497251,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\c8b7f7ab520d01c2.npz"
+    },
+    {
+      "chi": 26.14433812408505,
+      "price_ratio": 0.20000007245313423,
+      "log_price_residual": 3.6226560529151186e-07,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\4b8f643ea0e74955.npz"
+    },
+    {
+      "chi": 26.144364272702525,
+      "price_ratio": 0.1999998926748213,
+      "log_price_residual": -5.366260376060694e-07,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\c8e4a0837cf816e2.npz"
+    },
+    {
+      "chi": 26.14433812408505,
+      "price_ratio": 0.20000007245313423,
+      "log_price_residual": 3.6226560529151186e-07,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\1351533afdbe\\trials\\4b8f643ea0e74955.npz"
+    }
+  ],
+  "numerical_settings": {
+    "log_chi_xtol": 2e-06,
+    "price_log_residual_gate": 2e-05,
+    "reason": "Same tolerances and admission workflow as the existing price calibration."
+  },
+  "final_price_ratio": 0.20000007268555398,
+  "checkpoint_sha256": "f97568042941d23789b6d12131b56b35fdaca2e2c5659de4bb19ebc48de9d4c6",
+  "admitted_moments": {
+    "revenue_output_share": 0.0023155153900709913,
+    "price_ratio": 0.20000007268555398,
+    "initial_research_output_share": 4.131323906306653e-06,
+    "initial_research_revenue_ratio": 0.0017841919444897278,
+    "initial_inference_revenue_ratio": 0.0023155153900709913
+  }
+}

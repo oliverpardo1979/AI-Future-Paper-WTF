@@ -1,0 +1,52 @@
+{
+  "accessed": "2026-09-14",
+  "status": "provisional_US_reference_not_global_estimate",
+  "services_source": {
+    "title": "Technical Appendix: Measuring the AI Economy",
+    "authors": "Patrick McKelvey, Leopold Brown, Yuval Rhymon, Anton Korinek",
+    "url": "https://www.piie.com/sites/default/files/2026-05/wp26-9-appendix.pdf",
+    "date": "2026-05-11",
+    "locator": "Sections 7.3 and 8.3, Table 13",
+    "geography": "USA",
+    "measurement": "Model-based estimates, not observed consolidated sales",
+    "construction": "Inference is assumed to be 50% of compute spending; service revenue is 1.5 times inference spending.",
+    "license_note": "Only the cited numerical table entries are transcribed."
+  },
+  "annual_us_estimates_usd_billion": [
+    {"year": 2023, "services_revenue": 27.69, "training_compute": 18.46},
+    {"year": 2024, "services_revenue": 67.84, "training_compute": 45.23},
+    {"year": 2025, "services_revenue": 164.38, "training_compute": 109.58}
+  ],
+  "revenue_reference_year": 2024,
+  "reference_year_reason": "Align the revenue year with the beginning of the January 2024--April 2026 price window; do not treat a later revenue estimate as the initial size.",
+  "gdp_source": {
+    "url": "https://api.worldbank.org/v2/country/WLD;USA/indicator/NY.GDP.MKTP.CD?date=2023:2025&format=json&per_page=100",
+    "indicator": "NY.GDP.MKTP.CD",
+    "geography_used": "USA",
+    "unit": "current USD",
+    "snapshot": "sources/world_bank_gdp_2026-09-14.json"
+  },
+  "price": {
+    "url": "https://www.oecd.org/en/publications/artificial-intelligence-markets_d531d73f-en/full-report.html",
+    "title": "Artificial Intelligence markets: Recent developments and competition issues",
+    "locator": "Figure 2 and preceding paragraph",
+    "start": "2024-01",
+    "end": "2026-04",
+    "years": 2.25,
+    "ratio": 0.20,
+    "reported_precision": "nearly 80 percent; rounded to 80 percent",
+    "measurement": "Quality-adjusted cloud API price index, text-to-text models",
+    "role": "Conditional price reference, not identified monopoly RSI productivity",
+    "numeraire_assumption": "General final-good price held constant over the observation window"
+  },
+  "maintained_choices": {
+    "eta": 0.20,
+    "initial_B_fraction": 0.01,
+    "macro_parameters": "Existing global-paper benchmarks, not recalibrated to the United States",
+    "interpretation": "US sector intensity borrowed as a provisional reference for the stylized economy; neither a global estimate nor a full US calibration"
+  },
+  "research_moment": {
+    "fit": false,
+    "reason": "The source's training/revenue ratio is imposed by its accounting assumptions. It is not independent evidence for B0. Company reports additionally mix projections, amortization and current compute expenditure."
+  }
+}

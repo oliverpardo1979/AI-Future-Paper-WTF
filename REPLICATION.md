@@ -77,6 +77,16 @@ equilibrium.
 
 ## Quick start from a fresh clone
 
+### Separate joint-calibration audit
+
+The [joint-calibration workstream](empirical/joint_calibration/README.md)
+examines sector size, prices and research expenditure using documented source
+snapshots. It fits sector size and the price decline conditionally at unit
+elasticity, screens the other elasticities for compatibility, and keeps
+research expenditure as an external check. Its provisional US reference is
+not a measured worldwide sector total. This workstream does not replace any
+paper simulation or figure.
+
 ### Additional price-calibrated comparison
 
 The price-calibrated exercise is separate from all preceding designs. It keeps

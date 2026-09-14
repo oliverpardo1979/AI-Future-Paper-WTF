@@ -1,0 +1,166 @@
+{
+  "status": "numerically_admitted",
+  "design": "joint_us_proxy_4e46d39c591e",
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.003455993119508944,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 137.87571715522907,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.99213924156,
+  "initial_capital": 5.94157252710329,
+  "initial_capability": 13.6099213924156,
+  "empirical_reference": {
+    "year": 2024,
+    "services_revenue": 67.84,
+    "training_compute": 45.23,
+    "gdp_usd": 29298013000000,
+    "revenue_gdp_share": 0.002315515390070992,
+    "implied_unit_omega": 0.003455993119508944
+  },
+  "price_reference": {
+    "url": "https://www.oecd.org/en/publications/artificial-intelligence-markets_d531d73f-en/full-report.html",
+    "title": "Artificial Intelligence markets: Recent developments and competition issues",
+    "locator": "Figure 2 and preceding paragraph",
+    "start": "2024-01",
+    "end": "2026-04",
+    "years": 2.25,
+    "ratio": 0.2,
+    "reported_precision": "nearly 80 percent; rounded to 80 percent",
+    "measurement": "Quality-adjusted cloud API price index, text-to-text models",
+    "role": "Conditional price reference, not identified monopoly RSI productivity",
+    "numeraire_assumption": "General final-good price held constant over the observation window"
+  },
+  "fitted_parameters": [
+    "omega_X",
+    "chi"
+  ],
+  "conditioned_on": [
+    "eta",
+    "sigma=1",
+    "Bbar",
+    "B0",
+    "macro parameters"
+  ],
+  "fit_is_global_identification": false,
+  "interpretation": "Two conditional moment matches; no claim of global identification or estimated monopoly RSI productivity.",
+  "research_moment_fitted": false,
+  "trials": [
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.9794838933981703,
+      "log_price_residual": 1.5887084270037286,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\02054a452f1a1b45.npz"
+    },
+    {
+      "chi": 2.8756,
+      "price_ratio": 0.9541222900614971,
+      "log_price_residual": 1.5624744833323152,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\3187db0317b2fc89.npz"
+    },
+    {
+      "chi": 5.7512,
+      "price_ratio": 0.902077217683422,
+      "log_price_residual": 1.50638275703833,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\42b859e5986f0a7c.npz"
+    },
+    {
+      "chi": 11.502400000000002,
+      "price_ratio": 0.8056315728892554,
+      "log_price_residual": 1.3933091658575234,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\65b35bb7a06d8894.npz"
+    },
+    {
+      "chi": 23.004800000000003,
+      "price_ratio": 0.6534687600851523,
+      "log_price_residual": 1.183977361372295,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\83f6567413d7b318.npz"
+    },
+    {
+      "chi": 46.00960000000001,
+      "price_ratio": 0.46295062207276766,
+      "log_price_residual": 0.8393030340599188,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\b4dcad605816458c.npz"
+    },
+    {
+      "chi": 92.01920000000003,
+      "price_ratio": 0.2827522959651462,
+      "log_price_residual": 0.34625386853952667,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\ccac453320258906.npz"
+    },
+    {
+      "chi": 184.03840000000008,
+      "price_ratio": 0.15320365843330933,
+      "log_price_residual": -0.266549229413686,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\07bab3d02031fbdd.npz"
+    },
+    {
+      "chi": 1.4378,
+      "price_ratio": 0.9794838933981703,
+      "log_price_residual": 1.5887084270037286,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\02054a452f1a1b45.npz"
+    },
+    {
+      "chi": 184.03840000000008,
+      "price_ratio": 0.15320365843330933,
+      "log_price_residual": -0.266549229413686,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\07bab3d02031fbdd.npz"
+    },
+    {
+      "chi": 91.65594475144296,
+      "price_ratio": 0.28365821622735377,
+      "log_price_residual": 0.34945268288066544,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\23e80b387a801097.npz"
+    },
+    {
+      "chi": 136.1152905837757,
+      "price_ratio": 0.2023201775211243,
+      "log_price_residual": 0.011534113240750932,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\d20d3749cffc6376.npz"
+    },
+    {
+      "chi": 137.82896313697822,
+      "price_ratio": 0.20006096081589242,
+      "log_price_residual": 0.0003047576361356885,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\55c2ac31b35bd972.npz"
+    },
+    {
+      "chi": 137.87571715522907,
+      "price_ratio": 0.19999998821594037,
+      "log_price_residual": -5.8920299972342605e-08,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\01628119af3f34d0.npz"
+    },
+    {
+      "chi": 137.87557924561963,
+      "price_ratio": 0.20000016801444237,
+      "log_price_residual": 8.400718589651746e-07,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\814f684c80f1b373.npz"
+    },
+    {
+      "chi": 137.87571715522907,
+      "price_ratio": 0.19999998821594037,
+      "log_price_residual": -5.8920299972342605e-08,
+      "checkpoint": "tmp\\rewrite_bvp_joint_us_proxy\\4e46d39c591e\\trials\\01628119af3f34d0.npz"
+    }
+  ],
+  "numerical_settings": {
+    "log_chi_xtol": 2e-06,
+    "price_log_residual_gate": 2e-05,
+    "reason": "Same tolerances and admission workflow as the existing price calibration."
+  },
+  "final_price_ratio": 0.1999999884483777,
+  "checkpoint_sha256": "19e8a1e89da2046486c34a3f8185ce4a4dd177f452386f83632a33acf800c78c",
+  "admitted_moments": {
+    "revenue_output_share": 0.0023155153900709913,
+    "price_ratio": 0.1999999884483777,
+    "initial_research_output_share": 4.1275832829234855e-06,
+    "initial_research_revenue_ratio": 0.0017825764841048791,
+    "initial_inference_revenue_ratio": 0.0023155153900709913
+  }
+}

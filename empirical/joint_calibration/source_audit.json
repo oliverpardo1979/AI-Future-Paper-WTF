@@ -1,0 +1,277 @@
+{
+  "status": "source_and_structural_audit_not_equilibrium_simulation",
+  "geography": "US reference; not a worldwide total",
+  "comparisons": [
+    {
+      "year": 2023,
+      "services_revenue": 27.69,
+      "training_compute": 18.46,
+      "gdp_usd": 27811517000000,
+      "revenue_gdp_share": 0.0009956306950102722,
+      "implied_unit_omega": 0.001486015962701899
+    },
+    {
+      "year": 2024,
+      "services_revenue": 67.84,
+      "training_compute": 45.23,
+      "gdp_usd": 29298013000000,
+      "revenue_gdp_share": 0.002315515390070992,
+      "implied_unit_omega": 0.003455993119508944
+    },
+    {
+      "year": 2025,
+      "services_revenue": 164.38,
+      "training_compute": 109.58,
+      "gdp_usd": 30769700000000,
+      "revenue_gdp_share": 0.005342268530404912,
+      "implied_unit_omega": 0.007973535120007333
+    }
+  ],
+  "revenue_rows": 67,
+  "compute_rows": 14,
+  "period_type_counts": {
+    "unspecified": 57,
+    "Year": 6,
+    "Quarter": 3,
+    "Half-year": 1
+  },
+  "annual_revenue_rows": [
+    {
+      "Id": "2025 full year",
+      "Company": "Anthropic",
+      "Date": "2025-12-31",
+      "Period revenue": "4500000000.0",
+      "Scope": "Full company",
+      "Source type": "Media report",
+      "Source 1": "https://www.theinformation.com/articles/anthropic-hikes-2026-revenue-forecast-20-delays-will-go-cash-flow-positive"
+    },
+    {
+      "Id": "2025 13B",
+      "Company": "OpenAI",
+      "Date": "2025-12-31",
+      "Period revenue": "13000000000.0",
+      "Scope": "Full company",
+      "Source type": "Media report",
+      "Source 1": "https://www.nytimes.com/2026/02/11/technology/openai-revenue-challenge.html"
+    },
+    {
+      "Id": "2024 3.7B",
+      "Company": "OpenAI",
+      "Date": "2024-12-31",
+      "Period revenue": "3700000000.0",
+      "Scope": "Full company",
+      "Source type": "Media report",
+      "Source 1": "https://www.bloomberg.com/news/articles/2025-03-26/openai-expects-revenue-will-triple-to-12-7-billion-this-year"
+    },
+    {
+      "Id": "2024 full year",
+      "Company": "Anthropic",
+      "Date": "2024-12-31",
+      "Period revenue": "381000000.0",
+      "Scope": "Full company",
+      "Source type": "Media report",
+      "Source 1": "https://www.theinformation.com/articles/anthropic-lowers-profit-margin-projection-revenue-skyrockets?rc=9mzoog"
+    },
+    {
+      "Id": "700M ChatGPT 2023",
+      "Company": "OpenAI",
+      "Date": "2023-12-31",
+      "Period revenue": "700000000.0",
+      "Scope": "Product/division",
+      "Source type": "Media report",
+      "Source 1": "https://www.nytimes.com/2024/09/27/technology/openai-chatgpt-investors-funding.html"
+    },
+    {
+      "Id": "2022 28M",
+      "Company": "OpenAI",
+      "Date": "2022-12-31",
+      "Period revenue": "28000000.0",
+      "Scope": "Full company",
+      "Source type": "Media report",
+      "Source 1": "https://www.theinformation.com/articles/openai-passes-1-billion-revenue-pace-as-big-companies-boost-ai-spending?rc=9mzoog"
+    }
+  ],
+  "forecasts_or_partial_year_reports": [
+    "Anthropic 2023 cloud compute",
+    "OpenAI 2024 inference",
+    "OpenAI 2024 R&D compute",
+    "Anthropic 2024 cloud compute",
+    "OpenAI 2025 cloud compute",
+    "Anthropic 2025 inference"
+  ],
+  "duplicate_compute_ids": [
+    "Anthropic 2025 inference"
+  ],
+  "compute_amount_field_disagreements": [
+    "OpenAI 2025 inference compute"
+  ],
+  "excluded_quarterly_records_requiring_unit_review": [
+    "Q3 2025 107M",
+    "Q2 2025 59M",
+    "Q1 2025 43M"
+  ],
+  "quarterly_issue": "xAI record IDs say 43M/59M/107M; Period revenue fields are four times those numbers. No automatic correction or aggregation.",
+  "source_limitations": [
+    "Epoch covers selected companies, not the world sector; reports are not independently audited statements.",
+    "Several original company financial reports are behind paywalls; retain as secondary evidence only.",
+    "Do not sum annualized, annual, quarterly, company and product-level revenue records.",
+    "Research cost notes mix forecasts, training and amortized expenses; not a homogeneous flow M.",
+    "PIIE services revenue and training spending share common imputation assumptions.",
+    "GDP mapping is an external calibration convention; it does not reconcile every intermediate-input or R&D-capitalization convention."
+  ],
+  "sigma_compatibility": [
+    {
+      "sigma": 0.9,
+      "strict_revenue_share_floor": 0.09530583214793738,
+      "passes_necessary_static_condition": false
+    },
+    {
+      "sigma": 0.99,
+      "strict_revenue_share_floor": 0.00995098767265707,
+      "passes_necessary_static_condition": false
+    },
+    {
+      "sigma": 0.999,
+      "strict_revenue_share_floor": 0.000999507705160146,
+      "passes_necessary_static_condition": true
+    },
+    {
+      "sigma": 1.0,
+      "strict_revenue_share_floor": 0.0,
+      "passes_necessary_static_condition": true
+    },
+    {
+      "sigma": 1.1,
+      "strict_revenue_share_floor": 0.0,
+      "passes_necessary_static_condition": true
+    },
+    {
+      "sigma": 1.5,
+      "strict_revenue_share_floor": 0.0,
+      "passes_necessary_static_condition": true
+    }
+  ],
+  "unit_elastic_inference_check": {
+    "model_inference_to_revenue": 0.002315515390070992,
+    "source_assumed_inference_to_revenue": 0.6666666666666666,
+    "implication": "These cannot both be fitted at sigma=1 by changing chi or B0; this is a structural/proxy mismatch, not an optimizer failure."
+  },
+  "source_hashes": {
+    "epoch_compute_2026-09-14.csv": "afd48524a17d81c5bea17daf3e63acf97587c34171d59ab402bced2ffb462f82",
+    "epoch_revenue_2026-09-14.csv": "f0297f9f9c38bde55f0ff74b0f768dab82d05f1a09cb7ca30fe60dd8c8796b9e",
+    "world_bank_gdp_2026-09-14.json": "ef1bfbbb9a5d965f7b2ee277f4f12494b56bf95535c6d593212e4468c36d12d6"
+  },
+  "research_target_independent": false,
+  "identified_parameter_count": null,
+  "nonunit_static_stress": [
+    {
+      "sigma": 0.9,
+      "omega_X": 0.001,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 9.810039190924629,
+      "passes_foc_check": false
+    },
+    {
+      "sigma": 0.9,
+      "omega_X": 0.003455993119508944,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 0.3995977767447788,
+      "passes_foc_check": false
+    },
+    {
+      "sigma": 0.9,
+      "omega_X": 0.1,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 1.2545520178264269e-14,
+      "passes_foc_check": true
+    },
+    {
+      "sigma": 0.9,
+      "omega_X": 0.2,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": -1.887379141862766e-15,
+      "passes_foc_check": true
+    },
+    {
+      "sigma": 0.99,
+      "omega_X": 0.001,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "passes_foc_check": false,
+      "error": "FloatingPointError: The monopoly markup is not interior at the trial point."
+    },
+    {
+      "sigma": 0.99,
+      "omega_X": 0.003455993119508944,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "passes_foc_check": false,
+      "error": "FloatingPointError: The monopoly markup is not interior at the trial point."
+    },
+    {
+      "sigma": 0.99,
+      "omega_X": 0.1,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 5.551115123125783e-16,
+      "passes_foc_check": true
+    },
+    {
+      "sigma": 0.99,
+      "omega_X": 0.2,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 5.551115123125783e-16,
+      "passes_foc_check": true
+    },
+    {
+      "sigma": 0.999,
+      "omega_X": 0.001,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "passes_foc_check": false,
+      "error": "FloatingPointError: The monopoly markup is not interior at the trial point."
+    },
+    {
+      "sigma": 0.999,
+      "omega_X": 0.003455993119508944,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 4.007905118896815e-14,
+      "passes_foc_check": true
+    },
+    {
+      "sigma": 0.999,
+      "omega_X": 0.1,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": 1.4133139103478243e-13,
+      "passes_foc_check": true
+    },
+    {
+      "sigma": 0.999,
+      "omega_X": 0.2,
+      "K": 5.94,
+      "B": 1.7,
+      "AL": 1.0,
+      "foc_log_residual": -3.3306690738754696e-16,
+      "passes_foc_check": true
+    }
+  ],
+  "nonunit_static_stress_scope": "Diagnostic points, not trajectories. Failures near zero marginal revenue must be resolved before any affected dynamic fit; no tolerances are relaxed."
+}

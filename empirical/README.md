@@ -5,6 +5,10 @@ empirical-motivation figures in the paper. They motivate the scale and direction
 of the mechanisms in the model; they are not used to calibrate either CES
 elasticity.
 
+The separate [joint-calibration workstream](joint_calibration/README.md) audits
+sector-size, price and research-spending references. It preserves all existing
+simulations and distinguishes a provisional US reference from a global estimate.
+
 ## Files
 
 - `ai_production_2023_2025.csv`: U.S. AI compute spending, raw compute capacity,
