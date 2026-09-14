@@ -3,3 +3,5 @@
 # Scope this rule to the new comparison; legacy artifacts remain untouched.
 numerical_rewrite/rsi_activation/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 numerical_rewrite/rsi_activation/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_activation_half_decline/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+numerical_rewrite/rsi_activation_half_decline/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

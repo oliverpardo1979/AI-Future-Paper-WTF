@@ -1,0 +1,12 @@
+\begin{rewriteParameterTable}{Slower AI-price decline: parameters and initial stocks}{tab:rewrite-rsi-half-parameters}
+$\omega_X$ & 0.10 & AI production weight & Same assumed value as in Table~\ref{tab:rewrite-rsi-parameters}; not fitted to industry size.\\
+$\omega_L$ & 0.90 & Effective-labor weight & Computed as $1-\omega_X$.\\
+$\chi$ & 7.616305 & Research productivity after activation & Fitted at $\sigma=1$ to Equation~\eqref{eq:rewrite-rsi-half-price-target}; common across elasticities.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Same arbitrary scenarios.\\
+$\overline B$ & 1,360.992139 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; unchanged arbitrary margin above the threshold.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Same unit normalizations.\\
+$B_0$ & 13.609921 & Initial AI efficiency & $0.01\overline B$; same arbitrary initial distance.\\
+$K_0$ & 3.433645; 4.649320; 5.036956; 5.504667 & Initial capital, by $\sigma$ & Same fixed-efficiency BGP stocks with existing AI; Equation~\eqref{eq:rewrite-rsi-initial-ratio}.\\
+$K_0/Y_0$ & 3.30 & Initial capital--output ratio & Same pre-RSI BGP ratio, preserved at activation.\\
+\end{rewriteParameterTable}

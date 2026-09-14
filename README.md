@@ -24,6 +24,12 @@ and an upper bound ten percent above the `sigma=1.50` threshold. Research
 productivity is refitted at unit elasticity, then shared across all four
 scenarios. Data and audits are in `numerical_rewrite/rsi_activation/`.
 
+A second subsection keeps the same initial economies and all other parameters,
+but fits chi to a 40% price decline over 27 months instead of 80%.
+Its separate results are in `numerical_rewrite/rsi_activation_half_decline/`.
+Use `--variant rsi_activation_half_decline` for that exercise, or
+`python scripts/reproduce_rewrite_results.py` for both active comparisons.
+
 To reproduce the principal calibration from a fresh clone with Python 3.12:
 
 ```text
@@ -35,7 +41,7 @@ The command exports only paths that pass the numerical equilibrium-admission
 checks. The earlier timing, slow-transition, and near-terminal comparisons
 remain available through `python scripts/reproduce_rewrite_results.py --include-legacy`.
 Nothing was deleted: `\showlegacysimulationsfalse` in `main_rewrite.tex`
-selects the new exercise; change it to `\showlegacysimulationstrue` to
+selects both new exercises; change it to `\showlegacysimulationstrue` to
 restore the earlier quantitative section and numerical appendix. See
 `REPLICATION.md` for the economic intuition, platform-specific setup, output
 map, and interpretation of the diagnostics.

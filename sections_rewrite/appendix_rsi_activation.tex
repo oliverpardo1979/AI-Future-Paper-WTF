@@ -9,7 +9,7 @@ are predetermined; consumption and the developer's shadow value adjust
 to put the economy on the stable continuation of its long-run regime.
 An initial choice that satisfies the static conditions alone need not do so.
 
-The RSI-activation exercise first solves a different, auxiliary economy:
+Both RSI-activation exercises first solve the same auxiliary economy:
 AI is already used in production, but its efficiency is fixed because RSI
 is unavailable. For each $\sigma$, a scalar root search in $\log K_0$
 solves Equation~\eqref{eq:rewrite-rsi-initial-ratio} using the original
@@ -54,7 +54,8 @@ near one, \texttt{log1p} and \texttt{expm1} avoid cancellation.
 
 An outer bracketed search in $\log\chi$ solves the unit-elastic BVP and
 evaluates the price ratio at exactly 2.25 years. It matches
-Equation~\eqref{eq:rewrite-rsi-price-target}, then fixes $\chi$ for the
+Equation~\eqref{eq:rewrite-rsi-price-target} or
+Equation~\eqref{eq:rewrite-rsi-half-price-target}, then fixes $\chi$ for the
 other three elasticities. The tolerance in $\log\chi$ is $2\times10^{-6}$;
 the final price-ratio log error must be below $2\times10^{-5}$ after both
 horizon extensions. These numerical tolerances are well below the precision
@@ -88,6 +89,7 @@ approximations, not interval-arithmetic existence certificates for arbitrary
 initial stocks.
 
 \input{sections_rewrite/rsi_activation_accuracy}
+\input{sections_rewrite/rsi_half_decline_accuracy}
 
 From the repository root, run:
 \begin{quote}
@@ -96,8 +98,10 @@ From the repository root, run:
 python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
 \end{verbatim}
 \end{quote}
-The command calibrates, solves, audits, and exports
-the complete four-scenario comparison. No paths or figures are exported
+The command calibrates, solves, audits, and exports the $80\%$-decline
+comparison. For the $40\%$-decline comparison, use the variant
+\texttt{rsi\_activation\_half\_decline} instead. Each variant has separate
+checkpoints, calibration results, audits, and figures. No paths or figures are exported
 unless every scenario passes admission and the activation continuity check.
 Checkpoint and CSV hashes bind the audits to the plotted data. The code,
 initial references, calibrated parameters, diagnostics, and figures are in
@@ -105,10 +109,13 @@ the \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF}{paper's reposi
 with outputs in
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation}
 {\texttt{numerical\_rewrite/rsi\_activation/}}.
+The new sensitivity is stored alongside it in the
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation_half_decline}
+{half-decline results folder}.
 The \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/REPLICATION.md}
 {replication guide} gives installation instructions and the staged workflow.
 
 Earlier simulations and their numerical appendix remain in the source.
 The editorial switch in \texttt{main\_rewrite.tex} selects either this
-exercise or the earlier presentation. The replication guide explains how
+pair of exercises or the earlier presentation. The replication guide explains how
 to change it without altering any numerical file.

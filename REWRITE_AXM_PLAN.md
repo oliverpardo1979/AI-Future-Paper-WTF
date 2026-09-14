@@ -12,6 +12,15 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Additional half-price-decline target (September 14, 2026)
+
+Add a second active subsection with `p_X(2.25)/p_X(0)=0.60`: half the
+rounded observed 80% percentage decline. Refit chi at sigma=1 and solve
+all four elasticities again with the existing BVP and unchanged audits.
+Keep the same fixed-B pre-RSI BGP stocks and all other parameters.
+Preserve the 80%-decline exercise and the silenced legacy comparisons.
+Do not interpret the sensitivity as an empirical monopoly/competition wedge.
+
 ### RSI activation replaces the displayed calibration (September 14, 2026)
 
 The user approved a pre-event BGP with AI already present and fixed B0,

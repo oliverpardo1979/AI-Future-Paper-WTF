@@ -1,6 +1,6 @@
 """Price-targeted comparisons, including RSI activation with existing AI.
 
-Calibrate chi at sigma=1 to a rounded 80% price decline over 27 months.
+Calibrate chi at sigma=1 to a specified price decline over 27 months.
 All trial objects are BVP candidates, never exported as equilibrium paths.
 The final four paths use the paper's full, unchanged admission workflow.
 """
@@ -42,7 +42,24 @@ VARIANTS = {
                1.10*critical_capability_frontier(1.5, replace(PARAMETERS, omega_x=0.10))),
     'rsi_activation': ('rsi_activation', 0.10, 0.01,
                1.10*critical_capability_frontier(1.5, replace(PARAMETERS, omega_x=0.10))),
+    'rsi_activation_half_decline': ('rsi_activation_half_decline', 0.10, 0.01,
+               1.10*critical_capability_frontier(1.5, replace(PARAMETERS, omega_x=0.10))),
 }
+RSI_VARIANTS = ('rsi_activation', 'rsi_activation_half_decline')
+
+
+def target_price_ratio(variant):
+    """Half of the observed percentage decline, not half its log change."""
+    if variant not in VARIANTS:
+        raise ValueError(f'Unknown price-calibration variant: {variant}')
+    return 1 - 0.5 * (1 - TARGET_PRICE_RATIO) if variant == RSI_VARIANTS[1] else TARGET_PRICE_RATIO
+
+
+def design_price_target(design):
+    for variant, specification in VARIANTS.items():
+        if specification[0] == design.name:
+            return target_price_ratio(variant)
+    raise ValueError(f'No price target is defined for {design.name}')
 
 
 def make_design(chi: float, variant: str = 'baseline') -> SimulationDesign:
@@ -50,19 +67,20 @@ def make_design(chi: float, variant: str = 'baseline') -> SimulationDesign:
     return SimulationDesign(
         name=name, sigmas=SIGMAS,
         parameters=replace(PARAMETERS, chi=float(chi), omega_x=omega_x), frontier=frontier,
-        initial_capital=(None if variant == 'rsi_activation'
+        initial_capital=(None if variant in RSI_VARIANTS
                          else RAMSEY_START_STEADY_STATE.capital),
         initial_capability=initial_ratio * frontier,
         output_directory=ROOT/'numerical_rewrite'/name,
         cache_directory=ROOT/'tmp'/f'rewrite_bvp_{name}', display_horizon=500.0,
-        initial_capital_rule=('fixed_efficiency_bgp' if variant == 'rsi_activation' else 'common'),
+        initial_capital_rule=('fixed_efficiency_bgp' if variant in RSI_VARIANTS else 'common'),
         initial_stock_reference=(
             'Existing AI with omega_X=0.10 before and after an unanticipated RSI activation. '
             'Pre-event B=B0 is fixed and research is unavailable; pre-event chi=0, M=0. '
             'Each sigma inherits its own fixed-B BGP capital, with K0/Y0=3.30 and r0=0.05. '
             'Only stocks are inherited; C0 and q0 are selected anew by the positive-chi BVP. '
-            'Chi matches the rounded OECD price decline at sigma=1 and is shared across sigmas.'
-            if variant == 'rsi_activation' else
+            f'Chi targets a price ratio of {target_price_ratio(variant):.2f} over 2.25 years '
+            'at sigma=1 and is shared across sigmas.'
+            if variant in RSI_VARIANTS else
             f'No-AI Ramsey steady-state capital, B0/Bbar={initial_ratio:.2f}; omega_X=0 '
             f'before date zero and {omega_x:.2f} thereafter. Chi matches the rounded '
             'OECD price decline at sigma=1 and is held fixed across sigmas. '
@@ -89,6 +107,7 @@ def write_json(path, payload):
 
 def calibrate(variant='baseline'):
     template = make_design(PARAMETERS.chi, variant)
+    target_ratio = target_price_ratio(variant)
     output, cache = template.output_directory, template.cache_directory
     trials = []
 
@@ -110,7 +129,7 @@ def calibrate(variant='baseline'):
                 tolerance=2e-7, boundary_tolerance=1e-10, maximum_nodes=40000)
             save_solution(solution, filename)
         ratio = math.exp(log_price_ratio(solution))
-        residual = math.log(ratio / TARGET_PRICE_RATIO)
+        residual = math.log(ratio / target_ratio)
         trials.append(dict(chi=chi, price_ratio=ratio, log_target_residual=residual,
                            checkpoint=str(filename.relative_to(ROOT)),
                            maximum_rms_residual=float(np.max(solution.raw.rms_residuals))))
@@ -122,7 +141,7 @@ def calibrate(variant='baseline'):
     lower = math.log(PARAMETERS.chi)
     # For lower initial B, grow the bracket from the solved small-chi case;
     # there is no need to solve a distant high-chi candidate to bracket the target.
-    upper = math.log(2*PARAMETERS.chi if variant in ('low_ai', 'rsi_activation') else 64.0)
+    upper = math.log(2*PARAMETERS.chi if variant == 'low_ai' or variant in RSI_VARIANTS else 64.0)
     fl, fu = objective(lower), objective(upper)
     for _ in range(10):
         if fl * fu <= 0:
@@ -143,7 +162,10 @@ def calibrate(variant='baseline'):
     payload = dict(
         status='fitted_candidate_pending_equilibrium_admission', chi=chi,
         calibration_sigma=1.0, target_years=TARGET_YEARS,
-        target_price_ratio=TARGET_PRICE_RATIO, matched_price_ratio=TARGET_PRICE_RATIO*math.exp(residual),
+        target_price_ratio=target_ratio, matched_price_ratio=target_ratio*math.exp(residual),
+        observed_rounded_price_ratio=TARGET_PRICE_RATIO,
+        target_decline_fraction_of_observed=(1-target_ratio)/(1-TARGET_PRICE_RATIO),
+        target_definition='Arithmetic percentage decline over 27 months, not a log decline or a halving of chi.',
         variant=variant, design=template.name,
         target_log_residual=residual, parameters=asdict(make_design(chi, variant).parameters),
         frontier=template.frontier, initial_capital=template.initial_capital,
@@ -166,7 +188,7 @@ def calibrate(variant='baseline'):
         root_log_chi_tolerance=2e-6, trials=trials,
     )
     write_json(output/'calibration.json', payload)
-    if variant == 'rsi_activation':
+    if variant in RSI_VARIANTS:
         write_json(output/'pre_rsi_reference.json', dict(
             interpretation=template.initial_stock_reference,
             scenarios={key(s): fixed_efficiency_bgp(s, template.initial_capability,
@@ -177,7 +199,7 @@ def calibrate(variant='baseline'):
 def calibrated_design(variant='baseline'):
     path = make_design(PARAMETERS.chi, variant).output_directory/'calibration.json'
     payload = json.loads(path.read_text(encoding='utf-8'))
-    if payload['target_years'] != TARGET_YEARS or payload['target_price_ratio'] != TARGET_PRICE_RATIO:
+    if payload['target_years'] != TARGET_YEARS or payload['target_price_ratio'] != target_price_ratio(variant):
         raise ValueError('Stored calibration belongs to another price target.')
     design = make_design(payload['chi'], variant)
     if payload['parameters'] != asdict(design.parameters) or payload['frontier'] != design.frontier:
@@ -185,7 +207,7 @@ def calibrated_design(variant='baseline'):
     if (payload['initial_capital'] != design.initial_capital
             or payload['initial_capability'] != design.initial_capability):
         raise ValueError('Stored calibration belongs to other initial stocks.')
-    if variant == 'rsi_activation' and (
+    if variant in RSI_VARIANTS and (
             payload.get('initial_capital_rule') != design.initial_capital_rule
             or payload.get('initial_capital_by_sigma') != {
                 key(s): design_initial_stocks(design, s)[0] for s in SIGMAS}):
@@ -214,6 +236,12 @@ def render_comparison_views(design):
     from plot_rewrite_equilibria import (
         STYLES, PANELS_QUANTITY_GROWTH, PANELS_PRICES_RETURNS, PANELS_DISTRIBUTION,
     )
+    # Match the published RSI window figures regardless of whether render()
+    # (which styles the separate full-window figures) ran in this process.
+    plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,
+                         'axes.titlesize':12,'axes.labelsize':10,
+                         'xtick.labelsize':10,'ytick.labelsize':10,
+                         'legend.fontsize':10,'pdf.fonttype':42})
     output = design.output_directory
     manifest = json.loads((output/'figure_manifest.json').read_text())
     csv_path = output/'equilibrium_paths.csv'
@@ -223,7 +251,7 @@ def render_comparison_views(design):
         rows = [{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
     limits = manifest['analytical_limits']['sigma_1_50']
     pre = None
-    if design.name == 'rsi_activation':
+    if design.initial_capital_rule == 'fixed_efficiency_bgp':
         activation_path = output/'activation_audit.json'
         activation = json.loads(activation_path.read_text())
         if not activation['passes']:
@@ -284,7 +312,7 @@ def render_comparison_views(design):
                 axis.tick_params(length=3, color='#888888')
                 if field == 'ai_service_price' and view == 0:
                     p0 = next(r[field] for r in rows if r['sigma'] == 1. and r['time'] == 0.)
-                    axis.plot(TARGET_YEARS, TARGET_PRICE_RATIO*p0, marker='D',
+                    axis.plot(TARGET_YEARS, design_price_target(design)*p0, marker='D',
                               color='black', markersize=4, linestyle='none', zorder=5)
             if suffix == 'accumulation_growth':
                 lo=min(axes[view, j].get_ylim()[0] for j in (0,2))
@@ -306,6 +334,7 @@ def render_comparison_views(design):
                           fields=[p[0] for p in panels],
                           independent_vertical_scales_between_windows=True))
     manifest['two_window_views'] = views
+    manifest['price_target'] = dict(years=TARGET_YEARS, ratio=design_price_target(design))
     if pre:
         manifest['pre_event_bgp'] = pre
         manifest['activation_audit_sha256'] = hashlib.sha256(activation_path.read_bytes()).hexdigest()
@@ -392,6 +421,55 @@ def audit_rsi_activation(design):
         raise RuntimeError('RSI activation continuity/reference audit failed; no figure export.')
 
 
+def compare_rsi_price_targets(design):
+    """Bind the comparison to both admitted exports; never rewrite the baseline."""
+    baseline = calibrated_design('rsi_activation')
+    old_parameters, new_parameters = asdict(baseline.parameters), asdict(design.parameters)
+    old_chi, new_chi = old_parameters.pop('chi'), new_parameters.pop('chi')
+    if old_parameters != new_parameters or baseline.frontier != design.frontier:
+        raise ValueError('The price sensitivity also changed another parameter.')
+    initial_stocks = {}
+    for sigma in SIGMAS:
+        a,b = design_initial_stocks(baseline,sigma), design_initial_stocks(design,sigma)
+        if a != b:
+            raise ValueError('The price sensitivity changed initial stocks.')
+        initial_stocks[key(sigma)] = dict(capital=a[0],capability=a[1])
+    cases = {}
+    for candidate in (baseline, design):
+        folder = candidate.output_directory
+        calibration = json.loads((folder/'calibration.json').read_text())
+        summary = json.loads((folder/'summary.json').read_text())
+        event = json.loads((folder/'activation_audit.json').read_text())
+        digest = hashlib.sha256((folder/'equilibrium_paths.csv').read_bytes()).hexdigest()
+        if (calibration['status'] != 'numerically_admitted' or not event['passes']
+                or summary['data_sha256'] != digest):
+            raise ValueError('The comparison requires admitted, hash-matched source data.')
+        initial = {}
+        for sigma in SIGMAS:
+            row = summary['scenarios'][key(sigma)]['snapshots']['0.0']
+            activation = event['scenarios'][key(sigma)]
+            initial[key(sigma)] = dict(
+                output_per_person_growth=row['output_per_person_growth'],
+                wage_growth=row['wage_growth'],net_interest=row['net_interest'],
+                consumption_jump=activation['consumption_jump'],
+                gross_investment_output_share=activation['post_gross_investment_output_share'],
+                research_output_share=row['research_output_share'],
+                profit_output_share=row['profit_output_share'],
+                research_revenue_share=row['research_revenue_share'],
+                profit_revenue_share=row['profit_revenue_share'])
+        cases[candidate.name] = dict(
+            chi=candidate.parameters.chi, data_sha256=digest,
+            target_price_ratio=design_price_target(candidate),
+            matched_price_ratio=calibration['refined_matched_price_ratio'],
+            activation_audit_sha256=hashlib.sha256((folder/'activation_audit.json').read_bytes()).hexdigest(),
+            initial=initial, transition_dates=summary['sigma_1_50_transition_dates'])
+    write_json(design.output_directory/'comparison_to_full_decline.json',dict(
+        same_parameters_except_chi=True,same_initial_stocks=True,
+        common_initial_stocks=initial_stocks,chi_ratio=new_chi/old_chi,
+        target_definition='Half of the arithmetic percentage decline over 2.25 years.',
+        cases=cases))
+
+
 def finish(design):
     cache, output = design.cache_directory, design.output_directory
     calibration = output/'calibration.json'
@@ -447,12 +525,12 @@ def finish(design):
         raise RuntimeError('Incomplete equilibrium admission: no path or figure export.')
     unit = load_solution(cache / f'{key(1.0)}_long.npz')
     final_ratio = math.exp(log_price_ratio(unit))
-    if abs(math.log(final_ratio/TARGET_PRICE_RATIO)) > 2e-5:
+    if abs(math.log(final_ratio/design_price_target(design))) > 2e-5:
         raise RuntimeError('Price match changed after horizon refinement; recalibration required.')
     payload = json.loads(calibration.read_text(encoding='utf-8'))
     payload.update(status='numerically_admitted', refined_matched_price_ratio=final_ratio,
                    final_checkpoint_sha256=hashlib.sha256((cache/f'{key(1.0)}_long.npz').read_bytes()).hexdigest())
-    if design.name == 'rsi_activation':
+    if design.initial_capital_rule == 'fixed_efficiency_bgp':
         audit_rsi_activation(design)
     write_json(calibration, payload)
     export_paths(design.display_horizon, 4001, design,
@@ -460,6 +538,8 @@ def finish(design):
     render(design)
     render_comparison_views(design)
     summarize(design)
+    if design.name == 'rsi_activation_half_decline':
+        compare_rsi_price_targets(design)
 
 
 def main():

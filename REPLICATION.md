@@ -37,11 +37,24 @@ event-continuity audit, verifies the final price match, and only then
 exports all four paths. See `numerical_rewrite/rsi_activation/README.md`.
 
 The default `python scripts/reproduce_rewrite_results.py` reproduces this
-exercise. Add `--include-legacy` to regenerate the earlier comparisons as
+exercise and the half-decline sensitivity below. Add `--include-legacy` to regenerate the earlier comparisons as
 well. All old data, figures, and texts remain intact. In `main_rewrite.tex`,
 `\showlegacysimulationsfalse` displays RSI activation; changing it to
 `\showlegacysimulationstrue` restores the earlier quantitative section and
 numerical appendix. This is an editorial switch, not a simulation setting.
+
+## Half of the observed percentage price decline
+
+The additional subsection changes only the price target: a 40% decline
+over 27 months, hence `p_X(2.25)/p_X(0)=0.60`. It is half the observed
+rounded percentage decline, not half its log change or half of chi.
+Run `python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline`
+and then `python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.py -v`.
+The same staged flags apply. Initial stocks, other parameters, equilibrium
+equations, tolerances, and figure windows are unchanged. Outputs and
+checkpoints have separate folders; the original 80% exercise is preserved.
+The default reproduction driver runs both active RSI comparisons before
+any optional legacy comparisons.
 
 ## Preserved earlier comparisons
 

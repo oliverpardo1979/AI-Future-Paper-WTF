@@ -1,0 +1,69 @@
+\subsection{A slower decline in the AI-service price}
+\label{subsec:rewrite-rsi-half-decline}
+
+I repeat the RSI-activation exercise with a price decline half as large as
+the rounded observed decline. At $\sigma=1$, I now calibrate $\chi$ to
+\begin{equation}
+ \frac{p_X(2.25)}{p_X(0)}=1-\frac{0.80}{2}=0.60.
+ \label{eq:rewrite-rsi-half-price-target}
+\end{equation}
+The target is a $40\%$ decline over 2.25 years, rather than $80\%$.
+It halves the percentage decline, not its logarithm, the annual growth
+rate, or $\chi$ itself. This is an illustrative sensitivity exercise,
+not a second empirical estimate or an estimate of how monopoly changes
+the pace of price declines.
+
+At unit elasticity, Equation~\eqref{eq:rewrite-monopoly-foc} gives a
+constant markup and a price inversely proportional to $B$. The original
+target therefore requires $B$ to increase fivefold within 2.25 years;
+the new target requires an increase by a factor of $5/3$. Halving the
+percentage price decline does not halve the required efficiency gain.
+
+All other parameters and initial stocks are unchanged. Each economy starts
+on the same fixed-efficiency BGP as in
+Section~\ref{subsec:rewrite-rsi-activation}, with existing AI and
+$K_0/Y_0=3.30$. RSI is activated unexpectedly at date zero. I recalibrate
+$\chi$ at unit elasticity, hold it fixed across the other three elasticities,
+and solve consumption and research again using the same BVP and equilibrium
+checks. The new paths are not time-rescaled versions of the earlier paths.
+Table~\ref{tab:rewrite-rsi-half-parameters} reports the parameters and initial stocks.
+
+\input{sections_rewrite/rsi_half_decline_parameters}
+\input{sections_rewrite/rsi_half_decline_results}
+
+Figures~\ref{fig:rewrite-rsi-half-accumulation}--\ref{fig:rewrite-rsi-half-distribution}
+retain the variables, normalizations, line styles, and time windows of the
+preceding exercise. Vertical scales may differ between exercises to keep
+the individual paths legible. Dotted horizontal lines show the unchanged
+analytical limits for $\sigma=1.50$.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_accumulation_growth_windows.pdf}
+ \caption{A $40\%$ price-decline target: growth of output, AI production
+ services, and capital per unit of effective labor. Rates are instantaneous
+ annual rates. The upper row shows two pre-event years and years 0--10;
+ the lower row shows years 10--500. Panels A and C share a scale within
+ each row. The vertical line marks RSI activation.}
+ \label{fig:rewrite-rsi-half-accumulation}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_growth_returns_windows.pdf}
+ \caption{A $40\%$ price-decline target: real-wage growth, the net interest
+ rate, and the AI-service price. Rates are annual; the price is in final-good
+ units on a logarithmic scale. The diamond marks the unit-elastic target
+ $p_X(2.25)/p_X(0)=0.60$. The vertical line marks RSI activation.}
+ \label{fig:rewrite-rsi-half-prices}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_ai_distribution_windows.pdf}
+ \caption{A $40\%$ price-decline target: labor income, AI net profit,
+ inference expenditure, and research expenditure relative to output.
+ The first two rows show the pre-event BGP and years 0--10; the last two
+ show years 10--500. The omitted gross capital share remains $\alpha=0.33$.}
+ \label{fig:rewrite-rsi-half-distribution}
+\end{figure}
