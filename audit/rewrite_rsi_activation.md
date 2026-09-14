@@ -108,3 +108,7 @@ editorial switch positions compile without unresolved references or overfull
 boxes. The contents, parameter table, new figure pages, and numerical
 appendix were rendered and inspected. The old data and figure files were
 not modified.
+
+The new JSON/CSV artifacts have Git line-ending conversion disabled in
+`.gitattributes`: their byte-level provenance hashes must survive checkouts
+on both Windows and Linux. This rule does not touch legacy artifacts.
