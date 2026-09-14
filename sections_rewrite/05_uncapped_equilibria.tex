@@ -112,15 +112,17 @@ Solving these relations gives candidate growth rates. The next proposition
 establishes that they belong to an equilibrium.
 
 \Needspace{7\baselineskip}
-\begin{proposition}[An uncapped balanced-growth equilibrium]
+\begin{proposition}[An uncapped balanced-growth equilibrium and local convergence]
 \label{prop:rewrite-uncapped-unit-bgp}
+\label{prop:rewrite-uncapped-unit-local}
 Suppose $\sigma=1$, $\overline B=\infty$, and
 \begin{equation}
  0<\eta<\alpha,\qquad
  (1-\alpha)\omega_X\leq\tfrac12,\qquad \eta+\omega_X<1.
  \label{eq:rewrite-uncapped-unit-sufficient}
 \end{equation}
-For every $A_0,N_0>0$, there exist $K_0,B_0>0$ and an equilibrium such that
+For every $A_0,N_0>0$, there exist $K_0,B_0>0$ and a balanced-growth
+equilibrium along which
 \begin{align}
  g_{Y/N}=g_w& =\gamma+\frac{\eta\omega_X}{1-\eta-\omega_X}(n+\gamma),
  \label{eq:rewrite-uncapped-unit-wage-growth}\\
@@ -131,6 +133,17 @@ For every $A_0,N_0>0$, there exist $K_0,B_0>0$ and an equilibrium such that
  g_B&=\frac{\eta(1-\omega_X)}{1-\eta-\omega_X}(n+\gamma).
  \label{eq:rewrite-uncapped-unit-efficiency-growth}
 \end{align}
+Fix this BGP. If the local stability and state-projection conditions
+\eqref{eq:rewrite-uncapped-unit-local-spectrum}
+and~\eqref{eq:rewrite-uncapped-unit-local-projection} in
+Appendix~\ref{app:rewrite-uncapped-unit} hold, then for every sufficiently
+small neighborhood of the BGP in stationary coordinates, there is an open
+neighborhood of its initial stocks such that every $(K_0,B_0)$ in that
+stock neighborhood admits an equilibrium that stays in the chosen
+stationary neighborhood and converges to the BGP. The required $C_0,q_0$
+are continuously differentiable functions of $K_0,B_0$. The equilibrium
+is locally unique among trajectories that remain in that neighborhood
+and converge to this BGP.
 %Both agents attain finite-valued global optima; both transversality conditions hold.
 \end{proposition}
 \begin{proof}
@@ -140,10 +153,14 @@ Proposition~\ref*{prop:rewrite-uncapped-unit-bgp}}.
 \end{proof}
 
 This is balanced growth, not a steady state in levels. The proposition
-constructs the initial stocks together with the equilibrium; it does not
-establish existence for arbitrary $K_0,B_0$. Appendix~\ref{app:rewrite-uncapped-unit}
-derives all allocation ratios and states sufficient conditions for
-equilibrium trajectories from nearby stocks that need not lie on the BGP.
+first constructs the BGP and then allows nearby initial stocks off that
+path. Along the resulting equilibria, growth rates and the interest rate
+converge to the displayed values; they need not equal them at every date.
+Consumption and the shadow price adjust to the given stocks, rather than
+being freely specified initial conditions. The local conditions hold at
+the calibration in Table~\ref{tab:rewrite-parameters}, as verified in
+Appendix~\ref{app:rewrite-uncapped-unit}. This does not establish existence
+or convergence for arbitrary $K_0,B_0$.
 The condition $\eta+\omega_X<1$ is necessary for this positive finite-rate
 BGP. The remaining restrictions are sufficient for the global optimality
 proof, not asserted to be necessary for equilibrium existence. The proof

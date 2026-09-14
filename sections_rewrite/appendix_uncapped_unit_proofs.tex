@@ -3,6 +3,7 @@
 \phantomsection
 \label{proof:rewrite-uncapped-unit-bgp}
 Use the definitions in Appendix~\ref{app:rewrite-uncapped-unit}.
+\textit{The reference BGP.}
 First, all candidate ratios are positive. The research denominator
 $\rho-n+\eta g_Y^*$ is positive. Moreover,
 \[
@@ -157,10 +158,9 @@ face a concave constant-returns technology, and
 Lemma~\ref{lem:rewrite-monopoly-choice} establishes global static monopoly
 optimality. The constructed path satisfies Definition~\ref{def:rewrite-equilibrium}
 with the uncapped research law~\eqref{eq:rewrite-uncapped-unit-law}.
-\end{proof}
 
-\Needspace{7\baselineskip}
-\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-unit-local}]
+\medskip
+\textit{Local convergence from nearby initial stocks.}
 \phantomsection
 \label{proof:rewrite-uncapped-unit-local}
 Use the ordering $\xi=(\xi_K,\xi_B,\xi_C,\xi_q)'$ in
@@ -200,17 +200,38 @@ All entries depend on growth rates and ratios, which are independent of
 $\chi$. No terminal restrictions were used to derive this Jacobian.
 
 The exact normalized vector field is continuously differentiable near
-$\xi=0$. By the assumed hyperbolicity and the two stable eigenvalues,
+$\xi=0$. By condition~\eqref{eq:rewrite-uncapped-unit-local-spectrum},
 the stable-manifold theorem supplies a two-dimensional local manifold
 whose trajectories remain near zero and converge exponentially.
 The derivative of its projection onto $(\xi_K,\xi_B)$ is $V_{KB}$.
-The inverse-function theorem therefore makes this manifold locally the
+Condition~\eqref{eq:rewrite-uncapped-unit-local-projection} and the
+inverse-function theorem therefore make this manifold locally the
 graph of a continuously differentiable function selecting $(\xi_C,\xi_q)$
 from the two initial stock deviations. Since exponentiation is a local
 diffeomorphism, the same holds for $(C_0,q_0)$ as functions of $(K_0,B_0)$.
-Shrinking the neighborhood preserves positivity, feasibility, and
-existence for every $t\geq0$. This is local uniqueness among trajectories
-that remain in the neighborhood and converge to the BGP.
+More explicitly, for some constants $a,H>0$, trajectories on a sufficiently
+small stable manifold satisfy
+\[
+ \|\xi(t)\|\leq H e^{-at}\|\xi(0)\|,\qquad t\geq0.
+\]
+For any sufficiently small open neighborhood $\mathcal V$ of zero,
+choose a ball contained in $\mathcal V$. Continuity of the graph selecting
+the two jump variables permits an open neighborhood $\mathcal U$ of the
+initial stock deviations for which $H\|\xi(0)\|$ is smaller than that
+ball's radius. Every initial stock pair in $\mathcal U$ therefore has a
+trajectory staying in $\mathcal V$ for all $t\geq0$ and converging to zero.
+Exponentiation maps $\mathcal U$ to an open neighborhood of
+$(K_0^*,B_0^*)$. Shrinking these neighborhoods preserves positivity,
+feasibility, and existence for every $t\geq0$. Local uniqueness follows
+because every trajectory remaining in this local region and converging
+to zero belongs to the same stable manifold, which is a graph over stocks.
+This does not assert convergence from arbitrary initial $C_0,q_0$ or
+exclude equilibrium trajectories that leave the region.
+
+Since $f(\xi(t))\to0$, growth rates converge to their BGP values, not only
+normalized levels. The static equations give the same convergence for
+the interest rate, wage growth, and allocation ratios. The unit-elastic
+labor income share remains $(1-\alpha)\omega_L$ at every date.
 
 Exponential convergence implies that $r_t-r^*$ is integrable. Thus
 $D_t/e^{-r^*t}$ tends to a finite positive constant, and both TVC expressions
@@ -221,7 +242,7 @@ to finite positive limits. Both TVCs hold. Output and all expenditure
 flows are bounded multiples of $e^{g_Y^*t}$, while log consumption per
 person is a linear function of time plus a bounded deviation. Both
 objective integrals therefore remain finite. The global concavity
-verification in the proof of Proposition~\ref{prop:rewrite-uncapped-unit-bgp}
+verification established above
 applies at these new price and allocation paths, proving agent optimality.
 Static optimality and market clearing then establish equilibrium, not
 merely a solution of the necessary conditions.

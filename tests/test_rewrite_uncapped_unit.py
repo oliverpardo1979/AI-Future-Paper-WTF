@@ -18,6 +18,7 @@ from define_positive_ai_branch import (  # noqa: E402
     PositiveAIBenchmarkParameters,
     balanced_growth_seed,
     canonical_seed_residuals,
+    normalized_dynamics,
     normalized_jacobian,
     stable_subspace,
 )
@@ -261,6 +262,49 @@ class UncappedUnitAppendix(unittest.TestCase):
         self.assertIn("a superscript $*$ denotes the reference", appendix)
         self.assertIn(r"\xi_K=\log\frac K{K^*}", appendix)
 
+    def test_stable_graph_selects_both_jumps_for_independent_stock_changes(self):
+        # Verify the tangent graph used in the inverse-function argument.
+        # The nonlinear stable manifold and equilibrium existence are proved
+        # analytically; this test does not call its tangent an equilibrium.
+        for eta, alpha, wx in ((0.2, 0.33, 0.2), (0.6, 0.7, 0.2)):
+            p = PositiveAIBenchmarkParameters(eta=eta, alpha=alpha, omega_x=wx)
+            seed = balanced_growth_seed(p)
+            J = normalized_jacobian(np.zeros(4), p, seed)
+            V = stable_subspace(p, seed).stable_basis
+            jump_derivative = np.linalg.solve(V[:2].T, V[2:].T).T
+            tangent = np.vstack((np.eye(2), jump_derivative))
+            stock_dynamics = J[:2] @ tangent
+            np.testing.assert_allclose(J @ tangent, tangent @ stock_dynamics,
+                                       atol=2e-13, rtol=2e-12)
+            self.assertTrue(np.all(np.linalg.eigvals(stock_dynamics).real < 0))
+            # For independent stock perturbations the linear graph's defect
+            # in the exact vector field is quadratic, not identically zero.
+            for direction in (np.array([1., 0.]), np.array([0., 1.]),
+                              np.array([1., -1.])):
+                defects = []
+                for radius in (1e-3, 5e-4, 2.5e-4):
+                    field = normalized_dynamics(tangent @ (radius*direction), p, seed)
+                    defects.append(np.linalg.norm(field[2:]-jump_derivative @ field[:2]))
+                self.assertGreater(defects[-1], 0)
+                np.testing.assert_allclose(np.array(defects[1:])/defects[:-1],
+                                           0.25, rtol=0.01, atol=0)
+
+    def test_local_convergence_is_inside_main_proposition_and_quantified_in_proof(self):
+        body = (ROOT / "sections_rewrite/05_uncapped_equilibria.tex").read_text(encoding="utf-8")
+        statement = body.split(r"\label{prop:rewrite-uncapped-unit-bgp}", 1)[1].split(
+            r"\end{proposition}", 1)[0]
+        text = " ".join(statement.split())
+        self.assertIn("every $(K_0,B_0)$", text)
+        self.assertIn("for every sufficiently small neighborhood", text)
+        self.assertIn("stays in the chosen stationary neighborhood and converges", text)
+        self.assertIn("locally unique among trajectories", text)
+        for condition in ("local-spectrum", "local-projection"):
+            self.assertIn(r"\eqref{eq:rewrite-uncapped-unit-"+condition+"}", statement)
+        proof = (ROOT / "sections_rewrite/appendix_uncapped_unit_proofs.tex").read_text(encoding="utf-8")
+        self.assertIn(r"\|\xi(t)\|\leq H e^{-at}\|\xi(0)\|", proof)
+        self.assertIn("global concavity", proof)
+        self.assertIn("Both TVCs hold", proof)
+
     def test_source_scope_numbering_and_single_proof_section(self):
         appendix = (ROOT / "sections_rewrite/appendix_uncapped_unit.tex").read_text(encoding="utf-8")
         proofs = (ROOT / "sections_rewrite/appendix_uncapped_unit_proofs.tex").read_text(encoding="utf-8")
@@ -271,14 +315,14 @@ class UncappedUnitAppendix(unittest.TestCase):
         self.assertLess(existing.index(r"\input{sections_rewrite/appendix_uncapped_unit_proofs}"),
                         existing.index(r"\section{Numerical algorithm"))
         self.assertNotRegex(proofs, r"\\(?:sub)*section\{")
-        self.assertEqual(appendix.count(r"\begin{proposition}"), 1)
+        self.assertEqual(appendix.count(r"\begin{proposition}"), 0)
         for suffix in ("bgp", "local"):
             label = "prop:rewrite-uncapped-unit-" + suffix
-            location = body if suffix == "bgp" else appendix
-            other = appendix if suffix == "bgp" else body
-            self.assertIn(r"\label{" + label + "}", location)
-            self.assertNotIn(r"\label{" + label + "}", other)
-            self.assertIn(r"\begin{proof}[Proof of Proposition~\ref{" + label + "}]", proofs)
+            self.assertIn(r"\label{" + label + "}", body)
+            self.assertNotIn(r"\label{" + label + "}", appendix)
+            self.assertIn(r"\label{proof:rewrite-uncapped-unit-"+suffix+"}", proofs)
+        self.assertEqual(proofs.count(r"\begin{proof}"), 1)
+        self.assertIn(r"\begin{proof}[Proof of Proposition~\ref{prop:rewrite-uncapped-unit-bgp}]", proofs)
         self.assertNotRegex(appendix + proofs, r"\\gamma_A|\\sigma_\{XL\}|\\omega_H|\\sigma_\{HM\}")
         self.assertIn("not every possible equilibrium", appendix)
         self.assertIn("local in initial stocks, not in time", appendix)
@@ -286,7 +330,7 @@ class UncappedUnitAppendix(unittest.TestCase):
         for suffix in ("household-tvc", "developer-tvc", "developer-verification"):
             self.assertIn(r"\label{eq:rewrite-uncapped-unit-" + suffix + "}", proofs)
         bgp = re.search(
-            r"\\begin\{proposition\}\[An uncapped balanced-growth equilibrium\].*?\\end\{proposition\}",
+            r"\\begin\{proposition\}\[An uncapped balanced-growth equilibrium and local convergence\].*?\\end\{proposition\}",
             body, re.S,
         ).group()
         self.assertNotIn(r"\eta\leq", bgp)
