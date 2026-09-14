@@ -1,6 +1,20 @@
 \subsection{A lower AI weight and a higher efficiency bound}
 \label{subsec:rewrite-low-ai-price-calibration}
 
+Table~\ref{tab:rewrite-low-ai-price-parameters} lists the full configuration,
+including the changed upper bound and the recalibrated research productivity.
+\begin{rewriteParameterTable}{Lower AI weight: parameters and initial stocks}{tab:rewrite-low-ai-price-parameters}
+$\omega_X$ & 0.10 & AI production weight & Arbitrary lower-weight scenario, not fitted to the industry's size; zero before date zero.\\
+$\omega_L$ & 0.90 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
+$\chi$ & 36.031845 & Research productivity & Refitted at $\sigma=1$ to $p_X(2.25)/p_X(0)=0.20$; same approximate OECD target \citep{oecdaimarkets2026}.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenarios; the fitted $\chi$ is shared across all four.\\
+$\overline B$ & 1,360.992139 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$ evaluated at $\omega_X=0.10$; arbitrary 10\% margin chosen to keep $\sigma=1.50$ AI-dominated.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
+$K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}.\\
+$B_0$ & 13.609921 & Initial AI efficiency & $0.01\overline B$; arbitrary initial distance from the higher bound, not an estimate.\\
+\end{rewriteParameterTable}
+
 I repeat the price-calibrated comparison with $\omega_X=0.10$ and
 $\omega_L=0.90$, starting AI efficiency at $1\%$ of its upper bound.
 Reducing the AI weight raises the threshold for AI domination. At

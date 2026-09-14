@@ -1,5 +1,6 @@
 \section{Quantitative equilibrium paths}
 \label{sec:rewrite-quantitative}
+\input{sections_rewrite/parameter_tables}
 
 \subsection{Parameters and initial conditions}
 \label{subsec:rewrite-calibration}
@@ -11,31 +12,9 @@ are illustrative, not estimated. All four economies have autonomous research
 and a positive AI weight; the no-AI economy in Remark~\ref{rem:rewrite-no-ai}
 is not one of these four scenarios.
 
-\begin{table}[H]
-\centering
-\caption{Parameters and scenario choices}
-\label{tab:rewrite-parameters}
-\small
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.10}
-\begin{tabular}{P{0.10\textwidth}P{0.17\textwidth}P{0.27\textwidth}P{0.35\textwidth}}
-\toprule
-Parameter & Value & Interpretation & Source or rationale\\
-\midrule
-$\alpha$ & 0.33 & Output elasticity with respect to capital & Standard one-third macro benchmark\\
-$\delta$ & 0.05 & Annual capital depreciation & Annual benchmark; PWT comparison \citep{pwt110}\\
-$\rho$ & 0.04 & Annual household discount rate & Preference calibration\\
-$n$ & 0.003 & Annual population growth & Constant-rate approximation to the UN 2024--2100 world projection \citep{unwpp2024}\\
-$\gamma$ & 0.01 & Annual growth of labor-augmenting technology & Illustrative long-run trend; see \citet{oecdlongrun2025}\\
-$\omega_X$ & 0.20 & Weight on effective AI production services & Scenario choice, not an observed industry share\\
-$\omega_L$ & 0.80 & Weight on effective labor & $1-\omega_X$\\
-$\eta$ & 0.20 & Research exponent & Illustrative choice; not estimated\\
-$\chi$ & 1.4378 & Research productivity & Calibrated transition-speed parameter\\
-$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Four scenarios spanning the analytical regimes\\
-$\overline B$ & $1.10\,\mathcal B(1.50)$ $\simeq170.124$ & Common upper bound on AI efficiency & Ten percent above the threshold for $\sigma=1.50$\\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{rewriteParameterTable}{Main comparison: parameters and initial stocks}{tab:rewrite-parameters}
+\rewriteMainParameterRows
+\end{rewriteParameterTable}
 
 The constant $n$ extrapolates a finite-period demographic approximation; it
 is not a claim that the UN projects constant population growth forever.
@@ -90,6 +69,13 @@ neither jump variable is fixed at its uncapped reference value.
 \subsection{Numerical method and equilibrium admission}
 \label{subsec:rewrite-method}
 
+Table~\ref{tab:rewrite-method-parameters} repeats the inputs passed to the
+algorithm for the main comparison. Each subsequent exercise reports its own
+configuration in a separate table.
+\begin{rewriteParameterTable}{Inputs to the main-comparison algorithm}{tab:rewrite-method-parameters}
+\rewriteMainParameterRows
+\end{rewriteParameterTable}
+
 I retain the four-dimensional boundary-value architecture: two initial stock
 conditions and two terminal conditions selecting the stable equilibrium
 continuation. The appropriate regime with a finite upper bound from
@@ -116,6 +102,12 @@ long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 
 \subsection{Growth, prices, and the distribution of output}
 \label{subsec:rewrite-distribution}
+
+Table~\ref{tab:rewrite-distribution-parameters} repeats the inputs used in
+this comparison so that the figures can be read with their own configuration.
+\begin{rewriteParameterTable}{Growth and distribution: parameters and initial stocks}{tab:rewrite-distribution-parameters}
+\rewriteMainParameterRows
+\end{rewriteParameterTable}
 
 Figures~\ref{fig:rewrite-accumulation-growth}--\ref{fig:rewrite-ai-distribution}
 present the transition in three steps: quantities and accumulation, prices and
@@ -323,6 +315,20 @@ essential to interpreting the comparison.
 \subsection{A transition from the no-AI steady state}
 \label{subsec:rewrite-ramsey-start}
 
+Table~\ref{tab:rewrite-ramsey-parameters} gives the inputs after the change
+in technology; before date zero the production weights are $(1,0)$.
+\begin{rewriteParameterTable}{Ramsey-start transition: parameters and initial stocks}{tab:rewrite-ramsey-parameters}
+$\omega_X$ & 0.20 & AI production weight & Arbitrary post-change weight; zero before date zero.\\
+$\omega_L$ & 0.80 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
+$\chi$ & 1.4378 & Research productivity & Retained from the main comparison's arbitrary 50-year timing calibration; not refitted here.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenario values; irrelevant in the pre-change no-AI economy.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
+$K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}; not independently chosen.\\
+$B_0$ & 1.701240 & Initial AI efficiency & $0.01\overline B$; arbitrary latent efficiency, not identified by the no-AI economy.\\
+\end{rewriteParameterTable}
+
 As an additional transition experiment, suppose that the economy is initially
 on the no-AI Ramsey--Cass--Koopmans steady state described in
 Remark~\ref{rem:rewrite-no-ai}. Before date zero, $\omega_X=0$ and
@@ -431,6 +437,20 @@ elasticity-specific threshold.
 \subsection{Near-terminal paths}
 \label{subsec:rewrite-near-terminal}
 
+Table~\ref{tab:rewrite-near-terminal-parameters} separates the chosen
+initial efficiency from the capital stocks calculated for each terminal regime.
+\begin{rewriteParameterTable}{Near-terminal paths: parameters and initial stocks}{tab:rewrite-near-terminal-parameters}
+$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the main comparison.\\
+$\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
+$\chi$ & 1.4378 & Research productivity & Retained from the main timing calibration; no new timing target.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & The same four arbitrary scenario values.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
+$K_0$ & 6.5571 ($\sigma=0.90$);\newline 9.0990 ($\sigma=1$);\newline 12.2652 ($\sigma=1.10$);\newline $4{,}101{,}704.23$ ($\sigma=1.50$) & Initial capital & Calculated from the terminal normalized stocks, Equations~\eqref{eq:rewrite-near-terminal-stocks}--\eqref{eq:rewrite-near-terminal-ai-stock}; not empirical estimates.\\
+$B_0$ & 170.107005 & Initial AI efficiency & $0.9999\overline B$; arbitrary diagnostic proximity to the bound, preserving positive research.\\
+\end{rewriteParameterTable}
+
 The initially high and declining growth rates of the three labor-bottleneck
 paths in the main comparison are not their long-run prediction. They partly
 reflect the distance between the common initial stocks in
@@ -503,6 +523,20 @@ the main comparison.
 
 \subsection{A slower transition}
 \label{subsec:rewrite-slow-transition}
+
+Table~\ref{tab:rewrite-slow-parameters} records the recovered slow-transition
+configuration, including the provenance of its initial stocks.
+\begin{rewriteParameterTable}{Slower transition: parameters and initial stocks}{tab:rewrite-slow-parameters}
+$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the main comparison.\\
+$\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
+$\chi$ & 0.01 & Research productivity & Arbitrary value from the earlier slow-transition design; not fitted to a date or an empirical moment.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & The same four arbitrary scenario values.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
+$K_0$ & 2.027733654 & Initial capital & Calculated from the earlier uncapped unit-elastic BGP; adopting that reference is an illustrative choice.\\
+$B_0$ & 0.443670932 & Initial AI efficiency & Same uncapped BGP reference; about $0.2608\%$ of $\overline B$. Not an empirical estimate.\\
+\end{rewriteParameterTable}
 
 The 50-year midpoint in the main comparison is a timing calibration rather
 than a prediction. To show how strongly the transition can stretch out, I
@@ -581,6 +615,20 @@ two timing calibrations is empirically more plausible.
 
 \subsection{Initial financing sensitivity}
 \label{subsec:rewrite-technology-revenue}
+
+Table~\ref{tab:rewrite-financing-parameters} compares the two configurations
+used for the $\sigma=1.50$ financing exercise.
+\begin{rewriteParameterTable}{Initial financing: main and distant-stock configurations}{tab:rewrite-financing-parameters}
+$\omega_X$ & 0.20 & AI production weight & Same arbitrary weight in both configurations.\\
+$\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
+$\chi$ & 1.4378 (main);\newline 1.4223 (distant) & Research productivity & Each fitted to the same arbitrary 50-year labor-share midpoint, not to data.\\
+$\sigma$ & 1.50 & AI--labor substitution & Arbitrary high-substitution scenario used for this financing comparison.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & Same $1.10\mathcal B(1.50)$ in both configurations; arbitrary 10\% margin.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations in both configurations.\\
+$K_0$ & 4 (main);\newline 2.027733654 (distant) & Initial capital & Main: arbitrary intermediate stock. Distant: earlier uncapped BGP stock, used as an illustrative reference.\\
+$B_0$ & 17.012402 (main);\newline 0.443670932 (distant) & Initial AI efficiency & Main: arbitrary $10\%$ of the bound. Distant: earlier BGP value, about $0.2608\%$ of the bound; not estimated.\\
+\end{rewriteParameterTable}
 
 Moving the common initial stocks closer to the $\sigma=1$ terminal regime
 materially reduces the initial financing requirement. In the reported

@@ -1,0 +1,41 @@
+% Shared presentation only: these commands do not set simulation inputs.
+\newenvironment{rewriteParameterTable}[2]{%
+\begin{table}[H]
+\centering
+\caption{#1}
+\label{#2}
+\small\setstretch{1.0}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{P{0.08\textwidth}P{0.22\textwidth}P{0.21\textwidth}P{0.40\textwidth}}
+\toprule
+Symbol & Value & Interpretation & Source or justification\\
+\midrule
+$\alpha$ & 0.33 & Output elasticity with respect to capital & Assumed one-third macro benchmark; not estimated here.\\
+$\delta$ & 0.05 & Capital depreciation rate & Assumed annual benchmark; PWT provides a comparison, not a fitted target \citep{pwt110}.\\
+$\rho$ & 0.04 & Household discount rate & Assumed preference parameter; not estimated.\\
+$n$ & 0.003 & Population growth rate & Rounded constant-rate approximation to the UN 2024--2100 world projection, not a perpetual UN forecast \citep{unwpp2024}.\\
+$\gamma$ & 0.01 & Growth of labor-augmenting technology & Arbitrary trend assumption. OECD labor-productivity projections guide its magnitude but do not measure $A$ \citep{oecdlongrun2025}.\\
+$\eta$ & 0.20 & Research exponent & Arbitrary illustrative value satisfying $\eta<\alpha$ and $\eta\leq1/2$; not estimated.\\
+}{%
+\bottomrule
+\end{tabular}
+\par\vspace{4pt}
+\parbox{0.98\textwidth}{\footnotesize\emph{Notes:} Rates are annual. Values are
+rounded for display; the simulations retain their original precision.
+$L_0=N_0$. Initial consumption $C_0$ and the developer's shadow value $q_0$
+are selected endogenously by the BVP for each path, not supplied as inputs.}
+\end{table}
+}
+
+\newcommand{\rewriteMainParameterRows}{%
+$\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice, not an observed industry share.\\
+$\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
+$\chi$ & 1.4378 & Research productivity & Fitted to a 50-year labor-share midpoint at $\sigma=1.50$. The timing target is arbitrary, not empirical.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenario values spanning the analytical regimes.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$: an arbitrary 10\% margin above the analytical threshold, not an estimated bound.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
+$K_0$ & 4 & Initial capital & Arbitrary intermediate stock, chosen to reduce the initial financing requirement.\\
+$B_0$ & 17.0124 & Initial AI efficiency & $0.10\overline B$; arbitrary initial distance from the upper bound.\\
+}

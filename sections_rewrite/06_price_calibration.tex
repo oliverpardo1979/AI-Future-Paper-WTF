@@ -1,6 +1,20 @@
 \subsection{A transition calibrated to falling AI-service prices}
 \label{subsec:rewrite-price-calibration}
 
+Table~\ref{tab:rewrite-price-parameters} distinguishes the empirical price
+target from the assumed weights and initial efficiency.
+\begin{rewriteParameterTable}{Price-calibrated transition: parameters and initial stocks}{tab:rewrite-price-parameters}
+$\omega_X$ & 0.20 & AI production weight & Arbitrary post-change weight, not fitted to the industry's size; zero before date zero.\\
+$\omega_L$ & 0.80 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
+$\chi$ & 51.760525 & Research productivity & Fitted at $\sigma=1$ to $p_X(2.25)/p_X(0)=0.20$; rounded OECD price decline, subject to the qualifications below \citep{oecdaimarkets2026}.\\
+$\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenarios; only the unit-elastic price decline is fitted.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+\midrule
+$A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
+$K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}.\\
+$B_0$ & 17.012402 & Initial AI efficiency & $0.10\overline B$; arbitrary assumption, not identified by the no-AI economy.\\
+\end{rewriteParameterTable}
+
 I now replace the illustrative transition-speed target with an observed
 decline in AI-service prices. The OECD's quality-adjusted price index for
 text-to-text models fell by nearly $80\%$ between January 2024 and April 2026
