@@ -37,7 +37,8 @@ event-continuity audit, verifies the final price match, and only then
 exports all four paths. See `numerical_rewrite/rsi_activation/README.md`.
 
 The default `python scripts/reproduce_rewrite_results.py` reproduces this
-exercise and the half-decline sensitivity below. Add `--include-legacy` to regenerate the earlier comparisons as
+exercise, the half-decline sensitivity, and the approximate unit-elastic
+research-expenditure calibration below. Add `--include-legacy` to regenerate the earlier comparisons as
 well. All old data, figures, and texts remain intact. In `main_rewrite.tex`,
 `\showlegacysimulationsfalse` displays RSI activation; changing it to
 `\showlegacysimulationstrue` restores the earlier quantitative section and
@@ -53,36 +54,36 @@ and then `python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.
 The same staged flags apply. Initial stocks, other parameters, equilibrium
 equations, tolerances, and figure windows are unchanged. Outputs and
 checkpoints have separate folders; the original 80% exercise is preserved.
-The default reproduction driver runs both active RSI comparisons before
+The default reproduction driver runs both active RSI comparisons and the
+unit-elastic research-expenditure calibration before
 any optional legacy comparisons.
 
-## Preserved earlier comparisons
-
-### Research-expenditure target: an unsuccessful high-target fit
+## Approximate research-expenditure calibration
 
 The separate diagnostic in `numerical_rewrite/rsi_research_share_2025/README.md`
 tests whether chi can fit annual research compute expenditure/GDP to the 2025
 US proxy of 0.356218%, without changing the other parameters or initial stocks.
 The highest local value found on the examined unit-elastic branch is 0.321497%,
-at chi about 81.0848. This path passes the numerical equilibrium checks, but
-does not match the empirical target. No new four-regime comparison or paper
-figure is exported. The existing two RSI exercises above are unchanged.
+at chi about 81.0848. The author accepted this approximate match and the
+paper now presents the already-verified sigma=1 path as an additional
+subsection. The three figure groups and numerical checks are unchanged.
+No other elasticity is included at this chi; the existing two comparisons
+above remain intact. Published data are under `published_unit/` in that folder.
 
 ```text
-python scripts/calibrate_rewrite_research_share.py --diagnose
-python scripts/calibrate_rewrite_research_share.py --verify-peak
-python scripts/calibrate_rewrite_research_share.py --compare-published
+python scripts/calibrate_rewrite_research_share.py --publish-unit
 python -m unittest discover -s tests -p test_rewrite_research_share.py -v
 ```
 
-The diagnostic is not part of the default full-replication driver, since it
-does not underpin a published additional simulation. Its README explains
+The default full-replication driver includes this publication. The original
+search remains available through `--diagnose`, while `--compare-published`
+measures annual research shares in the older two price calibrations. Its README explains
 annual aggregation, source limitations, a failed extreme-chi solve, the local
 scope of the search, and the distinction between verified paths and a fitted
 calibration. The `--calibrate-only` command intentionally refuses to declare a
 fit when the increasing branch turns below the target.
 
-### Earlier quantitative designs
+## Preserved earlier comparisons
 
 The earlier principal configuration is still available with
 `python scripts/calibrate_rewrite_ai_price.py --variant low_ai`, using

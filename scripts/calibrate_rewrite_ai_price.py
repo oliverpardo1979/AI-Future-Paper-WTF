@@ -229,10 +229,10 @@ def extend(sigma, design):
     print(f'{key(sigma)}: second horizon extension complete', flush=True)
 
 
-def render_comparison_views(design, *, show_price_target=True):
+def render_comparison_views(design, *, show_price_target=True, reference_sigma=1.5):
     """Same economic panels, with explicit initial and subsequent windows."""
     import matplotlib.pyplot as plt
-    from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter
+    from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter, NullLocator
     from plot_rewrite_equilibria import (
         STYLES, PANELS_QUANTITY_GROWTH, PANELS_PRICES_RETURNS, PANELS_DISTRIBUTION,
     )
@@ -249,7 +249,7 @@ def render_comparison_views(design, *, show_price_target=True):
         raise ValueError('Price-comparison data differ from the admitted export.')
     with csv_path.open(encoding='utf-8', newline='') as stream:
         rows = [{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
-    limits = manifest['analytical_limits']['sigma_1_50']
+    limits = manifest['analytical_limits'][key(reference_sigma)]
     pre = None
     if design.initial_capital_rule == 'fixed_efficiency_bgp':
         activation_path = output/'activation_audit.json'
@@ -257,7 +257,7 @@ def render_comparison_views(design, *, show_price_target=True):
         if not activation['passes']:
             raise ValueError('The RSI event has not passed its continuity audit.')
         pre = {key(s): fixed_efficiency_bgp(s, design.initial_capability, design.parameters)
-               for s in SIGMAS}
+               for s in design.sigmas}
     views = []
     for suffix, panels in (('accumulation_growth', PANELS_QUANTITY_GROWTH),
                            ('growth_returns', PANELS_PRICES_RETURNS),
@@ -270,7 +270,7 @@ def render_comparison_views(design, *, show_price_target=True):
         windows = ((-2.0 if pre else 0.0,10.0), (10.0,design.display_horizon))
         for view, (start, end) in enumerate(windows):
             for axis, (field, title, scale) in zip(axes[view], panels):
-                for sigma in SIGMAS:
+                for sigma in design.sigmas:
                     series = [r for r in rows if r['sigma'] == sigma and start <= r['time'] <= end]
                     color, linestyle = STYLES[sigma]
                     times, values = [r['time'] for r in series], [r[field] for r in series]
@@ -289,14 +289,21 @@ def render_comparison_views(design, *, show_price_target=True):
                 axis.set_title(title, loc='left', y=1.02, pad=6)
                 if scale in ('rate', 'share'):
                     decimals = (3 if view == 1 and field == 'research_output_share'
-                                and axis.get_ylim()[1] < .001 else 1)
+                                and axis.get_ylim()[1] < .001 else
+                                2 if len(design.sigmas)==1 and field in (
+                                    'inference_output_share','research_output_share') else 1)
                     axis.yaxis.set_major_formatter(PercentFormatter(1, decimals=decimals))
                     axis.yaxis.set_major_locator(MaxNLocator(4))
                 elif scale == 'log_level':
                     axis.set_yscale('log')
                     axis.yaxis.set_major_formatter(FuncFormatter(lambda y,p:f'{y:g}'))
+                    if len(design.sigmas)==1 and view==1:
+                        axis.yaxis.set_major_locator(MaxNLocator(4))
+                        axis.yaxis.set_minor_locator(NullLocator())
                 if scale == 'share':
                     lo, hi = axis.get_ylim()
+                    if len(design.sigmas)==1:
+                        hi=max(hi,1.08*max(values))
                     axis.set_ylim(min(0,lo), hi)
                 if field.endswith('effective_labor_growth'):
                     axis.axhline(0, color='#999999', linewidth=.5)
@@ -305,7 +312,9 @@ def render_comparison_views(design, *, show_price_target=True):
                                if view == 0 else [10,100,200,300,400,500])
                 if pre and view == 0:
                     axis.axvline(0, color='#888888', linewidth=.7, linestyle=':')
-                axis.set_xlabel('Years: initial transition' if view == 0 else 'Years: subsequent transition')
+                axis.set_xlabel(('Years (initial)' if view==0 else 'Years (subsequent)')
+                    if len(design.sigmas)==1 else
+                    ('Years: initial transition' if view == 0 else 'Years: subsequent transition'))
                 axis.grid(axis='y', color='#dddddd', linewidth=.5)
                 axis.spines[['top','right']].set_visible(False)
                 axis.spines[['left','bottom']].set_color('#888888')
@@ -320,7 +329,7 @@ def render_comparison_views(design, *, show_price_target=True):
                 for j in (0,2):
                     axes[view,j].set_ylim(lo,hi)
         handles, labels = axes[0,0].get_legend_handles_labels()
-        fig.legend(handles,labels,ncol=4,loc='upper center',frameon=False,
+        fig.legend(handles,labels,ncol=min(4,len(design.sigmas)),loc='upper center',frameon=False,
                    bbox_to_anchor=(.5,.995),handlelength=2.6,columnspacing=1.6)
         fig.subplots_adjust(left=.105,right=.970,bottom=.09 if columns==3 else .055,
                             top=.83 if columns==3 else .90,
@@ -348,7 +357,7 @@ def summarize(design):
     with (output/'equilibrium_paths.csv').open(encoding='utf-8', newline='') as stream:
         rows=[{k:float(v) for k,v in row.items()} for row in csv.DictReader(stream)]
     summary=dict(design=design.name, instantaneous_growth_rates=True, scenarios={})
-    for sigma in SIGMAS:
+    for sigma in design.sigmas:
         series=[r for r in rows if r['sigma']==sigma]
         snapshots={str(t): next(r for r in series if r['time']==t)
                    for t in (0.,2.25,10.,50.,100.,500.)}
@@ -367,7 +376,7 @@ def audit_rsi_activation(design):
     from solve_near_unit_ai_bvp import solve_monopoly_static_block
     p = design.parameters
     checks = {}
-    for sigma in SIGMAS:
+    for sigma in design.sigmas:
         pre = fixed_efficiency_bgp(sigma, design.initial_capability, p)
         sol = load_solution(design.cache_directory/f'{key(sigma)}_long.npz')
         validate_solution_design(sol, design, sigma)

@@ -1,5 +1,6 @@
 """Annual expenditure calibration reuses the existing equilibrium problem."""
 from dataclasses import asdict
+import csv
 import hashlib
 import json
 import math
@@ -151,6 +152,61 @@ class ResearchMoment(unittest.TestCase):
         fitted=annual['scenarios'][key(1.)]['first_year']['share']
         self.assertLess(abs(math.log(fitted/research.TARGET_SHARE)),research.TARGET_LOG_TOLERANCE)
         self.assertAlmostEqual(design.parameters.chi,calibration['chi'])
+
+
+class PublishedApproximation(unittest.TestCase):
+    def setUp(self):
+        self.folder=OUT/'published_unit'
+        self.calibration=json.loads((self.folder/'calibration.json').read_text())
+        self.manifest=json.loads((self.folder/'figure_manifest.json').read_text())
+
+    def test_scope_and_empirical_discrepancy_are_explicit(self):
+        c=self.calibration
+        self.assertEqual(c['status'],'numerically_admitted_approximate_calibration')
+        self.assertEqual(c['sigmas'],[1.])
+        self.assertFalse(c['target_exactly_matched'])
+        self.assertTrue(c['numerical_tolerances_unchanged'])
+        self.assertAlmostEqual(c['target_share'],research.TARGET_SHARE)
+        self.assertAlmostEqual(c['relative_shortfall'],1-c['matched_share']/c['target_share'])
+        self.assertGreater(c['relative_shortfall'],.09)
+        self.assertLess(c['relative_shortfall'],.10)
+
+    def test_publication_is_bound_to_verified_data_and_figures(self):
+        digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+        c=self.calibration
+        self.assertEqual(c['peak_verification_sha256'],digest(OUT/'peak_verification.json'))
+        self.assertEqual(c['csv_sha256'],digest(self.folder/'equilibrium_paths.csv'))
+        self.assertEqual(self.manifest['data_sha256'],c['csv_sha256'])
+        self.assertEqual(len(c['figure_sha256']),6)
+        for filename,sha in c['figure_sha256'].items():
+            self.assertEqual(sha,digest(ROOT/filename.replace('\\','/')))
+        with (self.folder/'equilibrium_paths.csv').open(newline='') as file:
+            rows=list(csv.DictReader(file))
+        self.assertEqual({float(row['sigma']) for row in rows},{1.})
+        self.assertGreater(len(rows),4000)
+
+    def test_original_equilibrium_gates_and_correct_reference(self):
+        audit=json.loads((self.folder/'sigma_1_00_audit.json').read_text())
+        event=json.loads((self.folder/'activation_audit.json').read_text())
+        self.assertTrue(audit['equilibrium_certified'])
+        self.assertTrue(audit['early_window_checks']['passes'])
+        self.assertTrue(event['passes'])
+        self.assertTrue(self.manifest['all_scenarios_admitted'])
+        self.assertEqual(set(self.manifest['analytical_limits']),{'sigma_1_00'})
+        self.assertIsNone(self.manifest['price_target'])
+        limits=self.manifest['analytical_limits']['sigma_1_00']
+        self.assertAlmostEqual(limits['net_interest'],.05)
+        self.assertAlmostEqual(limits['labor_income_share'],.603)
+
+    def test_subsection_keeps_three_figures_and_parameter_table(self):
+        source=(ROOT/'sections_rewrite/10_rsi_research_share.tex').read_text()
+        main=(ROOT/'main_rewrite.tex').read_text()
+        self.assertIn('\\input{sections_rewrite/10_rsi_research_share}',main)
+        self.assertIn('\\input{sections_rewrite/09_rsi_half_decline}',main)
+        self.assertIn('\\input{sections_rewrite/rsi_research_share_parameters}',source)
+        self.assertEqual(source.count('\\begin{figure}'),3)
+        self.assertIn('9.75\\%',source)
+        self.assertIn('instantaneous',source)
 
 
 if __name__=='__main__':

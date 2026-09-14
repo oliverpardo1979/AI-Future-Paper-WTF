@@ -2,9 +2,12 @@
 
 Companion data for [The Future of Growth and Human Labor Under Recursive AI
 Self-Improvement](https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth-and-human-labor-under-recursive-ai-self-improvement.pdf),
-compiled from `main_rewrite.tex`. This diagnostic is not an additional published
-simulation subsection: **the high target was not matched**. The paper, PDF and
-two existing RSI comparisons have not been changed.
+compiled from `main_rewrite.tex`, subsection "An approximate calibration to
+research expenditure". The author accepted the discrepancy and requested
+publication of the already-verified **sigma=1** simulation. Its CSV, figure
+metadata and approximate-calibration record are in `published_unit/`.
+The two existing RSI comparisons and the original search are preserved.
+The high target was not matched exactly; no four-elasticity comparison is claimed.
 
 ## Result (September 14, 2026)
 
@@ -66,15 +69,30 @@ and [BEA nominal GDP via FRED](https://fred.stlouisfed.org/data/GDPA), accessed
 September 14, 2026. Metadata and qualifications are in `feasibility_diagnostic.json`.
 
 All other parameters and initial stocks are identical to `../rsi_activation/`.
-Use sigma=0.90,1.00,1.10,1.50, omega_X=0.10, eta=0.20, B0=0.01*Bbar,
+The published path uses sigma=1, omega_X=0.10, eta=0.20, B0=0.01*Bbar,
 Bbar=1.10 times the sigma=1.50 threshold, and a fixed-efficiency pre-RSI BGP
 with K0/Y0=3.30. RSI activates unexpectedly. Only K0 and B0 are inherited;
-C0, q0 and M0 are solved endogenously. A successful fit would hold chi common
-across all four elasticities; no such fit is asserted here. There is no price target.
+C0, q0 and M0 are solved endogenously. The selected chi is 81.08480942910101.
+The other three elasticities have not been simulated at this chi. There is no price target.
 
 ## Run
 
 Install the root `requirements-rewrite.txt`, then from the repository root:
+
+```text
+python scripts/calibrate_rewrite_research_share.py --publish-unit
+python -m unittest discover -s tests -p test_rewrite_research_share.py -v
+```
+
+`--publish-unit` recreates the selected candidate if needed, repeats both
+horizon extensions, equilibrium verification and activation checks, then
+exports only sigma=1 using the paper's existing figures. Dotted lines are
+the **unit-elastic** analytical limits, not sigma=1.50 reference lines.
+The separate `published_unit/calibration.json` records author acceptance,
+the empirical shortfall and the unchanged numerical tolerances, binding
+the checkpoint, CSV and displayed figures with SHA-256 hashes.
+
+To reproduce the original search or compare the old price calibrations:
 
 ```text
 python scripts/calibrate_rewrite_research_share.py --diagnose
@@ -106,16 +124,27 @@ These numerical errors are much smaller than the empirical proxy's precision.
 
 The original `run` and shared `finish` functions retain both horizon extensions,
 original-equation residuals, developer optimality/support, TVC continuation,
-early-window checks and event audit. No figure export occurs unless all four
-scenarios pass and the refined annual target matches. None of the older
+early-window checks and event audit. The **exact-fit four-regime workflow**
+does not export unless all four scenarios pass and the refined annual target
+matches. The author-approved approximate publication is a separate command
+with one verified path, not a bypass of equilibrium gates. None of the older
 simulation folders is overwritten. A completed fit would produce
 `annual_moments.json` and four-regime figures, but these files are intentionally
 absent. `peak_verification.json` records the separate, admitted diagnostic
-path; it must not be described as matching the target.
+path used in the new subsection; it must not be described as matching the target exactly.
 
 ## Test status
 
-The full `test_rewrite*.py` suite ran 138 tests: 132 passed, five failed and
+After adding the subsection, the publication, research-moment, existing RSI,
+price-calibration, finite-frontier and simulation-design suites ran 59 tests:
+58 passed, none failed and the exact four-regime-fit test was skipped.
+The full `test_rewrite*.py` suite ran 142 tests: 136 passed, the same five
+pre-existing editorial assertions failed, and one test was skipped. Four new
+publication tests verify the declared one-regime scope, explicit empirical
+discrepancy, unchanged admission checks, correct unit-elastic limits and
+SHA-256 bindings between verification, CSV data and the displayed figures.
+
+Before publication, the full `test_rewrite*.py` suite ran 138 tests: 132 passed, five failed and
 one was skipped. All ten executed research-share tests passed. The skipped
 test requires a completed four-regime target fit, which does not exist.
 All 17 existing RSI activation/half-decline tests passed.

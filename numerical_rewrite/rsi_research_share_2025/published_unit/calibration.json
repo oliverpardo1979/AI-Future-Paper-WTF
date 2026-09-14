@@ -1,0 +1,58 @@
+{
+  "status": "numerically_admitted_approximate_calibration",
+  "author_acceptance": "Author explicitly accepted the mismatch and requested a new subsection.",
+  "sigmas": [
+    1.0
+  ],
+  "chi": 81.08480942910101,
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.1,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 81.08480942910101,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 1360.9921392415592,
+  "initial_stocks": [
+    4.649320432676148,
+    13.609921392415593
+  ],
+  "target_share": 0.003562175649977591,
+  "matched_share": 0.0032149726135817505,
+  "target_exactly_matched": false,
+  "relative_shortfall": 0.0974693756042111,
+  "numerical_tolerances_unchanged": true,
+  "source": {
+    "geography": "United States",
+    "year": 2025,
+    "research_compute_billion_usd": 109.58,
+    "nominal_gdp_billion_usd": 30762.099,
+    "compute_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9.pdf",
+    "method_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9-appendix.pdf",
+    "gdp_url": "https://fred.stlouisfed.org/data/GDPA",
+    "accessed": "2026-09-14",
+    "limitations": [
+      "Rental-equivalent compute expenditure is estimated, not a sum of observed bills.",
+      "Research/training is assumed to account for 50 percent of total AI compute spending.",
+      "This US proxy is neither a global total nor a direct measure of autonomous RSI.",
+      "The ratio of nominal annual flows proxies the model ratio in final-good units.",
+      "The 2025 value is the higher dated estimate, not an upper confidence bound."
+    ]
+  },
+  "peak_verification_sha256": "b759e55ea6178e5f4b75ad86034e5a52c7de0a34a8428b54456af5baad55385e",
+  "checkpoint_sha256": "0c9c60d420861758ce59d36902c11e4ec1309e3fb636b91362fa3891d8c56808",
+  "csv_sha256": "0a15fcfdacf97b95cba4ad7c6a0fe0687d915c2ee85c55f1604f12b5b3c79591",
+  "figure_sha256": {
+    "figures_rewrite\\equilibrium_rsi_research_share_approximate_unit_accumulation_growth_windows.pdf": "9e26ac5272cd07e650728642856e214df4353c86b60a121916b37e63d4795cd3",
+    "figures_rewrite\\equilibrium_rsi_research_share_approximate_unit_accumulation_growth_windows.png": "f1308edb0a41f9f690a232cf9378f621407b709d1daa325dabba04b881023a5d",
+    "figures_rewrite\\equilibrium_rsi_research_share_approximate_unit_growth_returns_windows.pdf": "a9a4e613a25ed2b77dbb124d03ffeab6b0f85f6dd76337020c2c71ed42eecffe",
+    "figures_rewrite\\equilibrium_rsi_research_share_approximate_unit_growth_returns_windows.png": "f7c549dd09795cd24547a87b4f518c4da822d88f8d17c0c2700758dc7e4dfcde",
+    "figures_rewrite\\equilibrium_rsi_research_share_approximate_unit_ai_distribution_windows.pdf": "7a858940a1fbf30967c1413cc9bab2aa36492b28340c02a5b20f542ca38b47af",
+    "figures_rewrite\\equilibrium_rsi_research_share_approximate_unit_ai_distribution_windows.png": "4621ffc75290c6eac458cac7d79c21a98fb2427084f18c1da6e660c3db2cd3f0"
+  }
+}

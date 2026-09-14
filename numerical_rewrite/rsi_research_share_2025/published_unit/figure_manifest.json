@@ -1,0 +1,131 @@
+{
+  "design": "rsi_research_share_approximate_unit",
+  "data_sha256": "0a15fcfdacf97b95cba4ad7c6a0fe0687d915c2ee85c55f1604f12b5b3c79591",
+  "sigmas": [
+    1.0
+  ],
+  "horizon": 500.0,
+  "panels": {
+    "quantity_growth": [
+      "output_effective_labor_growth",
+      "ai_services_effective_labor_growth",
+      "capital_effective_labor_growth"
+    ],
+    "prices_returns": [
+      "wage_growth",
+      "net_interest",
+      "ai_service_price"
+    ],
+    "distribution": [
+      "labor_income_share",
+      "profit_output_share",
+      "inference_output_share",
+      "research_output_share"
+    ],
+    "near_terminal": [
+      "output_per_person_growth",
+      "wage_growth",
+      "net_interest"
+    ]
+  },
+  "analytical_limits": {
+    "sigma_1_00": {
+      "output_effective_labor_growth": 1.734723475976807e-18,
+      "ai_services_effective_labor_growth": 1.734723475976807e-18,
+      "capital_effective_labor_growth": 1.734723475976807e-18,
+      "wage_growth": 0.010000000000000002,
+      "net_interest": 0.05,
+      "ai_service_price": 0.010966538824130031,
+      "labor_income_share": 0.6029999999999999,
+      "profit_output_share": 0.06251100000000001,
+      "inference_output_share": 0.004489000000000005,
+      "research_output_share": 0.0
+    }
+  },
+  "all_scenarios_admitted": true,
+  "two_window_views": [
+    {
+      "filename": "equilibrium_rsi_research_share_approximate_unit_accumulation_growth_windows",
+      "windows": [
+        [
+          -2.0,
+          10.0
+        ],
+        [
+          10.0,
+          500.0
+        ]
+      ],
+      "fields": [
+        "output_effective_labor_growth",
+        "ai_services_effective_labor_growth",
+        "capital_effective_labor_growth"
+      ],
+      "independent_vertical_scales_between_windows": true
+    },
+    {
+      "filename": "equilibrium_rsi_research_share_approximate_unit_growth_returns_windows",
+      "windows": [
+        [
+          -2.0,
+          10.0
+        ],
+        [
+          10.0,
+          500.0
+        ]
+      ],
+      "fields": [
+        "wage_growth",
+        "net_interest",
+        "ai_service_price"
+      ],
+      "independent_vertical_scales_between_windows": true
+    },
+    {
+      "filename": "equilibrium_rsi_research_share_approximate_unit_ai_distribution_windows",
+      "windows": [
+        [
+          -2.0,
+          10.0
+        ],
+        [
+          10.0,
+          500.0
+        ]
+      ],
+      "fields": [
+        "labor_income_share",
+        "profit_output_share",
+        "inference_output_share",
+        "research_output_share"
+      ],
+      "independent_vertical_scales_between_windows": true
+    }
+  ],
+  "price_target": null,
+  "pre_event_bgp": {
+    "sigma_1_00": {
+      "sigma": 1.0,
+      "capital": 4.649320432676148,
+      "capability": 13.609921392415593,
+      "output": 1.4088849795988327,
+      "consumption": 1.1096533076668162,
+      "inference_compute": 0.006324484673419157,
+      "research_compute": 0.0,
+      "ai_services": 0.08607573925277197,
+      "ai_service_price": 1.0966538824130045,
+      "wage": 0.849557642698096,
+      "interest_rate": 0.05000000000000002,
+      "capital_output_ratio": 3.3,
+      "labor_income_share": 0.6029999999999999,
+      "ai_revenue_output_share": 0.06700000000000002,
+      "profit_output_share": 0.06251100000000002,
+      "inference_output_share": 0.004488999999999998,
+      "research_output_share": 0.0,
+      "monopoly_foc_residual": 1.3322676295501878e-15,
+      "pre_event_research_available": false
+    }
+  },
+  "activation_audit_sha256": "777861a0acd12b41a9b7454f8b3b36c45eba0bfa8c1f329b13f4a0d10bcedbe5"
+}

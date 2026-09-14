@@ -312,6 +312,73 @@ def compare_published():
     return scenarios
 
 
+def publish_unit():
+    """Publish the author-approved approximate fit, without relaxing any gate.
+
+    Only the verified sigma=1 path is included. Preserve the failed exact
+    calibration and diagnostic; record acceptance of its empirical mismatch.
+    """
+    from simulate_rewrite_finite_frontier import export_paths
+    from calibrate_rewrite_ai_price import audit_rsi_activation,render_comparison_views,summarize
+    from plot_rewrite_equilibria import render
+    base=make_design(1.)
+    diagnostic=json.loads((base.output_directory/'feasibility_diagnostic.json').read_text())
+    row=min(diagnostic['trials'],key=lambda x:abs(math.log(x['chi']/diagnostic['local_peak_chi'])))
+    if not (ROOT/row['checkpoint']).exists():
+        # A fresh checkout recreates this already selected chi; it need not
+        # repeat the entire unsuccessful exact-target search.
+        trials=list(diagnostic['trials'])
+        trial_objective(trials)(math.log(row['chi']))
+        replacement=next(t for t in trials if t['chi']==row['chi'])
+        for i,t in enumerate(diagnostic['trials']):
+            if t['chi']==row['chi']:
+                diagnostic['trials'][i]=replacement
+        write_json(base.output_directory/'feasibility_diagnostic.json',diagnostic)
+    peak=verify_peak()
+    if not peak['passes']:
+        raise RuntimeError('No verified unit-elastic path to publish.')
+    original=make_design(peak['chi'])
+    design=replace(original,name='rsi_research_share_approximate_unit',sigmas=(1.,),
+        output_directory=base.output_directory/'published_unit',
+        cache_directory=original.cache_directory/'peak_audit')
+    checkpoint=ROOT/peak['checkpoint']
+    validate_solution_design(load_solution(checkpoint),design,1.)
+    if hashlib.sha256(checkpoint.read_bytes()).hexdigest()!=peak['original_equilibrium_report']['checkpoint_sha256']:
+        raise ValueError('Publication source differs from the verified checkpoint.')
+    report=dict(peak['original_equilibrium_report'])
+    report.update(design=design.name,early_window_checks=dict(
+        passes=peak['early_window_passes'],independent_residuals=peak['early_residuals'],
+        concavity=peak['early_optimality']))
+    write_json(design.output_directory/f'{key(1.)}_audit.json',report)
+    audit_rsi_activation(design)
+    export_paths(design.display_horizon,4001,design,
+                 additional_times=np.r_[np.linspace(0.,10.,1001),2.25])
+    render(design,reference_sigma=1.)
+    render_comparison_views(design,show_price_target=False,reference_sigma=1.)
+    summarize(design)
+    csv_path=design.output_directory/'equilibrium_paths.csv'
+    figures=json.loads((design.output_directory/'figure_manifest.json').read_text())
+    figure_hashes={}
+    for view in figures['two_window_views']:
+        for ext in ('pdf','png'):
+            file=ROOT/'figures_rewrite'/f'{view["filename"]}.{ext}'
+            figure_hashes[str(file.relative_to(ROOT))]=hashlib.sha256(file.read_bytes()).hexdigest()
+    write_json(design.output_directory/'calibration.json',dict(
+        status='numerically_admitted_approximate_calibration',
+        author_acceptance='Author explicitly accepted the mismatch and requested a new subsection.',
+        sigmas=[1.],chi=peak['chi'],parameters=asdict(design.parameters),
+        frontier=design.frontier,initial_stocks=list(design_initial_stocks(design,1.)),
+        target_share=TARGET_SHARE,matched_share=peak['first_year']['share'],
+        target_exactly_matched=False,
+        relative_shortfall=1-peak['first_year']['share']/TARGET_SHARE,
+        numerical_tolerances_unchanged=True,source=SOURCE,
+        peak_verification_sha256=hashlib.sha256((base.output_directory/'peak_verification.json').read_bytes()).hexdigest(),
+        checkpoint_sha256=report['checkpoint_sha256'],
+        csv_sha256=hashlib.sha256(csv_path.read_bytes()).hexdigest(),figure_sha256=figure_hashes))
+    print('Published the admitted sigma=1 approximate calibration; no other elasticity was exported.',flush=True)
+    return design
+
+
 def calibrated_design():
     payload=json.loads((make_design(1.).output_directory/'calibration.json').read_text())
     design=make_design(payload['chi'])
@@ -355,9 +422,13 @@ def main():
     parser.add_argument('--diagnose',action='store_true')
     parser.add_argument('--verify-peak',action='store_true')
     parser.add_argument('--compare-published',action='store_true')
+    parser.add_argument('--publish-unit',action='store_true')
     parser.add_argument('--sigma',type=float,choices=SIGMAS)
     parser.add_argument('--finish',action='store_true')
     args=parser.parse_args()
+    if args.publish_unit:
+        publish_unit()
+        return
     if args.compare_published:
         compare_published()
         return

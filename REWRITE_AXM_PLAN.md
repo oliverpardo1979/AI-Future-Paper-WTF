@@ -12,6 +12,21 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Approximate research-expenditure calibration accepted (September 14, 2026)
+
+The author accepted 0.3215% first-year M/Y against the 0.3562% US 2025 proxy
+and requested that the already-verified simulation become a new subsection.
+Publish only the existing sigma=1 path, chi=81.08480942910101, with unchanged
+initial stocks, other parameters and equilibrium gates. This is an approximate
+empirical fit, not an exact fit or an excuse to relax numerical tolerances.
+Retain all prior simulations and the diagnostic search. Use the same three
+figure groups, a parameter/initial-stock table, and explicit source caveats.
+The new source is `sections_rewrite/10_rsi_research_share.tex`; its separate
+outputs are `numerical_rewrite/rsi_research_share_2025/published_unit/`.
+Do not label it a four-elasticity comparison: the other three paths at this
+chi have not been constructed or admitted. Do not change the title, abstract,
+introduction, or analytical model.
+
 ### Additional half-price-decline target (September 14, 2026)
 
 Add a second active subsection with `p_X(2.25)/p_X(0)=0.60`: half the

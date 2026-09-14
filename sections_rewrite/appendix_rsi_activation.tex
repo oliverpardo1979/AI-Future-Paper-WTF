@@ -9,7 +9,7 @@ are predetermined; consumption and the developer's shadow value adjust
 to put the economy on the stable continuation of its long-run regime.
 An initial choice that satisfies the static conditions alone need not do so.
 
-Both RSI-activation exercises first solve the same auxiliary economy:
+The RSI-activation exercises first solve the same auxiliary economy:
 AI is already used in production, but its efficiency is fixed because RSI
 is unavailable. For each $\sigma$, a scalar root search in $\log K_0$
 solves Equation~\eqref{eq:rewrite-rsi-initial-ratio} using the original
@@ -61,6 +61,20 @@ the final price-ratio log error must be below $2\times10^{-5}$ after both
 horizon extensions. These numerical tolerances are well below the precision
 of the rounded empirical target.
 
+Section~\ref{subsec:rewrite-rsi-research-share} instead uses an approximate
+research-expenditure calibration at $\sigma=1$. For each trial $\chi$,
+Gauss--Legendre quadrature with 64 and 128 nodes evaluates the two integrals
+in Equation~\eqref{eq:rewrite-research-share-target}; their ratio must agree
+within $10^{-8}$ in logs. A logarithmic grid from $0.179725$ to $368.0768$
+locates a turning point, and a bounded search between its neighboring
+successful grid points refines the local maximum with a tolerance of
+$0.002$ in $\log\chi$. The solve at the largest grid value fails and is
+recorded as missing evidence, not zero expenditure. This is a local
+numerical search, not a proof of a global upper bound. I retain
+$\chi=81.084809$ and explicitly report the remaining empirical discrepancy;
+no equilibrium tolerance is relaxed to accommodate it. Only the verified
+unit-elastic path is displayed.
+
 \subsection{Equilibrium checks and replication}
 
 I extend each computational horizon twice by 500 years and tighten the
@@ -90,6 +104,7 @@ initial stocks.
 
 \input{sections_rewrite/rsi_activation_accuracy}
 \input{sections_rewrite/rsi_half_decline_accuracy}
+\input{sections_rewrite/rsi_research_share_accuracy}
 
 From the repository root, run:
 \begin{quote}
@@ -115,7 +130,23 @@ The new sensitivity is stored alongside it in the
 The \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/REPLICATION.md}
 {replication guide} gives installation instructions and the staged workflow.
 
+For the approximate research-expenditure calibration, run:
+\begin{quote}
+\small
+\begin{verbatim}
+python scripts/calibrate_rewrite_research_share.py --publish-unit
+\end{verbatim}
+\end{quote}
+This command reproduces the selected unit-elastic path if its checkpoint
+is absent, repeats its equilibrium and activation checks, and exports the
+three figures. The unsuccessful exact-target search remains separately
+reproducible with \texttt{--diagnose}. The
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2025}
+{research-expenditure results folder} retains the sources, search diagnostics
+and numerical checks; its \texttt{published\_unit/} subfolder contains the
+admitted CSV, figure metadata and approximate-calibration record.
+
 Earlier simulations and their numerical appendix remain in the source.
 The editorial switch in \texttt{main\_rewrite.tex} selects either this
-pair of exercises or the earlier presentation. The replication guide explains how
+set of exercises or the earlier presentation. The replication guide explains how
 to change it without altering any numerical file.
