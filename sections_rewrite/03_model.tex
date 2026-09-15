@@ -1,7 +1,7 @@
 \section{Model}
 \label{sec:rewrite-model}
 
-Time is continuous.  The economy contains a representative household, competitive final-good firms, and an integrated AI developer. Labor-augmenting technology $A$ grows exogenously. AI efficiency $B$ improves through autonomous AI research: the only current input used to raise $B$ is research compute. The model therefore describes an economy in which there are no longer human researchers developing AI and AI has achieved recursive self-improvement (RSI).
+Time is continuous.  The economy contains a representative household, competitive final-good firms, and an integrated AI developer. Labor-augmenting technology $A$ grows exogenously. AI productivity $B$ improves through autonomous AI research: the only current input used to raise $B$ is research compute. The model therefore describes an economy in which there are no longer human researchers developing AI and AI has achieved recursive self-improvement (RSI).
 
 %I derive the model in the order in which its agents solve their problems. I first present the household and final-good firms. I then state the developer's intertemporal problem before deriving its within-date service choice and its dynamic research conditions. Only after every agent has been characterized do I combine their conditions in the definition of equilibrium.
 
@@ -138,7 +138,7 @@ I distinguish compute used to deploy AI from compute used to improve it. Inferen
 
 %In practice, AI research also uses human researchers, data, and complementary infrastructure. The benchmark does not treat $M$ as a complete measure of R\&D. It isolates its computational component and assumes that human research is no longer the binding input.
 
-Raw compute does not by itself determine the quantity of AI services produced. The variable $B$ measures AI efficiency: AI services obtained per unit of compute. Thus $U$ and $M$ are raw computational inputs, while $BU$ and $BM$ are the corresponding flows of AI production and AI research services. This interpretation parallels measures of algorithmic efficiency based on the decline in compute required to achieve a given level of performance \citep{hernandezbrown2020,erdilbesiroglu2022}. A rise in $B$ therefore represents an improvement in the algorithms that use compute, rather than an expansion of physical computing capacity. I assume that the same $B$ augments compute in both activities.
+Raw compute does not by itself determine the quantity of AI services produced. The variable $B$ measures AI productivity: AI services obtained per unit of compute. Thus $U$ and $M$ are raw computational inputs, while $BU$ and $BM$ are the corresponding flows of AI production and AI research services. This services-per-compute interpretation can also be described as \emph{AI efficiency}. It parallels the computer-science literature on \emph{algorithmic efficiency}, which measures reductions in the compute required to achieve a given level of performance \citep{hernandezbrown2020,erdilbesiroglu2022}. A rise in $B$ therefore represents an improvement in the algorithms that use compute, rather than an expansion of physical computing capacity. I assume that the same $B$ augments compute in both activities.
 
 Inference compute produces AI production services according to
 \begin{equation}
@@ -156,7 +156,7 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
   \node[rewrite-state] (A) at (-7.5,2.0) {\(A\)\\labor-augmenting\\technology};
   \node[rewrite-input] (L) at (-7.5,0.7) {\(L\)\\production labor};
   \node[rewrite-technology] (AL) at (-4.0,1.35) {\(AL\)\\effective labor};
-  \node[rewrite-state] (B) at (-7.5,-0.8) {\(B\)\\AI efficiency};
+  \node[rewrite-state] (B) at (-7.5,-0.8) {\(B\)\\AI productivity};
   \node[rewrite-input] (U) at (-7.5,-2.1) {\(U\)\\inference compute};
   \node[rewrite-technology] (X) at (-4.0,-1.45) {\(X=BU\)\\AI production services};
   \node[rewrite-technology] (Z) at (-0.2,0.0)
@@ -175,15 +175,15 @@ Figure~\ref{fig:rewrite-model-flow} summarizes the production block.
   \draw[rewrite-flow] (K) -- (Y);
  \end{tikzpicture}%
  }
- \caption{Production of final output and AI production services. AI efficiency $B$ augments inference compute $U$ to produce $X=BU$, the flow of AI production services. These services combine with effective labor $AL$ to produce $Z$, which combines with capital $K$ to produce $Y$.}
+ \caption{Production of final output and AI production services. AI productivity $B$ augments inference compute $U$ to produce $X=BU$, the flow of AI production services. These services combine with effective labor $AL$ to produce $Z$, which combines with capital $K$ to produce $Y$.}
  \label{fig:rewrite-model-flow}
 \end{figure}
 
 \subsubsection{RSI technology}
 \label{subsubsec:rewrite-capability}
 
-Given initial AI efficiency \(B_0>0\) and an upper bound
-\(\overline B\in(B_0,\infty]\), AI efficiency evolves according to the RSI technology
+Given initial AI productivity \(B_0>0\) and an upper bound
+\(\overline B\in(B_0,\infty]\), AI productivity evolves according to the RSI technology
 \begin{equation}
  \dot B=\chi(BM)^\eta\psi(B),
  \qquad
@@ -198,29 +198,29 @@ Figure~\ref{fig:rewrite-capability-flow} summarizes the RSI mechanism.
  \resizebox{0.72\textwidth}{!}{%
  \begin{tikzpicture}[>=Latex,font=\small]
   \node[rewrite-input] (M) at (-5.9,0.9) {\(M\)\\research compute};
-  \node[rewrite-state] (B) at (-5.9,-0.9) {\(B\)\\AI efficiency};
+  \node[rewrite-state] (B) at (-5.9,-0.9) {\(B\)\\AI productivity};
   \node[rewrite-technology] (BM) at (-1.9,0.9)
    {\(BM\)\\AI research services};
   \node[rewrite-technology] (psi) at (-1.9,-0.9)
    {\(\psi(B)\)\\remaining room};
   \node[rewrite-technology] (Bd) at (2.2,0.0)
-   {\(\dot B=\chi(BM)^\eta\psi(B)\)\\efficiency improvement};
+   {\(\dot B=\chi(BM)^\eta\psi(B)\)\\productivity improvement};
 
   \draw[rewrite-flow] (B) -- (BM);
   \draw[rewrite-flow] (M) -- (BM);
   \draw[rewrite-flow] (B) -- (psi);
   \draw[rewrite-flow] (BM) -- (Bd);
   \draw[rewrite-flow] (psi) -- (Bd);
-  \draw[rewrite-dynamics] (Bd.east) -- (4.4,0.0) -- (4.4,-2.0) --
+  \draw[rewrite-dynamics] (Bd.east) -- (5.0,0.0) -- (5.0,-2.0) --
     (-5.9,-2.0) -- (B.south);
  \end{tikzpicture}%
  }
- \caption{Recursive self-improvement in AI efficiency. AI efficiency $B$ augments
+ \caption{Recursive self-improvement in AI productivity. AI productivity $B$ augments
  research compute $M$ to produce $BM$, the flow of AI research services. These services and the remaining
  room for improvement $\psi(B)$ determine \(\dot B\), which increases $B$.}
  \label{fig:rewrite-capability-flow}
 \end{figure}
-The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-efficiency index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Equation~\eqref{eq:rewrite-capability-law} captures RSI: a higher $B$ produces more AI research services $BM$ from a given amount of research compute $M$, and these services help improve $B$ further. This is the AI-research feedback studied by \citet{davidsonetal2026}. The term \(\psi(B)\) reduces the remaining room for improvement as AI efficiency approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
+The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-productivity index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Equation~\eqref{eq:rewrite-capability-law} captures RSI: a higher $B$ produces more AI research services $BM$ from a given amount of research compute $M$, and these services help improve $B$ further. This is the AI-research feedback studied by \citet{davidsonetal2026}. The term \(\psi(B)\) reduces the remaining room for improvement as AI productivity approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
 Evidence that ideas become harder to find motivates allowing research
 productivity to decline as technology advances. \citet{bloometal2020} document
@@ -231,7 +231,7 @@ diminishing returns in idea production. This evidence motivates diminishing
 returns, but it does not establish a literal finite technological ceiling. The
 term $1-B/\overline B$ is a deliberately stronger reduced-form specification to make sure there is an equilibrium when AI and labor are substitutes.
 
-The upper bound on AI efficiency \(\overline B\) allows me to establish and compute equilibria for finite values of \(\overline B\) and then ask whether they have a meaningful limit as \(\overline B\to\infty\). Without the upper bound, recursive improvement may instead produce a finite-time singularity: one or more endogenous quantities---such as AI efficiency, output, capital, or research compute---become unbounded at a finite date, so the trajectory cannot be continued as a path of finite allocations. %Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. %AI efficiency may approach the upper bound asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
+The upper bound on AI productivity \(\overline B\) allows me to establish and compute equilibria for finite values of \(\overline B\) and then ask whether they have a meaningful limit as \(\overline B\to\infty\). Without the upper bound, recursive improvement may instead produce a finite-time singularity: one or more endogenous quantities---such as AI productivity, output, capital, or research compute---become unbounded at a finite date, so the trajectory cannot be continued as a path of finite allocations. %Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. %AI productivity may approach the upper bound asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
 \subsubsection{Supply of effective AI production services}
 \label{subsubsec:rewrite-market-structure}
@@ -270,14 +270,14 @@ The envelope theorem gives
  \pi_B=\frac{X}{B^2}=\frac{U}{B}.
  \label{eq:rewrite-profit-envelope}
 \end{equation}
-%The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$:
-At a fixed $X$, a marginal increase in AI efficiency saves $U/B$ units of the consumption good.
+%The $B^2$ term does not represent quadratic returns to AI productivity. It results from differentiating the inference cost $X/B$:
+At a fixed $X$, a marginal increase in AI productivity saves $U/B$ units of the consumption good.
 
-AI efficiency is nonrival in use. Once $B$ has been developed, using it to
+AI productivity is nonrival in use. Once $B$ has been developed, using it to
 augment one unit of inference or research compute does not reduce its ability to augment other units. This does not make effective AI services costless: $BU$ and $BM$ require the rival and costly compute inputs $U$ and $M$. Nonrivalry also does not rule out excludability. An owner can restrict access to model weights, software, or AI services.
 
 To see the resulting appropriability problem, suppose that competitive
-service providers had free access to $B$. Free entry would imply no operating rent. A developer that paid for $M$ would improve a common AI-efficiency index $B$ that competing providers could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. %The problem is therefor one of research incentives, not the physical availability of compute.
+service providers had free access to $B$. Free entry would imply no operating rent. A developer that paid for $M$ would improve a common AI-productivity index $B$ that competing providers could use without compensating it. The developer would bear the research cost but could not appropriate the resulting benefits. %The problem is therefor one of research incentives, not the physical availability of compute.
 %I therefore assign exclusive ownership of $B$ to an integrated developer that conducts research and sells effective AI production services.
 Exclusive ownership allows the developer to capture part of the value created by a higher $B$ and makes the return to research appropriable, as in the standard endogenous-growth treatment of nonrival ideas \citep{romer1990}.
 
@@ -286,7 +286,7 @@ That being said, monopoly is an institutional assumption, not a technological im
 \subsubsection{The dynamic problem}
 \label{subsubsec:rewrite-dynamic-developer}
 
-The AI developer uses $M$ for research and owns $B$ and any resulting improvements in AI efficiency. %Taking the paths of $r,K,A,$ and $L$ as given, it solves
+The AI developer uses $M$ for research and owns $B$ and any resulting improvements in AI productivity. %Taking the paths of $r,K,A,$ and $L$ as given, it solves
 %\begin{equation}
 % \max_{\{X_t,M_t\}_{t\geq0}}
 % \int_0^\infty
@@ -346,12 +346,12 @@ The AI developer uses $M$ for research and owns $B$ and any resulting improvemen
 % \pi_B=\frac{X}{B^2}=\frac{U}{B}.
 % \label{eq:rewrite-profit-envelope}
 %\end{equation}
-%The $B^2$ term does not represent quadratic returns to AI efficiency. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in AI efficiency saves $X/B^2$ units of compute.
+%The $B^2$ term does not represent quadratic returns to AI productivity. It results from differentiating the inference cost $X/B$: at a fixed $X$, a marginal increase in AI productivity saves $X/B^2$ units of compute.
 After the within-date service choice, the developer's net profit is
 $\Pi_t=\pi(B_t)-M_t$: operating profit less research expenditure.
 Taking the paths of $r,K,A,$ and $L$ as given and substituting the static
 solution to problem~\eqref{eq:rewrite-service-choice}, the developer chooses
-the path of research compute $M$ to increase AI efficiency $B$:
+the path of research compute $M$ to increase AI productivity $B$:
 \begin{equation}
 \max_{\{M_t\}_{t\geq0}}
  \int_0^\infty
@@ -366,7 +366,7 @@ not profit at a single date.
 
 %Profit can be negative at a date because the model imposes no separate cash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
-Let $q$ be the current-value shadow price of AI efficiency, measured in units of
+Let $q$ be the current-value shadow price of AI productivity, measured in units of
 the current final good per unit of $B$. An interior choice of research compute $M$ satisfies
 \begin{equation}
  q\chi\eta B(BM)^{\eta-1}\psi(B)=1,
@@ -378,9 +378,9 @@ the current final good per unit of $B$. An interior choice of research compute $
 % \right]^{1/(1-\eta)}.
 % \label{eq:rewrite-research-demand}
 %\end{equation}
-Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$ raises the rate of improvement in AI efficiency by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
+Equation~\eqref{eq:rewrite-research-foc} equates the marginal benefit of research compute to its unit cost. Holding current $B$ fixed, an additional unit of $M$ raises the rate of improvement in AI productivity by \(\chi\eta B(BM)^{\eta-1}\psi(B)\).
 %The factor $B$ appears because raw compute $M$ produces $BM$ effective AI research services.
-Multiplication by $q$ values the resulting efficiency gain, accounting for future profit gains and further improvements in AI efficiency. %The right-hand side is one because one unit of compute costs one unit of the final good. At an interior optimum, an additional unit of research therefore creates exactly enough value to cover its cost.
+Multiplication by $q$ values the resulting productivity gain, accounting for future profit gains and further improvements in AI productivity. %The right-hand side is one because one unit of compute costs one unit of the final good. At an interior optimum, an additional unit of research therefore creates exactly enough value to cover its cost.
 
 The current-value costate equation is
 \begin{equation}
@@ -395,9 +395,9 @@ Rearranging gives the return equation
  +q\dot B\frac{\psi'(B)}{\psi(B)}+\dot q.
  \label{eq:rewrite-capability-return}
 \end{equation}
-The first term on the right-hand side of Equation~\eqref{eq:rewrite-capability-return} is the inference-compute saving from greater AI efficiency. The
+The first term on the right-hand side of Equation~\eqref{eq:rewrite-capability-return} is the inference-compute saving from greater AI productivity. The
 second is the research-productivity gain from RSI. With a finite upper bound, the third
-term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on AI efficiency. Together these
+term is negative because a higher $B$ leaves less room for further improvement. The final term is the capital gain on AI productivity. Together these
 returns must equal the market return $rq$.
 
 The developer's transversality condition is
@@ -406,7 +406,7 @@ The developer's transversality condition is
  \exp\left\{-\int_0^t r_s\dd s\right\}q_tB_t=0.
  \label{eq:rewrite-developer-tvc}
 \end{equation}
-It rules out a path that leaves positive discounted value in the AI-efficiency state.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
+It rules out a path that leaves positive discounted value in the AI-productivity state.%It does not require $q$, $B$, or their undiscounted product to converge to zero.
 
 The preceding conditions are necessary for an interior optimum but do not
 establish global optimality.
@@ -417,7 +417,7 @@ problem~\eqref{eq:rewrite-developer-reduced}.
 
 %\begin{proposition}[Research is interior]
 %\label{prop:rewrite-research-interior}
-%Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued optimum with $B>0$ and positive demand for effective AI production services. Then $q>0$ and $M>0$ at every finite date. Research may converge to zero asymptotically, but the developer cannot stop improvements in AI efficiency by choosing $M=0$ at a finite date.
+%Suppose $0<\eta<1$ and the developer has a differentiable, finite-valued optimum with $B>0$ and positive demand for effective AI production services. Then $q>0$ and $M>0$ at every finite date. Research may converge to zero asymptotically, but the developer cannot stop improvements in AI productivity by choosing $M=0$ at a finite date.
 %\end{proposition}
 
 \subsection{Equilibrium}

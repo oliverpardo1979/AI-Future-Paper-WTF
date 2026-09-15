@@ -181,7 +181,7 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"$\lim r$", table)
         self.assertIn(r"$\lim g_{Y/N}$ & $\lim g_w$", table)
         self.assertIn(r"\begin{tabular}{@{}cccccc@{}}", table)
-        self.assertIn("AI efficiency bound", table)
+        self.assertIn("AI productivity bound", table)
         rows = [line.strip() for line in table.splitlines() if line.lstrip().startswith("$")]
         self.assertEqual(len(rows), 4)
         self.assertTrue(all(row.count("&") == 5 for row in rows))
@@ -308,10 +308,10 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertEqual(subsections, [
             "Complementarity",
             "Unit elasticity",
-            "Substitution: growth and the AI-efficiency upper bound",
+            "Substitution: growth and the AI-productivity upper bound",
         ])
         bgp = body.split(r"\label{subsec:rewrite-uncapped-unit-bgp}", 1)[1].split(
-            r"\subsection{Substitution: growth and the AI-efficiency upper bound}", 1)[0]
+            r"\subsection{Substitution: growth and the AI-productivity upper bound}", 1)[0]
         self.assertIn(r"\label{prop:rewrite-uncapped-unit-bgp}", bgp)
         self.assertLess(bgp.index(r"\label{eq:rewrite-uncapped-unit-elasticities}"),
                         bgp.index(r"\begin{proposition}"))
@@ -328,9 +328,9 @@ class UnifiedPropositionStructure(unittest.TestCase):
         self.assertIn(r"\citep{pardo2026companion}", bgp)
         self.assertIn(r"\hyperref[proof:rewrite-uncapped-unit-bgp]", bgp)
         literature = " ".join(source("sections_rewrite/02_literature.tex").split())
-        self.assertIn("Across the long-run equilibria characterized here with a finite upper bound on AI efficiency", literature)
+        self.assertIn("Across the long-run equilibria characterized here with a finite upper bound on AI productivity", literature)
         conclusion = " ".join(source("sections_rewrite/06_conclusion.tex").split())
-        self.assertIn("Across the long-run regimes I characterize with a finite upper bound on AI efficiency", conclusion)
+        self.assertIn("Across the long-run regimes I characterize with a finite upper bound on AI productivity", conclusion)
         self.assertIn("uncapped unit-elastic benchmark", conclusion)
         self.assertIn("beyond unit elasticity", conclusion)
 
@@ -347,10 +347,10 @@ class UnifiedPropositionStructure(unittest.TestCase):
         prose = prose.replace("automation frontier", "")
         self.assertNotRegex(prose, r"(?i)\bfrontier\b")
         self.assertIn(
-            r"\section{Equilibrium with a finite upper bound on AI efficiency}", text
+            r"\section{Equilibrium with a finite upper bound on AI productivity}", text
         )
         self.assertIn(
-            r"\section{Equilibrium without an upper bound on AI efficiency}", text
+            r"\section{Equilibrium without an upper bound on AI productivity}", text
         )
 
 

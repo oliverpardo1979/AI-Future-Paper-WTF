@@ -12,6 +12,19 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### AI productivity terminology (September 14, 2026; latest wording decision)
+
+- Call B "AI productivity" throughout main_rewrite and its sections, tables,
+  figure labels and appendices. At its introduction in Section 3, retain
+  "AI efficiency" as an alternative description of services per unit of
+  compute and connect it to the cited computer-science literature on
+  algorithmic efficiency. This supersedes earlier terminology choices.
+- Preserve B, BU, BM, every equation and reference label, all parameters,
+  calibration records and numerical paths. Keep chi's distinct meaning as
+  the research-productivity parameter and preserve "efficiency units" for A.
+- Do not rename internal solver functions or stored data fields as part of
+  this editorial change.
+
 ### Simulation terminology (September 14, 2026; latest wording decision)
 
 - Use "numerical simulations" rather than "numerical equilibrium paths"

@@ -2,17 +2,17 @@
 \label{subsec:rewrite-price-calibration}
 
 Table~\ref{tab:rewrite-price-parameters} distinguishes the empirical price
-target from the assumed weights and initial efficiency.
+target from the assumed weights and initial productivity.
 \begin{rewriteParameterTable}{Price-calibrated transition: parameters and initial stocks}{tab:rewrite-price-parameters}
 $\omega_X$ & 0.20 & AI production weight & Arbitrary post-change weight, not fitted to the industry's size; zero before date zero.\\
 $\omega_L$ & 0.80 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
 $\chi$ & 51.760525 & Research productivity & Fitted at $\sigma=1$ to $p_X(2.25)/p_X(0)=0.20$; rounded OECD price decline, subject to the qualifications below \citep{oecdaimarkets2026}.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenarios; only the unit-elastic price decline is fitted.\\
-$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+$\overline B$ & 170.1240 & AI-productivity upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
 \midrule
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}.\\
-$B_0$ & 17.012402 & Initial AI efficiency & $0.10\overline B$; arbitrary assumption, not identified by the no-AI economy.\\
+$B_0$ & 17.012402 & Initial AI productivity & $0.10\overline B$; arbitrary assumption, not identified by the no-AI economy.\\
 $K_0/Y_0$ & 4.025; 3.620; 3.397; 2.872 & Post-change capital--output ratio & Calculated from the saved paths; 3.30 before the technology switch. The price target does not fit this ratio.\\
 \end{rewriteParameterTable}
 
@@ -28,7 +28,7 @@ also affect observed prices, so the exercise calibrates the model's timing
 rather than separately identifying the productivity of RSI.
 
 Before date zero, the economy is on the no-AI Ramsey steady state. I retain
-its capital stock but set latent AI efficiency at $10\%$ of the upper bound:
+its capital stock but set latent AI productivity at $10\%$ of the upper bound:
 \begin{equation}
  A_0=N_0=1,\qquad K_0=5.9416,\qquad
  B_0=0.10\overline B=17.0124.
@@ -39,7 +39,7 @@ The capital stock is calculated from the exact expression in
 At date zero, the weights change from $(\omega_L,\omega_X)=(1,0)$ to
 $(0.80,0.20)$, as in the preceding Ramsey-start experiment. I leave
 $\eta=0.20$, $\overline B=170.1240$, and the macroeconomic parameters unchanged.
-The initial efficiency ratio remains illustrative: it is not identified by
+The initial productivity ratio remains illustrative: it is not identified by
 the pre-AI economy. Consumption and the shadow value are selected anew by
 the BVP, not inherited from the Ramsey allocation.
 
@@ -105,7 +105,7 @@ eliminate the subsequent capital-accumulation transition.
 
 The financing response differs across regimes. At $\sigma=1$, research
 initially uses $1.1\%$ of output: high research productivity permits rapid
-efficiency gains without large research expenditure. At $\sigma=1.50$,
+productivity gains without large research expenditure. At $\sigma=1.50$,
 research instead absorbs $13.7\%$ of output and net profit is initially
 $-3.9\%$ of output, or $-22.8\%$ of AI revenue. The household finances this
 temporary loss against future monopoly profits. Capital per unit of
@@ -133,7 +133,7 @@ approaching their analytical limits.
 This exercise matches the price decline, not the current scale of the AI
 industry or observed aggregate growth. Under the retained stocks and CES
 weights, AI revenue already represents between $13.2\%$ and $17.0\%$ of
-output at date zero. Combining that initial scale with rapid efficiency
+output at date zero. Combining that initial scale with rapid productivity
 improvement generates large immediate macroeconomic effects. The results
 therefore describe a conditional equilibrium experiment, not a forecast
 dated to January 2024. Matching the current industry's size as well as its
