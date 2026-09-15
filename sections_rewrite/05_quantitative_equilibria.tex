@@ -4,7 +4,7 @@
 
 The principal calibration is reported in
 Section~\ref{subsec:rewrite-low-ai-price-calibration}. It uses common Ramsey
-initial capital, an AI weight of $0.10$, initial AI productivity at $1\%$ of
+initial capital, an AI weight of $0.10$, initial AI efficiency at $1\%$ of
 its upper bound, and research productivity calibrated to the decline in AI
 prices. I retain the earlier timing and initial-condition exercises below
 to show how the transition depends on these choices.
@@ -75,7 +75,7 @@ Changing the upper bound separately across scenarios would confound this
 comparison of elasticities.
 
 The choice of initial conditions follows the question posed by each exercise.
-$A_0=N_0=1$ fixes units. The capital stock $K_0$ and AI productivity $B_0$ are
+$A_0=N_0=1$ fixes units. The capital stock $K_0$ and AI efficiency $B_0$ are
 predetermined states and are therefore specified before solving an
 equilibrium. Consumption $C_0$ and the developer's shadow value $q_0$ are jump
 variables: I never import them from another economy or choose them to improve
@@ -88,7 +88,7 @@ I set
 \end{equation}
 These common initial stocks place the economy closer to the capped
 $\sigma=1$ terminal regime than the earlier uncapped reference: initial AI
-productivity is 10 percent of its upper bound and initial capital per unit of
+efficiency is 10 percent of its upper bound and initial capital per unit of
 effective labor is about 44 percent of its terminal $\sigma=1$ value. I use
 these intermediate stocks so that the illustrative figures display the transition
 without letting the financing needs of an extremely distant initial economy
@@ -96,8 +96,8 @@ dominate the comparison. Holding the same two stocks across the four values of
 $\sigma$ then isolates how the substitution elasticity changes the subsequent
 equilibrium path. These values are illustrative rather than estimated, and
 they are not a balanced-growth state of the capped economy. An exact
-constant-productivity reference at $B_0=\overline B$ would eliminate further
-improvements in AI productivity and would lie outside the interior problem
+constant-efficiency reference at $B_0=\overline B$ would eliminate further
+improvements in AI efficiency and would lie outside the interior problem
 studied here. In each capped economy, the BVP selects $C_0$ and $q_0$ anew;
 neither jump variable is fixed at its uncapped reference value.
 
@@ -131,7 +131,7 @@ independently reconstructed dynamic residuals, stability to longer horizons
 and tighter tolerances, both transversality conditions, and sufficient global
 developer optimality. The first three scenarios satisfy the global concavity
 test. For $\sigma=1.50$, that stronger test fails at low counterfactual
-AI-productivity levels, but the support condition in Appendix
+AI-efficiency levels, but the support condition in Appendix
 Lemma~\ref{lem:rewrite-developer-verification} is satisfied. Its analytical
 long-run bound is given in \eqref{eq:rewrite-support-terminal-bound}.
 
@@ -307,7 +307,7 @@ $\eta=0.20$ implies strong diminishing returns to a contemporaneous increase
 in research compute. As $B$ rises, however, it reduces the compute required
 to supply a unit of $X$ and makes subsequent research compute more productive.
 RSI therefore need not produce an immediate acceleration of aggregate growth. Near the finite upper bound,
-$\psi(B)$ slows further productivity improvement. The eventual acceleration in
+$\psi(B)$ slows further efficiency improvement. The eventual acceleration in
 the AI-dominated equilibrium is consequently not an explosion of $B$: it is
 sustained by the expansion of capital and effective AI production services
 after labor ceases to be the binding input.
@@ -357,18 +357,18 @@ $\omega_X$ & 0.20 & AI production weight & Arbitrary post-change weight; zero be
 $\omega_L$ & 0.80 & Effective-labor weight & $1-\omega_X$; one before date zero.\\
 $\chi$ & 1.4378 & Research productivity & Retained from the illustrative comparison's arbitrary 50-year timing calibration; not refitted here.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & Arbitrary scenario values; irrelevant in the pre-change no-AI economy.\\
-$\overline B$ & 170.1240 & AI-productivity upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
 \midrule
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 5.941573 & Initial capital & Calculated no-AI Ramsey steady state, Equation~\eqref{eq:rewrite-ramsey-start-stocks}; not independently chosen.\\
-$B_0$ & 1.701240 & Initial AI productivity & $0.01\overline B$; arbitrary latent productivity, not identified by the no-AI economy.\\
+$B_0$ & 1.701240 & Initial AI efficiency & $0.01\overline B$; arbitrary latent efficiency, not identified by the no-AI economy.\\
 $K_0/Y_0$ & 5.658; 5.169; 4.844; 4.347 & Post-change capital--output ratio & Calculated equilibrium ratios; the pre-change no-AI ratio is 3.30, Equation~\eqref{eq:rewrite-ramsey-capital-output}.\\
 \end{rewriteParameterTable}
 
 As an additional transition experiment, suppose that the economy is initially
 on the no-AI Ramsey--Cass--Koopmans steady state described in
 Remark~\ref{rem:rewrite-no-ai}. Before date zero, $\omega_X=0$ and
-$\omega_L=1$. AI productivity is then irrelevant for production, so I assign it
+$\omega_L=1$. AI efficiency is then irrelevant for production, so I assign it
 a low latent value, $B_0/\overline B=0.01$, solely to initialize the economy
 after AI production and research become available. The no-AI steady-state
 capital stock and the two predetermined date-zero stocks are
@@ -387,7 +387,7 @@ The corresponding pre-change values are $Y/(AN)=1.8005$ and
 $C/(AN)=1.4262$, with $K/Y=3.30$. After the change, $K_0/Y_0$ ranges from
 4.35 to 5.66, above the 3.61 current-price international benchmark. Capital
 is inherited, but output falls when the production weights change at this
-low initial AI productivity. This initial level effect is part of the
+low initial AI efficiency. This initial level effect is part of the
 illustrative technology switch, not an empirically fitted impact of AI.
 At date zero, $\omega_X$ rises to $0.20$ and
 $\omega_L$ falls to $0.80$. I hold the two stocks in
@@ -399,7 +399,7 @@ starting point, chosen to leave substantial room for AI improvement after the
 technology switch; it cannot be inferred from the pre-change economy because
 $B$ has no economic role when $\omega_X=0$. Keeping these two predetermined
 stocks common across $\sigma$ isolates the role of substitution conditional on
-the same Ramsey capital stock and the same latent initial AI productivity.
+the same Ramsey capital stock and the same latent initial AI efficiency.
 Consumption can jump after the change in technology, and the developer's
 shadow value has no no-AI counterpart. The BVP therefore selects
 $C_0$ and $q_0$ anew in each positive-AI economy.
@@ -447,7 +447,7 @@ tests.
  \label{fig:rewrite-ramsey-start-ai-distribution}
 \end{figure}
 
-Low initial AI productivity produces a sharp reallocation. At date zero,
+Low initial AI efficiency produces a sharp reallocation. At date zero,
 $X/(AL)$ grows between $30.5\%$ and $79.0\%$ across the four equilibria, while
 $K/(AL)$ falls between $5.7\%$ and $8.1\%$. The net interest rate is initially
 between $0.83\%$ and $2.59\%$, below its $5\%$ no-AI value. These movements do
@@ -479,17 +479,17 @@ elasticity-specific threshold.
 \label{subsec:rewrite-near-terminal}
 
 Table~\ref{tab:rewrite-near-terminal-parameters} separates the chosen
-initial productivity from the capital stocks calculated for each terminal regime.
+initial efficiency from the capital stocks calculated for each terminal regime.
 \begin{rewriteParameterTable}{Near-terminal paths: parameters and initial stocks}{tab:rewrite-near-terminal-parameters}
 $\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained from the illustrative comparison.\\
 $\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
 $\chi$ & 1.4378 & Research productivity & Retained from the illustrative timing calibration; no new timing target.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & The same four arbitrary scenario values.\\
-$\overline B$ & 170.1240 & AI-productivity upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
 \midrule
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 6.5571 ($\sigma=0.90$);\newline 9.0990 ($\sigma=1$);\newline 12.2652 ($\sigma=1.10$);\newline $4{,}101{,}704.23$ ($\sigma=1.50$) & Initial capital & Calculated from the terminal normalized stocks, Equations~\eqref{eq:rewrite-near-terminal-stocks}--\eqref{eq:rewrite-near-terminal-ai-stock}; not empirical estimates.\\
-$B_0$ & 170.107005 & Initial AI productivity & $0.9999\overline B$; arbitrary diagnostic proximity to the bound, preserving positive research.\\
+$B_0$ & 170.107005 & Initial AI efficiency & $0.9999\overline B$; arbitrary diagnostic proximity to the bound, preserving positive research.\\
 $K_0/Y_0$ & 3.300; 3.300; 3.300; 2.653 & Initial capital--output ratio & Calculated near-terminal equilibrium ratios; diagnostic long-run initializations, not a calibration to today's economy.\\
 \end{rewriteParameterTable}
 
@@ -573,11 +573,11 @@ $\omega_X$ & 0.20 & AI production weight & Arbitrary scenario choice retained fr
 $\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
 $\chi$ & 0.01 & Research productivity & Arbitrary value from the earlier slow-transition design; not fitted to a date or an empirical moment.\\
 $\sigma$ & 0.90; 1; 1.10; 1.50 & AI--labor substitution & The same four arbitrary scenario values.\\
-$\overline B$ & 170.1240 & AI-productivity upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & $1.10\mathcal B(1.50)$; arbitrary margin above the analytical threshold.\\
 \midrule
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations.\\
 $K_0$ & 2.027733654 & Initial capital & Calculated from the earlier uncapped unit-elastic BGP; adopting that reference is an illustrative choice.\\
-$B_0$ & 0.443670932 & Initial AI productivity & Same uncapped BGP reference; about $0.2608\%$ of $\overline B$. Not an empirical estimate.\\
+$B_0$ & 0.443670932 & Initial AI efficiency & Same uncapped BGP reference; about $0.2608\%$ of $\overline B$. Not an empirical estimate.\\
 $K_0/Y_0$ & 3.762; 3.272; 2.905; 2.339 & Initial capital--output ratio & Calculated from the saved paths; adopting the earlier BGP stocks does not fix this ratio across $\sigma$.\\
 \end{rewriteParameterTable}
 
@@ -666,11 +666,11 @@ $\omega_X$ & 0.20 & AI production weight & Same arbitrary weight in both configu
 $\omega_L$ & 0.80 & Effective-labor weight & Computed as $1-\omega_X$.\\
 $\chi$ & 1.4378 (illustrative);\newline 1.4223 (distant) & Research productivity & Each fitted to the same arbitrary 50-year labor-share midpoint, not to data.\\
 $\sigma$ & 1.50 & AI--labor substitution & Arbitrary high-substitution scenario used for this financing comparison.\\
-$\overline B$ & 170.1240 & AI-productivity upper bound & Same $1.10\mathcal B(1.50)$ in both configurations; arbitrary 10\% margin.\\
+$\overline B$ & 170.1240 & AI-efficiency upper bound & Same $1.10\mathcal B(1.50)$ in both configurations; arbitrary 10\% margin.\\
 \midrule
 $A_0,N_0$ & 1; 1 & Initial technology and population & Unit normalizations in both configurations.\\
 $K_0$ & 4 (illustrative);\newline 2.027733654 (distant) & Initial capital & Illustrative: arbitrary intermediate stock. Distant: earlier uncapped BGP stock, used as an illustrative reference.\\
-$B_0$ & 17.012402 (illustrative);\newline 0.443670932 (distant) & Initial AI productivity & Illustrative: arbitrary $10\%$ of the bound. Distant: earlier BGP value, about $0.2608\%$ of the bound; not estimated.\\
+$B_0$ & 17.012402 (illustrative);\newline 0.443670932 (distant) & Initial AI efficiency & Illustrative: arbitrary $10\%$ of the bound. Distant: earlier BGP value, about $0.2608\%$ of the bound; not estimated.\\
 $K_0/Y_0$ & 2.294 (illustrative);\newline 2.339 (distant) & Initial capital--output ratio & Calculated at $\sigma=1.50$; both below the current-price international benchmark.\\
 \end{rewriteParameterTable}
 

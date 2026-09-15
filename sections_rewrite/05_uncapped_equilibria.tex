@@ -1,7 +1,7 @@
-\section{Equilibrium without an upper bound on AI productivity}
+\section{Equilibrium without an upper bound on AI efficiency}
 \label{sec:rewrite-uncapped}
 
-I now remove the upper bound on AI productivity and compare the three
+I now remove the upper bound on AI efficiency and compare the three
 substitution regimes. The RSI technology becomes
 \begin{equation}
  \dot B=\chi(BM)^\eta.
@@ -15,12 +15,12 @@ and both transversality conditions. Removing the upper bound does not by itself
 imply that $B$ grows without bound.
 %For any positive variable $V$, I write $g_V=\dot V/V$ for its growth rate.
 
-The results differ in scope across substitution regimes. Under complementarity, output-per-worker growth is bounded by the rate of labor-augmenting technological progress, even though there is no upper bound on AI productivity. At unit elasticity, I give sufficient parameter restrictions for an analytically tractable balanced-growth equilibrium. Under substitution, I show how growth and interest rates increase with the productivity upper bound and derive a return bound that applies at every date.
+The results differ in scope across substitution regimes. Under complementarity, output-per-worker growth is bounded by the rate of labor-augmenting technological progress, even though there is no upper bound on AI efficiency. At unit elasticity, I give sufficient parameter restrictions for an analytically tractable balanced-growth equilibrium. Under substitution, I show how growth and interest rates increase with the efficiency upper bound and derive a return bound that applies at every date.
 
 \subsection{Complementarity}
 \label{subsec:rewrite-uncapped-complements}
 
-When $\sigma<1$, effective labor remains necessary even if AI becomes arbitrarily productive. Equation~\eqref{eq:rewrite-ces} gives an upper bound for $Z$ and $Y$ which does not depend on $B$:
+When $\sigma<1$, effective labor remains necessary even if AI becomes arbitrarily efficient. Equation~\eqref{eq:rewrite-ces} gives an upper bound for $Z$ and $Y$ which does not depend on $B$:
 \begin{align}
  Z&\leq\omega_L^{\sigma/(\sigma-1)}AL,
  \label{eq:rewrite-uncapped-complements-z-bound}\\
@@ -50,13 +50,13 @@ See Appendix~\ref{app:rewrite-proofs},
 Proposition~\ref*{prop:rewrite-uncapped-complements-bounds}}.
 \end{proof}
 
-Thus a permanent growth rate of output per person above $\gamma$ is infeasible, although transitional growth can exceed it. %These are feasibility bounds, not an equilibrium-existence theorem. They also do not require $\eta<\alpha$: $0<\eta<1$ suffices to bound AI productivity on a finite horizon once research expenditure is bounded by available resources.
-Complementarity suffices to bound long-run growth despite RSI and no bound on AI productivity.
+Thus a permanent growth rate of output per person above $\gamma$ is infeasible, although transitional growth can exceed it. %These are feasibility bounds, not an equilibrium-existence theorem. They also do not require $\eta<\alpha$: $0<\eta<1$ suffices to bound AI efficiency on a finite horizon once research expenditure is bounded by available resources.
+Complementarity suffices to bound long-run growth despite RSI and no bound on AI efficiency.
 
 %The monopoly matters for the limiting income shares. If its marginal cost $1/B$ tends to zero, the developer does not supply unlimited AI services. It approaches the quantity that maximizes revenue. The following conditional result states the implications without assuming that such an equilibrium has been constructed.
 
 \Needspace{7\baselineskip}
-\begin{proposition}[Long-run outcomes under complementarity without an AI productivity upper bound]
+\begin{proposition}[Long-run outcomes under complementarity without an AI efficiency upper bound]
 \label{cond:rewrite-uncapped-complements-limits}
 Suppose $0<\sigma<1$, $\overline B=\infty$, and an equilibrium satisfies
 $B\to\infty$. Then
@@ -167,7 +167,7 @@ improvement. Within the stated restrictions, both raise $g_B$ and the
 growth premium above $\gamma$. Real wages share this premium because unit
 elasticity keeps labor's income share constant.
 
-\subsection{Substitution: growth and the AI-productivity upper bound}
+\subsection{Substitution: growth and the AI-efficiency upper bound}
 \label{subsec:rewrite-uncapped}
 
 With $\sigma>1$, Proposition~\ref{prop:rewrite-equilibrium-regimes}
@@ -177,10 +177,10 @@ $\mathcal R(\overline B)-\rho$. For each fixed $\sigma>1$, both increase
 without bound as $\overline B\to\infty$. This contrasts with
 Proposition~\ref{prop:rewrite-uncapped-complements-bounds}: under
 complementarity, the long-run growth bound does not depend on an
-AI-productivity upper bound.
+AI-efficiency upper bound.
 
 The same function also bounds the interest rate at every date, with or
-without an productivity upper bound:
+without an efficiency upper bound:
 \begin{equation}
  r_t\geq\mathcal R(B_t),\qquad \sigma>1.
  \label{eq:rewrite-uncapped-dated-return-bound}
@@ -210,7 +210,7 @@ $-[1-\alpha+\alpha(\sigma-1)^2]$ at one.}
 Substitution into $r=\alpha Y/K-\delta$ gives
 equation~\eqref{eq:rewrite-uncapped-dated-return-bound}.
 Thus $\mathcal R(B)$ is the lowest return compatible with the production
-and monopoly conditions at that productivity level, attained in the
+and monopoly conditions at that efficiency level, attained in the
 zero-labor-share limit.
 
 If $B$ grows without bound along a trajectory, this inequality requires
@@ -249,13 +249,13 @@ Proposition~\ref*{prop:rewrite-research-scale}}.
 When $\eta<\alpha$, research costs eventually dominate profit gains on a
 fixed horizon. When $\eta>\alpha$, expanding early research makes the
 gains outgrow the cost.
-Each deviating plan uses finite research expenditure and keeps AI productivity
+Each deviating plan uses finite research expenditure and keeps AI efficiency
 finite on every finite interval. The obstruction is therefore an unbounded
 objective, not a finite-time singularity.
 
 The first case motivates the
 choice $\eta=0.20<\alpha=0.33$ in Section~\ref{sec:rewrite-quantitative}:
-it avoids this unbounded-payoff mechanism even without an productivity cap.
+it avoids this unbounded-payoff mechanism even without an efficiency cap.
 This is a modeling restriction, not an estimate of $\eta$. With a finite
 upper bound, $\eta<\alpha$ is not needed to bound the developer's
 finite-horizon value. Part (i) does not establish an infinite-horizon
@@ -268,14 +268,14 @@ orders of benefits and costs alone is inconclusive.
 % \subsection{Substitution: unbounded returns and equilibrium existence}
 % \label{subsec:rewrite-uncapped}
 %
-% Proposition~\ref{prop:rewrite-equilibrium-regimes} does not establish equilibrium existence without an upper bound for AI productivity. I first fixed $\overline B$ and characterized an equilibrium for initial conditions near the steady state. Increasing $\overline B$ afterward differs from setting $\overline B=\infty$ at the outset. For $\sigma>1$, the limiting growth and interest rates of the AI-dominated equilibria become unbounded as $\overline B\to\infty$. This divergence is not a proof of a finite-time singularity or of equilibrium nonexistence in the uncapped economy.
+% Proposition~\ref{prop:rewrite-equilibrium-regimes} does not establish equilibrium existence without an upper bound for AI efficiency. I first fixed $\overline B$ and characterized an equilibrium for initial conditions near the steady state. Increasing $\overline B$ afterward differs from setting $\overline B=\infty$ at the outset. For $\sigma>1$, the limiting growth and interest rates of the AI-dominated equilibria become unbounded as $\overline B\to\infty$. This divergence is not a proof of a finite-time singularity or of equilibrium nonexistence in the uncapped economy.
 %
-% Without an upper bound, recursive improvement can make the developer's objective unbounded: higher $B$ raises both operating profit and research productivity. If $\sigma>1$ and $\eta>\alpha$, there is no uncapped equilibrium with a finite-valued developer optimum, as established in Proposition~\ref{prop:rewrite-research-scale} in Appendix~\ref{app:rewrite-proofs}. Expanding early research makes discounted net profit arbitrarily large on a fixed finite horizon. The developer can then resume any proposed continuation of research spending with higher AI productivity and no lower operating profit. Thus every candidate with a finite value admits a profitable deviation. This failure of optimality does not require a finite-time singularity: each deviating plan uses finite research expenditure and keeps $B$ finite on every finite horizon. %Financing cannot resolve an unbounded objective or create the real resources used in research: equation~\eqref{eq:rewrite-eq-kdot} requires research compute to compete with consumption, inference compute, and physical investment.
+% Without an upper bound, recursive improvement can make the developer's objective unbounded: higher $B$ raises both operating profit and research productivity. If $\sigma>1$ and $\eta>\alpha$, there is no uncapped equilibrium with a finite-valued developer optimum, as established in Proposition~\ref{prop:rewrite-research-scale} in Appendix~\ref{app:rewrite-proofs}. Expanding early research makes discounted net profit arbitrarily large on a fixed finite horizon. The developer can then resume any proposed continuation of research spending with higher AI efficiency and no lower operating profit. Thus every candidate with a finite value admits a profitable deviation. This failure of optimality does not require a finite-time singularity: each deviating plan uses finite research expenditure and keeps $B$ finite on every finite horizon. %Financing cannot resolve an unbounded objective or create the real resources used in research: equation~\eqref{eq:rewrite-eq-kdot} requires research compute to compete with consumption, inference compute, and physical investment.
 %
 % If $\eta<\alpha$ and $\sigma>1$, the same proposition gives a finite truncated value and shows that research costs eventually outgrow the benefits of increasing expenditure on a fixed horizon. This result takes the paths of capital, effective labor, and interest rates as given. It rules out that particular unbounded-payoff argument, without establishing an uncapped infinite-horizon equilibrium. Neither existence nor general nonexistence is established for this parameter range. On its own, this fixed-horizon result does not establish or rule out a finite-time singularity, which would violate the requirement of finite, feasible allocations at every date in Definition~\ref{def:rewrite-equilibrium}.
 %
 % The equilibrium in Section~\ref{subsec:rewrite-uncapped-unit-bgp} shows that
-% unbounded AI productivity is compatible with equilibrium at unit elasticity.
+% unbounded AI efficiency is compatible with equilibrium at unit elasticity.
 % It does not resolve existence for $\sigma>1$.
 %
 % At $\eta=\alpha$, the finite-horizon benefit and cost terms have the same
@@ -291,7 +291,7 @@ orders of benefits and costs alone is inconclusive.
 %  \label{eq:rewrite-uncapped-dated-return-bound}
 % \end{equation}
 % The proof below derives this inequality without assuming $s_X\to1$ or
-% $B\to\infty$. Thus, if AI productivity grows without bound, the interest
+% $B\to\infty$. Thus, if AI efficiency grows without bound, the interest
 % rate must do so too. Once $B_t>\mathcal B(\sigma)$, the Euler equation
 % also gives $g_{C/N}=r_t-\rho>\gamma$. Unlike a comparison of long-run
 % equilibria with different upper bounds, these are restrictions on a single
@@ -307,7 +307,7 @@ orders of benefits and costs alone is inconclusive.
 % Instead, I use a comparison argument that allows investment shares to vary.
 %
 % \Needspace{7\baselineskip}
-% \begin{proposition}[Investment restrictions without an productivity upper bound]
+% \begin{proposition}[Investment restrictions without an efficiency upper bound]
 % \label{prop:rewrite-uncapped-substitutes-explosion}
 % Let $\sigma>1$, $\overline B=\infty$, $0<\alpha<1$, and $0<\eta<1$.
 % No equilibrium in Definition~\ref{def:rewrite-equilibrium} can satisfy
@@ -343,13 +343,13 @@ orders of benefits and costs alone is inconclusive.
 % not additional parameters or imposed saving rules. The shares need not be
 % constant or converge, and the proposition assumes neither $B\to\infty$
 % nor $s_X\to1$. Persistent investment first prevents capital and output
-% from disappearing and keeps research positive. AI productivity must then
+% from disappearing and keeps research positive. AI efficiency must then
 % eventually exceed every finite level. The return bound from Section~
 % \ref{subsec:rewrite-return-threshold} makes depreciation negligible
 % relative to investment and strengthens the feedback between capital and
 % research. The proof obtains $\dot B\geq c_B B^{1/\alpha}$ for some
 % constant $c_B>0$ at sufficiently late dates. Since $1/\alpha>1$, this
-% inequality contradicts finite AI productivity at every finite date. The
+% inequality contradicts finite AI efficiency at every finite date. The
 % argument works whether $\eta<\alpha$, $\eta=\alpha$, or $\eta>\alpha$.
 %
 % Part (ii) uses optimality to exclude the possibility that convergent

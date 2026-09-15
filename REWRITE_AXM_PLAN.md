@@ -12,6 +12,18 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Restore AI efficiency (September 14, 2026; superseding wording decision)
+
+- The author prefers "AI efficiency" for B after reconsidering
+  "AI productivity". Restore this term throughout the manuscript, including
+  diagrams, tables, and appendices. Keep the original services-per-compute
+  definition and its connection to algorithmic efficiency.
+- This supersedes the AI productivity terminology decision below. Preserve
+  all subsequent abstract edits, especially the approved closing sentence
+  beginning "Numerical simulations show that early growth alone may".
+- Keep A as labor-augmenting technology, chi as the research-productivity
+  parameter, and all equations, calibration records, solver code and results.
+
 ### AI productivity terminology (September 14, 2026; latest wording decision)
 
 - Call B "AI productivity" throughout main_rewrite and its sections, tables,

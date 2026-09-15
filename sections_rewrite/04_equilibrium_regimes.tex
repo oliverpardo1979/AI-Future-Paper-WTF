@@ -1,9 +1,9 @@
-\section{Equilibrium with a finite upper bound on AI productivity}
+\section{Equilibrium with a finite upper bound on AI efficiency}
 \label{sec:rewrite-regimes}
 
-In this section, I characterize the long-run equilibrium behavior for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI productivity is sufficiently high.
+In this section, I characterize the long-run equilibrium behavior for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high.
 
-To identify this threshold, I calculate the net return on capital implied by the production and pricing conditions as AI productivity approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI productivity converges to a finite limit.
+To identify this threshold, I calculate the net return on capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
 %The parameter restrictions used in all three propositions are
 %\begin{equation}
 % \begin{gathered}
@@ -16,14 +16,14 @@ To identify this threshold, I calculate the net return on capital implied by the
 %These are the primitive restrictions in Section~\ref{sec:rewrite-model}.
 %In particular, the local results with a finite upper bound do not require Assumptions~\ref{ass:rewrite-research-curvature} or \ref{ass:rewrite-research-concavity}. Sufficiently near the upper bound, its diminishing scope for improvement permits global verification of the developer's policy even when $\eta>1/2$.
 
-%The inequality $n+\gamma>0$ already follows from \eqref{eq:rewrite-population} and \eqref{eq:rewrite-labor-productivity}, so it is not a separate assumption. It makes effective labor grow and gives the remaining AI-productivity gap a positive asymptotic rate of closure in the constructions below. The case $n+\gamma=0$ is not covered by these proofs.
+%The inequality $n+\gamma>0$ already follows from \eqref{eq:rewrite-population} and \eqref{eq:rewrite-labor-productivity}, so it is not a separate assumption. It makes effective labor grow and gives the remaining AI-efficiency gap a positive asymptotic rate of closure in the constructions below. The case $n+\gamma=0$ is not covered by these proofs.
 
-%Each proposition below states the restrictions on $\sigma$, the upper bound, and the initial stocks that are specific to its construction. The results do not concern the uncapped economy. They are local in initial stocks, not in time: each constructs a trajectory defined for every $t\geq0$, including both transversality conditions and agent optimality. The initial stocks need not lie on a balanced-growth path. The neighborhoods are in normalized coordinates and require initial AI productivity sufficiently close to its upper bound. Local uniqueness below means uniqueness among solutions that remain near the indicated normalized long-run limit and converge to it; it does not exclude other equilibria outside that neighborhood.
+%Each proposition below states the restrictions on $\sigma$, the upper bound, and the initial stocks that are specific to its construction. The results do not concern the uncapped economy. They are local in initial stocks, not in time: each constructs a trajectory defined for every $t\geq0$, including both transversality conditions and agent optimality. The initial stocks need not lie on a balanced-growth path. The neighborhoods are in normalized coordinates and require initial AI efficiency sufficiently close to its upper bound. Local uniqueness below means uniqueness among solutions that remain near the indicated normalized long-run limit and converge to it; it does not exclude other equilibria outside that neighborhood.
 
-\subsection{The return to capital and the productivity threshold}
+\subsection{The return to capital and the efficiency threshold}
 \label{subsec:rewrite-return-threshold}
 
-A finite upper bound restricts AI productivity, but not the compute used to supply AI production services. To identify the return when labor's income share vanishes, fix $B>0$ and consider $s_X\to1$. Since $wL/Y=(1-\alpha)(1-s_X)$, this is the zero-labor-share limit.
+A finite upper bound restricts AI efficiency, but not the compute used to supply AI production services. To identify the return when labor's income share vanishes, fix $B>0$ and consider $s_X\to1$. Since $wL/Y=(1-\alpha)(1-s_X)$, this is the zero-labor-share limit.
 
 Combine the final-good firm's demand for AI services in
 equation~\eqref{eq:rewrite-ai-price} with the developer's pricing condition in equation~\eqref{eq:rewrite-monopoly-foc}. The result is:
@@ -64,7 +64,7 @@ This is a return at a particular limit of the production and pricing conditions,
 For $\sigma>1$, $s_X\to1$ means that AI production services become arbitrarily large relative to effective labor. For $\sigma<1$, $s_X\to1$ means that effective labor services become arbitrarily large relative to AI production services. Whether the equilibrium interest rate converges to $\mathcal R(\overline B)$ depends on both $\sigma$ and $\overline B$, as shown below.
 
 By the Euler equation \eqref{eq:rewrite-euler}, consumption per person grows at $r-\rho$. A long-run equilibrium in which consumption per person grows at $\gamma$
-therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the AI-productivity level at which the zero-labor-share return equals $\rho+\gamma$, the return required for consumption per person to grow at $\gamma$:
+therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the AI-efficiency level at which the zero-labor-share return equals $\rho+\gamma$, the return required for consumption per person to grow at $\gamma$:
 \begin{equation}
  \begin{aligned}
  \mathcal R(\mathcal B(\sigma))&=\rho+\gamma,\\
@@ -74,8 +74,8 @@ therefore requires $r=\rho+\gamma$. Define $\mathcal B(\sigma)$ as the AI-produc
  \end{aligned}
  \label{eq:rewrite-critical-frontier}
 \end{equation}
-%The first line equates the zero-labor-share return to the return that sustains growth at $\gamma$; the second solves for AI productivity. I interpret this threshold as a boundary between growth regimes only for $\sigma>1$. With complementarity, it instead enters a sufficient condition for the construction below. At $\sigma=1$, \eqref{eq:rewrite-ai-terminal-ratio} is undefined and I use the Cobb--Douglas limit of the CES aggregator.
-The inequalities between $\overline B$ and $\mathcal B(\sigma)$ --whether AI can attain sufficient productivity-- and between $\sigma$ and $1$ --whether labor and AI are substitutes or complements-- distinguish the long-run equilibrium regimes characterized below.
+%The first line equates the zero-labor-share return to the return that sustains growth at $\gamma$; the second solves for AI efficiency. I interpret this threshold as a boundary between growth regimes only for $\sigma>1$. With complementarity, it instead enters a sufficient condition for the construction below. At $\sigma=1$, \eqref{eq:rewrite-ai-terminal-ratio} is undefined and I use the Cobb--Douglas limit of the CES aggregator.
+The inequalities between $\overline B$ and $\mathcal B(\sigma)$ --whether AI can attain sufficient efficiency-- and between $\sigma$ and $1$ --whether labor and AI are substitutes or complements-- distinguish the long-run equilibrium regimes characterized below.
 
 \subsection{Equilibrium existence and long-run regimes}
 \label{subsec:rewrite-equilibrium-existence}
@@ -140,15 +140,15 @@ Proposition~\ref*{prop:rewrite-equilibrium-regimes}}.
 
 %RSI operates in all four cases of the proposition. Its presence alone therefore does not eliminate labor as a production bottleneck.
 
-The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$ is deliberate as the upper bound $\overline B$ on AI productivity is a device to avoid a singularity when $\sigma>1$.
+The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$ is deliberate as the upper bound $\overline B$ on AI efficiency is a device to avoid a singularity when $\sigma>1$.
 In this region, any equilibrium has an AI production bottleneck, and long-run
 output-per-worker growth is bounded strictly below $\gamma$.
 See Appendix~\ref{app:rewrite-proofs},
 \hyperref[proof:rewrite-low-cap-complements]{Proof of the AI-bottleneck statement}.
 
 
-The proof of Proposition \ref{prop:rewrite-equilibrium-regimes} first normalizes growing quantities and shrinking productivity gaps. For each parameter configuration covered by the proposition, I conjecture stationary values of these normalized variables. I then construct trajectories from every sufficiently nearby initial state, deriving equilibrium trajectories and checking they converge to the stationary conjectures. %The initial stocks need not lie on a balanced-growth path.
-%This result is local in initial states, not in time. Closeness concerns capital, the remaining AI-productivity gap, and the scale of effective labor jointly; $B_0$ close to $\overline B$ alone is not sufficient.
+The proof of Proposition \ref{prop:rewrite-equilibrium-regimes} first normalizes growing quantities and shrinking efficiency gaps. For each parameter configuration covered by the proposition, I conjecture stationary values of these normalized variables. I then construct trajectories from every sufficiently nearby initial state, deriving equilibrium trajectories and checking they converge to the stationary conjectures. %The initial stocks need not lie on a balanced-growth path.
+%This result is local in initial states, not in time. Closeness concerns capital, the remaining AI-efficiency gap, and the scale of effective labor jointly; $B_0$ close to $\overline B$ alone is not sufficient.
 %The precise sets and l
 Local uniqueness results are given in the proof. Existence from arbitrary initial states and global uniqueness are not established. These analytical results guide the algorithm's boundary conditions
 (Appendix~\ref{app:rewrite-algorithm})%, but do not determine the duration or shape of the transition
@@ -248,7 +248,7 @@ Table~\ref{tab:rewrite-finite-existence} summarizes the four cases of Propositio
 \small
 \begin{tabular}{@{}cccccc@{}}
 \toprule
-Elasticity & AI productivity bound & $\lim g_{Y/N}$ & $\lim g_w$ & $\lim wL/Y$ & $\lim r$ \\
+Elasticity & AI efficiency bound & $\lim g_{Y/N}$ & $\lim g_w$ & $\lim wL/Y$ & $\lim r$ \\
 \midrule
 $0<\sigma<1$ & $\overline B>\mathcal B(\sigma)$ & $\gamma$ & $\gamma$ & Positive & $\rho+\gamma$ \\
 $\sigma=1$ & Any finite $\overline B$ & $\gamma$ & $\gamma$ & $(1-\alpha)\omega_L$ & $\rho+\gamma$ \\
@@ -262,4 +262,4 @@ $\sigma>1$ & $\overline B>\mathcal B(\sigma)$ & $\mathcal R(\overline B) -\rho$ 
 %I use this comparison as an economic regime threshold only for $\sigma>1$. For $\sigma<1$, $s_X\to1$ corresponds instead to AI services becoming scarce relative to effective labor. The condition $\overline B>\mathcal B(\sigma)$, or $\mathcal R(\overline B)>\rho+\gamma$, is then only a sufficient condition for the positive-labor-share construction in Proposition~\ref{prop:rewrite-capped-complements-existence}; it does not imply AI-dominated growth.
 
 
-%Section~\ref{sec:rewrite-uncapped} studies the economy without an upper bound on AI productivity. Those results require a separate equilibrium analysis.
+%Section~\ref{sec:rewrite-uncapped} studies the economy without an upper bound on AI efficiency. Those results require a separate equilibrium analysis.
