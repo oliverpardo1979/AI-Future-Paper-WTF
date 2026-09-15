@@ -40,6 +40,49 @@ def quantitative_text(full=False, legacy=False):
 
 
 class SimulationSelection(unittest.TestCase):
+    def test_one_parameter_table_covers_both_calibrations(self):
+        text = quantitative_text()
+        self.assertEqual(text.count(r'\begin{rewriteParameterTable}'), 1)
+        self.assertIn('{tab:rewrite-rsi-parameters}', text)
+        self.assertNotIn('{tab:rewrite-rsi-half-parameters}', text)
+        self.assertNotIn('{tab:rewrite-research-share-parameters}', text)
+        self.assertIn('7.616305 (central)', text)
+        self.assertIn('1.4378 (slow)', text)
+        self.assertLess(text.index(r'\begin{rewriteParameterTable}'),
+                        text.index(r'\subsection{Central illustrative scenario}'))
+        for old in ('rsi_half_decline_parameters.tex',
+                    'rsi_research_share_parameters.tex'):
+            self.assertTrue((ROOT/'sections_rewrite'/old).exists())
+
+    def test_unified_values_match_both_saved_calibrations(self):
+        common = (ROOT/'sections_rewrite/parameter_tables.tex').read_text(encoding='utf-8')
+        common = common.split(r'\newcommand{\rewriteMainParameterRows}', 1)[0]
+        table = (ROOT/'sections_rewrite/rsi_parameters.tex').read_text(encoding='utf-8')
+        rows = dict(re.findall(r'^\$([^$]+)\$ & (.*?) &', common+'\n'+table, re.M))
+        def rounded_value(segment, actual):
+            token = re.match(r'[\d,]+(?:\.\d+)?', segment.strip())[0].replace(',', '')
+            decimals = len(token.split('.')[1]) if '.' in token else 0
+            self.assertLessEqual(abs(float(token)-actual), .5*10**(-decimals)+1e-10)
+        mapping = {r'\alpha':'alpha', r'\delta':'depreciation', r'\rho':'discount',
+                   'n':'population_growth', r'\gamma':'labor_productivity_growth',
+                   r'\eta':'eta', r'\omega_X':'omega_x'}
+        for index, folder in enumerate(('rsi_activation_half_decline', 'rsi_research_share_2023')):
+            manifest = json.loads((ROOT/'numerical_rewrite'/folder/'paths_manifest.json').read_text())
+            for symbol, field in mapping.items():
+                rounded_value(rows[symbol], manifest['parameters'][field])
+            rounded_value(rows[r'\omega_L'], 1-manifest['parameters']['omega_x'])
+            for j, field in enumerate(('initial_labor_productivity', 'initial_population')):
+                rounded_value(rows['A_0,N_0'].split(';')[j], manifest['parameters'][field])
+            rounded_value(rows[r'\chi'].split(r';\newline ')[index], manifest['parameters']['chi'])
+            rounded_value(rows[r'\overline B'], manifest['frontier'])
+            rounded_value(rows['B_0'], manifest['initial_capability'])
+            p = manifest['parameters']
+            rounded_value(rows['K_0/Y_0'], p['alpha']/(p['discount']+p['labor_productivity_growth']+p['depreciation']))
+            for j, sigma in enumerate((.9, 1., 1.1, 1.5)):
+                rounded_value(rows[r'\sigma'].split(';')[j], sigma)
+                key = 'sigma_' + f'{sigma:.2f}'.replace('.', '_')
+                rounded_value(rows['K_0'].split(';')[j], manifest['initial_capital_by_sigma'][key])
+
     def test_default_order_and_six_retained_figures(self):
         main = (ROOT / 'main_rewrite.tex').read_text()
         self.assertIn(r'\showfullpricebenchmarkfalse', main)
