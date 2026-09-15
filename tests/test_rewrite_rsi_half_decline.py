@@ -76,7 +76,7 @@ class HalfDeclineTarget(unittest.TestCase):
     @unittest.skipUnless((OUT/'calibration.json').exists(), 'Run the new calibration first')
     def test_parameter_table_matches_stored_calibration(self):
         d=calibrated_design(VARIANT)
-        text=(ROOT/'sections_rewrite/rsi_half_decline_parameters.tex').read_text()
+        text=(ROOT/'sections_rewrite/preserved/rsi_half_decline_parameters.tex').read_text()
         table=dict(re.findall(r'^\$([^$]+)\$ & (.*?) &',text,re.M))
         self.assertAlmostEqual(float(table[r'\chi']),d.parameters.chi,places=6)
         self.assertAlmostEqual(float(table[r'\overline B'].replace(',','')),d.frontier,places=6)

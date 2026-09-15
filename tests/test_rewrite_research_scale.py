@@ -60,7 +60,7 @@ class ResearchScale(unittest.TestCase):
             p = params['eta'] * (1 - params['alpha']) / (params['alpha'] * (1 - params['eta']))
             self.assertAlmostEqual(p, 0.5075757575757576)
         for path in ('sections_rewrite/08_rsi_design.tex',
-                     'sections_rewrite/parameter_tables.tex'):
+                     'sections_rewrite/rsi_parameters.tex'):
             self.assertIn(r'\ref{prop:rewrite-research-scale}(i)', source(path))
 
 

@@ -42,23 +42,26 @@ def quantitative_text(full=False, legacy=False):
 class SimulationSelection(unittest.TestCase):
     def test_one_parameter_table_covers_both_calibrations(self):
         text = quantitative_text()
-        self.assertEqual(text.count(r'\begin{rewriteParameterTable}'), 1)
+        self.assertEqual(text.count(r'\begin{table}'), 1)
+        self.assertNotIn('rewriteParameterTable', text)
         self.assertIn('{tab:rewrite-rsi-parameters}', text)
         self.assertNotIn('{tab:rewrite-rsi-half-parameters}', text)
         self.assertNotIn('{tab:rewrite-research-share-parameters}', text)
         self.assertIn('7.616305 (central)', text)
         self.assertIn('1.4378 (slow)', text)
-        self.assertLess(text.index(r'\begin{rewriteParameterTable}'),
+        self.assertLess(text.index(r'\begin{table}'),
                         text.index(r'\subsection{Central illustrative scenario}'))
-        for old in ('rsi_half_decline_parameters.tex',
-                    'rsi_research_share_parameters.tex'):
-            self.assertTrue((ROOT/'sections_rewrite'/old).exists())
+        table = (ROOT/'sections_rewrite/rsi_parameters.tex').read_text(encoding='utf-8')
+        self.assertNotIn(r'\input', table)
+        for old in ('parameter_tables.tex', 'rsi_half_decline_parameters.tex',
+                    'rsi_research_share_parameters.tex', 'rsi_activation_parameters.tex'):
+            self.assertFalse((ROOT/'sections_rewrite'/old).exists())
+            self.assertTrue((ROOT/'sections_rewrite/preserved'/old).exists())
 
     def test_unified_values_match_both_saved_calibrations(self):
-        common = (ROOT/'sections_rewrite/parameter_tables.tex').read_text(encoding='utf-8')
-        common = common.split(r'\newcommand{\rewriteMainParameterRows}', 1)[0]
         table = (ROOT/'sections_rewrite/rsi_parameters.tex').read_text(encoding='utf-8')
-        rows = dict(re.findall(r'^\$([^$]+)\$ & (.*?) &', common+'\n'+table, re.M))
+        rows = dict(re.findall(r'^\$([^$]+)\$ & (.*?) &', table, re.M))
+        self.assertEqual(len(rows), 15)
         def rounded_value(segment, actual):
             token = re.match(r'[\d,]+(?:\.\d+)?', segment.strip())[0].replace(',', '')
             decimals = len(token.split('.')[1]) if '.' in token else 0

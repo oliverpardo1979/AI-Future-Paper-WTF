@@ -49,7 +49,7 @@ class OverleafIntegrationTests(unittest.TestCase):
 
     def test_design_and_parameter_table_do_not_cite_removed_part(self):
         design = active_source("08_rsi_design.tex")
-        table = active_source("parameter_tables.tex")
+        table = active_source("rsi_parameters.tex")
         obsolete = r"\ref{prop:rewrite-research-scale}(i)"
         self.assertNotIn(obsolete, design + table)
         self.assertIn(r"\mathcal B(1.5)<\overline B<\mathcal B(1.1)", design)

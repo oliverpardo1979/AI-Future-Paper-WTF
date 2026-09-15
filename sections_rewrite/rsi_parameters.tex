@@ -1,4 +1,22 @@
-\begin{rewriteParameterTable}{Simulation parameters and initial stocks}{tab:rewrite-rsi-parameters}
+% Edit Table 2 here: formatting, all rows, and notes are in this file.
+% Display values only; this file does not set simulation inputs.
+\begin{table}[H]
+\centering
+\caption{Simulation parameters and initial stocks}
+\label{tab:rewrite-rsi-parameters}
+\small\setstretch{1.0}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{P{0.08\textwidth}P{0.22\textwidth}P{0.21\textwidth}P{0.40\textwidth}}
+\toprule
+Symbol & Value & Interpretation & Source\\
+\midrule
+$\alpha$ & 0.33 & Capital share & Standard calibration value.\\
+$\delta$ & 0.05 & Depreciation rate & Standard calibration value.\\
+$\rho$ & 0.04 & Household discount rate & Standard calibration value.\\
+$n$ & 0.003 & Population growth rate & Rounded constant-rate approximation to the UN 2024--2100 world projection \citep{unwpp2024}.\\
+$\gamma$ & 0.01 & Growth of labor-augmenting technology & OECD labor-productivity projections \citep{oecdlongrun2025}.\\
+$\eta$ & 0.20 & Research exponent & Illustrative, satisfies $\eta<\alpha$.\\
 $\omega_X$ & 0.10 & AI production weight & Illustrative.\\
 $\omega_L$ & 0.90 & Effective-labor weight & Illustrative.\\
 $\chi$ & 7.616305 (central);\newline 1.4378 (slow) & Research productivity after activation & First-year research-expenditure targets at $\sigma=1$: $0.183\%$ (central); approximately $0.065\%$ of GDP (slow transition).\\
@@ -9,4 +27,12 @@ $A_0,N_0$ & 1; 1 & Initial technology and population & Normalizations.\\
 $B_0$ & 13.6 & Initial AI efficiency & $0.01\overline B$.\\
 $K_0$ & 3.433645; 4.649320; 5.036956; 5.504667 & Initial capital & Fixed-efficiency BGP stocks with existing AI; Equation~\eqref{eq:rewrite-rsi-initial-ratio}.\\
 $K_0/Y_0$ & 3.30 & Initial capital--output ratio & Derived from the pre-RSI BGP and preserved at activation.\\
-\end{rewriteParameterTable}
+\bottomrule
+\end{tabular}
+\par\vspace{4pt}
+\parbox{0.98\textwidth}{\footnotesize\emph{Notes:} Rates are annual. Values are
+rounded for display; the simulations retain their original precision.
+$L_0=N_0$. %Initial consumption $C_0$ and the developer's shadow value $q_0$ are selected endogenously by the BVP for each path, not supplied as inputs.
+$K_0/Y_0$ is a derived ratio, measured in years of date-zero output, not an
+additional parameter. Lists of four ratios follow the displayed order of $\sigma$.}
+\end{table}

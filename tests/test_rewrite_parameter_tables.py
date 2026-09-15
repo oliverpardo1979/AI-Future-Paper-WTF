@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'.python-packages'),str(ROOT/'scripts')]
 from audit_rewrite_capital_output import simulation_comparison, empirical_comparison
 SECTION=ROOT/'sections_rewrite'
-SHARED=(SECTION/'parameter_tables.tex').read_text(encoding='utf-8')
+SHARED=(SECTION/'preserved/parameter_tables.tex').read_text(encoding='utf-8')
 COMMON,MAIN=SHARED.split(r'\newcommand{\rewriteMainParameterRows}',1)
 SOURCES=[SECTION/p for p in ('05_quantitative_equilibria.tex',
                             '06_price_calibration.tex','07_low_ai_price_calibration.tex')]

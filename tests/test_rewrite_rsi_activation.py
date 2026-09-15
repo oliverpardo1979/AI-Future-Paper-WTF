@@ -73,7 +73,7 @@ class RSIActivation(unittest.TestCase):
 
     def test_new_parameter_table_matches_calibration(self):
         d=calibrated_design('rsi_activation')
-        text=(ROOT/'sections_rewrite/rsi_activation_parameters.tex').read_text(encoding='utf-8')
+        text=(ROOT/'sections_rewrite/preserved/rsi_activation_parameters.tex').read_text(encoding='utf-8')
         table=dict(re.findall(r'^\$([^$]+)\$ & (.*?) &',text,re.M))
         self.assertAlmostEqual(float(table[r'\chi']),d.parameters.chi,places=6)
         self.assertAlmostEqual(float(table[r'\overline B'].replace(',','')),d.frontier,places=6)
