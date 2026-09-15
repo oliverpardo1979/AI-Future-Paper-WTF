@@ -90,3 +90,7 @@ The new Proposition 5 in Section 5.3 states only the eta > alpha result, while
 Section 6.1 still motivates eta < alpha by citing Proposition 5(i). This
 cross-reference no longer matches the proposition's stated content. It is not
 caused by these citation edits and was left unchanged for author review.
+
+Resolved in the subsequent approved Overleaf integration: the replacement
+Section 6.1 no longer cites the removed part, and the shared parameter table
+now reports eta as illustrative without that obsolete cross-reference.

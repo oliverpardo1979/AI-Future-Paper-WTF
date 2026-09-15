@@ -159,10 +159,9 @@ elasticity keeps labor's income share constant.
 \label{subsec:rewrite-uncapped}
 
 With $\sigma>1$, Proposition~\ref{prop:rewrite-equilibrium-regimes}
-establishes AI-dominated equilibria whose limiting 
-interest rate is 
-$\mathcal R(\overline B)$, which
-without bound as $\overline B\to\infty$. %This contrasts withpropositions \ref{prop:rewrite-capped-complements-existence} and \ref{prop:rewrite-uncapped-complements-bounds}: undercomplementarity, growth is bounded in the long run by the labor-augmenting technological progress.
+establishes AI-dominated equilibria whose limiting interest rate is
+$\mathcal R(\overline B)$, which grows without bound as
+$\overline B\to\infty$. %This contrasts withpropositions \ref{prop:rewrite-capped-complements-existence} and \ref{prop:rewrite-uncapped-complements-bounds}: undercomplementarity, growth is bounded in the long run by the labor-augmenting technological progress.
 The same function also bounds the equilibrium interest rate
 without an efficiency upper bound:
 \begin{equation}
@@ -179,19 +178,20 @@ before taking the limit $s_X\to1$:
  (1-e_X)s_X^{-1/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
  \label{eq:rewrite-substitutes-dated-output-capital}
 \end{equation}
-For fixed $B$, this expression decreases with $s_X$ and reaches its
-lower limit as $s_X\to1$.\footnote{Using
-$e_X=(1-s_X)/\sigma+\alpha s_X$ from
-equation~\eqref{eq:rewrite-inverse-demand-elasticity},
-\[
- \frac{\mathrm d\log[(1-e_X)s_X^{-1/(\sigma-1)}]}
- {\mathrm d\log s_X}
- =\frac{(\sigma-2)(1-\alpha\sigma)s_X-(\sigma-1)}
- {\sigma(\sigma-1)(1-e_X)}<0.
-\]
-The denominator is positive for $\sigma>1$. The numerator is affine in
-$s_X$ and negative at both endpoints: $-(\sigma-1)$ at zero and
-$-[1-\alpha+\alpha(\sigma-1)^2]$ at one.}
+For fixed $B$ and $\sigma>1$, this expression decreases with $s_X$ and
+approaches its lower limit as $s_X\to1$.
+%\footnote{Using
+%$e_X=(1-s_X)/\sigma+\alpha s_X$ from
+%equation~\eqref{eq:rewrite-inverse-demand-elasticity},
+%\[
+% \frac{\mathrm d\log[(1-e_X)s_X^{-1/(\sigma-1)}]}
+% {\mathrm d\log s_X}
+% =\frac{(\sigma-2)(1-\alpha\sigma)s_X-(\sigma-1)}
+% {\sigma(\sigma-1)(1-e_X)}<0.
+%\]
+%The denominator is positive for $\sigma>1$. The numerator is affine in
+%$s_X$ and negative at both endpoints: $-(\sigma-1)$ at zero and
+%$-[1-\alpha+\alpha(\sigma-1)^2]$ at one.}
 Substitution into $r=\alpha Y/K-\delta$ gives
 inequality~\eqref{eq:rewrite-uncapped-dated-return-bound}.
 Thus $\mathcal R(B)$ is the lowest return compatible with the production
@@ -202,7 +202,12 @@ $Z/Y=(Y/K)^{\alpha/(1-\alpha)}\to\infty$, while the Euler
 equation~\eqref{eq:rewrite-euler} requires
 $g_{C/N}=r-\rho\to\infty$.
 
-Singularities, defined as trajectories where variables reach infinite value in finite time, cannot be equilibria and therefore are not studied in this paper. Still, the following proposition shows that under substituibility and no bound on AI efficiency the AI developer may find no bound in how much it wishes to invest to achieve infinite profits, even if it is constrained to a short period of time.
+Singularities, defined as trajectories where variables reach infinite value
+in finite time, cannot be equilibria and therefore are not studied in this
+paper. The following proposition shows that, when research returns are
+sufficiently strong, the developer can make discounted net profit arbitrarily
+large even over a fixed finite horizon. This is an unbounded optimization
+problem, not a trajectory that attains infinite profit in finite time.
 
 %The developer's problem distinguishes the cases $\eta<\alpha$ and $\eta>\alpha$.
 
