@@ -19,6 +19,27 @@ The following two subsections differ only in the calibration of $\chi$:
 an illustrative research-expenditure target guides the central scenario, and a
 lower research-expenditure target gives a slow-transition sensitivity.
 
+The two values of $\chi$ have different origins. I originally calibrated
+the central value, $\chi=7.616305$, to generate a $40\%$ fall in $p_X$ over
+27 months: half the nearly $80\%$ decline in quality-adjusted AI-service
+prices reported by \citet{oecdaimarkets2026} between January 2024 and
+April 2026. Using half the observed decline is an illustrative choice.
+I retain this value because it also yields a first-year research-expenditure
+share of $0.182916\%$, which rounds to the central target of $0.183\%$.
+This share is not an observed estimate or an independently matched moment.
+For the slow transition, the reference is US training-compute expenditure
+in 2023, estimated by \citet{korinekmckelvey2026} at $0.0664\%$ of
+GDP.\footnote{The estimate is \$18.46 billion divided by
+nominal GDP of \$27,811.517 billion from the BEA series \texttt{GDPA},
+accessed through \href{https://fred.stlouisfed.org/data/GDPA}{FRED}
+on September 14, 2026.}
+The value $\chi=1.4378$ yields $0.06374\%$, an approximate match to an uncertain
+proxy for research compute, not a direct measure of autonomous RSI.
+Both research shares divide total research expenditure by total output
+during the first year, rather than measuring $M_0/Y_0$.
+I calibrate at $\sigma=1$ and hold $\chi$ fixed across the other three
+elasticities within each exercise.
+
 In Equation~\eqref{eq:rewrite-rsi-initial-ratio}, $Y_0$ is obtained from the
 production and monopoly conditions with AI
 already present. Thus $K_0$ differs across elasticities, while the initial
