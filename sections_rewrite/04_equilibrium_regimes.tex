@@ -1,9 +1,9 @@
-\section{Equilibrium with a finite upper bound on AI efficiency}
+\section{Equilibrium with an upper bound on AI efficiency}
 \label{sec:rewrite-regimes}
 
 In this section, I characterize the long-run equilibrium behavior for various parameter configurations. The key finding is that long-run output-per-worker growth can exceed the rate of labor-augmenting technological change when the elasticity of substitution between AI production services and labor exceeds one and the upper bound on AI efficiency is sufficiently high.
 
-To identify this threshold, I calculate the net return on capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When AI and labor are substitutes and the former return exceeds the latter, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
+To identify this threshold, I calculate the net return on capital implied by the production and pricing conditions as AI efficiency approaches its upper bound and labor's income share tends to zero. I compare this return with $\rho+\gamma$, the interest rate that sustains consumption-per-person growth at the exogenous rate $\gamma$. When the former exceeds the latter and AI and labor are substitutes, the model supports equilibrium paths along which capital and AI production services grow faster than effective labor, even though AI efficiency converges to a finite limit.
 %The parameter restrictions used in all three propositions are
 %\begin{equation}
 % \begin{gathered}
@@ -41,8 +41,8 @@ $s_X$ in equation~\eqref{eq:rewrite-sx} imply
  \longrightarrow\omega_X^{\sigma/(\sigma-1)}.
  \label{eq:rewrite-composite-ai-limit}
 \end{equation}
-Dividing the production function in equation~\eqref{eq:rewrite-output} by $Y$
-gives $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. Using $Z/Y=(Z/X)(X/Y)$ and the limits
+%Dividing the production function in equation~\eqref{eq:rewrite-output} by $Y$ gives $1=(K/Y)^\alpha(Z/Y)^{1-\alpha}$. 
+Using $Z/Y=(Z/X)(X/Y)$ and the limits
 in equations~\eqref{eq:rewrite-ai-output-limit} and
 \eqref{eq:rewrite-composite-ai-limit}, I obtain
 \begin{equation}
@@ -51,9 +51,8 @@ in equations~\eqref{eq:rewrite-ai-output-limit} and
  \left[(1-\alpha)^2B\,\omega_X^{\sigma/(\sigma-1)}\right]^{(1-\alpha)/\alpha}.
  \label{eq:rewrite-output-capital-limit}
 \end{equation}
-Substituting the limiting output--capital ratio in
-equation~\eqref{eq:rewrite-output-capital-limit} into the capital-return
-condition $r=\alpha Y/K-\delta$, equation~\eqref{eq:rewrite-capital-return}, gives
+Let $\mathcal R(B)$ be the net interest rate when $s_x \to 1$ for a given $B$. Substituting the limiting output--capital ratio in
+equation~\eqref{eq:rewrite-output-capital-limit} into $r=\alpha Y/K-\delta$ gives
 \begin{equation}
  \mathcal R(B)
  \equiv\alpha\left[(1-\alpha)^2B\,
@@ -140,17 +139,16 @@ Proposition~\ref*{prop:rewrite-equilibrium-regimes}}.
 
 %RSI operates in all four cases of the proposition. Its presence alone therefore does not eliminate labor as a production bottleneck.
 
-The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$ is deliberate as the upper bound $\overline B$ on AI efficiency is a device to avoid a singularity when $\sigma>1$.
-In this region, any equilibrium has an AI production bottleneck, and long-run
-output-per-worker growth is bounded strictly below $\gamma$.
-See Appendix~\ref{app:rewrite-proofs},
-\hyperref[proof:rewrite-low-cap-complements]{Proof of the AI-bottleneck statement}.
+The omission of the case where $\sigma<1$ and $\overline B < \mathcal B(\sigma)$ is deliberate as the upper bound $\overline B$ on AI efficiency is a device to achieve an equilibrium when $\sigma>1$.
+It can be shown that in the omitted case any equilibrium has an AI production bottleneck, meaning that long-run output-per-worker growth is lower than $\gamma$. %I do not show the proof of this statement since it is analogous to case \ref{prop:rewrite-capped-substitutes-existence} in Proposition \ref{prop:rewrite-equilibrium-regimes}.
+%See Appendix~\ref{app:rewrite-proofs}, \hyperref[proof:rewrite-low-cap-complements]{Proof of the AI-bottleneck statement}.
 
 
 The proof of Proposition \ref{prop:rewrite-equilibrium-regimes} first normalizes growing quantities and shrinking efficiency gaps. For each parameter configuration covered by the proposition, I conjecture stationary values of these normalized variables. I then construct trajectories from every sufficiently nearby initial state, deriving equilibrium trajectories and checking they converge to the stationary conjectures. %The initial stocks need not lie on a balanced-growth path.
 %This result is local in initial states, not in time. Closeness concerns capital, the remaining AI-efficiency gap, and the scale of effective labor jointly; $B_0$ close to $\overline B$ alone is not sufficient.
 %The precise sets and l
-Local uniqueness results are given in the proof. Existence from arbitrary initial states and global uniqueness are not established. These analytical results guide the algorithm's boundary conditions
+Local uniqueness results are given in the proof. %Existence from arbitrary initial states and global uniqueness are not established. 
+These analytical results guide the algorithm's boundary conditions
 (Appendix~\ref{app:rewrite-algorithm})%, but do not determine the duration or shape of the transition
 .
 
@@ -227,13 +225,8 @@ income share converges to zero.
  \node[regime] at (9.75,3.02) {$\mathcal B(\sigma)$};
 \end{tikzpicture}%
 }
-\caption{Constructed regimes with a finite upper bound. The vertical axis is linear
-and the curves are schematic rather than calibrated. For $0<\sigma<1$,
-$\overline B>\mathcal B(\sigma)$ is the condition for the positive-labor-share
-construction in Proposition~\ref{prop:rewrite-capped-complements-existence}. For $\sigma>1$,
-the curve separates the labor-bottleneck and AI-dominated equilibria in
-Proposition~\ref{prop:rewrite-capped-substitutes-labor-existence}
-and~\ref{prop:rewrite-capped-substitutes-existence}.}
+\caption{Growth regimes with an upper bound on AI efficiency. %For $0<\sigma<1$, $\overline B>\mathcal B(\sigma)$ is the condition for the positive-labor-share construction in Proposition~\ref{prop:rewrite-capped-complements-existence}. For $\sigma>1$, the curve separates the labor-bottleneck and AI-dominated equilibria in Proposition~\ref{prop:rewrite-capped-substitutes-labor-existence} and~\ref{prop:rewrite-capped-substitutes-existence}.
+}
 \label{fig:rewrite-frontier-regimes}
 \end{figure}
 

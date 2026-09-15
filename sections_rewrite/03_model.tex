@@ -132,7 +132,8 @@ This demand schedule is an input to the developer's problem.
 \subsubsection{Effective AI production and research services}
 \label{subsubsec:rewrite-ai-services}
 
-I use \emph{compute} to denote the computational resources used to execute the numerical operations required by AI systems \citep{sastryetal2024}. The variables $U$ and $M$ are rates of compute use rather than stocks of processors or data centers. I measure compute in units such that its price in final goods is one. Compute is therefore a rival, costly input, not a measure of AI performance.
+I use \emph{compute} to denote the computational resources used to execute the numerical operations required by AI systems \citep{sastryetal2024}. %The variables $U$ and $M$ are rates of compute use rather than stocks of processors or data centers. 
+I measure compute in units such that its price in final goods is one. Compute is therefore a rival, costly input, not a measure of AI performance.
 
 I distinguish compute used to deploy AI from compute used to improve it. Inference compute $U$ runs existing AI systems and produces outputs used in current final-good production. Research compute $M$ is allocated to the development of better AI. It includes training and fine-tuning, but also computational experimentation, model evaluation, and other compute-intensive components of AI research. I therefore use the term \emph{research compute} rather than the narrower term \emph{training compute}. \citet{korinekmckelvey2026} make a related distinction between compute used for inference and compute used for R\&D and training.
 
@@ -223,22 +224,15 @@ Figure~\ref{fig:rewrite-capability-flow} summarizes the RSI mechanism.
 The parameter \(\chi\) shifts research productivity. The parameter \(\eta\) governs returns to current research scale. The same AI-efficiency index $B$ augments both inference and research compute. This common-productivity assumption is parsimonious but substantive. Equation~\eqref{eq:rewrite-capability-law} captures RSI: a higher $B$ produces more AI research services $BM$ from a given amount of research compute $M$, and these services help improve $B$ further. This is the AI-research feedback studied by \citet{davidsonetal2026}. The term \(\psi(B)\) reduces the remaining room for improvement as AI efficiency approaches \(\overline B\). The uncapped specification is recovered at \(\overline B=\infty\).
 
 Evidence that ideas become harder to find motivates allowing research
-productivity to decline as technology advances. \citet{bloometal2020} document
-that research effort has risen substantially while research productivity has
-fallen across several industries, products, and firms. Following this
-interpretation, \citet{davidsonetal2026} use their estimates to discipline
-diminishing returns in idea production. This evidence motivates diminishing
-returns, but it does not establish a literal finite technological ceiling. The
-term $1-B/\overline B$ is a deliberately stronger reduced-form specification to make sure there is an equilibrium when AI and labor are substitutes.
-
-The upper bound on AI efficiency \(\overline B\) allows me to establish and compute equilibria for finite values of \(\overline B\) and then ask whether they have a meaningful limit as \(\overline B\to\infty\). Without the upper bound, recursive improvement may instead produce a finite-time singularity: one or more endogenous quantities---such as AI efficiency, output, capital, or research compute---become unbounded at a finite date, so the trajectory cannot be continued as a path of finite allocations. %Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. %AI efficiency may approach the upper bound asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
+productivity to decline as technology advances. \citet{bloometal2020} document that research effort has risen substantially while research productivity has fallen across several industries, products, and firms. %Following thisinterpretation, \citet{davidsonetal2026} use their estimates to discipline diminishing returns in idea production. 
+This evidence motivates diminishing returns, but it does not establish a literal finite technological ceiling. The term $1-B/\overline B$ is a deliberately stronger reduced-form specification to make sure there is an equilibrium when AI and labor are substitutes. The upper bound on AI efficiency \(\overline B\) allows me to establish and compute equilibria for finite values of \(\overline B\) and then ask whether they have a meaningful limit as \(\overline B\to\infty\). Without the upper bound, recursive improvement may lead to the absence of an equilibrium, as shown further below. %instead produce a finite-time singularity: one or more endogenous quantities---such as AI efficiency, output, capital, or research compute---become unbounded at a finite date, so the trajectory cannot be continued as a path of finite allocations. %Section~\ref{subsec:rewrite-uncapped} explains why the uncapped economy requires a separate equilibrium analysis. %AI efficiency may approach the upper bound asymptotically but cannot cross it in finite time. %Appendix~\ref{app:rewrite-cap-invariance} gives the derivation.
 
 \subsubsection{Supply of effective AI production services}
 \label{subsubsec:rewrite-market-structure}
 
 An integrated AI developer has exclusive ownership of $B$. It conducts research
 and sells effective AI production services. The developer sells $X$ and purchases the $U=X/B$ units of inference compute needed to supply those services. Because $X$ does not enter the RSI technology in equation~\eqref{eq:rewrite-capability-law}
-directly, its within-date choice can be solved conditional on $B,K,$ and $L$.
+directly, its within-date choice can be solved conditional on $B$.
 Define optimized operating profit before research expenditure as
 \begin{equation}
  \pi(B)=\max_{X\geq0}
@@ -359,10 +353,8 @@ the path of research compute $M$ to increase AI efficiency $B$:
  [\pi(B_t)-M_t]\dd t,
  \label{eq:rewrite-developer-reduced}
 \end{equation}
-subject to \eqref{eq:rewrite-capability-law} and $B_0$ given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
-Admissible research paths have $M_t\geq0$ and finite total expenditure on
-every finite interval. The objective is the present value of net profit,
-not profit at a single date.
+subject to the RSI technology given by \eqref{eq:rewrite-capability-law} and taking $B_0$ as given. %This reduction does not replace the dynamic problem with a static problem. It solves the within-date choice $X$ inside the original intertemporal problem and leaves $M$ as the dynamic control.
+%Admissible research paths have $M_t\geq0$ and finite total expenditure on every finite interval. The objective is the present value of net profit, not profit at a single date.
 
 %Profit can be negative at a date because the model imposes no separate cash-flow constraint. A negative \(\Pi\) represents an equity injection from the household that owns the developer.
 
@@ -538,5 +530,4 @@ income decomposition follows from the equations in the definition:
  \label{eq:rewrite-income-decomposition}
 \end{equation}
 It records how final output is divided among gross capital income, labor income,
-developer profit, inference compute, and research compute. It is an accounting
-consequence of equilibrium, not an additional equilibrium condition.
+developer profit, inference compute, and research compute. %It is an accounting consequence of equilibrium, not an additional equilibrium condition.
