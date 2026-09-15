@@ -12,6 +12,15 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Simulation terminology (September 14, 2026; latest wording decision)
+
+- Use "numerical simulations" rather than "numerical equilibrium paths"
+  or "numerical equilibrium trajectories" to name the numerical exercises
+  throughout the current manuscript, including headings and captions.
+- Retain "equilibrium" in mathematical definitions, existence results and
+  numerical admission checks. This is a wording change, not a relaxation of
+  any equilibrium condition or a change to the solver, data or figures.
+
 ### Central research-share target (September 14, 2026; latest decision)
 
 - Set the central illustrative target to first-year M/Y=0.183% at sigma=1.
