@@ -1,0 +1,476 @@
+{
+  "sigma_xl": 1.5,
+  "frontier": 10887.93711393248,
+  "critical_frontier": 9898.124649029525,
+  "frontier_ratio": 1.1,
+  "terminal_regime": "ai_dominated",
+  "initial_capital": 6.474024381014268,
+  "initial_capability": 108.8793711393248,
+  "log_initial_consumption": 0.5903282214634371,
+  "log_initial_shadow_value": -5.794765724244924,
+  "continuation_stages": [
+    {
+      "fraction": 0.03125,
+      "horizon": 435.8021624470027,
+      "initial_effective_labor_scale": 36473.45942837665,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.2277399314735633e-08,
+      "maximum_boundary_residual": 6.300434349584827e-16
+    },
+    {
+      "fraction": 0.0625,
+      "horizon": 471.60432489400534,
+      "initial_effective_labor_scale": 25990.60626753946,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.2904357105213824e-08,
+      "maximum_boundary_residual": 3.500888814955694e-15
+    },
+    {
+      "fraction": 0.09375,
+      "horizon": 507.4064873410081,
+      "initial_effective_labor_scale": 18520.63458583556,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.3526645764558132e-08,
+      "maximum_boundary_residual": 4.977355333446454e-15
+    },
+    {
+      "fraction": 0.125,
+      "horizon": 543.2086497880107,
+      "initial_effective_labor_scale": 13197.61078026294,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.4144092484496098e-08,
+      "maximum_boundary_residual": 1.2550941189126696e-14
+    },
+    {
+      "fraction": 0.15625,
+      "horizon": 579.0108122350134,
+      "initial_effective_labor_scale": 9404.479608950427,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.4770940360178501e-08,
+      "maximum_boundary_residual": 1.055369170960968e-14
+    },
+    {
+      "fraction": 0.1875,
+      "horizon": 614.8129746820161,
+      "initial_effective_labor_scale": 6701.5339509354835,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.547940193098935e-08,
+      "maximum_boundary_residual": 2.231274179634833e-14
+    },
+    {
+      "fraction": 0.21875,
+      "horizon": 650.6151371290189,
+      "initial_effective_labor_scale": 4775.44310402872,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.6480767504779897e-08,
+      "maximum_boundary_residual": 4.908169004688365e-14
+    },
+    {
+      "fraction": 0.25,
+      "horizon": 686.4172995760215,
+      "initial_effective_labor_scale": 3402.9308822097464,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.8260447470968308e-08,
+      "maximum_boundary_residual": 1.090342585370694e-13
+    },
+    {
+      "fraction": 0.28125,
+      "horizon": 722.2194620230241,
+      "initial_effective_labor_scale": 2424.8930071698646,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 2.1776762690401362e-08,
+      "maximum_boundary_residual": 2.2205375288086165e-13
+    },
+    {
+      "fraction": 0.3125,
+      "horizon": 758.0216244700268,
+      "initial_effective_labor_scale": 1727.9534318378423,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 2.8410267619895762e-08,
+      "maximum_boundary_residual": 4.797387039354303e-13
+    },
+    {
+      "fraction": 0.34375,
+      "horizon": 793.8237869170296,
+      "initial_effective_labor_scale": 1231.3215691462556,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 3.9783806799421085e-08,
+      "maximum_boundary_residual": 1.0224875433780022e-12
+    },
+    {
+      "fraction": 0.375,
+      "horizon": 829.6259493640323,
+      "initial_effective_labor_scale": 877.4268905107143,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 5.7724024633745e-08,
+      "maximum_boundary_residual": 2.158804835876481e-12
+    },
+    {
+      "fraction": 0.40625,
+      "horizon": 865.4281118110349,
+      "initial_effective_labor_scale": 625.2452385164514,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 8.44833320005762e-08,
+      "maximum_boundary_residual": 4.5740504110291114e-12
+    },
+    {
+      "fraction": 0.4375,
+      "horizon": 901.2302742580376,
+      "initial_effective_labor_scale": 445.54322703735295,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.229943925517168e-07,
+      "maximum_boundary_residual": 9.677606376756406e-12
+    },
+    {
+      "fraction": 0.46875,
+      "horizon": 937.0324367050403,
+      "initial_effective_labor_scale": 317.4894504272747,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.7703848856039692e-07,
+      "maximum_boundary_residual": 1.9586984904185645e-11
+    },
+    {
+      "fraction": 0.5,
+      "horizon": 972.834599152043,
+      "initial_effective_labor_scale": 226.239666581582,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 2.513372323824349e-07,
+      "maximum_boundary_residual": 3.979549578070888e-11
+    },
+    {
+      "fraction": 0.53125,
+      "horizon": 1008.6367615990457,
+      "initial_effective_labor_scale": 161.21602360664855,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 3.5155285351792684e-07,
+      "maximum_boundary_residual": 7.927635628323895e-11
+    },
+    {
+      "fraction": 0.5625,
+      "horizon": 1044.4389240460482,
+      "initial_effective_labor_scale": 114.8808547159314,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 4.842026483677954e-07,
+      "maximum_boundary_residual": 1.5476132254519347e-10
+    },
+    {
+      "fraction": 0.59375,
+      "horizon": 1080.2410864930512,
+      "initial_effective_labor_scale": 81.86289727914279,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 6.427385789371964e-07,
+      "maximum_boundary_residual": 5.152728192161295e-12
+    },
+    {
+      "fraction": 0.625,
+      "horizon": 1116.0432489400537,
+      "initial_effective_labor_scale": 58.334645642274594,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 8.446456096285195e-07,
+      "maximum_boundary_residual": 1.205398868946091e-11
+    },
+    {
+      "fraction": 0.65625,
+      "horizon": 1151.8454113870564,
+      "initial_effective_labor_scale": 41.56865924994265,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.0785710391406376e-06,
+      "maximum_boundary_residual": 2.6888916394484985e-11
+    },
+    {
+      "fraction": 0.6875,
+      "horizon": 1187.6475738340591,
+      "initial_effective_labor_scale": 29.62139244719455,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.3238062203646024e-06,
+      "maximum_boundary_residual": 5.288628429325865e-11
+    },
+    {
+      "fraction": 0.71875,
+      "horizon": 1223.4497362810619,
+      "initial_effective_labor_scale": 21.107894898292273,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.5311699190551595e-06,
+      "maximum_boundary_residual": 3.66969023663519e-12
+    },
+    {
+      "fraction": 0.75,
+      "horizon": 1259.2518987280646,
+      "initial_effective_labor_scale": 15.041265458118277,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.6103898351186928e-06,
+      "maximum_boundary_residual": 7.430316571423239e-12
+    },
+    {
+      "fraction": 0.78125,
+      "horizon": 1295.054061175067,
+      "initial_effective_labor_scale": 10.71824867764932,
+      "iterations": 1,
+      "nodes": 221,
+      "maximum_rms_residual": 1.4544690297355914e-06,
+      "maximum_boundary_residual": 1.2975704257659463e-11
+    },
+    {
+      "fraction": 0.8125,
+      "horizon": 1330.8562236220698,
+      "initial_effective_labor_scale": 7.637712068563111,
+      "iterations": 2,
+      "nodes": 222,
+      "maximum_rms_residual": 1.1377965873511332e-06,
+      "maximum_boundary_residual": 1.790221074680909e-15
+    },
+    {
+      "fraction": 0.84375,
+      "horizon": 1366.6583860690725,
+      "initial_effective_labor_scale": 5.442553853403249,
+      "iterations": 3,
+      "nodes": 227,
+      "maximum_rms_residual": 1.332539914086114e-06,
+      "maximum_boundary_residual": 9.893846267435003e-15
+    },
+    {
+      "fraction": 0.875,
+      "horizon": 1402.4605485160753,
+      "initial_effective_labor_scale": 3.878307035049994,
+      "iterations": 4,
+      "nodes": 234,
+      "maximum_rms_residual": 1.8617466141082726e-06,
+      "maximum_boundary_residual": 4.093432407273334e-15
+    },
+    {
+      "fraction": 0.90625,
+      "horizon": 1438.262710963078,
+      "initial_effective_labor_scale": 2.7636410889554943,
+      "iterations": 4,
+      "nodes": 249,
+      "maximum_rms_residual": 1.8309930497844317e-06,
+      "maximum_boundary_residual": 1.310444672697128e-14
+    },
+    {
+      "fraction": 0.9375,
+      "horizon": 1474.0648734100805,
+      "initial_effective_labor_scale": 1.9693417771047244,
+      "iterations": 5,
+      "nodes": 266,
+      "maximum_rms_residual": 1.950516196045716e-06,
+      "maximum_boundary_residual": 2.213547812927874e-15
+    },
+    {
+      "fraction": 0.96875,
+      "horizon": 1509.8670358570832,
+      "initial_effective_labor_scale": 1.4033323829744415,
+      "iterations": 6,
+      "nodes": 292,
+      "maximum_rms_residual": 1.909468691159316e-06,
+      "maximum_boundary_residual": 2.579479598668888e-15
+    },
+    {
+      "fraction": 1.0,
+      "horizon": 1545.669198304086,
+      "initial_effective_labor_scale": 1.0,
+      "iterations": 8,
+      "nodes": 322,
+      "maximum_rms_residual": 1.9891921841436136e-06,
+      "maximum_boundary_residual": 5.82950435970217e-15
+    },
+    {
+      "fraction": 1.0,
+      "horizon": 2045.669198304086,
+      "initial_effective_labor_scale": 1.0,
+      "iterations": 9,
+      "nodes": 1098,
+      "maximum_rms_residual": 9.973014361621598e-09,
+      "maximum_boundary_residual": 3.5039171695003648e-15
+    }
+  ],
+  "audit": {
+    "success": true,
+    "horizon": 2545.669198304086,
+    "nodes": 2201,
+    "iterations": 9,
+    "maximum_rms_residual": 9.993116384676758e-10,
+    "maximum_equation_residual": 1.028606687672462e-09,
+    "maximum_boundary_residual": 3.7819242552511975e-15,
+    "initial_capital_error": 0.0,
+    "initial_capability_error": 9.947598300641403e-14,
+    "minimum_log_positive_level": -6.199042832754741,
+    "maximum_capability_frontier_ratio": 1.0000000000000004,
+    "maximum_capability_log_ratio": 0.0,
+    "minimum_log_remaining_frontier_share": -98.1512163524666,
+    "maximum_absolute_bounded_coordinate": 10.707540960666813,
+    "maximum_absolute_capability_logit": 98.1512163524666,
+    "newton_safeguard_not_binding": true,
+    "minimum_monopoly_soc_margin": 0.22110000000167457,
+    "minimum_actual_path_concavity_margin": 0.19973670117186562,
+    "terminal_household_tvc_log": -92.05526673338531,
+    "terminal_developer_tvc_log": -90.6061929159153,
+    "asymptotic_household_tvc_growth": -0.037,
+    "asymptotic_developer_tvc_growth": -0.037,
+    "dated_candidate_accepted": true
+  },
+  "horizon_comparison": {
+    "common_window": 500.0,
+    "maximum_common_window_coordinate_change": 1.4452735896952618e-08,
+    "maximum_initial_jump_change": 2.7482904840780975e-11
+  },
+  "counterfactual_developer_sufficiency": {
+    "time_points": 161,
+    "capability_points_per_date": 161,
+    "function_evaluations": 29837,
+    "minimum_counterfactual_concavity_margin": -1.0099998774573953,
+    "date_of_minimum_margin": 2545.669198304086,
+    "capability_at_minimum_margin": 108.87938366630726,
+    "capability_frontier_ratio_at_minimum": 0.010000001150537731,
+    "ai_share_at_minimum_margin": 0.9999999218379761,
+    "service_capability_elasticity_at_minimum": 3.030302908882157,
+    "developer_sufficiency_gate_passes": false
+  },
+  "equilibrium_certified": true,
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.05,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 152.5484592857292,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "design": "rsi_research_share_omega005",
+  "initial_stock_reference": "Existing AI with omega_X=0.05 before and after unexpected RSI activation. Bbar=1.10 times the sigma=1.50 threshold, B0/Bbar=0.01. Each sigma inherits its own fixed-B pre-RSI BGP capital with K0/Y0=3.30. Chi matches integral_0^1 M / integral_0^1 Y = 0.000664 at sigma=1 and is held fixed across the four elasticities. No manuscript edits.",
+  "status": "numerically_admitted",
+  "settings": {
+    "base_tolerance": 2e-06,
+    "refined_tolerance": 1e-08,
+    "horizon_extension": 500,
+    "continuation_steps": 32
+  },
+  "first_horizon_comparison": {
+    "common_window": 1545.669198304086,
+    "maximum_common_window_coordinate_change": 3.2251776982406e-06,
+    "maximum_initial_jump_change": 2.6294092236867073e-08
+  },
+  "independent_dated_checks": [
+    {
+      "difference_step": 0.003,
+      "samples": 1001,
+      "maximum_ode_residual": 1.0432061325893471e-09,
+      "maximum_research_foc_residual": 1.4210854715202004e-14,
+      "maximum_monopoly_foc_residual": 8.526512829121202e-14
+    },
+    {
+      "difference_step": 0.001,
+      "samples": 1001,
+      "maximum_ode_residual": 1.0436502217991972e-09,
+      "maximum_research_foc_residual": 1.4210854715202004e-14,
+      "maximum_monopoly_foc_residual": 8.526512829121202e-14
+    }
+  ],
+  "optimality_method": "global_hamiltonian_upper_tangent_with_analytical_continuation",
+  "global_hamiltonian_support": [
+    {
+      "time_points": 81,
+      "capability_points": 101,
+      "gap_roundoff_tolerance": 1e-10,
+      "worst": {
+        "time": 1972.8936286856667,
+        "minimum_gap": -1.2712053631958042e-14,
+        "counterfactual_logit": 33.68704949725072,
+        "own_gap": 0.0,
+        "actual_capability_ratio": 1.0000000000000004,
+        "unbounded_tail_derivative_ratio": 0.13533528323661262
+      },
+      "maximum_own_gap": 5.551115123125783e-17,
+      "maximum_tail_derivative_ratio": 0.13533528323665847,
+      "support_diagnostic_passes": true,
+      "checkpoint_sha256": "51a900f93a7c5396155a7d3c293548b0311c8559173bb07f77a33bcd8274bbcd"
+    },
+    {
+      "time_points": 321,
+      "capability_points": 241,
+      "gap_roundoff_tolerance": 1e-10,
+      "worst": {
+        "time": 2314.9679272077783,
+        "minimum_gap": -1.9095836023552692e-14,
+        "counterfactual_logit": 32.51988487774695,
+        "own_gap": 0.0,
+        "actual_capability_ratio": 1.0000000000000004,
+        "unbounded_tail_derivative_ratio": 0.1353352832366126
+      },
+      "maximum_own_gap": 5.551115123125783e-17,
+      "maximum_tail_derivative_ratio": 0.13533528323672092,
+      "support_diagnostic_passes": true,
+      "checkpoint_sha256": "51a900f93a7c5396155a7d3c293548b0311c8559173bb07f77a33bcd8274bbcd"
+    }
+  ],
+  "analytical_support_continuation": {
+    "frontier_fraction": 0.75,
+    "terminal_capability_above_cutoff": true,
+    "terminal_margin": 0.09781073958017539,
+    "analytical_limiting_margin": 0.09781073967364168
+  },
+  "maximum_terminal_coordinate_gap": 3.7272813990796294e-07,
+  "checkpoint_sha256": "51a900f93a7c5396155a7d3c293548b0311c8559173bb07f77a33bcd8274bbcd",
+  "checkpoint_filename": "sigma_1_50_long.npz",
+  "long_run_scope": "Regime-specific stable continuation, both TVCs, and sufficient developer optimality.",
+  "early_window_checks": {
+    "start": 0.0,
+    "end": 10.0,
+    "independent_residuals": [
+      {
+        "difference_step": 0.0003,
+        "samples": 801,
+        "maximum_ode_residual": 2.4948858534656893e-09,
+        "maximum_research_foc_residual": 8.881784197001252e-16,
+        "maximum_monopoly_foc_residual": 1.4921397450962104e-13
+      },
+      {
+        "difference_step": 0.0001,
+        "samples": 801,
+        "maximum_ode_residual": 2.494022099952531e-09,
+        "maximum_research_foc_residual": 8.881784197001252e-16,
+        "maximum_monopoly_foc_residual": 1.4921397450962104e-13
+      }
+    ],
+    "concavity": {
+      "time_points": 161,
+      "capability_points_per_date": 161,
+      "function_evaluations": 27795,
+      "minimum_counterfactual_concavity_margin": 0.17232585936866424,
+      "date_of_minimum_margin": 10.0,
+      "capability_at_minimum_margin": 2005.6918762529656,
+      "capability_frontier_ratio_at_minimum": 0.18421229432767677,
+      "ai_share_at_minimum_margin": 0.33887932302051954,
+      "service_capability_elasticity_at_minimum": 2.014570500237211,
+      "developer_sufficiency_gate_passes": true
+    },
+    "support": [],
+    "passes": true
+  }
+}

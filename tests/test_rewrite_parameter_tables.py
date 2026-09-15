@@ -1,5 +1,6 @@
 """Check displayed parameter tables against saved simulations; never run a BVP."""
 import json
+import math
 from pathlib import Path
 import re
 import sys
@@ -108,7 +109,18 @@ class ParameterTables(unittest.TestCase):
         calculated=simulation_comparison()
         expected={(r['scenario'],r['sigma']):r for r in calculated}
         frozen=json.loads((ROOT/'numerical_rewrite/initial_capital_output_audit.json').read_text())
-        self.assertEqual(calculated,frozen['simulations'])
+        self.assertEqual(len(calculated),len(frozen['simulations']))
+        for current,saved in zip(calculated,frozen['simulations']):
+            self.assertEqual(current.keys(),saved.keys())
+            for name,value in saved.items():
+                if isinstance(value,(int,float)) and not isinstance(value,bool):
+                    # Static algebra may change accumulated floating-point
+                    # roundoff, but not saved economic results or their hashes.
+                    self.assertTrue(math.isclose(value,current[name],
+                        rel_tol=32*sys.float_info.epsilon,abs_tol=0.),
+                        (current['scenario'],current['sigma'],name,value,current[name]))
+                else:
+                    self.assertEqual(value,current[name])
         for label,directory in SCENARIOS.items():
             displayed=rows(TABLES[label])['K_0/Y_0'].split(';')
             self.assertEqual(len(displayed),4)

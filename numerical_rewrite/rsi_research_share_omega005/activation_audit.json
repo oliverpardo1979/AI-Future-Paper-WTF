@@ -1,0 +1,309 @@
+{
+  "design": "rsi_research_share_omega005",
+  "passes": true,
+  "interpretation": "Unexpected activation of previously unavailable RSI; production weights do not change.",
+  "tolerance": 1e-09,
+  "tolerance_reason": "Same static equations and inherited stocks, at final BC tolerance 1e-11.",
+  "scenarios": {
+    "sigma_0_90": {
+      "pre": {
+        "sigma": 0.9,
+        "capital": 2.3693066511637104,
+        "capability": 108.8793711393248,
+        "output": 0.7179717124738421,
+        "consumption": 0.5687050935701338,
+        "inference_compute": 2.998803945581732e-07,
+        "research_compute": 0.0,
+        "ai_services": 3.26507887765065e-05,
+        "ai_service_price": 2095.8020586119546,
+        "wage": 0.4126114570243677,
+        "interest_rate": 0.04999999999999867,
+        "capital_output_ratio": 3.3000000000000442,
+        "labor_income_share": 0.5746904089057693,
+        "ai_revenue_output_share": 0.09530959109423065,
+        "profit_output_share": 0.0953091734170585,
+        "inference_output_share": 4.176771721617079e-07,
+        "research_output_share": 0.0,
+        "monopoly_foc_residual": 9.583445148564351e-13,
+        "pre_event_research_available": false
+      },
+      "post": {
+        "capital": 2.369306651163711,
+        "capability": 108.8793711393249,
+        "output": 0.7179717124738421,
+        "consumption": 0.5687098610299115,
+        "inference_compute": 2.9988039455817265e-07,
+        "research_compute": 4.245561612039295e-08,
+        "ai_services": 3.26507887765065e-05,
+        "ai_service_price": 2095.8020586119546,
+        "wage": 0.4126114570243677,
+        "interest_rate": 0.04999999999999866
+      },
+      "level_log_gaps": {
+        "capital": 2.2204460492503128e-16,
+        "capability": 8.881784197001248e-16,
+        "output": 0.0,
+        "ai_services": 0.0,
+        "inference_compute": 1.776356839400252e-15,
+        "ai_service_price": 0.0,
+        "wage": 0.0,
+        "interest_rate": 3.33066907387547e-16
+      },
+      "pre_event_equation_checks": [
+        {
+          "time": -10.0,
+          "output_scaling_residual": 0.0,
+          "resource_residual": 4.402518477737739e-17,
+          "household_euler_residual": 1.3027773304585821e-15,
+          "monopoly_foc_residual": 9.592326932761353e-13
+        },
+        {
+          "time": -2.0,
+          "output_scaling_residual": 7.632783294297951e-17,
+          "resource_residual": 3.967661024501544e-17,
+          "household_euler_residual": 1.3444106938820255e-15,
+          "monopoly_foc_residual": 9.583445148564351e-13
+        },
+        {
+          "time": 0.0,
+          "output_scaling_residual": 1.1102230246251565e-16,
+          "resource_residual": 1.9329156799224272e-16,
+          "household_euler_residual": 1.35828848168984e-15,
+          "monopoly_foc_residual": 9.583445148564351e-13
+        }
+      ],
+      "passes": true,
+      "consumption_jump": 8.383008753831689e-06,
+      "post_event_research_output_share": 5.913271425988074e-08,
+      "pre_gross_investment_output_share": 0.20790000000000272,
+      "post_gross_investment_output_share": 0.20789330068955594,
+      "post_net_capital_growth": 0.012997969905925194,
+      "resource_reallocation_residual": 1.8683865982999555e-17
+    },
+    "sigma_1_00": {
+      "pre": {
+        "sigma": 1.0,
+        "capital": 5.48645814253152,
+        "capability": 108.8793711393248,
+        "output": 1.6625630734944,
+        "consumption": 1.315050399105685,
+        "inference_compute": 0.00186581140922909,
+        "research_compute": 0.0,
+        "ai_services": 0.2031483729014407,
+        "ai_service_price": 0.274163470603251,
+        "wage": 1.0582213962791855,
+        "interest_rate": 0.04999999999999999,
+        "capital_output_ratio": 3.3,
+        "labor_income_share": 0.6365,
+        "ai_revenue_output_share": 0.03350000000000001,
+        "profit_output_share": 0.03237775000000001,
+        "inference_output_share": 0.0011222499999999998,
+        "research_output_share": 0.0,
+        "monopoly_foc_residual": 8.881784197001252e-16,
+        "pre_event_research_available": false
+      },
+      "post": {
+        "capital": 5.48645814253152,
+        "capability": 108.8793711393249,
+        "output": 1.6625630734944,
+        "consumption": 1.3616394374345548,
+        "inference_compute": 0.00186581140922909,
+        "research_compute": 0.0012641958383993444,
+        "ai_services": 0.20314837290144086,
+        "ai_service_price": 0.2741634706032508,
+        "wage": 1.0582213962791855,
+        "interest_rate": 0.04999999999999999
+      },
+      "level_log_gaps": {
+        "capital": 0.0,
+        "capability": 8.881784197001248e-16,
+        "output": 0.0,
+        "ai_services": 8.881784197001248e-16,
+        "inference_compute": 0.0,
+        "ai_service_price": 7.771561172376099e-16,
+        "wage": 0.0,
+        "interest_rate": 0.0
+      },
+      "pre_event_equation_checks": [
+        {
+          "time": -10.0,
+          "output_scaling_residual": 1.1102230246251565e-16,
+          "resource_residual": 2.2814535804759605e-16,
+          "household_euler_residual": 1.5612511283791264e-17,
+          "monopoly_foc_residual": 0.0
+        },
+        {
+          "time": -2.0,
+          "output_scaling_residual": 2.0816681711721685e-17,
+          "resource_residual": 6.853678938723735e-17,
+          "household_euler_residual": 1.214306433183765e-17,
+          "monopoly_foc_residual": 8.881784197001252e-16
+        },
+        {
+          "time": 0.0,
+          "output_scaling_residual": 0.0,
+          "resource_residual": 3.338889941455494e-17,
+          "household_euler_residual": 1.214306433183765e-17,
+          "monopoly_foc_residual": 8.881784197001252e-16
+        }
+      ],
+      "passes": true,
+      "consumption_jump": 0.03542756867763641,
+      "post_event_research_output_share": 0.0007603897010308539,
+      "pre_gross_investment_output_share": 0.20790000000000006,
+      "post_gross_investment_output_share": 0.17911719173836188,
+      "post_net_capital_growth": 0.004277936890412684,
+      "resource_reallocation_residual": 5.086590145186104e-17
+    },
+    "sigma_1_10": {
+      "pre": {
+        "sigma": 1.1,
+        "capital": 5.8588911957941,
+        "capability": 108.8793711393248,
+        "output": 1.7754215744830608,
+        "consumption": 1.3993957151580836,
+        "inference_compute": 0.00691571398994895,
+        "research_compute": 0.0,
+        "ai_services": 0.7529785902050725,
+        "ai_service_price": 0.07707532468253513,
+        "wage": 1.131496385584597,
+        "interest_rate": 0.05000000000000003,
+        "capital_output_ratio": 3.2999999999999994,
+        "labor_income_share": 0.6373113866851867,
+        "ai_revenue_output_share": 0.03268861331481316,
+        "profit_output_share": 0.02879336156765415,
+        "inference_output_share": 0.0038952517471590137,
+        "research_output_share": 0.0,
+        "monopoly_foc_residual": 0.0,
+        "pre_event_research_available": false
+      },
+      "post": {
+        "capital": 5.8588911957941,
+        "capability": 108.8793711393249,
+        "output": 1.7754215744830608,
+        "consumption": 1.467404572014946,
+        "inference_compute": 0.00691571398994895,
+        "research_compute": 0.006574569064835458,
+        "ai_services": 0.7529785902050732,
+        "ai_service_price": 0.07707532468253506,
+        "wage": 1.131496385584597,
+        "interest_rate": 0.05000000000000003
+      },
+      "level_log_gaps": {
+        "capital": 0.0,
+        "capability": 8.881784197001248e-16,
+        "output": 0.0,
+        "ai_services": 8.881784197001248e-16,
+        "inference_compute": 0.0,
+        "ai_service_price": 8.881784197001256e-16,
+        "wage": 0.0,
+        "interest_rate": 0.0
+      },
+      "pre_event_equation_checks": [
+        {
+          "time": -10.0,
+          "output_scaling_residual": 0.0,
+          "resource_residual": 3.560713439656644e-17,
+          "household_euler_residual": 1.5612511283791264e-17,
+          "monopoly_foc_residual": 0.0
+        },
+        {
+          "time": -2.0,
+          "output_scaling_residual": 2.0816681711721685e-17,
+          "resource_residual": 3.20900502868624e-17,
+          "household_euler_residual": 1.734723475976807e-18,
+          "monopoly_foc_residual": 0.0
+        },
+        {
+          "time": 0.0,
+          "output_scaling_residual": 1.1102230246251565e-16,
+          "resource_residual": 0.0,
+          "household_euler_residual": 2.949029909160572e-17,
+          "monopoly_foc_residual": 0.0
+        }
+      ],
+      "passes": true,
+      "consumption_jump": 0.048598731666960715,
+      "post_event_research_output_share": 0.003703103059761869,
+      "pre_gross_investment_output_share": 0.20789999999999997,
+      "post_gross_investment_output_share": 0.16589114588127388,
+      "post_net_capital_growth": 0.0002700442064466346,
+      "resource_reallocation_residual": 6.986100107995792e-17
+    },
+    "sigma_1_50": {
+      "pre": {
+        "sigma": 1.5,
+        "capital": 6.474024381014268,
+        "capability": 108.8793711393248,
+        "output": 1.9618255700043237,
+        "consumption": 1.5177064639302873,
+        "inference_compute": 0.03625557007013738,
+        "research_compute": 0.0,
+        "ai_services": 3.947483669534284,
+        "ai_service_price": 0.02557019228054659,
+        "wage": 1.2134852154485873,
+        "interest_rate": 0.05,
+        "capital_output_ratio": 3.3,
+        "labor_income_share": 0.6185489851913353,
+        "ai_revenue_output_share": 0.05145101480866458,
+        "profit_output_share": 0.03297048798483616,
+        "inference_output_share": 0.01848052682382842,
+        "research_output_share": 0.0,
+        "monopoly_foc_residual": 0.0,
+        "pre_event_research_available": false
+      },
+      "post": {
+        "capital": 6.474024381014268,
+        "capability": 108.8793711393249,
+        "output": 1.9618255700043237,
+        "consumption": 1.8045806202850585,
+        "inference_compute": 0.03625557007013741,
+        "research_compute": 0.1635061898705954,
+        "ai_services": 3.947483669534292,
+        "ai_service_price": 0.025570192280546564,
+        "wage": 1.2134852154485873,
+        "interest_rate": 0.05
+      },
+      "level_log_gaps": {
+        "capital": 0.0,
+        "capability": 8.881784197001248e-16,
+        "output": 0.0,
+        "ai_services": 1.9984014443252798e-15,
+        "inference_compute": 6.661338147750937e-16,
+        "ai_service_price": 1.1102230246251571e-15,
+        "wage": 0.0,
+        "interest_rate": 0.0
+      },
+      "pre_event_equation_checks": [
+        {
+          "time": -10.0,
+          "output_scaling_residual": 1.1102230246251565e-16,
+          "resource_residual": 9.667170554777094e-17,
+          "household_euler_residual": 1.214306433183765e-17,
+          "monopoly_foc_residual": 8.881784197001252e-16
+        },
+        {
+          "time": -2.0,
+          "output_scaling_residual": 1.3183898417423734e-16,
+          "resource_residual": 1.161639821126733e-16,
+          "household_euler_residual": 1.214306433183765e-17,
+          "monopoly_foc_residual": 8.881784197001252e-16
+        },
+        {
+          "time": 0.0,
+          "output_scaling_residual": 0.0,
+          "resource_residual": 5.659132196053035e-17,
+          "household_euler_residual": 1.734723475976807e-18,
+          "monopoly_foc_residual": 0.0
+        }
+      ],
+      "passes": true,
+      "consumption_jump": 0.1890182081796472,
+      "post_event_research_output_share": 0.08334389783197445,
+      "pre_gross_investment_output_share": 0.20790000000000006,
+      "post_gross_investment_output_share": -0.02167206446461697,
+      "post_net_capital_growth": -0.056567292262005145,
+      "resource_reallocation_residual": 0.0
+    }
+  }
+}

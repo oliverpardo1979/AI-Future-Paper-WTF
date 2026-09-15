@@ -47,7 +47,11 @@ def independent_residuals(sol, step, sample_times=None):
                       rate-service_return-p.eta*gb+approach])
     foc = (math.log(p.chi*p.eta)+v['log_shadow_value']+p.eta*v['log_capability']
            +(p.eta-1)*v['log_research_compute']+v['log_remaining_frontier_share'])
-    monopoly = (np.log((1-p.alpha)*sx*(1-e))+v['log_output']
+    # Algebraically identical to 1-e, without subtracting an elasticity
+    # rounded close to one. Keep the original 1e-9 admission threshold.
+    revenue_fraction = ((sol.terminal.sigma_xl-1)/sol.terminal.sigma_xl
+                        +(1/sol.terminal.sigma_xl-p.alpha)*sx)
+    monopoly = (np.log((1-p.alpha)*sx*revenue_fraction)+v['log_output']
                  +v['log_capability']-v['log_ai_services'])
     return dict(difference_step=step, samples=len(times),
                 maximum_ode_residual=float(np.max(np.abs(derivative-exact))),

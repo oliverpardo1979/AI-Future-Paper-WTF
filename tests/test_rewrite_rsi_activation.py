@@ -119,8 +119,23 @@ class RSIActivation(unittest.TestCase):
         for view in manifest['two_window_views']:
             self.assertEqual(view['windows'],[[-2.,10.],[10.,500.]])
         for sigma in SIGMAS:
-            self.assertEqual(manifest['pre_event_bgp'][key(sigma)],
-                fixed_efficiency_bgp(sigma,d.initial_capability,d.parameters))
+            saved = manifest['pre_event_bgp'][key(sigma)]
+            recomputed = fixed_efficiency_bgp(sigma,d.initial_capability,d.parameters)
+            self.assertEqual(saved.keys(),recomputed.keys())
+            for name, value in saved.items():
+                if name == 'monopoly_foc_residual':
+                    # A residual's last bits are not an economic observable.
+                    # Keep the original equilibrium admission tolerance.
+                    self.assertLess(abs(value),1e-9)
+                    self.assertLess(abs(recomputed[name]),1e-9)
+                elif isinstance(value,(int,float)) and not isinstance(value,bool):
+                    # Algebraically equivalent marginal-revenue evaluation can
+                    # change roundoff accumulated across the static calculation.
+                    self.assertTrue(math.isclose(value,recomputed[name],
+                        rel_tol=32*sys.float_info.epsilon,abs_tol=0.),
+                        (sigma,name,value,recomputed[name]))
+                else:
+                    self.assertEqual(value,recomputed[name])
 
 
 if __name__=='__main__':

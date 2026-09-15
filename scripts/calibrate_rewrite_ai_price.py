@@ -209,8 +209,13 @@ def calibrated_design(variant='baseline'):
         raise ValueError('Stored calibration belongs to other initial stocks.')
     if variant in RSI_VARIANTS and (
             payload.get('initial_capital_rule') != design.initial_capital_rule
-            or payload.get('initial_capital_by_sigma') != {
-                key(s): design_initial_stocks(design, s)[0] for s in SIGMAS}):
+            or set(payload.get('initial_capital_by_sigma', {})) != {key(s) for s in SIGMAS}
+            # Match the checkpoint guard's roundoff allowance for numerically
+            # derived BGP stocks. Parameters and explicit stocks remain exact.
+            or any(not math.isclose(payload['initial_capital_by_sigma'][key(s)],
+                                    design_initial_stocks(design, s)[0],
+                                    rel_tol=8*np.finfo(float).eps, abs_tol=0.)
+                   for s in SIGMAS)):
         raise ValueError('Stored calibration belongs to another pre-RSI BGP.')
     return design
 

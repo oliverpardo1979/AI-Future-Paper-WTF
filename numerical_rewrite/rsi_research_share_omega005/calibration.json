@@ -1,0 +1,80 @@
+{
+  "status": "numerically_admitted",
+  "chi": 152.5484592857292,
+  "target_share": 0.000664,
+  "calibration_sigma": 1.0,
+  "target_years": 1.0,
+  "target_definition": "Integral of M over year one divided by integral of Y over year one.",
+  "source": {
+    "geography": "United States",
+    "year": 2023,
+    "research_compute_billion_usd": 18.46,
+    "nominal_gdp_billion_usd": 27811.517,
+    "compute_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9.pdf",
+    "method_url": "https://www.piie.com/sites/default/files/2026-05/wp26-9-appendix.pdf",
+    "gdp_url": "https://fred.stlouisfed.org/data/GDPA",
+    "accessed": "2026-09-14",
+    "limitations": [
+      "Rental-equivalent compute expenditure is estimated, not a sum of observed bills.",
+      "Research/training is assumed to account for 50 percent of total AI compute spending.",
+      "This US proxy is neither a global total nor a direct measure of autonomous RSI.",
+      "The ratio of nominal annual flows proxies the model ratio in final-good units.",
+      "The 2023 value is the lowest dated proxy previously discussed, not a lower confidence bound.",
+      "The ratio does not measure the current level of research spending."
+    ]
+  },
+  "rounded_source_ratio": 0.0006637537966735148,
+  "target_interpretation": "User-requested rounded 2023 US proxy, not measured autonomous RSI.",
+  "selection": "First ascending target crossing in the documented low-chi search.",
+  "root_log_chi_tolerance": 2e-06,
+  "target_log_tolerance": 2e-05,
+  "parameters": {
+    "alpha": 0.33,
+    "omega_x": 0.05,
+    "population_growth": 0.003,
+    "labor_productivity_growth": 0.01,
+    "depreciation": 0.05,
+    "discount": 0.04,
+    "eta": 0.2,
+    "chi": 152.5484592857292,
+    "initial_labor_productivity": 1.0,
+    "initial_population": 1.0
+  },
+  "frontier": 10887.93711393248,
+  "frontier_rule": "1.1 * threshold(sigma=1.5, omega_X=0.05)",
+  "initial_capability": 108.8793711393248,
+  "initial_stocks_by_sigma": {
+    "sigma_0_90": [
+      2.369306651163711,
+      108.8793711393248
+    ],
+    "sigma_1_00": [
+      5.48645814253152,
+      108.8793711393248
+    ],
+    "sigma_1_10": [
+      5.8588911957941,
+      108.8793711393248
+    ],
+    "sigma_1_50": [
+      6.474024381014268,
+      108.8793711393248
+    ]
+  },
+  "source_code_base_commit": "05ff8c2",
+  "trial": {
+    "chi": 152.5484592857292,
+    "annual_research_share": 0.0006640000004737001,
+    "log_target_residual": 7.134037802400867e-10,
+    "quadrature_log_gap": 1.5436540934376262e-12,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_72a25c1e9ae11a82.npz",
+    "checkpoint_sha256": "9b45c668213547d71a07382a53ff08f5d19b02d4fc6f7ef7270a8729298c7609",
+    "maximum_rms_residual": 1.9742913104605116e-07,
+    "horizon": 3591.9183655929264
+  },
+  "document_modified": false,
+  "matched_share": 0.0006640000006802914,
+  "error_basis_points": 6.802914351636269e-09,
+  "moment_log_change_after_two_horizon_extensions": 3.111315650046144e-10,
+  "final_checkpoint_sha256": "2004f335e165232983c803ef7e8af432a9c4f93d06a92e555db4db60cb84c5da"
+}

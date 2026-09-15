@@ -211,11 +211,11 @@ def _static_quantities_from_ratio(
         + varphi * log_ai_labor_ratio
     )
     ai_share = _logistic(log_share_odds)
-    inverse_elasticity = (
-        (1.0 - ai_share) / sigma_xl
-        + parameters.alpha * ai_share
-    )
-    if not 0.0 < inverse_elasticity < 1.0:
+    # Compute 1-e directly. Subtracting e from one loses significant digits
+    # near the zero-marginal-revenue boundary under complementarity.
+    revenue_fraction = varphi + (1.0 / sigma_xl - parameters.alpha) * ai_share
+    inverse_elasticity = 1.0 - revenue_fraction
+    if not 0.0 < revenue_fraction < 1.0:
         raise FloatingPointError(
             "The monopoly markup is not interior at the trial point."
         )
@@ -227,7 +227,7 @@ def _static_quantities_from_ratio(
     )
     foc = (
         log_price
-        + math.log1p(-inverse_elasticity)
+        + math.log(revenue_fraction)
         + log_capability
     )
     share_derivative = varphi * ai_share * (1.0 - ai_share)
@@ -238,10 +238,10 @@ def _static_quantities_from_ratio(
         varphi * (1.0 - ai_share)
         + (1.0 - parameters.alpha) * ai_share
         - 1.0
-        - inverse_elasticity_derivative / (1.0 - inverse_elasticity)
+        - inverse_elasticity_derivative / revenue_fraction
     )
     soc_margin = (
-        inverse_elasticity * (1.0 - inverse_elasticity)
+        inverse_elasticity * revenue_fraction
         + (parameters.alpha - 1.0 / sigma_xl)
         * (1.0 - 1.0 / sigma_xl)
         * ai_share
@@ -332,6 +332,30 @@ def solve_monopoly_static_block(
         sigma_xl,
         parameters,
     )
+    if varphi < 0.0:
+        # Brent's tolerance is in log(X/AL), not the log first-order condition.
+        # Near zero marginal revenue, polish in residual units and inspect
+        # adjacent floating-point choices. This tightens the solution without
+        # altering the FOC or any equilibrium-admission tolerance.
+        for _ in range(6):
+            if abs(block["foc"]) <= 1e-11:
+                break
+            proposal = log_ratio - block["foc"] / block["foc_derivative"]
+            candidates = [proposal, np.nextafter(proposal, -math.inf),
+                          np.nextafter(proposal, math.inf)]
+            best_ratio, best_block = log_ratio, block
+            for candidate in candidates:
+                try:
+                    trial = _static_quantities_from_ratio(
+                        log_capital, log_capability, log_effective_labor,
+                        float(candidate), sigma_xl, parameters)
+                except FloatingPointError:
+                    continue
+                if abs(trial["foc"]) < abs(best_block["foc"]):
+                    best_ratio, best_block = float(candidate), trial
+            if best_ratio == log_ratio:
+                break
+            log_ratio, block = best_ratio, best_block
     derivative = float(block["foc_derivative"])
     if derivative >= 0.0:
         raise FloatingPointError(

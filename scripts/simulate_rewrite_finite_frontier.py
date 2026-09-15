@@ -271,10 +271,18 @@ def load_solution(filename):
 def validate_solution_design(solution, design, sigma):
     """Reject a stale checkpoint before it can enter a design's audit."""
     initial_capital, initial_capability = design_initial_stocks(design, sigma)
+    capital_matches = solution.initial_capital == initial_capital
+    if design.initial_capital_rule == 'fixed_efficiency_bgp':
+        # This stock is recomputed by a scalar root finder. Equivalent, more
+        # accurate static evaluations can change its last floating-point bit.
+        # Permit only roundoff (8 machine eps), not a different initial stock;
+        # the independent pre-event and equilibrium tolerances are unchanged.
+        capital_matches = math.isclose(solution.initial_capital, initial_capital,
+                                       rel_tol=8*np.finfo(float).eps, abs_tol=0.)
     if (asdict(solution.parameters) != asdict(design.parameters)
             or solution.terminal.frontier != design.frontier
             or solution.terminal.sigma_xl != sigma
-            or solution.initial_capital != initial_capital
+            or not capital_matches
             or solution.initial_capability != initial_capability):
         raise ValueError(f'A cached solution differs from the {design.name} design.')
 

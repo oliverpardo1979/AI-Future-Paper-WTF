@@ -1,0 +1,162 @@
+[
+  {
+    "chi": 0.179725,
+    "annual_research_share": 2.0232552205918168e-06,
+    "log_target_residual": -5.793574439786167,
+    "quadrature_log_gap": 1.7763568394002489e-15,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_1aa34deb2e858f36.npz",
+    "checkpoint_sha256": "9ecb5848d24661d26d671546bed58079c39780a56b3113661819563ad8d66ad5",
+    "maximum_rms_residual": 8.115170600593565e-08,
+    "horizon": 6134.029424673464
+  },
+  {
+    "chi": 0.35945000000000005,
+    "annual_research_share": 4.7485820560927e-06,
+    "log_target_residual": -4.9404360905010085,
+    "quadrature_log_gap": 1.7763568394002489e-15,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_1a74da9665f3cac2.npz",
+    "checkpoint_sha256": "78becd70782ffad3d15a0866ba6c0464a1ca3a69ee1f87e1600b7b6ceaba87da",
+    "maximum_rms_residual": 1.849834748119364e-07,
+    "horizon": 5867.434355227331
+  },
+  {
+    "chi": 0.7189000000000001,
+    "annual_research_share": 1.0965513981172536e-05,
+    "log_target_residual": -4.10352689399723,
+    "quadrature_log_gap": 0.0,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_52f8304ad7dc40a9.npz",
+    "checkpoint_sha256": "33ff95ce4953d2f0b17e1c0b13d28cf801e4b8ae9a2c067197075017a8e4b2d1",
+    "maximum_rms_residual": 1.365248234868392e-07,
+    "horizon": 5600.839285781198
+  },
+  {
+    "chi": 1.4378,
+    "annual_research_share": 2.4526967429818362e-05,
+    "log_target_residual": -3.29850892584325,
+    "quadrature_log_gap": 0.0,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_02054a452f1a1b45.npz",
+    "checkpoint_sha256": "f1e139b5c7aa1c4dc2ff832b37e1aa50900df3cfc1e4c4448ce2dc8b63ad1fec",
+    "maximum_rms_residual": 1.5614241452990176e-07,
+    "horizon": 5334.244216335065
+  },
+  {
+    "chi": 2.8756,
+    "annual_research_share": 5.195294006016234e-05,
+    "log_target_residual": -2.5479438394967304,
+    "quadrature_log_gap": 1.7763568394002489e-15,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_3187db0317b2fc89.npz",
+    "checkpoint_sha256": "6443f04406dc13b3b999234d6930c5507b5d414fdb75a3f494f08337eacf9666",
+    "maximum_rms_residual": 1.7448196561851181e-07,
+    "horizon": 5067.649146888933
+  },
+  {
+    "chi": 5.7512,
+    "annual_research_share": 0.00010176434492803909,
+    "log_target_residual": -1.8756223529970206,
+    "quadrature_log_gap": 0.0,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_42b859e5986f0a7c.npz",
+    "checkpoint_sha256": "f443341d080f4fd4282c18ec44a87e0af07fd310c5d99fad45cbd601f67ee345",
+    "maximum_rms_residual": 1.6409566882154806e-07,
+    "horizon": 4801.0540774428
+  },
+  {
+    "chi": 11.502400000000002,
+    "annual_research_share": 0.00018132520562526739,
+    "log_target_residual": -1.2979900142126144,
+    "quadrature_log_gap": 3.330669073875464e-15,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_65b35bb7a06d8894.npz",
+    "checkpoint_sha256": "a178f8d5d29ce36678c1c8453198b22b232581653ee76e34542117d5dbb359c7",
+    "maximum_rms_residual": 1.9109389649760626e-07,
+    "horizon": 4534.459007996667
+  },
+  {
+    "chi": 23.004800000000003,
+    "annual_research_share": 0.00029237365035544144,
+    "log_target_residual": -0.8202495407248864,
+    "quadrature_log_gap": 5.68434188608064e-14,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_83f6567413d7b318.npz",
+    "checkpoint_sha256": "b40601835856b399d952abc865682351520ea0aac1f829d184e2e6177d49de13",
+    "maximum_rms_residual": 1.940276364558102e-07,
+    "horizon": 4267.863938550534
+  },
+  {
+    "chi": 46.00960000000001,
+    "annual_research_share": 0.0004277612484470047,
+    "log_target_residual": -0.4397169402713822,
+    "quadrature_log_gap": 1.243449787580183e-14,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_b4dcad605816458c.npz",
+    "checkpoint_sha256": "35e1374115c5b3eb04c30ff725e174d65b571eedf2695a3f7e0874f0603f8712",
+    "maximum_rms_residual": 1.9870873103142607e-07,
+    "horizon": 4001.2688691044013
+  },
+  {
+    "chi": 92.01920000000003,
+    "annual_research_share": 0.0005702970953657826,
+    "log_target_residual": -0.15212470449579987,
+    "quadrature_log_gap": 2.273736754432579e-13,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_ccac453320258906.npz",
+    "checkpoint_sha256": "3d310afe7e46770edf5cf875e80343e1a35c2c12c46a70ee4c6beb0441767ebe",
+    "maximum_rms_residual": 1.9845257217143822e-07,
+    "horizon": 3734.6737996582688
+  },
+  {
+    "chi": 184.03840000000008,
+    "annual_research_share": 0.0006938838303468545,
+    "log_target_residual": 0.04402240558781598,
+    "quadrature_log_gap": 1.2168932528237375e-11,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_07bab3d02031fbdd.npz",
+    "checkpoint_sha256": "f7c69a26b5c451094cba13ea2848b8eb0be6be8e66f99360530682f5b44e7476",
+    "maximum_rms_residual": 1.9767101774170888e-07,
+    "horizon": 3591.9183655929264
+  },
+  {
+    "chi": 157.52394656355355,
+    "annual_research_share": 0.0006693399580069031,
+    "log_target_residual": 0.008009940038769054,
+    "quadrature_log_gap": 1.3375967000692832e-12,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_322877b35d042903.npz",
+    "checkpoint_sha256": "8808809c89ed601f08136fcec5a3a9b8321ee02cf47d374cfea59437259cd391",
+    "maximum_rms_residual": 1.9818695846350782e-07,
+    "horizon": 3591.9183655929264
+  },
+  {
+    "chi": 152.43020928644737,
+    "annual_research_share": 0.0006638698820336942,
+    "log_target_residual": -0.0001959799954540116,
+    "quadrature_log_gap": 1.536548666080036e-12,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_a28f66a4181d801d.npz",
+    "checkpoint_sha256": "0e2f5a69d2896bf0f17699828976f6ea99ebc99b48e785142cdf9ffb41007f88",
+    "maximum_rms_residual": 1.9741056970445517e-07,
+    "horizon": 3591.9183655929264
+  },
+  {
+    "chi": 152.5499203154988,
+    "annual_research_share": 0.0006640016071921696,
+    "log_target_residual": 2.4204672056563615e-06,
+    "quadrature_log_gap": 1.5436540934376262e-12,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_fad5fbf82991cde5.npz",
+    "checkpoint_sha256": "258ba0e56c62a934e15565d7ae4ee8e8c4106b445b9673610fd75d72191957ce",
+    "maximum_rms_residual": 1.9742936021918579e-07,
+    "horizon": 3591.9183655929264
+  },
+  {
+    "chi": 152.54830669899945,
+    "annual_research_share": 0.0006639998326702252,
+    "log_target_residual": -2.5200270470401365e-07,
+    "quadrature_log_gap": 1.5436540934376262e-12,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_9309f9733c23c7f4.npz",
+    "checkpoint_sha256": "eabe95771f8163c7da2ede4c6801671406384c666d542c8036e1677ddab6834a",
+    "maximum_rms_residual": 1.9742910712639148e-07,
+    "horizon": 3591.9183655929264
+  },
+  {
+    "chi": 152.5484592857292,
+    "annual_research_share": 0.0006640000004737001,
+    "log_target_residual": 7.134037802400867e-10,
+    "quadrature_log_gap": 1.5436540934376262e-12,
+    "checkpoint": "tmp/rewrite_bvp_rsi_research_share_omega005/calibration_trials/chi_72a25c1e9ae11a82.npz",
+    "checkpoint_sha256": "9b45c668213547d71a07382a53ff08f5d19b02d4fc6f7ef7270a8729298c7609",
+    "maximum_rms_residual": 1.9742913104605116e-07,
+    "horizon": 3591.9183655929264
+  }
+]
