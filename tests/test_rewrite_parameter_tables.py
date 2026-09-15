@@ -89,12 +89,18 @@ class ParameterTables(unittest.TestCase):
         self.assertIn('arbitrary 50-year',TABLES['tab:rewrite-financing-parameters'])
 
     def test_sources_do_not_disguise_assumptions_as_estimates(self):
+        for symbol in (r'\alpha', r'\delta', r'\rho'):
+            row = next(line for line in COMMON.splitlines()
+                       if line.startswith('$' + symbol + '$ &'))
+            self.assertIn('Standard calibration value.', row)
+            self.assertNotIn('not estimated', row)
         self.assertIn('Arbitrary trend assumption',COMMON)
-        self.assertIn('Arbitrary illustrative value',COMMON)
+        self.assertIn('Illustrative, not estimated',COMMON)
         self.assertIn('not supplied as inputs',COMMON)
         self.assertIn(r'\citep{unwpp2024}',COMMON)
         self.assertIn(r'\citep{oecdlongrun2025}',COMMON)
-        self.assertIn(r'\citep{pwt110}',COMMON)
+        design = (SECTION/'08_rsi_design.tex').read_text(encoding='utf-8')
+        self.assertIn(r'\citep{pwt110}',design)
         for label in ('tab:rewrite-price-parameters','tab:rewrite-low-ai-price-parameters'):
             self.assertIn(r'\citep{oecdaimarkets2026}',TABLES[label])
             self.assertIn('0.20',TABLES[label])
