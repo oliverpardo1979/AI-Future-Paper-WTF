@@ -14,6 +14,13 @@ from test_rewrite_simulation_selection import quantitative_text
 
 
 class IllustrativeRSI(unittest.TestCase):
+    def test_sha_bound_outputs_preserve_git_line_endings(self):
+        rules=(ROOT/'.gitattributes').read_text()
+        for chi in PRODUCTIVITIES:
+            name=make_design(chi).name
+            for extension in ('json','csv'):
+                self.assertIn(f'numerical_rewrite/{name}/*.{extension} -text',rules)
+
     def test_only_chi_differs(self):
         high, low = [make_design(c) for c in PRODUCTIVITIES]
         p, q = [asdict(d.parameters) for d in (high, low)]
