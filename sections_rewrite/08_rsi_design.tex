@@ -4,29 +4,17 @@
 \subsection{Experimental design and initial conditions}
 \label{subsec:rewrite-rsi-activation}
 
-In this section, I compare transitional dynamics under four parameter
-configurations corresponding to the cases in
-Proposition~\ref{prop:rewrite-equilibrium-regimes}.
-I study an unanticipated activation of RSI at date zero.
-Before date zero, the economy already uses AI production services,
-but AI efficiency is fixed at $B_0$. For the chosen value of $B_0$,
-each economy starts on a labor-bottleneck BGP. I compute this BGP
-with $\chi=0$, obtaining the corresponding initial capital
-stock $K_0$ for each parameter configuration. 
+In this section, I compare transitional dynamics under four parameter configurations corresponding to the cases in Proposition~\ref{prop:rewrite-equilibrium-regimes}. I study an unanticipated activation of RSI at date zero. Before date zero, the economy already uses AI production services, but AI efficiency is fixed at $B_0$. For the chosen value of $B_0$, each economy starts on a labor-bottleneck balanced growth path. I compute this path with $\chi=0$, obtaining the corresponding initial capital stock $K_0$ for each parameter configuration. Setting $\chi=0$ rules out improvements in AI efficiency, not the expansion of AI services through inference compute. 
 
-Setting $\chi=0$ rules out improvements in AI efficiency, not the expansion
-of AI services through inference compute. The initial labor-bottleneck BGP
-depends on the chosen $B_0$ and the other parameters; it does not follow from
-$\chi=0$ alone.
+I compare four economies with $\sigma=0.9,1.0,1.1,1.5$, holding all other parameters and the initial values $A_0$, $N_0$, and $B_0$ fixed. For each economy, I choose $K_0$ to place it on its pre-RSI balanced growth path. In particular, for each elasticity, I choose the pre-event capital stock to satisfy
+\begin{equation}
+ r_0=\rho+\gamma,\qquad
+ \frac{K_0}{Y_0}=\frac{\alpha}{\rho+\gamma+\delta}=3.30.
+ \label{eq:rewrite-rsi-initial-ratio}
+\end{equation}
 
-Within each simulation exercise, I compare four economies with
-$\sigma=0.9,1.0,1.1,1.5$, holding all other parameters and the initial
-values $A_0$, $N_0$, and $B_0$ fixed. For each economy, I choose $K_0$
-to place it on its pre-RSI BGP. The common upper bound on AI efficiency
-satisfies $\mathcal B(1.5)<\overline B<\mathcal B(1.1)$.
-Thus, AI and labor are substitutes in both the $\sigma=1.1$ and
-$\sigma=1.5$ cases, but only the latter converges to the AI-dominated
-regime.
+The common upper bound on AI efficiency satisfies $\mathcal B(1.5)<\overline B<\mathcal B(1.1)$. Thus, AI and labor are substitutes in both the $\sigma=1.1$ and $\sigma=1.5$ cases, but only the latter converges to the AI-dominated regime.
+
 
 The following two subsections differ only in the calibration of $\chi$:
 an illustrative research-expenditure target guides the central scenario, and a
@@ -34,12 +22,7 @@ lower research-expenditure target gives a slow-transition sensitivity.
 Table~\ref{tab:rewrite-rsi-parameters} reports the common parameters and
 initial stocks, together with the two values of $\chi$.
 
-For each elasticity, I choose the pre-event capital stock to satisfy
-\begin{equation}
- r_0=\rho+\gamma,\qquad
- \frac{K_0}{Y_0}=\frac{\alpha}{\rho+\gamma+\delta}=3.30.
- \label{eq:rewrite-rsi-initial-ratio}
-\end{equation}
+
 Here $Y_0$ is obtained from the production and monopoly conditions with AI
 already present. Thus $K_0$ differs across elasticities, while the initial
 capital--output ratio and interest rate are common. With $A_0=N_0=1$ and
