@@ -14,29 +14,32 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import reproduce_rewrite_results as reproduce
 
 
-def quantitative_text(full=False, legacy=False):
+def quantitative_text(full=False, legacy=False, calibrated=False):
     main = (ROOT / 'main_rewrite.tex').read_text(encoding='utf-8')
     section = main.split(r'\input{sections_rewrite/05_uncapped_equilibria}')[1]
     section = section.split(r'\input{sections_rewrite/06_conclusion}')[0]
-    flags = {'showfullpricebenchmark': full, 'showlegacysimulations': legacy}
-    stack, active, output = [], True, []
+    flags = {'showfullpricebenchmark': full, 'showlegacysimulations': legacy,
+             'showcalibratedrsiscenarios': calibrated}
     def expand(path):
         text = (ROOT / (path + '.tex')).read_text(encoding='utf-8')
-        return re.sub(r'\\input\{([^}]+)\}', lambda m: expand(m[1]), text)
-    for line in section.splitlines():
-        line = line.strip()
-        if line.startswith(r'\if'):
-            stack.append((active, flags[line[3:]]))
-            active = active and stack[-1][1]
-        elif line == r'\else':
-            active = stack[-1][0] and not stack[-1][1]
-        elif line == r'\fi':
-            active = stack.pop()[0]
-        elif active and line.startswith(r'\input'):
-            output.append(expand(re.search(r'\{([^}]+)\}', line)[1]))
-    if stack:
-        raise AssertionError('Unclosed editorial conditional')
-    return '\n'.join(output)
+        return select(text)
+    def select(text):
+        stack, active, output = [], True, []
+        for line in text.splitlines():
+            token = line.strip()
+            if token.startswith(r'\if'):
+                stack.append((active, flags[token[3:]]))
+                active = active and stack[-1][1]
+            elif token == r'\else':
+                active = stack[-1][0] and not stack[-1][1]
+            elif token == r'\fi':
+                active = stack.pop()[0]
+            elif active:
+                output.append(re.sub(r'\\input\{([^}]+)\}', lambda m: expand(m[1]), line))
+        if stack:
+            raise AssertionError('Unclosed editorial conditional')
+        return '\n'.join(output)
+    return select(section)
 
 
 class SimulationSelection(unittest.TestCase):
@@ -47,11 +50,11 @@ class SimulationSelection(unittest.TestCase):
         self.assertIn('{tab:rewrite-rsi-parameters}', text)
         self.assertNotIn('{tab:rewrite-rsi-half-parameters}', text)
         self.assertNotIn('{tab:rewrite-research-share-parameters}', text)
-        self.assertIn('7.616305 (central)', text)
-        self.assertIn('1.4378 (slow)', text)
+        self.assertIn('7.5 (higher)', text)
+        self.assertIn('1.5 (lower)', text)
         self.assertLess(text.index(r'\begin{table}'),
-                        text.index(r'\subsection{Central illustrative scenario}'))
-        table = (ROOT/'sections_rewrite/rsi_parameters.tex').read_text(encoding='utf-8')
+                        text.index(r'\subsection{Higher research productivity}'))
+        table = quantitative_text(calibrated=True)
         self.assertNotIn(r'\input', table)
         for old in ('parameter_tables.tex', 'rsi_half_decline_parameters.tex',
                     'rsi_research_share_parameters.tex', 'rsi_activation_parameters.tex'):
@@ -59,7 +62,7 @@ class SimulationSelection(unittest.TestCase):
             self.assertTrue((ROOT/'sections_rewrite/preserved'/old).exists())
 
     def test_unified_values_match_both_saved_calibrations(self):
-        table = (ROOT/'sections_rewrite/rsi_parameters.tex').read_text(encoding='utf-8')
+        table = quantitative_text(calibrated=True)
         rows = dict(re.findall(r'^\$([^$]+)\$ & (.*?) &', table, re.M))
         self.assertEqual(len(rows), 15)
         def rounded_value(segment, actual):
@@ -94,14 +97,14 @@ class SimulationSelection(unittest.TestCase):
         headings = re.findall(r'\\subsection\{([^}]+)\}', text)
         self.assertEqual(headings, [
             'Experimental design and initial conditions',
-            'Central illustrative scenario',
-            'Sensitivity: a slow transition',
+            'Higher research productivity',
+            'Lower research productivity',
             'Interpretation and limitations',
         ])
         figures = re.findall(r'\\includegraphics\[[^]]*\]\{([^}]+)\}', text)
         self.assertEqual(len(figures), 6)
-        self.assertTrue(all('rsi_activation_half_decline_' in p for p in figures[:3]))
-        self.assertTrue(all('rsi_research_share_2023_' in p for p in figures[3:]))
+        self.assertTrue(all('rsi_chi_7_5_' in p for p in figures[:3]))
+        self.assertTrue(all('rsi_chi_1_5_' in p for p in figures[3:]))
         self.assertTrue(all((ROOT / p).exists() for p in figures))
 
     def test_full_price_benchmark_can_be_reactivated(self):
@@ -133,9 +136,8 @@ class SimulationSelection(unittest.TestCase):
             reproduce.main()
         commands = [c.args[0] for c in run.call_args_list]
         calibrations = [c for c in commands if any('scripts/calibrate_' in x for x in c)]
-        self.assertEqual(len(calibrations), 2)
-        self.assertIn('scripts/calibrate_rewrite_research_share_central.py', calibrations[0])
-        self.assertIn('scripts/calibrate_rewrite_research_share_low.py', calibrations[1])
+        self.assertEqual(len(calibrations), 0)
+        self.assertTrue(any('scripts/simulate_rewrite_illustrative_rsi.py' in c for c in commands))
         self.assertFalse(any('rsi_activation' in c for c in commands))
 
     def test_legacy_driver_retains_full_price_command(self):
@@ -145,7 +147,7 @@ class SimulationSelection(unittest.TestCase):
         self.assertTrue(any(c.args[0][-1] == 'rsi_activation' for c in run.call_args_list))
 
     def test_central_target_is_illustrative_not_an_observed_estimate(self):
-        text = quantitative_text()
+        text = quantitative_text(calibrated=True)
         self.assertIn('not an observed estimate', text)
         self.assertIn(r'$0.183\%$', text)
         self.assertIn(r'$0.182916\%$', text)

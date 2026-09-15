@@ -4,7 +4,17 @@ This folder contains the admitted equilibrium paths and numerical audits used
 in [*The Future of Growth and Human Labor Under Recursive AI
 Self-Improvement*](../main_rewrite.tex).
 
-The principal exercise is in `rsi_activation/`: AI exists before an
+The displayed comparisons are `rsi_chi_7_5/` and `rsi_chi_1_5/`: two
+illustrative research-productivity values, not price or research-share
+calibrations. All other parameters and elasticity-specific initial stocks
+are identical. Each directory links back to the paper and contains the
+admission audits, annual outcomes, CSV and figure manifests. Reproduce both:
+
+```text
+python scripts/simulate_rewrite_illustrative_rsi.py
+```
+
+The **earlier, preserved** exercise in `rsi_activation/` has AI before an
 unanticipated RSI activation. Each sigma inherits capital from its own
 fixed-B BGP, with common `K0/Y0=3.30` and `r0=0.05`. It retains
 `omega_X=0.10`, `B0/Bbar=0.01`, and refits chi to the unit-elastic price
@@ -14,7 +24,7 @@ decline. From the repository root, reproduce it with:
 python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
 ```
 
-The additional `rsi_activation_half_decline/` exercise fits chi to
+The archived `rsi_activation_half_decline/` exercise fits chi to
 `p_X(2.25)/p_X(0)=0.60`, a 40% decline instead of 80%, with the same
 initial stocks and all other parameters. Reproduce it with the variant
 `rsi_activation_half_decline`. The paths are re-solved equilibria, not

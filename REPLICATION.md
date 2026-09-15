@@ -20,34 +20,65 @@ the fixed-B BGP, with `K0/Y0=3.30` and `r0=0.05`. The four stocks are
 `3.433644797858547`, `4.649320432676148`, `5.036956080779938`, and
 `5.5046668887702594`, respectively. The common inputs are `omega_X=0.10`,
 `eta=0.20`, `Bbar=1360.9921392415592`, and `B0=13.609921392415593`.
-The central scenario retains `chi=7.616304576019883` to approximate an
-illustrative first-year research-expenditure share of 0.183% at sigma=1.
-The slow-transition sensitivity uses
-`chi=1.4378`, approximately matching the unit-elastic research-expenditure
-target. Each value stays
+The two displayed exercises use `chi=7.5` and `chi=1.5`, author-selected
+illustrative values rather than estimates or fitted targets. Each value stays
 fixed across the four elasticities. Pre-event consumption is
 reported for comparison but is NOT a boundary condition after activation.
 The post-event BVP independently selects consumption and the shadow value.
 
-Section 6.1 gives the common design, Section 6.2 the central illustrative
-scenario, Section 6.3 the slow-transition sensitivity, and Section 6.4 the limitations. Run
+Section 6.1 gives the common design, Section 6.2 higher research productivity,
+Section 6.3 lower research productivity, and Section 6.4 the limitations. Run
 `python scripts/reproduce_rewrite_results.py` for both displayed comparisons
 in this order. Add `--include-legacy` to regenerate the preserved comparisons
 as well. These commands re-solve and audit the model; they do not rescale a
-saved trajectory in time. The change in the central target did not require
-new parameter values or trajectories.
+saved trajectory in time. Both illustrative comparisons were newly solved
+for all four elasticities; the former calibrated paths are not relabeled.
 
 In `main_rewrite.tex`, both `\showlegacysimulationsfalse` and
-`\showfullpricebenchmarkfalse` are the defaults. Change the latter to
+`\showfullpricebenchmarkfalse` are the defaults. A third switch,
+`\showcalibratedrsiscenariosfalse`, selects the new illustrative comparisons;
+set it to `\showcalibratedrsiscenariostrue` to restore the previous
+chi=7.616304576019883 and chi=1.4378 text, table values and appendix.
+Change `\showfullpricebenchmarkfalse` to
 `\showfullpricebenchmarktrue` to add back the full 80%-price-decline
 experiment, including its parameter table, figures and accuracy table.
 Change the former to `\showlegacysimulationstrue` to restore the older
 quantitative section and numerical appendix instead. These are editorial
 switches, not simulation settings; all underlying files remain available.
 
-## Central illustrative scenario: first-year research share of 0.183%
+## Current comparison: chi=7.5 and chi=1.5
 
-Section 6.2 uses `integral(M,0,1)/integral(Y,0,1)=0.00183` as an
+```text
+python -m pip install -r requirements-rewrite.txt
+python scripts/simulate_rewrite_illustrative_rsi.py
+python -m unittest discover -s tests -p test_rewrite_illustrative_rsi.py -v
+```
+
+Use `--chi 7.5` or `--chi 1.5` for one four-elasticity comparison.
+`--sigma 1.5 --solve-only` solves one elasticity without publishing an
+incomplete comparison. After all four have been solved, `--chi 7.5 --finish`
+repeats the longer-horizon, optimality, transversality and early-window checks
+before exporting. Omit `--finish` to run all stages. There is no outer
+calibration loop. Checkpoints in `tmp/rewrite_bvp_rsi_chi_*/` are reusable;
+their parameters and initial stocks are checked before use.
+
+The two output folders are `numerical_rewrite/rsi_chi_7_5/` and
+`numerical_rewrite/rsi_chi_1_5/`. Each contains the parameter specification,
+three-horizon annual research moments, equation and optimality audits,
+event-continuity checks, CSV, snapshots and plot manifests. Annual research
+expenditure is `integral(M,0,1)/integral(Y,0,1)`, not M0/Y0; these are
+**outcomes, not targets**. The figures retain the paper's three groups:
+normalized accumulation growth, wages/interest/prices, and income shares,
+with years -2 to 10 and 10 to 500 shown separately. Earlier exports are
+untouched. Research productivity affects the transition but not the
+characterized finite-bound limiting growth rates. The dates are not forecasts.
+
+The following two sections document **archived target-based exercises**;
+their numbers and calibration descriptions do not describe the default PDF.
+
+## Central illustrative scenario: first-year research share of 0.183% (archived)
+
+The former Section 6.2 uses `integral(M,0,1)/integral(Y,0,1)=0.00183` as an
 illustrative target at sigma=1, not as an exact observed estimate. It is
 neither M0/Y0 nor the time average of the instantaneous ratio. The retained
 chi gives 0.1829159408%, a discrepancy of -0.0084059 basis points. The
@@ -94,9 +125,9 @@ The limiting output-per-person growth, wage growth and net interest rate
 are 3.13%, 2.42% and 7.13%. Industry size and recent expenditure growth
 remain unfitted; the reported dates are not forecasts.
 
-## Slow-transition sensitivity: approximate research-expenditure calibration
+## Slow-transition sensitivity: approximate research-expenditure calibration (archived)
 
-Section 6.3 uses the lowest previously discussed dated proxy, US 2023:
+The former Section 6.3 uses the lowest previously discussed dated proxy, US 2023:
 training/research compute of $18.46 billion divided by nominal GDP of
 $27,811.517 billion, or 0.0663754%. At chi=1.4378 the unit-elastic path gives
 0.0637427%, a shortfall of 0.2633 basis points. The author requested an

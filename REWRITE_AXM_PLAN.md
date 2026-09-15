@@ -12,6 +12,19 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Illustrative research productivities (September 15, 2026)
+
+- Display chi=7.5 and chi=1.5 as higher/lower research-productivity
+  scenarios. Neither is estimated, a normalization, or a fitted moment.
+- Re-solve all four sigmas in both cases; keep omega_X=0.10, eta=0.20,
+  the existing cap rule and numeric cap, B0/Bbar=0.01, and the sigma-specific
+  existing-AI pre-RSI BGP capital stocks. Preserve every equilibrium gate.
+- This supersedes the central/sensitivity and target designations below.
+  Retain all earlier numerical results and source. The new
+  showcalibratedrsiscenarios switch restores the earlier two comparisons.
+- Keep one active parameter table, paper figure format, and the approved
+  title, abstract, introduction, notation and analytical results unchanged.
+
 ### Restore AI efficiency (September 14, 2026; superseding wording decision)
 
 - The author prefers "AI efficiency" for B after reconsidering

@@ -43,9 +43,13 @@
 \newif\ifshowlegacysimulations
 \showlegacysimulationsfalse
 % Optional full observed-price-decline benchmark: its text, figures, and
-% numerical files remain intact, but the main comparison uses two calibrations.
+% numerical files remain intact, but the main comparison uses illustrative chi values.
 \newif\ifshowfullpricebenchmark
 \showfullpricebenchmarkfalse
+% Restore the earlier price/research-target comparisons with true.
+% Their source, data and figures are preserved unchanged.
+\newif\ifshowcalibratedrsiscenarios
+\showcalibratedrsiscenariosfalse
 
 \title{The Future of Growth and Human Labor\\
 Under Recursive AI Self-Improvement}
@@ -98,8 +102,13 @@ converges to zero. Numerical simulations show that early growth may remain moder
 \else
 \input{sections_rewrite/08_rsi_design}
 \fi
+\ifshowcalibratedrsiscenarios
 \input{sections_rewrite/09_rsi_half_decline}
 \input{sections_rewrite/10_rsi_research_share}
+\else
+\input{sections_rewrite/12_rsi_high_productivity}
+\input{sections_rewrite/13_rsi_low_productivity}
+\fi
 \input{sections_rewrite/11_rsi_limitations}
 \fi
 \input{sections_rewrite/06_conclusion}

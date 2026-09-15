@@ -1,0 +1,58 @@
+\subsection{Higher research productivity}
+\label{subsec:rewrite-rsi-half-decline}
+
+I first set $\chi=7.5$. This value is illustrative: it is not selected
+to match a research-expenditure share or an AI-service price decline.
+All four economies inherit the pre-RSI balanced growth paths described
+in Section~\ref{subsec:rewrite-rsi-activation}, with
+$K_0/Y_0=3.30$ and $B_0=0.01\overline B$.
+Table~\ref{tab:rewrite-rsi-parameters} reports their common parameters
+and elasticity-specific initial capital stocks.
+
+\input{sections_rewrite/rsi_chi_7_5_results}
+
+Higher research productivity produces a sizable initial increase in growth
+in all four economies. This increase eventually vanishes in the three
+labor-bottleneck cases. In the AI-dominated case, growth instead rises
+further before declining toward its higher long-run rate. The simulation
+thus distinguishes an initial response to RSI from the subsequent
+divergence between growth regimes.
+
+Figures~\ref{fig:rewrite-rsi-half-accumulation}--\ref{fig:rewrite-rsi-half-distribution}
+show the first ten years and years 10--500 separately. Dotted horizontal
+lines mark the analytical limits for $\sigma=1.50$.
+Section~\ref{subsec:rewrite-rsi-research-share} uses the same presentation
+with lower research productivity. Vertical scales may differ between
+the two exercises to keep their transitions legible.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_chi_7_5_accumulation_growth_windows.pdf}
+ \caption{Higher research productivity ($\chi=7.5$): growth of output,
+ AI production services, and capital per unit of effective labor. Rates
+ are instantaneous annual rates. The upper row shows two pre-event years
+ and years 0--10; the lower row shows years 10--500. Panels A and C share
+ a scale within each row. The vertical line marks RSI activation.}
+ \label{fig:rewrite-rsi-half-accumulation}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_chi_7_5_growth_returns_windows.pdf}
+ \caption{Higher research productivity ($\chi=7.5$): real-wage growth,
+ the net interest rate, and the AI-service price. Rates are annual;
+ the price is in final-good units on a logarithmic scale.
+ The vertical line marks RSI activation.}
+ \label{fig:rewrite-rsi-half-prices}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_chi_7_5_ai_distribution_windows.pdf}
+ \caption{Higher research productivity ($\chi=7.5$): labor income,
+ AI net profit, inference expenditure, and research expenditure relative
+ to output. The first two rows show the pre-event BGP and years 0--10;
+ the last two show years 10--500. The omitted gross capital share
+ remains $\alpha=0.33$.}
+ \label{fig:rewrite-rsi-half-distribution}
+\end{figure}

@@ -34,6 +34,7 @@ TEST_FILES = (
     "test_rewrite_research_share.py",
     "test_rewrite_research_share_low.py",
     "test_rewrite_research_share_central.py",
+    "test_rewrite_illustrative_rsi.py",
 )
 
 
@@ -48,6 +49,8 @@ def remove_generated_checkpoints(include_legacy: bool = False) -> None:
     """Remove only this workflow's untracked BVP checkpoints."""
     removed = 0
     cache_designs = {
+        'rewrite_bvp_rsi_chi_7_5': SIGMAS,
+        'rewrite_bvp_rsi_chi_1_5': SIGMAS,
         'rewrite_bvp': SIGMAS,
         'rewrite_bvp_ramsey_start': SIGMAS,
         'rewrite_bvp_slow': SIGMAS,
@@ -60,14 +63,16 @@ def remove_generated_checkpoints(include_legacy: bool = False) -> None:
         'rewrite_bvp_rsi_research_share_2023': SIGMAS,
     }
     for cache_name, sigmas in cache_designs.items():
-        if not include_legacy and cache_name not in ('rewrite_bvp_rsi_activation_half_decline',
-                                                   'rewrite_bvp_rsi_research_share_2023'):
+        if not include_legacy and cache_name not in ('rewrite_bvp_rsi_chi_7_5',
+                                                   'rewrite_bvp_rsi_chi_1_5'):
             continue
         cache = ROOT / "tmp" / cache_name
         for sigma in sigmas:
             key = f"sigma_{sigma:.2f}".replace(".", "_")
             for suffix in ("base", "refined", "long"):
                 path = cache / f"{key}_{suffix}.npz"
+                if not path.resolve().is_relative_to((ROOT/'tmp').resolve()):
+                    raise ValueError('Checkpoint deletion must remain inside this repository tmp directory.')
                 if path.exists():
                     path.unlink()
                     removed += 1
@@ -116,6 +121,13 @@ def main() -> None:
                 ]
             )
 
+    run([python, "scripts/simulate_rewrite_illustrative_rsi.py"])
+    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
+         "test_rewrite_illustrative_rsi.py", "-v"])
+    if not args.include_legacy:
+        print("Both displayed four-regime RSI comparisons reproduced; archived files left unchanged.", flush=True)
+        return
+
     run([python, "scripts/calibrate_rewrite_research_share_central.py"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_research_share_central.py", "-v"])
@@ -124,10 +136,6 @@ def main() -> None:
     run([python, "scripts/calibrate_rewrite_research_share_low.py"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_research_share_low.py", "-v"])
-    if not args.include_legacy:
-        print("Both displayed four-regime RSI comparisons reproduced; archived files left unchanged.", flush=True)
-        return
-
     run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_rsi_activation.py", "-v"])

@@ -15,6 +15,7 @@ I compare four economies with $\sigma=0.9,1.0,1.1,1.5$, holding all other parame
 
 Table~\ref{tab:rewrite-rsi-parameters} reports the parameter values and initial stocks used for the simulations. I use standard values for $\alpha$, $\delta$, and $\rho$, while $n$ and $\gamma$ are guided by long-run population and productivity projections. The AI production weight $\omega_X=0.10$  is an illustrative choices, not an empirical estimate. The research exponent $\eta=0.20$ is also illustrative but motivated by the inequality $\eta<\alpha$ in Proposition~\ref{prop:rewrite-research-scale}. The common upper bound on AI efficiency satisfies $\mathcal B(1.5)<\overline B<\mathcal B(1.1)$. Thus, AI and labor are substitutes in both the $\sigma=1.1$ and $\sigma=1.5$ cases, but only the latter converges to the AI-dominated regime.
 
+\ifshowcalibratedrsiscenarios
 The following two subsections differ only in the calibration of $\chi$:
 an illustrative research-expenditure target guides the central scenario, and a
 lower research-expenditure target gives a slow-transition sensitivity.
@@ -39,6 +40,17 @@ Both research shares divide total research expenditure by total output
 during the first year, rather than measuring $M_0/Y_0$.
 I calibrate at $\sigma=1$ and hold $\chi$ fixed across the other three
 elasticities within each exercise.
+\else
+The following two subsections differ only in research productivity:
+$\chi=7.5$ in the higher-productivity scenario and $\chi=1.5$ in the
+lower-productivity scenario. These are illustrative choices, not empirical
+estimates or normalizations. Research productivity is five times higher
+in the first scenario. Each value is held fixed across the four elasticities;
+research expenditure and AI-service prices are equilibrium outcomes,
+not calibration targets. All other parameters and initial stocks are identical
+across the two exercises. The comparison isolates how research productivity
+changes the transition without changing the long-run regime.
+\fi
 
 In Equation~\eqref{eq:rewrite-rsi-initial-ratio}, $Y_0$ is obtained from the
 production and monopoly conditions with AI
