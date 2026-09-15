@@ -482,10 +482,11 @@ def compare_rsi_price_targets(design):
         cases=cases))
 
 
-def finish(design, *, calibration_validator=None):
+def finish(design, *, calibration_validator=None, calibration_filename='calibration.json',
+           retain_price_outcome_marker=False):
     """Shared, unchanged equilibrium gates; validate the selected moment last."""
     cache, output = design.cache_directory, design.output_directory
-    calibration = output/'calibration.json'
+    calibration = output/calibration_filename
     from audit_rewrite_hamiltonian_support import audit_support
     from audit_rewrite_equilibria import finalize, independent_residuals
     from solve_axm_global_finite_cap_bvp import audit_counterfactual_developer_sufficiency
@@ -553,7 +554,14 @@ def finish(design, *, calibration_validator=None):
     export_paths(design.display_horizon, 4001, design,
                  additional_times=np.linspace(0.0, 10.0, 1001))
     render(design)
-    render_comparison_views(design, show_price_target=calibration_validator is None)
+    render_comparison_views(design, show_price_target=(calibration_validator is None
+                                                     or retain_price_outcome_marker))
+    if retain_price_outcome_marker:
+        manifest_path = output/'figure_manifest.json'
+        manifest = json.loads(manifest_path.read_text())
+        manifest['price_outcome_marker'] = manifest['price_target']
+        manifest['price_target'] = None
+        write_json(manifest_path, manifest)
     summarize(design)
     if design.name == 'rsi_activation_half_decline':
         compare_rsi_price_targets(design)

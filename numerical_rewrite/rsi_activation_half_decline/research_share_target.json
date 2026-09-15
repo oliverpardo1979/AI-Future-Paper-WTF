@@ -1,0 +1,209 @@
+{
+  "status": "numerically_admitted_approximate_calibration",
+  "target_share": 0.00183,
+  "target_years": 1.0,
+  "calibration_sigma": 1.0,
+  "target_definition": "Integral of M over the first year divided by integral of Y.",
+  "target_is_observed": false,
+  "target_exactly_matched": false,
+  "selection": "Author-selected illustrative target; retain the historical chi because its achieved annual ratio rounds to 0.183%.",
+  "chi": 7.616304576019883,
+  "chi_held_fixed_across_sigmas": true,
+  "target_tolerance_basis_points": 0.05,
+  "numerical_tolerances_unchanged": true,
+  "price_is_current_target": false,
+  "historical_price_calibration_sha256": "6cfe4e958e9df00dcd2899e8921ad0dbdb945ef956b680ea0d5e8a148b3b2b75",
+  "csv_sha256": "5f23c921205eaf2f11abbfda7ac0ce032db5c60ef211ede54d745c066903b996",
+  "scenarios": {
+    "sigma_0_90": {
+      "first_year": {
+        "share": 0.00015494685157306555,
+        "quadrature_log_gap": 7.216449660063544e-15,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.00013285126231014834,
+        "quadrature_log_gap": 8.881784197001213e-15,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "horizon_stages": {
+        "base": {
+          "share": 0.0001549468322430847,
+          "quadrature_log_gap": 2.73558953267676e-13,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "refined": {
+          "share": 0.00015494685154668233,
+          "quadrature_log_gap": 4.6185277824405446e-14,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "long": {
+          "share": 0.00015494685157306555,
+          "quadrature_log_gap": 7.216449660063544e-15,
+          "orders": [
+            64,
+            128
+          ]
+        }
+      },
+      "maximum_horizon_log_change": 1.2475233824751077e-07,
+      "checkpoint_sha256": "026516d2026927c8256dcb6eb14f63e545e600149611a007bf82ba60907b8b6c",
+      "implied_price_ratio_27_months": 0.8780449706682935
+    },
+    "sigma_1_00": {
+      "first_year": {
+        "share": 0.0018291594077711098,
+        "quadrature_log_gap": 5.68434188608064e-14,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.0016353598628651201,
+        "quadrature_log_gap": 8.260059303210824e-14,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "horizon_stages": {
+        "base": {
+          "share": 0.0018291592949651878,
+          "quadrature_log_gap": 5.986322548777052e-13,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "refined": {
+          "share": 0.0018291594076779605,
+          "quadrature_log_gap": 1.4210854715201903e-14,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "long": {
+          "share": 0.0018291594077711098,
+          "quadrature_log_gap": 5.68434188608064e-14,
+          "orders": [
+            64,
+            128
+          ]
+        }
+      },
+      "maximum_horizon_log_change": 6.167091005965744e-08,
+      "checkpoint_sha256": "33f2a8afc834d6d80c1ef9775f77e7f7a9ca4a1442282bd965994463473e11a9",
+      "implied_price_ratio_27_months": 0.6000000059127867
+    },
+    "sigma_1_10": {
+      "first_year": {
+        "share": 0.004366307671460435,
+        "quadrature_log_gap": 1.0658141036401446e-14,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.003942881891406962,
+        "quadrature_log_gap": 2.1782575743147944e-13,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "horizon_stages": {
+        "base": {
+          "share": 0.004366307477869894,
+          "quadrature_log_gap": 6.217248937900858e-15,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "refined": {
+          "share": 0.00436630767128043,
+          "quadrature_log_gap": 3.708144902247954e-14,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "long": {
+          "share": 0.004366307671460435,
+          "quadrature_log_gap": 1.0658141036401446e-14,
+          "orders": [
+            64,
+            128
+          ]
+        }
+      },
+      "maximum_horizon_log_change": 4.433735776889567e-08,
+      "checkpoint_sha256": "310abc25e9c10e07be8f5758a2aa129c58dc9cac7914b37b99b20d579226a7c1",
+      "implied_price_ratio_27_months": 0.5392335084887505
+    },
+    "sigma_1_50": {
+      "first_year": {
+        "share": 0.03009109458619623,
+        "quadrature_log_gap": 7.105427357601027e-15,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "second_year": {
+        "share": 0.028627086988878288,
+        "quadrature_log_gap": 1.065814103640156e-14,
+        "orders": [
+          64,
+          128
+        ]
+      },
+      "horizon_stages": {
+        "base": {
+          "share": 0.030091096033813665,
+          "quadrature_log_gap": 2.8307356458907683e-12,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "refined": {
+          "share": 0.030091094588998304,
+          "quadrature_log_gap": 3.5527136788004946e-15,
+          "orders": [
+            64,
+            128
+          ]
+        },
+        "long": {
+          "share": 0.03009109458619623,
+          "quadrature_log_gap": 7.105427357601027e-15,
+          "orders": [
+            64,
+            128
+          ]
+        }
+      },
+      "maximum_horizon_log_change": 4.8107834557890267e-08,
+      "checkpoint_sha256": "c6b215b1923705027be0e3e6817e2dea3b56fe2c5eb9589c0f3faccf47fc5d03",
+      "implied_price_ratio_27_months": 0.42661231280776163
+    }
+  },
+  "matched_share": 0.0018291594077711098,
+  "error_basis_points": -0.008405922288902759
+}

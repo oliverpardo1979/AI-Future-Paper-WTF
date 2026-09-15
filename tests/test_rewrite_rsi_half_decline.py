@@ -104,7 +104,11 @@ class HalfDeclineTarget(unittest.TestCase):
     def test_export_provenance_and_target_marker(self):
         manifest=json.loads((OUT/'figure_manifest.json').read_text())
         self.assertTrue(manifest['all_scenarios_admitted'])
-        self.assertEqual(manifest['price_target'], dict(years=2.25,ratio=.6))
+        if manifest.get('active_calibration_record') == 'research_share_target.json':
+            self.assertIsNone(manifest['price_target'])
+            self.assertEqual(manifest['price_outcome_marker'], dict(years=2.25,ratio=.6))
+        else:  # Historical price-only reproduction remains available.
+            self.assertEqual(manifest['price_target'], dict(years=2.25,ratio=.6))
         self.assertEqual(manifest['data_sha256'],hashlib.sha256((OUT/'equilibrium_paths.csv').read_bytes()).hexdigest())
         self.assertEqual(manifest['activation_audit_sha256'],hashlib.sha256((OUT/'activation_audit.json').read_bytes()).hexdigest())
         self.assertEqual(len(manifest['two_window_views']),3)

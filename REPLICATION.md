@@ -20,8 +20,9 @@ the fixed-B BGP, with `K0/Y0=3.30` and `r0=0.05`. The four stocks are
 `3.433644797858547`, `4.649320432676148`, `5.036956080779938`, and
 `5.5046668887702594`, respectively. The common inputs are `omega_X=0.10`,
 `eta=0.20`, `Bbar=1360.9921392415592`, and `B0=13.609921392415593`.
-The central scenario uses `chi=7.616304576019883`, fitted to half the
-observed percentage price decline. The slow-transition sensitivity uses
+The central scenario retains `chi=7.616304576019883` to approximate an
+illustrative first-year research-expenditure share of 0.183% at sigma=1.
+The slow-transition sensitivity uses
 `chi=1.4378`, approximately matching the unit-elastic research-expenditure
 target. Each value stays
 fixed across the four elasticities. Pre-event consumption is
@@ -33,8 +34,8 @@ scenario, Section 6.3 the slow-transition sensitivity, and Section 6.4 the limit
 `python scripts/reproduce_rewrite_results.py` for both displayed comparisons
 in this order. Add `--include-legacy` to regenerate the preserved comparisons
 as well. These commands re-solve and audit the model; they do not rescale a
-saved trajectory in time. No numerical files were changed for this editorial
-selection.
+saved trajectory in time. The change in the central target did not require
+new parameter values or trajectories.
 
 In `main_rewrite.tex`, both `\showlegacysimulationsfalse` and
 `\showfullpricebenchmarkfalse` are the defaults. Change the latter to
@@ -44,29 +45,43 @@ Change the former to `\showlegacysimulationstrue` to restore the older
 quantitative section and numerical appendix instead. These are editorial
 switches, not simulation settings; all underlying files remain available.
 
-## Central illustrative scenario: half of the observed percentage price decline
+## Central illustrative scenario: first-year research share of 0.183%
 
-Section 6.2 uses a 40% decline over 27 months as the unit-elastic target,
-hence `p_X(2.25)/p_X(0)=0.60`. It is half the observed rounded percentage
-decline, not half its log change or half of chi.
+Section 6.2 uses `integral(M,0,1)/integral(Y,0,1)=0.00183` as an
+illustrative target at sigma=1, not as an exact observed estimate. It is
+neither M0/Y0 nor the time average of the instantaneous ratio. The retained
+chi gives 0.1829159408%, a discrepancy of -0.0084059 basis points. The
+rounding half-width is 0.05 basis points (three decimal places in percent),
+so no numerical retuning is needed. Equilibrium tolerances are unchanged.
 
 ```text
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+python scripts/calibrate_rewrite_research_share_central.py
+python -m unittest discover -s tests -p test_rewrite_research_share_central.py -v
 python -m unittest discover -s tests -p test_rewrite_rsi_half_decline.py -v
 ```
 
-For a staged run, append `--calibrate-only`, then run `--sigma 0.9`,
-`--sigma 1`, `--sigma 1.1`, and `--sigma 1.5` separately, and finally
-`--finish`. Finishing repeats the equilibrium checks and event-continuity
-audit, verifies the final price match, and only then exports all four paths.
-Initial stocks, other parameters, equations, tolerances and figure windows
-are unchanged. Results are in `numerical_rewrite/rsi_activation_half_decline/`.
+The default command solves all four cases using the retained chi, repeats
+the equilibrium and event-continuity audits, and verifies the research
+target before publication. With existing admitted checkpoints, append
+`--verify-existing` to recompute annual moments at 64/128 quadrature nodes
+on the base, refined and long horizons without solving again. It checks
+checkpoint and CSV hashes, existing admission, and annual-moment stability.
+This mode does not claim to rerun every equilibrium audit. It writes
+`research_share_target.json` in `numerical_rewrite/rsi_activation_half_decline/`.
+
+For provenance, the retained chi was originally chosen to match a 40%
+price decline over 27 months, half the rounded observed percentage fall.
+The original `calibration.json`, price-search script and trials remain
+unchanged. The price decline is now an implied outcome, not a second
+target; the diamond in the price panel illustrates that outcome. The new
+target was selected after examining the earlier simulations, not estimated
+independently. Initial stocks, other parameters and trajectories are unchanged.
 
 The unit-elastic first-year research share is 0.1829159%, compared with the
 US 2024 proxy of 0.1543791% (45.23/29298.013) and the US 2025 proxy of
 0.3562176% (109.58/30762.099). Compute estimates are from Korinek and
 McKelvey (2026), Table 3; nominal GDP is the BEA GDPA series. This is a
-check on magnitude, not a second target or a joint empirical fit. The
+check on magnitude, not an exact empirical or joint fit. The
 estimates assume a 50% training/research allocation of rental-equivalent
 AI compute spending and do not directly measure global autonomous RSI.
 At sigma=1.50, first-year M/Y is 3.0091%, well above these proxies.
@@ -136,7 +151,7 @@ python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation
 python -m unittest discover -s tests -p test_rewrite_rsi_activation.py -v
 ```
 
-The same staged flags as the half-decline exercise apply. See
+The original price driver supports `--calibrate-only`, `--sigma` and `--finish`. See
 `numerical_rewrite/rsi_activation/README.md`. Use the editorial switch above
 to restore the figures without rerunning any simulation.
 

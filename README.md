@@ -24,10 +24,12 @@ and an upper bound ten percent above the `sigma=1.50` threshold. Research
 productivity is calibrated at unit elasticity, then shared across all four
 scenarios. Section 6.1 explains this common design and the initial conditions.
 
-Section 6.2 is the central illustrative scenario: chi=7.616304576019883
-fits a 40% price decline over 27 months at sigma=1. Its first-year research
-share of 0.1829% is close in magnitude to the US 2024 estimate of 0.1544%,
-but this was not a second calibration target. At sigma=1.50, the first-year
+Section 6.2 is the central illustrative scenario: a first-year M/Y target
+of **0.183% at sigma=1**. The retained chi=7.616304576019883 produces
+0.18291594%, matching the target at its quoted precision. This target is
+illustrative, not an exact observed datum. Chi was originally obtained from
+a 40% price decline over 27 months; that decline is now an implied outcome,
+not a second target. At sigma=1.50, the first-year
 share is 3.0091%, well above the empirical estimates. Results are in
 `numerical_rewrite/rsi_activation_half_decline/`.
 Section 6.3 is the slow-transition sensitivity: chi=1.4378 approximately
@@ -43,10 +45,13 @@ To reproduce the central scenario from a fresh clone with Python 3.12:
 
 ```text
 python -m pip install -r requirements-rewrite.txt
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+python scripts/calibrate_rewrite_research_share_central.py
 ```
 
-The command exports only paths that pass the numerical equilibrium-admission
+The current target and achieved moment are recorded in
+`numerical_rewrite/rsi_activation_half_decline/research_share_target.json`;
+`calibration.json` preserves the historical price calibration. The command
+exports only paths that pass the numerical equilibrium-admission
 checks. Run `python scripts/reproduce_rewrite_results.py` for both displayed
 comparisons; add `--include-legacy` for the earlier comparisons as well.
 The full 80%-price-decline experiment is preserved, but hidden because of

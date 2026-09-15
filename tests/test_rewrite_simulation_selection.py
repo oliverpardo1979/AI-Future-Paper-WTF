@@ -88,7 +88,7 @@ class SimulationSelection(unittest.TestCase):
         commands = [c.args[0] for c in run.call_args_list]
         calibrations = [c for c in commands if any('scripts/calibrate_' in x for x in c)]
         self.assertEqual(len(calibrations), 2)
-        self.assertEqual(calibrations[0][-1], 'rsi_activation_half_decline')
+        self.assertIn('scripts/calibrate_rewrite_research_share_central.py', calibrations[0])
         self.assertIn('scripts/calibrate_rewrite_research_share_low.py', calibrations[1])
         self.assertFalse(any('rsi_activation' in c for c in commands))
 
@@ -98,10 +98,12 @@ class SimulationSelection(unittest.TestCase):
             reproduce.main()
         self.assertTrue(any(c.args[0][-1] == 'rsi_activation' for c in run.call_args_list))
 
-    def test_central_empirical_check_is_not_a_second_calibration_target(self):
+    def test_central_target_is_illustrative_not_an_observed_estimate(self):
         text = quantitative_text()
-        self.assertIn('not an additional fitted target', text)
-        self.assertIn(r'$0.1829\%$', text)
+        self.assertIn('not an observed estimate', text)
+        self.assertIn(r'$0.183\%$', text)
+        self.assertIn(r'$0.182916\%$', text)
+        self.assertIn('not an additional calibration target', text)
         self.assertIn(r'$0.1544\%$', text)
         self.assertIn(r'$3.0091\%$', text)
         self.assertNotIn('Principal calibration: research expenditure', text)
@@ -117,7 +119,7 @@ class SimulationSelection(unittest.TestCase):
         appendix = (ROOT / 'sections_rewrite/appendix_rsi_activation.tex').read_text()
         self.assertLess(appendix.index('rsi_half_decline_accuracy'),
                         appendix.index('rsi_research_share_accuracy'))
-        self.assertLess(appendix.index('python scripts/calibrate_rewrite_ai_price.py'),
+        self.assertLess(appendix.index('python scripts/calibrate_rewrite_research_share_central.py'),
                         appendix.index('python scripts/calibrate_rewrite_research_share_low.py'))
         guide = (ROOT / 'REPLICATION.md').read_text()
         self.assertLess(guide.index('## Central illustrative scenario'),

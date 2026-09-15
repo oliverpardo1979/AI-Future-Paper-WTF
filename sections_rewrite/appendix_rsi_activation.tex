@@ -52,15 +52,22 @@ problem; neither $\omega_X=0$ nor $\chi=0$ is used as a degenerate BVP seed.
 At unit elasticity the static block uses its exact Cobb--Douglas limit;
 near one, \texttt{log1p} and \texttt{expm1} avoid cancellation.
 
-For the central scenario in Section~\ref{subsec:rewrite-rsi-half-decline}, an
-outer bracketed search in $\log\chi$ solves the unit-elastic BVP and
-evaluates the price ratio at exactly 2.25 years. It matches
-Equation~\eqref{eq:rewrite-rsi-half-price-target}, then fixes $\chi$ for the
-other three elasticities. The tolerance in $\log\chi$ is $2\times10^{-6}$;
-the final price-ratio log error must be below $2\times10^{-5}$ after both
-horizon extensions. These numerical tolerances are well below the precision
-of the rounded target. The archived full-price-decline exercise uses the
-same method with a price ratio of $0.20$ instead of $0.60$.
+For the central scenario in Section~\ref{subsec:rewrite-rsi-half-decline},
+I retain $\chi=7.616304576019883$, initially obtained by matching half
+the rounded $80\%$ price decline reported by \citet{oecdaimarkets2026}.
+It also matches the subsequently chosen illustrative research-expenditure
+target in Equation~\eqref{eq:rewrite-rsi-central-research-target} at its
+reported precision: $0.18291594\%$ rounds to $0.183\%$. The discrepancy
+is $0.0084$ basis points, below the $0.05$-basis-point half-width implied
+by rounding a percentage to three decimal places. No new root search or
+adjustment of $\chi$ is needed. This acceptance criterion concerns the
+illustrative target only; the equilibrium tolerances are unchanged.
+I evaluate the annual ratio with 64- and 128-node Gauss--Legendre
+quadrature, requiring agreement within $10^{-8}$ in logs, and check that
+it changes by less than $2\times10^{-5}$ in logs across the two horizon
+extensions. The same $\chi$ is used for all four elasticities. The price
+decline is reported as an implied outcome, not a second fitted target.
+The original price-calibration record is preserved for provenance.
 
 The slow-transition sensitivity in Section~\ref{subsec:rewrite-rsi-research-share} uses an approximate
 research-expenditure calibration at $\sigma=1$. For each trial $\chi$,
@@ -117,12 +124,15 @@ From the repository root, reproduce the central scenario with:
 \begin{quote}
 \scriptsize
 \begin{verbatim}
-python scripts/calibrate_rewrite_ai_price.py --variant rsi_activation_half_decline
+python scripts/calibrate_rewrite_research_share_central.py
 \end{verbatim}
 \end{quote}
 Its outputs are in the
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation_half_decline}
-{half-decline results folder}.
+{central-scenario results folder}. Its
+\href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/numerical_rewrite/rsi_activation_half_decline/research_share_target.json}
+{calibration record} gives the current target, its achieved value and
+the hashes of the checked trajectories. The folder retains its original name.
 
 For the slow-transition sensitivity, run:
 \begin{quote}
@@ -152,7 +162,8 @@ The \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/blob/main/REPLI
 The full $80\%$-price-decline exercise is preserved in the
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_activation}
 {full-price-decline results folder}. To reproduce it, use the price
-calibration command with \texttt{--variant rsi\_activation} instead.
+command \texttt{python scripts/calibrate\_rewrite\_ai\_price.py}
+with \texttt{--variant rsi\_activation}.
 Instructions for the former high-expenditure-target exercise remain in the
 \href{https://github.com/oliverpardo1979/AI-Future-Paper-WTF/tree/main/numerical_rewrite/rsi_research_share_2025}
 {preserved 2025-target results folder}.

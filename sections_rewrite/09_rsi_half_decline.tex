@@ -1,25 +1,24 @@
 \subsection{Central illustrative scenario}
 \label{subsec:rewrite-rsi-half-decline}
 
-In the central illustrative scenario, I calibrate $\chi$ to half the nearly $80\%$ decline in the OECD
-quality-adjusted language-model price index between January 2024 and
-April 2026 \citep{oecdaimarkets2026}. At $\sigma=1$, the target is
+In the central illustrative scenario, I choose $\chi$ to approximate a
+first-year research-expenditure share of $0.183\%$ at $\sigma=1$:
 \begin{equation}
- \frac{p_X(2.25)}{p_X(0)}=1-\frac{0.80}{2}=0.60.
- \label{eq:rewrite-rsi-half-price-target}
+ \frac{\int_0^1 M_t\,dt}{\int_0^1 Y_t\,dt}=0.00183.
+ \label{eq:rewrite-rsi-central-research-target}
 \end{equation}
-The target is a $40\%$ decline over 2.25 years.
-It halves the percentage decline, not its logarithm, the annual growth
-rate, or $\chi$ itself. This is an illustrative target,
-not an estimate of how monopoly changes
-the pace of price declines. Competition, hardware, human research and
-changes in task intensity also affect observed prices. The comparison
-treats the final-good price as constant over this window. Date zero remains
-a hypothetical RSI activation, not a claim that it occurred in January 2024.
+This is an illustrative target, not an observed estimate of autonomous
+RSI expenditure. It measures total research expenditure divided by total
+output during the first year, not the instantaneous ratio $M_0/Y_0$.
+The retained $\chi=7.616305$ gives $0.182916\%$, which rounds to the
+target. Appendix~\ref{app:rewrite-algorithm} documents this approximate match
+and the original price-based calibration from which this value was retained.
 
-At unit elasticity, Equation~\eqref{eq:rewrite-monopoly-foc} gives a
-constant markup and a price inversely proportional to $B$. The target
-therefore requires $B$ to increase by a factor of $5/3$ within 2.25 years.
+The implied AI-service price decline at unit elasticity is approximately
+$40\%$ over 2.25 years; it is not an additional calibration target.
+Equation~\eqref{eq:rewrite-monopoly-foc} gives a constant markup and a
+price inversely proportional to $B$, so AI efficiency increases by a
+factor of approximately $5/3$ over this interval.
 
 Each economy starts on the fixed-efficiency BGP described in
 Section~\ref{subsec:rewrite-rsi-activation}, with existing AI and
@@ -31,10 +30,8 @@ Table~\ref{tab:rewrite-rsi-half-parameters} reports the parameters and initial s
 
 \input{sections_rewrite/rsi_half_decline_results}
 
-Research expenditure provides a separate check on the magnitude of this
-calibration, not an additional fitted target. At $\sigma=1$, first-year
-research expenditure divided by first-year output is $0.1829\%$, compared
-with an estimated $0.1544\%$ for the United States in 2024 and $0.3562\%$
+The illustrative target is of a similar order of magnitude to estimated
+US training and research compute expenditure: $0.1544\%$ of GDP in 2024 and $0.3562\%$
 in 2025.\footnote{Training compute expenditure in Table 3 of
 \citet{korinekmckelvey2026} is \$45.23 billion in 2024 and \$109.58 billion
 in 2025. The corresponding nominal GDP values in the BEA series
@@ -75,8 +72,9 @@ vertical scales may differ to keep each comparison legible.
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_activation_half_decline_growth_returns_windows.pdf}
  \caption{Central illustrative scenario: real-wage growth, the net interest
  rate, and the AI-service price. Rates are annual; the price is in final-good
- units on a logarithmic scale. The diamond marks the unit-elastic target
- $p_X(2.25)/p_X(0)=0.60$. The vertical line marks RSI activation.}
+ units on a logarithmic scale. The diamond identifies the implied unit-elastic
+ price ratio $p_X(2.25)/p_X(0)\simeq0.60$, not a calibration target.
+ The vertical line marks RSI activation.}
  \label{fig:rewrite-rsi-half-prices}
 \end{figure}
 

@@ -12,6 +12,20 @@ separate extension, or the current archival manuscript.
 
 ## Accepted editorial decisions (September 13, 2026)
 
+### Central research-share target (September 14, 2026; latest decision)
+
+- Set the central illustrative target to first-year M/Y=0.183% at sigma=1.
+  The annual ratio is integral(M)/integral(Y), not M0/Y0. Retain chi
+  7.616304576019883 because it produces 0.1829159408%, which rounds to the
+  target; other sigmas use the same chi. Do not claim an exact empirical fit.
+- This supersedes the central price-target designation below. Preserve the
+  original price-search record and acknowledge the target was selected
+  after examining those simulations. The 40% price decline is now an outcome.
+- Keep the slow sensitivity, all stocks, trajectories, figure curves,
+  analytical results, title, abstract and introduction unchanged.
+- The new central replication driver validates the research target and
+  retains the existing equilibrium solver and numerical tolerances.
+
 ### Central illustrative scenario and slow sensitivity (September 14, 2026)
 
 - The author selected the former Section 6.3 as the central illustrative

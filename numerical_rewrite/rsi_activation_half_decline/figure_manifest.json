@@ -106,10 +106,7 @@
       "independent_vertical_scales_between_windows": true
     }
   ],
-  "price_target": {
-    "years": 2.25,
-    "ratio": 0.6
-  },
+  "price_target": null,
   "pre_event_bgp": {
     "sigma_0_90": {
       "sigma": 0.9,
@@ -196,5 +193,10 @@
       "pre_event_research_available": false
     }
   },
-  "activation_audit_sha256": "f9d31cb84b811556c8dafb6e90ffee6fbe288bb80b5e45466d48ef993950ec74"
+  "activation_audit_sha256": "f9d31cb84b811556c8dafb6e90ffee6fbe288bb80b5e45466d48ef993950ec74",
+  "price_outcome_marker": {
+    "years": 2.25,
+    "ratio": 0.6
+  },
+  "active_calibration_record": "research_share_target.json"
 }

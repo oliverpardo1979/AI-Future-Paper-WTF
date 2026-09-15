@@ -33,6 +33,7 @@ TEST_FILES = (
     "test_rewrite_rsi_half_decline.py",
     "test_rewrite_research_share.py",
     "test_rewrite_research_share_low.py",
+    "test_rewrite_research_share_central.py",
 )
 
 
@@ -115,7 +116,9 @@ def main() -> None:
                 ]
             )
 
-    run([python, "scripts/calibrate_rewrite_ai_price.py", "--variant", "rsi_activation_half_decline"])
+    run([python, "scripts/calibrate_rewrite_research_share_central.py"])
+    run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
+         "test_rewrite_research_share_central.py", "-v"])
     run([python, "-m", "unittest", "discover", "-s", "tests", "-p",
          "test_rewrite_rsi_half_decline.py", "-v"])
     run([python, "scripts/calibrate_rewrite_research_share_low.py"])
