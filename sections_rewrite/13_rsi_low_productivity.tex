@@ -6,46 +6,22 @@ Section~\ref{subsec:rewrite-rsi-half-decline}. All other parameters and
 initial stocks remain unchanged, including the elasticity-specific
 pre-RSI capital stocks in Table~\ref{tab:rewrite-rsi-parameters}.
 Consumption and research are solved again for each economy; the new
-trajectories are not time-rescaled versions of the preceding exercise.
+exercise changes both the initial adjustment and the timing of the
+transition, not the long-run regimes.
 
 % The generated numerical digest in rsi_chi_1_5_results.tex is retained,
 % but not input here: editorial prose is organized around the three figures.
 % Source: numerical_rewrite/rsi_chi_1_5/{summary,figure_manifest}.json.
-I begin with Figure~\ref{fig:rewrite-rsi-research-accumulation}. Panels A,
-B, and C again report growth of $Y/(AL)$, $X/(AL)$, and $K/(AL)$,
-in percent per year. The upper row shows years $-2$ to 10 and the lower
-row years 10--500. Green dashed, black solid, orange dotted, and blue
-dash-dotted lines retain their meanings: $\sigma=0.90,1,1.10,1.50$.
-Black dotted horizontal lines show the unchanged $\sigma=1.50$ limits.
-Vertical scales differ from the higher-productivity figures, so the
-size of each response must be read from the axes.
-
-In the upper row, initial output growth is moderate and closer across
-the four economies. Growth of $Y/(AL)$ ranges from $0.1\%$ at
-$\sigma=0.90$ to $0.5\%$ at $\sigma=1.50$, equivalent to
-output-per-person growth of $1.1\%$--$1.5\%$.
-AI services still expand faster than output, but their initial normalized
-growth rate at $\sigma=1.50$ is $11.6\%$, rather than $80.8\%$.
-Lower research productivity slows efficiency improvements through
-equation~\eqref{eq:rewrite-capability-law}; the developer also chooses
-a different research path under equation~\eqref{eq:rewrite-research-foc}.
-Consumption still rises at activation and research absorbs resources,
-so $K/(AL)$ initially falls, but less than in the preceding exercise.
-Capital subsequently accumulates faster than effective labor, allowing
-normalized output growth to rise during the first decade even though
-AI-service growth is already slowing.
-
-In the lower row, the $\sigma=1.50$ path separates much later from the
-labor-bottleneck cases. Output and capital growth rise for several
-centuries, while AI-service growth first declines and then rises again
-as capital and inference use expand. By year 500, $Y/(AL)$ grows at
-$3.2\%$, still well above its $2.1\%$ analytical limit. It is then
-growing faster than in the higher-productivity exercise because it is
-at a different stage of adjustment, not because lower $\chi$ raises
-long-run growth. Proposition~\ref{prop:rewrite-equilibrium-regimes}
-still gives zero limiting normalized growth at $\sigma=0.90,1,1.10$
-and positive growth at $\sigma=1.50$. The common efficiency bound and
-production parameters, not the speed of research, determine those limits.
+I use Figure~\ref{fig:rewrite-rsi-research-accumulation} to present the
+growth of $Y/(AL)$, $X/(AL)$, and $K/(AL)$ in panels A--C, in percent
+per year. As before, zero means growth at the rate of effective labor,
+$n+\gamma$. The upper row shows two pre-event years and the first ten
+years after activation; the lower row follows the same trajectories
+from year 10 to year 500. Throughout the three figures, line styles
+identify the same four elasticities as in
+Figure~\ref{fig:rewrite-rsi-half-accumulation}, and black dotted lines
+mark the analytical limits for $\sigma=1.50$. Vertical scales differ
+between exercises.
 
 \begin{figure}[H]
  \centering
@@ -58,34 +34,56 @@ production parameters, not the speed of research, determine those limits.
  \label{fig:rewrite-rsi-research-accumulation}
 \end{figure}
 
-Figure~\ref{fig:rewrite-rsi-research-prices} shows the corresponding
-real-wage growth, net interest rate, and AI-service price in panels A--C.
-The first two are annual percentage rates; $p_X$ is a level in final-good
-units on a logarithmic scale. The upper and lower rows use the same
-initial and extended horizons, with the same scenario lines.
+The upper row shows a much smaller initial increase in growth.
+Growth of $Y/(AL)$ ranges from $0.1\%$ to $0.5\%$ across the four
+economies. AI services still grow faster than output, but their initial
+normalized growth rate at $\sigma=1.50$ is $11.6\%$, compared with
+$80.8\%$ in the preceding exercise. Lower research productivity and a
+smaller research allocation produce slower efficiency improvements.
+Consumption still rises at activation, and research uses resources that
+could otherwise finance capital accumulation. Both adjustments are
+smaller, however, so $K/(AL)$ falls less. As capital accumulation
+recovers, output growth rises during the first decade even though
+AI-service growth is already slowing. The four economies therefore
+begin with more moderate growth and less pronounced differences.
 
-Initially, wage growth remains close across scenarios and interest rates
-rise only gradually from $5.0\%$. At $\sigma=1.50$, the interest rate
-reaches $5.5\%$ after ten years, compared with $7.8\%$ under higher
-research productivity. The smaller increase in $Y/K$ explains the
-smaller return response through equation~\eqref{eq:rewrite-capital-return}.
-Price declines are also slower: at $\sigma=1$, $p_X$ falls by $9.4\%$
-over 27 months, rather than $39.6\%$. With the same constant markup
-at unit elasticity, this comparison directly reflects slower efficiency
-improvement. These price changes are outcomes, not fitted moments.
+The lower row reveals the eventual separation between regimes.
+At $\sigma=1.50$, output and capital growth rise for several centuries
+before declining. AI-service growth first slows, then rises again as
+capital and inference use expand. At year 500, $Y/(AL)$ still grows
+at $3.2\%$, above its $2.1\%$ analytical limit and faster than at the
+same date in the higher-productivity exercise. This difference reflects
+the stage of adjustment, not a higher long-run growth rate.
+Proposition~\ref{prop:rewrite-equilibrium-regimes} gives the same limits
+in both exercises: normalized growth tends to zero in the three
+labor-bottleneck cases and remains positive at $\sigma=1.50$.
 
-In the lower row, wages and returns in the labor-bottleneck cases
-gradually approach the $1.0\%$ and $5.0\%$ limits from Section~\ref{sec:rewrite-regimes}.
-The AI-dominated case instead displays a delayed rise and subsequent
-decline in both rates. At year 500, wage growth is $3.1\%$ and the
-interest rate is $8.2\%$, still above the unchanged limits of $2.4\%$
-and $7.1\%$. Output per person is then growing at $4.2\%$, faster
-than wages. Equations~\eqref{eq:rewrite-substitutes-ai-limits} and
-\eqref{eq:rewrite-substitutes-wage-growth} imply that this growth gap
-persists in the limit, even after both rates fall further.
-The AI-service price is already close to its positive limit at year 500,
-but that proximity does not imply that capital accumulation, wages,
-or the interest rate have completed their adjustment.
+I next examine wages and prices in
+Figure~\ref{fig:rewrite-rsi-research-prices}. Panels A--C show annual
+real-wage growth $g_w$, the annual net interest rate $r$, and the level
+of $p_X$ in final-good units on a logarithmic scale. The top panels
+show the short run and the bottom panels the longer horizon.
+Initially, wage growth rises modestly in all four economies. Unlike
+the preceding exercise, it continues to increase during the first
+years even in the labor-bottleneck cases: capital accumulation helps
+sustain the increase in labor's marginal product. The interest rate
+also rises more gradually as output outpaces capital. At
+$\sigma=1.50$, it reaches $5.5\%$ after ten years, compared with
+$7.8\%$ under higher research productivity. Meanwhile, slower
+efficiency improvements make the decline in $p_X$ more gradual.
+
+In the bottom row, wage growth and the interest rate eventually turn
+down in all four economies. The three labor-bottleneck cases approach
+$1.0\%$ and $5.0\%$, respectively. At $\sigma=1.50$, the rise and
+subsequent decline occur much later, and adjustment remains incomplete
+at year 500: the interest rate is still $8.2\%$, above its $7.1\%$
+limit. The limiting wage-growth rate remains $2.4\%$, below
+output-per-person growth of $3.1\%$, as given by
+equations~\eqref{eq:rewrite-substitutes-wage-growth} and
+\eqref{eq:rewrite-substitutes-ai-limits}. Thus the widening gap between
+output and wages reappears, but later. At year 500, the AI-service
+price in this case is already close to its positive limit, even though
+growth and interest rates are still adjusting.
 
 \begin{figure}[H]
  \centering
@@ -101,40 +99,8 @@ I complete the comparison with
 Figure~\ref{fig:rewrite-rsi-research-distribution}. Panels A--D report
 $wL/Y$, $\Pi/Y$, $U/Y$, and $M/Y$, all as percentages of output.
 The upper two rows cover the initial transition and the lower two
-cover years 10--500. The four line styles identify the same elasticities,
-and the omitted gross capital share is again $33.0\%$.
-
-In the upper panels, the initial research allocation and reduction in
-net profit are smaller. At $\sigma=1.50$, research expenditure starts
-at $0.6\%$ of output, leaving net profit at $2.7\%$, rather than
-$0.2\%$ under higher research productivity. This is the same accounting
-reallocation in equation~\eqref{eq:rewrite-eq-profit}, but on a smaller
-scale. At unit elasticity, first-year research expenditure is $0.1\%$
-of output, compared with $0.2\%$ in the preceding exercise; these
-shares divide total research expenditure by total output over the first
-year, rather than measuring $M_0/Y_0$.
-Labor's share at $\sigma=1.50$ falls from $61.9\%$ to $60.1\%$
-over ten years, compared with $53.0\%$ at year ten under higher
-research productivity. Thus the first decade gives little indication
-of how different the eventual income distribution will be.
-
-The lower panels reveal that difference. Labor's share reaches half its
-initial value after about 213 years, rather than 47, and is still
-$2.3\%$ at year 500. Research's share initially declines, then rises
-as the economy expands, and eventually falls as efficiency approaches
-its bound. This nonmonotonic path reflects both the changing value of
-efficiency improvements and the diminishing room for further gains in
-equations~\eqref{eq:rewrite-research-foc} and
-\eqref{eq:rewrite-capability-return}; lower $\chi$ does not merely
-stretch the earlier path along the time axis.
-The long-run accounting remains unchanged: in the AI-dominated case,
-labor's share tends to zero, inference expenditure to $44.9\%$ of
-output, net profit to $22.1\%$, and research expenditure relative to
-output to zero. The other three economies retain a positive labor
-share, as in Proposition~\ref{prop:rewrite-equilibrium-regimes}.
-Lower research productivity therefore postpones the growth and
-distributional transition without changing the eventual regime.
-These are conditional model outcomes, not forecasts of takeoff dates.
+cover years 10--500, with the same scenario lines. The omitted gross
+capital share remains $33.0\%$.
 
 \begin{figure}[H]
  \centering
@@ -147,3 +113,30 @@ These are conditional model outcomes, not forecasts of takeoff dates.
  initial trajectories and omit the long-run reference lines.}
  \label{fig:rewrite-rsi-research-distribution}
 \end{figure}
+
+In the short run, research absorbs a smaller share of output, leaving
+more of AI revenue as net profit. At $\sigma=1.50$, initial research
+expenditure is $0.6\%$ of output rather than $3.1\%$, and net profit
+is $2.7\%$ rather than $0.2\%$. As in the preceding exercise, the
+profit reduction finances research, but it is much less pronounced.
+Inference expenditure and labor's income share change little in the
+labor-bottleneck cases. In the AI-dominated case, inference's share
+increases and labor's share declines, but both movements are initially
+gradual, consistent with the smaller output--wage growth gap.
+
+The longer horizon shows the same eventual redistribution as in
+Figure~\ref{fig:rewrite-rsi-half-distribution}: labor's share tends to
+zero at $\sigma=1.50$, while inference expenditure and developer profit
+approach the same positive shares of output. Labor's share is still
+$2.3\%$ at year 500, so that limit has not been reached. Research's
+share follows a different path: after its initial decline, it rises
+again before falling toward zero. Expanding AI sales provide an
+incentive for further research, while proximity to the upper bound
+eventually limits the efficiency gains it can deliver. The research
+condition~\eqref{eq:rewrite-research-foc} balances these changing
+benefits against the cost of compute; $\chi$ alone does not determine
+the research path.
+The other three economies retain a positive labor share. Lower
+research productivity changes the adjustment and delays the divergence
+between regimes without changing their long-run growth rates or
+income shares.
