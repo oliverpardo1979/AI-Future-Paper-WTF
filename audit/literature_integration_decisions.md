@@ -86,3 +86,22 @@ paragraphs explicitly approved by the author.
   printed p. 23, Equation (33), which describes inference compute for AI labor
   across sectors, including research. No equation or result is equated to ours.
 - No other manuscript paragraph was changed.
+
+## Section 3.4.1: effective compute and BM (approved, 2026-09-16)
+
+- Added a short connection after the definition of B, BU, and BM in
+  `sections_rewrite/03_model.tex`, citing `hoetal2024algorithms` and
+  `jones2026future`.
+- Verified Jones, JEP 40(3), printed p. 5, including his attribution to
+  Ho et al. (2024) and Epoch AI (2026), in the author's published PDF:
+  https://web.stanford.edu/~chadj/AIandEconomicFuture.pdf.
+- Rechecked Ho et al., arXiv:2403.05812v1, pp. 1-3, especially the definition
+  of algorithmic progress through compute savings and its pretraining scope:
+  https://arxiv.org/pdf/2403.05812.
+- Distinguished rival compute M from the nonrival algorithmic knowledge
+  represented by B. This is the model's economic interpretation, not an
+  empirical finding about nonrivalry attributed to Ho et al.
+- The effective-compute analogy does not equate the paper's broad research
+  flow with a training-run measure or identify B or chi from those estimates.
+  No reported growth factor is imported into the calibration.
+- Preserved all equations, notation, simulations, and other manuscript text.

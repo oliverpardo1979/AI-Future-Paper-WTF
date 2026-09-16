@@ -733,30 +733,6 @@
       "notes": "Candidate for paragraph-by-paragraph integration; not added to the manuscript. Review: Published AEJ: Macroeconomics PDF, pp. 2-3. Outside the top-five and date window; retained because Jones cites it. This is a targeted reading, not a full audit of every proof, estimate or subsequent version."
     },
     {
-      "citation_key": "hoetal2024algorithms",
-      "entry_type": "techreport",
-      "authors": "Ho, Anson and Besiroglu, Tamay and Erdil, Ege and Owen, David and Rahman, Robi and Guo, Zifan Carl and Atkinson, David and Thompson, Neil and Sevilla, Jaime",
-      "title": "Algorithmic Progress in Language Models",
-      "year": "2024",
-      "venue": "arXiv preprint 2403.05812",
-      "doi": "10.48550/arXiv.2403.05812",
-      "document_url": "https://arxiv.org/pdf/2403.05812",
-      "landing_page_url": "https://doi.org/10.48550/arXiv.2403.05812",
-      "source_group": "conversation_addition",
-      "topics": "Jones-top5-2026; priority-high; Jones2026-reference; compute; algorithmic efficiency; measurement",
-      "evidence_type": "theory and/or empirical evidence",
-      "abstract": "Benchmark and scaling-law analysis separating training-compute growth from algorithmic progress in language-model pretraining. Newer algorithms can reach a fixed benchmark performance using less compute; physical compute expansion is a separate source of progress.",
-      "abstract_type": "editorial_summary",
-      "abstract_source_url": "https://arxiv.org/pdf/2403.05812",
-      "metadata_source": "Publisher metadata/Crossref; author or institutional full text, review 2026-09-16",
-      "verification_status": "original_relevant_passages_reviewed",
-      "method": "Benchmark and scaling-law analysis separating training-compute growth from algorithmic progress in language-model pretraining.",
-      "key_results": "Newer algorithms can reach a fixed benchmark performance using less compute; physical compute expansion is a separate source of progress.",
-      "use_in_axm": "Use when defining AI efficiency as services per unit of compute and distinguishing algorithm improvements from hardware expansion.",
-      "limits_for_axm": "Benchmark-specific pretraining efficiency is not an AI-service market price, not post-training efficiency, and not a direct estimate of chi.",
-      "notes": "Candidate for paragraph-by-paragraph integration; not added to the manuscript. Review: arXiv original PDF, pp. 1-3. Reviewed measurement definition and scope; no claim to have replicated the estimates. This is a targeted reading, not a full audit of every proof, estimate or subsequent version."
-    },
-    {
       "citation_key": "aghionbunel2024",
       "entry_type": "techreport",
       "authors": "Aghion, Philippe and Bunel, Simon",
@@ -1412,6 +1388,28 @@
     }
   ],
   "overrides": {
+    "hoetal2024algorithms": {
+      "entry_type": "techreport",
+      "authors": "Ho, Anson and Besiroglu, Tamay and Erdil, Ege and Owen, David and Rahman, Robi and Guo, Zifan Carl and Atkinson, David and Thompson, Neil and Sevilla, Jaime",
+      "title": "Algorithmic Progress in Language Models",
+      "year": "2024",
+      "venue": "arXiv preprint 2403.05812",
+      "doi": "10.48550/arXiv.2403.05812",
+      "document_url": "https://arxiv.org/pdf/2403.05812",
+      "landing_page_url": "https://doi.org/10.48550/arXiv.2403.05812",
+      "topics": "Jones-top5-2026; priority-high; Jones2026-reference; compute; algorithmic efficiency; measurement",
+      "evidence_type": "theory and/or empirical evidence",
+      "abstract": "Benchmark and scaling-law analysis separating training-compute growth from algorithmic progress in language-model pretraining. Newer algorithms can reach a fixed benchmark performance using less compute; physical compute expansion is a separate source of progress.",
+      "abstract_type": "editorial_summary",
+      "abstract_source_url": "https://arxiv.org/pdf/2403.05812",
+      "metadata_source": "Publisher metadata/Crossref; author or institutional full text, review 2026-09-16",
+      "verification_status": "original_relevant_passages_reviewed",
+      "method": "Benchmark and scaling-law analysis separating training-compute growth from algorithmic progress in language-model pretraining.",
+      "key_results": "Newer algorithms can reach a fixed benchmark performance using less compute; physical compute expansion is a separate source of progress.",
+      "use_in_axm": "Use when defining AI efficiency as services per unit of compute and distinguishing algorithm improvements from hardware expansion.",
+      "limits_for_axm": "Benchmark-specific pretraining efficiency is not an AI-service market price, not post-training efficiency, and not a direct estimate of chi.",
+      "notes": "Incorporated into Section 3.4.1 on 2026-09-16 to connect BM with effective compute. Rechecked arXiv:2403.05812v1, pp. 1-3: compute-saving definition, distinction from physical compute growth, and pretraining scope. The nonrival interpretation of B is the model's economic interpretation, not an empirical claim attributed to this paper. Targeted passage review, not a replication or a full audit."
+    },
     "bresnahantrajtenberg1995": {
       "document_url": "https://tbres.su.domains/wp-content/uploads/2023/11/Bresnahan-and-Trajtenberg-1995-General-purpose-technologies-%E2%80%98Engines-of-growth.pdf",
       "abstract": "General-purpose technologies spread across applications and stimulate complementary innovation. The paper studies interactions between suppliers of a general-purpose technology and its application sectors, including coordination problems that can slow innovation.",
@@ -1985,11 +1983,11 @@
       "review_priority": "alta"
     },
     "jones2026future": {
-      "connection_themes": "Salarios y participación laboral; Cuellos de botella y transición; Crecimiento hiperbólico y singularidades",
-      "suggested_sections": "Introducción y secciones 4 y 6: antecedentes de salarios, participación laboral y despegue tardío",
-      "reviewed_passages": "Artículo JEP de 2026, pp. 8–12 (weak links y aceleración tardía) y p. 14 (salarios y participación laboral).",
-      "terminology": "weak links; automation; labor share; economic growth",
-      "integration_note": "Los salarios crecientes junto con una participación laboral que desaparece y los despegues tardíos ya tienen antecedentes. Precisar el aporte mediante el mecanismo privado de RSI y su caracterización de equilibrio, sin afirmar prioridad general.",
+      "connection_themes": "Salarios y participación laboral; Cuellos de botella y transición; Crecimiento hiperbólico y singularidades; Cómputo e investigación",
+      "suggested_sections": "Introducción y secciones 4 y 6: antecedentes de salarios, participación laboral y despegue tardío; sección 3.4.1: effective compute y BM",
+      "reviewed_passages": "Artículo JEP de 2026, p. 5 (effective compute y descomposición entre cómputo físico y algoritmos, con atribución a Ho et al. y Epoch AI), pp. 8–12 (weak links y aceleración tardía) y p. 14 (salarios y participación laboral).",
+      "terminology": "weak links; automation; labor share; economic growth; effective compute",
+      "integration_note": "Los salarios crecientes junto con una participación laboral que desaparece y los despegues tardíos ya tienen antecedentes. Precisar el aporte mediante el mecanismo privado de RSI y su caracterización de equilibrio, sin afirmar prioridad general. Incorporado en 3.4.1 para la interpretación de BM; no se importan las tasas de crecimiento reportadas a la calibración.",
       "reading_status": "pasajes originales revisados",
       "reviewed_version": "JEP 2026, PDF facilitado por el autor; 20 páginas.",
       "review_priority": "alta"
@@ -2204,9 +2202,9 @@
     "hoetal2024algorithms": {
       "connection_themes": "Cómputo e investigación; Medición y calibración",
       "suggested_sections": "Sección 3: AI efficiency; sección 6: límites de calibración",
-      "reviewed_passages": "Candidate for paragraph-by-paragraph integration; not added to the manuscript. Review: arXiv original PDF, pp. 1-3. Reviewed measurement definition and scope; no claim to have replicated the estimates. This is a targeted reading, not a full audit of every proof, estimate or subsequent version.",
-      "terminology": "algorithmic progress; compute efficiency",
-      "integration_note": "Un benchmark algorítmico no mide automáticamente B en ambas actividades ni identifica chi.",
+      "reviewed_passages": "arXiv:2403.05812v1, pp. 1-3: definition of algorithmic progress through compute savings, physical compute versus algorithms, and pretraining scope; rechecked 2026-09-16.",
+      "terminology": "effective compute; algorithmic progress; compute efficiency",
+      "integration_note": "Incorporado en la sección 3.4.1: BM combina cómputo rival con eficiencia algorítmica no rival. La no rivalidad es la interpretación económica del modelo. La medida empírica de entrenamiento no equivale a todo M ni identifica B o chi.",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta"
     },
