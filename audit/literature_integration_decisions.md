@@ -55,3 +55,23 @@ paragraphs explicitly approved by the author.
   optimal research-allocation problem. Their task elasticity is not equated
   with this paper's aggregate AI-labor elasticity.
 - Related Literature and all other manuscript paragraphs remain unchanged.
+
+## Section 5.3: hyperbolic growth and finite-time singularities (approved, 2026-09-16)
+
+- File: `sections_rewrite/05_uncapped_equilibria.tex`.
+- Added `davidsonetal2026` immediately before the research-expenditure
+  proposition. Verified the May 2026 original, Proposition 1 (printed p. 16),
+  the economic-feedback extension (pp. 19--20), and the discussion of fixed
+  saving and factor-allocation shares (pp. 19 and 21):
+  https://thomas-houlden.com/assets/DHHK_May2026.pdf.
+- Recognized the antecedent for hyperbolic growth and a finite-time
+  singularity when feedback overcomes diminishing returns. The benchmark's
+  fixed allocation rules are not equated with our optimal allocations.
+- Distinguished finite-date divergence from indefinitely increasing growth
+  rates and from an unbounded developer objective over a fixed horizon.
+  The dated return bound does not establish the time to divergence.
+- Replaced the blanket statement that singularities are not studied with
+  the precise exclusion under the paper's infinite-horizon equilibrium
+  definition. No new existence or nonexistence claim, equation, or proposition.
+- Preserved all commented earlier derivations. Related Literature, the
+  introduction, abstract, model, and simulations remain unchanged.
