@@ -37,6 +37,8 @@ def check():
             assert r'\ref{' + label + '}' in before
             assert 'upper' in before and 'lower' in before
             previous_end = start + len(figure)
+        percentages = re.findall(r'(\d+(?:\.\d+)?)\\%', text)
+        assert all(re.fullmatch(r'\d+\.\d', value) for value in percentages), percentages
         texts.append(text)
 
     for d in (high, low):
@@ -62,49 +64,49 @@ def check():
 
     # Figure-derived percentages explicitly used in the revised narrative.
     expected = [
-        (high, 'sigma_0_90', '0.0', 'output_effective_labor_growth', '0.61'),
-        (high, 'sigma_1_50', '0.0', 'ai_services_effective_labor_growth', '80.85'),
-        (high, 'sigma_1_50', '0.0', 'output_effective_labor_growth', '3.47'),
-        (high, 'sigma_1_50', '0.0', 'research_output_share', '3.05'),
-        (high, 'sigma_1_50', '0.0', 'profit_output_share', '0.24'),
-        (high, 'sigma_1_50', '10.0', 'labor_income_share', '53.00'),
-        (high, 'sigma_1_50', '10.0', 'net_interest', '7.78'),
-        (high, 'sigma_1_50', '500.0', 'output_effective_labor_growth', '2.24'),
-        (high, 'sigma_1_50', '500.0', 'wage_growth', '2.50'),
-        (high, 'sigma_1_50', '500.0', 'net_interest', '7.24'),
-        (high, 'sigma_1_50', '500.0', 'labor_income_share', '0.19'),
-        (low, 'sigma_0_90', '0.0', 'output_effective_labor_growth', '0.09'),
-        (low, 'sigma_1_50', '0.0', 'output_effective_labor_growth', '0.47'),
-        (low, 'sigma_1_50', '0.0', 'ai_services_effective_labor_growth', '11.60'),
-        (low, 'sigma_1_50', '0.0', 'research_output_share', '0.59'),
-        (low, 'sigma_1_50', '0.0', 'profit_output_share', '2.70'),
-        (low, 'sigma_1_50', '0.0', 'labor_income_share', '61.85'),
-        (low, 'sigma_1_50', '10.0', 'labor_income_share', '60.13'),
-        (low, 'sigma_1_50', '10.0', 'net_interest', '5.50'),
-        (low, 'sigma_1_50', '500.0', 'output_effective_labor_growth', '3.21'),
-        (low, 'sigma_1_50', '500.0', 'output_per_person_growth', '4.21'),
-        (low, 'sigma_1_50', '500.0', 'wage_growth', '3.15'),
-        (low, 'sigma_1_50', '500.0', 'net_interest', '8.16'),
-        (low, 'sigma_1_50', '500.0', 'labor_income_share', '2.33'),
+        (high, 'sigma_0_90', '0.0', 'output_effective_labor_growth', '0.6'),
+        (high, 'sigma_1_50', '0.0', 'ai_services_effective_labor_growth', '80.8'),
+        (high, 'sigma_1_50', '0.0', 'output_effective_labor_growth', '3.5'),
+        (high, 'sigma_1_50', '0.0', 'research_output_share', '3.1'),
+        (high, 'sigma_1_50', '0.0', 'profit_output_share', '0.2'),
+        (high, 'sigma_1_50', '10.0', 'labor_income_share', '53.0'),
+        (high, 'sigma_1_50', '10.0', 'net_interest', '7.8'),
+        (high, 'sigma_1_50', '500.0', 'output_effective_labor_growth', '2.2'),
+        (high, 'sigma_1_50', '500.0', 'wage_growth', '2.5'),
+        (high, 'sigma_1_50', '500.0', 'net_interest', '7.2'),
+        (high, 'sigma_1_50', '500.0', 'labor_income_share', '0.2'),
+        (low, 'sigma_0_90', '0.0', 'output_effective_labor_growth', '0.1'),
+        (low, 'sigma_1_50', '0.0', 'output_effective_labor_growth', '0.5'),
+        (low, 'sigma_1_50', '0.0', 'ai_services_effective_labor_growth', '11.6'),
+        (low, 'sigma_1_50', '0.0', 'research_output_share', '0.6'),
+        (low, 'sigma_1_50', '0.0', 'profit_output_share', '2.7'),
+        (low, 'sigma_1_50', '0.0', 'labor_income_share', '61.9'),
+        (low, 'sigma_1_50', '10.0', 'labor_income_share', '60.1'),
+        (low, 'sigma_1_50', '10.0', 'net_interest', '5.5'),
+        (low, 'sigma_1_50', '500.0', 'output_effective_labor_growth', '3.2'),
+        (low, 'sigma_1_50', '500.0', 'output_per_person_growth', '4.2'),
+        (low, 'sigma_1_50', '500.0', 'wage_growth', '3.1'),
+        (low, 'sigma_1_50', '500.0', 'net_interest', '8.2'),
+        (low, 'sigma_1_50', '500.0', 'labor_income_share', '2.3'),
     ]
     combined = '\n'.join(texts)
     for d, key, time, field, value in expected:
         actual = d['summary']['scenarios'][key]['snapshots'][time][field]
-        assert f'{100*actual:.2f}' == value, (field, actual, value)
+        assert f'{100*actual:.1f}' == value, (field, actual, value)
         assert value + r'\%' in combined, value
-    for d, annual, price, halfway in [(high, '0.182', '39.6', '47'),
-                                     (low, '0.066', '9.4', '213')]:
-        assert f"{100*d['annual']['scenarios']['sigma_1_00']['first_year']['share']:.3f}" == annual
+    for d, annual, price, halfway in [(high, '0.2', '39.6', '47'),
+                                     (low, '0.1', '9.4', '213')]:
+        assert f"{100*d['annual']['scenarios']['sigma_1_00']['first_year']['share']:.1f}" == annual
         assert f"{100*(1-d['summary']['scenarios']['sigma_1_00']['target_window_price_ratio']):.1f}" == price
         assert f"{d['summary']['sigma_1_50_transition_dates']['T50']:.0f}" == halfway
 
     assert high['figures']['analytical_limits'] == low['figures']['analytical_limits']
     limits = high['figures']['analytical_limits']['sigma_1_50']
-    for field, value in [('output_effective_labor_growth', '2.13'),
-                         ('wage_growth', '2.42'), ('net_interest', '7.13'),
-                         ('inference_output_share', '44.89'),
-                         ('profit_output_share', '22.11')]:
-        assert f'{100*limits[field]:.2f}' == value
+    for field, value in [('output_effective_labor_growth', '2.1'),
+                         ('wage_growth', '2.4'), ('net_interest', '7.1'),
+                         ('inference_output_share', '44.9'),
+                         ('profit_output_share', '22.1')]:
+        assert f'{100*limits[field]:.1f}' == value
     assert limits['labor_income_share'] == limits['research_output_share'] == 0
     assert f"{limits['ai_service_price']:.5f}" == '0.00110'
     hp = dict(high['spec']['parameters']); lp = dict(low['spec']['parameters'])
