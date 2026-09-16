@@ -137,6 +137,11 @@ I measure compute in units such that its price in final goods is one. Compute is
 
 I distinguish compute used to deploy AI from compute used to improve it. Inference compute $U$ runs existing AI systems and produces outputs used in current final-good production. Research compute $M$ is allocated to the development of better AI. It includes training and fine-tuning, but also computational experimentation, model evaluation, and other compute-intensive components of AI research. I therefore use the term \emph{research compute} rather than the narrower term \emph{training compute}. \citet{korinekmckelvey2026} make a related distinction between compute used for inference and compute used for R\&D and training.
 
+The distinction between $U$ and $M$ concerns the economic use of compute,
+rather than a strict separation between inference and training: running AI
+systems that conduct research also requires inference compute
+\citep{davidsonetal2026}.
+
 %In practice, AI research also uses human researchers, data, and complementary infrastructure. The benchmark does not treat $M$ as a complete measure of R\&D. It isolates its computational component and assumes that human research is no longer the binding input.
 
 Raw compute does not by itself determine the quantity of AI services produced. The variable $B$ measures AI efficiency: AI services obtained per unit of compute. Thus $U$ and $M$ are raw computational inputs, while $BU$ and $BM$ are the corresponding flows of AI production and AI research services. This interpretation parallels measures of algorithmic efficiency based on the decline in compute required to achieve a given level of performance \citep{hernandezbrown2020,erdilbesiroglu2022}. A rise in $B$ therefore represents an improvement in the algorithms that use compute, rather than an expansion of physical computing capacity. I assume that the same $B$ augments compute in both activities.

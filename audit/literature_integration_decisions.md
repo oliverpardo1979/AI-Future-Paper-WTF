@@ -75,3 +75,14 @@ paragraphs explicitly approved by the author.
   definition. No new existence or nonexistence claim, equation, or proposition.
 - Preserved all commented earlier derivations. Related Literature, the
   introduction, abstract, model, and simulations remain unchanged.
+
+## Section 3.4.1: economic uses of compute (approved, 2026-09-16)
+
+- Added the author's sentence immediately after the definitions of U and M in
+  `sections_rewrite/03_model.tex`, preserving the original terminology and equations.
+- The production/research distinction concerns economic uses, not disjoint
+  inference/training operations: executing AI researchers also uses inference.
+- Cited `davidsonetal2026`; rechecked the May 2026 original, Section 4.2,
+  printed p. 23, Equation (33), which describes inference compute for AI labor
+  across sectors, including research. No equation or result is equated to ours.
+- No other manuscript paragraph was changed.

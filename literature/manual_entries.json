@@ -1914,7 +1914,7 @@
       "suggested_sections": "Introducción: dos feedback loops; sección 3: RSI y cómputo; sección 5.3: singularidad",
       "reviewed_passages": "Mayo de 2026: pp. 2–3; Proposición 1, p. 16; extensión económica, pp. 19–21; sección 4.2, p. 23; sección 5.1, pp. 28–29; cuellos de botella, pp. 40–42.",
       "terminology": "technological feedback loop; economic feedback loop; inference compute; algorithmic progress; hyperbolic growth; finite-time singularity",
-      "integration_note": "Ya conectado en el tercer párrafo de la introducción y en 5.3. La precisión sobre cómputo queda como propuesta, no como edición aprobada.",
+      "integration_note": "Ya conectado en el tercer párrafo de la introducción y en 5.3. Precisión aprobada e incorporada en 3.4.1: U y M distinguen usos económicos; ejecutar sistemas de IA que investigan también requiere inference compute.",
       "reading_status": "pasajes originales revisados",
       "method": "Modelo de redes de innovación; clasifica el crecimiento mediante el radio espectral de una matriz de feedback. Su aplicación de referencia mantiene fijas las participaciones de ahorro y asignación de recursos.",
       "key_results": "Los feedbacks tecnológico y económico pueden superar los rendimientos decrecientes y producir crecimiento hiperbólico, con divergencia en tiempo finito. Las complementariedades entre tareas pueden retrasar el crecimiento.",
