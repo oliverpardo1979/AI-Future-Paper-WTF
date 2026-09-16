@@ -234,7 +234,8 @@ def extend(sigma, design):
     print(f'{key(sigma)}: second horizon extension complete', flush=True)
 
 
-def render_comparison_views(design, *, show_price_target=True, reference_sigma=1.5):
+def render_comparison_views(design, *, show_price_target=True, reference_sigma=1.5,
+                            figure_types=None):
     """Same economic panels, with explicit initial and subsequent windows."""
     import matplotlib.pyplot as plt
     from matplotlib.ticker import PercentFormatter, MaxNLocator, FuncFormatter, NullLocator
@@ -263,10 +264,13 @@ def render_comparison_views(design, *, show_price_target=True, reference_sigma=1
             raise ValueError('The RSI event has not passed its continuity audit.')
         pre = {key(s): fixed_efficiency_bgp(s, design.initial_capability, design.parameters)
                for s in design.sigmas}
-    views = []
+    views = {v['filename']: v for v in manifest.get('two_window_views', [])}
+    focused_distribution = design.name in ('rsi_chi_7_5', 'rsi_chi_1_5')
     for suffix, panels in (('accumulation_growth', PANELS_QUANTITY_GROWTH),
                            ('growth_returns', PANELS_PRICES_RETURNS),
                            ('ai_distribution', PANELS_DISTRIBUTION)):
+        if figure_types is not None and suffix not in figure_types:
+            continue
         columns = 3 if len(panels) == 3 else 2
         rows_per_view = 1 if columns == 3 else 2
         fig, axes = plt.subplots(2*rows_per_view, columns,
@@ -275,6 +279,8 @@ def render_comparison_views(design, *, show_price_target=True, reference_sigma=1
         windows = ((-2.0 if pre else 0.0,10.0), (10.0,design.display_horizon))
         for view, (start, end) in enumerate(windows):
             for axis, (field, title, scale) in zip(axes[view], panels):
+                focus_initial = (focused_distribution and view == 0 and
+                                 field in ('labor_income_share', 'inference_output_share'))
                 for sigma in design.sigmas:
                     series = [r for r in rows if r['sigma'] == sigma and start <= r['time'] <= end]
                     color, linestyle = STYLES[sigma]
@@ -290,7 +296,10 @@ def render_comparison_views(design, *, show_price_target=True, reference_sigma=1
                     axis.plot(times, values,
                               color=color, linestyle=linestyle, linewidth=1.4,
                               label=fr'$\sigma={sigma:.2f}$')
-                axis.axhline(limits[field], color='#222222', linestyle=(0,(1,2)), linewidth=.8)
+                # Short-run A/C scales follow all four initial trajectories,
+                # with the existing Matplotlib margins, not distant limits.
+                if not focus_initial:
+                    axis.axhline(limits[field], color='#222222', linestyle=(0,(1,2)), linewidth=.8)
                 axis.set_title(title, loc='left', y=1.02, pad=6)
                 if scale in ('rate', 'share'):
                     decimals = (3 if view == 1 and field == 'research_output_share'
@@ -307,7 +316,7 @@ def render_comparison_views(design, *, show_price_target=True, reference_sigma=1
                     if len(design.sigmas)==1 and view==1 and axis.get_ylim()[1]/axis.get_ylim()[0]<3:
                         axis.yaxis.set_major_locator(MaxNLocator(4))
                         axis.yaxis.set_minor_locator(NullLocator())
-                if scale == 'share':
+                if scale == 'share' and not (focus_initial and field == 'labor_income_share'):
                     lo, hi = axis.get_ylim()
                     if len(design.sigmas)==1:
                         hi=max(hi,1.08*max(values))
@@ -346,10 +355,13 @@ def render_comparison_views(design, *, show_price_target=True, reference_sigma=1
         for extension in ('pdf','png'):
             fig.savefig(ROOT/'figures_rewrite'/f'{filename}.{extension}', dpi=190)
         plt.close(fig)
-        views.append(dict(filename=filename, windows=[list(w) for w in windows],
+        views[filename] = dict(filename=filename, windows=[list(w) for w in windows],
                           fields=[p[0] for p in panels],
-                          independent_vertical_scales_between_windows=True))
-    manifest['two_window_views'] = views
+                          independent_vertical_scales_between_windows=True)
+        if focused_distribution and suffix == 'ai_distribution':
+            views[filename]['initial_trajectory_scaled_fields'] = [
+                'labor_income_share', 'inference_output_share']
+    manifest['two_window_views'] = list(views.values())
     manifest['price_target'] = (dict(years=TARGET_YEARS, ratio=design_price_target(design))
                                 if show_price_target else None)
     if pre:

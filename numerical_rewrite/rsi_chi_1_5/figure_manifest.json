@@ -103,7 +103,11 @@
         "inference_output_share",
         "research_output_share"
       ],
-      "independent_vertical_scales_between_windows": true
+      "independent_vertical_scales_between_windows": true,
+      "initial_trajectory_scaled_fields": [
+        "labor_income_share",
+        "inference_output_share"
+      ]
     }
   ],
   "price_target": null,
