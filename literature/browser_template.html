@@ -17,7 +17,7 @@ header p{margin:.25rem 0;color:#dbeae3;max-width:74rem}
 .build{font-size:.82rem;opacity:.82}
 .controls{
   position:sticky;top:0;z-index:2;display:grid;
-  grid-template-columns:minmax(16rem,2fr) repeat(4,minmax(10rem,1fr));gap:.7rem;
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;
   padding:1rem max(5vw,1rem);background:#f7f9f7ef;border-bottom:1px solid var(--line);
   backdrop-filter:blur(8px)
 }
@@ -27,6 +27,11 @@ input,select{
   background:white;color:var(--ink);font:400 1rem/1.2 system-ui,-apple-system,Segoe UI,sans-serif
 }
 .summary{padding:1rem max(5vw,1rem) 0;color:var(--muted)}
+.notice{margin:1rem max(5vw,1rem) 0;padding:1rem;background:var(--warn);border:1px solid #dfcda9;border-radius:.5rem;max-width:85rem}
+.notice p{margin:.25rem 0}.shortcuts{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.65rem}
+button{font:inherit;color:var(--accent);background:white;border:1px solid #aebbb4;border-radius:.4rem;padding:.35rem .65rem;cursor:pointer}
+.connection{margin-top:.8rem;padding:.8rem;background:#edf4fa;border-radius:.45rem}
+.connection p{margin:.35rem 0}.reading{font-size:.8rem;color:var(--muted)}
 main{display:grid;gap:1rem;padding:1rem max(5vw,1rem) 3rem}
 article{
   background:var(--card);border:1px solid var(--line);border-radius:.65rem;padding:1.2rem;
@@ -80,6 +85,21 @@ summary{cursor:pointer;color:var(--muted);font-weight:700}
   <p>Los filtros identifican citas en los archivos fuente, incluidos pasajes archivados o desactivados; no solo las referencias visibles en el PDF.</p>
   <p class="build" id="build"></p>
 </header>
+<aside class="notice">
+  <strong>Criterio para integrar la literatura</strong>
+  <p>Salarios crecientes con una participación laboral decreciente y despegues retrasados por cuellos de botella tienen antecedentes claros. La inversión privada en investigación tampoco es nueva por sí sola. Precisar qué añade nuestro mecanismo de RSI y su caracterización conjunta de equilibrio, crecimiento, distribución y transición.</p>
+  <p>Una ficha incluida no equivale a una atribución verificada. Los pasajes revisados, las versiones y las lecturas pendientes se indican por separado. La ubicación propuesta no autoriza cambios al manuscrito.</p>
+  <div class="shortcuts" aria-label="Conexiones prioritarias">
+    <button type="button" data-connection="Feedback tecnológico">Feedback tecnológico</button>
+    <button type="button" data-connection="Feedback económico">Feedback económico</button>
+    <button type="button" data-connection="Investigación endógena e incentivos">Inversión privada en I+D</button>
+    <button type="button" data-connection="Cómputo e investigación">Inference / research compute</button>
+    <button type="button" data-connection="Salarios y participación laboral">Salarios y participación</button>
+    <button type="button" data-connection="Cuellos de botella y transición">Bottlenecks y transición</button>
+    <button type="button" data-connection="Crecimiento hiperbólico y singularidades">Crecimiento hiperbólico</button>
+    <button type="button" id="reset">Ver todas</button>
+  </div>
+</aside>
 <section class="controls">
   <label>Buscar<input id="q" type="search" placeholder="Autor, título, resultado, tema…"></label>
   <label>Corpus
@@ -102,6 +122,9 @@ summary{cursor:pointer;color:var(--muted);font-weight:700}
       <option value="unavailable">No disponible</option>
     </select>
   </label>
+  <label>Conexión con el paper<select id="connection"><option value="">Todas</option></select></label>
+  <label>Estado de lectura<select id="reading"><option value="">Todos</option><option value="reviewed">Pasajes originales revisados</option><option value="pending">Lectura o verificación pendiente</option></select></label>
+  <label>Prioridad<select id="priority"><option value="">Todas</option><option value="alta">Alta</option><option value="complementaria">Complementaria</option><option value="pendiente">Pendiente de lectura</option></select></label>
 </section>
 <div class="summary" id="summary"></div>
 <main id="results"></main>
@@ -112,12 +135,17 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const isEditorial=x=>x.abstract_type==="editorial_summary";
 const isAbstract=x=>x.abstract_type&&!["editorial_summary","unavailable"].includes(x.abstract_type);
 const splitTopics=x=>String(x.topics||"").split(";").map(v=>v.trim()).filter(Boolean);
+const splitConnections=x=>String(x.connection_themes||"").split(";").map(v=>v.trim()).filter(Boolean);
 const sourceLabels={
   manuscript_bibliography:"Bibliografía del manuscrito",
   conversation_addition:"Referencia adicional"
 };
 const topicValues=[...new Set(records.flatMap(splitTopics))].sort((a,b)=>a.localeCompare(b,"es"));
 const evidenceValues=[...new Set(records.map(x=>x.evidence_type).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
+const connectionValues=[...new Set(records.flatMap(splitConnections))].sort((a,b)=>a.localeCompare(b,"es"));
+document.querySelector("#connection").innerHTML+=connectionValues.map(v=>
+  "<option value=\""+esc(v)+"\">"+esc(v)+"</option>"
+).join("");
 document.querySelector("#topic").innerHTML+=topicValues.map(v=>
   "<option value=\""+esc(v.toLowerCase())+"\">"+esc(v)+"</option>"
 ).join("");
@@ -125,7 +153,19 @@ document.querySelector("#etype").innerHTML+=evidenceValues.map(v=>
   "<option value=\""+esc(v)+"\">"+esc(v)+"</option>"
 ).join("");
 document.querySelector("#build").textContent=
-  "Compilado "+build.generated_on+" · "+build.record_count+" registros · huella "+build.source_fingerprint.slice(0,12);
+  "Compilado "+build.generated_on+" · "+build.record_count+" registros · "+build.connection_review_count+" conexiones editoriales · "+build.original_passages_reviewed_count+" con pasajes revisados · huella "+build.source_fingerprint.slice(0,12);
+
+function connectionBlock(x){
+  const rows=[
+    ["Conexiones",x.connection_themes],
+    ["Dónde utilizarlo",x.suggested_sections],
+    ["Terminología de la fuente",x.terminology],
+    ["Pasajes para revisar",x.reviewed_passages],
+    ["Versión consultada",x.reviewed_version],
+    ["Decisión editorial",x.integration_note]
+  ].filter(row=>row[1]);
+  return rows.length?"<div class=\"connection\">"+rows.map(row=>"<p><strong>"+esc(row[0])+": </strong>"+esc(row[1])+"</p>").join("")+"</div>":"";
+}
 
 function reviewBlock(x){
   const rows=[
@@ -150,6 +190,8 @@ function traceBlock(x){
     ["Citas en el paper anterior",x.citation_locations_legacy],
     ["Tipo de resumen",x.abstract_type],
     ["Estado de verificación",x.verification_status],
+    ["Estado de lectura",x.reading_status],
+    ["Auditoría de atribución",x.attribution_note],
     ["Fecha de compilación",x.last_verified],
     ["Notas",x.notes]
   ].filter(row=>row[1]);
@@ -164,6 +206,9 @@ function render(){
   const topic=document.querySelector("#topic").value;
   const etype=document.querySelector("#etype").value;
   const atype=document.querySelector("#atype").value;
+  const connection=document.querySelector("#connection").value;
+  const reading=document.querySelector("#reading").value;
+  const priority=document.querySelector("#priority").value;
   const rows=records.filter(x=>{
     const hay=Object.values(x).join(" ").toLowerCase();
     const corpus=!paper||
@@ -177,7 +222,10 @@ function render(){
       (atype==="editorial_summary"&&isEditorial(x))||
       (atype==="abstract"&&isAbstract(x))||
       (atype==="unavailable"&&x.abstract_type==="unavailable");
-    return(!q||hay.includes(q))&&corpus&&topicMatch&&(!etype||x.evidence_type===etype)&&abstractMatch;
+    const reviewed=x.reading_status==="pasajes originales revisados";
+    return(!q||hay.includes(q))&&corpus&&topicMatch&&(!etype||x.evidence_type===etype)&&abstractMatch&&
+      (!connection||splitConnections(x).includes(connection))&&
+      (!reading||(reading==="reviewed"?reviewed:!reviewed))&&(!priority||x.review_priority===priority);
   });
   const currentShown=rows.filter(x=>x.cited_in_rewrite==="yes").length;
   document.querySelector("#summary").textContent=
@@ -193,10 +241,11 @@ function render(){
     if(x.cited_in_legacy==="yes")html+="<span class=\"tag legacy\">Paper anterior</span>";
     html+="<span class=\"tag\">"+esc(sourceLabels[x.source_group]||x.source_group)+"</span></div>";
     html+="<h2>"+esc(x.title)+"</h2><div class=\"meta\">"+esc(x.authors)+" · "+esc(x.venue)+"</div>";
+    html+="<p class=\"reading\">"+esc(x.reading_status)+(x.review_priority?" · Prioridad: "+esc(x.review_priority):"")+"</p>";
     html+="<div class=\"tags\">"+topics+"</div>";
     html+="<div class=\"abstract\"><h3>"+esc(abstractLabel)+"</h3><p>"+
       (esc(x.abstract)||"<em>Resumen no disponible.</em>")+"</p></div>";
-    html+=reviewBlock(x)+"<div class=\"links\">";
+    html+=connectionBlock(x)+reviewBlock(x)+"<div class=\"links\">";
     if(x.document_url)html+="<a href=\""+esc(x.document_url)+"\" target=\"_blank\" rel=\"noopener\">Documento</a>";
     if(x.landing_page_url&&x.landing_page_url!==x.document_url)
       html+="<a href=\""+esc(x.landing_page_url)+"\" target=\"_blank\" rel=\"noopener\">Ficha oficial</a>";
@@ -206,9 +255,18 @@ function render(){
     return html;
   }).join(""):"<div class=\"empty\">No hay resultados para estos filtros.</div>";
 }
-["q","paper","topic","etype","atype"].forEach(id=>
+const filterIds=["q","paper","topic","etype","atype","connection","reading","priority"];
+filterIds.forEach(id=>
   document.querySelector("#"+id).addEventListener("input",render)
 );
+document.querySelectorAll("[data-connection]").forEach(button=>button.addEventListener("click",()=>{
+  filterIds.forEach(id=>document.querySelector("#"+id).value="");
+  document.querySelector("#connection").value=button.dataset.connection;
+  render();
+}));
+document.querySelector("#reset").addEventListener("click",()=>{
+  filterIds.forEach(id=>document.querySelector("#"+id).value="");render();
+});
 render();
 </script>
 </body>

@@ -24,6 +24,7 @@ MANUAL_PATH = ROOT / "literature" / "manual_entries.json"
 OUT_DIR = ROOT / "literature"
 CACHE_PATH = OUT_DIR / "metadata_cache.json"
 PUBLIC_DIR = ROOT / "docs" / "literature"
+ATTRIBUTION_PATH = ROOT / "audit" / "related_literature_2026-09-13" / "attribution_review.json"
 
 FIELDS = [
     "citation_key", "source_group", "cited_in_manuscript", "citation_locations",
@@ -36,7 +37,33 @@ FIELDS = [
     "abstract_type", "abstract_source_url", "metadata_source",
     "verification_status", "topics", "evidence_type", "method", "key_results",
     "use_in_axm", "limits_for_axm", "notes", "last_verified",
+    "connection_themes", "suggested_sections", "terminology", "integration_note",
+    "reviewed_passages", "reviewed_version", "reading_status", "review_priority",
+    "attribution_note",
 ]
+
+
+def load_attribution_reviews() -> dict[str, dict]:
+    """Reuse the recorded passage audit; downloading or DOI matching is not reading."""
+    payload = json.loads(ATTRIBUTION_PATH.read_text(encoding="utf-8"))
+    return {item["key"]: item for item in payload["sources"]}
+
+
+def apply_review_context(entry: dict[str, str], manual: dict, audits: dict) -> None:
+    key = entry["citation_key"]
+    if audit := audits.get(key):
+        pending = audit["verdict"].startswith("Pendiente")
+        entry.update({
+            "reviewed_passages": audit["pages"],
+            "reviewed_version": audit["version"],
+            "reading_status": "texto completo pendiente" if pending else "pasajes originales revisados",
+            "attribution_note": (
+                "Auditoría del 13-09-2026: " + audit["verdict"] + ". "
+                + audit["note"] + " Confianza registrada: " + audit["confidence"] + "."
+            ),
+        })
+    # These explicitly reviewed updates supersede the older audit where needed.
+    merge_nonempty(entry, manual.get("connection_reviews", {}).get(key, {}), overwrite=True)
 
 
 def latex_to_text(value: str) -> str:
@@ -154,6 +181,7 @@ def source_fingerprint(root: Path) -> str:
         MANUAL_PATH,
         CACHE_PATH,
         OUT_DIR / "browser_template.html",
+        ATTRIBUTION_PATH,
         Path(__file__).resolve(),
     ]
     paths.extend(
@@ -337,6 +365,13 @@ def finalize_entry(entry: dict[str, str], locations: dict[str, list[str]]) -> di
     entry.setdefault("use_in_axm", "")
     entry.setdefault("limits_for_axm", "")
     entry.setdefault("notes", "")
+    if not entry.get("reading_status"):
+        status = entry.get("verification_status", "")
+        entry["reading_status"] = (
+            "pasajes originales revisados" if status == "original_relevant_passages_reviewed"
+            else "texto completo pendiente" if "fulltext_pending" in status
+            else "lectura no documentada"
+        )
     entry["last_verified"] = date.today().isoformat()
     return {field: str(entry.get(field, "")) for field in FIELDS}
 
@@ -480,6 +515,9 @@ def validation_report(
             for entry in entries
         ),
         "incomplete_structured_reviews": incomplete_structured_reviews,
+        "connection_review_count": sum(bool(e["connection_themes"] and e["suggested_sections"]) for e in entries),
+        "original_passages_reviewed_count": sum(e["reading_status"] == "pasajes originales revisados" for e in entries),
+        "reading_pending_count": sum(e["reading_status"] != "pasajes originales revisados" for e in entries),
         "source_abstract_count": sum(
             entry["abstract_type"] in {
                 "openalex_indexed_abstract",
@@ -549,10 +587,12 @@ def main() -> None:
     entries = [normalize_bib_entry(item) for item in parse_bibtex(BIB_PATH)]
     entries.extend(manual.get("additions", []))
     overrides = manual.get("overrides", {})
+    audits = load_attribution_reviews()
     finished: list[dict[str, str]] = []
     for entry in entries:
         entry = enrich_entry(dict(entry), cache, args.refresh)
         merge_nonempty(entry, overrides.get(entry["citation_key"], {}), overwrite=True)
+        apply_review_context(entry, manual, audits)
         finished.append(finalize_entry(entry, locations))
     finished.sort(key=lambda item: (-int(item["year"] or 0), item["authors"], item["title"]))
     CACHE_PATH.write_text(
@@ -560,6 +600,9 @@ def main() -> None:
     )
     fingerprint = source_fingerprint(ROOT)
     report = validation_report(finished, locations, fingerprint)
+    report["connection_keys_missing_from_database"] = sorted(
+        set(manual.get("connection_reviews", {})) - {e["citation_key"] for e in finished}
+    )
     write_csv(finished)
     write_json(finished, fingerprint)
     write_html(finished, report)
@@ -572,6 +615,7 @@ def main() -> None:
         or report["duplicate_citation_keys"]
         or report["duplicate_dois"]
         or report["incomplete_structured_reviews"]
+        or report["connection_keys_missing_from_database"]
     ):
         raise SystemExit(1)
     if args.publish:

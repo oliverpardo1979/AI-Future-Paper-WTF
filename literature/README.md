@@ -57,6 +57,33 @@ separate review step.
 
 ## Updating
 
+### Connections and reading status, 16 September 2026
+
+The catalogue now also displays the connections discussed during the editorial
+review: technological and economic feedback, endogenous research incentives,
+compute terminology, wages and income shares, bottlenecks and transition,
+hyperbolic growth, and measurement limitations. Use the shortcut buttons or
+the connection filter. The original topic and corpus filters remain available.
+
+`connection_reviews` in `manual_entries.json` stores 59 targeted integration
+records: proposed manuscript location, relevant original passages, terminology
+where verified, and whether incorporation was approved. These records are
+editorial proposals, not instructions to edit the paper. The earlier attribution
+audit is also surfaced by the builder, retaining its version and access cautions.
+
+The 13 previously deferred items in Davidson's bibliography are now registered,
+including non-academic statements, datasets, and an explicitly AI-generated
+technical note. Their inclusion completes that bibliography's inventory; it
+does not certify their results. The note hosted by Charles Jones credits
+ChatGPT 5.2 Pro via Chad Jones and its proof remains unaudited.
+
+Reading status is separate from DOI/metadata verification. It distinguishes
+reviewed original passages, pending full text or proofs, and undocumented
+reading. A targeted passage review is not an audit of every proof or estimate.
+Missing abstracts stay marked unavailable rather than being invented.
+
+No manuscript source, parameter, simulation or figure is changed by this update.
+
 ### Jones and top-five review, 16 September 2026
 
 Search `Jones-top5-2026` in the browser for the 24 candidates added from the
@@ -85,6 +112,10 @@ than deploying an inventory with missing citation keys or duplicate records.
 Run the regression tests with:
 
     python -m unittest discover -s scripts -p test_literature_database.py
+
+To exercise the generated interface's filtering and rendering logic with Node.js:
+
+    node scripts/test_literature_browser.cjs
 
 This rebuilds every output from the checked-in cache and therefore works offline.
 To refresh DOI metadata from OpenAlex and Crossref, run:
