@@ -1525,7 +1525,7 @@
       "key_results": "Remaining complementary tasks limit the output gains from automating other tasks. Early moderate growth can precede later acceleration as bottlenecks are automated. A vanishing labor share need not mean falling wages.",
       "use_in_axm": "Direct antecedent for delayed growth acceleration and for distinguishing wage levels from labor income shares. Helps situate the private RSI-investment mechanism and qualify novelty claims.",
       "limits_for_axm": "Its substitution elasticity is across tasks, not the aggregate labor--AI elasticity. It does not derive this paper's monopoly RSI equilibrium or AI-efficiency threshold, nor identify chi or validate its simulated dates. Catastrophic risk and heterogeneous ownership are outside this paper's model.",
-      "notes": "Read all 20 PDF pages (printed pp. 3--22) on 2026-09-15; inspected the CES formula, Figure 2 and labor-share discussion visually. Main passages: RSI p. 5, weak links and delayed acceleration pp. 9--12, labor shares and distribution pp. 13--14. Published version, not the earlier NBER working paper. See audit/jones2026_connection.md."
+      "notes": "Full reread on 2026-09-16: all 20 PDF pages (printed pp. 3--22), all nine footnotes, and the complete bibliography. Visually checked Figures 1 and 2, the CES expressions, and the labor-share discussion. Published JEP version; SHA-256 ca7887c25c89ada3b4c066eb2a44a01d2a1ee8797a84721335cb97766ff32576. The reading map in audit/jones2026_connection.md records paragraph-level connections, non-equivalences, and original-source trails. Reading the essay and its references does not verify every underlying empirical claim or imply full reading of each cited source. No manuscript changes in this rereading pass."
     },
     "chowhalperinmazlish2026": {
       "abstract": "The paper studies how the prospect of transformative AI affects long-term real interest rates. Its consumption-based asset-pricing mechanism predicts that either rapid future growth or existential risk reduces the value of future consumption relative to current consumption and therefore raises long-term real rates.",
@@ -1985,11 +1985,11 @@
     "jones2026future": {
       "connection_themes": "Salarios y participación laboral; Cuellos de botella y transición; Crecimiento hiperbólico y singularidades; Cómputo e investigación",
       "suggested_sections": "Introducción y secciones 4 y 6: antecedentes de salarios, participación laboral y despegue tardío; sección 3.4.1: effective compute y BM",
-      "reviewed_passages": "Artículo JEP de 2026, p. 5 (effective compute y descomposición entre cómputo físico y algoritmos, con atribución a Ho et al. y Epoch AI), pp. 8–12 (weak links y aceleración tardía) y p. 14 (salarios y participación laboral).",
+      "reviewed_passages": "Lectura íntegra, repetida el 16-09-2026: pp. 3–22, incluidas las nueve notas, ambas figuras y la bibliografía. Mapa: p. 5 (effective compute y RSI); pp. 7–8 (ideas más difíciles y difusión); pp. 8–12 (weak links, fórmula CES y aceleración tardía); pp. 13–14 (tareas, salarios, participación laboral y propiedad); pp. 15–19 (riesgos y conclusiones). Véase audit/jones2026_connection.md.",
       "terminology": "weak links; automation; labor share; economic growth; effective compute",
       "integration_note": "Los salarios crecientes junto con una participación laboral que desaparece y los despegues tardíos ya tienen antecedentes. Precisar el aporte mediante el mecanismo privado de RSI y su caracterización de equilibrio, sin afirmar prioridad general. Incorporado en 3.4.1 para la interpretación de BM; no se importan las tasas de crecimiento reportadas a la calibración.",
       "reading_status": "pasajes originales revisados",
-      "reviewed_version": "JEP 2026, PDF facilitado por el autor; 20 páginas.",
+      "reviewed_version": "JEP 40(3), Summer 2026, pp. 3–22; PDF publicado facilitado por Oliver. Lectura completa del mismo archivo, no del working paper anterior.",
       "review_priority": "alta"
     },
     "jones2025rd": {
