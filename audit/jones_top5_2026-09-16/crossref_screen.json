@@ -1,0 +1,6987 @@
+{
+  "review_date": "2026-09-16",
+  "start_date": "2022-01-01",
+  "scope": "Title screening, not a claim of exhaustive full-text coverage. Publisher publication dates govern final inclusion.",
+  "journals": [
+    {
+      "journal": "American Economic Review",
+      "issn": "0002-8282",
+      "query_url": "https://api.crossref.org/journals/0002-8282/works?filter=from-pub-date%3A2022-01-01%2Cuntil-pub-date%3A2026-09-16%2Ctype%3Ajournal-article&rows=1000&select=DOI%2Ctitle%2Cauthor%2Cpublished%2Cpublished-online%2Cpublished-print%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2CURL",
+      "total_results": 597,
+      "retrieved": 597,
+      "complete_response": true,
+      "candidates": [
+        {
+          "issue": "12",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                12,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20221365",
+          "page": "3323-3356",
+          "title": [
+            "America, Jump-Started: World War II R&amp;D and the Takeoff of the US Innovation System"
+          ],
+          "volume": "113",
+          "author": [
+            {
+              "given": "Daniel P.",
+              "family": "Gross",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Duke University and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Bhaven N.",
+              "family": "Sampat",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Arizona State University and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20221365",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                12,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20221501",
+          "page": "3825-3852",
+          "title": [
+            "Quid Pro Quo, Knowledge Spillovers, and Industrial Quality Upgrading: Evidence from the Chinese Auto Industry"
+          ],
+          "volume": "115",
+          "author": [
+            {
+              "given": "Jie",
+              "family": "Bai",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Harvard Kennedy School and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Panle Jia",
+              "family": "Barwick",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Wisconsin-Madison, NBER, and CEPR (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Shengmao",
+              "family": "Cao",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Kellogg School of Management (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Shanjun",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Stanford University and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20221501",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2022,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20201605",
+          "page": "3489-3527",
+          "title": [
+            "The End of Economic Growth? Unintended Consequences of a Declining Population"
+          ],
+          "volume": "112",
+          "author": [
+            {
+              "given": "Charles I.",
+              "family": "Jones",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Stanford University, Graduate School of Business and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20201605",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20230133",
+          "page": "3714-3745",
+          "title": [
+            "A Technology-Gap Model of ‘Premature’ Deindustrialization"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Ippei",
+              "family": "Fujiwara",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Faculty of Economics, Keio University and Crawford School of Public Policy, Australian National University (email: or )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kiminori",
+              "family": "Matsuyama",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Northwestern University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20230133",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "7",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.116.7.2357",
+          "page": "2357-2367",
+          "title": [
+            "Nobel Lecture: Creative Destruction and Economic Growth"
+          ],
+          "volume": "116",
+          "author": [
+            {
+              "given": "Peter",
+              "family": "Howitt",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Brown University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.116.7.2357",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "published-print": {
+            "date-parts": [
+              [
+                2022,
+                6,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20190285",
+          "page": "1848-1884",
+          "title": [
+            "Offshore Profit Shifting and Aggregate Measurement: Balance of Payments, Foreign Investment, Productivity, and the Labor Share"
+          ],
+          "volume": "112",
+          "author": [
+            {
+              "given": "Fatih",
+              "family": "Guvenen",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Minnesota, FRB of Minneapolis, and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "suffix": "Jr.",
+              "given": "Raymond J.",
+              "family": "Mataloni",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Formerly of the Bureau of Economic Analysis; Rassier: Bureau of Economic Analysis (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Dylan G.",
+              "family": "Rassier",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Wisconsin-Madison and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kim J.",
+              "family": "Ruhl",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20190285",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                6,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20211601",
+          "page": "828-861",
+          "title": [
+            "Immigration, Innovation, and Growth"
+          ],
+          "volume": "116",
+          "author": [
+            {
+              "given": "Stephen J.",
+              "family": "Terry",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Michigan and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Thomas",
+              "family": "Chaney",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Southern California, Sciences Po, and CEPR (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Konrad B.",
+              "family": "Burchardi",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Institute for International Economic Studie (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Lisa",
+              "family": "Tarquinio",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Western Ontario (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Tarek A.",
+              "family": "Hassan",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Boston University, NBER, and CEPR (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20211601",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                6,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20220522",
+          "page": "1769-1815",
+          "title": [
+            "Information Technology and Returns to Scale"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Danial",
+              "family": "Lashkari",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Federal Reserve Bank of New York (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Arthur",
+              "family": "Bauer",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "CREST-ENSAE (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jocelyn",
+              "family": "Boussard",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "CREST-ENSAE (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20220522",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                6,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                2,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20210182",
+          "page": "279-316",
+          "title": [
+            "Technological Change and the Consequences of Job Loss"
+          ],
+          "volume": "113",
+          "author": [
+            {
+              "given": "J. Carter",
+              "family": "Braxton",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Wisconsin-Madison (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Bledi",
+              "family": "Taska",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Lightcast (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20210182",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                2,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                2,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20201940",
+          "page": "472-513",
+          "title": [
+            "Technology Gaps, Trade, and Income"
+          ],
+          "volume": "113",
+          "author": [
+            {
+              "given": "Thomas",
+              "family": "Sampson",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Centre for Economic Performance, Department of Economics, London School of Economics (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20201940",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                2,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                5,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20221180",
+          "page": "1448-1487",
+          "title": [
+            "A Framework for Economic Growth with Capital-Embodied Technical Change"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Benjamin F.",
+              "family": "Jones",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Northwestern University and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Xiaojie",
+              "family": "Liu",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Northwestern University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20221180",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                5,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20210107",
+          "page": "2894-2936",
+          "title": [
+            "The Impact of Regulation on Innovation"
+          ],
+          "volume": "113",
+          "author": [
+            {
+              "given": "Philippe",
+              "family": "Aghion",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Collège de France, LSE, and INSEAD ()"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Antonin",
+              "family": "Bergeaud",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "HEC Paris, CEP LSE, and CEPR ()"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "John",
+              "family": "Van Reenen",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "LSE and MIT ()"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20210107",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                2,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20221535",
+          "page": "307-347",
+          "title": [
+            "Distinguishing Common Ratio Preferences from Common Ratio Effects Using Paired Valuation Tasks"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Christina",
+              "family": "McGranaghan",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Applied Economics and Statistics, University of Delaware (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kirby",
+              "family": "Nielsen",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Division of the Humanities and Social Sciences, California Institute of Technology (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Ted",
+              "family": "O’Donoghue",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Cornell University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jason",
+              "family": "Somerville",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Federal Reserve Bank of New York (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Charles D.",
+              "family": "Sprenger",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Division of the Humanities and Social Sciences, California Institute of Technology (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20221535",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                2,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20201952",
+          "page": "3469-3512",
+          "title": [
+            "Financial Technology Adoption: Network Externalities of Cashless Payments in Mexico"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Sean",
+              "family": "Higgins",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Finance, Kellogg School of Management, Northwestern University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20201952",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "10",
+          "published-print": {
+            "date-parts": [
+              [
+                2022,
+                10,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20210766",
+          "page": "3291-3330",
+          "title": [
+            "Credit, Attention, and Externalities in the Adoption of Energy Efficient Technologies by Low-Income Households"
+          ],
+          "volume": "112",
+          "author": [
+            {
+              "given": "Susanna B.",
+              "family": "Berkouwer",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Pennsylvania, the Wharton School (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Joshua T.",
+              "family": "Dean",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Chicago, Booth School of Business (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20210766",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                10,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "1",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                1,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20201079",
+          "page": "199-251",
+          "title": [
+            "Market Power and Innovation in the Intangible Economy"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Maarten",
+              "family": "De Ridder",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, London School of Economics, and Centre for Macroeconomics (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20201079",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                1,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "7",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.116.7.2299",
+          "page": "2299-2323",
+          "title": [
+            "Nobel Lecture: The Past and Future of Innovation: Can Progress Be Sustained?"
+          ],
+          "volume": "116",
+          "author": [
+            {
+              "given": "Joel",
+              "family": "Mokyr",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Departments of Economics and History, Northwestern University, Berglas School of Economics, Tel Aviv University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.116.7.2299",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "1",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20240167",
+          "page": "246-286",
+          "title": [
+            "Gender-Biased Technological Change: Milking Machines and the Exodus of Women from Farming"
+          ],
+          "volume": "116",
+          "author": [
+            {
+              "given": "Philipp",
+              "family": "Ager",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Mannheim and CEPR (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Marc",
+              "family": "Goñi",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Bergen and CEPR (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kjell G.",
+              "family": "Salvanes",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Norwegian School of Economics (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20240167",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.115.6.1709",
+          "page": "1709-1748",
+          "title": [
+            "Nobel Lecture: Institutions, Technology, and Prosperity"
+          ],
+          "volume": "115",
+          "author": [
+            {
+              "given": "Daron",
+              "family": "Acemoglu",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Massachusetts Institute of Technology (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.115.6.1709",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                4,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.115.4.1059",
+          "page": "1059-1099",
+          "title": [
+            "Presidential Address: The Economist as Designer in the Innovation Process for Socially Impactful Digital Products"
+          ],
+          "volume": "115",
+          "author": [
+            {
+              "given": "Susan",
+              "family": "Athey",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Stanford Graduate School of Business (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.115.4.1059",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                4,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "7",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                7,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1257/aer.20221687",
+          "page": "2171-2200",
+          "title": [
+            "Organized Crime and Economic Growth: Evidence from Municipalities Infiltrated by the Mafia"
+          ],
+          "volume": "114",
+          "author": [
+            {
+              "given": "Alessandra",
+              "family": "Fenizia",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "George Washington University (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Raffaele",
+              "family": "Saggio",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of British Columbia and NBER (email: )"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "American Economic Review"
+          ],
+          "URL": "https://doi.org/10.1257/aer.20221687",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                7,
+                1
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "journal": "Quarterly Journal of Economics",
+      "issn": "0033-5533",
+      "query_url": "https://api.crossref.org/journals/0033-5533/works?filter=from-pub-date%3A2022-01-01%2Cuntil-pub-date%3A2026-09-16%2Ctype%3Ajournal-article&rows=1000&select=DOI%2Ctitle%2Cauthor%2Cpublished%2Cpublished-online%2Cpublished-print%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2CURL",
+      "total_results": 246,
+      "retrieved": 246,
+      "complete_response": true,
+      "candidates": [
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                4,
+                8
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjaf002",
+          "page": "1299-1365",
+          "title": [
+            "The Diffusion of New Technologies"
+          ],
+          "volume": "140",
+          "author": [
+            {
+              "given": "Aakash",
+              "family": "Kalyani",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Federal Reserve Bank of St. Louis ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Nicholas",
+              "family": "Bloom",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Stanford University and National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Marcela",
+              "family": "Carvalho",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "London Business School ,",
+                  "place": [
+                    "United Kingdom"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Tarek",
+              "family": "Hassan",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Boston University and National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Josh",
+              "family": "Lerner",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University and National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Ahmed",
+              "family": "Tahoun",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "London Business School ,",
+                  "place": [
+                    "United Kingdom"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                17
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjaf002",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                17
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                3,
+                30
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjad055",
+          "page": "751-827",
+          "title": [
+            "Machine Learning as a Tool for Hypothesis Generation"
+          ],
+          "volume": "139",
+          "author": [
+            {
+              "given": "Jens",
+              "family": "Ludwig",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Chicago and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Sendhil",
+              "family": "Mullainathan",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Chicago and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                1,
+                10
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjad055",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                1,
+                10
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                4,
+                8
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjae044",
+          "page": "889-942",
+          "title": [
+            "Generative AI at Work"
+          ],
+          "volume": "140",
+          "author": [
+            {
+              "given": "Erik",
+              "family": "Brynjolfsson",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Stanford University and National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Danielle",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Massachusetts Institute of Technology and National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Lindsey",
+              "family": "Raymond",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Massachusetts Institute of Technology ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                2,
+                4
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjae044",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                2,
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                7,
+                9
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjaf014",
+          "page": "1857-1899",
+          "title": [
+            "The Race Between Education, Technology, and the Minimum Wage"
+          ],
+          "volume": "140",
+          "author": [
+            {
+              "given": "Jonathan",
+              "family": "Vogel",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of California , Los Angeles ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                2,
+                18
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjaf014",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                2,
+                18
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                4,
+                3
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjac039",
+          "page": "637-701",
+          "title": [
+            "Does Directed Innovation Mitigate Climate Damage? Evidence from U.S. Agriculture"
+          ],
+          "volume": "138",
+          "author": [
+            {
+              "given": "Jacob",
+              "family": "Moscona",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Harvard University and Abdul Latif Jameel Poverty Action Lab , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Karthik A",
+              "family": "Sastry",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University and Abdul Latif Jameel Poverty Action Lab , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022,
+                10,
+                13
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjac039",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                10,
+                13
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                7,
+                5
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjae005",
+          "page": "1879-1939",
+          "title": [
+            "Answering the Call of Automation: How the Labor Market Adjusted to Mechanizing Telephone Operation"
+          ],
+          "volume": "139",
+          "author": [
+            {
+              "given": "James",
+              "family": "Feigenbaum",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Boston University and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Daniel P",
+              "family": "Gross",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Duke University and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                2,
+                26
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjae005",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                2,
+                26
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                11
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjag021",
+          "page": "1965-2023",
+          "title": [
+            "Codification, Technology Absorption, and the Globalization of the Industrial Revolution"
+          ],
+          "volume": "141",
+          "author": [
+            {
+              "given": "Réka",
+              "family": "Juhász",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of British Columbia ,",
+                  "place": [
+                    "Canada"
+                  ]
+                },
+                {
+                  "name": "Centre for Economic Policy Research ,",
+                  "place": [
+                    "United Kingdom"
+                  ]
+                },
+                {
+                  "name": "National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Shogo",
+              "family": "Sakabe",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "AI Lab, CyberAgent ,",
+                  "place": [
+                    "Japan"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "David E",
+              "family": "Weinstein",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Columbia University and National Bureau of Economic Research ,",
+                  "place": [
+                    "United States"
+                  ]
+                },
+                {
+                  "name": "Centre for Economic Policy Research ,",
+                  "place": [
+                    "United Kingdom"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                10
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjag021",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                10
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "1",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                11
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjae040",
+          "page": "165-238",
+          "title": [
+            "The Global Race for Talent: Brain Drain, Knowledge Transfer, and Growth"
+          ],
+          "volume": "140",
+          "author": [
+            {
+              "given": "Marta",
+              "family": "Prato",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Bocconi University and Innocenzo Gasparini Institute for Economic Research, Italy; Centre for Economic Policy Research ,",
+                  "place": [
+                    "United Kingdom"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                28
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjae040",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                28
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                6,
+                23
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjad012",
+          "page": "1349-1402",
+          "title": [
+            "AI-tocracy"
+          ],
+          "volume": "138",
+          "author": [
+            {
+              "given": "Martin",
+              "family": "Beraja",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "MIT and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Andrew",
+              "family": "Kao",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "David Y",
+              "family": "Yang",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University and National Bureau of Economic Research, United States, and Canadian Institute for Advanced Research , Canada"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Noam",
+              "family": "Yuchtman",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "London School of Economics and Centre for Economic Policy Research , United Kingdom, and CESifo, Germany"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023,
+                3,
+                13
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjad012",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                3,
+                13
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                10
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjag013",
+          "page": "1705-1759",
+          "title": [
+            "Trust and Innovation Within the Firm: Evidence from Matched CEO-Firm Data"
+          ],
+          "volume": "141",
+          "author": [
+            {
+              "given": "Kieu-Trang",
+              "family": "Nguyen",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Melbourne ,",
+                  "place": [
+                    "Australia"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                2,
+                26
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjag013",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                2,
+                26
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                4,
+                3
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjac046",
+          "page": "895-954",
+          "title": [
+            "Cutting the Innovation Engine: How Federal Funding Shocks Affect University Patenting, Entrepreneurship, and Publications"
+          ],
+          "volume": "138",
+          "author": [
+            {
+              "given": "Tania",
+              "family": "Babina",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Columbia University , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Alex Xi",
+              "family": "He",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Maryland , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Sabrina T",
+              "family": "Howell",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "New York University and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Elisabeth Ruth",
+              "family": "Perlman",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "U.S. Census Bureau , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Joseph",
+              "family": "Staudt",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "U.S. Census Bureau , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023,
+                1,
+                9
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjac046",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                1,
+                9
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1093/qje/qjag036",
+          "title": [
+            "Correction to: A Further Augmentation of the Solow Model and the Empirics of Economic Growth for OECD Countries"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                27
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                27
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjag036"
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                7,
+                5
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjae008",
+          "page": "1399-1465",
+          "title": [
+            "New Frontiers: The Origins and Content of New Work, 1940–2018"
+          ],
+          "volume": "139",
+          "author": [
+            {
+              "given": "David",
+              "family": "Autor",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Massachusetts Institute of Technology and National Bureau of Economic Research , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Caroline",
+              "family": "Chin",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Massachusetts Institute of Technology , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Anna",
+              "family": "Salomons",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Utrecht University , The Netherlands"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Bryan",
+              "family": "Seegmiller",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Northwestern University Kellogg School of Management , United States"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                3,
+                15
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjae008",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                3,
+                15
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                10
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjag006",
+          "page": "1521-1579",
+          "title": [
+            "Automation and Rent Dissipation: Implications for Wages, Inequality, and Productivity"
+          ],
+          "volume": "141",
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0000-0003-0908-7491",
+              "authenticated-orcid": false,
+              "given": "Daron",
+              "family": "Acemoglu",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Massachusetts Institute of Technology ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Pascual",
+              "family": "Restrepo",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Yale University ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                30
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjag006",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                30
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                11
+              ]
+            ]
+          },
+          "DOI": "10.1093/qje/qjag018",
+          "page": "2025-2085",
+          "title": [
+            "Technology Sophistication Across Establishments"
+          ],
+          "volume": "141",
+          "author": [
+            {
+              "given": "Xavier",
+              "family": "Cirera",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "World Bank"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Diego",
+              "family": "Comin",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Dartmouth College ,",
+                  "place": [
+                    "United States"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Marcio",
+              "family": "Cruz",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "International Finance Corporation, World Bank Group"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                23
+              ]
+            ]
+          },
+          "container-title": [
+            "The Quarterly Journal of Economics"
+          ],
+          "URL": "https://doi.org/10.1093/qje/qjag018",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                23
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "journal": "Journal of Political Economy",
+      "issn": "0022-3808",
+      "query_url": "https://api.crossref.org/journals/0022-3808/works?filter=from-pub-date%3A2022-01-01%2Cuntil-pub-date%3A2026-09-16%2Ctype%3Ajournal-article&rows=1000&select=DOI%2Ctitle%2Cauthor%2Cpublished%2Cpublished-online%2Cpublished-print%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2CURL",
+      "total_results": 624,
+      "retrieved": 624,
+      "complete_response": true,
+      "candidates": [
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/727284",
+          "page": "1209-1246",
+          "title": [
+            "A Theory of Stock Exchange Competition and Innovation: Will the Market Fix the Market?"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Eric",
+              "family": "Budish",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Robin S.",
+              "family": "Lee",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "John J.",
+              "family": "Shim",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/727284",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/739330",
+          "page": "1017-1072",
+          "title": [
+            "Automation and Polarization"
+          ],
+          "volume": "134",
+          "author": [
+            {
+              "given": "Daron",
+              "family": "Acemoglu",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jonas",
+              "family": "Loebbing",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/739330",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "10",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                10,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/736212",
+          "page": "3249-3304",
+          "title": [
+            "Religious Divisions and Production Technology: Experimental Evidence from India"
+          ],
+          "volume": "133",
+          "author": [
+            {
+              "given": "Arkadev",
+              "family": "Ghosh",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/736212",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                10,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "8",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                8,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/729443",
+          "page": "2695-2747",
+          "title": [
+            "The Effect of Incentives in Nonroutine Analytical Team Tasks"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Florian",
+              "family": "Englmaier",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Stefan",
+              "family": "Grimm",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Dominik",
+              "family": "Grothe",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "David",
+              "family": "Schindler",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Simeon",
+              "family": "Schudy",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/729443",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                8,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "10",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                10,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/730205",
+          "page": "3215-3259",
+          "title": [
+            "Technology Adoption and Productivity Growth: Evidence from Industrialization in France"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Réka",
+              "family": "Juhász",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Mara P.",
+              "family": "Squicciarini",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Nico",
+              "family": "Voigtländer",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/730205",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                10,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/737235",
+          "page": "3605-3651",
+          "title": [
+            "Opening Up Military Innovation: Causal Effects of Reforms to US Defense Research"
+          ],
+          "volume": "133",
+          "author": [
+            {
+              "given": "Sabrina T.",
+              "family": "Howell",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jason",
+              "family": "Rathje",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "John",
+              "family": "Van Reenen",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jun",
+              "family": "Wong",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/737235",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/739323",
+          "page": "1245-1305",
+          "title": [
+            "How Cultural Diversity Drives Innovation: Surnames and Patents in US History"
+          ],
+          "volume": "134",
+          "author": [
+            {
+              "given": "Max",
+              "family": "Posch",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jonathan",
+              "family": "Schulz",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Joseph",
+              "family": "Henrich",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/739323",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "7",
+          "published-print": {
+            "date-parts": [
+              [
+                2022,
+                7,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/719908",
+          "page": "1860-1918",
+          "title": [
+            "Measuring the Private and Social Returns to R&amp;D: Unintended Spillovers versus Technology Markets"
+          ],
+          "volume": "130",
+          "author": [
+            {
+              "given": "Pere",
+              "family": "Arqué-Castells",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Daniel F.",
+              "family": "Spulber",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/719908",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                7,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/739826",
+          "page": "1401-1467",
+          "title": [
+            "Algorithm Design: A           Fairness-Accuracy Frontier"
+          ],
+          "volume": "134",
+          "author": [
+            {
+              "given": "Annie",
+              "family": "Liang",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Jay",
+              "family": "Lu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Xiaosheng",
+              "family": "Mu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Kyohei",
+              "family": "Okumura",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/739826",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/730551",
+          "page": "3785-3826",
+          "title": [
+            "Cadasters and Economic Growth: A Long-Run Cross-Country Panel"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Michelle",
+              "family": "D’Arcy",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Marina",
+              "family": "Nistotskaya",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Ola",
+              "family": "Olsson",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/730551",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "11",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                11,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/724847",
+          "page": "3003-3065",
+          "title": [
+            "Shocks and Technology Adoption: Evidence from Electronic Payment Systems"
+          ],
+          "volume": "131",
+          "author": [
+            {
+              "given": "Nicolas",
+              "family": "Crouzet",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Apoorv",
+              "family": "Gupta",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Filippo",
+              "family": "Mezzanotti",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/724847",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                11,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "12",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                12,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/737233",
+          "page": "3762-3800",
+          "title": [
+            "Artificial Intelligence in the Knowledge Economy"
+          ],
+          "volume": "133",
+          "author": [
+            {
+              "given": "Enrique",
+              "family": "Ide",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Eduard",
+              "family": "Talamàs",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/737233",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                12,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                3,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/733396",
+          "page": "846-887",
+          "title": [
+            "Estimating the Technology of Children’s Skill Formation"
+          ],
+          "volume": "133",
+          "author": [
+            {
+              "given": "Francesco",
+              "family": "Agostinelli",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Matthew",
+              "family": "Wiswall",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/733396",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                3,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                5,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/727712",
+          "page": "1391-1449",
+          "title": [
+            "Financial Innovation in the Twenty-First Century: Evidence from US Patents"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Josh",
+              "family": "Lerner",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Amit",
+              "family": "Seru",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Nicholas",
+              "family": "Short",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Yuan",
+              "family": "Sun",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/727712",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                5,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "9",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                9,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/724319",
+          "page": "2509-2555",
+          "title": [
+            "Trade, Technology, and Agricultural Productivity"
+          ],
+          "volume": "131",
+          "author": [
+            {
+              "given": "Farid",
+              "family": "Farrokhi",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Heitor S.",
+              "family": "Pellegrina",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/724319",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                9,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "8",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                8,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/723631",
+          "page": "1994-2031",
+          "title": [
+            "Recipes and Economic Growth: A Combinatorial March Down an Exponential Tail"
+          ],
+          "volume": "131",
+          "author": [
+            {
+              "given": "Charles I.",
+              "family": "Jones",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/723631",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                8,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                3,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/726906",
+          "page": "723-771",
+          "title": [
+            "Algorithmic Pricing and Competition: Empirical Evidence from the German Retail Gasoline Market"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Stephanie",
+              "family": "Assad",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Robert",
+              "family": "Clark",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Daniel",
+              "family": "Ershov",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Lei",
+              "family": "Xu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/726906",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                3,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/727285",
+          "page": "1290-1326",
+          "title": [
+            "Improving the Organization of Knowledge in Production by Screening Problems"
+          ],
+          "volume": "132",
+          "author": [
+            {
+              "given": "Guilherme",
+              "family": "Carmona",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Krittanai",
+              "family": "Laohakunakorn",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/727285",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/734778",
+          "page": "1975-2028",
+          "title": [
+            "Induced Automation Innovation: Evidence from Firm-Level Patent Data"
+          ],
+          "volume": "133",
+          "author": [
+            {
+              "given": "David",
+              "family": "Hémous",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Morten",
+              "family": "Olsen",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Carlo",
+              "family": "Zanella",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Antoine",
+              "family": "Dechezleprêtre",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/734778",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1086/743898",
+          "title": [
+            "The Long Run Economic Effects of Medical Innovation and the Role of Opportunities"
+          ],
+          "author": [
+            {
+              "given": "Sonia",
+              "family": "Bhalotra",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Damian",
+              "family": "Clarke",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Atheendar",
+              "family": "Venkataramani",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                8,
+                31
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                8,
+                31
+              ]
+            ]
+          },
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/743898"
+        },
+        {
+          "issue": "7",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                7,
+                1
+              ]
+            ]
+          },
+          "DOI": "10.1086/723636",
+          "page": "1845-1903",
+          "title": [
+            "Patent Publication and Innovation"
+          ],
+          "volume": "131",
+          "author": [
+            {
+              "given": "Deepak",
+              "family": "Hegde",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kyle",
+              "family": "Herkenhoff",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Chenqi",
+              "family": "Zhu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Journal of Political Economy"
+          ],
+          "URL": "https://doi.org/10.1086/723636",
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                7,
+                1
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "journal": "Econometrica",
+      "issn": "0012-9682",
+      "query_url": "https://api.crossref.org/journals/0012-9682/works?filter=from-pub-date%3A2022-01-01%2Cuntil-pub-date%3A2026-09-16%2Ctype%3Ajournal-article&rows=1000&select=DOI%2Ctitle%2Cauthor%2Cpublished%2Cpublished-online%2Cpublished-print%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2CURL",
+      "total_results": 490,
+      "retrieved": 490,
+      "complete_response": true,
+      "candidates": [
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta23706",
+          "page": "1177-1181",
+          "title": [
+            "Reply to: Comments on \n            <i>“Fisher–Schultz Lecture: Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, With an Application to Immunization in India”</i>"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Victor",
+              "family": "Chernozhukov",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics and Center for Statistics and Data Science, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Mert",
+              "family": "Demirer",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Sloan School of Management, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Esther",
+              "family": "Duflo",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Iván",
+              "family": "Fernández-Val",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Boston University"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta23706",
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta22261",
+          "page": "1165-1170",
+          "title": [
+            "A Comment on: \n            <i>“Fisher–Schultz Lecture: Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, With an Application to Immunization in India” by Victor Chernozhukov, Mert Demirer, Esther Duflo, and Iván Fernández‐Val</i>"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Kosuke",
+              "family": "Imai",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Government and Department of Statistics, Harvard University"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Michael Lingzhi",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Technology and Operations Management, Harvard Business School"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta22261",
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "DOI": "10.3982/ecta19417",
+          "page": "2645-2683",
+          "title": [
+            "Uneven Growth: Automation's Impact on Income and Wealth Inequality"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Benjamin",
+              "family": "Moll",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Economics Department, London School of Economics and Political Science"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Lukasz",
+              "family": "Rachel",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Economics Department, University College London"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Pascual",
+              "family": "Restrepo",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Economics Department, Boston University"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta19417",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "DOI": "10.3982/ecta22144",
+          "page": "623-659",
+          "title": [
+            "A Quest for Knowledge"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Christoph",
+              "family": "Carnehl",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Dept. of Economics & IGIER, Bocconi University"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Johannes",
+              "family": "Schneider",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Universidad Carlos III de Madrid"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta22144",
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta18012",
+          "page": "1879-1914",
+          "title": [
+            "From Population Growth to Firm Demographics: Implications for Concentration, Entrepreneurship and the Labor Share"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Hugo",
+              "family": "Hopenhayn",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, UCLA"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Julian",
+              "family": "Neira",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Exeter"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Rish",
+              "family": "Singhania",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Exeter"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18012",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta18984",
+          "page": "1393-1423",
+          "title": [
+            "The Effect of Job Loss and Unemployment Insurance on Crime in Brazil"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Diogo G. C.",
+              "family": "Britto",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Bocconi University"
+                },
+                {
+                  "name": "BAFFI-CAREFIN"
+                },
+                {
+                  "name": "CLEAN"
+                },
+                {
+                  "name": "GAPPE/UFPE"
+                },
+                {
+                  "name": "IZA"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Paolo",
+              "family": "Pinotti",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Bocconi University"
+                },
+                {
+                  "name": "BAFFI-CAREFIN"
+                },
+                {
+                  "name": "CLEAN"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Breno",
+              "family": "Sampaio",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Federal University of Pernambuco"
+                },
+                {
+                  "name": "GAPPE/UFPE"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18984",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "DOI": "10.3982/ecta18338",
+          "page": "529-564",
+          "title": [
+            "Connecting to Power: Political Connections, Innovation, and Firm Dynamics"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Ufuk",
+              "family": "Akcigit",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Chicago"
+                },
+                {
+                  "name": "NBER"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Salomé",
+              "family": "Baslandze",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Federal Reserve Bank of Atlanta"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Francesca",
+              "family": "Lotti",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Bank of Italy"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18338",
+          "published": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta22110",
+          "page": "1375-1408",
+          "title": [
+            "Economic Growth and the Rise of Large Firms"
+          ],
+          "volume": "94",
+          "author": [
+            {
+              "given": "Zhang",
+              "family": "Chen",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, The Hong Kong University of Science and Technology"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta22110",
+          "published": {
+            "date-parts": [
+              [
+                2026
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "DOI": "10.3982/ecta14008",
+          "page": "903-942",
+          "title": [
+            "Searching for Job Security and the Consequences of Job Loss"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Gregor",
+              "family": "Jarosch",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Duke University"
+                },
+                {
+                  "name": "NBER"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta14008",
+          "published": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "DOI": "10.3982/ecta18612",
+          "page": "2755-2793",
+          "title": [
+            "Productivity Dispersion, Between‐Firm Competition, and the Labor Share"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Émilien",
+              "family": "Gouin-Bonenfant",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Columbia University"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18612",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta18586",
+          "page": "1615-1654",
+          "title": [
+            "From Imitation to Innovation: Where Is All That Chinese R&amp;D Going?"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Michael",
+              "family": "König",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Spatial Economics, Vrije Universiteit Amsterdam"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kjetil",
+              "family": "Storesletten",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Minnesota"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Zheng",
+              "family": "Song",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Chinese University of Hong Kong"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Fabrizio",
+              "family": "Zilibotti",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Yale University"
+                },
+                {
+                  "name": "NBER"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18586",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "DOI": "10.3982/ecta22363",
+          "page": "1849-1886",
+          "title": [
+            "Screening Property Rights for Innovation"
+          ],
+          "volume": "94",
+          "author": [
+            {
+              "given": "William",
+              "family": "Matcham",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Royal Holloway University of London"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Mark",
+              "family": "Schankerman",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, London School of Economics"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta22363",
+          "published": {
+            "date-parts": [
+              [
+                2026
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "3",
+          "DOI": "10.3982/ecta18515",
+          "page": "967-1027",
+          "title": [
+            "Automatic Debiased Machine Learning of Causal and Structural Effects"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Victor",
+              "family": "Chernozhukov",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Massachusetts Institute of Technology"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Whitney K.",
+              "family": "Newey",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Massachusetts Institute of Technology"
+                },
+                {
+                  "name": "NBER"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Rahul",
+              "family": "Singh",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Massachusetts Institute of Technology"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18515",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "DOI": "10.3982/ecta19559",
+          "page": "1969-2003",
+          "title": [
+            "Algorithmic Mechanism Design With Investment"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Mohammad",
+              "family": "Akbarpour",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Graduate School of Business, Stanford University"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Scott Duke",
+              "family": "Kominers",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Entrepreneurial Management Unit, Harvard Business School"
+                },
+                {
+                  "name": "Department of Economics, Harvard University"
+                },
+                {
+                  "name": "a16z crypto"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Kevin Michael",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Stanford University"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Shengwu",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Harvard University"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            },
+            {
+              "given": "Paul",
+              "family": "Milgrom",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Stanford University"
+                },
+                {
+                  "name": "Auctionomics"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta19559",
+          "published": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta23293",
+          "page": "1171-1176",
+          "title": [
+            "A Comment on: \n            <i>“Fisher–Schultz Lecture: Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, With an Application to Immunization in India” by Victor Chernozhukov, Mert Demirer, Esther Duflo, and Iván Fernández‐Val</i>"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Stefan",
+              "family": "Wager",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Stanford Graduate School of Business"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta23293",
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "1",
+          "DOI": "10.3982/ecta18580",
+          "page": "227-261",
+          "title": [
+            "The Race Between Preferences and Technology"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Joachim",
+              "family": "Hubmer",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Pennsylvania"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta18580",
+          "published": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "6",
+          "DOI": "10.3982/ecta17702",
+          "page": "2371-2408",
+          "title": [
+            "Corporate Tax Cuts and the Decline in the Manufacturing Labor Share"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Baris",
+              "family": "Kaymak",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economic Research, Federal Reserve Bank of Cleveland"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Immo",
+              "family": "Schott",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Université de Montréal"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta17702",
+          "published": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "DOI": "10.3982/ecta19978",
+          "page": "1841-1879",
+          "title": [
+            "Platform Design When Sellers Use Pricing Algorithms"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Justin P.",
+              "family": "Johnson",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Graduate School of Management, Cornell University"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Andrew",
+              "family": "Rhodes",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Toulouse School of Economics, University of Toulouse Capitole"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Matthijs",
+              "family": "Wildenbeest",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Arizona"
+                },
+                {
+                  "name": "CEPR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta19978",
+          "published": {
+            "date-parts": [
+              [
+                2023
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "DOI": "10.3982/ecta19815",
+          "page": "1973-2016",
+          "title": [
+            "Tasks, Automation, and the Rise in U.S. Wage Inequality"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Daron",
+              "family": "Acemoglu",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Pascual",
+              "family": "Restrepo",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Boston University"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta19815",
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "DOI": "10.3982/ecta19303",
+          "page": "1121-1164",
+          "title": [
+            "Fisher–Schultz Lecture: Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, With an Application to Immunization in India"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Victor",
+              "family": "Chernozhukov",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics and Center for Statistics and Data Sciences, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Mert",
+              "family": "Demirer",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Sloan School of Management, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Esther",
+              "family": "Duflo",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, MIT"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Iván",
+              "family": "Fernández-Val",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Boston University"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "container-title": [
+            "Econometrica"
+          ],
+          "URL": "https://doi.org/10.3982/ecta19303",
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "journal": "Review of Economic Studies",
+      "issn": "0034-6527",
+      "query_url": "https://api.crossref.org/journals/0034-6527/works?filter=from-pub-date%3A2022-01-01%2Cuntil-pub-date%3A2026-09-16%2Ctype%3Ajournal-article&rows=1000&select=DOI%2Ctitle%2Cauthor%2Cpublished%2Cpublished-online%2Cpublished-print%2Ccontainer-title%2Cvolume%2Cissue%2Cpage%2CURL",
+      "total_results": 531,
+      "retrieved": 531,
+      "complete_response": true,
+      "candidates": [
+        {
+          "issue": "3",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                11
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdaf066",
+          "page": "1574-1601",
+          "title": [
+            "Women in the Courtroom: Technology and Justice"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Heng",
+              "family": "Chen",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "The Faculty of Business and Economics, The University of Hong Kong, Hong Kong Special Administrative Region ,",
+                  "place": [
+                    "China"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Yuyu",
+              "family": "Chen",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Guanghua School of Management, Peking University ,",
+                  "place": [
+                    "China"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Qingxu",
+              "family": "Yang",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "The Faculty of Business and Economics, The University of Hong Kong, Hong Kong Special Administrative Region ,",
+                  "place": [
+                    "China"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                8,
+                1
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdaf066",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                8,
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                9,
+                5
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdac076",
+          "page": "2261-2291",
+          "title": [
+            "Robots, Trade, and Luddism: A Sufficient Statistic Approach to Optimal Technology Regulation"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Arnaud",
+              "family": "Costinot",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "MIT"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Iván",
+              "family": "Werning",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "MIT"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022,
+                11,
+                4
+              ]
+            ]
+          },
+          "container-title": [
+            "The Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdac076",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                11,
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1093/restud/rdag068",
+          "title": [
+            "Skill-Replacing Technology and Bottom-Half Inequality"
+          ],
+          "author": [
+            {
+              "given": "Oren",
+              "family": "Danieli",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Tel Aviv University, CEPR and IZA ,",
+                  "place": [
+                    "Israel"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                6,
+                26
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                6,
+                26
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdag068"
+        },
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                7,
+                5
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdac056",
+          "page": "1701-1723",
+          "title": [
+            "Data-intensive Innovation and the State: Evidence from AI Firms in China"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Martin",
+              "family": "Beraja",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "MIT and NBER"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "David Y",
+              "family": "Yang",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University, NBER, and CIFAR"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Noam",
+              "family": "Yuchtman",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "LSE, CEPR, and CESifo"
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022,
+                8,
+                13
+              ]
+            ]
+          },
+          "container-title": [
+            "The Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdac056",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                8,
+                13
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                3,
+                6
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdae047",
+          "page": "696-736",
+          "title": [
+            "Tapping into Talent: Coupling Education and Innovation Policies for Economic Growth"
+          ],
+          "volume": "92",
+          "author": [
+            {
+              "given": "Ufuk",
+              "family": "Akcigit",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Chicago, NBER, & CEPR ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jeremy",
+              "family": "Pearce",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Federal Reserve Bank of New York ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Marta",
+              "family": "Prato",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Bocconi University, IGIER & CEPR ,",
+                  "place": [
+                    "Italy"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                18
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdae047",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                18
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "2",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                3,
+                6
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdaf045",
+          "page": "798-832",
+          "title": [
+            "Demand Shocks as Technology Shocks"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Yan",
+              "family": "Bai",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Rochester ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "José-Víctor",
+              "family": "Ríos-Rull",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Pennsylvania ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kjetil",
+              "family": "Storesletten",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Minnesota ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                19
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdaf045",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                19
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1093/restud/rdag047",
+          "title": [
+            "Technology Transfer and Early Industrial Development: Evidence from the Sino-Soviet Alliance"
+          ],
+          "author": [
+            {
+              "given": "Michela",
+              "family": "Giorcelli",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of California, Los Angeles, NBER, CEPR, CESifo, IZA, J-PAL ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Bo",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Guanghua School of Management, Peking University ,",
+                  "place": [
+                    "China"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                21
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                21
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdag047"
+        },
+        {
+          "issue": "1",
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                1,
+                12
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdac021",
+          "page": "229-260",
+          "title": [
+            "Innovation and Strategic Network Formation"
+          ],
+          "volume": "90",
+          "author": [
+            {
+              "given": "Krishna",
+              "family": "Dasaratha",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Yale University"
+                }
+              ],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2022,
+                5,
+                6
+              ]
+            ]
+          },
+          "container-title": [
+            "The Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdac021",
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                5,
+                6
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1093/restud/rdag075",
+          "title": [
+            "Structural Change in Production Networks and Economic Growth"
+          ],
+          "author": [
+            {
+              "given": "Paul",
+              "family": "Gaggl",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Belk College of Business, University of North Carolina at Charlotte ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Aspen",
+              "family": "Gorry",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "John E. Walker Department of Economics, Wilbur O. and Ann Powers College of Business, Clemson University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Christian",
+              "family": "vom Lehn",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Brigham Young University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                9
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                9
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdag075"
+        },
+        {
+          "issue": "6",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                11,
+                8
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdad114",
+          "page": "3362-3401",
+          "title": [
+            "The Work-From-Home Technology Boon and its Consequences"
+          ],
+          "volume": "91",
+          "author": [
+            {
+              "given": "Morris A",
+              "family": "Davis",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Rutgers Business School, Rutgers University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Andra C",
+              "family": "Ghent",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "David Eccles School of Business, University of Utah ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jesse",
+              "family": "Gregory",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "University of Wisconsin-Madison ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                1,
+                25
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdad114",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                1,
+                25
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "5",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                9,
+                8
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdag005",
+          "page": "2912-2949",
+          "title": [
+            "Patent Term, Innovation, and the Role of Technology Disclosure Externalities"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Fabio",
+              "family": "Bertolotti",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Bank of Italy, CEPR and NBER ,",
+                  "place": [
+                    "Italy"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                19
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdag005",
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                19
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1093/restud/rdag105",
+          "title": [
+            "Machine Learning for Dynamic Incentive Problems"
+          ],
+          "author": [
+            {
+              "given": "Philipp",
+              "family": "Renner",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Lausanne, Switzerland, and Grantham Research Institute, LSE ,",
+                  "place": [
+                    "UK"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Simon",
+              "family": "Scheidegger",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, Lancaster University ,",
+                  "place": [
+                    "UK"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                9,
+                15
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                9,
+                15
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdag105"
+        },
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2024,
+                7,
+                5
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdae029",
+          "page": "2538-2541",
+          "title": [
+            "Correction to: The U.K. as a Technological Follower: Higher Education Expansion and the College Wage Premium"
+          ],
+          "volume": "91",
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                5
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdae029",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                4,
+                5
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "1",
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                13
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdae019",
+          "page": "69-96",
+          "title": [
+            "Inefficient Automation"
+          ],
+          "volume": "92",
+          "author": [
+            {
+              "given": "Martin",
+              "family": "Beraja",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "MIT ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Nathan",
+              "family": "Zorzi",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Dartmouth College ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2024,
+                2,
+                22
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdae019",
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                2,
+                22
+              ]
+            ]
+          }
+        },
+        {
+          "issue": "4",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                7
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdaf084",
+          "page": "2250-2283",
+          "title": [
+            "Algorithmic Recommendations and Human Discretion"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Victoria",
+              "family": "Angelova",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Harvard University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Will",
+              "family": "Dobbie",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Crystal S",
+              "family": "Yang",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Harvard University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                9,
+                15
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdaf084",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                9,
+                15
+              ]
+            ]
+          }
+        },
+        {
+          "DOI": "10.1093/restud/rdag052",
+          "title": [
+            "The Architecture of Social Networks and the Diffusion of Innovations"
+          ],
+          "author": [
+            {
+              "given": "Bryony",
+              "family": "Reich",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "University of Cambridge, UK and Northwestern University ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                26
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                5,
+                26
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdag052"
+        },
+        {
+          "issue": "1",
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                13
+              ]
+            ]
+          },
+          "DOI": "10.1093/restud/rdaf029",
+          "page": "286-326",
+          "title": [
+            "Barriers to Entry and Regional Economic Growth in China"
+          ],
+          "volume": "93",
+          "author": [
+            {
+              "given": "Loren",
+              "family": "Brandt",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Toronto ,",
+                  "place": [
+                    "Canada"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Gueorgui",
+              "family": "Kambourov",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Toronto ,",
+                  "place": [
+                    "Canada"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kjetil",
+              "family": "Storesletten",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Economics, University of Minnesota ,",
+                  "place": [
+                    "USA"
+                  ]
+                }
+              ],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                10
+              ]
+            ]
+          },
+          "container-title": [
+            "Review of Economic Studies"
+          ],
+          "URL": "https://doi.org/10.1093/restud/rdaf029",
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                6,
+                10
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

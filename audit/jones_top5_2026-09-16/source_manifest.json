@@ -1,0 +1,270 @@
+[
+  {
+    "citation_key": "jonesliu2024",
+    "attempts": [],
+    "pdf_pages": 40,
+    "text_characters": 118818,
+    "sha256": "a78bfbf2c03763f21abf3cbb90b1ca2e71f308d1af233533ca82cc0295f9dc36",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.kellogg.northwestern.edu/faculty/jones-ben/htm/A%20Framework%20for%20Economic%20Growth%20with%20Capital-Embodied%20Technical%20Change.pdf",
+    "resolved_url": "https://www.kellogg.northwestern.edu/faculty/jones-ben/htm/A%20Framework%20for%20Economic%20Growth%20with%20Capital-Embodied%20Technical%20Change.pdf",
+    "retrieved_at": "2026-09-16T21:39:53.419516+00:00"
+  },
+  {
+    "citation_key": "berajazorzi2025",
+    "attempts": [],
+    "pdf_pages": 62,
+    "text_characters": 153180,
+    "sha256": "6ee82e352193b7e61cd8694d8c63b68a5ee00cd98fd33ad0eda55ae411717906",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://economics.mit.edu/sites/default/files/inline-files/automation_REStud_0.pdf",
+    "resolved_url": "https://economics.mit.edu/sites/default/files/inline-files/automation_REStud_0.pdf",
+    "retrieved_at": "2026-09-16T21:39:59.623876+00:00"
+  },
+  {
+    "citation_key": "acemogluloebbing2026",
+    "attempts": [],
+    "pdf_pages": 56,
+    "text_characters": 139032,
+    "sha256": "e6813aa25813597f7595fa00487c4fbf362b24ffc3263e68e6eb81ac89726517",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://economics.mit.edu/sites/default/files/2026-03/Automation%20and%20Polarization.pdf",
+    "resolved_url": "https://economics.mit.edu/sites/default/files/2026-03/Automation%20and%20Polarization.pdf",
+    "retrieved_at": "2026-09-16T21:40:13.392128+00:00"
+  },
+  {
+    "citation_key": "acemoglurestrepo2022tasks",
+    "attempts": [],
+    "pdf_pages": 108,
+    "text_characters": 276233,
+    "sha256": "67bb94e713d057fa36e6cc3c29f77195f1089192e4f46e12813c2ce9423f0637",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.nber.org/system/files/working_papers/w28920/w28920.pdf",
+    "resolved_url": "https://www.nber.org/system/files/working_papers/w28920/w28920.pdf",
+    "retrieved_at": "2026-09-16T21:40:27.043494+00:00"
+  },
+  {
+    "citation_key": "hemousetal2025induced",
+    "attempts": [
+      {
+        "url": "https://www.journals.uchicago.edu/doi/reader/10.1086/734778",
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "pdf_pages": 95,
+    "text_characters": 226235,
+    "sha256": "33a0bdab1c571d43325c65fc166990c8fb29a83af9cb1524555ff8b84b3cd955",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.lse.ac.uk/CFM/assets/pdf/DHOZ-induced-automation.pdf",
+    "resolved_url": "https://www.lse.ac.uk/CFM/assets/pdf/DHOZ-induced-automation.pdf",
+    "retrieved_at": "2026-09-16T21:40:31.678322+00:00"
+  },
+  {
+    "citation_key": "berajayangyuchtman2023",
+    "attempts": [],
+    "pdf_pages": 89,
+    "text_characters": 184968,
+    "sha256": "d66a6cdafc6665af22a425c7876d1f1a68c669d5e4c3ce26a335d99b476e686d",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://cep.lse.ac.uk/pubs/download/dp1755.pdf",
+    "resolved_url": "https://cep.lse.ac.uk/pubs/download/dp1755.pdf",
+    "retrieved_at": "2026-09-16T21:40:32.914202+00:00"
+  },
+  {
+    "citation_key": "berajaetal2023aitocracy",
+    "attempts": [],
+    "pdf_pages": 83,
+    "text_characters": 158940,
+    "sha256": "30b78f0f73419c568fefd1a6399dae349dcdb36274f71b796776c72e27a75507",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.nber.org/system/files/working_papers/w29466/w29466.pdf",
+    "resolved_url": "https://www.nber.org/system/files/working_papers/w29466/w29466.pdf",
+    "retrieved_at": "2026-09-16T21:40:44.744932+00:00"
+  },
+  {
+    "citation_key": "deridder2024",
+    "attempts": [],
+    "pdf_pages": 53,
+    "text_characters": 174134,
+    "sha256": "47900b0d684f35fab537dfef547f9b23db62433bfea028e7b5a28f50e53e34d4",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.maartenderidder.com/uploads/6/2/2/3/6223410/de-ridder-2023-market-power-and-innovation-in-the-intangible-economy__1_.pdf",
+    "resolved_url": "https://www.maartenderidder.com/uploads/6/2/2/3/6223410/de-ridder-2023-market-power-and-innovation-in-the-intangible-economy__1_.pdf",
+    "retrieved_at": "2026-09-16T21:48:24.503046+00:00"
+  },
+  {
+    "citation_key": "feigenbaumgross2024",
+    "attempts": [],
+    "pdf_pages": 61,
+    "text_characters": 146825,
+    "sha256": "b4c77eb4c6fbf49765e9a5c08515482b15697846ec315028a804b750ed85ed50",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.dpgross.com/papers/answering-call-automation.pdf",
+    "resolved_url": "https://www.dpgross.com/papers/answering-call-automation.pdf",
+    "retrieved_at": "2026-09-16T21:40:55.661744+00:00"
+  },
+  {
+    "citation_key": "kalyanietal2025",
+    "attempts": [],
+    "pdf_pages": 102,
+    "text_characters": 224765,
+    "sha256": "574251f3c2303eebb6c1583b43a8da3291faa9a4f03ca946dc9ef0ebf4fe1319",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.nber.org/system/files/working_papers/w28999/w28999.pdf",
+    "resolved_url": "https://www.nber.org/system/files/working_papers/w28999/w28999.pdf",
+    "retrieved_at": "2026-09-16T21:41:08.885566+00:00"
+  },
+  {
+    "citation_key": "freundmann2026",
+    "attempts": [],
+    "pdf_pages": 87,
+    "text_characters": 194930,
+    "sha256": "3652cc96980a4449066cef2bffa28dcfcca9802f3ab163c753b3f082d13cdbe7",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://lukasbfreund.github.io/files/FM_AI.pdf",
+    "resolved_url": "https://lukasbfreund.github.io/files/FM_AI.pdf",
+    "retrieved_at": "2026-09-16T21:49:15.231428+00:00"
+  },
+  {
+    "citation_key": "autorthompson2025",
+    "attempts": [],
+    "pdf_pages": 73,
+    "text_characters": 173227,
+    "sha256": "9983f229c272b03252feba7c244ee1e0b0d56e6616b3a37ee802b035c4a68c1b",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://economics.mit.edu/sites/default/files/2025-06/Autor-Thompson-Expertise-22050620.pdf",
+    "resolved_url": "https://economics.mit.edu/sites/default/files/2025-06/Autor-Thompson-Expertise-22050620.pdf",
+    "retrieved_at": "2026-09-16T21:41:15.681404+00:00"
+  },
+  {
+    "citation_key": "casellimanning2019",
+    "attempts": [],
+    "pdf_pages": 21,
+    "text_characters": 42333,
+    "sha256": "83dbcb0c86ee753e443238fd55b5e65ac52c14c9f94cf1b306b82938f6a8e0f0",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://eprints.lse.ac.uk/87371/1/Manning__robot-arithmatic--author-merged.pdf",
+    "resolved_url": "https://researchonline.lse.ac.uk/id/eprint/87371/1/Manning__robot-arithmatic--author-merged.pdf",
+    "retrieved_at": "2026-09-16T21:41:26.012436+00:00"
+  },
+  {
+    "citation_key": "jones2011weaklinks",
+    "attempts": [],
+    "pdf_pages": 28,
+    "text_characters": 89926,
+    "sha256": "4ec62c80b4972ba5924ba91431d6f3f2c343d6490cb7ad8bba47991cbeeff836",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://web.stanford.edu/~chadj/JonesAEJM2011.pdf",
+    "resolved_url": "https://web.stanford.edu/~chadj/JonesAEJM2011.pdf",
+    "retrieved_at": "2026-09-16T21:41:26.427334+00:00"
+  },
+  {
+    "citation_key": "althoffreichardt2026",
+    "attempts": [],
+    "pdf_pages": 70,
+    "text_characters": 148019,
+    "sha256": "b9e2a808418f3318056372ea1148c2ea7f840d2e561bea42e21b4a0b18dcaa66",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://hugoreichardt.com/pdf/tstc_compadvantage.pdf",
+    "resolved_url": "https://hugoreichardt.com/pdf/tstc_compadvantage.pdf",
+    "retrieved_at": "2026-09-16T21:41:29.061440+00:00"
+  },
+  {
+    "citation_key": "acemoglurestrepo2026rents",
+    "attempts": [],
+    "pdf_pages": 106,
+    "text_characters": 249489,
+    "sha256": "cd0b3d5784df08b730be031437a9ba1d2abcac4ab5222adc564d5da6ada18e40",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://shapingwork.mit.edu/wp-content/uploads/2026/03/Acemoglu-Restrepo-November-2025.pdf",
+    "resolved_url": "https://shapingwork.mit.edu/wp-content/uploads/2026/03/Acemoglu-Restrepo-November-2025.pdf",
+    "retrieved_at": "2026-09-16T21:41:29.149028+00:00"
+  },
+  {
+    "citation_key": "aghionbunel2024",
+    "attempts": [],
+    "pdf_pages": 16,
+    "text_characters": 29076,
+    "sha256": "06aff67f329d06cc74c2059201dacb62d3d6086385a40a3f1ae5440b435b0030",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.frbsf.org/wp-content/uploads/AI-and-Growth-Aghion-Bunel.pdf",
+    "resolved_url": "https://www.frbsf.org/wp-content/uploads/AI-and-Growth-Aghion-Bunel.pdf",
+    "retrieved_at": "2026-09-16T21:41:31.180411+00:00"
+  },
+  {
+    "citation_key": "hoetal2024algorithms",
+    "attempts": [],
+    "pdf_pages": 31,
+    "text_characters": 110626,
+    "sha256": "548cbf81918d9d3a18b0aa57c8a507e8f425bc8338cd4f94da8a63f951ed0654",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://arxiv.org/pdf/2403.05812",
+    "resolved_url": "https://arxiv.org/pdf/2403.05812",
+    "retrieved_at": "2026-09-16T21:41:35.571070+00:00"
+  },
+  {
+    "citation_key": "costinotwerning2023",
+    "attempts": [],
+    "pdf_pages": 54,
+    "text_characters": 100985,
+    "sha256": "3b57f5021c435e178caa53fca1ec204af392d7e87176ab2e4567960091fb2519",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.nber.org/system/files/working_papers/w25103/w25103.pdf",
+    "resolved_url": "https://www.nber.org/system/files/working_papers/w25103/w25103.pdf",
+    "retrieved_at": "2026-09-16T21:49:07.522076+00:00"
+  },
+  {
+    "citation_key": "carnehlschneider2025",
+    "attempts": [],
+    "pdf_pages": 37,
+    "text_characters": 112566,
+    "sha256": "6103841c1aa6a454726c6f2980efcf2646fd244f7403ab0671911e9f4f1d0f87",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.econometricsociety.org/publications/econometrica/2025/03/01/A-Quest-for-Knowledge/file/ecta200746.pdf",
+    "resolved_url": "https://www.econometricsociety.org/publications/econometrica/2025/03/01/A-Quest-for-Knowledge/file/ecta200746.pdf",
+    "retrieved_at": "2026-09-16T21:49:07.820631+00:00"
+  },
+  {
+    "citation_key": "braxtontaska2023",
+    "attempts": [
+      {
+        "url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/aer.20210182",
+        "error": "Response is not a PDF"
+      }
+    ],
+    "status": "full_text_not_downloaded"
+  },
+  {
+    "citation_key": "guerreirorebeloteles2022",
+    "attempts": [],
+    "pdf_pages": 88,
+    "text_characters": 134278,
+    "sha256": "b28b6528c7e22f36ff783013bb01babf56bb8fb4456e8050e6462d0896db8ca1",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.nber.org/system/files/working_papers/w23806/w23806.pdf",
+    "resolved_url": "https://www.nber.org/system/files/working_papers/w23806/w23806.pdf",
+    "retrieved_at": "2026-09-16T21:50:51.862004+00:00"
+  },
+  {
+    "citation_key": "danieli2026skills",
+    "attempts": [],
+    "pdf_pages": 86,
+    "text_characters": 189100,
+    "sha256": "289c846536bfdd1ca7c944d3a2a664dd45f3e2320849bc11f3ebd32a031c2cfd",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.dropbox.com/scl/fi/i6lpe74nc4zyuq49g2mkw/full-paper.pdf?dl=1&rlkey=ug2csecbh60jgk0qbvbu5f7vw",
+    "resolved_url": "https://uc2d96af015f8ef2d4ccac7d4653.dl.dropboxusercontent.com/cd/0/get/DISNcyU3buO4egmthvZQkz-9mjqOXwTxXkxW8TS2zg31UKHXHObBs4gi_kRTmHJHBiKjvYRd6ES52QLErXA4n7iKoPTU72D1-NMMUVtzbAz6bkAb-WCLS9Bnx3z8rQ0KfB-VkLew-3AxYIeWBFrRzRbe/file?dl=1",
+    "retrieved_at": "2026-09-16T21:50:56.443242+00:00"
+  },
+  {
+    "citation_key": "autoretal2024newwork",
+    "attempts": [],
+    "pdf_pages": 134,
+    "text_characters": 288060,
+    "sha256": "572e5822f380f232245529cb31a8ad824e6da9ec8d24a5033bccdb95d809596f",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://economics.mit.edu/sites/default/files/2022-11/ACSS-NewFrontiers-20220814.pdf",
+    "resolved_url": "https://economics.mit.edu/sites/default/files/2022-11/ACSS-NewFrontiers-20220814.pdf",
+    "retrieved_at": "2026-09-16T21:51:00.288746+00:00"
+  }
+]

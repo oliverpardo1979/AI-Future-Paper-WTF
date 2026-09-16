@@ -28,3 +28,15 @@ paragraphs explicitly approved by the author.
   structure: Romer models patented varieties and multiple producers, not a
   single recursively self-improving AI developer.
 - Related Literature remains unchanged. The next paragraph has not been edited.
+
+## Introduction, paragraph 3 (approved)
+
+- Applied the minimally revised paragraph approved by the author, with
+  `davidsonetal2026` attached to the distinction between the technological and
+  economic feedback loops.
+- Checked the May 2026 author PDF, printed pp. 2--3 (mechanisms), 21 and 38
+  (fixed savings and research allocations in their application).
+- The comparison acknowledges the feedback architecture, not identical
+  optimization problems or equilibrium results. No additional prose added.
+- Review paused before paragraph 4 to inspect Jones (2026) and recent top-five
+  journal publications. New candidates go into the literature tool, not the paper.

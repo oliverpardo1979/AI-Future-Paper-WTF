@@ -57,6 +57,21 @@ separate review step.
 
 ## Updating
 
+### Jones and top-five review, 16 September 2026
+
+Search `Jones-top5-2026` in the browser for the 24 candidates added from the
+Jones (JEP 2026) reference list and the 2022-2026 top-five journal screen.
+`top5-2022-2026` narrows this batch to the 17 journal articles; the remaining
+items are other journals, older antecedents or working papers. A journal
+revise-and-resubmit is not treated as a publication.
+
+Each new record gives the relevant passage reviewed, the version used, a possible
+connection and a limit of the comparison. `priority-pending` marks Braxton and
+Taska: its official abstract and metadata were checked, but its full text was not
+accessible. The other 23 received a targeted original-text reading, not a full
+proof/replication audit. These candidates have not been added to the manuscript.
+See `../audit/jones_top5_2026-09-16/README.md` for coverage and source records.
+
 The script uses only the Python standard library. Run:
 
     python scripts/build_literature_database.py
