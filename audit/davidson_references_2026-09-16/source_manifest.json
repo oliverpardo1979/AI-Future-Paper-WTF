@@ -1,0 +1,106 @@
+[
+  {
+    "citation_key": "besirogluetal2024rd",
+    "attempts": [],
+    "pdf_pages": 19,
+    "text_characters": 106334,
+    "sha256": "40751221be4a2c090232c2e284c686ad824886bba1ccf89341637cf06bf1d9f4",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://nicholasemeryxu.com/files/EconomicImpactsofAIAugmentedRD_2023.pdf",
+    "resolved_url": "https://nicholasemeryxu.com/files/EconomicImpactsofAIAugmentedRD_2023.pdf",
+    "retrieved_at": "2026-09-16T22:19:13.572388+00:00"
+  },
+  {
+    "citation_key": "erdilbesirogluho2024",
+    "attempts": [],
+    "pdf_pages": 27,
+    "text_characters": 103430,
+    "sha256": "7dd52606cb621a2c84762951407ed1bdbe1c32537e553e8a10632a09da70d6ab",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://arxiv.org/pdf/2405.10494v1",
+    "resolved_url": "https://arxiv.org/pdf/2405.10494v1",
+    "retrieved_at": "2026-09-16T22:19:01.852160+00:00"
+  },
+  {
+    "citation_key": "ekerdtwu2024",
+    "attempts": [],
+    "pdf_pages": 62,
+    "text_characters": 120671,
+    "sha256": "e3d04ed070e60ffae76065e3d818e0738f0fa20fc75a0505385e5fa9ed11b7d9",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.aeaweb.org/conference/2025/program/paper/KbtN272y",
+    "resolved_url": "https://www.aeaweb.org/conference/2025/program/paper/KbtN272y",
+    "retrieved_at": "2026-09-16T22:19:12.904576+00:00"
+  },
+  {
+    "citation_key": "liuma2024",
+    "attempts": [
+      {
+        "url": "https://ernestliu.scholar.princeton.edu/document/221",
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "pdf_pages": 113,
+    "text_characters": 288281,
+    "sha256": "91dda10058fa7c6ad3446ee8f6ad0d33b64a061965f0da3ce9c0f1857299979c",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.nber.org/system/files/working_papers/w29607/w29607.pdf",
+    "resolved_url": "https://www.nber.org/system/files/working_papers/w29607/w29607.pdf",
+    "retrieved_at": "2026-09-16T22:22:00.979712+00:00"
+  },
+  {
+    "citation_key": "ngaisamaniego2011",
+    "attempts": [],
+    "pdf_pages": 21,
+    "text_characters": 87680,
+    "sha256": "60224123fa01efa3dac8b7fd0a518770d78af5015af57ba5ed570849caf57807",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://personal.lse.ac.uk/ngai/Ngai_SamaniegoRED.pdf",
+    "resolved_url": "https://personal.lse.ac.uk/ngai/Ngai_SamaniegoRED.pdf",
+    "retrieved_at": "2026-09-16T22:19:01.052868+00:00"
+  },
+  {
+    "citation_key": "zeira1998",
+    "attempts": [],
+    "pdf_pages": 27,
+    "text_characters": 0,
+    "sha256": "512311854a9a1d1ddffdd654e7dd1b0d61cb0aebcc276aad3f5b520f36ec2773",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://josephzeira.weebly.com/uploads/5/7/3/4/57342721/98_qje.pdf",
+    "resolved_url": "https://josephzeira.weebly.com/uploads/5/7/3/4/57342721/98_qje.pdf",
+    "retrieved_at": "2026-09-16T22:19:06.504144+00:00"
+  },
+  {
+    "citation_key": "cottieretal2024",
+    "attempts": [],
+    "pdf_pages": 20,
+    "text_characters": 68698,
+    "sha256": "180c61d89d4a93faa35e693ca13b9bb0255d5b2e9d2c9b279861f8f6668a662e",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://arxiv.org/pdf/2405.21015v2",
+    "resolved_url": "https://arxiv.org/pdf/2405.21015v2",
+    "retrieved_at": "2026-09-16T22:19:17.999812+00:00"
+  },
+  {
+    "citation_key": "mirhoseinietal2021",
+    "attempts": [],
+    "pdf_pages": 23,
+    "text_characters": 89648,
+    "sha256": "b54724eb95f0e0f9a4e8be2abaf3b51d257060ccb5ba093e7a768ca9317f0262",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://www.cl.cam.ac.uk/~ey204/teaching/ACS/R244_2023_2024/papers/Mirhoseini_NATURE_2021.pdf",
+    "resolved_url": "https://www.cl.cam.ac.uk/~ey204/teaching/ACS/R244_2023_2024/papers/Mirhoseini_NATURE_2021.pdf",
+    "retrieved_at": "2026-09-16T22:19:20.538506+00:00"
+  },
+  {
+    "citation_key": "jones2026explosivenote",
+    "attempts": [],
+    "pdf_pages": 8,
+    "text_characters": 10790,
+    "sha256": "fc23f49b5ae9e73ab7ebeddd274204bda8d8abad1267792103eed0ba25da194f",
+    "status": "downloaded_not_yet_audited",
+    "fulltext_url": "https://web.stanford.edu/~chadj/explosivegrowthChatGPT5.2.pdf",
+    "resolved_url": "https://web.stanford.edu/~chadj/explosivegrowthChatGPT5.2.pdf",
+    "retrieved_at": "2026-09-16T22:19:15.804744+00:00"
+  }
+]
