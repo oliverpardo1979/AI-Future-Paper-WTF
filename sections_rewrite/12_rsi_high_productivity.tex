@@ -42,7 +42,7 @@ by effective-labor growth. Output, AI services and capital eventually grow $2.1$
 
 I next examine wages and prices in Figure~\ref{fig:rewrite-rsi-half-prices}. The figure shows the evolution of wage growth $g_w$, the net interest rate $r$ and the level of $p_X$ on a logarithmic scale. The top panels present the short-run dynamics and the bottom panels present the long-run dynamics. Remarkably, wage growth increases in all four economies, but it is not ordered monotonically by substitutability: the immediate increase is larger at $\sigma=1$ than at $\sigma=1.50$. However, it does not take long for wage growth in the highest elasticity case to rapidly surpass all other cases. Whereas in the labor-bottleneck cases wages keep growing but immediately decelerate, wages in the AI dominated scenario keep accelerating for considerable time. Meanwhile, the interest rate starts at $5.0\%$ in every case and then rises as output initially outpaces capital. This higher return is also necessary to moderate consumption growth and give room to investment in capital. Meanwhile, $p_X$ falls continuously as AI efficiency improves. %The pricing condition \eqref{eq:rewrite-eq-monopoly} links the price to the compute cost per service, $1/B$, and the markup. At unit elasticity the markup is constant, so the price falls in inverse proportion to $B$; its decline over the first 27 months is $39.6\%$, an outcome rather than a calibration target.
 
-The bottom row of Figure~\ref{fig:rewrite-rsi-half-prices} shows the long-run dynamics for the wage growth, the interest rate, and the AI productions services price. The three labor-bottleneck economies return toward wage growth of $1.0\%$ and an interest rate of $5.0\%$, as stated in equations~\eqref{eq:rewrite-complements-terminal}--\eqref{eq:rewrite-substitutes-labor-terminal}. At $\sigma=1.50$, both rates rise above their long-run values before declining. Equation~\eqref{eq:rewrite-substitutes-wage-growth} gives limiting wage growth of $2.4\%$, below output-per-person growth of $3.1\%$, while the limiting interest rate is $\mathcal R(\overline B)=7.1\%$. %At year 500, the corresponding wage growth and interest rate are still $2.5\%$ and $7.2\%$. The price approaches a positive level in every case, rather than falling forever at a constant proportional rate. In the AI-dominated limit, $s_X\to1$ and $e_X\to\alpha$, so the pricing condition gives $p_X\to1/[(1-\alpha)\overline B]\simeq0.00110$.
+The bottom row of Figure~\ref{fig:rewrite-rsi-half-prices} shows the long-run dynamics for the wage growth, the interest rate, and the price of AI productions services. The three labor-bottleneck economies return toward wage growth of $1.0\%$ and an interest rate of $5.0\%$. At $\sigma=1.50$, both rates rise above their long-run values before declining. Equation~\eqref{eq:rewrite-substitutes-wage-growth} gives limiting wage growth of $2.4\%$, below output-per-person growth of $3.1\%$ but above the rate of labor-augmenting efficiency of $1.0\%$. Meanwhile the interest rate tend to $\mathcal R(\overline B)=7.1\%$, above its pre-RSI level. %At year 500, the corresponding wage growth and interest rate are still $2.5\%$ and $7.2\%$. The price approaches a positive level in every case, rather than falling forever at a constant proportional rate. In the AI-dominated limit, $s_X\to1$ and $e_X\to\alpha$, so the pricing condition gives $p_X\to1/[(1-\alpha)\overline B]\simeq0.00110$.
 
 \begin{figure}[H]
  \centering
@@ -54,42 +54,9 @@ The bottom row of Figure~\ref{fig:rewrite-rsi-half-prices} shows the long-run dy
  \label{fig:rewrite-rsi-half-prices}
 \end{figure}
 
-Finally, I use Figure~\ref{fig:rewrite-rsi-half-distribution} to show
-labor income $wL/Y$, developer net profit $\Pi/Y$, inference expenditure
-$U/Y$, and research expenditure $M/Y$ in panels A--D. All values are
-percentages of output. Here each time window occupies two rows: the
-upper pair shows the initial transition and the lower pair shows years
-10--500. Line styles again identify the four elasticities. The omitted
-gross capital income share remains $\alpha=33.0\%$, as follows from
-equation~\eqref{eq:rewrite-capital-return}.
+Finally, I use Figure~\ref{fig:rewrite-rsi-half-distribution} to show labor income $wL/Y$, developer net profit $\Pi/Y$, inference expenditure $U/Y$, and research expenditure $M/Y$, all as a share of output. The top four panels show the short run and the bottom four panels show the long run. Line styles again identify the four elasticities. The omitted
+gross capital income share remains $\alpha=33.0\%$.
 
-In the upper panels, research spending jumps while labor income and
-inference expenditure remain continuous at activation. Developer net
-profit therefore falls by the new research expenditure, since
-$\Pi=p_XX-U-M$ in equation~\eqref{eq:rewrite-eq-profit}. The largest
-reallocation occurs at $\sigma=1.50$: $M/Y$ starts at $3.1\%$ and
-$\Pi/Y$ falls from $3.3\%$ to $0.2\%$. Net profit remains positive
-in this exercise. As the initial research share declines and AI sales
-expand, profit recovers. Labor's share changes more gradually: over the
-first decade it rises slightly under complementarity, stays at
-$60.3\%$ at unit elasticity, and falls in the two substitution cases.
-The direction follows from equations~\eqref{eq:rewrite-sx} and
-\eqref{eq:rewrite-wage} as AI services expand relative to effective labor.
-
-Over the longer horizon, only the $\sigma=1.50$ path loses its labor
-bottleneck. Labor's share reaches half its initial value after about
-47 years and is $0.2\%$ at year 500; the other cases retain positive
-shares. Remark~\ref{rem:rewrite-ai-revenue-share} links this decline to
-the output--wage growth gap in the preceding figures and implies that
-AI revenue approaches $1-\alpha=67.0\%$ of output. That revenue is not
-all profit. Combining the monopoly condition with
-equation~\eqref{eq:rewrite-ai-output-limit} gives
-$U/Y\to(1-\alpha)^2=44.9\%$; as the remaining scope for efficiency
-improvement vanishes, $M/Y\to0$ and net profit approaches
-$\alpha(1-\alpha)=22.1\%$. The persistent growth of AI services in
-Figure~\ref{fig:rewrite-rsi-half-accumulation} is therefore ultimately
-supported by expanding inference compute, not by a permanently high
-research share.
 
 \begin{figure}[H]
  \centering
@@ -102,3 +69,5 @@ research share.
  initial trajectories and omit the long-run reference lines.}
  \label{fig:rewrite-rsi-half-distribution}
 \end{figure}
+
+In the short run, research spending as a share of output jumps in all elasticities scenarios. Inference compute as a share of output remains relatively constant in the labor-bottleneck cases but increases continuously in the AI-dominated scenario. Meanwhile, labor's share barely moves in all but the AI dominated scenario. Despite wages increasing faster than the labor-augmenting technology, their share on income decreases in the AI dominated scenario until it becomes negligible.  As labor's share decreases, the AI revenue increases. Most of this revenue is used to pay for inference compute. The developer's net profit is significant in all scenarios, but has to fall significantly in the short run in the AI-scenario to finance the significant increase on research expenditure. As the initial research share declines and AI sales expand, profit recovers. 
