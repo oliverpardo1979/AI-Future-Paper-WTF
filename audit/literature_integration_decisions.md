@@ -40,3 +40,18 @@ paragraphs explicitly approved by the author.
   optimization problems or equilibrium results. No additional prose added.
 - Review paused before paragraph 4 to inspect Jones (2026) and recent top-five
   journal publications. New candidates go into the literature tool, not the paper.
+
+### Jones and Tonetti addition (approved, 2026-09-16)
+
+- Added one sentence to paragraph 3 linking automation, research resources and
+  further innovation to `jonestonetti2026`; retained the Davidson attribution
+  for the technological/economic-loop distinction and all other wording.
+- Checked the May 2026 version 0.5 original, Section 5.3, Table 9 (printed
+  p. 36), and the summary on p. 45:
+  https://christophertonetti.com/files/papers/JonesTonetti_Automation.pdf.
+- Their research input uses final goods and research expenditure is a fixed
+  fraction of output; ideas raise task productivity and support automation.
+  This is a related feedback, not an identical RSI technology or the same
+  optimal research-allocation problem. Their task elasticity is not equated
+  with this paper's aggregate AI-labor elasticity.
+- Related Literature and all other manuscript paragraphs remain unchanged.
