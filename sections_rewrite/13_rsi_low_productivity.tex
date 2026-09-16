@@ -8,20 +8,44 @@ pre-RSI capital stocks in Table~\ref{tab:rewrite-rsi-parameters}.
 Consumption and research are solved again for each economy; the new
 trajectories are not time-rescaled versions of the preceding exercise.
 
-\input{sections_rewrite/rsi_chi_1_5_results}
+% The generated numerical digest in rsi_chi_1_5_results.tex is retained,
+% but not input here: editorial prose is organized around the three figures.
+% Source: numerical_rewrite/rsi_chi_1_5/{summary,figure_manifest}.json.
+I begin with Figure~\ref{fig:rewrite-rsi-research-accumulation}. Panels A,
+B, and C again report growth of $Y/(AL)$, $X/(AL)$, and $K/(AL)$,
+in percent per year. The upper row shows years $-2$ to 10 and the lower
+row years 10--500. Green dashed, black solid, orange dotted, and blue
+dash-dotted lines retain their meanings: $\sigma=0.90,1,1.10,1.50$.
+Black dotted horizontal lines show the unchanged $\sigma=1.50$ limits.
+Vertical scales differ from the higher-productivity figures, so the
+size of each response must be read from the axes.
 
-Lower research productivity keeps initial growth moderate and closer
-across the four economies. The AI-dominated case accelerates later and
-remains in transition at year 500; the endpoint of the figure is not its
-long-run limit. A smaller initial growth response therefore need not
-imply that labor will remain a production bottleneck.
+In the upper row, initial output growth is moderate and closer across
+the four economies. Growth of $Y/(AL)$ ranges from $0.09\%$ at
+$\sigma=0.90$ to $0.47\%$ at $\sigma=1.50$, equivalent to
+output-per-person growth of $1.09\%$--$1.47\%$.
+AI services still expand faster than output, but their initial normalized
+growth rate at $\sigma=1.50$ is $11.60\%$, rather than $80.85\%$.
+Lower research productivity slows efficiency improvements through
+equation~\eqref{eq:rewrite-capability-law}; the developer also chooses
+a different research path under equation~\eqref{eq:rewrite-research-foc}.
+Consumption still rises at activation and research absorbs resources,
+so $K/(AL)$ initially falls, but less than in the preceding exercise.
+Capital subsequently accumulates faster than effective labor, allowing
+normalized output growth to rise during the first decade even though
+AI-service growth is already slowing.
 
-The difference in research productivity changes the transition, not
-the long-run regime. At $\sigma=0.90,1,1.10$, output per person and
-real wages eventually grow at $\gamma=1\%$ and the interest rate tends
-to $\rho+\gamma=5\%$. At $\sigma=1.50$, the limiting growth rates
-and interest rate are the same as in the higher-productivity case.
-These are conditional model outcomes, not forecasts of takeoff dates.
+In the lower row, the $\sigma=1.50$ path separates much later from the
+labor-bottleneck cases. Output and capital growth rise for several
+centuries, while AI-service growth first declines and then rises again
+as capital and inference use expand. By year 500, $Y/(AL)$ grows at
+$3.21\%$, still well above its $2.13\%$ analytical limit. It is then
+growing faster than in the higher-productivity exercise because it is
+at a different stage of adjustment, not because lower $\chi$ raises
+long-run growth. Proposition~\ref{prop:rewrite-equilibrium-regimes}
+still gives zero limiting normalized growth at $\sigma=0.90,1,1.10$
+and positive growth at $\sigma=1.50$. The common efficiency bound and
+production parameters, not the speed of research, determine those limits.
 
 \begin{figure}[H]
  \centering
@@ -34,6 +58,35 @@ These are conditional model outcomes, not forecasts of takeoff dates.
  \label{fig:rewrite-rsi-research-accumulation}
 \end{figure}
 
+Figure~\ref{fig:rewrite-rsi-research-prices} shows the corresponding
+real-wage growth, net interest rate, and AI-service price in panels A--C.
+The first two are annual percentage rates; $p_X$ is a level in final-good
+units on a logarithmic scale. The upper and lower rows use the same
+initial and extended horizons, with the same scenario lines.
+
+Initially, wage growth remains close across scenarios and interest rates
+rise only gradually from $5\%$. At $\sigma=1.50$, the interest rate
+reaches $5.50\%$ after ten years, compared with $7.78\%$ under higher
+research productivity. The smaller increase in $Y/K$ explains the
+smaller return response through equation~\eqref{eq:rewrite-capital-return}.
+Price declines are also slower: at $\sigma=1$, $p_X$ falls by $9.4\%$
+over 27 months, rather than $39.6\%$. With the same constant markup
+at unit elasticity, this comparison directly reflects slower efficiency
+improvement. These price changes are outcomes, not fitted moments.
+
+In the lower row, wages and returns in the labor-bottleneck cases
+gradually approach the $1\%$ and $5\%$ limits from Section~\ref{sec:rewrite-regimes}.
+The AI-dominated case instead displays a delayed rise and subsequent
+decline in both rates. At year 500, wage growth is $3.15\%$ and the
+interest rate is $8.16\%$, still above the unchanged limits of $2.42\%$
+and $7.13\%$. Output per person is then growing at $4.21\%$, faster
+than wages. Equations~\eqref{eq:rewrite-substitutes-ai-limits} and
+\eqref{eq:rewrite-substitutes-wage-growth} imply that this growth gap
+persists in the limit, even after both rates fall further.
+The AI-service price is already close to its positive limit at year 500,
+but that proximity does not imply that capital accumulation, wages,
+or the interest rate have completed their adjustment.
+
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_chi_1_5_growth_returns_windows.pdf}
@@ -43,6 +96,45 @@ These are conditional model outcomes, not forecasts of takeoff dates.
  The vertical line marks RSI activation.}
  \label{fig:rewrite-rsi-research-prices}
 \end{figure}
+
+I complete the comparison with
+Figure~\ref{fig:rewrite-rsi-research-distribution}. Panels A--D report
+$wL/Y$, $\Pi/Y$, $U/Y$, and $M/Y$, all as percentages of output.
+The upper two rows cover the initial transition and the lower two
+cover years 10--500. The four line styles identify the same elasticities,
+and the omitted gross capital share is again $33\%$.
+
+In the upper panels, the initial research allocation and reduction in
+net profit are smaller. At $\sigma=1.50$, research expenditure starts
+at $0.59\%$ of output, leaving net profit at $2.70\%$, rather than
+$0.24\%$ under higher research productivity. This is the same accounting
+reallocation in equation~\eqref{eq:rewrite-eq-profit}, but on a smaller
+scale. At unit elasticity, first-year research expenditure is $0.066\%$
+of output, compared with $0.182\%$ in the preceding exercise; these
+shares divide total research expenditure by total output over the first
+year, rather than measuring $M_0/Y_0$.
+Labor's share at $\sigma=1.50$ falls from $61.85\%$ to $60.13\%$
+over ten years, compared with $53.00\%$ at year ten under higher
+research productivity. Thus the first decade gives little indication
+of how different the eventual income distribution will be.
+
+The lower panels reveal that difference. Labor's share reaches half its
+initial value after about 213 years, rather than 47, and is still
+$2.33\%$ at year 500. Research's share initially declines, then rises
+as the economy expands, and eventually falls as efficiency approaches
+its bound. This nonmonotonic path reflects both the changing value of
+efficiency improvements and the diminishing room for further gains in
+equations~\eqref{eq:rewrite-research-foc} and
+\eqref{eq:rewrite-capability-return}; lower $\chi$ does not merely
+stretch the earlier path along the time axis.
+The long-run accounting remains unchanged: in the AI-dominated case,
+labor's share tends to zero, inference expenditure to $44.89\%$ of
+output, net profit to $22.11\%$, and research expenditure relative to
+output to zero. The other three economies retain a positive labor
+share, as in Proposition~\ref{prop:rewrite-equilibrium-regimes}.
+Lower research productivity therefore postpones the growth and
+distributional transition without changing the eventual regime.
+These are conditional model outcomes, not forecasts of takeoff dates.
 
 \begin{figure}[H]
  \centering

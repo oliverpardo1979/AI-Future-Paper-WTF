@@ -1,20 +1,61 @@
 \subsection{Higher research productivity}
 \label{subsec:rewrite-rsi-half-decline}
 
-I now present the transitional dynamics for the four elasticities of substitution with a relative high parameter of research productivity ($\chi=7.5$). This parameter is only relevant for the short-behavior, as the long-run growth rates and do not depend on this parameter. All four economies inherit the pre-RSI balanced growth paths described in Section~\ref{subsec:rewrite-rsi-activation} Table~\ref{tab:rewrite-rsi-parameters} reports their common parameters and elasticity-specific initial capital stocks. The objective is to show how the four scenarios differ from one another along the transition. The long-run behavior has already been characterized in Section \ref{sec:rewrite-regimes}. 
+I now present the transitional dynamics for the four elasticities with
+relatively high research productivity, $\chi=7.5$. Research productivity
+affects the transition, but not the limiting growth rates characterized in
+Section~\ref{sec:rewrite-regimes}. All four economies inherit the pre-RSI
+balanced growth paths described in Section~\ref{subsec:rewrite-rsi-activation};
+Table~\ref{tab:rewrite-rsi-parameters} reports their common parameters and
+elasticity-specific initial capital stocks. I examine quantities first,
+then wages and prices, and finally income shares.
 
+% The generated numerical digest in rsi_chi_7_5_results.tex is retained,
+% but not input here: editorial prose is organized around the three figures.
+% Source: numerical_rewrite/rsi_chi_7_5/{summary,figure_manifest}.json.
+I use Figure~\ref{fig:rewrite-rsi-half-accumulation} to compare the growth
+of $Y/(AL)$, $X/(AL)$, and $K/(AL)$ in panels A, B, and C, respectively.
+The plotted rates subtract effective-labor growth, $n+\gamma$, and are
+expressed in percent per year. Thus zero means growth at the rate of
+effective labor, not constant output or capital. The upper row shows two
+pre-event years and the first ten years after activation; the lower row
+follows the same paths from year 10 to year 500. Throughout the three
+figures, green dashed, black solid, orange dotted, and blue dash-dotted
+lines denote $\sigma=0.90,1,1.10,1.50$, respectively. The vertical line
+marks activation, and black dotted horizontal lines mark the analytical
+limits for $\sigma=1.50$. Vertical scales differ across time windows.
 
-\input{sections_rewrite/rsi_chi_7_5_results}
+In the upper row, AI services respond much more strongly than output.
+At $\sigma=1.50$, $X/(AL)$ initially grows at $80.85\%$ per year,
+whereas $Y/(AL)$ grows at $3.47\%$. These are instantaneous growth rates,
+not jumps in levels. Research begins to raise $B$, allowing more services
+to be obtained from compute through $X=BU$ in
+equation~\eqref{eq:rewrite-ai-service}. Final production cannot expand
+at the same rate because it also requires capital and labor.
+Initial growth of $Y/(AL)$ is smaller at the other elasticities, reaching
+only $0.61\%$ at $\sigma=0.90$.
+Panel C shows a different initial response: $K/(AL)$ falls in every
+case. Households increase consumption at activation while the developer
+starts spending on research. With current output and inference use
+unchanged at that instant, the resource constraint
+\eqref{eq:rewrite-resource} requires lower investment. Capital accumulation
+subsequently recovers as output expands.
 
-Higher research productivity produces a sizable initial increase in growth in all four economies. This increase eventually vanishes in the three
-labor-bottleneck cases. In the AI-dominated case, growth instead rises further before declining toward its higher long-run rate. The simulation thus distinguishes an initial response to RSI from the subsequent divergence between growth regimes.
-
-Figures~\ref{fig:rewrite-rsi-half-accumulation}--\ref{fig:rewrite-rsi-half-distribution}
-show the first ten years and years 10--500 separately. Dotted horizontal
-lines mark the analytical limits for $\sigma=1.50$.
-Section~\ref{subsec:rewrite-rsi-research-share} uses the same presentation
-with lower research productivity. Vertical scales may differ between
-the two exercises to keep their transitions legible.
+The lower row separates the temporary growth response from the long-run
+regime. At $\sigma=0.90,1,1.10$, all three normalized growth rates decline
+toward zero. This is the labor-bottleneck outcome in
+Proposition~\ref{prop:rewrite-equilibrium-regimes}: output per person
+eventually grows at $\gamma=1\%$. At $\sigma=1.50$, output and capital
+growth instead rise further before declining toward a positive limit.
+As explained in Section~\ref{subsec:rewrite-equilibrium-existence},
+sufficient substitution and a sufficiently high efficiency bound allow
+capital and inference compute to expand together without being limited
+by effective-labor growth. The positive limiting ratios $Y/K$ and $X/Y$
+in equations~\eqref{eq:rewrite-output-capital-limit} and
+\eqref{eq:rewrite-ai-output-limit} imply a common limiting growth rate
+of $2.13\%$ for the three normalized quantities, or $3.13\%$ for output
+per person. At year 500, $Y/(AL)$ still grows at $2.24\%$: the path is
+close to, but has not reached, its analytical limit.
 
 \begin{figure}[H]
  \centering
@@ -27,6 +68,43 @@ the two exercises to keep their transitions legible.
  \label{fig:rewrite-rsi-half-accumulation}
 \end{figure}
 
+I next examine wages and prices in
+Figure~\ref{fig:rewrite-rsi-half-prices}. Panels A and B show real-wage
+growth $g_w$ and the net interest rate $r$, in percent per year;
+panel C shows the level of $p_X$, in final-good units on a logarithmic
+scale. Unlike the quantity-growth panels, wage growth is not net of
+$\gamma$. The upper and lower rows retain the initial and extended
+time windows and the same four line styles.
+
+Initially, wage growth rises in all four economies, but it is not ordered
+monotonically by substitutability: the immediate increase is larger at
+$\sigma=1$ than at $\sigma=1.50$. Equation~\eqref{eq:rewrite-wage}
+explains why higher output per worker need not translate into equally
+high wage growth: the labor share also changes. The interest rate starts
+at $5\%$ in every case and then rises as output initially outpaces capital,
+raising $Y/K$ in equation~\eqref{eq:rewrite-capital-return}.
+This higher return also raises consumption growth through
+equation~\eqref{eq:rewrite-euler}. Meanwhile, $p_X$ falls continuously
+as AI efficiency improves. The pricing condition
+\eqref{eq:rewrite-eq-monopoly} links the price to the compute cost per
+service, $1/B$, and the markup. At unit elasticity the markup is constant,
+so the price falls in inverse proportion to $B$; its decline over the
+first 27 months is $39.6\%$, an outcome rather than a calibration target.
+
+In the lower row, the three labor-bottleneck economies return toward wage
+growth of $1\%$ and an interest rate of $5\%$, as stated in
+equations~\eqref{eq:rewrite-complements-terminal}--\eqref{eq:rewrite-substitutes-labor-terminal}.
+At $\sigma=1.50$, both rates rise above their long-run values before
+declining. Equation~\eqref{eq:rewrite-substitutes-wage-growth} gives
+limiting wage growth of $2.42\%$, below output-per-person growth of
+$3.13\%$, while the limiting interest rate is
+$\mathcal R(\overline B)=7.13\%$. At year 500, the corresponding wage
+growth and interest rate are still $2.50\%$ and $7.24\%$.
+The price approaches a positive level in every case, rather than falling
+forever at a constant proportional rate. In the AI-dominated limit,
+$s_X\to1$ and $e_X\to\alpha$, so the pricing condition gives
+$p_X\to1/[(1-\alpha)\overline B]\simeq0.00110$.
+
 \begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{figures_rewrite/equilibrium_rsi_chi_7_5_growth_returns_windows.pdf}
@@ -36,6 +114,43 @@ the two exercises to keep their transitions legible.
  The vertical line marks RSI activation.}
  \label{fig:rewrite-rsi-half-prices}
 \end{figure}
+
+Finally, I use Figure~\ref{fig:rewrite-rsi-half-distribution} to show
+labor income $wL/Y$, developer net profit $\Pi/Y$, inference expenditure
+$U/Y$, and research expenditure $M/Y$ in panels A--D. All values are
+percentages of output. Here each time window occupies two rows: the
+upper pair shows the initial transition and the lower pair shows years
+10--500. Line styles again identify the four elasticities. The omitted
+gross capital income share remains $\alpha=33\%$, as follows from
+equation~\eqref{eq:rewrite-capital-return}.
+
+In the upper panels, research spending jumps while labor income and
+inference expenditure remain continuous at activation. Developer net
+profit therefore falls by the new research expenditure, since
+$\Pi=p_XX-U-M$ in equation~\eqref{eq:rewrite-eq-profit}. The largest
+reallocation occurs at $\sigma=1.50$: $M/Y$ starts at $3.05\%$ and
+$\Pi/Y$ falls from $3.30\%$ to $0.24\%$. Net profit remains positive
+in this exercise. As the initial research share declines and AI sales
+expand, profit recovers. Labor's share changes more gradually: over the
+first decade it rises slightly under complementarity, stays at
+$60.3\%$ at unit elasticity, and falls in the two substitution cases.
+The direction follows from equations~\eqref{eq:rewrite-sx} and
+\eqref{eq:rewrite-wage} as AI services expand relative to effective labor.
+
+Over the longer horizon, only the $\sigma=1.50$ path loses its labor
+bottleneck. Labor's share reaches half its initial value after about
+47 years and is $0.19\%$ at year 500; the other cases retain positive
+shares. Remark~\ref{rem:rewrite-ai-revenue-share} links this decline to
+the output--wage growth gap in the preceding figures and implies that
+AI revenue approaches $1-\alpha=67\%$ of output. That revenue is not
+all profit. Combining the monopoly condition with
+equation~\eqref{eq:rewrite-ai-output-limit} gives
+$U/Y\to(1-\alpha)^2=44.89\%$; as the remaining scope for efficiency
+improvement vanishes, $M/Y\to0$ and net profit approaches
+$\alpha(1-\alpha)=22.11\%$. The persistent growth of AI services in
+Figure~\ref{fig:rewrite-rsi-half-accumulation} is therefore ultimately
+supported by expanding inference compute, not by a permanently high
+research share.
 
 \begin{figure}[H]
  \centering
