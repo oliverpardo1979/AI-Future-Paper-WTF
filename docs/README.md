@@ -8,6 +8,12 @@ https://oliverpardo1979.github.io/AI-Future-Paper-WTF/paper/the-future-of-growth
 
 The same GitHub Pages deployment also serves the equilibrium simulator.
 
+The literature browser is published at
+https://oliverpardo1979.github.io/AI-Future-Paper-WTF/literature/.
+It is rebuilt and validated from the complete bibliography and recorded
+conversation additions on relevant pushes. See `literature/README.md` for the
+source files and coverage conventions.
+
 The companion working paper is compiled independently from `main_companion.tex`
 and published at a separate permanent path:
 

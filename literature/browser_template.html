@@ -75,8 +75,9 @@ summary{cursor:pointer;color:var(--muted);font-weight:700}
 <body>
 <header>
   <h1>Revisión de literatura del proyecto</h1>
-  <p>La herramienta reúne la bibliografía de los dos papers y las referencias adicionales discutidas durante la revisión.</p>
-  <p>Separa el abstract o resumen de la fuente de la lectura editorial: método, resultado, uso en el paper A×M y límites de la comparación.</p>
+  <p>Bibliografía del paper actual, el companion paper, las versiones anteriores y las referencias adicionales registradas durante la revisión.</p>
+  <p>Separa el abstract o resumen de la fuente de la lectura editorial: método, resultado, relación con el proyecto y límites de la comparación.</p>
+  <p>Los filtros identifican citas en los archivos fuente, incluidos pasajes archivados o desactivados; no solo las referencias visibles en el PDF.</p>
   <p class="build" id="build"></p>
 </header>
 <section class="controls">
@@ -84,7 +85,9 @@ summary{cursor:pointer;color:var(--muted);font-weight:700}
   <label>Corpus
     <select id="paper">
       <option value="">Todos</option>
-      <option value="axm">Paper A×M</option>
+      <option value="rewrite">Paper actual · main_rewrite</option>
+      <option value="companion">Companion paper</option>
+      <option value="axm">Versión A×M anterior</option>
       <option value="legacy">Paper anterior</option>
       <option value="addition">Referencias adicionales</option>
     </select>
@@ -128,8 +131,8 @@ function reviewBlock(x){
   const rows=[
     ["Método",x.method,""],
     ["Resultado principal",x.key_results,""],
-    ["Uso en el paper A×M",x.use_in_axm,""],
-    ["Límite para A×M",x.limits_for_axm,"limit"]
+    ["Relación con el proyecto",x.use_in_axm,""],
+    ["Límite de la comparación",x.limits_for_axm,"limit"]
   ].filter(row=>row[1]);
   if(!rows.length)return "";
   return "<div class=\"review\">"+rows.map(row=>
@@ -141,6 +144,8 @@ function traceBlock(x){
   const rows=[
     ["Clave",x.citation_key],
     ["Tipo de evidencia",x.evidence_type],
+    ["Citas en las fuentes del paper actual",x.citation_locations_rewrite],
+    ["Citas en el companion paper",x.citation_locations_companion],
     ["Citas en A×M",x.citation_locations_axm],
     ["Citas en el paper anterior",x.citation_locations_legacy],
     ["Tipo de resumen",x.abstract_type],
@@ -162,6 +167,8 @@ function render(){
   const rows=records.filter(x=>{
     const hay=Object.values(x).join(" ").toLowerCase();
     const corpus=!paper||
+      (paper==="rewrite"&&x.cited_in_rewrite==="yes")||
+      (paper==="companion"&&x.cited_in_companion==="yes")||
       (paper==="axm"&&x.cited_in_axm==="yes")||
       (paper==="legacy"&&x.cited_in_legacy==="yes")||
       (paper==="addition"&&x.source_group==="conversation_addition");
@@ -172,15 +179,17 @@ function render(){
       (atype==="unavailable"&&x.abstract_type==="unavailable");
     return(!q||hay.includes(q))&&corpus&&topicMatch&&(!etype||x.evidence_type===etype)&&abstractMatch;
   });
-  const axmShown=rows.filter(x=>x.cited_in_axm==="yes").length;
+  const currentShown=rows.filter(x=>x.cited_in_rewrite==="yes").length;
   document.querySelector("#summary").textContent=
-    rows.length+" de "+records.length+" referencias · "+axmShown+" citadas en A×M";
+    rows.length+" de "+records.length+" referencias · "+currentShown+" en las fuentes del paper actual";
   document.querySelector("#results").innerHTML=rows.length?rows.map(x=>{
     const topics=splitTopics(x).map(v=>"<span class=\"tag topic\">"+esc(v)+"</span>").join("");
     const abstractLabel=isEditorial(x)?"Síntesis editorial":"Abstract o resumen de la fuente";
-    let html="<article class=\""+(x.cited_in_axm==="yes"?"axm":"")+"\"><div class=\"tags\">";
+    let html="<article class=\""+(x.cited_in_rewrite==="yes"?"axm":"")+"\"><div class=\"tags\">";
     html+="<span class=\"tag\">"+esc(x.year)+"</span>";
-    if(x.cited_in_axm==="yes")html+="<span class=\"tag core\">Citado en A×M</span>";
+    if(x.cited_in_rewrite==="yes")html+="<span class=\"tag core\">Paper actual</span>";
+    if(x.cited_in_companion==="yes")html+="<span class=\"tag\">Companion paper</span>";
+    if(x.cited_in_axm==="yes")html+="<span class=\"tag legacy\">Versión A×M</span>";
     if(x.cited_in_legacy==="yes")html+="<span class=\"tag legacy\">Paper anterior</span>";
     html+="<span class=\"tag\">"+esc(sourceLabels[x.source_group]||x.source_group)+"</span></div>";
     html+="<h2>"+esc(x.title)+"</h2><div class=\"meta\">"+esc(x.authors)+" · "+esc(x.venue)+"</div>";

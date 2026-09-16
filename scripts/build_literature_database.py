@@ -9,6 +9,7 @@ import hashlib
 import html
 import json
 import re
+import shutil
 import time
 import urllib.error
 import urllib.parse
@@ -22,9 +23,12 @@ BIB_PATH = ROOT / "references.bib"
 MANUAL_PATH = ROOT / "literature" / "manual_entries.json"
 OUT_DIR = ROOT / "literature"
 CACHE_PATH = OUT_DIR / "metadata_cache.json"
+PUBLIC_DIR = ROOT / "docs" / "literature"
 
 FIELDS = [
     "citation_key", "source_group", "cited_in_manuscript", "citation_locations",
+    "cited_in_rewrite", "citation_locations_rewrite",
+    "cited_in_companion", "citation_locations_companion",
     "cited_in_axm", "citation_locations_axm", "cited_in_legacy",
     "citation_locations_legacy",
     "entry_type", "authors", "title", "year", "venue", "volume", "number",
@@ -291,6 +295,14 @@ def enrich_entry(entry: dict[str, str], cache: dict, refresh: bool) -> dict[str,
 def finalize_entry(entry: dict[str, str], locations: dict[str, list[str]]) -> dict[str, str]:
     key = entry["citation_key"]
     refs = locations.get(key, [])
+    for corpus in ("rewrite", "companion"):
+        corpus_refs = [
+            ref for ref in refs
+            if ref.startswith(f"main_{corpus}.tex:")
+            or ref.startswith(f"sections_{corpus}/")
+        ]
+        entry[f"cited_in_{corpus}"] = "yes" if corpus_refs else "no"
+        entry[f"citation_locations_{corpus}"] = "; ".join(corpus_refs)
     axm_refs = [
         ref for ref in refs
         if ref.startswith("main_axm.tex:") or ref.startswith("sections_axm/")
@@ -458,6 +470,8 @@ def validation_report(
             entry["source_group"] == "conversation_addition" for entry in entries
         ),
         "cited_in_axm_count": sum(entry["cited_in_axm"] == "yes" for entry in entries),
+        "cited_in_rewrite_count": sum(entry["cited_in_rewrite"] == "yes" for entry in entries),
+        "cited_in_companion_count": sum(entry["cited_in_companion"] == "yes" for entry in entries),
         "cited_in_legacy_count": sum(
             entry["cited_in_legacy"] == "yes" for entry in entries
         ),
@@ -502,11 +516,27 @@ def validation_report(
     }
 
 
+def publish_outputs(destination: Path = PUBLIC_DIR) -> None:
+    """Publish exactly the validated local inventory, without a second data source."""
+    destination.mkdir(parents=True, exist_ok=True)
+    for source, target in (
+        ("literature_browser.html", "index.html"),
+        ("literature_database.json", "literature_database.json"),
+        ("literature_database.csv", "literature_database.csv"),
+        ("validation_report.json", "validation_report.json"),
+    ):
+        shutil.copyfile(OUT_DIR / source, destination / target)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--refresh", action="store_true",
         help="Refresh cached DOI metadata from OpenAlex and Crossref.",
+    )
+    parser.add_argument(
+        "--publish", action="store_true",
+        help="Copy the validated browser and data into docs/literature for GitHub Pages.",
     )
     args = parser.parse_args()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -544,6 +574,8 @@ def main() -> None:
         or report["incomplete_structured_reviews"]
     ):
         raise SystemExit(1)
+    if args.publish:
+        publish_outputs()
 
 
 if __name__ == "__main__":

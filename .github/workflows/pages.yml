@@ -11,6 +11,11 @@ on:
       - "sections_companion/**"
       - "figures_rewrite/**"
       - "references.bib"
+      - "literature/**"
+      - "scripts/build_literature_database.py"
+      - "scripts/test_literature_database.py"
+      - "main*.tex"
+      - "sections*/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -40,6 +45,10 @@ jobs:
           mkdir -p docs/paper
           cp main_rewrite.pdf docs/paper/the-future-of-growth-and-human-labor-under-recursive-ai-self-improvement.pdf
           cp main_companion.pdf docs/paper/how-much-can-recursive-ai-self-improvement-raise-economic-growth.pdf
+      - name: Rebuild and validate literature browser
+        run: |
+          python3 -m unittest discover -s scripts -p test_literature_database.py
+          python3 scripts/build_literature_database.py --publish
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:

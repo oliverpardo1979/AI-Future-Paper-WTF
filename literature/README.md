@@ -9,6 +9,15 @@ This directory contains the literature inventory used by the project. It covers:
 
 ## Files
 
+Live browser: https://oliverpardo1979.github.io/AI-Future-Paper-WTF/literature/
+
+The public browser is generated from the same inventory as the local HTML, not
+maintained as a separate bibliography. It includes all BibTeX entries and the
+additional conversation references recorded here. Corpus filters distinguish
+`main_rewrite`, the companion, and earlier manuscripts. They scan source files,
+including commented or disabled material, rather than claiming to describe only
+the currently compiled PDF. Missing abstracts remain explicitly marked.
+
 - literature_browser.html: generated searchable local interface. Open it in any browser.
 - browser_template.html: source template for the generated interface.
 - literature_database.csv: UTF-8 CSV for Excel, R, Stata, or Python.
@@ -51,6 +60,16 @@ separate review step.
 The script uses only the Python standard library. Run:
 
     python scripts/build_literature_database.py
+
+To update the local files and public-site copy together:
+
+    python scripts/build_literature_database.py --publish
+
+The Pages workflow runs the builder on every relevant push. It fails rather
+than deploying an inventory with missing citation keys or duplicate records.
+Run the regression tests with:
+
+    python -m unittest discover -s scripts -p test_literature_database.py
 
 This rebuilds every output from the checked-in cache and therefore works offline.
 To refresh DOI metadata from OpenAlex and Crossref, run:
