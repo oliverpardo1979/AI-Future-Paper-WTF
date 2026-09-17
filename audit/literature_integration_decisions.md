@@ -337,3 +337,24 @@ paragraphs explicitly approved by the author.
   text. The closing sentence needs no citation. Related Literature remains
   unchanged for a separately approved shortening pass; no new equation,
   simulation, figure, parameter, or notation changes were made.
+
+## Commented comparison with Davidson and Jones--Tonetti (requested, 2026-09-17)
+
+- Fast-forwarded to the author's GitHub commit `3cba833` before editing;
+  preserved the author's new introductory paragraphs verbatim.
+- Added a percent-commented draft to `02_literature.tex` distinguishing
+  endogenous technological progress from optimized research and saving.
+- Verified Davidson et al. (May 2026), Section 3.2, printed pp. 19--21,
+  especially Equation (26) and the fixed sectoral allocation shares:
+  https://thomas-houlden.com/assets/DHHK_May2026.pdf.
+- Verified Jones and Tonetti (May 2026, v0.5), Section 5.3, Table 9 on
+  printed p. 36: research and investment are fixed shares of output,
+  despite endogenous innovation and task automation:
+  https://web.stanford.edu/~chadj/JonesTonetti_Automation.pdf.
+- The latest synchronized manuscript still includes Related Literature
+  actively. Only the new draft is commented; the existing section and its
+  inclusion in `main_rewrite.tex` are unchanged.
+- Discussed the author's feedback-loop paragraph in chat only. In particular,
+  unbounded discounted net profit does not mean profit is monotone in every
+  research increase; the uncapped result requires the stated substitution and
+  research-return restrictions. No introduction, model, or simulation edits.
