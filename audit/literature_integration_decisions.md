@@ -468,3 +468,38 @@ paragraphs explicitly approved by the author.
   results, respectively. No paragraph needed deletion or division.
 - The previously silenced review remains untouched. No title, abstract,
   equation, result, simulation, figure, parameter, or initial-condition edits.
+
+## Wage-growth and labor-share antecedents (2026-09-17)
+
+- Fast-forwarded to the author's `8400dd2` (Rel Lit edits) before editing.
+  Preserved that commit's first paragraph, the other active paragraphs, and
+  the commented archive. Replaced only the wage/labor-share paragraph with
+  the paragraph approved in the conversation.
+- Acemoglu--Restrepo (2019): productivity, displacement, and new human tasks.
+  The original JEP discussion, pp. 5 and 9--12, distinguishes those forces.
+  Our fixed-weight CES does not create new tasks. The existing conclusion
+  already cites this missing mechanism; no duplicate limitation was added.
+- Autor--Kausik (2026): automation can raise wages while lowering labor's
+  share. Ray--Mookherjee (2022): the share can vanish while wages rise
+  indefinitely. These are precedents, not claims that the cited papers
+  establish our particular growth rates or monopoly-profit decomposition.
+- Caselli--Manning (2019), Robot Arithmetic: New Technology and Wages:
+  reviewed all 21 pages of the public LSE accepted manuscript, including
+  its appendix. Benchmark assumptions and Results 1--2 (pp. 3--6) concern
+  wage comparisons between steady states. Page 9 distinguishes wages from
+  the labor share. The Rising Interest Rate discussion (p. 12) explicitly
+  leaves open wage dynamics when technology raises both growth and the
+  interest rate. Replaced the ambiguous "once capital adjusts" comparison
+  with this more direct connection. Our private-RSI model characterizes
+  that combination under its own assumptions; no equivalence is claimed.
+  Source: https://eprints.lse.ac.uk/87371/1/Manning__robot-arithmatic--author-merged.pdf
+  Local copy: tmp/caselli_manning_review_2026-09-17/caselli_manning_2019_accepted.pdf
+- Section 4.2: refined the existing paragraph after the wage/AI-revenue
+  remark, linking these antecedents to the limiting-return and wage-growth
+  equations by label. Section 6.2: added one sentence citing Autor--Kausik
+  and Ray--Mookherjee beside the Figure 6 distributional results. Section
+  6.3 does not repeat the same citation for the lower-productivity exercise.
+- Validation: Tectonic compiled the 66-page PDF without unresolved citations,
+  unresolved references, or overfull/underfull boxes. Visually checked the
+  amended paragraphs on pages 5, 17, and 28; equation references resolve to
+  (40)--(41). No simulations were rerun or numerical claims changed.
