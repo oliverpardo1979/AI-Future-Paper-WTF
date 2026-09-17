@@ -30,8 +30,11 @@ uses **chi=1.5 (lower research productivity)**. All eight paths are solved
 and audited independently; no trajectory is rescaled in time. Results are
 in `numerical_rewrite/rsi_chi_7_5/` and `numerical_rewrite/rsi_chi_1_5/`.
 The annual research shares and price changes are model outcomes, not targets.
-Section 6.4 discusses unfitted industry size, measurement limitations and
-adjustment assumptions. Within the characterized finite-bound limits,
+The conclusion discusses unfitted industry size, measurement limitations and
+adjustment assumptions. The former Section 6.4 remains intact in
+`sections_rewrite/11_rsi_limitations.tex`; its input in `main_rewrite.tex` is
+commented out and can be restored by uncommenting it.
+Within the characterized finite-bound limits,
 chi affects transitions, not limiting growth and distribution. The reported
 dates are conditional model outcomes, not forecasts.
 

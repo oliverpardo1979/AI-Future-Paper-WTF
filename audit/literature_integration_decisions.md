@@ -161,3 +161,26 @@ paragraphs explicitly approved by the author.
 - Updated the bibliographic-tool record to the published PDF and recorded
   these passages and limits. Related Literature, the introduction, abstract,
   conclusions, equations, notation, and all simulations remain unchanged.
+
+## Silence Section 6.4 and refine conclusions (2026-09-16)
+
+- Commented only the input of `11_rsi_limitations.tex` in `main_rewrite.tex`.
+  The subsection's file, label, text, and references remain intact; uncommenting
+  the input restores it. Updated README and REPLICATION to avoid stale directions.
+- Preserved the approved opening of the conclusion and its final question.
+  Distinguished the existing weak-link and wage/share antecedents from the
+  efficiency threshold and exact wage-growth premium characterized here.
+- Rechecked Sections 3--6: the finite-bound regimes, the complementarity
+  feasibility bound, the uncapped unit-elastic BGP/local existence result,
+  and the fixed-horizon unbounded-profit result under strong research returns.
+  Did not claim global existence, general nonexistence, or a finite-time singularity.
+- Restated the main simulations' distinction between transition and limits.
+  Retained the essential calibration, adjustment, monopoly, homogeneous-labor,
+  and ownership limitations despite silencing 6.4. No discarded numerical
+  exercise was reintroduced into the active conclusion.
+- Retained source-verified connections documented above: Aghion--Jones--Jones
+  on weak links; Jones on wages, shares, and ownership; GATE on investment
+  frictions; Korinek--McKelvey on measurement; Korinek--Vipra on market structure;
+  Acemoglu--Restrepo on tasks; Davidson et al. on research networks and bottlenecks.
+- Title, abstract, introduction, Related Literature, substantive Sections 3--6,
+  equations, figures, simulations, parameters, and initial conditions unchanged.

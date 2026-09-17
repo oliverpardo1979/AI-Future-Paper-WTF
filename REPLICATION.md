@@ -27,7 +27,10 @@ reported for comparison but is NOT a boundary condition after activation.
 The post-event BVP independently selects consumption and the shadow value.
 
 Section 6.1 gives the common design, Section 6.2 higher research productivity,
-Section 6.3 lower research productivity, and Section 6.4 the limitations. Run
+and Section 6.3 lower research productivity. Limitations are discussed in the
+conclusion. The former Section 6.4 is preserved in
+`sections_rewrite/11_rsi_limitations.tex` but its input in `main_rewrite.tex`
+is commented out; uncomment that input to restore it. Run
 `python scripts/reproduce_rewrite_results.py` for both displayed comparisons
 in this order. Add `--include-legacy` to regenerate the preserved comparisons
 as well. These commands re-solve and audit the model; they do not rescale a
