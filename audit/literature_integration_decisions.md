@@ -403,3 +403,48 @@ paragraphs explicitly approved by the author.
   citations/references or overfull boxes in the final log. Visually checked
   the new review on PDF pages 4--5. The shorter section has about 410 words
   (TeX citation commands counted as single tokens).
+
+## Direct antecedents integrated after the author's approval (2026-09-17)
+
+- Fetched origin and verified that local `1260120` already matched the latest
+  main branch before editing. Title, abstract, introduction, equations,
+  simulations, figures, parameters, and initial conditions remain untouched.
+- Kept Related Literature in four paragraphs. Added GATE to the feedback and
+  resource-allocation comparison, Acemoglu--Restrepo (2018) to profit-driven
+  innovation, and Caselli--Manning (2019) to wages and capital adjustment.
+  The previously silenced full literature review is preserved verbatim.
+- GATE: checked arXiv:2503.04941v2, Sections 5.1, 6.1 and 8. Its planner already
+  optimizes investment and compute allocation, with adjustment costs and an
+  optional research-externality wedge. Our distinction is private monopoly
+  incentives and equilibrium prices, not endogenous investment in general.
+- Acemoglu--Restrepo: published AER 2018, Section III, pp. 1511--1513,
+  equations (22)--(26) and footnote 25. Their profit-driven research chooses
+  between automation and new human tasks; our research improves AI efficiency.
+  The existing conclusion already cites their 2019 reinstatement mechanism as
+  a missing force. Preserved that paragraph instead of adding a duplicate.
+- Zeira (1998): added a brief paragraph after the final-good zero-profit
+  identity in Section 3.3. The published pp. 1094--1095, Section II and
+  equations (1)--(2), support the distinction between technical availability
+  and profitable adoption. Did not equate discrete technique choice to our
+  continuous AI-input demand.
+- Caselli--Manning (2019): added the contrast after the wage/revenue remark
+  in Section 4.2, with a reference to the existing wage-growth equation.
+  Checked the LSE author manuscript, benchmark assumptions and Results 1--2,
+  pp. 3--6, and the discussion of rising interest rates/non-steady states,
+  pp. 12--13. Their steady-state wage-level comparison at a fixed interest
+  rate is not our growth-rate result with an endogenous interest rate.
+- Aghion--Jones--Jones already appears in Related Literature, Section 3.3
+  (weak links and the distinct elasticities), and Section 4.2 (bottlenecks).
+  Ho et al. already appears in Section 3.4.1 on effective compute, with the
+  scope difference between measured model training and broader research.
+  Preserved those connections rather than repeating them.
+- Added Zeira and Caselli--Manning to BibTeX and migrated their existing
+  bibliography-tool records from additions to overrides, retaining their
+  reviewed metadata without duplicate keys. Updated placement notes for
+  the new connections and rebuilt the local/public bibliography browser.
+- Validation: Tectonic compiled the 66-page `main_rewrite.pdf`; the final log
+  contains no unresolved citations/references or overfull/underfull boxes.
+  The seven bibliography tests passed, with no duplicate keys/DOIs or missing
+  cited records in the rebuilt 153-record database.
+- Visually checked the amended text on PDF pages 4--5, 7--8, and 17;
+  citations resolve correctly and the paragraphs render legibly.
