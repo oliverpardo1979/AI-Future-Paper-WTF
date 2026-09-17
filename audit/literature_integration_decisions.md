@@ -358,3 +358,14 @@ paragraphs explicitly approved by the author.
   unbounded discounted net profit does not mean profit is monotone in every
   research increase; the uncapped result requires the stated substitution and
   research-return restrictions. No introduction, model, or simulation edits.
+
+## Introduction: approved feedback-loop and upper-bound paragraph (2026-09-17)
+
+- Replaced only the active feedback-loop paragraph in `01_introduction.tex`
+  with the exact wording approved in the conversation (using the existing
+  straight-apostrophe TeX convention).
+- Retained both citations, distinguished potentially unbounded discounted
+  net profit from monotonic profit gains, and stated the substitution,
+  research-return, and unrestricted-efficiency qualifications.
+- Preserved the author's first paragraph, neighboring paragraphs, and the
+  commented comparison; no model, simulation, figure, or notation changes.
