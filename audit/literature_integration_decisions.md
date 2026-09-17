@@ -303,3 +303,18 @@ paragraphs explicitly approved by the author.
   market rates and our instantaneous net return on physical capital.
 - Updated the bibliography tool's placement and verification notes. No other
   manuscript text, equation, simulation, figure, or notation was changed.
+
+## Section 6.3: initially similar paths and later divergence (approved, 2026-09-17)
+
+- Added only the approved final sentence citing Jones--Tonetti Figure 5 to
+  the paragraph discussing the lower row of Figure 7 in
+  `13_rsi_low_productivity.tex`. Completed the existing 2.1% reference with
+  `long-run limit`; neither number nor simulation was changed.
+- Verified the May 2026 v0.5 original, Figure 5 on printed p. 40 and its
+  explanation on pp. 39--41. The connection recognizes initially similar
+  growth paths followed by divergent long-run outcomes, not an equivalence
+  of automation technology, substitution elasticities, thresholds, or dates.
+- Checked the stored slow-exercise output growth at year 500 (3.2136%) and
+  its analytical normalized limit (2.1350%); both retain one decimal in prose.
+- Updated the collected reference's placement note. No other manuscript
+  paragraph, equation, simulation, figure, parameter, or notation changed.

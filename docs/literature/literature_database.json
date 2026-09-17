@@ -1,6 +1,6 @@
 {
   "generated_on": "2026-09-17",
-  "source_fingerprint": "4c670e699b317af2be8c6677b3de06135fc3ea40ea106bd75e9d048153d6bfbc",
+  "source_fingerprint": "b563786855ae93489292c776f18de0f54abbd6b8dd5ebeb4eb13c8ce53d96554",
   "record_count": 153,
   "records": [
     {
@@ -806,9 +806,9 @@
       "citation_key": "jonestonetti2026",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections_axm/02_literature.tex:71; sections_rewrite/01_introduction.tex:13; sections_rewrite/02_literature.tex:73; sections_rewrite/08_rsi_activation.tex:50; sections_rewrite/08_rsi_design.tex:37",
+      "citation_locations": "sections_axm/02_literature.tex:71; sections_rewrite/01_introduction.tex:13; sections_rewrite/02_literature.tex:73; sections_rewrite/08_rsi_activation.tex:50; sections_rewrite/08_rsi_design.tex:37; sections_rewrite/13_rsi_low_productivity.tex:43",
       "cited_in_rewrite": "yes",
-      "citation_locations_rewrite": "sections_rewrite/01_introduction.tex:13; sections_rewrite/02_literature.tex:73; sections_rewrite/08_rsi_activation.tex:50; sections_rewrite/08_rsi_design.tex:37",
+      "citation_locations_rewrite": "sections_rewrite/01_introduction.tex:13; sections_rewrite/02_literature.tex:73; sections_rewrite/08_rsi_activation.tex:50; sections_rewrite/08_rsi_design.tex:37; sections_rewrite/13_rsi_low_productivity.tex:43",
       "cited_in_companion": "no",
       "citation_locations_companion": "",
       "cited_in_axm": "yes",
@@ -840,9 +840,9 @@
       "notes": "Working paper, Version 0.5, May 2026",
       "last_verified": "2026-09-17",
       "connection_themes": "Feedback económico; Investigación endógena e incentivos; Cuellos de botella y transición; Salarios y participación laboral",
-      "suggested_sections": "Introducción: feedback y contraste entre proporciones de gasto fijas e inversión privada óptima; sección 3: conexión CES-tareas condicionada a la asignación; secciones 4 y 6: regímenes y transición",
+      "suggested_sections": "Introducción: feedback y contraste entre proporciones de gasto fijas e inversión privada óptima; sección 3: conexión CES-tareas condicionada a la asignación; conexión incorporada en 6.3: trayectorias inicialmente similares y divergencia posterior",
       "terminology": "weak links; endogenous automation; ideas; bottlenecks",
-      "integration_note": "El tercer párrafo de la introducción reconoce innovación endógena en ambos modelos y distingue las proporciones fijas de investigación e inversión de la Tabla 9 de nuestro gasto de investigación elegido para maximizar beneficio descontado y del ahorro de hogares. La conexión entre tareas y CES queda documentada para la revisión de la sección 3; no se modificó el modelo ni se equipararon sus parámetros con los nuestros. Reconocer los antecedentes de despegues tardíos cuando se presenten los resultados.",
+      "integration_note": "El tercer párrafo de la introducción reconoce innovación endógena en ambos modelos y distingue las proporciones fijas de investigación e inversión de la Tabla 9 de nuestro gasto de investigación elegido para maximizar beneficio descontado y del ahorro de hogares. En 6.3, la frase aprobada después de la discusión del horizonte largo de la Figura 7 cita su Figura 5, p. 40, y reconoce el antecedente de trayectorias inicialmente similares que divergen después; explicación original en pp. 39–41. La conexión entre tareas y CES queda documentada para la revisión de la sección 3; no se modificó el modelo ni se equipararon sus parámetros con los nuestros.",
       "reviewed_passages": "Versión 0.5, mayo de 2026, cotejada el 17 de septiembre de 2026: lectura del cuerpo del artículo, pp. 1–46. Especialmente sección 2.3, Proposición 1, p. 10; sección 2.4, p. 13; sección 5.3, Tabla 9, p. 36, y explicación p. 39; secciones 5.3–5.4, pp. 39–45. También revisados apéndices B–C, pp. 57–62, incluidas ecuaciones (33)–(35). La prueba de la Proposición 2 en B.2 contiene una indicación de trabajo pendiente; esta lectura no certifica todas las demostraciones.",
       "reviewed_version": "Versión 0.5, mayo de 2026",
       "reading_status": "pasajes originales revisados",
