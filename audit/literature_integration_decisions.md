@@ -184,3 +184,15 @@ paragraphs explicitly approved by the author.
   Acemoglu--Restrepo on tasks; Davidson et al. on research networks and bottlenecks.
 - Title, abstract, introduction, Related Literature, substantive Sections 3--6,
   equations, figures, simulations, parameters, and initial conditions unchanged.
+
+## Introduction, paragraph 4: labor bottleneck (approved, 2026-09-16)
+
+- Added only the approved final sentence recognizing the related human-task
+  bottleneck in Aghion, Jones, and Jones (2019), `aghionjonesjones2019`.
+- Verified the published original, Section 9.2.2, pp. 242--246, especially
+  Equations (5)--(16), Figure 9.1, and footnote 8. The antecedent is the
+  bottleneck mechanism, not our aggregate substitution or efficiency threshold.
+- Updated the bibliographic tool's placement note. No other manuscript
+  paragraph, equation, simulation, figure, or notation changed.
+- The author rejected adding Jones (2026) to paragraph 1; leave it intact.
+  Paragraphs 2 and 3 retain their previously approved references without additions.
