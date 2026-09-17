@@ -236,3 +236,15 @@ paragraphs explicitly approved by the author.
 - Updated the bibliographic tool's placement and passage-verification notes.
 - The author rejected the proposed Hemous--Olsen addition in Section 3.4.4;
   that paragraph remains unchanged. No other manuscript text changed.
+
+## Section 4.2: rising wages and a vanishing labor share (approved, 2026-09-16)
+
+- Added the approved sentence citing `raymookherjee2022` immediately after
+  `rem:rewrite-ai-revenue-share`, outside the remark; the remark is unchanged.
+- Verified the publisher-formatted article hosted by Mookherjee at
+  `https://people.bu.edu/dilipm/publications/AutREDpub.pdf`, Sections 3.3--3.4,
+  Theorem 1 on p. 9 and Proposition 2(b) on p. 11. The antecedent concerns
+  rising wages and a vanishing labor share from capital-driven automation,
+  not our AI-efficiency threshold, limiting wage-growth rate, or AI revenues.
+- Updated the bibliographic placement, original-document link, and passage
+  notes. No other manuscript text, equation, figure, or simulation changed.

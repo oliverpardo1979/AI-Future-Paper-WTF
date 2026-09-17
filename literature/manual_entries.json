@@ -1884,7 +1884,7 @@
       "abstract": "We study the long run implications of workplace automation induced by capital accumulation. We describe a minimal set of sufficient conditions for sustained growth, along with a declining labor share of income in the long run. The displacement of human labor is gradual, and absolute real wages could rise indefinitely. The results obtain in the absence of any technical progress and extend to endogenous technical progress.",
       "abstract_type": "source_abstract",
       "abstract_source_url": "https://www.nber.org/papers/w26658",
-      "document_url": "https://www.nber.org/system/files/working_papers/w26658/w26658.pdf",
+      "document_url": "https://people.bu.edu/dilipm/publications/AutREDpub.pdf",
       "landing_page_url": "https://www.nber.org/papers/w26658",
       "metadata_source": "NBER",
       "verification_status": "official_landing_page",
@@ -1892,7 +1892,7 @@
       "evidence_type": "theory",
       "method": "Long-run growth model with replicable physical capital, nonreplicable human capital, occupational mobility, and endogenous automation.",
       "key_results": "Capital accumulation can progressively automate production, drive labor's income share to zero, and sustain indefinitely rising real wages.",
-      "use_in_axm": "Establishes that rising real wages can coexist with a vanishing labor share, a result the current paper does not claim as new.",
+      "use_in_axm": "Section 4.2, immediately after the wages-and-AI-revenue remark, credits the coexistence of rising real wages and a vanishing labor share under capital-driven automation, even without technical progress.",
       "limits_for_axm": "It does not model autonomous AI research, a monopolistic supplier of AI services, or the current paper's threshold between labor-bottleneck and AI-dominated equilibria."
     },
     "gans2025aiknowledge": {
@@ -2188,10 +2188,10 @@
     },
     "raymookherjee2022": {
       "connection_themes": "Salarios y participación laboral",
-      "suggested_sections": "Sección 4 y conclusiones: antecedentes distributivos",
-      "reviewed_passages": "NBER w26658, enero de 2020 (texto diciembre de 2019), PDF pp. 2–4; cotejo de la edición publicada en 2022 pendiente.",
+      "suggested_sections": "Conexión incorporada en 4.2, inmediatamente después del remark sobre salarios e ingresos de IA; conclusiones: antecedentes distributivos",
+      "reviewed_passages": "Versión editorial del artículo alojada por el autor (AutREDpub.pdf): secciones 3.3–3.4, Teorema 1, p. 9, y Proposición 2(b), p. 11; cotejadas el 16 de septiembre de 2026. También revisado NBER w26658, enero de 2020 (texto diciembre de 2019), PDF pp. 2–4.",
       "terminology": "labor share; automation",
-      "integration_note": "Reconocer el antecedente de salarios crecientes con participación que desaparece; no afirmar prioridad para esa coexistencia.",
+      "integration_note": "La frase después del remark de 4.2 reconoce el antecedente de salarios crecientes con participación que desaparece. El Teorema 1 y la Proposición 2(b) requieren sus propias condiciones de tecnología, preferencias y movilidad; no demuestran nuestro umbral de eficiencia, nuestras tasas límite ni el resultado sobre ingresos de la industria de IA.",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta"
     },
