@@ -2053,10 +2053,10 @@
     },
     "jones1995": {
       "connection_themes": "Investigación endógena e incentivos; Medición y calibración",
-      "suggested_sections": "Sección 3: rendimientos de investigación",
-      "reviewed_passages": "JPE 1995, pp. 759–761, leídas visualmente.",
+      "suggested_sections": "Conexión incorporada en 5.2, párrafo posterior a la Proposición 4: crecimiento de largo plazo y expansión de los recursos para investigar; sección 3: rendimientos de investigación",
+      "reviewed_passages": "JPE 1995, pp. 765–768, ecuaciones (4)–(9), especialmente (7)–(8) en p. 767 y explicación en p. 768; cotejadas visualmente con el original el 16 de septiembre de 2026. También revisadas pp. 759–761.",
       "terminology": "research productivity; scale effects",
-      "integration_note": "Suprimir efectos de escala no elimina incentivos privados. Citarlo no obliga a renombrar nuestro modelo.",
+      "integration_note": "La frase aprobada en 5.2 reconoce una dependencia relacionada, no modelos equivalentes: Jones vincula el crecimiento a una fuerza de trabajo investigadora creciente; nuestro trabajo efectivo expande la producción que financia cómputo de investigación y no entra directamente en RSI. No importar sus parámetros ni renombrar el modelo.",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta"
     },

@@ -248,3 +248,16 @@ paragraphs explicitly approved by the author.
   not our AI-efficiency threshold, limiting wage-growth rate, or AI revenues.
 - Updated the bibliographic placement, original-document link, and passage
   notes. No other manuscript text, equation, figure, or simulation changed.
+
+## Section 5.2: research resources and long-run growth (approved, 2026-09-16)
+
+- Added only the two approved sentences citing `jones1995` to the paragraph
+  following Proposition `prop:rewrite-uncapped-unit-bgp`.
+- Verified the original JPE article hosted at
+  `https://web.stanford.edu/~chadj/JonesJPE95.pdf`, printed pp. 765--768,
+  especially Equations (7)--(8) on p. 767 and their explanation on p. 768.
+- The comparison distinguishes Jones's expanding human research workforce
+  from effective labor's indirect contribution through production in our
+  autonomous RSI model. It does not claim equivalent research technologies.
+- Updated the collected reference's placement and verified-passage notes.
+  Related Literature and all other manuscript text remain unchanged.
