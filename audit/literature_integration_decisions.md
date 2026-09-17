@@ -261,3 +261,30 @@ paragraphs explicitly approved by the author.
   autonomous RSI model. It does not claim equivalent research technologies.
 - Updated the collected reference's placement and verified-passage notes.
   Related Literature and all other manuscript text remain unchanged.
+
+## Section 6.1: unanticipated activation (approved, 2026-09-17)
+
+- Added the approved Beaudry--Portier sentence at the end of the opening
+  paragraph in `08_rsi_design.tex`. The previously commented discussion
+  remains commented. No simulation or initial condition was changed.
+- Verified the published JEL article, Section 4.1, pp. 1044--1045; the
+  connection concerns advance responses to news, not their direction in
+  our model or simultaneous increases in consumption and investment.
+
+## Abstract and Jones--Tonetti comparison (requested, 2026-09-17)
+
+- Specified `output-per-worker growth` in the last abstract sentence;
+  per-worker normalization preserves the comparison with gamma.
+- Read the Jones--Tonetti May 2026 v0.5 main text, pp. 1--46, and relevant
+  appendices B--C. Proposition 1 (p. 10) and B.3, Equations (33)--(35),
+  support a CES representation conditional on task assignment, not an
+  unconditional equivalence with our fixed-weight Z for every sigma.
+- In the existing introduction feedback paragraph, clarified that their
+  innovation is endogenous but research and capital investment use fixed
+  output shares (Table 9, p. 36). Our developer chooses research spending
+  to maximize discounted net profit, jointly with household saving and
+  capital accumulation. This is a comparison with their allocation rule,
+  not a claim that private endogenous innovation is new to the literature.
+- Documented both connections and their limits in the bibliography tool.
+  Related Literature, model equations, notation, figures, and simulations
+  remain untouched.

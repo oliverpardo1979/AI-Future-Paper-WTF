@@ -1928,13 +1928,13 @@
     },
     "jonestonetti2026": {
       "connection_themes": "Feedback económico; Investigación endógena e incentivos; Cuellos de botella y transición; Salarios y participación laboral",
-      "suggested_sections": "Introducción: feedback; secciones 4 y 6: regímenes y transición",
-      "reviewed_passages": "Versión 0.5, mayo de 2026: sección 5.3 y Tabla 9, p. 36; síntesis p. 45. Auditoría previa: PDF pp. 1–3, 33–34 y 37–39.",
+      "suggested_sections": "Introducción: feedback y contraste entre proporciones de gasto fijas e inversión privada óptima; sección 3: conexión CES-tareas condicionada a la asignación; secciones 4 y 6: regímenes y transición",
+      "reviewed_passages": "Versión 0.5, mayo de 2026, cotejada el 17 de septiembre de 2026: lectura del cuerpo del artículo, pp. 1–46. Especialmente sección 2.3, Proposición 1, p. 10; sección 2.4, p. 13; sección 5.3, Tabla 9, p. 36, y explicación p. 39; secciones 5.3–5.4, pp. 39–45. También revisados apéndices B–C, pp. 57–62, incluidas ecuaciones (33)–(35). La prueba de la Proposición 2 en B.2 contiene una indicación de trabajo pendiente; esta lectura no certifica todas las demostraciones.",
       "terminology": "weak links; endogenous automation; ideas; bottlenecks",
-      "integration_note": "Conexión aprobada en el tercer párrafo de la introducción. Reconocer los antecedentes de despegues tardíos cuando se presenten los resultados.",
+      "integration_note": "El tercer párrafo de la introducción reconoce innovación endógena en ambos modelos y distingue las proporciones fijas de investigación e inversión de la Tabla 9 de nuestro gasto de investigación elegido para maximizar beneficio descontado y del ahorro de hogares. La conexión entre tareas y CES queda documentada para la revisión de la sección 3; no se modificó el modelo ni se equipararon sus parámetros con los nuestros. Reconocer los antecedentes de despegues tardíos cuando se presenten los resultados.",
       "reading_status": "pasajes originales revisados",
-      "use_in_axm": "La automatización aumenta los recursos disponibles para investigación y las ideas permiten más automatización. Los eslabones débiles pueden retrasar la aceleración pese a un cambio tecnológico intenso.",
-      "limits_for_axm": "La Tabla 9 fija proporciones de gasto en investigación e inversión: tecnología endógena no equivale a nuestro gasto privado óptimo en RSI. Su elasticidad entre tareas no es automáticamente nuestra elasticidad agregada entre IA y trabajo.",
+      "use_in_axm": "Antecedente del feedback entre automatización e ideas y de trayectorias inicialmente similares que luego divergen. La Proposición 1 obtiene una representación CES a partir de múltiples tareas, útil para interpretar agregados condicionados a la asignación. La introducción destaca que nuestro desarrollador elige el gasto de investigación según beneficio descontado en vez de una proporción fija del producto.",
+      "limits_for_axm": "Su innovación y automatización son endógenas: no afirmar que nuestro aporte es endogeneizar tecnología frente a un modelo enteramente exógeno. La Tabla 9 fija proporciones de investigación e inversión. Su CES combina capital y trabajo con sigma menor que uno; sus coeficientes agregados A y B incluyen la asignación endógena de tareas, de modo que sigma no es la elasticidad agregada cuando esa asignación cambia. Su B no es directamente nuestra eficiencia por unidad de cómputo; la Proposición 1 no deriva nuestro Z con pesos fijos para todos los regímenes ni nuestra capa externa Cobb-Douglas.",
       "verification_status": "original_relevant_passages_reviewed",
       "review_priority": "alta"
     },
@@ -2170,10 +2170,10 @@
     },
     "beaudryportier2014": {
       "connection_themes": "Cuellos de botella y transición",
-      "suggested_sections": "Sección 6.1: activación no anticipada de RSI",
-      "reviewed_passages": "JEL 2014, introducción y sección 2, texto publicado.",
+      "suggested_sections": "Conexión incorporada al final del primer párrafo de 6.1: activación no anticipada de RSI",
+      "reviewed_passages": "JEL 2014, sección 4.1, pp. 1044–1045: noticias sobre productividad futura alteran decisiones corrientes; no implican un aumento conjunto de consumo e inversión. También revisadas introducción y sección 2, pp. 1001–1002, ecuaciones (10)–(11).",
       "terminology": "technology news; anticipation",
-      "integration_note": "Las noticias pueden cambiar decisiones antes de la tecnología. No garantizan ausencia de saltos ni están en nuestro experimento no anticipado.",
+      "integration_note": "Frase aprobada incorporada en 6.1. El experimento no anticipado excluye ajustes de consumo y ahorro previos a la disponibilidad de RSI. La referencia motiva esta distinción informacional, no nuestros resultados de IA ni una predicción sobre el signo de todas las respuestas. Los bloques previamente comentados permanecen comentados.",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta"
     },
