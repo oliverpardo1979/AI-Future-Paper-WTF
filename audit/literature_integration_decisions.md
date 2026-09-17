@@ -503,3 +503,21 @@ paragraphs explicitly approved by the author.
   unresolved references, or overfull/underfull boxes. Visually checked the
   amended paragraphs on pages 5, 17, and 28; equation references resolve to
   (40)--(41). No simulations were rerun or numerical claims changed.
+
+## Jones (2026): approved bottleneck and transition connections (2026-09-17)
+
+- Verified that `3cedf75` matched origin/main before editing. Added only the
+  two passages approved after the complete rereading of Jones's published
+  JEP article (20 PDF pages, printed pp. 3--22, including the references).
+- Related Literature, paragraph 3: added Jones's explanation of modest
+  aggregate growth despite rapid AI progress, after the Aghion--Jones--Jones
+  bottleneck antecedent. All other paragraphs and the archived review remain
+  unchanged.
+- Section 6.3, Figure 7 discussion: replaced the sentence citing only
+  Jones--Tonetti with the approved comparison to Jones (pp. 11--12), retaining
+  Jones--Tonetti as the underlying source. Explicitly distinguished private
+  RSI investment and capital accumulation from progressive automation of
+  additional tasks. Similar trajectories do not imply identical mechanisms.
+- Preserved the existing Jones citations on effective compute and in the
+  conclusions. Did not reactivate Section 6.4, alter the bibliography, or
+  change equations, numerical claims, simulations, figures, or parameters.
