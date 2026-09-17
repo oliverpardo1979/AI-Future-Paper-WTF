@@ -196,3 +196,18 @@ paragraphs explicitly approved by the author.
   paragraph, equation, simulation, figure, or notation changed.
 - The author rejected adding Jones (2026) to paragraph 1; leave it intact.
   Paragraphs 2 and 3 retain their previously approved references without additions.
+
+## Introduction, paragraph 5: capital accumulation (approved, 2026-09-16)
+
+- Added the approved sentence citing `jonesmanuelli1990` after the statement
+  that an AI-dominated long-run regime becomes possible.
+- Verified NBER Working Paper 3241 (January 1990), Condition G and Theorem 1
+  on p. 8, and the characterization on pp. 11--12. The connection concerns
+  sustained growth with a sufficiently high limiting return on capital,
+  not our AI-efficiency threshold or private RSI-investment problem.
+- Updated the bibliographic placement and passage-verification notes.
+- Added a local Needspace instruction to avoid leaving the following paragraph's
+  first line alone at the foot of the page; its wording is unchanged.
+- All other manuscript paragraphs remain unchanged. Title, abstract,
+  Related Literature, model, equations, figures, simulations, parameters,
+  and initial conditions remain untouched.

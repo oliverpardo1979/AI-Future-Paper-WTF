@@ -1845,7 +1845,12 @@
       "document_url": "https://www.nber.org/system/files/working_papers/w3241/w3241.pdf",
       "landing_page_url": "https://www.journals.uchicago.edu/doi/abs/10.1086/261717",
       "metadata_source": "Journal of Political Economy",
-      "verification_status": "official_landing_page"
+      "verification_status": "original_relevant_passages_reviewed",
+      "reading_status": "pasajes originales revisados",
+      "method": "Discrete-time representative-agent growth model with concave production and a nonvanishing limiting marginal product of accumulable capital.",
+      "key_results": "Conditional on existence, Condition G and Theorem 1 give sustained consumption growth when the limiting return is sufficiently high relative to discounting. With isoelastic preferences, the Euler equation characterizes a positive limiting growth rate under the stated parameter restrictions.",
+      "use_in_axm": "Introduction paragraph 5 credits the capital-accumulation mechanism: a sufficiently high limiting return can sustain growth. Section 4 gives the detailed connection to the asymptotically linear AI-dominated regime.",
+      "limits_for_axm": "The verified original is NBER Working Paper 3241 (January 1990), especially Condition G and Theorem 1, p. 8, and the growth characterization, pp. 11-12. Its discrete-time convex growth model has no AI developer or RSI investment. The connection does not attribute our AI-efficiency threshold or equilibrium-existence proof to this paper."
     },
     "rebelo1991": {
       "abstract": "The paper describes endogenous-growth models in which policy differences can generate persistent cross-country differences in growth rates. Growth is possible without increasing returns because a core of accumulable capital goods can be produced without direct or indirect use of nonaccumulable factors.",
