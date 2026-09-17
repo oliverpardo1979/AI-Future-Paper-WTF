@@ -105,3 +105,40 @@ paragraphs explicitly approved by the author.
   flow with a training-run measure or identify B or chi from those estimates.
   No reported growth factor is imported into the calibration.
 - Preserved all equations, notation, simulations, and other manuscript text.
+
+## Introduction and conclusion: results, limitations, and extensions (2026-09-16)
+
+- Implemented the author's approved introduction passages on temporary versus
+  permanent growth, the wage-growth premium, and research productivity's effect
+  on resource allocation. Preserved the opening, framework, feedback loops,
+  uncapped paragraph, and roadmap. Corrected the distinction between the
+  interest-rate level and the growth rates of output and wages.
+- Used the approved first conclusion paragraph. Did not insert the two rejected
+  proposed result-recap paragraphs. Replaced repeated result summaries with
+  limitations tied to specific possible extensions; kept the finite-bound scope,
+  the uncapped unit-elastic exception, and the legacy-simulation branch.
+- Verified original sources (not just abstracts) for these connections:
+  - Davidson et al. (May 2026), Sections 4.1 and 6.2, printed pp. 22 and 40--43:
+    human/AI research tasks and bottlenecks. These mechanisms motivate extensions;
+    their explosive-growth conditions do not prove our equilibrium existence.
+    https://thomas-houlden.com/assets/DHHK_May2026.pdf
+  - Korinek and McKelvey (2026), printed pp. 6--9: incomplete information on
+    compute allocation and assumptions used for measurement, not identified
+    structural parameters for this manuscript.
+    https://www.bankofcanada.ca/wp-content/uploads/2026/06/swp2026-20.pdf
+  - Erdil et al., GATE, arXiv:2503.04941v2, Section 3.6, pp. 20--21, and
+    Equation (29), p. 37: compute and conventional-capital adjustment costs.
+    Their planner framework is not identified with our decentralized equilibrium.
+    https://arxiv.org/pdf/2503.04941
+  - Korinek and Vipra, INET WP 228 (2024 version of the 2025 publication),
+    printed pp. 6--7 and 14--16: competing developers, compute costs, and
+    concentration forces. Not a claim that permanent monopoly is established.
+    https://www.ineteconomics.org/uploads/papers/WP_228-Korinek-and-Vipra.pdf
+  - Acemoglu and Restrepo (2019), JEP, printed pp. 8--10: changing task content,
+    displacement and reinstatement, distinct from fixed CES weights.
+    https://economics.mit.edu/sites/default/files/publications/Automation%20and%20New%20Tasks%20-%20How%20Technology%20Displace.pdf
+  - Jones (2026), JEP, printed pp. 13--14: occupational heterogeneity, ownership,
+    distribution and redistribution. Read in the supplied published PDF.
+    https://web.stanford.edu/~chadj/AIandEconomicFuture.pdf
+- No title, abstract, Related Literature, model, simulation, figure, parameter,
+  initial-condition, or notation changes. Updated bibliographic placement data.

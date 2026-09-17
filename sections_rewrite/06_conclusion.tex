@@ -1,49 +1,24 @@
 \section{Conclusion}
 \label{sec:rewrite-conclusion}
 
-The endogenous growth model showed that the long-run economic role of human
-labor depends critically on whether AI can replace labor's contribution to
-production. It characterizes how this substitution margin shapes economic
-growth, wages, interest rates, and the functional distribution of income when
-autonomous AI research generates RSI.
+The endogenous-growth model shows when improvements in AI efficiency generate
+a temporary increase in growth and when they support a permanently
+faster-growing economy. In the labor-bottleneck regime, the disappearance of
+the growth premium does not imply that earlier gains in output and wages
+disappear. In the AI-dominated regime, real wages grow permanently faster,
+but output per worker grows faster still. Workers become better paid while
+receiving a declining share of aggregate income.
 
-\needspace{3\baselineskip}
-In the equilibria studied here with a finite upper bound, complementarity leaves human
-labor as a bottleneck.
-Improvements in AI efficiency raise productive capacity but do not permanently
-increase the growth of output per person or real wages beyond the exogenous
-rate of labor-augmenting technological progress. Labor therefore retains a
-positive share of income. The same broad conclusion holds under unit
-elasticity: AI can support sustained growth, but human labor remains
-economically essential and continues to receive a positive share of output.
-
-The outcome changes when AI and labor are sufficiently substitutable. Gross
-substitution is necessary but not sufficient: labor remains a bottleneck while
-AI services are not productive enough to replace its contribution. Once AI
-becomes sufficiently efficient, however, capital and effective AI production
-services can expand faster than effective labor. Output per person and real
-wages then grow faster than in the labor-bottleneck regime, and the interest
-rate is higher.
-
-Across the long-run regimes I characterize with a finite upper bound
-on AI efficiency, real wages grow faster than the
-exogenous rate only when labor's income share vanishes. The declining share
-does not generate faster wage growth. In the AI-dominated regime, output per
-person grows rapidly enough to raise real wages despite the shrinking fraction
-paid to labor. Because output per person grows even faster than the real wage,
-labor's income share converges to zero. The gross capital share is fixed by the
-production technology, so this transformation reallocates the remainder of
-output from labor toward the AI industry. AI-industry revenue should not be
-confused with monopoly profit: it finances inference and research before the
-residual is distributed to the developer's owner.
-
-The uncapped unit-elastic benchmark shows why this qualification matters:
-continued AI-efficiency growth can raise output per person and real wages
-together faster than the exogenous rate while labor's income share remains
-positive. With complementarity, by contrast, production per unit of effective
-labor remains bounded even without an upper bound on AI efficiency. This feasibility
-bound does not establish an equilibrium, but it rules out permanently faster
-growth of output per person than the exogenous rate.
+These conclusions are conditional on the production and research technologies.
+The link between permanently faster wage growth and a vanishing labor share
+applies to the long-run regimes I characterize with a finite upper bound on
+AI efficiency. Without this bound, the unit-elastic benchmark can instead
+sustain faster growth with a positive labor share. The benchmark also assumes
+autonomous AI research. Introducing human research tasks and allowing the
+attainable level of efficiency to evolve would test how these assumptions
+shape the results. The research networks and bottlenecks in
+\citet{davidsonetal2026} offer a starting point, but their conditions for
+explosive growth do not establish equilibrium existence in this model.
 
 \ifshowlegacysimulations
 The transition can be as important as the long-run outcome. In the calibrated
@@ -59,48 +34,47 @@ labor's income share is already falling. Starting farther from the terminal
 regime can require the developer's owner to finance large temporary losses
 against future monopoly rents.
 \else
-The numerical simulations show how rising real wages can accompany a declining
-labor income share throughout a transition toward an AI-dominated economy.
-They also show that similar initial growth rates can precede very different
-long-run outcomes, while the same long-run outcome can be reached through
-markedly different transitions. Research productivity affects both the speed
-of adjustment and the allocation of resources along the way. The model
-therefore supports firmer conditional conclusions about growth and income
-distribution than about when the transition will occur. The uncertainty
-concerns not only how much AI can ultimately achieve, but also how quickly
-it becomes economically consequential.
+The numerical exercises are illustrative rather than joint empirical fits to
+AI revenues, research expenditure, and price changes. Research productivity
+is particularly uncertain, so I place more weight on the conditional
+long-run results than on the dates of takeoff. The measurement difficulties
+documented by \citet{korinekmckelvey2026}, including limited information on
+the allocation of compute, also constrain calibration. Moreover, the
+experiments assume an unanticipated activation of RSI and omit adjustment
+costs. An explicit compute sector with investment frictions, as in the GATE
+model of \citet{erdiletal2025gate}, would allow me to examine whether the
+large initial reallocations survive constraints on expanding compute capacity.
 \fi
 
-Permanent monopoly also limits the empirical interpretation of the simulations.
-Together with the aggregate production technology, it restricts the relationship
-between AI-industry revenue and inference costs. Under complementarity, monopoly
-pricing can require a substantial AI revenue share even when the AI production
-weight is small. Reducing that weight therefore does not by itself allow all
-four scenarios to match a small initial AI industry. I retain the weight as an
-illustrative parameter rather than an estimate of the industry's current size.
-The numerical exercises should not be read as joint empirical fits to current
-AI revenues, costs, and growth. Assessing how competition and entry change
-prices, profits, and research incentives requires a separate equilibrium analysis.
-More broadly, a growing AI industry need not imply that human labor is becoming
-dispensable. Adoption and new applications can expand demand for AI that helps
-workers, while actual AI suppliers also pay for intermediate inputs and labor.
-I would therefore not infer the economy's long-run growth regime from a rising
-AI revenue-to-GDP ratio alone.
+Permanent monopoly also restricts the interpretation of prices and profits.
+Together with the production technology, it can imply a substantial AI revenue
+share under complementarity even when the AI production weight is small.
+I therefore retain this weight as an illustrative parameter rather than an
+estimate of the industry's current size. \citet{korinekvipra2025} discuss
+both forces toward concentration and competition among AI developers;
+their analysis does not imply permanent monopoly. Allowing entry and
+competition would make it possible to study how lower markups and the
+prospect of losing market leadership affect private RSI investment.
+AI revenue would still need to be distinguished from net profit after
+inference and research costs.
 
-The analysis points to three lines of future work. A task-based extension with
-heterogeneous workers, new human tasks, and a continuing role for human
-researchers could combine the displacement and reinstatement mechanisms of
-\citet{acemoglurestrepo2019}, the labor-market transitions studied by
-\citet{korineketal2026scenarios}, and the research-automation network of
-\citet{davidsonetal2026}. An explicit upstream compute sector, alternative
-market structures, and heterogeneous asset ownership could build on
-\citet{korinekmckelvey2026} and \citet{korinekvipra2025} and translate changes
-in functional income shares into household inequality and economic power.
-Finally, a more complete existence analysis could extend the uncapped result
-beyond unit elasticity, or make the upper bound on AI efficiency endogenous, and
-determine whether the resulting economy admits an equilibrium. This question
-is related to, but not resolved by, the explosive-growth mechanisms in
-\citet{nordhaus2021} and \citet{davidsonetal2026}.
+The aggregate labor input also excludes differences across occupations and
+the creation of new tasks in which workers retain a comparative advantage.
+A task-based extension could incorporate the displacement and reinstatement
+mechanisms of \citet{acemoglurestrepo2019}, allowing labor's role to change
+through the creation and automation of tasks as well as through changes in
+relative input use.
+The present model cannot determine which workers gain or lose during
+the transition.
+
+Finally, a declining labor share does not by itself determine household
+inequality or workers' economic power. The representative household owns
+capital and the AI developer, so I do not distinguish workers who rely on
+wages from households that receive most of the profits. As
+\citet{jones2026future} emphasizes, asset ownership and redistribution matter
+for who shares in AI-driven prosperity. Heterogeneous ownership and a fiscal
+sector would allow me to study how capital income and transfers modify
+the distribution of gains described here through wages and factor shares.
 
 \enlargethispage{\baselineskip}
 The central question is whether human labor remains sufficiently essential for
