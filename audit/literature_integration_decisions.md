@@ -448,3 +448,23 @@ paragraphs explicitly approved by the author.
   cited records in the rebuilt 153-record database.
 - Visually checked the amended text on PDF pages 4--5, 7--8, and 17;
   citations resolve correctly and the paragraphs render legibly.
+
+## Paragraph-level focus of the short review (2026-09-17)
+
+- Fast-forwarded to the author's `1a09951` introduction edits before the
+  review and preserved them. Changed only active Related Literature prose.
+- Paragraph 1: resource allocation to AI research (fixed shares, planner
+  optimization, and decentralized private decisions). Preserved unchanged.
+- Paragraph 2: monopoly rents as a research incentive and an income source
+  distinct from physical-capital remuneration. Shortened the comparison and
+  removed the detour into automation versus new-task research. Retained every
+  citation and the contrast with Liu--Wan. The model and conclusion continue
+  to explain the absence of new human tasks.
+- Paragraph 3: production bottlenecks and the conditions for temporary versus
+  permanent growth gains. Preserved unchanged.
+- Paragraph 4: faster real-wage growth can coexist with a declining labor
+  share. Removed the closing detour into AI revenues, compute costs, and
+  transitional profits; those topics remain in paragraph 2 and the numerical
+  results, respectively. No paragraph needed deletion or division.
+- The previously silenced review remains untouched. No title, abstract,
+  equation, result, simulation, figure, parameter, or initial-condition edits.
