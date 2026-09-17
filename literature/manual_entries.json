@@ -1912,6 +1912,16 @@
     }
   },
   "connection_reviews": {
+    "chowhalperinmazlish2026": {
+      "connection_themes": "Tasas de interés; Cuellos de botella y transición",
+      "suggested_sections": "Conexión incorporada en 6.2, párrafo que presenta la Figura 5: crecimiento del consumo y retorno real",
+      "reviewed_passages": "Borrador de junio de 2026: sección 3.1, p. impresa 8 (PDF p. 9), ecuaciones (1)–(2); sección 3.2, pp. 9–10; introducción, p. 2 y nota 1. Cotejadas el 17 de septiembre de 2026.",
+      "terminology": "consumption smoothing; Euler equation; real interest rates; expected consumption growth",
+      "integration_note": "Frase aprobada incorporada en 6.2. Corrige la afirmación de que una tasa mayor modera el crecimiento del consumo: nuestra condición de Euler implica la asociación contraria. La referencia reconoce el mecanismo intertemporal, sin identificar las tasas reales de largo plazo de su estudio con nuestro retorno instantáneo al capital ni atribuir un signo necesario a la respuesta del ahorro.",
+      "reading_status": "pasajes originales revisados",
+      "verification_status": "original_relevant_passages_reviewed",
+      "review_priority": "alta"
+    },
     "davidsonetal2026": {
       "connection_themes": "Feedback tecnológico; Feedback económico; Cómputo e investigación; Crecimiento hiperbólico y singularidades; Cuellos de botella y transición",
       "suggested_sections": "Introducción: dos feedback loops; sección 3: RSI y cómputo; sección 5.3: singularidad",

@@ -288,3 +288,18 @@ paragraphs explicitly approved by the author.
 - Documented both connections and their limits in the bibliography tool.
   Related Literature, model equations, notation, figures, and simulations
   remain untouched.
+
+## Section 6.2: consumption growth and real returns (approved, 2026-09-17)
+
+- Replaced only the approved sentence in the paragraph introducing Figure 5,
+  `12_rsi_high_productivity.tex`, with the Euler-condition explanation and
+  the Chow--Halperin--Mazlish citation.
+- Verified the original June 2026 working paper, Section 3.1, printed p. 8
+  (PDF p. 9), Equations (1)--(2), and Section 3.2, pp. 9--10:
+  https://www.basilhalperin.com/papers/agi_emh.pdf.
+- Higher returns accompany faster consumption growth under the manuscript's
+  Euler condition; they do not moderate that growth rate. The comparison
+  concerns intertemporal optimality, not an equivalence of long-maturity
+  market rates and our instantaneous net return on physical capital.
+- Updated the bibliography tool's placement and verification notes. No other
+  manuscript text, equation, simulation, figure, or notation was changed.
