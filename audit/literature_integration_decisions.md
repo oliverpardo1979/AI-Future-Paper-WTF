@@ -142,3 +142,22 @@ paragraphs explicitly approved by the author.
     https://web.stanford.edu/~chadj/AIandEconomicFuture.pdf
 - No title, abstract, Related Literature, model, simulation, figure, parameter,
   initial-condition, or notation changes. Updated bibliographic placement data.
+
+## Aghion, Jones, and Jones: weak links and equilibrium regimes (2026-09-16)
+
+- Added a short paragraph in Section 3.3 connecting the CES complementarity
+  case to their weak-link mechanism. No new equation or parameter is introduced.
+  The reference distinguishes replacement within tasks from complementarity
+  across tasks and does not identify their elasticity with our aggregate sigma.
+- Added a paragraph after Proposition 1 recognizing the antecedent of stable
+  growth and a positive labor share despite near-complete automation. Our
+  autonomous RSI and return threshold do not make that qualitative mechanism new.
+- Verified the published chapter, Section 9.2.2, pp. 242--246, Equations
+  (5)--(16), Figure 9.1, and footnote 8, plus the fixed-saving closure on p. 240:
+  https://web.stanford.edu/~chadj/AJJ-AIandGrowth.pdf.
+- Their footnote 8 permits an AK limit under sufficiently rapid automation
+  despite complementarity between tasks. Consequently our aggregate sigma>1
+  condition must not be presented as a condition for all task-based models.
+- Updated the bibliographic-tool record to the published PDF and recorded
+  these passages and limits. Related Literature, the introduction, abstract,
+  conclusions, equations, notation, and all simulations remain unchanged.

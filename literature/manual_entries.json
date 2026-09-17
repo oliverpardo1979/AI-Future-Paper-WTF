@@ -1631,14 +1631,14 @@
       "abstract": "This paper examines the potential impact of artificial intelligence (A.I.) on economic growth. We model A.I. as the latest form of automation, a broader process dating back more than 200 years. Electricity, internal combustion engines, and semiconductors facilitated automation in the last century, but A.I. now seems poised to automate many tasks once thought to be out of reach, from driving cars to making medical recommendations and beyond. How will this affect economic growth and the division of income between labor and capital? What about the potential emergence of singularities and superintelligence? How will the linkages between A.I. and growth be mediated by firm-level considerations, including organization and market structure? The goal throughout is to refine a set of critical questions about A.I. and economic growth and to contribute to shaping an agenda for the field. One theme that emerges is based on Baumol's cost disease insight: growth may be constrained not by what we are good at but rather by what is essential and yet hard to improve.",
       "abstract_type": "source_abstract",
       "abstract_source_url": "https://www.nber.org/papers/w23928",
-      "document_url": "https://www.nber.org/papers/w23928.pdf",
+      "document_url": "https://web.stanford.edu/~chadj/AJJ-AIandGrowth.pdf",
       "metadata_source": "NBER",
       "topics": "artificial intelligence; automation; economic growth; bottlenecks; Baumol cost disease; singularity",
       "evidence_type": "theory and illustrative simulation",
       "method": "Task-automation extensions of growth models, including automation in goods and idea production and essential-task bottlenecks.",
       "key_results": "Automation can raise growth sharply, but essential tasks that remain difficult to automate can bind aggregate growth for a prolonged period.",
-      "use_in_axm": "Early antecedent for the claim that bottlenecks can keep aggregate growth modest even while automation advances.",
-      "limits_for_axm": "The numerical automation path is exogenous, so it is not the closest precedent for the endogenous timing of the A×M takeoff."
+      "use_in_axm": "Sections 3.3 and 4.2 recognize its weak-link mechanism and its example of asymptotic balanced growth with a positive labor share despite automation approaching completeness.",
+      "limits_for_axm": "Section 9.2.2 imposes automation paths and a fixed saving rate. Its complementarity is across tasks, not our aggregate labor-AI elasticity. Footnote 8 allows an AK outcome under sufficiently rapid automation even with task complementarity; our sigma>1 condition is therefore not a universal requirement."
     },
     "trammellkorinek2023": {
       "abstract": "Recent advances in AI may herald the near arrival of systems that can automate essentially all work. We review the macroeconomic implications of this scenario, in a framework synthesizing several strands of the relevant literature. Robustly, fully automating production alone (so that machines can self-replicate) would dramatically raise the growth rate and lower the labor share, breaking the Kaldor Facts that have long characterized frontier growth. Automating R&D (so that machines can self-improve) would accelerate the transformation, but may not produce it in isolation. Wages—the product of exploding output and a plummeting labor share—may rise or fall, depending on the returns to scale, the importance of natural resources, and the direction of technical change.",
@@ -2129,10 +2129,10 @@
     },
     "aghionjonesjones2019": {
       "connection_themes": "Cuellos de botella y transición; Feedback tecnológico; Crecimiento hiperbólico y singularidades",
-      "suggested_sections": "Secciones 3–4: bottlenecks; sección 6: transición",
-      "reviewed_passages": "Versión de trabajo auditada, PDF pp. 3–5; mecanismos de bienes e ideas.",
-      "terminology": "Baumol's cost disease; bottlenecks; automation of ideas",
-      "integration_note": "Antecedente de cuellos de botella. No equiparar una trayectoria de automatización impuesta con nuestro gasto óptimo.",
+      "suggested_sections": "Conexión incorporada en 3.3 (producción) y 4.2 (regímenes); sección 6: transición",
+      "reviewed_passages": "Versión publicada, sección 9.2.2, pp. 242–246: ecuaciones (5)–(16), Figura 9.1 y nota 8; p. 240: cierre con ahorro fijo. Verificadas el 16 de septiembre de 2026.",
+      "terminology": "weak links; gross complements; Baumol's cost disease; automation; asymptotic balanced growth",
+      "integration_note": "Reconocer el antecedente de crecimiento estable y participación laboral positiva pese a automatización casi completa. Distinguir complementariedad entre tareas de nuestra elasticidad agregada, automatización impuesta de inversión privada en RSI y la excepción AK de su nota 8. No trasladar nuestras condiciones necesarias a su modelo.",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta"
     },
