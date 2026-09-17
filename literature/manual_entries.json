@@ -1652,8 +1652,8 @@
       "evidence_type": "theory synthesis",
       "method": "Macroeconomic framework separating automation of ordinary production from automation of research and development.",
       "key_results": "Full production automation can sharply raise growth and reduce labor's share; automating R&D accelerates the transformation, while wage effects depend on scale, resources, and technical change.",
-      "use_in_axm": "Supports separating the production and research automation margins and distinguishing wage levels from labor's income share.",
-      "limits_for_axm": "It does not use the A×M market structure or provide the paper's exact distributional decomposition."
+      "use_in_axm": "The opening paragraph of Section 3 credits the distinction between research automation and production automation: autonomous AI research does not remove human labor from final-good production. Also helps distinguish wage levels from labor's income share.",
+      "limits_for_axm": "The April 2026 revision, Section 3, pp. 15–16, distinguishes R&D automation from production automation; Section 3.1 and Equations (9)–(10) illustrate automated research with complementary capital and labor in production. This supports the distinction, not an equivalence between its research technology and ours or a claim that autonomous research has already been achieved."
     },
     "davidsonetal2026": {
       "abstract": "AI labs are increasingly using AI itself to accelerate AI research, creating a feedback loop that could lead to an intelligence explosion. We develop a general semi-endogenous growth model with an innovation network, where research and automation in one sector increase the productivity of research in other sectors, and derive a clean analytical condition under which growth becomes superexponential (``explosive''). We find that automating research can offset diminishing returns to ideas by activating two reinforcing channels: a technological feedback loop across research sectors, and an economic feedback loop in which higher output finances further research. Growth becomes explosive if the combined strength of technological and economic feedback loops overcomes diminishing returns. In a simple simulation calibrated to trends in AI progress, fully automating software research and modest (5%) automation in other sectors generates a singularity within six years. Bottlenecks do not overturn the result if task automation advances sufficiently fast.",
@@ -2125,8 +2125,8 @@
     },
     "trammellkorinek2023": {
       "connection_themes": "Feedback económico; Feedback tecnológico; Crecimiento hiperbólico y singularidades; Salarios y participación laboral",
-      "suggested_sections": "Secciones 3–5: automatización de producción e investigación",
-      "reviewed_passages": "NBER w31815, revisión de abril de 2026, PDF pp. 2–5 y secciones 2–4.",
+      "suggested_sections": "Conexión incorporada en el primer párrafo de la sección 3: automatización de investigación y producción; secciones 4–5: crecimiento",
+      "reviewed_passages": "NBER w31815, revisión de abril de 2026, sección 3, pp. impresas 15–16 (PDF pp. 17–18), especialmente sección 3.1 y ecuaciones (9)–(10), verificadas el 16 de septiembre de 2026. También revisados PDF pp. 2–5 y secciones 2–4.",
       "terminology": "production automation; R&D automation; self-replication; self-improvement",
       "integration_note": "Separar salarios, participación y supuestos sobre recursos. No importar un resultado de ahorro óptimo sin verificar preferencias y tecnología.",
       "reading_status": "pasajes originales revisados",

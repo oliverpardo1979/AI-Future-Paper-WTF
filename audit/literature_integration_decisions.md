@@ -211,3 +211,16 @@ paragraphs explicitly approved by the author.
 - All other manuscript paragraphs remain unchanged. Title, abstract,
   Related Literature, model, equations, figures, simulations, parameters,
   and initial conditions remain untouched.
+
+## Model, opening paragraph: research versus production automation (approved, 2026-09-16)
+
+- Added only the approved sentence citing `trammellkorinek2023` to distinguish
+  autonomous research from the removal of labor from final-good production.
+- Verified the April 2026 revision of NBER Working Paper 31815, Section 3,
+  printed pp. 15--16 (PDF pp. 17--18), particularly Section 3.1 and Equations
+  (9)--(10). The connection is the distinction between the two automation
+  margins, not an equivalence of research technologies or a factual claim
+  that research has already been fully automated.
+- Updated the bibliographic tool's placement and verification notes.
+- No other manuscript paragraph, equation, simulation, figure, parameter,
+  initial condition, title, abstract, or Related Literature text changed.
