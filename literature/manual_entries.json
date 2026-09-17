@@ -2152,10 +2152,10 @@
     },
     "duffypapageorgiou2000": {
       "connection_themes": "Cuellos de botella y transición; Salarios y participación laboral",
-      "suggested_sections": "Sección 4: umbral; sección 6: señales tardías",
-      "reviewed_passages": "PDF pp. 2–9, especialmente sección 2.2 y nota 7, p. 9.",
+      "suggested_sections": "Conexión incorporada al final de la sección 4.1: sustitución y retorno límite del capital; sección 6: señales tardías",
+      "reviewed_passages": "Versión final de los autores, marzo de 2000, sección 2.2, pp. impresas 7–8 (PDF pp. 8–9), incluida la condición sobre el producto marginal límite y la nota 7; verificadas el 16 de septiembre de 2026. También revisadas PDF pp. 2–7.",
       "terminology": "elasticity of substitution; sustained growth",
-      "integration_note": "Una elasticidad alta no basta: importa la productividad acumulable. La nota 7 antecede la advertencia sobre regímenes difíciles de detectar al principio.",
+      "integration_note": "Al final de 4.1 se reconoce que una elasticidad mayor que uno no basta: el retorno límite del capital debe ser suficientemente alto. Su CES combina capital y trabajo; no demuestra nuestro umbral de eficiencia de IA ni incorpora un desarrollador monopolista. La nota 7 antecede la advertencia sobre regímenes difíciles de detectar al principio.",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta"
     },

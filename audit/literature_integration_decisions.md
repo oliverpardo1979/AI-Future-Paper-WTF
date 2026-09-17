@@ -224,3 +224,15 @@ paragraphs explicitly approved by the author.
 - Updated the bibliographic tool's placement and verification notes.
 - No other manuscript paragraph, equation, simulation, figure, parameter,
   initial condition, title, abstract, or Related Literature text changed.
+
+## Section 4.1: substitution and the limiting return (approved, 2026-09-16)
+
+- Added the approved final sentence citing `duffypapageorgiou2000` to the
+  paragraph immediately after Equation `eq:rewrite-critical-frontier`.
+- Verified the authors' March 2000 final draft, Section 2.2, printed pp. 7--8
+  (PDF pp. 8--9). The antecedent is the joint role of substitution and a
+  sufficiently high limiting return on capital in CES growth models, not
+  our AI-efficiency threshold or decentralized AI-developer equilibrium.
+- Updated the bibliographic tool's placement and passage-verification notes.
+- The author rejected the proposed Hemous--Olsen addition in Section 3.4.4;
+  that paragraph remains unchanged. No other manuscript text changed.

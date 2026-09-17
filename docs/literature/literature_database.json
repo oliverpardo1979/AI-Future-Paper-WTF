@@ -1,6 +1,6 @@
 {
   "generated_on": "2026-09-16",
-  "source_fingerprint": "4612fb8a723b5d7865b273a7c7679d6179597e3d9166c9e1b875fe2f2b0eac89",
+  "source_fingerprint": "912ab783ac60d8a1e4e14e9e875434eafda69d25079492151f283b4ff2d6c054",
   "record_count": 153,
   "records": [
     {
@@ -6211,9 +6211,9 @@
       "citation_key": "duffypapageorgiou2000",
       "source_group": "manuscript_bibliography",
       "cited_in_manuscript": "yes",
-      "citation_locations": "sections/02_literature.tex:23; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:67; sections_rewrite/02_literature.tex:69",
+      "citation_locations": "sections/02_literature.tex:23; sections/03_toy_model.tex:793; sections_axm/02_literature.tex:67; sections_rewrite/02_literature.tex:69; sections_rewrite/04_equilibrium_regimes.tex:77",
       "cited_in_rewrite": "yes",
-      "citation_locations_rewrite": "sections_rewrite/02_literature.tex:69",
+      "citation_locations_rewrite": "sections_rewrite/02_literature.tex:69; sections_rewrite/04_equilibrium_regimes.tex:77",
       "cited_in_companion": "no",
       "citation_locations_companion": "",
       "cited_in_axm": "yes",
@@ -6245,10 +6245,10 @@
       "notes": "",
       "last_verified": "2026-09-16",
       "connection_themes": "Cuellos de botella y transición; Salarios y participación laboral",
-      "suggested_sections": "Sección 4: umbral; sección 6: señales tardías",
+      "suggested_sections": "Conexión incorporada al final de la sección 4.1: sustitución y retorno límite del capital; sección 6: señales tardías",
       "terminology": "elasticity of substitution; sustained growth",
-      "integration_note": "Una elasticidad alta no basta: importa la productividad acumulable. La nota 7 antecede la advertencia sobre regímenes difíciles de detectar al principio.",
-      "reviewed_passages": "PDF pp. 2–9, especialmente sección 2.2 y nota 7, p. 9.",
+      "integration_note": "Al final de 4.1 se reconoce que una elasticidad mayor que uno no basta: el retorno límite del capital debe ser suficientemente alto. Su CES combina capital y trabajo; no demuestra nuestro umbral de eficiencia de IA ni incorpora un desarrollador monopolista. La nota 7 antecede la advertencia sobre regímenes difíciles de detectar al principio.",
+      "reviewed_passages": "Versión final de los autores, marzo de 2000, sección 2.2, pp. impresas 7–8 (PDF pp. 8–9), incluida la condición sobre el producto marginal límite y la nota 7; verificadas el 16 de septiembre de 2026. También revisadas PDF pp. 2–7.",
       "reviewed_version": "Borrador final de los autores, marzo de 2000",
       "reading_status": "pasajes originales revisados",
       "review_priority": "alta",
