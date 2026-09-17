@@ -369,3 +369,37 @@ paragraphs explicitly approved by the author.
   research-return, and unrestricted-efficiency qualifications.
 - Preserved the author's first paragraph, neighboring paragraphs, and the
   commented comparison; no model, simulation, figure, or notation changes.
+
+## Related literature: shorter active section and preserved prior text (2026-09-17)
+
+- Fast-forwarded to the author's `aafbb5b` commit before editing; the completed
+  introduction is untouched.
+- Replaced the active review with four paragraphs focused on seven references:
+  Davidson et al.; Jones--Tonetti; Romer; Hemous--Olsen; Liu--Wan;
+  Aghion--Jones--Jones; and Ray--Mookherjee. The entire prior source, including
+  the earlier commented comparison, is preserved below with one additional
+  percent-and-space prefix per line. No bibliographic entry or citation
+  elsewhere in the manuscript was removed.
+- Kept the comparison between endogenous technological progress and optimized
+  resource allocation explicit. Davidson's aggregate growth application fixes
+  saving and sectoral shares; Jones--Tonetti's Table 9 fixes investment and
+  research shares. Neither is described as imposing all technological progress.
+- Distinguished physical-capital compensation from developer net profit, not
+  separate household ownership groups. Romer and Hemous--Olsen are retained as
+  precedents for privately financed innovation; Liu--Wan provides the direct
+  AI-market-structure comparison. Stored originals and the source passages
+  checked in the preceding review support these comparisons.
+- Connected Aghion--Jones--Jones to production bottlenecks and Ray--Mookherjee
+  to rising wages with a vanishing labor share. Own growth-regime statements
+  retain the finite-bound qualification and concern the characterized regimes.
+- Checked the current high/low research-productivity text: the active examples
+  have initial profit reductions, not the temporary losses of older exercises.
+  The new review therefore says reductions in developer net profit.
+- No changes to the introduction, abstract, model, results, numerical code,
+  figures, parameters, initial conditions, or notation.
+- Validation: recovered the commented archive and compared it with the
+  pre-edit source; it is identical apart from line-ending normalization.
+  Tectonic compiled `main_rewrite.tex` successfully with no unresolved
+  citations/references or overfull boxes in the final log. Visually checked
+  the new review on PDF pages 4--5. The shorter section has about 410 words
+  (TeX citation commands counted as single tokens).
