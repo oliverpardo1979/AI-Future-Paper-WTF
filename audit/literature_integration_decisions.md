@@ -318,3 +318,22 @@ paragraphs explicitly approved by the author.
   its analytical normalized limit (2.1350%); both retain one decimal in prose.
 - Updated the collected reference's placement note. No other manuscript
   paragraph, equation, simulation, figure, parameter, or notation changed.
+
+## Conclusion: wealth concentration and heterogeneous ownership (approved, 2026-09-17)
+
+- Added only the approved Moll--Rachel--Restrepo sentence after the existing
+  Jones reference in the last substantive paragraph of `06_conclusion.tex`.
+- Verified the published Econometrica article, Section 2.1, p. 2650;
+  Lemma 1 and Proposition 1, pp. 2653--2654; and Section 2.3,
+  Proposition 3 and discussion, pp. 2659--2661, including Equation (12):
+  https://benjaminmoll.com/wp-content/uploads/2019/07/UG.pdf.
+- Their heterogeneous wealth accumulation mechanism motivates an extension;
+  our representative-household interest-rate result does not itself imply
+  increasing personal income or wealth inequality.
+- Added the published article to `references.bib` and migrated its existing
+  collected record from additions to overrides, preserving its metadata
+  and editorial summary without creating a duplicate. Updated placement notes.
+- This completes the current paragraph-by-paragraph pass through the main
+  text. The closing sentence needs no citation. Related Literature remains
+  unchanged for a separately approved shortening pass; no new equation,
+  simulation, figure, parameter, or notation changes were made.

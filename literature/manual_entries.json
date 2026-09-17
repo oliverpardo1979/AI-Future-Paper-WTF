@@ -1032,33 +1032,6 @@
       "limits_for_axm": "It does not identify advanced AI, inference or research compute, or a feedback-driven growth transition."
     },
     {
-      "citation_key": "mollrachelrestrepo2022",
-      "entry_type": "article",
-      "authors": "Moll, Benjamin and Rachel, Lukasz and Restrepo, Pascual",
-      "title": "Uneven Growth: Automation's Impact on Income and Wealth Inequality",
-      "year": "2022",
-      "venue": "Econometrica",
-      "volume": "90",
-      "number": "6",
-      "pages": "2645--2683",
-      "doi": "10.3982/ECTA19417",
-      "document_url": "https://benjaminmoll.com/wp-content/uploads/2019/07/UG.pdf",
-      "landing_page_url": "https://www.nber.org/papers/w28440",
-      "source_group": "conversation_addition",
-      "topics": "automation; wealth inequality; income inequality; returns to wealth; wages; heterogeneous households",
-      "abstract": "The benefits of new technologies accrue not only to high-skilled labor but also to owners of capital through higher capital incomes. The paper develops a tractable theory linking technology to personal income and wealth distributions and isolates a mechanism through which automation increases inequality via returns to wealth. Higher returns can coincide with stagnant wages and incomes at the bottom of the distribution.",
-      "abstract_type": "editorial_summary",
-      "abstract_source_url": "https://www.nber.org/papers/w28440",
-      "metadata_source": "NBER and Econometrica",
-      "verification_status": "official_landing_page",
-      "notes": "Concise editorial synopsis of the official abstract; it is not author-written text.",
-      "evidence_type": "theory and quantitative distribution",
-      "method": "Heterogeneous-household automation model linking factor returns to income and wealth distributions, with a multi-asset quantitative extension.",
-      "key_results": "Automation can increase the return to wealth, raise top income and wealth concentration, and limit wage gains for workers with few assets.",
-      "use_in_axm": "Clarifies why a functional decomposition of output is not enough to infer interpersonal inequality: ownership of capital and developer profit matters.",
-      "limits_for_axm": "The A×M paper has a representative household and therefore does not reproduce this personal-distribution mechanism."
-    },
-    {
       "citation_key": "idetalamas2025",
       "entry_type": "article",
       "authors": "Ide, Enrique and Talamàs, Eduard",
@@ -1388,6 +1361,21 @@
     }
   ],
   "overrides": {
+    "mollrachelrestrepo2022": {
+      "document_url": "https://benjaminmoll.com/wp-content/uploads/2019/07/UG.pdf",
+      "landing_page_url": "https://www.nber.org/papers/w28440",
+      "topics": "automation; wealth inequality; income inequality; returns to wealth; wages; heterogeneous households",
+      "abstract": "The benefits of new technologies accrue not only to high-skilled labor but also to owners of capital through higher capital incomes. The paper develops a tractable theory linking technology to personal income and wealth distributions and isolates a mechanism through which automation increases inequality via returns to wealth. Higher returns can coincide with stagnant wages and incomes at the bottom of the distribution.",
+      "abstract_type": "editorial_summary",
+      "abstract_source_url": "https://www.nber.org/papers/w28440",
+      "metadata_source": "NBER and Econometrica",
+      "notes": "Editorial synopsis, not author-written text. The published original was downloaded and relevant body passages checked on 2026-09-17; the approved connection is now in the conclusion. Migrated from conversation additions into the manuscript bibliography without duplicating the record.",
+      "evidence_type": "theory and quantitative distribution",
+      "method": "Heterogeneous-household automation model linking factor returns to income and wealth distributions, with a multi-asset quantitative extension.",
+      "key_results": "Automation can increase the return to wealth, raise top income and wealth concentration, and limit wage gains for workers with few assets.",
+      "use_in_axm": "Clarifies why a functional decomposition of output is not enough to infer interpersonal inequality: ownership of capital and developer profit matters.",
+      "limits_for_axm": "The representative-household model does not reproduce their personal-distribution mechanism. Their result uses heterogeneous wealth accumulation and dissipation shocks, with a less-than-perfectly-elastic long-run capital supply. A higher interest rate in our economy alone does not establish greater wealth inequality."
+    },
     "hoetal2024algorithms": {
       "entry_type": "techreport",
       "authors": "Ho, Anson and Besiroglu, Tamay and Erdil, Ege and Owen, David and Rahman, Robi and Guo, Zifan Carl and Atkinson, David and Thompson, Neil and Sevilla, Jaime",
@@ -1912,6 +1900,16 @@
     }
   },
   "connection_reviews": {
+    "mollrachelrestrepo2022": {
+      "connection_themes": "Salarios y participación laboral; Tasas de interés; Propiedad y desigualdad",
+      "suggested_sections": "Conexión incorporada en el último párrafo sustantivo de las conclusiones: propiedad heterogénea y límites del hogar representativo",
+      "reviewed_passages": "Artículo publicado en Econometrica 90(6), 2022: sección 2.1, p. 2650; Lema 1 y Proposición 1, pp. 2653–2654; sección 2.3, Proposición 3 y discusión, pp. 2659–2661, incluida ecuación (12). Revisadas el 17 de septiembre de 2026.",
+      "terminology": "returns to wealth; wealth concentration; personal income distribution; dissipation shocks",
+      "integration_note": "Frase aprobada incorporada después de la referencia a Jones en las conclusiones. Reconoce el canal de rendimientos y concentración patrimonial como antecedente para una extensión, no como resultado del modelo con hogar representativo. Related Literature permanece intacta.",
+      "reading_status": "pasajes originales revisados",
+      "verification_status": "original_relevant_passages_reviewed",
+      "review_priority": "alta"
+    },
     "chowhalperinmazlish2026": {
       "connection_themes": "Tasas de interés; Cuellos de botella y transición",
       "suggested_sections": "Conexión incorporada en 6.2, párrafo que presenta la Figura 5: crecimiento del consumo y retorno real",
