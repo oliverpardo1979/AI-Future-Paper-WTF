@@ -547,3 +547,37 @@ paragraphs explicitly approved by the author.
   unresolved references, or overfull/underfull boxes. Visually checked the
   two updated paragraphs on page 17; the citation resolves correctly and
   the surrounding Figure 3 remains legible. No simulations were rerun.
+
+### Author's follow-up: retain only the result citation (2026-09-19)
+
+- Removed the proposition-specific citation locator and the entire added
+  paragraph about omitted new human tasks, as explicitly requested.
+- Retained Acemoglu--Restrepo (2018) beside the rising-wage/falling-labor-share
+  antecedents in Section 4.2. No other manuscript passage was changed.
+- The next paper, Hemous--Olsen (2022), is being reviewed for a separate
+  proposal; no new placement is approved or implemented yet.
+- Validation: rebuilt the 65-page PDF, checked the absence of unresolved
+  references/citations and overfull/underfull boxes, and visually inspected
+  page 17. The removed paragraph is absent from the extracted PDF text.
+
+## Hemous--Olsen (2022): reviewed, placement pending approval (2026-09-19)
+
+- Read the complete published article, all 45 PDF pages (printed pp. 179--223),
+  including its printed Appendix A and references, from the existing local
+  copy. Verified the published version against the author's UZH download.
+  Did not read or claim verification of the separate online Appendix B.
+- Source: https://www.econ.uzh.ch/dam/jcr:45914647-fc05-419a-94b8-210ac86dc9aa/The%20Rise%20of%20the%20Machines.pdf
+  Local source: tmp/related_literature_audit_2026-09-13/hemousolsen2022.pdf
+- Relevant result: pp. 188--190, equations (10)--(11), and pp. 195--196.
+  Low-skill wages grow at a positive rate below output growth in the
+  characterized interior long-run regime; high-skill wages grow with output.
+  Equation (9), p. 186, and equation (A6), p. 210, explain why aggregate
+  labor income retains a positive share. The quantitative extension on
+  pp. 198 and 202--203 preserves the distinction across skill groups.
+- Proposed one-sentence comparison in the existing Section 4.2 antecedents
+  paragraph, after Ray--Mookherjee: low-skill wage growth lags output, but
+  high-skill wages preserve a positive aggregate labor share. This recognizes
+  the wage-growth-gap antecedent without attributing a vanishing total labor
+  share, private RSI, or our specific elasticity formula to their model.
+- No manuscript citation to this paper has been added outside Related
+  Literature. Await the author's approval before implementation.
