@@ -672,3 +672,23 @@ paragraphs explicitly approved by the author.
   unresolved citations/references or overfull/underfull boxes in its log.
   Verified the new citation and sentence on page 10 and visually inspected
   pages 9 and 10. No simulations were run or changed.
+
+## Standalone literature section silenced (2026-09-19)
+
+- Following the author's approval, inserted the exact three-sentence
+  comparison with Davidson et al., Jones--Tonetti, and Erdil et al. after
+  the two-feedback paragraph in sections_rewrite/01_introduction.tex.
+- Commented only the Related Literature input in main_rewrite.tex. The
+  complete sections_rewrite/02_literature.tex source is untouched and can
+  be restored by uncommenting the input. All citations already integrated
+  into the body remain active.
+- Updated the introduction's roadmap to six sections and removed its
+  reference to the now-inactive literature section. Section numbering
+  continues to be automatic.
+- Title, abstract, model, results, figures, simulations, and remaining
+  introduction text were not changed.
+- Validation: Tectonic rebuilt the PDF successfully (64 pages). Checked
+  the six-section table of contents, the new paragraph on page 3, and the
+  roadmap/model transition on page 4. Visually inspected pages 2--4.
+  No unresolved references/citations or overfull/underfull boxes were
+  reported. No simulations were run.
