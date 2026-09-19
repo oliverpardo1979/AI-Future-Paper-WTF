@@ -521,3 +521,29 @@ paragraphs explicitly approved by the author.
 - Preserved the existing Jones citations on effective compute and in the
   conclusions. Did not reactivate Section 6.4, alter the bibliography, or
   change equations, numerical claims, simulations, figures, or parameters.
+
+## Acemoglu--Restrepo (2018): labor-share result and omitted new tasks (2026-09-19)
+
+- The author rejected placement in the conclusion and in the developer's
+  research problem, approving a connection beside the falling-labor-share
+  results instead. Updated Section 4.2 after the wages/AI-revenue remark.
+- Read the complete published AER article (pp. 1488--1542, including its
+  printed appendix). Proposition 5 and pp. 1509--1510 establish that, in the
+  relevant interior BGP comparison, greater automation can raise wages
+  while lowering labor's share. This is an antecedent, not their proof of
+  our limiting growth rates or a vanishing labor share.
+- Added the omitted adjustment margin: new human tasks can counteract
+  automation. Section III, especially Proposition 6 and pp. 1515--1518,
+  establishes conditions for stable interior growth with a positive labor
+  share; it also permits full automation under other conditions. The text
+  therefore says "can" and leaves the effect of adding task creation to
+  our model open.
+- Preserved the author's latest conclusion correction in e13bec7. No
+  title, abstract, Related Literature, model equation, simulation, figure,
+  parameter, or initial-condition changes.
+- Source: https://ide.mit.edu/sites/default/files/publications/aer.20160696.pdf
+  Local copy: tmp/related_literature_audit_2026-09-13/acemoglurestrepo2018.pdf
+- Validation: Tectonic compiled the 65-page PDF without unresolved citations,
+  unresolved references, or overfull/underfull boxes. Visually checked the
+  two updated paragraphs on page 17; the citation resolves correctly and
+  the surrounding Figure 3 remains legible. No simulations were rerun.
