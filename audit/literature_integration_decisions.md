@@ -659,3 +659,16 @@ paragraphs explicitly approved by the author.
   identifying our upper-bound parameter.
 - No Erdil manuscript edit has been made. Previously silenced references
   remain silenced. Await approval of this one connection.
+
+### Approved Erdil placement implemented (2026-09-19)
+
+- Added exactly the approved sentence in Section 3.4.2, immediately after
+  the explanation of psi(B), in sections_rewrite/03_model.tex. It recognizes
+  an antecedent for the upper-bound specification, without asserting
+  identical functional forms or empirical validation of our bound.
+- Preserved the rest of the paragraph, Related Literature, the title,
+  abstract, equations, simulations, and all silenced material.
+- Validation: Tectonic rebuilt the 65-page PDF successfully, with no
+  unresolved citations/references or overfull/underfull boxes in its log.
+  Verified the new citation and sentence on page 10 and visually inspected
+  pages 9 and 10. No simulations were run or changed.
