@@ -581,3 +581,40 @@ paragraphs explicitly approved by the author.
   share, private RSI, or our specific elasticity formula to their model.
 - No manuscript citation to this paper has been added outside Related
   Literature. Await the author's approval before implementation.
+
+### Approved placement implemented (2026-09-19)
+
+- Added exactly the approved sentence in Section 4.2, after Ray--Mookherjee
+  and before Caselli--Manning. The citation names the paper without a
+  proposition-specific locator. Preserved the surrounding text.
+- No changes to Related Literature, the title, abstract, model, simulations,
+  or the author's deletion of the separate Acemoglu--Restrepo limitation.
+- Validation: Tectonic rebuilt the 65-page PDF successfully. No unresolved
+  references/citations or overfull/underfull boxes were reported. Inspected
+  page 17 visually and verified the added sentence in extracted PDF text.
+
+## Liu--Wan (2026): full reading, proposal pending approval (2026-09-19)
+
+- Read all 107 PDF pages of the existing complete paper, including references
+  and Appendices A--D. The PDF is dated May 16, 2026, also confirmed by its
+  creation metadata. SSRN lists May 10 as Date Written and May 22 as posting
+  date; these are not treated as a different verified revision.
+- Title: AGI, ANI and Economic Growth. Authors: Taoxiong Liu and Ruidong Wan.
+  Source: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6776339
+  Local source: tmp/related_literature_audit_2026-09-13/liuwan2026.pdf
+- Proposed connection: pricing by a supplier of general-purpose AI affects
+  both its own innovation incentives and the research costs of specialized
+  AI developers. The manuscript's integrated developer abstracts from this
+  conflict between distinct AI firms.
+- Evidence: printed pp. 30--32, equations (39)--(44), especially Section 4.3.3;
+  Section 3.3, pp. 24--25, equations (28)--(30), and Appendix C.1, pp. 53--54,
+  examine vertical integration. Visually inspected printed pp. 31--32 to
+  check the formulas and stated incentive conflict.
+- Limits: their research technology distinguishes general-purpose models,
+  specialized applications and data. It is not our one-state RSI technology.
+  The proposed citation does not assert that our integrated monopoly is
+  efficient or that their growth comparisons carry over to our model.
+- Placement proposed: the final paragraph of Section 3.4.3, beginning
+  'That being said, monopoly is an institutional assumption', in
+  sections_rewrite/03_model.tex. Add two sentences explaining the omitted
+  conflict. No Liu--Wan manuscript edit has been made; await approval.
