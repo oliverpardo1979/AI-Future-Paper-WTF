@@ -618,3 +618,44 @@ paragraphs explicitly approved by the author.
   'That being said, monopoly is an institutional assumption', in
   sections_rewrite/03_model.tex. Add two sentences explaining the omitted
   conflict. No Liu--Wan manuscript edit has been made; await approval.
+
+### Approved Liu--Wan placement implemented (2026-09-19)
+
+- Added exactly the two approved sentences to the final paragraph of
+  Section 3.4.3, in sections_rewrite/03_model.tex. The existing paragraph
+  and references remain intact. The citation names the paper without
+  a proposition-specific locator.
+- No changes to Related Literature, the title, abstract, model equations,
+  simulations, or silenced material.
+- Validation: Tectonic rebuilt the 65-page PDF successfully. No unresolved
+  references/citations or overfull/underfull boxes were reported. Verified
+  the added text on page 11 and visually inspected pages 11 and 12.
+
+## Erdil et al. (2025): full reading, proposal pending approval (2026-09-19)
+
+- Read all 85 pages of the existing PDF, including references and Appendices
+  A--D. Verified its version, arXiv:2503.04941v2 (March 12, 2025), against
+  the arXiv version history. No newer arXiv revision was listed.
+- Title: GATE: An Integrated Assessment Model for AI Automation.
+  Authors: Ege Erdil, Andrei Potlogea, Tamay Besiroglu, Edu Roldan, Anson Ho,
+  Jaime Sevilla, Matthew Barnett, Matej Vrzla, and Robert Sandler.
+  Source: https://arxiv.org/pdf/2503.04941v2
+  Local source: tmp/related_literature_audit_2026-09-13/erdiletal2025gate.pdf
+- Direct connection: Section 3.5, pp. 19--20, equations (5)--(6), multiplies
+  hardware and software efficiency growth by factors that vanish at their
+  respective upper bounds. Visually inspected these pages and equations.
+  Proposed placement: Section 3.4.2, immediately after the sentence explaining
+  psi(B), in sections_rewrite/03_model.tex.
+- Proposed addition: 'A related approach appears in \\citet{erdiletal2025gate},
+  who also reduce research productivity as hardware and software efficiency
+  approach their respective upper bounds.'
+- Limits: their factors depend on normalized logarithmic distances to the
+  bounds, unlike our linear factor 1-B/Bbar. Their two separate efficiency
+  indices are not identical to our single AI-efficiency state. Their
+  specification is a modeling antecedent, not empirical validation of a
+  finite AI-efficiency bound or a proof of our equilibrium results.
+- Appendix D, pp. 75--76, explicitly describes considerable uncertainty
+  about the maximum algorithmic efficiency. Do not treat this paper as
+  identifying our upper-bound parameter.
+- No Erdil manuscript edit has been made. Previously silenced references
+  remain silenced. Await approval of this one connection.
