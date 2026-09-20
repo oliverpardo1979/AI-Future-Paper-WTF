@@ -23,7 +23,7 @@ PANELS_QUANTITY_GROWTH=(
  ('capital_effective_labor_growth', 'C. Capital\n$g_K-(n+\\gamma)$', 'rate'),
 )
 PANELS_PRICES_RETURNS=(
- ('wage_growth', 'A. Real-wage\ngrowth, $g_w$', 'rate'),
+ ('wage_growth', 'A. Wage\ngrowth, $g_w$', 'rate'),
  ('net_interest', 'B. Net interest\nrate, $r$', 'rate'),
  ('ai_service_price', 'C. AI-service\nprice, $p_X$', 'log_level'),
 )
@@ -35,7 +35,7 @@ PANELS_DISTRIBUTION=(
 )
 PANELS_NEAR_TERMINAL=(
  ('output_per_person_growth', 'A. Output-per-person\ngrowth, $g_Y-n$', 'rate'),
- ('wage_growth', 'B. Real-wage\ngrowth, $g_w$', 'rate'),
+ ('wage_growth', 'B. Wage\ngrowth, $g_w$', 'rate'),
  ('net_interest', 'C. Net interest\nrate, $r$', 'rate'),
 )
 NEAR_TERMINAL_YLIMS={
