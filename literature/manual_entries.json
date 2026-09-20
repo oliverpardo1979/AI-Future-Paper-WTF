@@ -1664,10 +1664,10 @@
       "verification_status": "official_landing_page",
       "topics": "AGI; compute; bottleneck work; labor share; wages; economic growth",
       "evidence_type": "theory",
-      "method": "Long-run model in which AGI can reproduce all economically valuable bottleneck work using expanding compute.",
-      "key_results": "Once compute can perform all bottleneck work, growth becomes compute-driven, wages are tied to compute's opportunity cost, and labor's income share converges to zero.",
-      "use_in_axm": "Closest antecedent for the conditional limiting distribution in which the human bottleneck disappears and labor's share vanishes.",
-      "limits_for_axm": "It characterizes the endpoint, not the endogenous delayed takeoff, monopoly rents, or the split between inference and research compute."
+      "method": "Competitive task allocation with an exogenous path of total compute and converging algorithmic requirements; studies transitions and adds scientific progress, including a planner's choice of compute allocation between production and research.",
+      "key_results": "In the baseline, expanding compute sustains growth without continuing technological progress once bottleneck work can be automated; wages approach positive finite limits while labor's income share vanishes. With scientific work, compute also raises productive knowledge. A planner optimally divides compute between these uses, with its total growth rate given.",
+      "use_in_axm": "Antecedent for growth without continuing AI-efficiency gains, a vanishing labor share, and endogenous allocation of compute to research. Compare its competitive baseline and research planner with private RSI investment, household saving and monopoly pricing here.",
+      "limits_for_axm": "It does model transitions and research allocation, but takes total compute growth as given and does not derive research spending from monopoly profits. Its bounded-wage result concerns the baseline without additional scientific progress; it is not a claim about every extension. Task-level replicability is not the same assumption as an aggregate CES elasticity above one."
     },
     "erdiletal2025gate": {
       "abstract": "Assessing the economic impacts of artificial intelligence requires integrating insights from both computer science and economics. We present the Growth and AI Transition Endogenous model (GATE), a dynamic integrated assessment model that simulates the economic effects of AI automation. GATE combines three key ingredients that have not been brought together in previous work: (1) a compute-based model of AI development, (2) an AI automation framework, and (3) a semi-endogenous growth model featuring endogenous investment and adjustment costs. The model allows users to simulate the economic effects of the transition to advanced AI across a range of potential scenarios. GATE captures the interactions between economic variables, including investment, automation, innovation, and growth, as well as AI-related inputs such as compute and algorithms. This paper explains the model's structure and functionality, emphasizing AI development for economists and economic modeling for the AI community. The model is implemented in an interactive sandbox, enabling users to explore the impact of AI under different parameter choices and policy interventions.",
@@ -2208,12 +2208,13 @@
       "review_priority": "alta"
     },
     "restrepo2025agi": {
-      "connection_themes": "Salarios y participación laboral; Cuellos de botella y transición",
-      "suggested_sections": "Sección 4 y conclusiones: esencialidad del trabajo",
-      "reviewed_passages": "Original auditado, PDF pp. 3–5.",
-      "terminology": "essential labor; supplemental labor; AGI",
-      "integration_note": "Automatizar todo trabajo bajo coeficientes de cómputo acotados no es idéntico a sigma > 1 en nuestra CES.",
-      "reading_status": "pasajes originales revisados",
+      "connection_themes": "Salarios y participación laboral; Cuellos de botella y transición; Incentivos de investigación",
+      "suggested_sections": "Introducción; regímenes con cota: crecimiento y salarios; conclusiones",
+      "reviewed_passages": "Lectura completa el 20-09-2026, incluidas las pruebas: 40 páginas PDF (pp. impresas 1–38 más dos portadas). Pasajes de la comparación: pp. 5–6, cómputo exógeno y equilibrio competitivo; pp. 7–10, Proposiciones 2–5 sobre crecimiento, salarios y participación laboral; pp. 11–14, transición; pp. 15–17, investigación y Proposición 11; pp. 34–38, problema y prueba del planificador. Lectura para verificar atribuciones, no certificación independiente de todos los teoremas.",
+      "reviewed_version": "NBER Working Paper 34423, October 2025, copia PDF original conservada localmente; SHA256 e55667350688811573f549b26d49f49972d7f3495b007378578a249ec4291c7c. El acceso directo a NBER devolvió 403 el 20-09-2026; no se afirma haber comprobado una revisión posterior.",
+      "terminology": "bottleneck work; supplementary work; compute-equivalent units; computational resource constraint",
+      "integration_note": "Incorporado el 20-09-2026: comparación con el planificador junto a Erdil en la introducción; antecedente de crecimiento con B cercano a su cota y contraste salarial en los resultados; crecimiento sin mejoras tecnológicas permanentes en las conclusiones. La investigación sí es endógena en la extensión de Restrepo; el crecimiento del cómputo total es exógeno. Automatizar todas las tareas esenciales no equivale a sigma > 1 en nuestra CES.",
+      "reading_status": "texto completo y pruebas leídos; atribuciones contrastadas",
       "review_priority": "alta"
     },
     "hoetal2024algorithms": {
