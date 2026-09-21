@@ -347,16 +347,17 @@ $M=0$ afterward. The uncapped RSI technology gives
  B_{\mathcal M}(t)^{1-\eta}=B_0^{1-\eta}
  +(1-\eta)\chi\mathcal M^\eta\min\{t,\Delta\}.
 \]
-Choosing $X$ optimally at every date therefore gives
+Since optimized operating profit is nonnegative, a lower bound on discounted
+net profit counts only operating profits earned after research stops, while
+subtracting all research expenditure. For all sufficiently large $\mathcal M$,
 \begin{equation}
- J_T(\mathcal M)=c_\pi\mathcal M^{
+ J_T(\mathcal M)\geq c_\pi\mathcal M^{
  \eta(1-\alpha)/[\alpha(1-\eta)]}
- -c_M\mathcal M
- +o\!\left(\mathcal M^{
- \eta(1-\alpha)/[\alpha(1-\eta)]}\right),
+ -c_M\mathcal M,
  \label{eq:rewrite-research-burst-payoff}
 \end{equation}
-with $c_\pi,c_M>0$. The exponent exceeds one because $\eta>\alpha$,
+where $c_\pi,c_M>0$ are independent of $\mathcal M$.
+The exponent exceeds one because $\eta>\alpha$,
 so $J_T(\mathcal M)\to+\infty$ as $\mathcal M\to\infty$.
 Each finite $\mathcal M$ keeps AI efficiency and discounted net profit
 finite on $[0,T]$; it is the sequence of payoffs that is unbounded.
