@@ -26,44 +26,45 @@ $Y/(AL)$ uniformly. Since $A_t=A_0e^{\gamma t}$ and $L=N$,
 $Y/N$ is bounded above by a constant times $e^{\gamma t}$.
 Taking logarithms, dividing by $t$, and taking the upper limit gives
 \eqref{eq:rewrite-uncapped-complements-growth-bound}.
-
-The same bounds keep $K$ and $Y$ finite on every bounded time interval.
-For any such horizon $T$, integrating the resource constraint gives
-\[
- \int_0^T M_t\dd t\leq K_0+\int_0^T Y_t\dd t<\infty.
-\]
-The uncapped RSI technology and H\"older's inequality imply
-\begin{align}
- B_T^{1-\eta}
- &=B_0^{1-\eta}+(1-\eta)\chi\int_0^T M_t^\eta\dd t
- \nonumber\\
- &\leq B_0^{1-\eta}
- +(1-\eta)\chi T^{1-\eta}
- \left(\int_0^T M_t\dd t\right)^\eta<\infty.
- \label{eq:rewrite-uncapped-complements-b-bound}
-\end{align}
-Thus $B$ cannot diverge at a finite date either. This argument bounds
-stocks and output; it is not a regularity theorem for all instantaneous
-control choices or an equilibrium-existence proof.
-
-There is also no finite-horizon unbounded-payoff argument of the kind used
-for substitution in Proposition~\ref{prop:rewrite-research-scale}.
-At given positive continuous paths of $K,A,L$ on $[0,T]$, optimized operating
-profit satisfies
-\[
- 0\leq\pi_t(B)\leq p_XX\leq(1-\alpha)Y
- \leq(1-\alpha)\omega_L^{\sigma(1-\alpha)/(\sigma-1)}
- K_t^\alpha(A_tL_t)^{1-\alpha}.
-\]
-This upper bound is independent of the developer's choice of $B$.
-For a given locally integrable $r$, the discount factor
-$D_t=\exp(-\int_0^t r_s\dd s)$ has a positive minimum on $[0,T]$.
-Discounted operating revenue is bounded, whereas the cost of research
-tends to infinity with $\int_0^T M_t\dd t$. The developer's truncated
-supremum is therefore finite, and net payoff tends to minus infinity as
-total research expenditure diverges. This conclusion holds for every
-$0<\eta<1$, but does not prove that an infinite-horizon optimum exists.
 \end{proof}
+
+% Additional results retained for possible later use; not part of the proposition.
+% The same bounds keep $K$ and $Y$ finite on every bounded time interval.
+% For any such horizon $T$, integrating the resource constraint gives
+% \[
+%  \int_0^T M_t\dd t\leq K_0+\int_0^T Y_t\dd t<\infty.
+% \]
+% The uncapped RSI technology and H\"older's inequality imply
+% \begin{align}
+%  B_T^{1-\eta}
+%  &=B_0^{1-\eta}+(1-\eta)\chi\int_0^T M_t^\eta\dd t
+%  \nonumber\\
+%  &\leq B_0^{1-\eta}
+%  +(1-\eta)\chi T^{1-\eta}
+%  \left(\int_0^T M_t\dd t\right)^\eta<\infty.
+%  \label{eq:rewrite-uncapped-complements-b-bound}
+% \end{align}
+% Thus $B$ cannot diverge at a finite date either. This argument bounds
+% stocks and output; it is not a regularity theorem for all instantaneous
+% control choices or an equilibrium-existence proof.
+%
+% There is also no finite-horizon unbounded-payoff argument of the kind used
+% for substitution in Proposition~\ref{prop:rewrite-research-scale}.
+% At given positive continuous paths of $K,A,L$ on $[0,T]$, optimized operating
+% profit satisfies
+% \[
+%  0\leq\pi_t(B)\leq p_XX\leq(1-\alpha)Y
+%  \leq(1-\alpha)\omega_L^{\sigma(1-\alpha)/(\sigma-1)}
+%  K_t^\alpha(A_tL_t)^{1-\alpha}.
+% \]
+% This upper bound is independent of the developer's choice of $B$.
+% For a given locally integrable $r$, the discount factor
+% $D_t=\exp(-\int_0^t r_s\dd s)$ has a positive minimum on $[0,T]$.
+% Discounted operating revenue is bounded, whereas the cost of research
+% tends to infinity with $\int_0^T M_t\dd t$. The developer's truncated
+% supremum is therefore finite, and net payoff tends to minus infinity as
+% total research expenditure diverges. This conclusion holds for every
+% $0<\eta<1$, but does not prove that an infinite-horizon optimum exists.
 
 \Needspace{7\baselineskip}
 \begin{proof}[Proof of Proposition~\ref{cond:rewrite-uncapped-complements-limits}]
