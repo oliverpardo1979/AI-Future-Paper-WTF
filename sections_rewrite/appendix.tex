@@ -13,56 +13,57 @@ variables $K,A,L,B$, for each fixed $\sigma$.
 \end{lemma}
 
 \begin{proof}[Proof of Lemma~\ref{lem:rewrite-monopoly-choice}]
-Fix \(K,A,L,B>0\), let \(R(X)=p_X(X)X\), and write
-\[
- u=\frac{1}{\sigma},\qquad s=s_X,\qquad
- e=u(1-s)+\alpha s.
-\]
+Fix \(K,A,L,B>0\) and let \(R(X)=p_X(X)X\).
 The demand elasticity in \eqref{eq:rewrite-inverse-demand-elasticity} and the
 CES-share derivative imply
 \[
- R'(X)=p_X(1-e),\qquad
- \frac{\dd s}{\dd\ln X}=(1-u)s(1-s).
+ R'(X)=p_X(X)(1-e_X),\qquad
+ \frac{\dd s_X}{\dd\ln X}=\left(1-\frac1\sigma\right)s_X(1-s_X).
 \]
-Let \(m(X)=R'(X)\). Wherever marginal revenue is positive, direct
-differentiation gives
+Wherever marginal revenue is positive, direct differentiation gives
 \begin{equation}
- -\frac{Xm'(X)}{p_X}
- =e(1-e)+(\alpha-u)(1-u)s(1-s)\equiv D(s).
+ -\frac{XR''(X)}{p_X(X)}
+ =e_X(1-e_X)+\left(\alpha-\frac1\sigma\right)
+ \left(1-\frac1\sigma\right)s_X(1-s_X).
  \label{eq:rewrite-monopoly-proof-curvature}
 \end{equation}
-If \((\alpha-u)(1-u)\geq0\), then \(D(s)>0\) immediately. If this product is
-negative, the parameter restrictions imply \(0<\alpha<u<1\), and
+If \((\alpha-1/\sigma)(1-1/\sigma)\geq0\), the right-hand side is positive.
+If this product is negative, the parameter restrictions imply
+\(0<\alpha<1/\sigma<1\), and
 \[
- D(s)=u(1-u)(1-s)^2
- +[u^2+2\alpha-3\alpha u]s(1-s)
- +\alpha(1-\alpha)s^2.
+ \begin{aligned}
+ -\frac{XR''(X)}{p_X(X)}
+ ={}&\frac1\sigma\left(1-\frac1\sigma\right)(1-s_X)^2\\
+ &+\left[\frac1{\sigma^2}+2\alpha-\frac{3\alpha}{\sigma}\right]s_X(1-s_X)
+ +\alpha(1-\alpha)s_X^2.
+ \end{aligned}
 \]
-The middle coefficient is positive. For \(u\leq2/3\), this follows from
-\(u^2+\alpha(2-3u)>0\). For \(u>2/3\), use \(\alpha<u\) and \(2-3u<0\) to
-obtain
+The middle coefficient is positive. For \(1/\sigma\leq2/3\), this follows from
+\(1/\sigma^2+\alpha(2-3/\sigma)>0\). For \(1/\sigma>2/3\), use
+\(\alpha<1/\sigma\) and \(2-3/\sigma<0\) to obtain
 \[
- u^2+\alpha(2-3u)>u^2+u(2-3u)=2u(1-u)>0.
+ \frac1{\sigma^2}+\alpha\left(2-\frac3\sigma\right)
+ >\frac1{\sigma^2}+\frac1\sigma\left(2-\frac3\sigma\right)
+ =\frac2\sigma\left(1-\frac1\sigma\right)>0.
 \]
 Thus marginal revenue decreases strictly whenever it is positive.
-At a solution of $m(X)=1/B$, its derivative is strictly negative.
+At a solution of $R'(X)=1/B$, $R''(X)<0$.
 The implicit-function theorem therefore makes the maximizing service choice
 smooth in $K,A,L,B$ wherever it exists.
 
-For \(\sigma=1\), define \(\beta=(1-\alpha)\omega_X\).
-As \(X\downarrow0\), revenue is proportional to \(X^{1-u}\) when
-\(\sigma>1\), to \(X^\beta\) when \(\sigma=1\), and to
+As \(X\downarrow0\), revenue is proportional to \(X^{1-1/\sigma}\) when
+\(\sigma>1\), to \(X^{(1-\alpha)\omega_X}\) when \(\sigma=1\), and to
 \(X^{1-\alpha}\) when \(\sigma<1\). Every exponent lies between zero and
-one, so \(m(X)\to\infty\). As \(X\to\infty\), marginal revenue converges to
+one, so \(R'(X)\to\infty\). As \(X\to\infty\), marginal revenue converges to
 zero from above if \(\sigma\geq1\); if \(\sigma<1\), it eventually
-becomes negative. Hence \(m(X)=1/B\) has exactly one solution. Operating profit
+becomes negative. Hence \(R'(X)=1/B\) has exactly one solution. Operating profit
 increases before this solution and decreases after it. The linear cost \(X/B\)
 dominates revenue as \(X\to\infty\), so this solution is the unique global
 maximum. Equation \eqref{eq:rewrite-monopoly-proof-curvature} also proves the
 strict second-order condition:
 \begin{equation}
  e_X(1-e_X)
- +(\alpha-\sigma^{-1})(1-\sigma^{-1})s_X(1-s_X)>0.
+ +\left(\alpha-\frac1\sigma\right)\left(1-\frac1\sigma\right)s_X(1-s_X)>0.
  \label{eq:rewrite-monopoly-soc}
 \end{equation}
 \end{proof}
