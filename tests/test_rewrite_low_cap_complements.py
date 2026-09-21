@@ -16,19 +16,54 @@ class LowCapComplementarity(unittest.TestCase):
             r"\\begin\{proposition\}.*?\\end\{proposition\}", body, re.S
         ).group()
         self.assertEqual(len(re.findall(r"\\item\b", proposition)), 4)
-        statement = "In this region, any equilibrium has an AI production bottleneck"
-        self.assertIn(statement, body)
-        self.assertNotIn(statement, proposition)
-        self.assertIn(r"\hyperref[proof:rewrite-low-cap-complements]", body)
+        reference = r"\ref{prop:rewrite-low-cap-complements}"
+        self.assertIn(reference, body)
+        self.assertNotIn(reference, proposition)
+        appendix = source("sections_rewrite/appendix.tex")
+        self.assertIn(r"\label{prop:rewrite-low-cap-complements}", appendix)
+
+    def test_appendix_proofs_follow_statement_order(self):
+        def expand(path):
+            return re.sub(
+                r"\\input\{([^}]+)\}",
+                lambda match: expand(match[1] + ".tex"),
+                source(path),
+            )
+
+        # Only the proofs section, before the numerical appendices.
+        appendix = re.split(
+            r"\\section\{", source("sections_rewrite/appendix.tex")
+        )[1]
+        appendix = re.sub(
+            r"\\input\{([^}]+)\}",
+            lambda match: expand(match[1] + ".tex"),
+            appendix,
+        )
+        headings = re.findall(
+            r"\\begin\{proof\}\[Proof of (Lemma|Proposition)~\\ref\{([^}]+)\}\]",
+            appendix,
+        )
+        self.assertEqual(headings, [
+            ("Lemma", "lem:rewrite-monopoly-choice"),
+            ("Lemma", "lem:rewrite-developer-verification"),
+            ("Proposition", "prop:rewrite-equilibrium-regimes"),
+            ("Proposition", "prop:rewrite-uncapped-complements-bounds"),
+            ("Proposition", "cond:rewrite-uncapped-complements-limits"),
+            ("Proposition", "prop:rewrite-uncapped-unit-bgp"),
+            ("Proposition", "prop:rewrite-research-scale"),
+            ("Proposition", "prop:rewrite-low-cap-complements"),
+        ])
 
     def test_proof_bounds_average_growth_without_assuming_ratio_convergence(self):
-        proof = source("sections_rewrite/appendix_finite_frontier.tex").split(
+        proof = source("sections_rewrite/appendix.tex").split(
             r"\label{proof:rewrite-low-cap-complements}", 1
         )[1].split(r"\end{proof}", 1)[0]
         self.assertIn(r"C_t\geq(\rho-n)K_t", proof)
         self.assertIn(r"\limsup_{t\to\infty}\frac1t", proof)
         self.assertIn(r"$X/(AL)\to0$", proof)
         self.assertIn("not a proof of equilibrium existence", proof)
+        self.assertIn(r"Proposition~\ref{prop:rewrite-equilibrium-regimes}", proof)
+        self.assertNotIn("Step 1 above", proof)
         for label in ("eq:rewrite-household-budget", "eq:rewrite-household-tvc",
                       "eq:rewrite-euler", "eq:rewrite-frontier-share-map"):
             self.assertIn(r"\eqref{" + label + "}", proof)
