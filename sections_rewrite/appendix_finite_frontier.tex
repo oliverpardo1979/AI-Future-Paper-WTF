@@ -560,8 +560,21 @@ Step 4 verifies the agent-optimality and transversality requirements of
 Definition~\ref{def:rewrite-equilibrium} for all these trajectories.
 \end{proof}
 
+\Needspace{9\baselineskip}
+\begin{proposition}[An AI bottleneck under complementarity]
+\label{prop:rewrite-low-cap-complements}
+Suppose $0<\sigma<1$ and $0<B_0<\overline B<\mathcal B(\sigma)$.
+Any equilibrium satisfies
+\begin{gather*}
+ \limsup_{t\to\infty}\frac1t
+ \log\left(\frac{Y_t/N_t}{Y_0/N_0}\right)
+ \leq\mathcal R(\overline B)-\rho<\gamma,\\
+ \frac{X}{AL}\to0,\qquad s_X\to1,\qquad \frac{wL}{Y}\to0.
+\end{gather*}
+\end{proposition}
+
 \Needspace{4\baselineskip}
-\begin{proof}[Proof of the AI-bottleneck statement following Proposition~\ref{prop:rewrite-equilibrium-regimes}]
+\begin{proof}[Proof of Proposition~\ref{prop:rewrite-low-cap-complements}]
 \phantomsection
 \label{proof:rewrite-low-cap-complements}
 Consider any equilibrium with $0<\sigma<1$ and
