@@ -1,21 +1,12 @@
-name: Build paper and deploy project site to GitHub Pages
+name: Publish legacy links to the current paper
 
 on:
   push:
     branches: [main]
     paths:
       - "docs/**"
-      - "main_rewrite.tex"
-      - "main_companion.tex"
-      - "sections_rewrite/**"
-      - "sections_companion/**"
-      - "figures_rewrite/**"
-      - "references.bib"
-      - "literature/**"
-      - "scripts/build_literature_database.py"
-      - "scripts/test_literature_database.py"
-      - "main*.tex"
-      - "sections*/**"
+      - "scripts/build_legacy_redirects.py"
+      - "scripts/test_legacy_redirects.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -34,21 +25,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
-      - name: Compile both manuscripts
-        uses: xu-cheng/latex-action@v4
-        with:
-          root_file: |
-            main_rewrite.tex
-            main_companion.tex
-      - name: Publish both papers at their permanent paths
+      - name: Build and validate legacy redirects without changing the archive
         run: |
-          mkdir -p docs/paper
-          cp main_rewrite.pdf docs/paper/the-future-of-growth-and-human-labor-under-recursive-ai-self-improvement.pdf
-          cp main_companion.pdf docs/paper/how-much-can-recursive-ai-self-improvement-raise-economic-growth.pdf
-      - name: Rebuild and validate literature browser
-        run: |
-          python3 -m unittest discover -s scripts -p test_literature_database.py
-          python3 scripts/build_literature_database.py --publish
+          python3 -m unittest discover -s scripts -p test_legacy_redirects.py
+          python3 scripts/build_legacy_redirects.py --output build/legacy-site
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
@@ -56,7 +36,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: docs
+          path: build/legacy-site
 
   deploy:
     environment:
